@@ -15,7 +15,16 @@ describe('Client', function() {
       });
     });
   });
-  
+
+  describe('oauth', function() {
+    it('should return an oauth client', function() {
+      var token = 'token';
+      var client = Client.oauth(token);
+      assert.equal(client.authKey, 'bearer');
+      assert.equal(client.authValue, token);
+    });
+  });
+
   describe('#new', function() {
     it('should have the auth key and auth value', function() {
       var authKey = 'auth';
