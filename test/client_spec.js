@@ -25,6 +25,12 @@ describe('Client', function() {
     });
   });
 
+  describe('ROOT_URL', function() {
+    it('should be the root api url', function() {
+      assert.equal(Client.ROOT_URL, 'https://app.asana.com/api/1.0');
+    });
+  });
+
   describe('#new', function() {
     it('should have the auth key and auth value', function() {
       var authKey = 'auth';
