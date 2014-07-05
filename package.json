@@ -29,6 +29,8 @@
     "gulp": "^3.8.5",
     "gulp-jshint": "^1.6.4",
     "gulp-mocha": "^0.4.1",
-    "jshint-stylish": "^0.2.0"
+    "jshint-stylish": "^0.2.0",
+    "rewire": "^2.0.1",
+    "sinon": "^1.10.2"
   }
 }
