@@ -2,17 +2,19 @@
 /* global it */
 var assert = require('assert');
 var Client = require('../lib/client');
+var Dispatcher = require('../lib/dispatcher');
 
 describe('Client', function() {
   describe('basicAuth', function() {
     it('should return a basic auth client', function() {
       var apiKey = 'apiKey';
-      var client = Client.basicAuth(apiKey);
-      assert.equal(client.authKey, 'auth');
-      assert.deepEqual(client.authValue, {
+      var authValue = {
         user: apiKey,
         pass: ''
-      });
+      };
+      var client = Client.basicAuth(apiKey);
+      var dispatcher = new Dispatcher('auth', authValue);
+      assert.deepEqual(client.dispatcher, dispatcher);
     });
   });
 
@@ -20,14 +22,8 @@ describe('Client', function() {
     it('should return an oauth client', function() {
       var token = 'token';
       var client = Client.oauth(token);
-      assert.equal(client.authKey, 'bearer');
-      assert.equal(client.authValue, token);
-    });
-  });
-
-  describe('ROOT_URL', function() {
-    it('should be the root api url', function() {
-      assert.equal(Client.ROOT_URL, 'https://app.asana.com/api/1.0');
+      var dispatcher = new Dispatcher('bearer', token);
+      assert.deepEqual(client.dispatcher, dispatcher);
     });
   });
 
@@ -38,9 +34,9 @@ describe('Client', function() {
         user: 'apiKey',
         pass: ''
       };
-      var client = new Client(authKey, authValue);
-      assert.equal(client.authKey, authKey);
-      assert.equal(client.authValue, authValue);
+      var dispatcher = new Dispatcher(authKey, authValue);
+      var client = new Client(dispatcher);
+      assert.equal(client.dispatcher, dispatcher);
     });
   });
 });
