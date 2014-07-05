@@ -31,6 +31,7 @@
     "gulp-mocha": "^0.4.1",
     "jshint-stylish": "^0.2.0",
     "rewire": "^2.0.1",
+    "run-sequence": "^0.3.6",
     "sinon": "^1.10.2"
   }
 }

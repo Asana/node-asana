@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var mocha = require('gulp-mocha');
 var path = require('path');
+var runSequence = require('run-sequence');
 
 var root = path.join(__dirname, '*.js');
 var lib = path.join(__dirname, 'lib', '**', '*.js');
@@ -20,4 +21,6 @@ gulp.task('spec', function() {
     }));
 });
 
-gulp.task('test', ['lint', 'spec']);
+gulp.task('test', function(callback) {
+  runSequence('lint', 'spec', callback);
+});
