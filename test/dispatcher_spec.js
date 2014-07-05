@@ -59,7 +59,7 @@ describe('Dispatcher', function() {
       var dispatcher = new Dispatcher('auth', authValue);
       var res = dispatcher.dispatch({});
       request.callArgWith(1, err);
-      return res.then(function(value) {
+      return res.then(function() {
         throw new Error('Should not have reached here');
       }, function(passedErr) {
         return assert.equal(passedErr, err);
@@ -80,7 +80,7 @@ describe('Dispatcher', function() {
         request.callArgWith(1, null, {
           statusCode: err.status
         });
-        return res.then(function(value) {
+        return res.then(function() {
           throw new Error('Should not have reached here');
         }, function(passedErr) {
           return assert.deepEqual(passedErr, err);
@@ -109,6 +109,70 @@ describe('Dispatcher', function() {
       return res.then(function(value) {
         assert.equal(value, payload);
       });
+    });
+  });
+
+  describe('#get', function() {
+    it('should pass the right method', function() {
+      var request = sinon.stub();
+      Dispatcher.__set__('request', request);
+      var authValue = {
+        user: 'apiKey',
+        pass: ''
+      };
+      var dispatcher = new Dispatcher('auth', authValue);
+      dispatcher.get('/users/me', {});
+      assert(request.calledWithMatch({
+        method: 'GET'
+      }));
+    });
+
+    it('should pass the right url', function() {
+      var request = sinon.stub();
+      Dispatcher.__set__('request', request);
+      var authValue = {
+        user: 'apiKey',
+        pass: ''
+      };
+      var dispatcher = new Dispatcher('auth', authValue);
+      dispatcher.get('/users/me', {});
+      assert(request.calledWithMatch({
+        url: Dispatcher.url('/users/me')
+      }));
+    });
+
+    it('should pass the query on', function() {
+      var request = sinon.stub();
+      Dispatcher.__set__('request', request);
+      var authValue = {
+        user: 'apiKey',
+        pass: ''
+      };
+      var query = {
+        'opt_fields': ['id', 'name'].join(',')
+      };
+      var dispatcher = new Dispatcher('auth', authValue);
+      dispatcher.get('/users/me', query);
+      assert(request.calledWithMatch({
+        qs: query
+      }));
+    });
+
+    it('should not pass the query if it was not defined', function() {
+      var request = sinon.stub();
+      Dispatcher.__set__('request', request);
+      var authValue = {
+        user: 'apiKey',
+        pass: ''
+      };
+      var dispatcher = new Dispatcher('auth', authValue);
+      dispatcher.get('/users/me');
+      assert(request.calledWith({
+        auth: authValue,
+        method: 'GET',
+        url: Dispatcher.url('/users/me'),
+        json: true
+      }), function() {});
     });
   });
 });
