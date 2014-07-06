@@ -23,7 +23,7 @@ gulp.task('lint', function() {
 gulp.task('spec', function() {
   return gulp.src(tests)
     .pipe(mocha({
-      reporter: 'spec'
+      reporter: 'nyan'
     }));
 });
 
