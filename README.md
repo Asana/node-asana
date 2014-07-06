@@ -6,7 +6,7 @@ API and does no local validation.
 
 ## Examples
 
-### Finding information about the default user
+### Find all incomplete tasks assigned to me for today across my workspaces
 
 ```js
 var asana = require('./index');
