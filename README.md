@@ -9,18 +9,30 @@ API and does no local validation.
 ### Finding information about the default user
 
 ```js
-var asana = require('asana');
+var asana = require('./index');
+var Promise = require('bluebird');
 var util = require('util');
 
-var dump = function(value) {
-  console.log(util.inspect(value, {
+var client = asana.Client.basicAuth(process.env.ASANA_API_KEY);
+
+client.users.me().then(function(user) {
+  return Promise.map(user.workspaces, function(workspace) {
+    return client.tasks.findAll({
+      assignee: user.id,
+      workspace: workspace.id,
+      opt_fields: 'id,name,assignee_status,completed'
+    }).filter(function(task) {
+      return task.assignee_status === 'today' && !task.completed;
+    });
+  });
+}).reduce(function(list, tasks) {
+  return list.concat(tasks);
+}, []).then(function(list) {
+  console.log(util.inspect(list, {
     colors: true,
     depth: null
   }));
-};
-
-var client = asana.Client.basicAuth(process.env.ASANA_API_KEY);
-client.users.me.then(dump);
+});
 ```
 
 ## Installation
