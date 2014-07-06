@@ -3,6 +3,7 @@
 var assert = require('assert');
 var Client = require('../lib/client');
 var Dispatcher = require('../lib/dispatcher');
+var resources = require('../lib/resources');
 
 describe('Client', function() {
   describe('basicAuth', function() {
@@ -37,6 +38,21 @@ describe('Client', function() {
       var dispatcher = new Dispatcher(authKey, authValue);
       var client = new Client(dispatcher);
       assert.equal(client.dispatcher, dispatcher);
+    });
+  });
+
+  describe('#resources', function() {
+    Object.keys(resources).forEach(function(key) {
+      it('should have ' + key, function() {
+        var authKey = 'auth';
+        var authValue = {
+          user: 'apiKey',
+          pass: ''
+        };
+        var dispatcher = new Dispatcher(authKey, authValue);
+        var client = new Client(dispatcher);
+        assert(client[key.toLowerCase()]);
+      });
     });
   });
 });
