@@ -7,6 +7,8 @@ var mocha = require('gulp-mocha');
 var path = require('path');
 var runSequence = require('run-sequence');
 
+var readme = path.join(__dirname, 'README.md');
+var index = path.join(__dirname, 'index.js');
 var docs = path.join(__dirname, 'docs');
 var documentation = path.join(__dirname, 'docs', '**', '*.*');
 var root = path.join(__dirname, '*.js');
@@ -19,7 +21,7 @@ gulp.task('clean', function() {
 });
 
 gulp.task('docs', ['clean'], function() {
-  return gulp.src(lib)
+  return gulp.src([readme, index, lib])
     .pipe(jsdoc('./docs'));
 });
 
