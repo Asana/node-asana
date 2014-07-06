@@ -143,61 +143,6 @@ describe('Tasks', function() {
     });
   });
 
-  describe('#findByWorkspace', function() {
-    it('should handle without params', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
-      var tasks = new Tasks(dispatcher);
-      var id = 1;
-      tasks.findByWorkspace(id);
-      assert(
-        dispatcher.get.calledWithExactly('/workspaces/1/tasks', undefined));
-    });
-
-    it('should handle with params', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
-      var tasks = new Tasks(dispatcher);
-      var params = {
-        'opt_fields': 'id,name'
-      };
-      var id = 1;
-      tasks.findByWorkspace(id, params);
-      assert(
-        dispatcher.get.calledWithExactly('/workspaces/1/tasks', params));
-    });
-
-    it('should handle string numbers', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
-      var tasks = new Tasks(dispatcher);
-      var params = {
-        'opt_fields': 'id,name'
-      };
-      var id = '1';
-      tasks.findByWorkspace(id, params);
-      assert(
-        dispatcher.get.calledWithExactly('/workspaces/1/tasks', params));
-    });
-
-    it('should do weird things with real strings', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
-      var tasks = new Tasks(dispatcher);
-      var params = {
-        'opt_fields': 'id,name'
-      };
-      var id = 'foobar';
-      tasks.findByWorkspace(id, params);
-      assert(
-        dispatcher.get.calledWithExactly('/workspaces/NaN/tasks', params));
-    });
-  });
-
   describe('#findByProject', function() {
     it('should handle without params', function() {
       var dispatcher = {
