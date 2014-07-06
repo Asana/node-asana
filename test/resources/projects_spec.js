@@ -238,4 +238,36 @@ describe('Projects', function() {
       assert(dispatcher.put.calledWithExactly('/projects/NaN', data));
     });
   });
+
+  describe('#delete', function() {
+    it('should handle the deletion', function() {
+      var dispatcher = {
+        delete: sinon.stub()
+      };
+      var projects = new Projects(dispatcher);
+      var id = 1;
+      projects.delete(id);
+      assert(dispatcher.delete.calledWithExactly('/projects/1'));
+    });
+
+    it('should handle string numbers', function() {
+      var dispatcher = {
+        delete: sinon.stub()
+      };
+      var projects = new Projects(dispatcher);
+      var id = '1';
+      projects.delete(id);
+      assert(dispatcher.delete.calledWithExactly('/projects/1'));
+    });
+
+    it('should do weird things with real strings', function() {
+      var dispatcher = {
+        delete: sinon.stub()
+      };
+      var projects = new Projects(dispatcher);
+      var id = 'foobar';
+      projects.delete(id);
+      assert(dispatcher.delete.calledWithExactly('/projects/NaN'));
+    });
+  });
 });
