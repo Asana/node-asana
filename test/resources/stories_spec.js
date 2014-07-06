@@ -116,4 +116,45 @@ describe('Stories', function() {
         dispatcher.get.calledWithExactly('/tasks/NaN/stories', params));
     });
   });
+
+  describe('#create', function() {
+    it('should handle the creation', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var stories = new Stories(dispatcher);
+      var id = 1;
+      var data = {
+        text: 'Test'
+      };
+      stories.create(id, data);
+      assert(dispatcher.post.calledWithExactly('/tasks/1/stories', data));
+    });
+
+    it('should handle string numbers', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var stories = new Stories(dispatcher);
+      var id = '1';
+      var data = {
+        text: 'Test'
+      };
+      stories.create(id, data);
+      assert(dispatcher.post.calledWithExactly('/tasks/1/stories', data));
+    });
+
+    it('should do weird things with real strings', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var stories = new Stories(dispatcher);
+      var id = 'foobar';
+      var data = {
+        text: 'Test'
+      };
+      stories.create(id, data);
+      assert(dispatcher.post.calledWithExactly('/tasks/NaN/stories', data));
+    });
+  });
 });
