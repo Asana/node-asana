@@ -27,10 +27,14 @@
   },
   "devDependencies": {
     "gulp": "^3.8.5",
+    "gulp-clean": "^0.3.1",
+    "gulp-gh-pages": "^0.3.3",
     "gulp-jsdoc": "^0.1.4",
     "gulp-jshint": "^1.6.4",
     "gulp-mocha": "^0.4.1",
+    "install": "^0.1.7",
     "jshint-stylish": "^0.2.0",
+    "npm": "^1.4.20",
     "rewire": "^2.0.1",
     "run-sequence": "^0.3.6",
     "sinon": "^1.10.2"
