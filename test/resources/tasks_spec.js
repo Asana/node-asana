@@ -253,6 +253,61 @@ describe('Tasks', function() {
     });
   });
 
+  describe('#findByTag', function() {
+    it('should handle without params', function() {
+      var dispatcher = {
+        get: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = 1;
+      tasks.findByTag(id);
+      assert(
+        dispatcher.get.calledWithExactly('/tags/1/tasks', undefined));
+    });
+
+    it('should handle with params', function() {
+      var dispatcher = {
+        get: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var params = {
+        'opt_fields': 'id,name'
+      };
+      var id = 1;
+      tasks.findByTag(id, params);
+      assert(
+        dispatcher.get.calledWithExactly('/tags/1/tasks', params));
+    });
+
+    it('should handle string numbers', function() {
+      var dispatcher = {
+        get: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var params = {
+        'opt_fields': 'id,name'
+      };
+      var id = '1';
+      tasks.findByTag(id, params);
+      assert(
+        dispatcher.get.calledWithExactly('/tags/1/tasks', params));
+    });
+
+    it('should do weird things with real strings', function() {
+      var dispatcher = {
+        get: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var params = {
+        'opt_fields': 'id,name'
+      };
+      var id = 'foobar';
+      tasks.findByTag(id, params);
+      assert(
+        dispatcher.get.calledWithExactly('/tags/NaN/tasks', params));
+    });
+  });
+
   describe('#update', function() {
     it('should handle the update', function() {
       var dispatcher = {
