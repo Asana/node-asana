@@ -198,6 +198,61 @@ describe('Tasks', function() {
     });
   });
 
+  describe('#findByProject', function() {
+    it('should handle without params', function() {
+      var dispatcher = {
+        get: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = 1;
+      tasks.findByProject(id);
+      assert(
+        dispatcher.get.calledWithExactly('/projects/1/tasks', undefined));
+    });
+
+    it('should handle with params', function() {
+      var dispatcher = {
+        get: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var params = {
+        'opt_fields': 'id,name'
+      };
+      var id = 1;
+      tasks.findByProject(id, params);
+      assert(
+        dispatcher.get.calledWithExactly('/projects/1/tasks', params));
+    });
+
+    it('should handle string numbers', function() {
+      var dispatcher = {
+        get: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var params = {
+        'opt_fields': 'id,name'
+      };
+      var id = '1';
+      tasks.findByProject(id, params);
+      assert(
+        dispatcher.get.calledWithExactly('/projects/1/tasks', params));
+    });
+
+    it('should do weird things with real strings', function() {
+      var dispatcher = {
+        get: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var params = {
+        'opt_fields': 'id,name'
+      };
+      var id = 'foobar';
+      tasks.findByProject(id, params);
+      assert(
+        dispatcher.get.calledWithExactly('/projects/NaN/tasks', params));
+    });
+  });
+
   describe('#update', function() {
     it('should handle the update', function() {
       var dispatcher = {
