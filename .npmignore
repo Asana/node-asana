@@ -1,0 +1,6 @@
+docs
+test
+.gitignore
+.jshintrc
+.travis.yml
+README.md
