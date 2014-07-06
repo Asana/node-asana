@@ -175,4 +175,57 @@ describe('Dispatcher', function() {
       }), function() {});
     });
   });
+
+  describe('#put', function() {
+    it('should pass the right method', function() {
+      var request = sinon.stub();
+      Dispatcher.__set__('request', request);
+      var authValue = {
+        user: 'apiKey',
+        pass: ''
+      };
+      var dispatcher = new Dispatcher('auth', authValue);
+      dispatcher.put('/workspaces/1', {
+        name: 'Test'
+      });
+      assert(request.calledWithMatch({
+        method: 'PUT'
+      }));
+    });
+
+    it('should pass the right url', function() {
+      var request = sinon.stub();
+      Dispatcher.__set__('request', request);
+      var authValue = {
+        user: 'apiKey',
+        pass: ''
+      };
+      var dispatcher = new Dispatcher('auth', authValue);
+      dispatcher.put('/workspaces/1', {
+        name: 'Test'
+      });
+      assert(request.calledWithMatch({
+        url: Dispatcher.url('/workspaces/1')
+      }));
+    });
+
+    it('should pass the data in the json field', function() {
+      var request = sinon.stub();
+      Dispatcher.__set__('request', request);
+      var authValue = {
+        user: 'apiKey',
+        pass: ''
+      };
+      var dispatcher = new Dispatcher('auth', authValue);
+      var data = {
+        name: 'Test'
+      };
+      dispatcher.put('/workspaces/1', data);
+      assert(request.calledWithMatch({
+        json: {
+          data: data
+        }
+      }));
+    });
+  });
 });
