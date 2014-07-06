@@ -281,4 +281,34 @@ describe('Dispatcher', function() {
       }));
     });
   });
+
+  describe('#delete', function() {
+    it('should pass the right method', function() {
+      var request = sinon.stub();
+      Dispatcher.__set__('request', request);
+      var authValue = {
+        user: 'apiKey',
+        pass: ''
+      };
+      var dispatcher = new Dispatcher('auth', authValue);
+      dispatcher.delete('/projects/1');
+      assert(request.calledWithMatch({
+        method: 'DELETE'
+      }));
+    });
+
+    it('should pass the right url', function() {
+      var request = sinon.stub();
+      Dispatcher.__set__('request', request);
+      var authValue = {
+        user: 'apiKey',
+        pass: ''
+      };
+      var dispatcher = new Dispatcher('auth', authValue);
+      dispatcher.delete('/projects/1');
+      assert(request.calledWithMatch({
+        url: Dispatcher.url('/projects/1')
+      }));
+    });
+  });
 });
