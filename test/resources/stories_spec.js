@@ -117,7 +117,7 @@ describe('Stories', function() {
     });
   });
 
-  describe('#create', function() {
+  describe('#createOnTask', function() {
     it('should handle the creation', function() {
       var dispatcher = {
         post: sinon.stub()
@@ -127,7 +127,7 @@ describe('Stories', function() {
       var data = {
         text: 'Test'
       };
-      stories.create(id, data);
+      stories.createOnTask(id, data);
       assert(dispatcher.post.calledWithExactly('/tasks/1/stories', data));
     });
 
@@ -140,7 +140,7 @@ describe('Stories', function() {
       var data = {
         text: 'Test'
       };
-      stories.create(id, data);
+      stories.createOnTask(id, data);
       assert(dispatcher.post.calledWithExactly('/tasks/1/stories', data));
     });
 
@@ -153,7 +153,7 @@ describe('Stories', function() {
       var data = {
         text: 'Test'
       };
-      stories.create(id, data);
+      stories.createOnTask(id, data);
       assert(dispatcher.post.calledWithExactly('/tasks/NaN/stories', data));
     });
   });
