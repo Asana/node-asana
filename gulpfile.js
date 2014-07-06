@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var jsdoc = require('gulp-jsdoc');
 var jshint = require('gulp-jshint');
 var mocha = require('gulp-mocha');
 var path = require('path');
@@ -7,6 +8,11 @@ var runSequence = require('run-sequence');
 var root = path.join(__dirname, '*.js');
 var lib = path.join(__dirname, 'lib', '**', '*.js');
 var tests = path.join(__dirname, 'test', '**', '*.js');
+
+gulp.task('docs', function() {
+  gulp.src(lib)
+    .pipe(jsdoc('./docs'));
+});
 
 gulp.task('lint', function() {
   return gulp.src([root, lib, tests])
