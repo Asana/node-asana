@@ -10,20 +10,24 @@ API and does no local validation.
 
 ```js
 var asana = require('asana');
-var Promise = require('bluebird');
 var util = require('util');
 
 var client = asana.Client.basicAuth(process.env.ASANA_API_KEY);
 
 client.users.me().then(function(user) {
-  return Promise.map(user.workspaces, function(workspace) {
-    return client.tasks.findAll({
-      assignee: user.id,
-      workspace: workspace.id,
-      opt_fields: 'id,name,assignee_status,completed'
-    }).filter(function(task) {
-      return task.assignee_status === 'today' && !task.completed;
-    });
+  return user.workspaces.map(function(workspace) {
+    return {
+      user: user.id,
+      workspace: workspace.id
+    };
+  });
+}).map(function(data) {
+  return client.tasks.findAll({
+    assignee: data.user,
+    workspace: data.workspace,
+    opt_fields: 'id,name,assignee_status,completed'
+  }).filter(function(task) {
+    return task.assignee_status === 'today' && !task.completed;
   });
 }).reduce(function(list, tasks) {
   return list.concat(tasks);
