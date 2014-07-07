@@ -9,7 +9,7 @@ API and does no local validation.
 ### Find all incomplete tasks assigned to me for today across my workspaces
 
 ```js
-var asana = require('./index');
+var asana = require('asana');
 var Promise = require('bluebird');
 var util = require('util');
 
