@@ -50,6 +50,19 @@ be found [here](http://pspeter3.com/node-asana). Also, the
 [Official Asana Documentation](http://developer.asana.com/documentation/) is a
 great resource since this is just a thin wrapper for the API.
 
+## Contributing
+
+Feel free to fork and submit pull requests for the code. Please follow the
+existing code as an example of style and make sure that all your code passes
+lint and test. For a sanity check
+
+```sh
+git clone git@github.com:pspeter3/node-asana.git
+cd node-asana
+npm install
+npm test
+```
+
 [travis-url]: http://travis-ci.org/pspeter3/node-asana
 [travis-image]: http://img.shields.io/travis/pspeter3/node-asana.svg?style=flat
 
