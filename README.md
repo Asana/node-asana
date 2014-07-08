@@ -1,8 +1,20 @@
 # Asana [![Build Status][travis-image]][travis-url] [![Dependency Status][depstat-image]][depstat-url]
 
-A node.js client for the 1.0 version of the Asana API. This client is a thin
-client for the API which means it tries just to provide proxy methods for the 
-API and does no local validation.
+A node.js client for the 1.0 version of the Asana API.
+
+## Design Decisions
+
+- **Thin Wrapper** This client is a thin wrapper which means that the client
+  makes no attempt to verify the validity of the arguments locally. All errors
+  are reported by the server. We include custom Error types which will contain
+  the response from the server.
+- **Promises** Promises with [bluebird][bluebird] seem like the most neutral way
+  to support node's various async paradigms. If you want promises, you get them 
+  by default. If you want callbacks, bluebird promises support `nodeify` which
+  takes a callback as parameter. For generators and streams, [co][co] and
+  [highland][highland] also support promises respectively. Beyond that, other
+  major libraries such as mongoose, mocha, and elastic search also support
+  promises through bluebird.
 
 ## Examples
 
@@ -51,9 +63,8 @@ npm install asana --save
 ## Documentation
 
 The code is thoroughly documented with JsDoc tags and online documentation can
-be found [here](http://pspeter3.com/node-asana). Also, the 
-[Official Asana Documentation](http://developer.asana.com/documentation/) is a
-great resource since this is just a thin wrapper for the API.
+be found [here][jsdoc]. Also, the  [Official Asana Documentation][asana-doc] is
+a great resource since this is just a thin wrapper for the API.
 
 ## Contributing
 
@@ -73,3 +84,10 @@ npm test
 
 [depstat-url]: https://gemnasium.com/pspeter3/node-asana
 [depstat-image]: http://img.shields.io/gemnasium/pspeter3/node-asana.svg?style=flat
+
+[bluebird]: https://github.com/petkaantonov/bluebird
+[co]: https://github.com/visionmedia/co
+[highland]: http://highlandjs.org/
+
+[jsdoc]: http://pspeter3.com/node-asana
+[asana-doc]: http://developer.asana.com/documentation/
