@@ -18,7 +18,8 @@ client.users.me().then(function(user) {
   return user.workspaces.map(function(workspace) {
     return {
       user: user.id,
-      workspace: workspace.id
+      workspace: workspace.id,
+      completed_since: 'now'
     };
   });
 }).map(function(data) {
