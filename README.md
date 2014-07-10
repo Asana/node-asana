@@ -1,4 +1,4 @@
-# Asana [![Build Status][travis-image]][travis-url] [![Dependency Status][depstat-image]][depstat-url]
+# Asana [![Build Status][travis-image]][travis-url] [![Coverage Status][coverage-image]][coverage-url] [![Dependency Status][depstat-image]][depstat-url]
 
 A node.js client for the 1.0 version of the Asana API.
 
@@ -81,6 +81,9 @@ npm test
 
 [travis-url]: http://travis-ci.org/pspeter3/node-asana
 [travis-image]: http://img.shields.io/travis/pspeter3/node-asana.svg?style=flat
+
+[coverage-url]: https://coveralls.io/r/pspeter3/node-asana
+[coverage-image]: http://img.shields.io/coveralls/pspeter3/node-asana.svg?style=flat
 
 [depstat-url]: https://gemnasium.com/pspeter3/node-asana
 [depstat-image]: http://img.shields.io/gemnasium/pspeter3/node-asana.svg?style=flat
