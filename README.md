@@ -13,8 +13,8 @@ A node.js client for the 1.0 version of the Asana API.
   by default. If you want callbacks, bluebird promises support `nodeify` which
   takes a callback as parameter. For generators and streams, [co][co] and
   [highland][highland] also support promises respectively. Beyond that, other
-  major libraries such as mongoose, mocha, and elastic search also support
-  promises through bluebird.
+  major libraries such as mongoose, mocha, and elastic search (which uses 
+  bluebird) also support promises.
 
 ## Examples
 
