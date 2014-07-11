@@ -63,8 +63,9 @@ npm install asana --save
 ## Documentation
 
 The code is thoroughly documented with JsDoc tags and online documentation can
-be found [here][jsdoc]. Also, the  [Official Asana Documentation][asana-doc] is
-a great resource since this is just a thin wrapper for the API.
+be found on the [wiki][wiki]. Also, the 
+[Official Asana Documentation][asana-doc] is a great resource since this is 
+just a thin wrapper for the API.
 
 ## Contributing
 
@@ -92,5 +93,5 @@ npm test
 [co]: https://github.com/visionmedia/co
 [highland]: http://highlandjs.org/
 
-[jsdoc]: http://pspeter3.com/node-asana
+[wiki]: https://github.com/pspeter3/node-asana/wiki
 [asana-doc]: http://developer.asana.com/documentation/
