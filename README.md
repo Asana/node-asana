@@ -75,7 +75,7 @@ existing code as an example of style and make sure that all your code passes
 lint and test. For a sanity check
 
 ```sh
-git clone git@github.com:pspeter3/node-asana.git
+git clone git@github.com:Asana/node-asana.git
 cd node-asana
 npm install
 npm test
