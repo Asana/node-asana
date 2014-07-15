@@ -18,7 +18,7 @@ A node.js client for the 1.0 version of the Asana API.
 
 ## Examples
 
-### Find all incomplete tasks assigned to me for today across my workspaces
+### Find all incomplete tasks assigned to me that are new or marked for today across my workspaces
 
 ```js
 var asana = require('asana');
@@ -30,17 +30,18 @@ client.users.me().then(function(user) {
   return user.workspaces.map(function(workspace) {
     return {
       user: user.id,
-      workspace: workspace.id,
-      completed_since: 'now'
+      workspace: workspace.id
     };
   });
 }).map(function(data) {
   return client.tasks.findAll({
     assignee: data.user,
     workspace: data.workspace,
+    completed_since: 'now',
     opt_fields: 'id,name,assignee_status,completed'
   }).filter(function(task) {
-    return task.assignee_status === 'today' && !task.completed;
+    return task.assignee_status === 'today' ||
+      task.assignee_status === 'new';
   });
 }).reduce(function(list, tasks) {
   return list.concat(tasks);
