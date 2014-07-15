@@ -88,5 +88,5 @@ npm test
 [co]: https://github.com/visionmedia/co
 [highland]: http://highlandjs.org/
 
-[wiki]: https://github.com/pspeter3/node-asana/wiki
+[wiki]: https://github.com/Asana/node-asana/wiki
 [asana-doc]: http://developer.asana.com/documentation/
