@@ -325,4 +325,90 @@ describe('Tasks', function() {
       assert(dispatcher.delete.calledWithExactly('/tasks/NaN'));
     });
   });
+
+  describe('#addFollowers', function() {
+    it('should handle the update', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = 1;
+      var data = {
+        followers: [1]
+      };
+      tasks.addFollowers(id, data);
+      assert(dispatcher.post.calledWithExactly('/tasks/1/addFollowers', data));
+    });
+
+    it('should handle string numbers', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = '1';
+      var data = {
+        followers: [1]
+      };
+      tasks.addFollowers(id, data);
+      assert(dispatcher.post.calledWithExactly('/tasks/1/addFollowers', data));
+    });
+
+    it('should do weird things with real strings', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = 'foobar';
+      var data = {
+        followers: [1]
+      };
+      tasks.addFollowers(id, data);
+      assert(
+        dispatcher.post.calledWithExactly('/tasks/NaN/addFollowers', data));
+    });
+  });
+
+  describe('#removeFollowers', function() {
+    it('should handle the update', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = 1;
+      var data = {
+        followers: [1]
+      };
+      tasks.removeFollowers(id, data);
+      assert(
+        dispatcher.post.calledWithExactly('/tasks/1/removeFollowers', data));
+    });
+
+    it('should handle string numbers', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = '1';
+      var data = {
+        followers: [1]
+      };
+      tasks.removeFollowers(id, data);
+      assert(
+        dispatcher.post.calledWithExactly('/tasks/1/removeFollowers', data));
+    });
+
+    it('should do weird things with real strings', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = 'foobar';
+      var data = {
+        followers: [1]
+      };
+      tasks.removeFollowers(id, data);
+      assert(
+        dispatcher.post.calledWithExactly('/tasks/NaN/removeFollowers', data));
+    });
+  });
 });
