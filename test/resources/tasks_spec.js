@@ -411,4 +411,121 @@ describe('Tasks', function() {
         dispatcher.post.calledWithExactly('/tasks/NaN/removeFollowers', data));
     });
   });
+
+  describe('#getProjects', function() {
+    it('should handle the request', function() {
+      var dispatcher = {
+        get: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = 1;
+      tasks.getProjects(id);
+      assert(dispatcher.get.calledWith('/tasks/1/projects', undefined));
+    });
+
+    it('should handle the request', function() {
+      var dispatcher = {
+        get: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = '1';
+      tasks.getProjects(id);
+      assert(dispatcher.get.calledWithExactly('/tasks/1/projects', undefined));
+    });
+
+      it('should handle the request', function() {
+      var dispatcher = {
+        get: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = 'foobar';
+      tasks.getProjects(id);
+      assert(
+        dispatcher.get.calledWithExactly('/tasks/NaN/projects', undefined));
+    });
+});
+
+  describe('#addProject', function() {
+    it('should handle the update', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = 1;
+      var data = {
+        project: [1]
+      };
+      tasks.addProject(id, data);
+      assert(dispatcher.post.calledWithExactly('/tasks/1/addProject', data));
+    });
+
+    it('should handle string numbers', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = '1';
+      var data = {
+        project: [1]
+      };
+      tasks.addProject(id, data);
+      assert(dispatcher.post.calledWithExactly('/tasks/1/addProject', data));
+    });
+
+    it('should do weird things with real strings', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = 'foobar';
+      var data = {
+        project: [1]
+      };
+      tasks.addProject(id, data);
+      assert(
+        dispatcher.post.calledWithExactly('/tasks/NaN/addProject', data));
+    });
+  });
+
+  describe('#removeProject', function() {
+    it('should handle the update', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = 1;
+      var data = {
+        project: [1]
+      };
+      tasks.removeProject(id, data);
+      assert(dispatcher.post.calledWithExactly('/tasks/1/removeProject', data));
+    });
+
+    it('should handle string numbers', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = '1';
+      var data = {
+        project: [1]
+      };
+      tasks.removeProject(id, data);
+      assert(dispatcher.post.calledWithExactly('/tasks/1/removeProject', data));
+    });
+
+    it('should do weird things with real strings', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = 'foobar';
+      var data = {
+        project: [1]
+      };
+      tasks.removeProject(id, data);
+      assert(
+        dispatcher.post.calledWithExactly('/tasks/NaN/removeProject', data));
+    });
+  });
 });
