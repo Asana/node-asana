@@ -423,7 +423,7 @@ describe('Tasks', function() {
       assert(dispatcher.get.calledWith('/tasks/1/projects', undefined));
     });
 
-    it('should handle the request', function() {
+    it('should handle string numbers', function() {
       var dispatcher = {
         get: sinon.stub()
       };
@@ -433,7 +433,7 @@ describe('Tasks', function() {
       assert(dispatcher.get.calledWithExactly('/tasks/1/projects', undefined));
     });
 
-      it('should handle the request', function() {
+    it('should do weird things with real strings', function() {
       var dispatcher = {
         get: sinon.stub()
       };
@@ -443,7 +443,7 @@ describe('Tasks', function() {
       assert(
         dispatcher.get.calledWithExactly('/tasks/NaN/projects', undefined));
     });
-});
+  });
 
   describe('#addProject', function() {
     it('should handle the update', function() {
