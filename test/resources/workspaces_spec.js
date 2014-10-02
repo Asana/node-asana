@@ -76,4 +76,20 @@ describe('Workspaces', function() {
       assert(dispatcher.put.calledWithExactly('/workspaces/NaN', data));
     });
   });
+
+  describe('#typeahead', function() {
+    it('should handle task typeahead', function() {
+      var dispatcher = {
+        get: sinon.stub()
+      };
+      var workspaces = new Workspaces(dispatcher);
+      var id = 1;
+      var data = {
+        type: 'task',
+        query: 'foobar'
+      };
+      workspaces.typeahead(id, data);
+      assert(dispatcher.get.calledWithExactly('/workspaces/1/typeahead', data));
+    });
+  });
 });
