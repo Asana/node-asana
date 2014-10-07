@@ -528,4 +528,122 @@ describe('Tasks', function() {
         dispatcher.post.calledWithExactly('/tasks/NaN/removeProject', data));
     });
   });
+
+
+  describe('#getTags', function() {
+    it('should handle the request', function() {
+      var dispatcher = {
+        get: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = 1;
+      tasks.getTags(id);
+      assert(dispatcher.get.calledWith('/tasks/1/tags', undefined));
+    });
+
+    it('should handle string numbers', function() {
+      var dispatcher = {
+        get: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = '1';
+      tasks.getTags(id);
+      assert(dispatcher.get.calledWithExactly('/tasks/1/tags', undefined));
+    });
+
+    it('should do weird things with real strings', function() {
+      var dispatcher = {
+        get: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = 'foobar';
+      tasks.getTags(id);
+      assert(
+        dispatcher.get.calledWithExactly('/tasks/NaN/tags', undefined));
+    });
+  });
+
+  describe('#addTag', function() {
+    it('should handle the update', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = 1;
+      var data = {
+        tag: 1
+      };
+      tasks.addTag(id, data);
+      assert(dispatcher.post.calledWithExactly('/tasks/1/addTag', data));
+    });
+
+    it('should handle string numbers', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = '1';
+      var data = {
+        tag: 1
+      };
+      tasks.addTag(id, data);
+      assert(dispatcher.post.calledWithExactly('/tasks/1/addTag', data));
+    });
+
+    it('should do weird things with real strings', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = 'foobar';
+      var data = {
+        tag: 1
+      };
+      tasks.addTag(id, data);
+      assert(
+        dispatcher.post.calledWithExactly('/tasks/NaN/addTag', data));
+    });
+  });
+
+  describe('#removeTag', function() {
+    it('should handle the update', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = 1;
+      var data = {
+        tag: 1
+      };
+      tasks.removeTag(id, data);
+      assert(dispatcher.post.calledWithExactly('/tasks/1/removeTag', data));
+    });
+
+    it('should handle string numbers', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = '1';
+      var data = {
+        tag: 1
+      };
+      tasks.removeTag(id, data);
+      assert(dispatcher.post.calledWithExactly('/tasks/1/removeTag', data));
+    });
+
+    it('should do weird things with real strings', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = 'foobar';
+      var data = {
+        tag: 1
+      };
+      tasks.removeTag(id, data);
+      assert(
+        dispatcher.post.calledWithExactly('/tasks/NaN/removeTag', data));
+    });
+  });
 });
