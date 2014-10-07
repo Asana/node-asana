@@ -529,14 +529,14 @@ describe('Tasks', function() {
     });
   });
 
-  describe('#getSubtasks', function() {
+  describe('#subtasks', function() {
     it('should handle the request', function() {
       var dispatcher = {
         get: sinon.stub()
       };
       var tasks = new Tasks(dispatcher);
       var id = 1;
-      tasks.getSubtasks(id);
+      tasks.subtasks(id);
       assert(dispatcher.get.calledWith('/tasks/1/subtasks', undefined));
     });
 
@@ -546,7 +546,7 @@ describe('Tasks', function() {
       };
       var tasks = new Tasks(dispatcher);
       var id = '1';
-      tasks.getSubtasks(id);
+      tasks.subtasks(id);
       assert(dispatcher.get.calledWithExactly('/tasks/1/subtasks', undefined));
     });
 
@@ -556,7 +556,7 @@ describe('Tasks', function() {
       };
       var tasks = new Tasks(dispatcher);
       var id = 'foobar';
-      tasks.getSubtasks(id);
+      tasks.subtasks(id);
       assert(
         dispatcher.get.calledWithExactly('/tasks/NaN/subtasks', undefined));
     });
