@@ -412,14 +412,14 @@ describe('Tasks', function() {
     });
   });
 
-  describe('#getProjects', function() {
+  describe('#projects', function() {
     it('should handle the request', function() {
       var dispatcher = {
         get: sinon.stub()
       };
       var tasks = new Tasks(dispatcher);
       var id = 1;
-      tasks.getProjects(id);
+      tasks.projects(id);
       assert(dispatcher.get.calledWith('/tasks/1/projects', undefined));
     });
 
@@ -429,7 +429,7 @@ describe('Tasks', function() {
       };
       var tasks = new Tasks(dispatcher);
       var id = '1';
-      tasks.getProjects(id);
+      tasks.projects(id);
       assert(dispatcher.get.calledWithExactly('/tasks/1/projects', undefined));
     });
 
@@ -439,7 +439,7 @@ describe('Tasks', function() {
       };
       var tasks = new Tasks(dispatcher);
       var id = 'foobar';
-      tasks.getProjects(id);
+      tasks.projects(id);
       assert(
         dispatcher.get.calledWithExactly('/tasks/NaN/projects', undefined));
     });
@@ -530,14 +530,14 @@ describe('Tasks', function() {
   });
 
 
-  describe('#getTags', function() {
+  describe('#tags', function() {
     it('should handle the request', function() {
       var dispatcher = {
         get: sinon.stub()
       };
       var tasks = new Tasks(dispatcher);
       var id = 1;
-      tasks.getTags(id);
+      tasks.tags(id);
       assert(dispatcher.get.calledWith('/tasks/1/tags', undefined));
     });
 
@@ -547,7 +547,7 @@ describe('Tasks', function() {
       };
       var tasks = new Tasks(dispatcher);
       var id = '1';
-      tasks.getTags(id);
+      tasks.tags(id);
       assert(dispatcher.get.calledWithExactly('/tasks/1/tags', undefined));
     });
 
@@ -557,7 +557,7 @@ describe('Tasks', function() {
       };
       var tasks = new Tasks(dispatcher);
       var id = 'foobar';
-      tasks.getTags(id);
+      tasks.tags(id);
       assert(
         dispatcher.get.calledWithExactly('/tasks/NaN/tags', undefined));
     });
