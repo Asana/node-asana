@@ -529,7 +529,6 @@ describe('Tasks', function() {
     });
   });
 
-
   describe('#tags', function() {
     it('should handle the request', function() {
       var dispatcher = {
@@ -644,6 +643,129 @@ describe('Tasks', function() {
       tasks.removeTag(id, data);
       assert(
         dispatcher.post.calledWithExactly('/tasks/NaN/removeTag', data));
+    });
+  });
+
+  describe('#subtasks', function() {
+    it('should handle the request', function() {
+      var dispatcher = {
+        get: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = 1;
+      tasks.subtasks(id);
+      assert(dispatcher.get.calledWith('/tasks/1/subtasks', undefined));
+    });
+
+    it('should handle string numbers', function() {
+      var dispatcher = {
+        get: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = '1';
+      tasks.subtasks(id);
+      assert(dispatcher.get.calledWithExactly('/tasks/1/subtasks', undefined));
+    });
+
+    it('should do weird things with real strings', function() {
+      var dispatcher = {
+        get: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = 'foobar';
+      tasks.subtasks(id);
+      assert(
+        dispatcher.get.calledWithExactly('/tasks/NaN/subtasks', undefined));
+    });
+  });
+
+  describe('#addSubtask', function() {
+    it('should handle the update', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = 1;
+      var data = {
+        name: 'foo',
+        assignee: 1234
+      };
+      tasks.addSubtask(id, data);
+      assert(dispatcher.post.calledWithExactly('/tasks/1/subtasks', data));
+    });
+
+    it('should handle string numbers', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = '1';
+      var data = {
+        name: 'foo',
+        assignee: 1234
+      };
+      tasks.addSubtask(id, data);
+      assert(dispatcher.post.calledWithExactly('/tasks/1/subtasks', data));
+    });
+
+    it('should do weird things with real strings', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = 'foobar';
+      var data = {
+        name: 'foo',
+        assignee: 1234
+      };
+      tasks.addSubtask(id, data);
+      assert(
+        dispatcher.post.calledWithExactly('/tasks/NaN/subtasks', data));
+    });
+  });
+
+  describe('#setParent', function() {
+    it('should handle the update', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = 1;
+      var parentId = 2;
+      var data = {
+        parent: parentId
+      };
+      tasks.setParent(id, parentId);
+      assert(dispatcher.post.calledWithExactly('/tasks/1/setParent', data));
+    });
+
+    it('should handle string numbers', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = '1';
+      var parentId = '2';
+      var data = {
+        parent: 2
+      };
+      tasks.setParent(id, parentId);
+      assert(dispatcher.post.calledWithExactly('/tasks/1/setParent', data));
+    });
+
+    it('should do weird things with real strings', function() {
+      var dispatcher = {
+        post: sinon.stub()
+      };
+      var tasks = new Tasks(dispatcher);
+      var id = 'foobar';
+      var parentId = 'fizzbuzz';
+      var data = {
+        parent: NaN
+      };
+      tasks.setParent(id, parentId);
+      assert(
+        dispatcher.post.calledWithExactly('/tasks/NaN/setParent', data));
     });
   });
 });
