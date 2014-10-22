@@ -3,7 +3,6 @@ var istanbul = require('gulp-istanbul');
 var jshint = require('gulp-jshint');
 var mocha = require('gulp-mocha');
 var path = require('path');
-var runSequence = require('run-sequence');
 var wicked = require('wicked');
 
 var index = path.join(__dirname, 'index.js');
@@ -26,9 +25,7 @@ gulp.task('spec', function(callback) {
     .pipe(istanbul())
     .on('finish', function() {
       gulp.src(tests)
-        .pipe(mocha({
-          reporter: 'nyan'
-        }))
+        .pipe(mocha())
         .pipe(istanbul.writeReports({
           reporters: ['lcovonly']
         }))
@@ -36,6 +33,4 @@ gulp.task('spec', function(callback) {
     });
 });
 
-gulp.task('test', function(callback) {
-  runSequence('lint', 'spec', callback);
-});
+gulp.task('test', ['lint', 'spec']);
