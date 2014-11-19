@@ -1,4 +1,4 @@
-# Asana [![Build Status][travis-image]][travis-url]
+# Asana [![Build Status][travis-image]][travis-url] [![NPM Version][npm-image]][npm-url]
 
 A node.js client for the 1.0 version of the Asana API.
 
@@ -82,7 +82,10 @@ npm test
 ```
 
 [travis-url]: http://travis-ci.org/Asana/node-asana
-[travis-image]: http://img.shields.io/travis/Asana/node-asana.svg?style=flat
+[travis-image]: http://img.shields.io/travis/Asana/node-asana.svg?style=flat-square
+
+[npm-url]: https://www.npmjs.org/package/asana
+[npm-image]: http://img.shields.io/npm/v/asana.svg?style=flat-square
 
 [bluebird]: https://github.com/petkaantonov/bluebird
 [co]: https://github.com/visionmedia/co
