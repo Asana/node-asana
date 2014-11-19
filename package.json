@@ -23,9 +23,12 @@
   "homepage": "https://github.com/Asana/node-asana",
   "dependencies": {
     "bluebird": "^2.3.0",
+    "browser-request": "^0.3.2",
     "request": "^2.45.0"
   },
   "devDependencies": {
+    "browserify": "^6.3.2",
+    "glob": "^4.1.4",
     "gulp": "^3.8.5",
     "gulp-istanbul": "^0.3.1",
     "gulp-jshint": "^1.6.4",
@@ -34,6 +37,8 @@
     "jshint-stylish": "^1.0.0",
     "rewire": "^2.0.1",
     "sinon": "^1.10.2",
+    "through": "^2.3.6",
+    "vinyl-source-stream": "^1.0.0",
     "wicked": "^0.3.1"
   }
 }
