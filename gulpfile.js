@@ -41,6 +41,8 @@ gulp.task('browser', function() {
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('default', ['test']);
+
 gulp.task('docs', function(callback) {
   wicked(null, null, callback);
 });
@@ -79,4 +81,4 @@ gulp.task('spec', function(callback) {
     });
 });
 
-gulp.task('test', ['lint', 'spec']);
+gulp.task('test', ['browser', 'lint', 'spec']);

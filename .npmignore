@@ -1,6 +1,6 @@
 docs
+coverage
 test
 .gitignore
 .jshintrc
 .travis.yml
-README.md
