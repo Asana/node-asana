@@ -52,8 +52,10 @@ gulp.task('lint', function() {
 });
 
 gulp.task('spec', function(callback) {
-  gulp.src([lib, index])
-    .pipe(istanbul())
+  gulp.src(lib)
+    .pipe(istanbul({
+      includeUntested: true
+    }))
     .on('finish', function() {
       gulp.src(tests)
         .pipe(mocha({
