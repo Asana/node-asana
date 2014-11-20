@@ -1,7 +1,7 @@
 {
   "name": "asana",
   "main": "dist/asana.js",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "homepage": "https://github.com/Asana/node-asana",
   "authors": [
     "Phips Peter <pspeter333@gmail.com>"
