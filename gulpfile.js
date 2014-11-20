@@ -32,7 +32,7 @@ var replace = function(regex, replacement) {
 gulp.task('browser', function() {
   return browserify({
       entries: [index],
-      standalone: 'asana'
+      standalone: 'Asana'
     })
     .transform(
       replace(/require\('request'\)/g, 'require(\'browser-request\')'))
