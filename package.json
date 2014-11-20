@@ -39,5 +39,6 @@
     "through": "^2.3.6",
     "vinyl-source-stream": "^1.0.0",
     "wicked": "^0.3.1"
-  }
+  },
+  "browser": "./dist/asana.js"
 }
