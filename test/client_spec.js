@@ -22,8 +22,12 @@ describe('Client', function() {
   describe('oauth', function() {
     it('should return an oauth client', function() {
       var token = 'token';
+      var authKey = 'auth';
+      var authValue = {
+        bearer: token
+      };
+      var dispatcher = new Dispatcher(authKey, authValue);
       var client = Client.oauth(token);
-      var dispatcher = new Dispatcher('bearer', token);
       assert.deepEqual(client.dispatcher, dispatcher);
     });
   });
