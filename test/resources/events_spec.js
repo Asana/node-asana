@@ -32,7 +32,7 @@ describe('Events', function() {
       };
       var events = new Events(dispatcher);
       var id = 1;
-      var token = "fake_token";
+      var token = 'fake_token';
       events.get(id, token);
       assert(
           dispatcher.get.calledWithExactly(
