@@ -39,4 +39,31 @@ describe('Events', function() {
               '/events', { resource: 1, sync: token }, { fullPayload: true }));
     });
   });
+
+  describe('#stream', function() {
+
+    // TODO: fill in
+
+    it('should poll for events on read', function() {
+    });
+
+    it('should emit error on poll error', function() {
+    });
+
+    it('should poll only as often as period', function() {
+    });
+
+    it('should end on error if option set', function() {
+    });
+    it('should continue on error if option set', function() {
+    });
+
+    it('should buffer events if stream is paused', function() {
+    });
+    it('should flush buffered events when read', function() {
+    });
+    it('should partially flush buffered events if more than can be read', function() {
+    });
+
+  });
 });
