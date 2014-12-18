@@ -110,6 +110,30 @@ describe('Dispatcher', function() {
         assert.equal(value, payload);
       });
     });
+
+    it('should pass whole payload as the value when option set', function() {
+      var request = sinon.stub();
+      var payload = {
+        meta: 42,
+        data: {
+          id: 1,
+          name: 'Task'
+        }
+      };
+      Dispatcher.__set__('request', request);
+      var authValue = {
+        user: 'apiKey',
+        pass: ''
+      };
+      var dispatcher = new Dispatcher('auth', authValue);
+      var res = dispatcher.dispatch({}, { fullPayload: true });
+      request.callArgWith(1, null, {
+        statusCode: 200
+      }, payload);
+      return res.then(function(value) {
+        assert.equal(value, payload);
+      });
+    });
   });
 
   describe('#get', function() {
