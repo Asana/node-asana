@@ -60,8 +60,6 @@ describe('Events', function() {
 
 describe('EventStream', function() {
 
-  // TODO: fill in
-
   var events, eventsGetResult, clock;
   beforeEach(function() {
     eventsGetResult = {
