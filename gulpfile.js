@@ -5,7 +5,9 @@ var jshint = require('gulp-jshint');
 var mocha = require('gulp-mocha');
 var path = require('path');
 var through = require('through');
+var uglify = require('gulp-uglify');
 var vinylSourceStream = require('vinyl-source-stream');
+var vinylBuffer = require('vinyl-buffer');
 var wicked = require('wicked');
 
 var index = path.join(__dirname, 'index.js');
@@ -29,17 +31,28 @@ var replace = function(regex, replacement) {
   };
 };
 
-gulp.task('browser', function() {
-  return browserify({
+function browserTask(minify) {
+  return function() {
+    var task = browserify({
       entries: [index],
       standalone: 'Asana'
-    })
-    .transform(
-      replace(/require\('request'\)/g, 'require(\'browser-request\')'))
-    .bundle()
-    .pipe(vinylSourceStream('asana.js'))
-    .pipe(gulp.dest('dist'));
-});
+    });
+    task = task
+        .transform(
+            replace(/require\('request'\)/g, 'require(\'browser-request\')'))
+        .bundle()
+        .pipe(vinylSourceStream('asana' + (minify ? '-min' : '') + '.js'));
+    if (minify) {
+      task = task
+          .pipe(vinylBuffer())
+          .pipe(uglify());
+    }
+    return task.pipe(gulp.dest('dist'));
+  };
+}
+
+gulp.task('browser', browserTask(false));
+gulp.task('browser-min', browserTask(true));
 
 gulp.task('default', ['test']);
 
