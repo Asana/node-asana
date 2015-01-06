@@ -23,9 +23,14 @@
    * 4. Copy the app's client ID for use below:
    */
   CLIENT_ID = 0;
+  /*
+   * 5. Copy the app's redirect URI for use below:
+   */
+  REDIRECT_URI = '';
 
   var client = Asana.Client.oauth({
     flowType: Asana.auth.OauthFlowBrowserPopup,
+    receiverUrl: REDIRECT_URI,
     clientId: CLIENT_ID
   });
 
