@@ -23,33 +23,33 @@ describe('Client', function() {
   describe('oauth', function() {
 
     it('should return an oauth client with autodetected flow by default', function() {
-      var autoDetect_stub = sinon.stub();
+      var autoDetectStub = sinon.stub();
       var FakeFlowType = function(options) { this.options = options; };
-      autoDetect_stub.returns(FakeFlowType);
-      Client.__set__('autoDetect', autoDetect_stub);
+      autoDetectStub.returns(FakeFlowType);
+      Client.__set__('autoDetect', autoDetectStub);
 
-      var flowOptions = { fakeOption: "fakeValue" };
+      var flowOptions = { fakeOption: 'fakeValue' };
       var client = Client.oauth(flowOptions);
 
-      assert(autoDetect_stub.called);
+      assert(autoDetectStub.called);
       var authenticator = client.dispatcher.authenticator;
       assert(authenticator instanceof OauthAuthenticator);
       assert(authenticator.flow instanceof FakeFlowType);
     });
 
     it('should return an oauth client with specified flow type', function() {
-      var autoDetect_stub = sinon.stub();
+      var autoDetectStub = sinon.stub();
       var FakeFlowType = function(options) { this.options = options; };
-      autoDetect_stub.returns(FakeFlowType);
-      Client.__set__('autoDetect', autoDetect_stub);
+      autoDetectStub.returns(FakeFlowType);
+      Client.__set__('autoDetect', autoDetectStub);
 
       var flowOptions = {
         flowType: FakeFlowType,
-        fakeOption: "fakeValue"
+        fakeOption: 'fakeValue'
       };
       var client = Client.oauth(flowOptions);
 
-      assert(!autoDetect_stub.called);
+      assert(!autoDetectStub.called);
       var authenticator = client.dispatcher.authenticator;
       assert(authenticator instanceof OauthAuthenticator);
       assert(authenticator.flow instanceof FakeFlowType);

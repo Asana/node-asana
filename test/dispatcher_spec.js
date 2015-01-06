@@ -31,11 +31,11 @@ describe('Dispatcher', function() {
 
   describe('#authorize', function() {
     it('should delegate to the authenticator', function() {
-      var fake_promise = {};
-      var auth_stub = sinon.createStubInstance(Authenticator);
-      auth_stub.ensureCredentials.onFirstCall().returns(fake_promise);
-      var client = new Dispatcher(auth_stub);
-      assert.equal(client.authorize(), fake_promise);
+      var fakePromise = {};
+      var authStub = sinon.createStubInstance(Authenticator);
+      authStub.ensureCredentials.onFirstCall().returns(fakePromise);
+      var client = new Dispatcher(authStub);
+      assert.equal(client.authorize(), fakePromise);
     });
   });
 
@@ -43,17 +43,17 @@ describe('Dispatcher', function() {
     it('should use authenticator to add auth to request', function() {
       var request = sinon.stub();
       Dispatcher.__set__('request', request);
-      var auth_fake = {
+      var authFake = {
         authenticateRequest: function(params) {
-          params.auth = "fake_auth";
+          params.auth = 'fake_auth';
         }
       };
-      var auth_spy = sinon.spy(auth_fake, "authenticateRequest");
-      var dispatcher = new Dispatcher(auth_fake);
+      var authSpy = sinon.spy(authFake, 'authenticateRequest');
+      var dispatcher = new Dispatcher(authFake);
       dispatcher.dispatch({});
-      assert(auth_spy.calledOnce);
+      assert(authSpy.calledOnce);
       assert(request.calledWithMatch({
-        auth: "fake_auth"
+        auth: 'fake_auth'
       }));
     });
 
