@@ -5,6 +5,7 @@ var sinon = require('sinon');
 var rewire = require('rewire');
 var errors = require('../lib/errors');
 var Dispatcher = rewire('../lib/dispatcher');
+var Authenticator = require('../lib/auth/authenticator');
 
 describe('Dispatcher', function() {
   describe('ROOT_URL', function() {
@@ -21,30 +22,38 @@ describe('Dispatcher', function() {
   });
 
   describe('#new', function() {
-    it('should have the auth key and auth value', function() {
-      var authKey = 'auth';
-      var authValue = {
-        user: 'apiKey',
-        pass: ''
-      };
-      var client = new Dispatcher(authKey, authValue);
-      assert.equal(client.authKey, authKey);
-      assert.equal(client.authValue, authValue);
+    it('should keep the authenticator', function() {
+      var authenticator = {};
+      var client = new Dispatcher(authenticator);
+      assert.equal(client.authenticator, authenticator);
+    });
+  });
+
+  describe('#authorize', function() {
+    it('should delegate to the authenticator', function() {
+      var fake_promise = {};
+      var auth_stub = sinon.createStubInstance(Authenticator);
+      auth_stub.ensureCredentials.onFirstCall().returns(fake_promise);
+      var client = new Dispatcher(auth_stub);
+      assert.equal(client.authorize(), fake_promise);
     });
   });
 
   describe('#dispatch', function() {
-    it('should set the authKey and authValue', function() {
+    it('should use authenticator to add auth to request', function() {
       var request = sinon.stub();
       Dispatcher.__set__('request', request);
-      var authValue = {
-        user: 'apiKey',
-        pass: ''
+      var auth_fake = {
+        authenticateRequest: function(params) {
+          params.auth = "fake_auth";
+        }
       };
-      var dispatcher = new Dispatcher('auth', authValue);
+      var auth_spy = sinon.spy(auth_fake, "authenticateRequest");
+      var dispatcher = new Dispatcher(auth_fake);
       dispatcher.dispatch({});
+      assert(auth_spy.calledOnce);
       assert(request.calledWithMatch({
-        auth: authValue
+        auth: "fake_auth"
       }));
     });
 
@@ -52,11 +61,8 @@ describe('Dispatcher', function() {
       var request = sinon.stub();
       var err = new Error();
       Dispatcher.__set__('request', request);
-      var authValue = {
-        user: 'apiKey',
-        pass: ''
-      };
-      var dispatcher = new Dispatcher('auth', authValue);
+      var auth = { authenticateRequest: sinon.stub() };
+      var dispatcher = new Dispatcher(auth);
       var res = dispatcher.dispatch({});
       request.callArgWith(1, err);
       return res.then(function() {
@@ -71,11 +77,8 @@ describe('Dispatcher', function() {
         var request = sinon.stub();
         var err = new errors[key]();
         Dispatcher.__set__('request', request);
-        var authValue = {
-          user: 'apiKey',
-          pass: ''
-        };
-        var dispatcher = new Dispatcher('auth', authValue);
+        var auth = { authenticateRequest: sinon.stub() };
+        var dispatcher = new Dispatcher(auth);
         var res = dispatcher.dispatch({});
         request.callArgWith(1, null, {
           statusCode: err.status
@@ -95,11 +98,8 @@ describe('Dispatcher', function() {
         name: 'Task'
       };
       Dispatcher.__set__('request', request);
-      var authValue = {
-        user: 'apiKey',
-        pass: ''
-      };
-      var dispatcher = new Dispatcher('auth', authValue);
+      var auth = { authenticateRequest: sinon.stub() };
+      var dispatcher = new Dispatcher(auth);
       var res = dispatcher.dispatch({});
       request.callArgWith(1, null, {
         statusCode: 200
@@ -121,11 +121,8 @@ describe('Dispatcher', function() {
         }
       };
       Dispatcher.__set__('request', request);
-      var authValue = {
-        user: 'apiKey',
-        pass: ''
-      };
-      var dispatcher = new Dispatcher('auth', authValue);
+      var auth = { authenticateRequest: sinon.stub() };
+      var dispatcher = new Dispatcher(auth);
       var res = dispatcher.dispatch({}, { fullPayload: true });
       request.callArgWith(1, null, {
         statusCode: 200
@@ -140,11 +137,8 @@ describe('Dispatcher', function() {
     it('should pass the right method', function() {
       var request = sinon.stub();
       Dispatcher.__set__('request', request);
-      var authValue = {
-        user: 'apiKey',
-        pass: ''
-      };
-      var dispatcher = new Dispatcher('auth', authValue);
+      var auth = { authenticateRequest: sinon.stub() };
+      var dispatcher = new Dispatcher(auth);
       dispatcher.get('/users/me', {});
       assert(request.calledWithMatch({
         method: 'GET'
@@ -154,11 +148,8 @@ describe('Dispatcher', function() {
     it('should pass the right url', function() {
       var request = sinon.stub();
       Dispatcher.__set__('request', request);
-      var authValue = {
-        user: 'apiKey',
-        pass: ''
-      };
-      var dispatcher = new Dispatcher('auth', authValue);
+      var auth = { authenticateRequest: sinon.stub() };
+      var dispatcher = new Dispatcher(auth);
       dispatcher.get('/users/me', {});
       assert(request.calledWithMatch({
         url: Dispatcher.url('/users/me')
@@ -168,14 +159,11 @@ describe('Dispatcher', function() {
     it('should pass the query on', function() {
       var request = sinon.stub();
       Dispatcher.__set__('request', request);
-      var authValue = {
-        user: 'apiKey',
-        pass: ''
-      };
       var query = {
         'opt_fields': ['id', 'name'].join(',')
       };
-      var dispatcher = new Dispatcher('auth', authValue);
+      var auth = { authenticateRequest: sinon.stub() };
+      var dispatcher = new Dispatcher(auth);
       dispatcher.get('/users/me', query);
       assert(request.calledWithMatch({
         qs: query
@@ -185,14 +173,10 @@ describe('Dispatcher', function() {
     it('should not pass the query if it was not defined', function() {
       var request = sinon.stub();
       Dispatcher.__set__('request', request);
-      var authValue = {
-        user: 'apiKey',
-        pass: ''
-      };
-      var dispatcher = new Dispatcher('auth', authValue);
+      var auth = { authenticateRequest: sinon.stub() };
+      var dispatcher = new Dispatcher(auth);
       dispatcher.get('/users/me');
       assert(request.calledWith({
-        auth: authValue,
         method: 'GET',
         url: Dispatcher.url('/users/me'),
         json: true
@@ -204,11 +188,8 @@ describe('Dispatcher', function() {
     it('should pass the right method', function() {
       var request = sinon.stub();
       Dispatcher.__set__('request', request);
-      var authValue = {
-        user: 'apiKey',
-        pass: ''
-      };
-      var dispatcher = new Dispatcher('auth', authValue);
+      var auth = { authenticateRequest: sinon.stub() };
+      var dispatcher = new Dispatcher(auth);
       dispatcher.post('/workspaces/1', {
         name: 'Test'
       });
@@ -220,11 +201,8 @@ describe('Dispatcher', function() {
     it('should pass the right url', function() {
       var request = sinon.stub();
       Dispatcher.__set__('request', request);
-      var authValue = {
-        user: 'apiKey',
-        pass: ''
-      };
-      var dispatcher = new Dispatcher('auth', authValue);
+      var auth = { authenticateRequest: sinon.stub() };
+      var dispatcher = new Dispatcher(auth);
       dispatcher.post('/workspaces/1', {
         name: 'Test'
       });
@@ -236,11 +214,8 @@ describe('Dispatcher', function() {
     it('should pass the data in the json field', function() {
       var request = sinon.stub();
       Dispatcher.__set__('request', request);
-      var authValue = {
-        user: 'apiKey',
-        pass: ''
-      };
-      var dispatcher = new Dispatcher('auth', authValue);
+      var auth = { authenticateRequest: sinon.stub() };
+      var dispatcher = new Dispatcher(auth);
       var data = {
         name: 'Test'
       };
@@ -257,11 +232,8 @@ describe('Dispatcher', function() {
     it('should pass the right method', function() {
       var request = sinon.stub();
       Dispatcher.__set__('request', request);
-      var authValue = {
-        user: 'apiKey',
-        pass: ''
-      };
-      var dispatcher = new Dispatcher('auth', authValue);
+      var auth = { authenticateRequest: sinon.stub() };
+      var dispatcher = new Dispatcher(auth);
       dispatcher.put('/workspaces/1', {
         name: 'Test'
       });
@@ -273,11 +245,8 @@ describe('Dispatcher', function() {
     it('should pass the right url', function() {
       var request = sinon.stub();
       Dispatcher.__set__('request', request);
-      var authValue = {
-        user: 'apiKey',
-        pass: ''
-      };
-      var dispatcher = new Dispatcher('auth', authValue);
+      var auth = { authenticateRequest: sinon.stub() };
+      var dispatcher = new Dispatcher(auth);
       dispatcher.put('/workspaces/1', {
         name: 'Test'
       });
@@ -289,11 +258,8 @@ describe('Dispatcher', function() {
     it('should pass the data in the json field', function() {
       var request = sinon.stub();
       Dispatcher.__set__('request', request);
-      var authValue = {
-        user: 'apiKey',
-        pass: ''
-      };
-      var dispatcher = new Dispatcher('auth', authValue);
+      var auth = { authenticateRequest: sinon.stub() };
+      var dispatcher = new Dispatcher(auth);
       var data = {
         name: 'Test'
       };
@@ -310,11 +276,8 @@ describe('Dispatcher', function() {
     it('should pass the right method', function() {
       var request = sinon.stub();
       Dispatcher.__set__('request', request);
-      var authValue = {
-        user: 'apiKey',
-        pass: ''
-      };
-      var dispatcher = new Dispatcher('auth', authValue);
+      var auth = { authenticateRequest: sinon.stub() };
+      var dispatcher = new Dispatcher(auth);
       dispatcher.delete('/projects/1');
       assert(request.calledWithMatch({
         method: 'DELETE'
@@ -324,11 +287,8 @@ describe('Dispatcher', function() {
     it('should pass the right url', function() {
       var request = sinon.stub();
       Dispatcher.__set__('request', request);
-      var authValue = {
-        user: 'apiKey',
-        pass: ''
-      };
-      var dispatcher = new Dispatcher('auth', authValue);
+      var auth = { authenticateRequest: sinon.stub() };
+      var dispatcher = new Dispatcher(auth);
       dispatcher.delete('/projects/1');
       assert(request.calledWithMatch({
         url: Dispatcher.url('/projects/1')
