@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+  <title>Asana Oauth Example: Browser Redirect</title>
+  <script src="asana.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+
+<body>
+<div id="ui">Authorizing...</div>
+
+<script>
+  //<![CDATA[
+
+  /**
+   * Usage:
+   *
+   * 1. Create an application in Asana.
+   * 2. Set the application's redirect URI to be this page,
+   * served by your server.
+   * 3. Ensure this page and the `asana.js` file exist in the same directory
+   *    on your web server.
+   * 4. Copy the app's client ID for use below:
+   */
+  CLIENT_ID = 0;
+
+  var client = Asana.Client.oauth({
+    clientId: CLIENT_ID
+  });
+
+  client.authorize().then(function() {
+    $('#ui').html('Fetching...');
+    client.users.me().then(function(me) {
+      $('#ui').text('Hello ' + me.name);
+    });
+  });
+
+  //]]>
+</script>
+
+</body> </html>

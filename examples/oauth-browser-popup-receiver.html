@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+  <title>Asana Oauth Example: Browser Popup Receiver</title>
+  <script src="asana.js"></script>
+</head>
+<body>
+<script>
+  /**
+   * The popup that asks for user authorization will redirect back to this
+   * page. The below code does the handshake with the parent window and
+   * completes the authorization, automatically closing the window.
+   */
+  Asana.auth.OauthFlowBrowserPopup.runReceiver();
+</script>
+</body>
+</html>
+
