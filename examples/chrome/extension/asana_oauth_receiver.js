@@ -1,0 +1,1 @@
+Asana.auth.OauthFlowChromeExtension.runReceiver();
