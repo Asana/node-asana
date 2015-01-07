@@ -11,9 +11,16 @@ var rewire = require('rewire');
 var Client = rewire('../lib/client');
 
 describe('Client', function() {
-  describe('basicAuth', function() {
-    it('should return a basic auth client', function() {
-      var client = Client.basicAuth('apiKey');
+  describe('create', function() {
+    it('should create a client without authenticator', function() {
+      var client = Client.create();
+      assert.equal(client.authenticator, null);
+    });
+  });
+
+  describe('useBasicAuth', function() {
+    it('should add basic auth to client', function() {
+      var client = Client.create().useBasicAuth('apiKey');
       var authenticator = client.dispatcher.authenticator;
       assert(authenticator instanceof BasicAuthenticator);
       assert.equal(authenticator.apiKey, 'apiKey');
@@ -29,7 +36,7 @@ describe('Client', function() {
       Client.__set__('autoDetect', autoDetectStub);
 
       var flowOptions = { fakeOption: 'fakeValue' };
-      var client = Client.oauth(flowOptions);
+      var client = Client.create().useOauth(flowOptions);
 
       assert(autoDetectStub.called);
       var authenticator = client.dispatcher.authenticator;
@@ -47,7 +54,7 @@ describe('Client', function() {
         flowType: FakeFlowType,
         fakeOption: 'fakeValue'
       };
-      var client = Client.oauth(flowOptions);
+      var client = Client.create().useOauth(flowOptions);
 
       assert(!autoDetectStub.called);
       var authenticator = client.dispatcher.authenticator;

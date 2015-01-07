@@ -6,27 +6,25 @@ var readline = require('readline');
 var rewire = require('rewire');
 var sinon = require('sinon');
 var OauthFlowNoBrowser = rewire('../../lib/auth/oauth_flow_no_browser');
+var App = require('../../lib/auth/app');
 
 describe('OauthFlowNoBrowser', function() {
 
   function createFlow() {
     return new OauthFlowNoBrowser({
-      clientId: 'id',
-      clientSecret: 'secret'
+      app: new App(
+          {
+            clientId: 'id',
+            clientSecret: 'secret'
+          })
     });
   }
 
   describe('#new', function() {
     it('should store options and have default values', function() {
-      var flow = new OauthFlowNoBrowser({
-        clientId: 'id',
-        clientSecret: 'secret'
-      });
-      assert.equal(flow.redirectUri, 'urn:ietf:wg:oauth:2.0:oob');
-      assert.equal(flow.scope, 'default');
-      assert.equal(flow.baseUrl, 'https://app.asana.com/');
-      assert.equal(flow.clientId, 'id');
-      assert.equal(flow.clientSecret, 'secret');
+      var flow = createFlow();
+      assert(flow.app instanceof App);
+      assert.equal(flow.redirectUri(), 'urn:ietf:wg:oauth:2.0:oob');
       assert.equal('function', typeof(flow.instructions));
       assert.equal('function', typeof(flow.prompt));
     });
