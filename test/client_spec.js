@@ -16,9 +16,23 @@ describe('Client', function() {
       var client = Client.create();
       assert.equal(client.authenticator, null);
     });
+    it('should pass through base URL to dispatcher', function() {
+      var client = Client.create({
+        asanaBaseUrl: 'fake_url'
+      });
+      assert.equal(client.dispatcher.asanaBaseUrl, 'fake_url');
+    });
   });
 
-  describe('useBasicAuth', function() {
+  describe('#new', function() {
+    it('should have the dispatcher', function() {
+      var dispatcher = new Dispatcher();
+      var client = new Client(dispatcher);
+      assert.equal(client.dispatcher, dispatcher);
+    });
+  });
+
+  describe('#useBasicAuth', function() {
     it('should add basic auth to client', function() {
       var client = Client.create().useBasicAuth('apiKey');
       var authenticator = client.dispatcher.authenticator;
@@ -27,7 +41,7 @@ describe('Client', function() {
     });
   });
 
-  describe('oauth', function() {
+  describe('#useOauth', function() {
 
     it('should return an oauth client with autodetected flow by default', function() {
       var autoDetectStub = sinon.stub();
@@ -61,14 +75,6 @@ describe('Client', function() {
       assert(authenticator instanceof OauthAuthenticator);
       assert(authenticator.flow instanceof FakeFlowType);
       assert.deepEqual(authenticator.flow.options, flowOptions);
-    });
-  });
-
-  describe('#new', function() {
-    it('should have the dispatcher', function() {
-      var dispatcher = new Dispatcher({});
-      var client = new Client(dispatcher);
-      assert.equal(client.dispatcher, dispatcher);
     });
   });
 
