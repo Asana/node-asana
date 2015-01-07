@@ -5,28 +5,26 @@ var Promise = require('bluebird');
 var readline = require('readline');
 var rewire = require('rewire');
 var sinon = require('sinon');
-var OauthFlowNoBrowser = rewire('../../lib/auth/oauth_flow_no_browser');
+var App = require('../../lib/auth/app');
+var NativeFlow = require('../../lib/auth/native_flow');
 
-describe('OauthFlowNoBrowser', function() {
+describe('NativeFlow', function() {
 
   function createFlow() {
-    return new OauthFlowNoBrowser({
-      clientId: 'id',
-      clientSecret: 'secret'
+    return new NativeFlow({
+      app: new App(
+          {
+            clientId: 'id',
+            clientSecret: 'secret'
+          })
     });
   }
 
   describe('#new', function() {
     it('should store options and have default values', function() {
-      var flow = new OauthFlowNoBrowser({
-        clientId: 'id',
-        clientSecret: 'secret'
-      });
+      var flow = createFlow();
+      assert(flow.app instanceof App);
       assert.equal(flow.redirectUri, 'urn:ietf:wg:oauth:2.0:oob');
-      assert.equal(flow.scope, 'default');
-      assert.equal(flow.baseUrl, 'https://app.asana.com/');
-      assert.equal(flow.clientId, 'id');
-      assert.equal(flow.clientSecret, 'secret');
       assert.equal('function', typeof(flow.instructions));
       assert.equal('function', typeof(flow.prompt));
     });
@@ -68,49 +66,6 @@ describe('OauthFlowNoBrowser', function() {
         assert(flow.instructions.calledWith('url'));
         mockReadline.verify();
         mockReadline.restore();
-      });
-    });
-  });
-
-  describe('#accessToken', function() {
-    it('should make post request for token', function() {
-      var request = sinon.mock();
-      request.once();
-      OauthFlowNoBrowser.__set__('request', request);
-
-      var flow = createFlow();
-      flow.tokenUrl = sinon.stub().returns('token_url');
-      flow.accessToken('code');
-
-      var params = request.args[0][0];
-      assert.equal(params.method, 'POST');
-      assert.equal(params.url, 'token_url');
-    });
-
-    it('should resolve to token on success', function() {
-      var request = sinon.stub();
-      OauthFlowNoBrowser.__set__('request', request);
-      var flow = createFlow();
-      var payload = { access_token: 123 };
-      var response = flow.accessToken('code');
-      request.callArgWith(
-          1, null, { statusCode: 200 }, JSON.stringify(payload));
-      return response.then(function(value) {
-        assert.deepEqual(value, payload);
-      });
-    });
-
-    it('should reject with error on failure', function() {
-      var request = sinon.stub();
-      OauthFlowNoBrowser.__set__('request', request);
-      var flow = createFlow();
-      var response = flow.accessToken('code');
-      request.callArgWith(
-          1, 'error', null, 'payload');
-      return response.then(function(value) {
-        assert(false, 'request should not have succeeded');
-      }).catch(function(e) {
-        assert.equal(e, 'error');
       });
     });
   });

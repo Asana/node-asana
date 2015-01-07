@@ -22,12 +22,12 @@
    *    on your web server.
    * 4. Copy the app's client ID for use below:
    */
-  CLIENT_ID = 0;
+  var CLIENT_ID = 0;
 
-  var client = Asana.Client.oauth({
+  var client = Asana.Client.create({
     clientId: CLIENT_ID
   });
-
+  client.useOauth();
   client.authorize().then(function() {
     $('#ui').html('Fetching...');
     client.users.me().then(function(me) {
