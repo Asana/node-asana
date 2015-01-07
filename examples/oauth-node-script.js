@@ -8,7 +8,7 @@
  *
  *   node oauth-node-script.js CLIENT_ID CLIENT_SECRET
  */
-var Asana = require("asana");
+var Asana = require('asana');
 
 var args = process.argv.slice(2);
 var client = Asana.Client.create({

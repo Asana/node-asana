@@ -5,12 +5,13 @@ var Promise = require('bluebird');
 var readline = require('readline');
 var rewire = require('rewire');
 var sinon = require('sinon');
-var OauthFlowNoBrowser = require('../../lib/auth/oauth_flow_no_browser');
+var App = require('../../lib/auth/app');
+var NativeFlow = require('../../lib/auth/native_flow');
 
-describe('OauthFlowNoBrowser', function() {
+describe('NativeFlow', function() {
 
   function createFlow() {
-    return new OauthFlowNoBrowser({
+    return new NativeFlow({
       app: new App(
           {
             clientId: 'id',

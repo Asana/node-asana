@@ -33,7 +33,7 @@
     redirectUri: REDIRECT_URI
   });
   client.useOauth({
-    flowType: Asana.auth.OauthFlowBrowserPopup
+    flowType: Asana.auth.PopupFlow
   });
 
   function authorize() {
