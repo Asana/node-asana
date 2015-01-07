@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Asana Oauth Example Chrome Extension",
+  "version": "0.0.1",
+  "description": "Demonstrates using Oauth with a Chrome Extension",
+  "minimum_chrome_version": "34",
+
+  "background": {
+    "persistent": true,
+    "scripts": [
+      "asana.js",
+      "background.js"
+    ]
+  },
+  "incognito": "split",
+  "offline_enabled": false,
+  "permissions": [
+    "tabs",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  "content_security_policy": "script-src 'self' ; object-src 'self'"
+}
