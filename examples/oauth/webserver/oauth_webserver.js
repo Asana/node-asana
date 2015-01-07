@@ -5,7 +5,7 @@
  * 2. Set the application's redirect URI to be:
  *      `http://localhost:8338/oauth_callback`
  * 3. Note the app's client ID and secret key for use when running the
- *    web server.
+ *    web server, below.
  *
  * Usage:
  *
@@ -27,25 +27,25 @@ var port = process.env['PORT'] || 8338;
 var client = Asana.Client.create({
   clientId: clientId,
   clientSecret: clientSecret,
-  redirectUri: 'http://localhost:' + port + '/oauth_callback',
-  asanaBaseUrl: 'https://localhost.asana.com:8180/'  //xcxc
+  redirectUri: 'http://localhost:' + port + '/oauth_callback'
 });
 
 // Causes request cookies to be parsed, populating `req.cookies`.
 app.use(cookieParser());
 
+// Home page - shows user name if authenticated, otherwise seeks authorization.
 app.get('/', function(req, res) {
-
-  // If token in cookie, use it to show info.
+  // If token is in the cookie, use it to show info.
   var token = req.cookies.token;
   if (token) {
-    client.useOauth({
-      credentials: { access_token: token }
-    });
-    client.authorize().then(function() {
-      return client.users.me().then(function(me) {
-        res.end('Hello ' + me.name);
-      });
+
+    // Here's where we direct the client to use Oauth with the credentials
+    // we have acquired.
+    client.useOauth({ credentials: token });
+    client.users.me().then(function(me) {
+      res.end('Hello ' + me.name);
+    }).catch(function(err) {
+      res.end('Error fetching user: ' + err);
     });
   } else {
     // Otherwise redirect to authorization.
@@ -54,21 +54,25 @@ app.get('/', function(req, res) {
 
 });
 
+// Authorization callback - redirected to from Asana.
 app.get('/oauth_callback', function(req, res) {
-  // Receive authorization code.
-  // NOTE: If authorization was denied, there will be error parameters instead.
-  // For brevity we're not checking those.
   var code = req.param('code');
+  if (code) {
+    // If we got a code back, then authorization succeeded.
+    // Get token. Store it in the cookie and redirect home.
+    client.app.accessTokenFromCode(code).then(function(credentials) {
+      // The credentials contain the refresh token as well. If you use it, keep
+      // it safe on the server! Here we just use the access token, and store it
+      // in the cookie for an hour.
+      res.cookie('token', credentials.access_token, { maxAge: 60 * 60 * 1000 });
+      // Redirect back home, where we should now have access to Asana data.
+      res.redirect('/');
+    });
+  } else {
+    // Authorization could have failed. Show an error.
+    res.end('Error getting authorization: ' + req.param('error'));
+  }
 
-  // Get token. Store it in the cookie and redirect home.
-  client.app.accessTokenFromCode(code).then(function(credentials) {
-    // The credentials contain the refresh token as well. If you use it, keep
-    // it safe on the server! Here we just use the access token, and store it
-    // in the cookie for an hour.
-    res.cookie('token', credentials.access_token, { maxAge: 60 * 60 * 1000 });
-    // Redirect back home, where we should now have access to Asana data.
-    res.redirect('/');
-  });
 });
 
 // Run the server!
