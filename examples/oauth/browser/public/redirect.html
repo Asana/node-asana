@@ -13,23 +13,28 @@
   //<![CDATA[
 
   /**
-   * Usage:
-   *
-   * 1. Create an application in Asana.
-   * 2. Set the redirect URI to be this page, served by your server, e.g.:
-   *    `http://localhost:8338/popup.html`.
-   * 3. Ensure this page and the `asana.js` file exist in the same directory
-   *    on your web server.
-   * 4. Copy the app's client ID for use below:
+   * Fill in this client ID before using the app.
    */
   var CLIENT_ID = YOUR_CLIENT_ID_HERE;
+  var REDIRECT_URI = 'http://localhost:8338/redirect.html';
 
+  // Create a client.
   var client = Asana.Client.create({
     clientId: CLIENT_ID,
-    redirectUri: 'http://localhost:8338/redirect.html'
+    // By default, the redirect URI is the current URL, so for this example
+    // we don't actually have to pass it. We do anyway to show that you can.
+    redirectUri: REDIRECT_URI
   });
+
+  // Configure the way we want to use Oauth. This auto-detects that we're
+  // in a browser and so defaults to the redirect flow, which we want.
   client.useOauth();
+
+  // Now call `authorize` to get authorization. If the Oauth token
+  // is already in the URL, it will pull it out and proceed. Otherwise it
+  // will redirect to Asana.
   client.authorize().then(function() {
+    // The client is authorized! Make a simple request.
     $('#ui').html('Fetching...');
     return client.users.me().then(function(me) {
       $('#ui').text('Hello ' + me.name);

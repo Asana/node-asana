@@ -1,12 +1,4 @@
 /**
- * Setup:
- *
- * 1. Create an application in Asana.
- * 2. Set the application's redirect URI to be the special native app URI:
- *      `urn:ietf:wg:oauth:2.0:oob`
- * 3. Note the app's client ID and secret key for use when running the
- *    web server.
- *
  * Usage:
  *
  *   export ASANA_CLIENT_ID=...
@@ -15,16 +7,24 @@
  */
 var Asana = require('asana');
 
+// Create a client, getting parameters from the environment.
 var client = Asana.Client.create({
   clientId: process.env['ASANA_CLIENT_ID'],
   clientSecret: process.env['ASANA_CLIENT_SECRET']
 });
+
+// Configure the way we want to use Oauth. This autodetects that we are
+// in a Node process, so uses the `NativeFlow` by default.
 client.useOauth();
 
+// When `authorize` is called it will prompt us to perform the authorization
+// in a browser and copy in the code we got. It will then exchange that for
+// a token.
 client.authorize().then(function() {
+  // The client is authorized! Make a simple request.
   return client.users.me().then(function(me) {
-    console.log(me);
+    console.log('Hello ' + me.name);
   });
 }).catch(function(err) {
-  console.log("An error occurred", err);
+  console.log('An error occurred', err);
 });
