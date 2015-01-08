@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+  <title>Asana Oauth Example: Browser Popup</title>
+  <script src="asana.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+
+<body>
+<div id="ui"><a href="#" onclick="authorize();">Click to Authorize</a></div>
+
+<script>
+  //<![CDATA[
+
+  /**
+   * Fill in this client ID before using the app.
+   */
+  var CLIENT_ID = YOUR_CLIENT_ID_HERE;
+  var REDIRECT_URI = 'http://localhost:8338/popup_receiver.html';
+
+  // Create a client.
+  var client = Asana.Client.create({
+    clientId: CLIENT_ID,
+    redirectUri: REDIRECT_URI
+  });
+
+  // Configure the way we want to use Oauth. Popup flow is not a default
+  // so we must indicate specifically we want that type of flow.
+  client.useOauth({
+    flowType: Asana.auth.PopupFlow
+  });
+
+  // When `authorize` is called it will pop up a window and navigate to
+  // the Asana authorization prompt. Most browsers block popups that do not
+  // open in direct response to a user action, so we trigger this function
+  // upon clicking a link rather than automatically.
+  function authorize() {
+    $('#ui').html('Authorizing...');
+    client.authorize().then(function() {
+      // The client is authorized! Make a simple request.
+      $('#ui').html('Fetching...');
+      return client.users.me().then(function(me) {
+        $('#ui').html('Hello ' + me.name + '!');
+      });
+    }).catch(function(err) {
+      $('#ui').html('Error: ' + err);
+    });
+  }
+
+  //]]>
+</script>
+
+</body>
+</html>

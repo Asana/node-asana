@@ -1,0 +1,14 @@
+{
+  "name": "oauth_script",
+  "description": "Asana Example - Using Oauth in a Node command-line script",
+  "main": "oauth_script.js",
+  "private": true,
+  "scripts": {
+    "start": "node oauth_script.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "asana": "^0.4.0",
+    "express": "^4.10.7"
+  }
+}
