@@ -4,7 +4,6 @@
   "version": "0.0.1",
   "description": "Demonstrates using Oauth with a Chrome Extension",
   "minimum_chrome_version": "34",
-
   "background": {
     "persistent": true,
     "scripts": [
