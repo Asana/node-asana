@@ -17,16 +17,17 @@
    *
    * 1. Create an application in Asana.
    * 2. Set the redirect URI to be a "receiver page" served by your server.
-   *    An example receiver page is `oauth-browser-popup-receiver.html`.
+   *    In this example, the receiver page is:
+   *    `http://localhost:8338/popup_receiver.html`.
    * 3. Ensure this page and the `asana.js` file exist in the same directory
    *    on your web server (as well as the example receiver page, if using).
    * 4. Copy the app's client ID for use below:
    */
-  var CLIENT_ID = 0;
+  var CLIENT_ID = YOUR_CLIENT_ID_HERE;
   /*
-   * 5. Copy the app's redirect URI for use below:
+   * 5. Modify the redirect for use below if necessary.
    */
-  var REDIRECT_URI = '';
+  var REDIRECT_URI = 'http://localhost:8338/popup_receiver.html';
 
   var client = Asana.Client.create({
     clientId: CLIENT_ID,
@@ -40,9 +41,11 @@
     $('#ui').html('Authorizing...');
     client.authorize().then(function() {
       $('#ui').html('Fetching...');
-      client.users.me().then(function(me) {
-        $('#ui').text('Hello ' + me.name + '!');
+      return client.users.me().then(function(me) {
+        $('#ui').html('Hello ' + me.name + '!');
       });
+    }).catch(function(err) {
+      $('#ui').html('Error: ' + err);
     });
   }
 

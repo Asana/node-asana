@@ -16,23 +16,26 @@
    * Usage:
    *
    * 1. Create an application in Asana.
-   * 2. Set the application's redirect URI to be this page,
-   * served by your server.
+   * 2. Set the redirect URI to be this page, served by your server, e.g.:
+   *    `http://localhost:8338/popup.html`.
    * 3. Ensure this page and the `asana.js` file exist in the same directory
    *    on your web server.
    * 4. Copy the app's client ID for use below:
    */
-  var CLIENT_ID = 0;
+  var CLIENT_ID = YOUR_CLIENT_ID_HERE;
 
   var client = Asana.Client.create({
-    clientId: CLIENT_ID
+    clientId: CLIENT_ID,
+    redirectUri: 'http://localhost:8338/redirect.html'
   });
   client.useOauth();
   client.authorize().then(function() {
     $('#ui').html('Fetching...');
-    client.users.me().then(function(me) {
+    return client.users.me().then(function(me) {
       $('#ui').text('Hello ' + me.name);
     });
+  }).catch(function(err) {
+    $('#ui').html('Error: ' + err);
   });
 
   //]]>
