@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "asana": "^0.4.0",
+    "asana": "^0.4.1",
     "express": "^4.10.7"
   }
 }
