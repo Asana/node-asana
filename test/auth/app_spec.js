@@ -1,8 +1,6 @@
 /* global describe */
 /* global it */
 var assert = require('assert');
-var Promise = require('bluebird');
-var readline = require('readline');
 var rewire = require('rewire');
 var sinon = require('sinon');
 var App = rewire('../../lib/auth/app');
@@ -11,7 +9,9 @@ describe('App', function() {
 
   describe('#new', function() {
     it('should have default values for options', function() {
-      var app = new App({ clientId: 123 });
+      var app = new App({
+        clientId: 123
+      });
       assert.equal(app.clientSecret, null);
       assert.equal(app.redirectUri, null);
       assert.equal(app.scope, 'default');
@@ -63,10 +63,14 @@ describe('App', function() {
       App.__set__('request', request);
 
       var app = createApp();
-      var payload = { access_token: 123 };
+      var payload = {
+        'access_token': 123
+      };
       var response = app.accessTokenFromCode('code');
       request.callArgWith(
-          1, null, { statusCode: 200 }, JSON.stringify(payload));
+        1, null, {
+          statusCode: 200
+        }, JSON.stringify(payload));
       return response.then(function(value) {
         assert.deepEqual(value, payload);
       });
@@ -78,8 +82,8 @@ describe('App', function() {
       var app = createApp();
       var response = app.accessTokenFromCode('code');
       request.callArgWith(
-          1, 'error', null, 'payload');
-      return response.then(function(value) {
+        1, 'error', null, 'payload');
+      return response.then(function() {
         assert(false, 'request should not have succeeded');
       }).catch(function(e) {
         assert.equal(e, 'error');
