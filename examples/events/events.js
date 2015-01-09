@@ -18,21 +18,23 @@ var sync_token;
 
 console.log('Listening to new stories on project', projectId);
 
-client.events.stream(projectId, { periodSeconds: 3, continueOnError: true })
-    .on('data', function(event) {
-      // Here we filter to just the type of event we care about.
-      if (event.type === 'story' && event.action === 'added') {
-        // Fetch the story and then process it.
-        var storyId = event.resource.id;
-        return client.stories.findById(storyId)
-            .then(function(story) {
-              console.log(
-                  'New story on task',
-                  '[' + story.target.name + ']:', story.text);
-            })
-            .catch(function(error) {
-              console.log('Error fetching story', storyId, error);
-            });
-      }
-
-    });
+client.events.stream(projectId, {
+    periodSeconds: 3,
+    continueOnError: true
+  })
+  .on('data', function(event) {
+    // Here we filter to just the type of event we care about.
+    if (event.type === 'story' && event.action === 'added') {
+      // Fetch the story and then process it.
+      var storyId = event.resource.id;
+      return client.stories.findById(storyId)
+        .then(function(story) {
+          console.log(
+            'New story on task',
+            '[' + story.target.name + ']:', story.text);
+        })
+        .catch(function(error) {
+          console.log('Error fetching story', storyId, error);
+        });
+    }
+  });
