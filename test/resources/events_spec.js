@@ -1,4 +1,6 @@
 /* global describe */
+/* global beforeEach */
+/* global afterEach */
 /* global it */
 var assert = require('assert');
 var sinon = require('sinon');
@@ -24,8 +26,12 @@ describe('Events', function() {
       var id = 1;
       events.get(id);
       assert(
-          dispatcher.get.calledWithExactly(
-              '/events', { resource: 1 }, { fullPayload: true }));
+        dispatcher.get.calledWithExactly(
+          '/events', {
+            resource: 1
+          }, {
+            fullPayload: true
+          }));
     });
 
     it('should handle with sync token', function() {
@@ -37,17 +43,26 @@ describe('Events', function() {
       var token = 'fake_token';
       events.get(id, token);
       assert(
-          dispatcher.get.calledWithExactly(
-              '/events', { resource: 1, sync: token }, { fullPayload: true }));
+        dispatcher.get.calledWithExactly(
+          '/events', {
+            resource: 1,
+            sync: token
+          }, {
+            fullPayload: true
+          }));
     });
   });
 
   describe('#stream', function() {
 
     it('should create a new EventStream', function() {
-      var dispatcher = { get: sinon.stub() };
+      var dispatcher = {
+        get: sinon.stub()
+      };
       var events = new Events(dispatcher);
-      var fakeOptions = { periodSeconds: 1 };
+      var fakeOptions = {
+        periodSeconds: 1
+      };
       var stream = events.stream(123, fakeOptions);
       assert(stream instanceof EventStream);
       assert(stream instanceof Readable);
@@ -66,7 +81,9 @@ describe('EventStream', function() {
       then: sinon.stub().returnsThis(),
       catch: sinon.stub().returnsThis()
     };
-    events = { get: sinon.stub().returns(eventsGetResult) };
+    events = {
+      get: sinon.stub().returns(eventsGetResult)
+    };
     clock = sinon.useFakeTimers(1000000000);
   });
 
@@ -141,34 +158,50 @@ describe('EventStream', function() {
   });
 
   it('should poll after period has passed since last poll started', function() {
-    var stream = new EventStream(events, 123, { periodSeconds: 1 });
+    var stream = new EventStream(events, 123, {
+      periodSeconds: 1
+    });
     var callback = readForCallback(stream);
     clock.tick(500);
-    callback({ sync: 'fake_sync', data: [] });
+    callback({
+      sync: 'fake_sync',
+      data: []
+    });
     stream._poll = sinon.mock().once();
     clock.tick(500);
     stream._poll.verify();
   });
 
   it('should poll immediately after callback if period has passed', function() {
-    var stream = new EventStream(events, 123, { periodSeconds: 1 });
+    var stream = new EventStream(events, 123, {
+      periodSeconds: 1
+    });
     var callback = readForCallback(stream);
     clock.tick(1001);
-    callback({ sync: 'fake_sync', data: [] });
+    callback({
+      sync: 'fake_sync',
+      data: []
+    });
     stream._poll = sinon.mock().once();
     clock.tick(0);
     stream._poll.verify();
   });
 
-  it('should not poll if period has not passed since last poll started', function() {
-    var stream = new EventStream(events, 123, { periodSeconds: 1 });
-    var callback = readForCallback(stream);
-    clock.tick(500);
-    callback({ sync: 'fake_sync', data: [] });
-    stream._poll = sinon.mock().never();
-    clock.tick(499);
-    stream._poll.verify();
-  });
+  it('should not poll if period has not passed since last poll started',
+    function() {
+      var stream = new EventStream(events, 123, {
+        periodSeconds: 1
+      });
+      var callback = readForCallback(stream);
+      clock.tick(500);
+      callback({
+        sync: 'fake_sync',
+        data: []
+      });
+      stream._poll = sinon.mock().never();
+      clock.tick(499);
+      stream._poll.verify();
+    });
 
   it('should flush buffered events when read', function() {
     var stream = new EventStream(events, 123);
@@ -185,19 +218,20 @@ describe('EventStream', function() {
     stream._schedule.verify();
   });
 
-  it('should partially flush buffered events if more than can be read', function() {
-    var stream = new EventStream(events, 123);
-    stream._bufferedEvents = ['event1', 'event2'];
-    stream.push = sinon.mock().twice();
-    stream.push.onFirstCall().returns(true);
-    stream.push.onSecondCall().returns(false);
-    stream._schedule = sinon.mock().never();
+  it('should partially flush buffered events if more than can be read',
+    function() {
+      var stream = new EventStream(events, 123);
+      stream._bufferedEvents = ['event1', 'event2'];
+      stream.push = sinon.mock().twice();
+      stream.push.onFirstCall().returns(true);
+      stream.push.onSecondCall().returns(false);
+      stream._schedule = sinon.mock().never();
 
-    stream.read();
+      stream.read();
 
-    assert.deepEqual(stream._bufferedEvents, ['event2']);
-    stream.push.verify();
-    stream._schedule.verify();
-  });
+      assert.deepEqual(stream._bufferedEvents, ['event2']);
+      stream.push.verify();
+      stream._schedule.verify();
+    });
 
 });
