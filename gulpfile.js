@@ -3,76 +3,40 @@ var gulp = require('gulp');
 var istanbul = require('gulp-istanbul');
 var jshint = require('gulp-jshint');
 var mocha = require('gulp-mocha');
-var path = require('path');
-var through = require('through');
-var uglify = require('gulp-uglify');
-var vinylSourceStream = require('vinyl-source-stream');
-var vinylBuffer = require('vinyl-buffer');
-var wicked = require('wicked');
 
-var index = path.join(__dirname, 'index.js');
-var root = path.join(__dirname, '*.js');
-var lib = path.join(__dirname, 'lib', '**', '*.js');
-var tests = path.join(__dirname, 'test', '**', '*.js');
+/**
+ * Paths
+ */
+var index = 'index.js';
+var lib = 'lib/**/*.js';
+var root = '*.js';
+var test = 'test/**/*.js';
 
-var replace = function(regex, replacement) {
-  return function() {
-    var data = '';
+/**
+ * High Level Tasks
+ */
+gulp.task('test', ['spec']);
 
-    function write(buf) {
-      data += buf;
-    }
-
-    function end() {
-      this.queue(data.replace(regex, replacement));
-      this.queue(null);
-    }
-    return through(write, end);
-  };
-};
-
-function browserTask(minify) {
-  return function() {
-    var task = browserify({
-      entries: [index],
-      standalone: 'Asana'
-    });
-    task = task
-        .transform(
-            replace(/require\('request'\)/g, 'require(\'browser-request\')'))
-        .bundle()
-        .pipe(vinylSourceStream('asana' + (minify ? '-min' : '') + '.js'));
-    if (minify) {
-      task = task
-          .pipe(vinylBuffer())
-          .pipe(uglify());
-    }
-    return task.pipe(gulp.dest('dist'));
-  };
-}
-
-gulp.task('browser', browserTask(false));
-gulp.task('browser-min', browserTask(true));
-
-gulp.task('default', ['test']);
-
-gulp.task('docs', function(callback) {
-  wicked(null, null, callback);
-});
-
+/**
+ * Lints all of the JavaScript files and fails if the tasks do not pass
+ */
 gulp.task('lint', function() {
-  return gulp.src([root, lib, tests])
+  return gulp.src([root, lib, test])
     .pipe(jshint())
-    .pipe(jshint.reporter('jshint-stylish'));
+    .pipe(jshint.reporter('jshint-stylish'))
+    .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('spec', function(callback) {
+/**
+ * Tests the code with mocha and ensures 100% code coverage
+ */
+gulp.task('spec', ['lint'], function(callback) {
   gulp.src(lib)
     .pipe(istanbul({
       includeUntested: true
     }))
     .on('finish', function() {
-      gulp.src(tests)
+      gulp.src(test)
         .pipe(mocha({
           reporter: process.env.TRAVIS ? 'spec' : 'nyan'
         }))
@@ -93,5 +57,3 @@ gulp.task('spec', function(callback) {
         });
     });
 });
-
-gulp.task('test', ['browser', 'lint', 'spec']);
