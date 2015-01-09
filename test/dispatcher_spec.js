@@ -105,6 +105,34 @@ describe('Dispatcher', function() {
       });
     });
 
+    it('should retry on rate limit error if option set', function() {
+      var fakeData = {};
+
+      var request = sinon.stub();
+      request.onFirstCall().callsArgWith(
+          1, null, { statusCode: 429 }, { 'retry_after': 42 });
+      request.onSecondCall().callsArgWith(
+          1, null, { statusCode: 200 }, { data: fakeData });
+      Dispatcher.__set__('request', request);
+
+      var setTimeout = sinon.stub();
+      setTimeout.onFirstCall().callsArg(0);
+      Dispatcher.__set__('setTimeout', setTimeout);
+
+      var auth = { authenticateRequest: sinon.stub() };
+      var dispatcher = new Dispatcher({
+        authenticator: auth,
+        retryOnRateLimit: true
+      });
+
+      var res = dispatcher.dispatch({});
+
+      return res.then(function(data) {
+        assert.equal(data, fakeData);
+        assert.equal(setTimeout.firstCall.args[1], 42500);
+      });
+    });
+
     it('should pass the data as the value', function() {
       var request = sinon.stub();
       var payload = {
