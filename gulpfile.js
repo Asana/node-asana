@@ -33,6 +33,7 @@ gulp.task('spec', ['lint'], function(callback) {
     .pipe(istanbul({
       includeUntested: true
     }))
+    .pipe(istanbul.hookRequire())
     .on('finish', function() {
       gulp.src(test)
         .pipe(mocha({
