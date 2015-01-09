@@ -129,7 +129,7 @@ describe('Dispatcher', function() {
 
       return res.then(function(data) {
         assert.equal(data, fakeData);
-        assert.equal(setTimeout.firstCall.args[1], 42000);
+        assert.equal(setTimeout.firstCall.args[1], 42500);
       });
     });
 
