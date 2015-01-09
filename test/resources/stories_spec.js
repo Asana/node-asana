@@ -1,5 +1,4 @@
-/* global describe */
-/* global it */
+/* jshint mocha:true */
 var assert = require('assert');
 var sinon = require('sinon');
 var Stories = require('../../lib/resources/stories');

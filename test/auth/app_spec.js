@@ -1,5 +1,4 @@
-/* global describe */
-/* global it */
+/* jshint mocha:true */
 var assert = require('assert');
 var rewire = require('rewire');
 var sinon = require('sinon');
