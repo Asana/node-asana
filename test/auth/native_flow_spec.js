@@ -1,9 +1,7 @@
-/* global describe */
-/* global it */
+/* jshint mocha:true */
 var assert = require('assert');
-var Promise = require('bluebird');
+var Bluebird = require('bluebird');
 var readline = require('readline');
-var rewire = require('rewire');
 var sinon = require('sinon');
 var App = require('../../lib/auth/app');
 var NativeFlow = require('../../lib/auth/native_flow');
@@ -12,11 +10,10 @@ describe('NativeFlow', function() {
 
   function createFlow() {
     return new NativeFlow({
-      app: new App(
-          {
-            clientId: 'id',
-            clientSecret: 'secret'
-          })
+      app: new App({
+        clientId: 'id',
+        clientSecret: 'secret'
+      })
     });
   }
 
@@ -34,8 +31,10 @@ describe('NativeFlow', function() {
     it('should prompt for code and fetch access token', function() {
       var flow = createFlow();
       flow.authorizeUrl = sinon.stub().returns('fake_url');
-      flow.promptForCode = sinon.mock().once().returns(Promise.resolve('fake_code'));
-      flow.accessToken = sinon.mock().once().returns(Promise.resolve('fake_token'));
+      flow.promptForCode = sinon.mock().once().returns(
+        Bluebird.resolve('fake_code'));
+      flow.accessToken = sinon.mock().once().returns(
+        Bluebird.resolve('fake_token'));
       return flow.run().then(function(token) {
         assert.equal(token, 'fake_token');
         flow.promptForCode.verify();
@@ -47,27 +46,29 @@ describe('NativeFlow', function() {
   });
 
   describe('#promptForCode', function() {
-    it('should display instructions with url and prompt and resolve to code', function() {
-      var flow = createFlow();
+    it('should display instructions with url and prompt and resolve to code',
+      function() {
+        var flow = createFlow();
 
-      var mockInterface = {
-        question: sinon.mock(),
-        close: sinon.mock()
-      };
-      mockInterface.question.once().onFirstCall().callsArgWithAsync(1, 'code');
-      mockInterface.close.once();
-      var mockReadline = sinon.mock(readline);
-      flow.instructions = sinon.stub().returns('instructions');
-      flow.prompt = sinon.stub().returns('prompt');
-      mockReadline.expects('createInterface').once().returns(mockInterface);
+        var mockInterface = {
+          question: sinon.mock(),
+          close: sinon.mock()
+        };
+        mockInterface.question.once().onFirstCall().callsArgWithAsync(
+          1, 'code');
+        mockInterface.close.once();
+        var mockReadline = sinon.mock(readline);
+        flow.instructions = sinon.stub().returns('instructions');
+        flow.prompt = sinon.stub().returns('prompt');
+        mockReadline.expects('createInterface').once().returns(mockInterface);
 
-      return flow.promptForCode('url').then(function(code) {
-        assert.equal(code, 'code');
-        assert(flow.instructions.calledWith('url'));
-        mockReadline.verify();
-        mockReadline.restore();
+        return flow.promptForCode('url').then(function(code) {
+          assert.equal(code, 'code');
+          assert(flow.instructions.calledWith('url'));
+          mockReadline.verify();
+          mockReadline.restore();
+        });
       });
-    });
   });
 
 });

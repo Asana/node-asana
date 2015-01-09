@@ -9,6 +9,7 @@ gulp.task('server', ['asana-js', 'public-files']);
 gulp.task('asana-js', function() {
   gulp.src('./node_modules/asana/dist/asana.js').pipe(gulp.dest(distDir));
 });
+
 gulp.task('public-files', function() {
   gulp.src(path.join(__dirname, 'public/**')).pipe(gulp.dest(distDir));
 });
