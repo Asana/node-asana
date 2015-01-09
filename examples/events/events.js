@@ -5,16 +5,13 @@
  *   node events.js PROJECT_ID
  */
 var asana = require('asana');
-var Promise = require('bluebird');
 
 // Arguments / constants
-var args = process.argv.slice(2);
 var apiKey = process.env.ASANA_API_KEY;
-var projectId = args[0];
+var projectId = process.env.ASANA_PROJECT_ID;
 
 // Set up a client using basic authentication
-var client = asana.Client.basicAuth(apiKey);
-var sync_token;
+var client = asana.Client.create().useBasicAuth(apiKey);
 
 console.log('Listening to new stories on project', projectId);
 

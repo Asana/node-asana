@@ -8,7 +8,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "asana": "git://github.com/Asana/node-asana.git#stream",
-    "express": "^4.10.7"
+    "asana": "^0.4.4"
   }
 }
