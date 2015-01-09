@@ -64,6 +64,8 @@ app.get('/oauth_callback', function(req, res) {
       // The credentials contain the refresh token as well. If you use it, keep
       // it safe on the server! Here we just use the access token, and store it
       // in the cookie for an hour.
+      // Generally, if stored in a cookie it should be secure- and http-only
+      // to prevent it from being stolen.
       res.cookie('token', credentials.access_token, { maxAge: 60 * 60 * 1000 });
       // Redirect back home, where we should now have access to Asana data.
       res.redirect('/');
