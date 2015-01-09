@@ -1,4 +1,3 @@
-var browserify = require('browserify');
 var gulp = require('gulp');
 var istanbul = require('gulp-istanbul');
 var jshint = require('gulp-jshint');
@@ -7,7 +6,6 @@ var mocha = require('gulp-mocha');
 /**
  * Paths
  */
-var index = 'index.js';
 var lib = 'lib/**/*.js';
 var root = '*.js';
 var test = 'test/**/*.js';
