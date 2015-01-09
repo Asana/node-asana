@@ -1,0 +1,13 @@
+{
+  "name": "events",
+  "description": "Asana Example - Using the streaming API for change events",
+  "main": "events.js",
+  "private": true,
+  "scripts": {
+    "start": "node events.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "asana": "^0.4.4"
+  }
+}

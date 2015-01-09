@@ -42,28 +42,14 @@ describe('EventStream', function() {
   it('should push events on poll response', function() {
     var stream = new EventStream(events, 123);
     var callback = readForCallback(stream);
-    stream.push = sinon.mock().twice().returns(true);
+    stream.pushBuffered = sinon.mock().twice().returns(true);
     callback({
       sync: 'fake_sync',
       data: ['event1', 'event2']
     });
-    stream.push.verify();
-    assert.equal('event1', stream.push.firstCall.args[0]);
-    assert.equal('event2', stream.push.secondCall.args[0]);
-  });
-
-  it('should buffer events if stream is paused', function() {
-    var stream = new EventStream(events, 123);
-    var callback = readForCallback(stream);
-    stream.push = sinon.mock().twice();
-    stream.push.onFirstCall().returns(true);
-    stream.push.onSecondCall().returns(false);
-    callback({
-      sync: 'fake_sync',
-      data: ['event1', 'event2']
-    });
-    stream.push.verify();
-    assert.deepEqual(stream._bufferedEvents, ['event2']);
+    stream.pushBuffered.verify();
+    assert.equal('event1', stream.pushBuffered.firstCall.args[0]);
+    assert.equal('event2', stream.pushBuffered.secondCall.args[0]);
   });
 
   it('should emit error on poll error and continue if handled', function() {
@@ -131,37 +117,6 @@ describe('EventStream', function() {
         stream._poll = sinon.mock().never();
         clock.tick(499);
         stream._poll.verify();
-      });
-
-  it('should flush buffered events when read', function() {
-    var stream = new EventStream(events, 123);
-    stream._bufferedEvents = ['event1', 'event2'];
-    stream.push = sinon.mock().twice();
-    stream.push.onFirstCall().returns(true);
-    stream.push.onSecondCall().returns(true);
-    stream._schedule = sinon.mock().once();
-
-    stream.read();
-
-    assert.deepEqual(stream._bufferedEvents, []);
-    stream.push.verify();
-    stream._schedule.verify();
-  });
-
-  it('should partially flush buffered events if more than can be read',
-      function() {
-        var stream = new EventStream(events, 123);
-        stream._bufferedEvents = ['event1', 'event2'];
-        stream.push = sinon.mock().twice();
-        stream.push.onFirstCall().returns(true);
-        stream.push.onSecondCall().returns(false);
-        stream._schedule = sinon.mock().never();
-
-        stream.read();
-
-        assert.deepEqual(stream._bufferedEvents, ['event2']);
-        stream.push.verify();
-        stream._schedule.verify();
       });
 
 });
