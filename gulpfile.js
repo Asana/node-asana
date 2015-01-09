@@ -1,11 +1,14 @@
+var browserify = require('browserify');
 var gulp = require('gulp');
 var istanbul = require('gulp-istanbul');
 var jshint = require('gulp-jshint');
 var mocha = require('gulp-mocha');
+var vinylSourceStream = require('vinyl-source-stream');
 
 /**
  * Paths
  */
+var index = './index.js';
 var lib = 'lib/**/*.js';
 var root = '*.js';
 var test = 'test/**/*.js';
@@ -13,7 +16,19 @@ var test = 'test/**/*.js';
 /**
  * High Level Tasks
  */
-gulp.task('test', ['spec']);
+gulp.task('test', ['bundle', 'spec']);
+
+/**
+ * Bundles the code
+ */
+gulp.task('bundle', function() {
+  return browserify({
+    entries: [index],
+    standalone: 'Asana'
+  }).bundle()
+    .pipe(vinylSourceStream('asana.js'))
+    .pipe(gulp.dest('dist'));
+});
 
 /**
  * Lints all of the JavaScript files and fails if the tasks do not pass
