@@ -5,7 +5,7 @@ A node.js client for the 1.0 version of the Asana API.
 ## Design Decisions
 
 - **Thin Wrapper** This client is a thin wrapper which means that the client
-  makes no attempt to verify the validity of the arguments locally. All errors
+  makes little attempt to verify the validity of the arguments locally. All errors
   are reported by the server. We include custom Error types which will contain
   the response from the server.
 - **Promises** Promises with [bluebird][bluebird] seem like the most neutral way
@@ -18,13 +18,16 @@ A node.js client for the 1.0 version of the Asana API.
 
 ## Examples
 
+Various examples are in the repository under `examples/`, but some basic
+use cases are illustrated here.
+
 ### Find all incomplete tasks assigned to me that are new or marked for today across my workspaces
 
 ```js
 var asana = require('asana');
 var util = require('util');
 
-var client = asana.Client.basicAuth(process.env.ASANA_API_KEY);
+var client = asana.Client.create().useBasicAuth(process.env.ASANA_API_KEY);
 
 client.users.me().then(function(user) {
   return user.workspaces.map(function(workspace) {
@@ -34,6 +37,7 @@ client.users.me().then(function(user) {
     };
   });
 }).map(function(data) {
+  #xcxc this is now broken / different
   return client.tasks.findAll({
     assignee: data.user,
     workspace: data.workspace,
@@ -55,7 +59,7 @@ client.users.me().then(function(user) {
 
 ## Installation
 
-Install with npm
+Install with npm:
 
 ```sh
 npm install asana --save
@@ -63,16 +67,16 @@ npm install asana --save
 
 ## Documentation
 
-The code is thoroughly documented with JsDoc tags and online documentation can
+The code is thoroughly documented with JsDoc tags, and online documentation can
 be found on the [wiki][wiki]. Also, the 
 [Official Asana Documentation][asana-doc] is a great resource since this is 
 just a thin wrapper for the API.
 
 ## Contributing
 
-Feel free to fork and submit pull requests for the code. Please follow the
+Feel free to fork and submit pull requests for the code! Please follow the
 existing code as an example of style and make sure that all your code passes
-lint and test. For a sanity check
+lint and tests. For a sanity check:
 
 ```sh
 git clone git@github.com:Asana/node-asana.git
