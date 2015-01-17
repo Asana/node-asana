@@ -14,49 +14,41 @@ describe('Tasks', function() {
 
   describe('#create', function() {
     it('should handle the creation', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var data = {
         name: 'Test'
       };
       tasks.create(data);
-      assert(dispatcher.post.calledWithExactly('/tasks', data));
+      assert(this.post.calledWithExactly('/tasks', data));
     });
   });
 
   describe('#createInWorkspace', function() {
     it('should handle the creation', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 1;
       var data = {
         name: 'Test'
       };
       tasks.createInWorkspace(id, data);
-      assert(dispatcher.post.calledWithExactly('/workspaces/1/tasks', data));
+      assert(this.post.calledWithExactly('/workspaces/1/tasks', data));
     });
 
     it('should handle string numbers', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = '1';
       var data = {
         name: 'Test'
       };
       tasks.createInWorkspace(id, data);
-      assert(dispatcher.post.calledWithExactly('/workspaces/1/tasks', data));
+      assert(this.post.calledWithExactly('/workspaces/1/tasks', data));
     });
 
     it('should do weird things with real strings', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 'foobar';
       var data = {
@@ -70,83 +62,69 @@ describe('Tasks', function() {
 
   describe('#findAll', function() {
     it('should handle without params', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       tasks.findAll();
-      assert(dispatcher.get.calledWithExactly('/tasks', undefined));
+      assert(this.get.calledWithExactly('/tasks', undefined));
     });
 
     it('should handle with params', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var params = {
         'opt_fields': 'id,name'
       };
       tasks.findAll(params);
-      assert(dispatcher.get.calledWithExactly('/tasks', params));
+      assert(this.get.calledWithExactly('/tasks', params));
     });
   });
 
   describe('#findById', function() {
     it('should handle without params', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 1;
       tasks.findById(id);
-      assert(dispatcher.get.calledWithExactly('/tasks/1', undefined));
+      assert(this.get.calledWithExactly('/tasks/1', undefined));
     });
 
     it('should handle with params', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var params = {
         'opt_fields': 'id,name'
       };
       var id = 1;
       tasks.findById(id, params);
-      assert(dispatcher.get.calledWithExactly('/tasks/1', params));
+      assert(this.get.calledWithExactly('/tasks/1', params));
     });
 
     it('should handle string numbers', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var params = {
         'opt_fields': 'id,name'
       };
       var id = '1';
       tasks.findById(id, params);
-      assert(dispatcher.get.calledWithExactly('/tasks/1', params));
+      assert(this.get.calledWithExactly('/tasks/1', params));
     });
 
     it('should do weird things with real strings', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var params = {
         'opt_fields': 'id,name'
       };
       var id = 'foobar';
       tasks.findById(id, params);
-      assert(dispatcher.get.calledWithExactly('/tasks/NaN', params));
+      assert(this.get.calledWithExactly('/tasks/NaN', params));
     });
   });
 
   describe('#findByProject', function() {
     it('should handle without params', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 1;
       tasks.findByProject(id);
@@ -155,9 +133,7 @@ describe('Tasks', function() {
     });
 
     it('should handle with params', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var params = {
         'opt_fields': 'id,name'
@@ -169,9 +145,7 @@ describe('Tasks', function() {
     });
 
     it('should handle string numbers', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var params = {
         'opt_fields': 'id,name'
@@ -183,9 +157,7 @@ describe('Tasks', function() {
     });
 
     it('should do weird things with real strings', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var params = {
         'opt_fields': 'id,name'
@@ -199,9 +171,7 @@ describe('Tasks', function() {
 
   describe('#findByTag', function() {
     it('should handle without params', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 1;
       tasks.findByTag(id);
@@ -210,9 +180,7 @@ describe('Tasks', function() {
     });
 
     it('should handle with params', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var params = {
         'opt_fields': 'id,name'
@@ -224,9 +192,7 @@ describe('Tasks', function() {
     });
 
     it('should handle string numbers', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var params = {
         'opt_fields': 'id,name'
@@ -238,9 +204,7 @@ describe('Tasks', function() {
     });
 
     it('should do weird things with real strings', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var params = {
         'opt_fields': 'id,name'
@@ -254,108 +218,90 @@ describe('Tasks', function() {
 
   describe('#update', function() {
     it('should handle the update', function() {
-      var dispatcher = {
-        put: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 1;
       var data = {
         name: 'Test'
       };
       tasks.update(id, data);
-      assert(dispatcher.put.calledWithExactly('/tasks/1', data));
+      assert(this.put.calledWithExactly('/tasks/1', data));
     });
 
     it('should handle string numbers', function() {
-      var dispatcher = {
-        put: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = '1';
       var data = {
         name: 'Test'
       };
       tasks.update(id, data);
-      assert(dispatcher.put.calledWithExactly('/tasks/1', data));
+      assert(this.put.calledWithExactly('/tasks/1', data));
     });
 
     it('should do weird things with real strings', function() {
-      var dispatcher = {
-        put: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 'foobar';
       var data = {
         name: 'Test'
       };
       tasks.update(id, data);
-      assert(dispatcher.put.calledWithExactly('/tasks/NaN', data));
+      assert(this.put.calledWithExactly('/tasks/NaN', data));
     });
   });
 
   describe('#delete', function() {
     it('should handle the deletion', function() {
-      var dispatcher = {
-        delete: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 1;
       tasks.delete(id);
-      assert(dispatcher.delete.calledWithExactly('/tasks/1'));
+      assert(this.delete.calledWithExactly('/tasks/1'));
     });
 
     it('should handle string numbers', function() {
-      var dispatcher = {
-        delete: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = '1';
       tasks.delete(id);
-      assert(dispatcher.delete.calledWithExactly('/tasks/1'));
+      assert(this.delete.calledWithExactly('/tasks/1'));
     });
 
     it('should do weird things with real strings', function() {
-      var dispatcher = {
-        delete: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 'foobar';
       tasks.delete(id);
-      assert(dispatcher.delete.calledWithExactly('/tasks/NaN'));
+      assert(this.delete.calledWithExactly('/tasks/NaN'));
     });
   });
 
   describe('#addFollowers', function() {
     it('should handle the update', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 1;
       var data = {
         followers: [1]
       };
       tasks.addFollowers(id, data);
-      assert(dispatcher.post.calledWithExactly('/tasks/1/addFollowers', data));
+      assert(this.post.calledWithExactly('/tasks/1/addFollowers', data));
     });
 
     it('should handle string numbers', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = '1';
       var data = {
         followers: [1]
       };
       tasks.addFollowers(id, data);
-      assert(dispatcher.post.calledWithExactly('/tasks/1/addFollowers', data));
+      assert(this.post.calledWithExactly('/tasks/1/addFollowers', data));
     });
 
     it('should do weird things with real strings', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 'foobar';
       var data = {
@@ -369,9 +315,7 @@ describe('Tasks', function() {
 
   describe('#removeFollowers', function() {
     it('should handle the update', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 1;
       var data = {
@@ -383,9 +327,7 @@ describe('Tasks', function() {
     });
 
     it('should handle string numbers', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = '1';
       var data = {
@@ -397,9 +339,7 @@ describe('Tasks', function() {
     });
 
     it('should do weird things with real strings', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 'foobar';
       var data = {
@@ -413,29 +353,23 @@ describe('Tasks', function() {
 
   describe('#projects', function() {
     it('should handle the request', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 1;
       tasks.projects(id);
-      assert(dispatcher.get.calledWith('/tasks/1/projects', undefined));
+      assert(this.get.calledWith('/tasks/1/projects', undefined));
     });
 
     it('should handle string numbers', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = '1';
       tasks.projects(id);
-      assert(dispatcher.get.calledWithExactly('/tasks/1/projects', undefined));
+      assert(this.get.calledWithExactly('/tasks/1/projects', undefined));
     });
 
     it('should do weird things with real strings', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 'foobar';
       tasks.projects(id);
@@ -446,35 +380,29 @@ describe('Tasks', function() {
 
   describe('#addProject', function() {
     it('should handle the update', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 1;
       var data = {
         project: [1]
       };
       tasks.addProject(id, data);
-      assert(dispatcher.post.calledWithExactly('/tasks/1/addProject', data));
+      assert(this.post.calledWithExactly('/tasks/1/addProject', data));
     });
 
     it('should handle string numbers', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = '1';
       var data = {
         project: [1]
       };
       tasks.addProject(id, data);
-      assert(dispatcher.post.calledWithExactly('/tasks/1/addProject', data));
+      assert(this.post.calledWithExactly('/tasks/1/addProject', data));
     });
 
     it('should do weird things with real strings', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 'foobar';
       var data = {
@@ -488,35 +416,29 @@ describe('Tasks', function() {
 
   describe('#removeProject', function() {
     it('should handle the update', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 1;
       var data = {
         project: [1]
       };
       tasks.removeProject(id, data);
-      assert(dispatcher.post.calledWithExactly('/tasks/1/removeProject', data));
+      assert(this.post.calledWithExactly('/tasks/1/removeProject', data));
     });
 
     it('should handle string numbers', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = '1';
       var data = {
         project: [1]
       };
       tasks.removeProject(id, data);
-      assert(dispatcher.post.calledWithExactly('/tasks/1/removeProject', data));
+      assert(this.post.calledWithExactly('/tasks/1/removeProject', data));
     });
 
     it('should do weird things with real strings', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 'foobar';
       var data = {
@@ -530,29 +452,23 @@ describe('Tasks', function() {
 
   describe('#tags', function() {
     it('should handle the request', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 1;
       tasks.tags(id);
-      assert(dispatcher.get.calledWith('/tasks/1/tags', undefined));
+      assert(this.get.calledWith('/tasks/1/tags', undefined));
     });
 
     it('should handle string numbers', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = '1';
       tasks.tags(id);
-      assert(dispatcher.get.calledWithExactly('/tasks/1/tags', undefined));
+      assert(this.get.calledWithExactly('/tasks/1/tags', undefined));
     });
 
     it('should do weird things with real strings', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 'foobar';
       tasks.tags(id);
@@ -563,35 +479,29 @@ describe('Tasks', function() {
 
   describe('#addTag', function() {
     it('should handle the update', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 1;
       var data = {
         tag: 1
       };
       tasks.addTag(id, data);
-      assert(dispatcher.post.calledWithExactly('/tasks/1/addTag', data));
+      assert(this.post.calledWithExactly('/tasks/1/addTag', data));
     });
 
     it('should handle string numbers', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = '1';
       var data = {
         tag: 1
       };
       tasks.addTag(id, data);
-      assert(dispatcher.post.calledWithExactly('/tasks/1/addTag', data));
+      assert(this.post.calledWithExactly('/tasks/1/addTag', data));
     });
 
     it('should do weird things with real strings', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 'foobar';
       var data = {
@@ -605,35 +515,29 @@ describe('Tasks', function() {
 
   describe('#removeTag', function() {
     it('should handle the update', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 1;
       var data = {
         tag: 1
       };
       tasks.removeTag(id, data);
-      assert(dispatcher.post.calledWithExactly('/tasks/1/removeTag', data));
+      assert(this.post.calledWithExactly('/tasks/1/removeTag', data));
     });
 
     it('should handle string numbers', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = '1';
       var data = {
         tag: 1
       };
       tasks.removeTag(id, data);
-      assert(dispatcher.post.calledWithExactly('/tasks/1/removeTag', data));
+      assert(this.post.calledWithExactly('/tasks/1/removeTag', data));
     });
 
     it('should do weird things with real strings', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 'foobar';
       var data = {
@@ -647,29 +551,23 @@ describe('Tasks', function() {
 
   describe('#subtasks', function() {
     it('should handle the request', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 1;
       tasks.subtasks(id);
-      assert(dispatcher.get.calledWith('/tasks/1/subtasks', undefined));
+      assert(this.get.calledWith('/tasks/1/subtasks', undefined));
     });
 
     it('should handle string numbers', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = '1';
       tasks.subtasks(id);
-      assert(dispatcher.get.calledWithExactly('/tasks/1/subtasks', undefined));
+      assert(this.get.calledWithExactly('/tasks/1/subtasks', undefined));
     });
 
     it('should do weird things with real strings', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 'foobar';
       tasks.subtasks(id);
@@ -680,9 +578,7 @@ describe('Tasks', function() {
 
   describe('#addSubtask', function() {
     it('should handle the update', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 1;
       var data = {
@@ -690,13 +586,11 @@ describe('Tasks', function() {
         assignee: 1234
       };
       tasks.addSubtask(id, data);
-      assert(dispatcher.post.calledWithExactly('/tasks/1/subtasks', data));
+      assert(this.post.calledWithExactly('/tasks/1/subtasks', data));
     });
 
     it('should handle string numbers', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = '1';
       var data = {
@@ -704,13 +598,11 @@ describe('Tasks', function() {
         assignee: 1234
       };
       tasks.addSubtask(id, data);
-      assert(dispatcher.post.calledWithExactly('/tasks/1/subtasks', data));
+      assert(this.post.calledWithExactly('/tasks/1/subtasks', data));
     });
 
     it('should do weird things with real strings', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 'foobar';
       var data = {
@@ -725,9 +617,7 @@ describe('Tasks', function() {
 
   describe('#setParent', function() {
     it('should handle the update', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 1;
       var parentId = 2;
@@ -735,13 +625,11 @@ describe('Tasks', function() {
         parent: parentId
       };
       tasks.setParent(id, parentId);
-      assert(dispatcher.post.calledWithExactly('/tasks/1/setParent', data));
+      assert(this.post.calledWithExactly('/tasks/1/setParent', data));
     });
 
     it('should handle string numbers', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = '1';
       var parentId = '2';
@@ -749,13 +637,11 @@ describe('Tasks', function() {
         parent: 2
       };
       tasks.setParent(id, parentId);
-      assert(dispatcher.post.calledWithExactly('/tasks/1/setParent', data));
+      assert(this.post.calledWithExactly('/tasks/1/setParent', data));
     });
 
     it('should do weird things with real strings', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       var id = 'foobar';
       var parentId = 'fizzbuzz';

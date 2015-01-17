@@ -14,56 +14,56 @@ describe('Teams', function() {
 
   describe('#findByOrganization', function() {
     it('should handle without params', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var teams = new Teams(dispatcher);
+      teams.getCollection = sinon.stub();
       var id = 1;
       teams.findByOrganization(id);
       assert(
-        dispatcher.get.calledWithExactly('/organizations/1/teams', undefined));
+        teams.getCollection.calledWithExactly(
+            '/organizations/1/teams', undefined));
     });
 
     it('should handle with params', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var teams = new Teams(dispatcher);
+      teams.getCollection = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = 1;
       teams.findByOrganization(id, params);
       assert(
-        dispatcher.get.calledWithExactly('/organizations/1/teams', params));
+        teams.getCollection.calledWithExactly(
+            '/organizations/1/teams', params));
     });
 
     it('should handle string numbers', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var teams = new Teams(dispatcher);
+      teams.getCollection = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = '1';
       teams.findByOrganization(id, params);
       assert(
-        dispatcher.get.calledWithExactly('/organizations/1/teams', params));
+        teams.getCollection.calledWithExactly(
+            '/organizations/1/teams', params));
     });
 
     it('should do weird things with real strings', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var teams = new Teams(dispatcher);
+      teams.getCollection = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = 'foobar';
       teams.findByOrganization(id, params);
       assert(
-        dispatcher.get.calledWithExactly('/organizations/NaN/teams', params));
+        teams.getCollection.calledWithExactly(
+            '/organizations/NaN/teams', params));
     });
   });
 });
