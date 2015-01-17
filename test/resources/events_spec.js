@@ -26,8 +26,6 @@ describe('Events', function() {
         dispatcher.get.calledWithExactly(
           '/events', {
             resource: 1
-          }, {
-            fullPayload: true
           }));
     });
 
@@ -44,8 +42,6 @@ describe('Events', function() {
           '/events', {
             resource: 1,
             sync: token
-          }, {
-            fullPayload: true
           }));
     });
   });

@@ -69,7 +69,7 @@ describe('Tags', function() {
       var tags = new Tags(dispatcher);
       tags.getCollection = sinon.stub();
       tags.findAll();
-      assert(tags.get.calledWithExactly('/tags', undefined));
+      assert(tags.getCollection.calledWithExactly('/tags', undefined));
     });
 
     it('should handle with params', function() {
@@ -80,7 +80,7 @@ describe('Tags', function() {
         'opt_fields': 'id,name'
       };
       tags.findAll(params);
-      assert(tags.get.calledWithExactly('/tags', params));
+      assert(tags.getCollection.calledWithExactly('/tags', params));
     });
   });
 

@@ -16,11 +16,12 @@ describe('Projects', function() {
     it('should handle the creation', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
+      projects.post = sinon.stub();
       var data = {
         name: 'Test'
       };
       projects.create(data);
-      assert(this.post.calledWithExactly('/projects', data));
+      assert(projects.post.calledWithExactly('/projects', data));
     });
   });
 
@@ -28,35 +29,38 @@ describe('Projects', function() {
     it('should handle the creation', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
+      projects.post = sinon.stub();
       var id = 1;
       var data = {
         name: 'Test'
       };
       projects.createInWorkspace(id, data);
-      assert(this.post.calledWithExactly('/workspaces/1/projects', data));
+      assert(projects.post.calledWithExactly('/workspaces/1/projects', data));
     });
 
     it('should handle string numbers', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
+      projects.post = sinon.stub();
       var id = '1';
       var data = {
         name: 'Test'
       };
       projects.createInWorkspace(id, data);
-      assert(this.post.calledWithExactly('/workspaces/1/projects', data));
+      assert(projects.post.calledWithExactly('/workspaces/1/projects', data));
     });
 
     it('should do weird things with real strings', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
+      projects.post = sinon.stub();
       var id = 'foobar';
       var data = {
         name: 'Test'
       };
       projects.createInWorkspace(id, data);
       assert(
-        dispatcher.post.calledWithExactly('/workspaces/NaN/projects', data));
+          projects.post.calledWithExactly('/workspaces/NaN/projects', data));
     });
   });
 
@@ -64,18 +68,20 @@ describe('Projects', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
+      projects.getCollection = sinon.stub();
       projects.findAll();
-      assert(this.get.calledWithExactly('/projects', undefined));
+      assert(projects.getCollection.calledWithExactly('/projects', undefined));
     });
 
     it('should handle with params', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
+      projects.getCollection = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       projects.findAll(params);
-      assert(this.get.calledWithExactly('/projects', params));
+      assert(projects.getCollection.calledWithExactly('/projects', params));
     });
   });
 
@@ -83,42 +89,46 @@ describe('Projects', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
+      projects.get = sinon.stub();
       var id = 1;
       projects.findById(id);
-      assert(this.get.calledWithExactly('/projects/1', undefined));
+      assert(projects.get.calledWithExactly('/projects/1', undefined));
     });
 
     it('should handle with params', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
+      projects.get = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = 1;
       projects.findById(id, params);
-      assert(this.get.calledWithExactly('/projects/1', params));
+      assert(projects.get.calledWithExactly('/projects/1', params));
     });
 
     it('should handle string numbers', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
+      projects.get = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = '1';
       projects.findById(id, params);
-      assert(this.get.calledWithExactly('/projects/1', params));
+      assert(projects.get.calledWithExactly('/projects/1', params));
     });
 
     it('should do weird things with real strings', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
+      projects.get = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = 'foobar';
       projects.findById(id, params);
-      assert(this.get.calledWithExactly('/projects/NaN', params));
+      assert(projects.get.calledWithExactly('/projects/NaN', params));
     });
   });
 
@@ -126,46 +136,54 @@ describe('Projects', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
+      projects.getCollection = sinon.stub();
       var id = 1;
       projects.findByWorkspace(id);
       assert(
-        dispatcher.get.calledWithExactly('/workspaces/1/projects', undefined));
+          projects.getCollection.calledWithExactly(
+              '/workspaces/1/projects', undefined));
     });
 
     it('should handle with params', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
+      projects.getCollection = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = 1;
       projects.findByWorkspace(id, params);
       assert(
-        dispatcher.get.calledWithExactly('/workspaces/1/projects', params));
+          projects.getCollection.calledWithExactly(
+              '/workspaces/1/projects', params));
     });
 
     it('should handle string numbers', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
+      projects.getCollection = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = '1';
       projects.findByWorkspace(id, params);
       assert(
-        dispatcher.get.calledWithExactly('/workspaces/1/projects', params));
+          projects.getCollection.calledWithExactly(
+              '/workspaces/1/projects', params));
     });
 
     it('should do weird things with real strings', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
+      projects.getCollection = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = 'foobar';
       projects.findByWorkspace(id, params);
       assert(
-        dispatcher.get.calledWithExactly('/workspaces/NaN/projects', params));
+          projects.getCollection.calledWithExactly(
+              '/workspaces/NaN/projects', params));
     });
   });
 
@@ -173,34 +191,37 @@ describe('Projects', function() {
     it('should handle the update', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
+      projects.put = sinon.stub();
       var id = 1;
       var data = {
         name: 'Test'
       };
       projects.update(id, data);
-      assert(this.put.calledWithExactly('/projects/1', data));
+      assert(projects.put.calledWithExactly('/projects/1', data));
     });
 
     it('should handle string numbers', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
+      projects.put = sinon.stub();
       var id = '1';
       var data = {
         name: 'Test'
       };
       projects.update(id, data);
-      assert(this.put.calledWithExactly('/projects/1', data));
+      assert(projects.put.calledWithExactly('/projects/1', data));
     });
 
     it('should do weird things with real strings', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
+      projects.put = sinon.stub();
       var id = 'foobar';
       var data = {
         name: 'Test'
       };
       projects.update(id, data);
-      assert(this.put.calledWithExactly('/projects/NaN', data));
+      assert(projects.put.calledWithExactly('/projects/NaN', data));
     });
   });
 
@@ -208,25 +229,28 @@ describe('Projects', function() {
     it('should handle the deletion', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
+      projects.delete = sinon.stub();
       var id = 1;
-      projects.delete(id);
-      assert(this.delete.calledWithExactly('/projects/1'));
+      projects.destroy(id);
+      assert(projects.delete.calledWithExactly('/projects/1'));
     });
 
     it('should handle string numbers', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
+      projects.delete = sinon.stub();
       var id = '1';
-      projects.delete(id);
-      assert(this.delete.calledWithExactly('/projects/1'));
+      projects.destroy(id);
+      assert(projects.delete.calledWithExactly('/projects/1'));
     });
 
     it('should do weird things with real strings', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
+      projects.delete = sinon.stub();
       var id = 'foobar';
-      projects.delete(id);
-      assert(this.delete.calledWithExactly('/projects/NaN'));
+      projects.destroy(id);
+      assert(projects.delete.calledWithExactly('/projects/NaN'));
     });
   });
 });

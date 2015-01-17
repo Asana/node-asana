@@ -16,42 +16,46 @@ describe('Stories', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var stories = new Stories(dispatcher);
+      stories.get = sinon.stub();
       var id = 1;
       stories.findById(id);
-      assert(this.get.calledWithExactly('/stories/1', undefined));
+      assert(stories.get.calledWithExactly('/stories/1', undefined));
     });
 
     it('should handle with params', function() {
       var dispatcher = {};
       var stories = new Stories(dispatcher);
+      stories.get = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = 1;
       stories.findById(id, params);
-      assert(this.get.calledWithExactly('/stories/1', params));
+      assert(stories.get.calledWithExactly('/stories/1', params));
     });
 
     it('should handle string numbers', function() {
       var dispatcher = {};
       var stories = new Stories(dispatcher);
+      stories.get = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = '1';
       stories.findById(id, params);
-      assert(this.get.calledWithExactly('/stories/1', params));
+      assert(stories.get.calledWithExactly('/stories/1', params));
     });
 
     it('should do weird things with real strings', function() {
       var dispatcher = {};
       var stories = new Stories(dispatcher);
+      stories.get = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = 'foobar';
       stories.findById(id, params);
-      assert(this.get.calledWithExactly('/stories/NaN', params));
+      assert(stories.get.calledWithExactly('/stories/NaN', params));
     });
   });
 
@@ -59,44 +63,53 @@ describe('Stories', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var stories = new Stories(dispatcher);
+      stories.getCollection = sinon.stub();
       var id = 1;
       stories.findByTask(id);
       assert(
-        dispatcher.get.calledWithExactly('/tasks/1/stories', undefined));
+        stories.getCollection.calledWithExactly(
+            '/tasks/1/stories', undefined));
     });
 
     it('should handle with params', function() {
       var dispatcher = {};
       var stories = new Stories(dispatcher);
+      stories.getCollection = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = 1;
       stories.findByTask(id, params);
-      assert(this.get.calledWithExactly('/tasks/1/stories', params));
+      assert(
+          stories.getCollection.calledWithExactly(
+              '/tasks/1/stories', params));
     });
 
     it('should handle string numbers', function() {
       var dispatcher = {};
       var stories = new Stories(dispatcher);
+      stories.getCollection = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = '1';
       stories.findByTask(id, params);
-      assert(this.get.calledWithExactly('/tasks/1/stories', params));
+      assert(
+          stories.getCollection.calledWithExactly('/tasks/1/stories', params));
     });
 
     it('should do weird things with real strings', function() {
       var dispatcher = {};
       var stories = new Stories(dispatcher);
+      stories.getCollection = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = 'foobar';
       stories.findByTask(id, params);
       assert(
-        dispatcher.get.calledWithExactly('/tasks/NaN/stories', params));
+          stories.getCollection.calledWithExactly(
+              '/tasks/NaN/stories', params));
     });
   });
 
@@ -104,34 +117,37 @@ describe('Stories', function() {
     it('should handle the creation', function() {
       var dispatcher = {};
       var stories = new Stories(dispatcher);
+      stories.post = sinon.stub();
       var id = 1;
       var data = {
         text: 'Test'
       };
       stories.createOnTask(id, data);
-      assert(this.post.calledWithExactly('/tasks/1/stories', data));
+      assert(stories.post.calledWithExactly('/tasks/1/stories', data));
     });
 
     it('should handle string numbers', function() {
       var dispatcher = {};
       var stories = new Stories(dispatcher);
+      stories.post = sinon.stub();
       var id = '1';
       var data = {
         text: 'Test'
       };
       stories.createOnTask(id, data);
-      assert(this.post.calledWithExactly('/tasks/1/stories', data));
+      assert(stories.post.calledWithExactly('/tasks/1/stories', data));
     });
 
     it('should do weird things with real strings', function() {
       var dispatcher = {};
       var stories = new Stories(dispatcher);
+      stories.post = sinon.stub();
       var id = 'foobar';
       var data = {
         text: 'Test'
       };
       stories.createOnTask(id, data);
-      assert(this.post.calledWithExactly('/tasks/NaN/stories', data));
+      assert(stories.post.calledWithExactly('/tasks/NaN/stories', data));
     });
   });
 });
