@@ -113,11 +113,12 @@ describe('Workspaces', function() {
       var id = 'baz';
       var data = {
         type: 'task',
-        query: 'foobar'
+        query: 'foobar',
+        limit: 50
       };
       workspaces.typeahead(id, data);
       assert(dispatcher.get.calledWithExactly(
-        '/workspaces/NaN/typeahead', data));
+        '/workspaces/NaN/typeahead', data, undefined));
     });
   });
 });
