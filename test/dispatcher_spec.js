@@ -106,13 +106,11 @@ describe('Dispatcher', function() {
     });
 
     it('should retry on rate limit error if option set', function() {
-      var fakeData = {};
-
       var request = sinon.stub();
       request.onFirstCall().callsArgWith(
           1, null, { statusCode: 429 }, { 'retry_after': 42 });
       request.onSecondCall().callsArgWith(
-          1, null, { statusCode: 200 }, { data: fakeData });
+          1, null, { statusCode: 200 }, {});
       Dispatcher.__set__('request', request);
 
       var setTimeout = sinon.stub();
@@ -127,17 +125,18 @@ describe('Dispatcher', function() {
 
       var res = dispatcher.dispatch({});
 
-      return res.then(function(data) {
-        assert.equal(data, fakeData);
+      return res.then(function() {
         assert.equal(setTimeout.firstCall.args[1], 42500);
       });
     });
 
-    it('should pass the data as the value', function() {
+    it('should pass the whole payload as the value', function() {
       var request = sinon.stub();
       var payload = {
-        id: 1,
-        name: 'Task'
+        data: {
+          id: 1,
+          name: 'Task'
+        }
       };
       Dispatcher.__set__('request', request);
       var auth = { authenticateRequest: sinon.stub() };
@@ -145,9 +144,7 @@ describe('Dispatcher', function() {
       var res = dispatcher.dispatch({});
       request.callArgWith(1, null, {
         statusCode: 200
-      }, {
-        data: payload
-      });
+      }, payload);
       return res.then(function(value) {
         assert.equal(value, payload);
       });

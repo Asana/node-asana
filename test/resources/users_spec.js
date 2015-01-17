@@ -16,9 +16,10 @@ describe('Users', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var users = new Users(dispatcher);
-      users.getCollection = sinon.stub();
+      users.dispatchGetCollection = sinon.stub();
       users.findAll();
-      assert(users.getCollection.calledWithExactly('/users', undefined));
+      assert(
+          users.dispatchGetCollection.calledWithExactly('/users', undefined));
     });
 
     it('should handle with params', function() {
@@ -27,9 +28,9 @@ describe('Users', function() {
       var params = {
         'opt_fields': 'id,name'
       };
-      users.getCollection = sinon.stub();
+      users.dispatchGetCollection = sinon.stub();
       users.findAll(params);
-      assert(users.getCollection.calledWithExactly('/users', params));
+      assert(users.dispatchGetCollection.calledWithExactly('/users', params));
     });
   });
 
@@ -37,20 +38,20 @@ describe('Users', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var users = new Users(dispatcher);
-      users.get = sinon.stub();
+      users.dispatchGet = sinon.stub();
       users.me();
-      assert(users.get.calledWithExactly('/users/me', undefined));
+      assert(users.dispatchGet.calledWithExactly('/users/me', undefined));
     });
 
     it('should handle with params', function() {
       var dispatcher = {};
       var users = new Users(dispatcher);
-      users.get = sinon.stub();
+      users.dispatchGet = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       users.me(params);
-      assert(users.get.calledWithExactly('/users/me', params));
+      assert(users.dispatchGet.calledWithExactly('/users/me', params));
     });
   });
 
@@ -58,46 +59,46 @@ describe('Users', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var users = new Users(dispatcher);
-      users.get = sinon.stub();
+      users.dispatchGet = sinon.stub();
       var id = 1;
       users.findById(id);
-      assert(users.get.calledWithExactly('/users/1', undefined));
+      assert(users.dispatchGet.calledWithExactly('/users/1', undefined));
     });
 
     it('should handle with params', function() {
       var dispatcher = {};
       var users = new Users(dispatcher);
-      users.get = sinon.stub();
+      users.dispatchGet = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = 1;
       users.findById(id, params);
-      assert(users.get.calledWithExactly('/users/1', params));
+      assert(users.dispatchGet.calledWithExactly('/users/1', params));
     });
 
     it('should handle string numbers', function() {
       var dispatcher = {};
       var users = new Users(dispatcher);
-      users.get = sinon.stub();
+      users.dispatchGet = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = '1';
       users.findById(id, params);
-      assert(users.get.calledWithExactly('/users/1', params));
+      assert(users.dispatchGet.calledWithExactly('/users/1', params));
     });
 
     it('should do weird things with real strings', function() {
       var dispatcher = {};
       var users = new Users(dispatcher);
-      users.get = sinon.stub();
+      users.dispatchGet = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = 'foobar';
       users.findById(id, params);
-      assert(users.get.calledWithExactly('/users/NaN', params));
+      assert(users.dispatchGet.calledWithExactly('/users/NaN', params));
     });
   });
 
@@ -105,50 +106,50 @@ describe('Users', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var users = new Users(dispatcher);
-      users.getCollection = sinon.stub();
+      users.dispatchGetCollection = sinon.stub();
       var id = 1;
       users.findByWorkspace(id);
       assert(
-        users.getCollection.calledWithExactly(
+        users.dispatchGetCollection.calledWithExactly(
             '/workspaces/1/users', undefined));
     });
 
     it('should handle with params', function() {
       var dispatcher = {};
       var users = new Users(dispatcher);
-      users.getCollection = sinon.stub();
+      users.dispatchGetCollection = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = 1;
       users.findByWorkspace(id, params);
-      assert(users.getCollection.calledWithExactly(
+      assert(users.dispatchGetCollection.calledWithExactly(
           '/workspaces/1/users', params));
     });
 
     it('should handle string numbers', function() {
       var dispatcher = {};
       var users = new Users(dispatcher);
-      users.getCollection = sinon.stub();
+      users.dispatchGetCollection = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = '1';
       users.findByWorkspace(id, params);
-      assert(users.getCollection.calledWithExactly(
+      assert(users.dispatchGetCollection.calledWithExactly(
           '/workspaces/1/users', params));
     });
 
     it('should do weird things with real strings', function() {
       var dispatcher = {};
       var users = new Users(dispatcher);
-      users.getCollection = sinon.stub();
+      users.dispatchGetCollection = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = 'foobar';
       users.findByWorkspace(id, params);
-      assert(users.getCollection.calledWithExactly(
+      assert(users.dispatchGetCollection.calledWithExactly(
           '/workspaces/NaN/users', params));
     });
   });

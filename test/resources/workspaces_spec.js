@@ -16,21 +16,23 @@ describe('Workspaces', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var workspaces = new Workspaces(dispatcher);
-      workspaces.getCollection = sinon.stub();
+      workspaces.dispatchGetCollection = sinon.stub();
       workspaces.findAll();
-      assert(workspaces.getCollection.calledWithExactly(
+      assert(workspaces.dispatchGetCollection.calledWithExactly(
           '/workspaces', undefined));
     });
 
     it('should handle with params', function() {
       var dispatcher = {};
       var workspaces = new Workspaces(dispatcher);
-      workspaces.getCollection = sinon.stub();
+      workspaces.dispatchGetCollection = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       workspaces.findAll(params);
-      assert(workspaces.getCollection.calledWithExactly('/workspaces', params));
+      assert(
+          workspaces.dispatchGetCollection.calledWithExactly(
+              '/workspaces', params));
     });
   });
 
@@ -38,37 +40,37 @@ describe('Workspaces', function() {
     it('should handle the update', function() {
       var dispatcher = {};
       var workspaces = new Workspaces(dispatcher);
-      workspaces.put = sinon.stub();
+      workspaces.dispatchPut = sinon.stub();
       var id = 1;
       var data = {
         name: 'Test'
       };
       workspaces.update(id, data);
-      assert(workspaces.put.calledWithExactly('/workspaces/1', data));
+      assert(workspaces.dispatchPut.calledWithExactly('/workspaces/1', data));
     });
 
     it('should handle string numbers', function() {
       var dispatcher = {};
       var workspaces = new Workspaces(dispatcher);
-      workspaces.put = sinon.stub();
+      workspaces.dispatchPut = sinon.stub();
       var id = '1';
       var data = {
         name: 'Test'
       };
       workspaces.update(id, data);
-      assert(workspaces.put.calledWithExactly('/workspaces/1', data));
+      assert(workspaces.dispatchPut.calledWithExactly('/workspaces/1', data));
     });
 
     it('should do weird things with real strings', function() {
       var dispatcher = {};
       var workspaces = new Workspaces(dispatcher);
-      workspaces.put = sinon.stub();
+      workspaces.dispatchPut = sinon.stub();
       var id = 'foobar';
       var data = {
         name: 'Test'
       };
       workspaces.update(id, data);
-      assert(workspaces.put.calledWithExactly('/workspaces/NaN', data));
+      assert(workspaces.dispatchPut.calledWithExactly('/workspaces/NaN', data));
     });
   });
 
@@ -76,40 +78,40 @@ describe('Workspaces', function() {
     it('should handle task typeahead', function() {
       var dispatcher = {};
       var workspaces = new Workspaces(dispatcher);
-      workspaces.getCollection = sinon.stub();
+      workspaces.dispatchGetCollection = sinon.stub();
       var id = 1;
       var data = {
         type: 'task',
         query: 'foobar'
       };
       workspaces.typeahead(id, data);
-      assert(workspaces.getCollection.calledWithExactly(
+      assert(workspaces.dispatchGetCollection.calledWithExactly(
         '/workspaces/1/typeahead', data));
     });
     it('should handle string numbers in typeahead', function() {
       var dispatcher = {};
       var workspaces = new Workspaces(dispatcher);
-      workspaces.getCollection = sinon.stub();
+      workspaces.dispatchGetCollection = sinon.stub();
       var id = '1';
       var data = {
         type: 'task',
         query: 'foobar'
       };
       workspaces.typeahead(id, data);
-      assert(workspaces.getCollection.calledWithExactly(
+      assert(workspaces.dispatchGetCollection.calledWithExactly(
         '/workspaces/1/typeahead', data));
     });
     it('should do weird things with real strings', function() {
       var dispatcher = {};
       var workspaces = new Workspaces(dispatcher);
-      workspaces.getCollection = sinon.stub();
+      workspaces.dispatchGetCollection = sinon.stub();
       var id = 'baz';
       var data = {
         type: 'task',
         query: 'foobar'
       };
       workspaces.typeahead(id, data);
-      assert(workspaces.getCollection.calledWithExactly(
+      assert(workspaces.dispatchGetCollection.calledWithExactly(
         '/workspaces/NaN/typeahead', data));
     });
   });

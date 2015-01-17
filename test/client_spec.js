@@ -86,6 +86,9 @@ describe('Client', function() {
 
   describe('#resources', function() {
     Object.keys(resources).forEach(function(key) {
+      if (key === 'Resource') {
+        return;
+      }
       it('should have ' + key, function() {
         var dispatcher = new Dispatcher({});
         var client = new Client(dispatcher);
