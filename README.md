@@ -19,42 +19,48 @@ A node.js client for the 1.0 version of the Asana API.
 ## Examples
 
 Various examples are in the repository under `examples/`, but some basic
-use cases are illustrated here.
+concepts are illustrated here.
 
-### Find all incomplete tasks assigned to me that are new or marked for today across my workspaces
+### Find some incomplete tasks assigned to me that are new or marked for today in my default workspace
 
 ```js
-var asana = require('asana');
+var Asana = require('asana');
 var util = require('util');
 
-var client = asana.Client.create().useBasicAuth(process.env.ASANA_API_KEY);
+// Using the API key for basic authentication. This is reasonable to get
+// started with, but Oauth is more secure and provides more features.
+var client = Asana.Client.create().useBasicAuth(process.env.ASANA_API_KEY);
 
-client.users.me().then(function(user) {
-  return user.workspaces.map(function(workspace) {
-    return {
-      user: user.id,
-      workspace: workspace.id
-    };
+client.users.me()
+  .then(function(user) {
+    var userId = user.id;
+    // The user's "default" workspace is the first one in the list, though
+    // any user can have multiple workspaces so you can't always assume this
+    // is the one you want to work with.
+    var workspaceId = user.workspaces[0].id;
+    return client.tasks.findAll({
+      assignee: userId,
+      workspace: workspaceId,
+      completed_since: 'now',
+      opt_fields: 'id,name,assignee_status,completed'
+    });
+  })
+  .then(function(response)) {
+    // There may be more pages of data, we could stream or return a promise
+    // to request those here - for now, let's just return the first page
+    // of items.
+    return response.data;
   });
-}).map(function(data) {
-  #xcxc this is now broken / different
-  return client.tasks.findAll({
-    assignee: data.user,
-    workspace: data.workspace,
-    completed_since: 'now',
-    opt_fields: 'id,name,assignee_status,completed'
-  }).filter(function(task) {
+  .filter(function(task) {
     return task.assignee_status === 'today' ||
       task.assignee_status === 'new';
+  })
+  .then(function(list) {
+    console.log(util.inspect(list, {
+      colors: true,
+      depth: null
+    }));
   });
-}).reduce(function(list, tasks) {
-  return list.concat(tasks);
-}, []).then(function(list) {
-  console.log(util.inspect(list, {
-    colors: true,
-    depth: null
-  }));
-});
 ```
 
 ## Installation
