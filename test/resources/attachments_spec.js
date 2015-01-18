@@ -14,105 +14,109 @@ describe('Attachments', function() {
 
   describe('#findById', function() {
     it('should handle without params', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var attachments = new Attachments(dispatcher);
+      attachments.dispatchGet = sinon.stub();
       var id = 1;
       attachments.findById(id);
-      assert(dispatcher.get.calledWithExactly('/attachments/1', undefined));
+      assert(
+          attachments.dispatchGet.calledWithExactly(
+              '/attachments/1', undefined));
     });
 
     it('should handle with params', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var attachments = new Attachments(dispatcher);
+      attachments.dispatchGet = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = 1;
       attachments.findById(id, params);
-      assert(dispatcher.get.calledWithExactly('/attachments/1', params));
+      assert(
+          attachments.dispatchGet.calledWithExactly('/attachments/1', params));
     });
 
     it('should handle string numbers', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var attachments = new Attachments(dispatcher);
+      attachments.dispatchGet = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = '1';
       attachments.findById(id, params);
-      assert(dispatcher.get.calledWithExactly('/attachments/1', params));
+      assert(
+          attachments.dispatchGet.calledWithExactly('/attachments/1', params));
     });
 
     it('should do weird things with real strings', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var attachments = new Attachments(dispatcher);
+      attachments.dispatchGet = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = 'foobar';
       attachments.findById(id, params);
-      assert(dispatcher.get.calledWithExactly('/attachments/NaN', params));
+      assert(
+          attachments.dispatchGet.calledWithExactly(
+              '/attachments/NaN', params));
     });
   });
 
   describe('#findByTask', function() {
     it('should handle without params', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var attachments = new Attachments(dispatcher);
+      attachments.dispatchGetCollection = sinon.stub();
       var id = 1;
       attachments.findByTask(id);
       assert(
-        dispatcher.get.calledWithExactly('/tasks/1/attachments', undefined));
+          attachments.dispatchGetCollection.calledWithExactly(
+              '/tasks/1/attachments', undefined));
     });
 
     it('should handle with params', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var attachments = new Attachments(dispatcher);
+      attachments.dispatchGetCollection = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = 1;
       attachments.findByTask(id, params);
-      assert(dispatcher.get.calledWithExactly('/tasks/1/attachments', params));
+      assert(
+          attachments.dispatchGetCollection.calledWithExactly(
+              '/tasks/1/attachments', params));
     });
 
     it('should handle string numbers', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var attachments = new Attachments(dispatcher);
+      attachments.dispatchGetCollection = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = '1';
       attachments.findByTask(id, params);
-      assert(dispatcher.get.calledWithExactly('/tasks/1/attachments', params));
+      assert(
+          attachments.dispatchGetCollection.calledWithExactly(
+              '/tasks/1/attachments', params));
     });
 
     it('should do weird things with real strings', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var attachments = new Attachments(dispatcher);
+      attachments.dispatchGetCollection = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = 'foobar';
       attachments.findByTask(id, params);
       assert(
-        dispatcher.get.calledWithExactly('/tasks/NaN/attachments', params));
+        attachments.dispatchGetCollection.calledWithExactly(
+            '/tasks/NaN/attachments', params));
     });
   });
 });

@@ -14,223 +14,213 @@ describe('Tags', function() {
 
   describe('#create', function() {
     it('should handle the creation', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tags = new Tags(dispatcher);
+      tags.dispatchPost = sinon.stub();
       var data = {
         name: 'Test'
       };
       tags.create(data);
-      assert(dispatcher.post.calledWithExactly('/tags', data));
+      assert(tags.dispatchPost.calledWithExactly('/tags', data));
     });
   });
 
   describe('#createInWorkspace', function() {
     it('should handle the creation', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tags = new Tags(dispatcher);
+      tags.dispatchPost = sinon.stub();
       var id = 1;
       var data = {
         name: 'Test'
       };
       tags.createInWorkspace(id, data);
-      assert(dispatcher.post.calledWithExactly('/workspaces/1/tags', data));
+      assert(tags.dispatchPost.calledWithExactly('/workspaces/1/tags', data));
     });
 
     it('should handle string numbers', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tags = new Tags(dispatcher);
+      tags.dispatchPost = sinon.stub();
       var id = '1';
       var data = {
         name: 'Test'
       };
       tags.createInWorkspace(id, data);
-      assert(dispatcher.post.calledWithExactly('/workspaces/1/tags', data));
+      assert(tags.dispatchPost.calledWithExactly('/workspaces/1/tags', data));
     });
 
     it('should do weird things with real strings', function() {
-      var dispatcher = {
-        post: sinon.stub()
-      };
+      var dispatcher = {};
       var tags = new Tags(dispatcher);
+      tags.dispatchPost = sinon.stub();
       var id = 'foobar';
       var data = {
         name: 'Test'
       };
       tags.createInWorkspace(id, data);
-      assert(dispatcher.post.calledWithExactly('/workspaces/NaN/tags', data));
+      assert(tags.dispatchPost.calledWithExactly('/workspaces/NaN/tags', data));
     });
   });
 
   describe('#findAll', function() {
     it('should handle without params', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tags = new Tags(dispatcher);
+      tags.dispatchGetCollection = sinon.stub();
       tags.findAll();
-      assert(dispatcher.get.calledWithExactly('/tags', undefined));
+      assert(tags.dispatchGetCollection.calledWithExactly('/tags', undefined));
     });
 
     it('should handle with params', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tags = new Tags(dispatcher);
+      tags.dispatchGetCollection = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       tags.findAll(params);
-      assert(dispatcher.get.calledWithExactly('/tags', params));
+      assert(tags.dispatchGetCollection.calledWithExactly('/tags', params));
     });
   });
 
   describe('#findById', function() {
     it('should handle without params', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tags = new Tags(dispatcher);
+      tags.dispatchGet = sinon.stub();
       var id = 1;
       tags.findById(id);
-      assert(dispatcher.get.calledWithExactly('/tags/1', undefined));
+      assert(tags.dispatchGet.calledWithExactly('/tags/1', undefined));
     });
 
     it('should handle with params', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tags = new Tags(dispatcher);
+      tags.dispatchGet = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = 1;
       tags.findById(id, params);
-      assert(dispatcher.get.calledWithExactly('/tags/1', params));
+      assert(tags.dispatchGet.calledWithExactly('/tags/1', params));
     });
 
     it('should handle string numbers', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tags = new Tags(dispatcher);
+      tags.dispatchGet = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = '1';
       tags.findById(id, params);
-      assert(dispatcher.get.calledWithExactly('/tags/1', params));
+      assert(tags.dispatchGet.calledWithExactly('/tags/1', params));
     });
 
     it('should do weird things with real strings', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tags = new Tags(dispatcher);
+      tags.dispatchGet = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = 'foobar';
       tags.findById(id, params);
-      assert(dispatcher.get.calledWithExactly('/tags/NaN', params));
+      assert(tags.dispatchGet.calledWithExactly('/tags/NaN', params));
     });
   });
 
   describe('#findByWorkspace', function() {
     it('should handle without params', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tags = new Tags(dispatcher);
+      tags.dispatchGetCollection = sinon.stub();
       var id = 1;
       tags.findByWorkspace(id);
       assert(
-        dispatcher.get.calledWithExactly('/workspaces/1/tags', undefined));
+          tags.dispatchGetCollection.calledWithExactly(
+              '/workspaces/1/tags', undefined));
     });
 
     it('should handle with params', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tags = new Tags(dispatcher);
+      tags.dispatchGetCollection = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = 1;
       tags.findByWorkspace(id, params);
-      assert(dispatcher.get.calledWithExactly('/workspaces/1/tags', params));
+      assert(
+          tags.dispatchGetCollection.calledWithExactly(
+              '/workspaces/1/tags', params));
     });
 
     it('should handle string numbers', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tags = new Tags(dispatcher);
+      tags.dispatchGetCollection = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = '1';
       tags.findByWorkspace(id, params);
-      assert(dispatcher.get.calledWithExactly('/workspaces/1/tags', params));
+      assert(
+          tags.dispatchGetCollection.calledWithExactly(
+              '/workspaces/1/tags', params));
     });
 
     it('should do weird things with real strings', function() {
-      var dispatcher = {
-        get: sinon.stub()
-      };
+      var dispatcher = {};
       var tags = new Tags(dispatcher);
+      tags.dispatchGetCollection = sinon.stub();
       var params = {
         'opt_fields': 'id,name'
       };
       var id = 'foobar';
       tags.findByWorkspace(id, params);
-      assert(dispatcher.get.calledWithExactly('/workspaces/NaN/tags', params));
+      assert(
+          tags.dispatchGetCollection.calledWithExactly(
+              '/workspaces/NaN/tags', params));
     });
   });
 
   describe('#update', function() {
     it('should handle the update', function() {
-      var dispatcher = {
-        put: sinon.stub()
-      };
+      var dispatcher = {};
       var tags = new Tags(dispatcher);
+      tags.dispatchPut = sinon.stub();
       var id = 1;
       var data = {
         name: 'Test'
       };
       tags.update(id, data);
-      assert(dispatcher.put.calledWithExactly('/tags/1', data));
+      assert(tags.dispatchPut.calledWithExactly('/tags/1', data));
     });
 
     it('should handle string numbers', function() {
-      var dispatcher = {
-        put: sinon.stub()
-      };
+      var dispatcher = {};
       var tags = new Tags(dispatcher);
+      tags.dispatchPut = sinon.stub();
       var id = '1';
       var data = {
         name: 'Test'
       };
       tags.update(id, data);
-      assert(dispatcher.put.calledWithExactly('/tags/1', data));
+      assert(tags.dispatchPut.calledWithExactly('/tags/1', data));
     });
 
     it('should do weird things with real strings', function() {
-      var dispatcher = {
-        put: sinon.stub()
-      };
+      var dispatcher = {};
       var tags = new Tags(dispatcher);
+      tags.dispatchPut = sinon.stub();
       var id = 'foobar';
       var data = {
         name: 'Test'
       };
       tags.update(id, data);
-      assert(dispatcher.put.calledWithExactly('/tags/NaN', data));
+      assert(tags.dispatchPut.calledWithExactly('/tags/NaN', data));
     });
   });
 });

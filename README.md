@@ -5,7 +5,7 @@ A node.js client for the 1.0 version of the Asana API.
 ## Design Decisions
 
 - **Thin Wrapper** This client is a thin wrapper which means that the client
-  makes no attempt to verify the validity of the arguments locally. All errors
+  makes little attempt to verify the validity of the arguments locally. All errors
   are reported by the server. We include custom Error types which will contain
   the response from the server.
 - **Promises** Promises with [bluebird][bluebird] seem like the most neutral way
@@ -18,44 +18,54 @@ A node.js client for the 1.0 version of the Asana API.
 
 ## Examples
 
-### Find all incomplete tasks assigned to me that are new or marked for today across my workspaces
+Various examples are in the repository under `examples/`, but some basic
+concepts are illustrated here.
+
+### Find some incomplete tasks assigned to me that are new or marked for today in my default workspace
 
 ```js
-var asana = require('asana');
+var Asana = require('asana');
 var util = require('util');
 
-var client = asana.Client.basicAuth(process.env.ASANA_API_KEY);
+// Using the API key for basic authentication. This is reasonable to get
+// started with, but Oauth is more secure and provides more features.
+var client = Asana.Client.create().useBasicAuth(process.env.ASANA_API_KEY);
 
-client.users.me().then(function(user) {
-  return user.workspaces.map(function(workspace) {
-    return {
-      user: user.id,
-      workspace: workspace.id
-    };
+client.users.me()
+  .then(function(user) {
+    var userId = user.id;
+    // The user's "default" workspace is the first one in the list, though
+    // any user can have multiple workspaces so you can't always assume this
+    // is the one you want to work with.
+    var workspaceId = user.workspaces[0].id;
+    return client.tasks.findAll({
+      assignee: userId,
+      workspace: workspaceId,
+      completed_since: 'now',
+      opt_fields: 'id,name,assignee_status,completed'
+    });
+  })
+  .then(function(response)) {
+    // There may be more pages of data, we could stream or return a promise
+    // to request those here - for now, let's just return the first page
+    // of items.
+    return response.data;
   });
-}).map(function(data) {
-  return client.tasks.findAll({
-    assignee: data.user,
-    workspace: data.workspace,
-    completed_since: 'now',
-    opt_fields: 'id,name,assignee_status,completed'
-  }).filter(function(task) {
+  .filter(function(task) {
     return task.assignee_status === 'today' ||
       task.assignee_status === 'new';
+  })
+  .then(function(list) {
+    console.log(util.inspect(list, {
+      colors: true,
+      depth: null
+    }));
   });
-}).reduce(function(list, tasks) {
-  return list.concat(tasks);
-}, []).then(function(list) {
-  console.log(util.inspect(list, {
-    colors: true,
-    depth: null
-  }));
-});
 ```
 
 ## Installation
 
-Install with npm
+Install with npm:
 
 ```sh
 npm install asana --save
@@ -63,16 +73,16 @@ npm install asana --save
 
 ## Documentation
 
-The code is thoroughly documented with JsDoc tags and online documentation can
+The code is thoroughly documented with JsDoc tags, and online documentation can
 be found on the [wiki][wiki]. Also, the 
 [Official Asana Documentation][asana-doc] is a great resource since this is 
 just a thin wrapper for the API.
 
 ## Contributing
 
-Feel free to fork and submit pull requests for the code. Please follow the
+Feel free to fork and submit pull requests for the code! Please follow the
 existing code as an example of style and make sure that all your code passes
-lint and test. For a sanity check
+lint and tests. For a sanity check:
 
 ```sh
 git clone git@github.com:Asana/node-asana.git
