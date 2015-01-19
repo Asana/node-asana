@@ -4,3 +4,20 @@ cache:
 language: node_js
 node_js:
   - "0.10"
+sudo: false
+deploy:
+  provider: npm
+  email: pspeter333@gmail.com
+  skip_cleanup: true
+  api_key:
+    secure: ei6thLUz14hk3Eu0Np3bXRozZSD/N/JyLjw0F8I62pdqSsd892dIglBK28VtJHvsxGNoiSQYErAOCWAG2EI9U3XDr6z+xPnBtsI+sPXPyKk4KTToMWz7Qb9W31GgqJzmhebw0mEJccpNj5MrK5aUPie25/ttvNZN95SnnCr8QV0=
+  on:
+    branch: master
+    repo: Asana/node-asana
+after_deploy:
+- git config --global user.email "git@asana.com"
+- git config --global user.name "Asana"
+- npm run doc
+env:
+  global:
+    secure: JGg/anMqdy4Jhk+HYSM+rTdTMi1i0HKu10sn7NoKWKtqinSSEb4q5sJP19RWz/ng/sYYK5SwYY3DYRPFkVxfopVedr0Uz3by9NojNHOEr8FKN+YQMRcvqa94p9RB4SuiF8Fp405vXW4JlhBlx/YxQHcs+BKjDQT88xM8TS0iqGM=
