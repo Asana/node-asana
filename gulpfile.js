@@ -77,13 +77,6 @@ gulp.task('bump-feature', function() { return bumpVersion('minor'); });
 gulp.task('bump-release', function() { return bumpVersion('major'); });
 
 /**
- * Publishes to bower
- */
-gulp.task('publish-bower', function() {
-  gulp.src(['./package.json', './bower.json'])
-});
-
-/**
  * Lints all of the JavaScript files and fails if the tasks do not pass
  */
 gulp.task('lint', function() {
