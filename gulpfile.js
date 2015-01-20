@@ -86,8 +86,6 @@ gulp.task('ensure-git-clean', function() {
   git.status(function(err, out) {
     if (err) { throw err; }
     if (!/working directory clean/.exec(out)) {
-      console.log('Output from `git status`:');
-      console.log(out);
       throw new Error('Git working directory not clean, will not bump version');
     }
   });
