@@ -3,14 +3,15 @@ cache:
   - node_modules
 language: node_js
 node_js:
-  - "0.10"
+- '0.10'
 sudo: false
 deploy:
+  matrix:
   - provider: npm
-    email: pspeter333@gmail.com
+    email: slobak@gmail.com
     skip_cleanup: true
     api_key:
-      secure: ei6thLUz14hk3Eu0Np3bXRozZSD/N/JyLjw0F8I62pdqSsd892dIglBK28VtJHvsxGNoiSQYErAOCWAG2EI9U3XDr6z+xPnBtsI+sPXPyKk4KTToMWz7Qb9W31GgqJzmhebw0mEJccpNj5MrK5aUPie25/ttvNZN95SnnCr8QV0=
+      secure: QX5VFzswWnqzlwzb3w/OkpDLZLKgddOEUmM6OeOCfnuanuQYBPghyeEQFDEebkCRxqf6sOfYTKKenk6+afLa7VtyVadnAuEgGsZn8WficeLtThw6CcmYukdOEdmWFQO0RjrauRbcch5ndXC3aHxWj//e7vZtDp+Rs3smn34XcKg=
     on:
       branch: master
       repo: Asana/node-asana
@@ -20,11 +21,8 @@ deploy:
       secure: hdgzYozbeuefYWhyMqXdI3Hv1nY/Mz2Jr0+ChaIxaoJSqqi4xyBkBRxamhZxCO0JsSil4owMLk85WCy8Vwzpb2cu4vjxcUo9WjUsmUNhpcqG8SWj1tn765QSEHC+dkiLt1qRMVs0NXBedzmaFsz5M5BFHL8fdnA4u40hgTETxzc=
     file: dist/asana.js
     on:
+      branch: master
       repo: Asana/node-asana
-after_deploy:
-- git config --global user.email "git@asana.com"
-- git config --global user.name "Asana"
-- npm run doc
 env:
   global:
     secure: JGg/anMqdy4Jhk+HYSM+rTdTMi1i0HKu10sn7NoKWKtqinSSEb4q5sJP19RWz/ng/sYYK5SwYY3DYRPFkVxfopVedr0Uz3by9NojNHOEr8FKN+YQMRcvqa94p9RB4SuiF8Fp405vXW4JlhBlx/YxQHcs+BKjDQT88xM8TS0iqGM=
