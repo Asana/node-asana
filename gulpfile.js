@@ -68,7 +68,7 @@ function bumpVersion(importance) {
   return gulp.src(['./package.json', './bower.json'])
       .pipe(bump({type: importance}))
       .pipe(gulp.dest('./'))
-      .pipe(git.commit('bumps package version'))
+      .pipe(git.commit('bump package version'))
       .pipe(filter('package.json'))
       .pipe(tagVersion());
 }
