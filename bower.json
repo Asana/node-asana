@@ -1,9 +1,10 @@
 {
   "name": "asana",
   "main": "dist/asana.js",
-  "version": "0.5.3",
+  "version": "0.5.5",
   "homepage": "https://github.com/Asana/node-asana",
   "authors": [
+    "Greg Slovacek <greg@asana.com>",
     "Phips Peter <pspeter333@gmail.com>"
   ],
   "description": "A JavaScript client for the 1.0 version of the Asana API",
