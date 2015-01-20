@@ -24,6 +24,9 @@ deploy:
     on:
       branch: master
       repo: Asana/node-asana
+after_deploy:
+- git config --global user.email "git@asana.com"
+- git config --global user.name "Asana"
 env:
   global:
     secure: JGg/anMqdy4Jhk+HYSM+rTdTMi1i0HKu10sn7NoKWKtqinSSEb4q5sJP19RWz/ng/sYYK5SwYY3DYRPFkVxfopVedr0Uz3by9NojNHOEr8FKN+YQMRcvqa94p9RB4SuiF8Fp405vXW4JlhBlx/YxQHcs+BKjDQT88xM8TS0iqGM=
