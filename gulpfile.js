@@ -3,6 +3,8 @@ var gulp = require('gulp');
 var istanbul = require('gulp-istanbul');
 var jshint = require('gulp-jshint');
 var mocha = require('gulp-mocha');
+var uglify = require('gulp-uglify');
+var vinylBuffer = require('vinyl-buffer');
 var vinylSourceStream = require('vinyl-source-stream');
 
 /**
@@ -17,18 +19,30 @@ var test = 'test/**/*.js';
  * High Level Tasks
  */
 gulp.task('test', ['bundle', 'spec']);
+gulp.task('bundle', ['browser', 'browser-min']);
 
 /**
- * Bundles the code
+ * Bundles the code, full version to `asana.js` and minified to `asana-min.js`
  */
-gulp.task('bundle', function() {
-  return browserify({
-    entries: [index],
-    standalone: 'Asana'
-  }).bundle()
-    .pipe(vinylSourceStream('asana.js'))
-    .pipe(gulp.dest('dist'));
-});
+function browserTask(minify) {
+  return function() {
+    var task = browserify(
+        {
+          entries: [index],
+          standalone: 'Asana'
+        })
+        .bundle()
+        .pipe(vinylSourceStream('asana' + (minify ? '-min' : '') + '.js'));
+    if (minify) {
+      task = task
+          .pipe(vinylBuffer())
+          .pipe(uglify());
+    }
+    return task.pipe(gulp.dest('dist'));
+  };
+}
+gulp.task('browser', browserTask(false));
+gulp.task('browser-min', browserTask(true));
 
 /**
  * Lints all of the JavaScript files and fails if the tasks do not pass

@@ -18,7 +18,9 @@ deploy:
     skip_cleanup: true
     api_key:
       secure: hdgzYozbeuefYWhyMqXdI3Hv1nY/Mz2Jr0+ChaIxaoJSqqi4xyBkBRxamhZxCO0JsSil4owMLk85WCy8Vwzpb2cu4vjxcUo9WjUsmUNhpcqG8SWj1tn765QSEHC+dkiLt1qRMVs0NXBedzmaFsz5M5BFHL8fdnA4u40hgTETxzc=
-    file: dist/asana.js
+    file:
+      - dist/asana.js
+      - dist/asana-min.js
     on:
       branch: master
       repo: Asana/node-asana
