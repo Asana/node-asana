@@ -1,18 +1,15 @@
 var browserify = require('browserify');
+var bump = require('gulp-bump');
+var filter = require('gulp-filter');
+var git = require('gulp-git');
 var gulp = require('gulp');
 var istanbul = require('gulp-istanbul');
 var jshint = require('gulp-jshint');
 var mocha = require('gulp-mocha');
-var shell = require('gulp-shell');
+var tagVersion = require('gulp-tag-version');
 var uglify = require('gulp-uglify');
 var vinylBuffer = require('vinyl-buffer');
 var vinylSourceStream = require('vinyl-source-stream');
-
-//xcxc
-var git = require('gulp-git');
-var bump = require('gulp-bump');
-var filter = require('gulp-filter');
-var tagVersion = require('gulp-tag-version');
 
 /**
  * Paths
@@ -72,9 +69,29 @@ function bumpVersion(importance) {
       .pipe(filter('package.json'))
       .pipe(tagVersion());
 }
-gulp.task('bump-patch', function() { return bumpVersion('patch'); });
-gulp.task('bump-feature', function() { return bumpVersion('minor'); });
-gulp.task('bump-release', function() { return bumpVersion('major'); });
+gulp.task('bump-patch', ['ensure-git-clean'], function() {
+  return bumpVersion('patch');
+});
+gulp.task('bump-feature', ['ensure-git-clean'], function() {
+  return bumpVersion('minor');
+});
+gulp.task('bump-release', ['ensure-git-clean'], function() {
+  return bumpVersion('major');
+});
+
+/**
+ * Ensure that the git working directory is clean.
+ */
+gulp.task('ensure-git-clean', function() {
+  git.status(function(err, out) {
+    if (err) { throw err; }
+    if (!/working directory clean/.exec(out)) {
+      console.log('Output from `git status`:');
+      console.log(out);
+      throw new Error('Git working directory not clean, will not bump version');
+    }
+  });
+});
 
 /**
  * Lints all of the JavaScript files and fails if the tasks do not pass
