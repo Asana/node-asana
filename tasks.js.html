@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: resources/tasks.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: resources/tasks.js</h1>
+
+    
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>var util = require('util');
+var Resource = require('./resource');
+
+/**
+ * Access to the Tasks resource
+ * @class
+ * @param {Dispatcher} dispatcher The API dispatcher
+ */
+function Tasks(dispatcher) {
+  Resource.call(this, dispatcher);
+}
+util.inherits(Tasks, Resource);
+
+/**
+ * Creates a new task
+ * @param  {Object} data The data for the task
+ * @return {Promise}     The result of the API call
+ */
+Tasks.prototype.create = function(data) {
+  return this.dispatchPost('/tasks', data);
+};
+
+/**
+ * Creates a new task in the workspace
+ * @param  {Number} workspaceId The workspace id
+ * @param  {Object} data        The data for the task
+ * @return {Promise}            The result of the API call
+ */
+Tasks.prototype.createInWorkspace = function(workspaceId, data) {
+  var path = util.format('/workspaces/%d/tasks', workspaceId);
+  return this.dispatchPost(path, data);
+};
+
+/**
+ * Returns the task named by the given Asana ID
+ * @param  {Number} taskId   The task id
+ * @param  {Object} [params] Extra params for the dispatcher
+ * @return {Promise}         The result of the API call
+ */
+Tasks.prototype.findById = function(taskId, params) {
+  var path = util.format('/tasks/%d', taskId);
+  return this.dispatchGet(path, params);
+};
+
+/**
+ * Returns the task named by the given external ID
+ * @param  {String}  externalId   The task id
+ * @param  {String}  workspaceId  The workspace containing the task
+ * @param  {Object} [params] Extra params for the dispatcher
+ * @return {Promise}         The result of the API call
+ */
+Tasks.prototype.findByExternalId = function(externalId, workspaceId, params) {
+  params = params || {};
+  params.workspace = workspaceId;
+  var path = '/tasks/external:' + externalId;
+  return this.dispatchGet(path, params);
+};
+
+/**
+ * Returns all tasks that the dispatcher has access to
+ * @param  {Object} [params] Extra params for the dispatcher
+ * @return {Promise}         The result of the API call
+ */
+Tasks.prototype.findAll = function(params) {
+  return this.dispatchGetCollection('/tasks', params);
+};
+
+/**
+ * Finds a task by project
+ * @param  {Number} projectId The project id
+ * @param  {Object} [params]  Extra params for the dispatcher
+ * @return {Promise}          The result of the API call
+ */
+Tasks.prototype.findByProject = function(projectId, params) {
+  var path = util.format('/projects/%d/tasks', projectId);
+  return this.dispatchGetCollection(path, params);
+};
+
+/**
+ * Finds a task by tag
+ * @param  {Number} tagId    The tag id
+ * @param  {Object} [params] Extra params for the dispatcher
+ * @return {Promise}         The result of the API call
+ */
+Tasks.prototype.findByTag = function(tagId, params) {
+  var path = util.format('/tags/%d/tasks', tagId);
+  return this.dispatchGetCollection(path, params);
+};
+
+/**
+ * Dispatches a POST request to /tasks/:taskId/removeFollowers with to remove
+ * followers from the task.
+ * @param {Number} taskId The task id
+ * @param {Object} data   The data containing the list of followers
+};
+
+/**
+ * Update a task
+ * @param  {Number} taskId    The task id
+ * @param  {Object} data      The data to be sent to the workspace
+ * @return {Promise}          The result of the API call
+ */
+Tasks.prototype.update = function(taskId, data) {
+  var path = util.format('/tasks/%d', taskId);
+  return this.dispatchPut(path, data);
+};
+
+/**
+ * Deletes a task
+ * @param  {Number} taskId The task id
+ * @return {Promise}       The result of the API call
+ */
+Tasks.prototype.delete = function(taskId) {
+  var path = util.format('/tasks/%d', taskId);
+  return this.dispatchDelete(path);
+};
+
+/**
+ * Dispatches a POST request to /tasks/:taskId/addFollowers with to add
+ * followers to the task.
+ * @param {Number} taskId The task id
+ * @param {Object} data   The data containing the list of followers
+ */
+Tasks.prototype.addFollowers = function(taskId, data) {
+  var path = util.format('/tasks/%d/addFollowers', taskId);
+  return this.dispatchPost(path, data);
+};
+
+/**
+ * Dispatches a POST request to /tasks/:taskId/removeFollowers with to remove
+ * followers from the task.
+ * @param {Number} taskId The task id
+ * @param {Object} data   The data containing the list of followers
+ */
+Tasks.prototype.removeFollowers = function(taskId, data) {
+  var path = util.format('/tasks/%d/removeFollowers', taskId);
+  return this.dispatchPost(path, data);
+};
+
+/**
+ * Dispatches a GET request to /tasks/:taskId/projects
+ * @param {Number} taskId The task id
+ * @return {Promise}      The result of the API call
+ */
+Tasks.prototype.projects = function(taskId) {
+  var path = util.format('/tasks/%d/projects', taskId);
+  return this.dispatchGetCollection(path, undefined);
+};
+
+/**
+ * Dispatches a POST request to /tasks/:taskId/addProject with the project to
+ * add to to the task.
+ * @param {Number} taskId The task id
+ * @param {Number} data   The data containing the projectId
+ * @return {Promise}      The result of the API call
+ */
+Tasks.prototype.addProject = function(taskId, data) {
+  var path = util.format('/tasks/%d/addProject', taskId);
+  return this.dispatchPost(path, data);
+};
+
+/**
+ * Dispatches a POST request to /tasks/:taskId/removeProject with the project to
+ * remove from the task
+ * @param {Number} taskId The task id
+ * @param {Object} data   The data containing the projectId
+ * @return {Promise}      The result of the API call
+ */
+Tasks.prototype.removeProject = function(taskId, data) {
+  var path = util.format('/tasks/%d/removeProject', taskId);
+  return this.dispatchPost(path, data);
+};
+
+/**
+ * Get tags associated with a task
+ * @param {Number} taskId The task id
+ * @return {Promise}      The result of the API call
+ */
+Tasks.prototype.tags = function(taskId) {
+  var path = util.format('/tasks/%d/tags', taskId);
+  return this.dispatchGetCollection(path, undefined);
+};
+
+/**
+ * Add a tag to a task
+ * @param {Number} taskId The task id
+ * @param {Number} data   The data containing the tagId
+ * @return {Promise}      The result of the API call
+ */
+Tasks.prototype.addTag = function(taskId, data) {
+  var path = util.format('/tasks/%d/addTag', taskId);
+  return this.dispatchPost(path, data);
+};
+
+/**
+ * Dispatches a POST request to /tasks/:taskId/removeTag with the tag to
+ * remove from the task
+ * @param {Number} taskId The task id
+ * @param {Object} data   The data containing the tagId
+ * @return {Promise}      The result of the API call
+ */
+Tasks.prototype.removeTag = function(taskId, data) {
+  var path = util.format('/tasks/%d/removeTag', taskId);
+  return this.dispatchPost(path, data);
+};
+
+/**
+ * Gets all subtasks for a task
+ * @param {Number} taskId The task id
+ * @return {Promise}      The result of the API call
+ */
+Tasks.prototype.subtasks = function(taskId) {
+  var path = util.format('/tasks/%d/subtasks', taskId);
+  return this.dispatchGetCollection(path, undefined);
+};
+
+/**
+ * Creates a new subtask
+ * @param {Number} taskId The task id
+ * @param {Object} data   The data for the subtask
+ * @return {Promise}      The result of the API call
+ */
+Tasks.prototype.addSubtask = function(taskId, data) {
+  var path = util.format('/tasks/%d/subtasks', taskId);
+  return this.dispatchPost(path, data);
+};
+
+/**
+ * Sets the parent for a task
+ * @param {Number} taskId   The task id
+ * @param {Number} parentId The id of the parent task
+ * @return {Promise}        The result of the API call
+ */
+Tasks.prototype.setParent = function(taskId, parentId) {
+  var path = util.format('/tasks/%d/setParent', taskId);
+  return this.dispatchPost(path, {
+    parent: Number(parentId)
+  });
+};
+
+module.exports = Tasks;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li><li><a href="Attachments.html">Attachments</a></li><li><a href="Authenticator.html">Authenticator</a></li><li><a href="BaseBrowserFlow.html">BaseBrowserFlow</a></li><li><a href="BasicAuthenticator.html">BasicAuthenticator</a></li><li><a href="BufferedReadable.html">BufferedReadable</a></li><li><a href="ChromeExtensionFlow.html">ChromeExtensionFlow</a></li><li><a href="Client.html">Client</a></li><li><a href="Dispatcher.html">Dispatcher</a></li><li><a href="Events.html">Events</a></li><li><a href="NativeFlow.html">NativeFlow</a></li><li><a href="OauthAuthenticator.html">OauthAuthenticator</a></li><li><a href="OauthError.html">OauthError</a></li><li><a href="PopupFlow.html">PopupFlow</a></li><li><a href="Projects.html">Projects</a></li><li><a href="RedirectFlow.html">RedirectFlow</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ResourceStream.html">ResourceStream</a></li><li><a href="Stories.html">Stories</a></li><li><a href="Tags.html">Tags</a></li><li><a href="Tasks.html">Tasks</a></li><li><a href="Teams.html">Teams</a></li><li><a href="Users.html">Users</a></li><li><a href="Workspaces.html">Workspaces</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Tue Jan 20 2015 16:55:05 GMT-0800 (PST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

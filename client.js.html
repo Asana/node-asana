@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: client.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: client.js</h1>
+
+    
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>var Dispatcher = require('./dispatcher');
+var resources = require('./resources');
+var BasicAuthenticator = require('./auth/basic_authenticator');
+var OauthAuthenticator = require('./auth/oauth_authenticator');
+var App = require('./auth/app');
+var autoDetect = require('./auth/auto_detect');
+var paging = require('./util/paging.js');
+var ResourceStream = require('./util/resource_stream.js');
+
+/**
+ * Constructs a Client with instances of all the resources using the dispatcher.
+ * It also keeps a reference to the dispatcher so that way the end user can have
+ * access to it.
+ * @class
+ * @classdesc A wrapper for the Asana API which is authenticated for one user
+ * @param {Dispatcher} dispatcher The request dispatcher to use
+ * @param {Object} options        Options to configure the client
+ * @param {String} [clientId]     ID of the client, required for Oauth
+ * @param {String} [clientSecret] Secret key, for some Oauth flows
+ * @param {String} [redirectUri]  Default redirect URI for this client
+ * @param {String} [asanaBaseUrl] Base URL for Asana, for debugging
+ */
+function Client(dispatcher, options) {
+  options = options || {};
+  /**
+   * The internal dispatcher. This is mostly used by the resources but provided
+   * for custom requests to the API or API features that have not yet been added
+   * to the client.
+   * @type {Dispatcher}
+   */
+  this.dispatcher = dispatcher;
+  /**
+   * An instance of the Attachments resource.
+   * @type {Attachments}
+   */
+  this.attachments = new resources.Attachments(this.dispatcher);
+  /**
+   * An instance of the Events resource.
+   * @type {Events}
+   */
+  this.events = new resources.Events(this.dispatcher);
+  /**
+   * An instance of the Projects resource.
+   * @type {Projects}
+   */
+  this.projects = new resources.Projects(this.dispatcher);
+  /**
+   * An instance of the Stories resource.
+   * @type {Stories}
+   */
+  this.stories = new resources.Stories(this.dispatcher);
+  /**
+   * An instance of the Tags resource.
+   * @type {Tags}
+   */
+  this.tags = new resources.Tags(this.dispatcher);
+  /**
+   * An instance of the Tasks resource.
+   * @type {Tasks}
+   */
+  this.tasks = new resources.Tasks(this.dispatcher);
+  /**
+   * An instance of the Teams resource.
+   * @type {Teams}
+   */
+  this.teams = new resources.Teams(this.dispatcher);
+  /**
+   * An instance of the Users resource.
+   * @type {Users}
+   */
+  this.users = new resources.Users(this.dispatcher);
+  /**
+   * An instance of the Workspaces resource.
+   * @type {Workspaces}
+   */
+  this.workspaces = new resources.Workspaces(this.dispatcher);
+
+  // Store off Oauth info.
+  this.app = new App(options);
+}
+
+/**
+ * Ensures the client is authorized to make requests. Kicks off the
+ * configured Oauth flow, if any.
+ *
+ * @returns {Promise&lt;Client>} A promise that resolves to this client when
+ *     authorization is complete.
+ */
+Client.prototype.authorize = function() {
+  var me = this;
+  return me.dispatcher.authorize().then(function() {
+    return me;
+  });
+};
+
+/**
+ * Configure the Client to use a user's API Key and then authenticate
+ * through HTTP Basic Authentication. This should only be done for testing,
+ * as requests using Oauth can provide more security, higher rate limits, and
+ * more features.
+ * @param  {String} apiKey The Asana Api Key of the user
+ * @return {Client}        this
+ */
+Client.prototype.useBasicAuth = function(apiKey) {
+  this.dispatcher.setAuthenticator(new BasicAuthenticator(apiKey));
+  return this;
+};
+
+/**
+ * Configure the client to authenticate via Oauth. Credentials can be
+ * supplied, or they can be obtained by running an Oauth flow.
+ * @param  {Object} options Options for Oauth. Includes any options for
+ *     the selected flow.
+ * @option {Function} [flowType]  Type of OauthFlow to use to obtain user
+ *     authorization. Defaults to autodetect based on environment.
+ * @option {Object} [credentials] Credentials to use; no flow required to
+ *     obtain authorization. This object should at a minimum contain an
+ *     `access_token` string field.
+ * @return {Client}               this
+ */
+Client.prototype.useOauth = function(options) {
+  options = options || {};
+  options.app = this.app;
+  var authenticator;
+  if (options.credentials) {
+    authenticator =
+        new OauthAuthenticator({ credentials: options.credentials });
+  } else {
+    var FlowType = options.flowType || autoDetect();
+    if (FlowType === null) {
+      throw new Error('Could not autodetect Oauth flow type');
+    }
+    var flow = new FlowType(options);
+    authenticator = new OauthAuthenticator({ flow: flow });
+  }
+  this.dispatcher.setAuthenticator(authenticator);
+  return this;
+};
+
+/**
+ * Get the next page of results in a collection.
+ *
+ * @param {Object} response Full payload from a response to a
+ *     collection request.
+ * @param {Object} [dispatchOptions]
+ */
+Client.prototype.nextPage = function(response, dispatchOptions) {
+  return paging.nextPage(response, this.dispatcher, dispatchOptions);
+};
+
+/**
+ * Given a promise for a collection request, return a stream for all the
+ * remaining elements in the collection. It will automatically fetch
+ * more pages as needed.
+ *
+ * @param {Promise} promise        A promise previously returned by a client
+ *     request for a collection of objects.
+ * @param {Object} dispatchOptions Options for the dispatcher on subsequent
+ *     requests.
+ */
+Client.prototype.stream = function(promise, dispatchOptions) {
+  return new ResourceStream(this.dispatcher, promise, dispatchOptions);
+};
+
+/**
+ * Creates a new client.
+ * @param {Object} options Options for specifying the client, see constructor.
+ */
+Client.create = function(options) {
+  options = options || {};
+  return new Client(
+      new Dispatcher({
+        asanaBaseUrl: options.asanaBaseUrl
+      }),
+      options);
+};
+
+module.exports = Client;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li><li><a href="Attachments.html">Attachments</a></li><li><a href="Authenticator.html">Authenticator</a></li><li><a href="BaseBrowserFlow.html">BaseBrowserFlow</a></li><li><a href="BasicAuthenticator.html">BasicAuthenticator</a></li><li><a href="BufferedReadable.html">BufferedReadable</a></li><li><a href="ChromeExtensionFlow.html">ChromeExtensionFlow</a></li><li><a href="Client.html">Client</a></li><li><a href="Dispatcher.html">Dispatcher</a></li><li><a href="Events.html">Events</a></li><li><a href="NativeFlow.html">NativeFlow</a></li><li><a href="OauthAuthenticator.html">OauthAuthenticator</a></li><li><a href="OauthError.html">OauthError</a></li><li><a href="PopupFlow.html">PopupFlow</a></li><li><a href="Projects.html">Projects</a></li><li><a href="RedirectFlow.html">RedirectFlow</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ResourceStream.html">ResourceStream</a></li><li><a href="Stories.html">Stories</a></li><li><a href="Tags.html">Tags</a></li><li><a href="Tasks.html">Tasks</a></li><li><a href="Teams.html">Teams</a></li><li><a href="Users.html">Users</a></li><li><a href="Workspaces.html">Workspaces</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Tue Jan 20 2015 16:55:05 GMT-0800 (PST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: auth/native_flow.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: auth/native_flow.js</h1>
+
+    
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>var readline = require('readline');
+var Bluebird = require('bluebird');
+var oauthUtil = require('./oauth_util');
+
+/**
+ * Default function to return instructions for the user to authorize the app.
+ * Written to stdout during `run`.
+ * @param {String} url The authorization URL
+ * @returns {String} Instructions for the user
+ */
+function defaultInstructions(url) {
+  return [
+    '* * * * * * * * * * * * * * * * * * * * * * * * * * *',
+    'Please open a browser to the url:',
+    '',
+    url,
+    '',
+    'and follow the prompts to authorize this application.',
+    '* * * * * * * * * * * * * * * * * * * * * * * * * * *'
+  ].join('\n');
+}
+
+/**
+ * Default function to return the prompt for the user to enter the
+ * authorization code. Written to stdout immediately preceding keyboard input
+ * during `run`.
+ * @returns {String} A message to prompt the user to enter the code.
+ */
+function defaultPrompt() {
+  return 'Enter the code here: ';
+}
+
+/**
+ * An Oauth flow that can be run from the console or an app that does
+ * not have the ability to open and manage a browser on its own.
+ * @param {Object} options
+ * @option {App} app App to authenticate for
+ * @option {String function(String)} [instructions] Function returning the
+ *     instructions to output to the user. Passed the authorize url.
+ * @option {String function()} [prompt] String to output immediately before
+ *     waiting for a line from stdin.
+ * @constructor
+ */
+function NativeFlow(options) {
+  this.app = options.app;
+  this.instructions = options.instructions || defaultInstructions;
+  this.prompt = options.prompt || defaultPrompt;
+  this.redirectUri = oauthUtil.NATIVE_REDIRECT_URI;
+}
+
+/**
+ * Run the Oauth flow, prompting the user to go to the authorization URL
+ * and enter the code it displays when finished.
+ *
+ * @return {Promise&lt;Object>} The access token object, which will include
+ *     `access_token` and `refresh_token`.
+ */
+NativeFlow.prototype.run = function() {
+  var me = this;
+  return me.promptForCode(me.authorizeUrl()).then(function(code) {
+    return me.accessToken(code);
+  });
+};
+
+/**
+ * @returns {String} The URL used to authorize the user for the app.
+ */
+NativeFlow.prototype.authorizeUrl = function() {
+  return this.app.asanaAuthorizeUrl({
+    redirectUri: this.redirectUri
+  });
+};
+
+/**
+ * @param {String} code An authorization code obtained via `asanaAuthorizeUrl`.
+ * @return {Promise&lt;Object>} The token, which will include the `access_token`
+ *     used for API access, as well as a `refresh_token` which can be stored
+ *     to get a new access token without going through the flow again.
+ */
+NativeFlow.prototype.accessToken = function(code) {
+  return this.app.accessTokenFromCode(code, {
+    redirectUri: this.redirectUri
+  });
+};
+
+/**
+ * @return {Promise} The access token, which will include a refresh token
+ *     that can be stored in the future to create a client without going
+ *     through the Oauth flow.
+ */
+NativeFlow.prototype.promptForCode = function(url) {
+  var me = this;
+  var rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+  return new Bluebird(function(resolve) {
+    console.log(me.instructions(url));
+    rl.question(me.prompt(), function(code) {
+      rl.close();
+      return resolve(code);
+    });
+  });
+};
+
+module.exports = NativeFlow;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li><li><a href="Attachments.html">Attachments</a></li><li><a href="Authenticator.html">Authenticator</a></li><li><a href="BaseBrowserFlow.html">BaseBrowserFlow</a></li><li><a href="BasicAuthenticator.html">BasicAuthenticator</a></li><li><a href="BufferedReadable.html">BufferedReadable</a></li><li><a href="ChromeExtensionFlow.html">ChromeExtensionFlow</a></li><li><a href="Client.html">Client</a></li><li><a href="Dispatcher.html">Dispatcher</a></li><li><a href="Events.html">Events</a></li><li><a href="NativeFlow.html">NativeFlow</a></li><li><a href="OauthAuthenticator.html">OauthAuthenticator</a></li><li><a href="OauthError.html">OauthError</a></li><li><a href="PopupFlow.html">PopupFlow</a></li><li><a href="Projects.html">Projects</a></li><li><a href="RedirectFlow.html">RedirectFlow</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ResourceStream.html">ResourceStream</a></li><li><a href="Stories.html">Stories</a></li><li><a href="Tags.html">Tags</a></li><li><a href="Tasks.html">Tasks</a></li><li><a href="Teams.html">Teams</a></li><li><a href="Users.html">Users</a></li><li><a href="Workspaces.html">Workspaces</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Tue Jan 20 2015 16:55:05 GMT-0800 (PST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

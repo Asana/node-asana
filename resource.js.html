@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: resources/resource.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: resources/resource.js</h1>
+
+    
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Base class for a resource accessible via the API. Uses a `Dispatcher` to
+ * access the resources.
+ * @param {Dispatcher} dispatcher
+ * @constructor
+ */
+function Resource(dispatcher) {
+  /**
+   * An instance of the dispatcher. This is usually passed from the client.
+   * @type {Dispatcher}
+   */
+  this.dispatcher = dispatcher;
+}
+
+/**
+ * Default number of items to get per page.
+ */
+Resource.DEFAULT_PAGE_LIMIT = 50;
+
+/**
+ * Helper method that dispatches a GET request to the API, where the expected
+ * result is a collection.
+ * @param  {Dispatcher} dispatcher
+ * @param  {String}     path    The path of the API
+ * @param  {Object}     [query] The query params
+ * @param  {Object}     [dispatchOptions] Options for handling the request and
+ *     response. See `Dispatcher.dispatch`.
+ * @return {Promise}            The response for the request
+ */
+Resource.getCollection = function(dispatcher, path, query, dispatchOptions) {
+  query = query || {};
+  query.limit = query.limit || Resource.DEFAULT_PAGE_LIMIT;
+  return dispatcher.get(path, query, dispatchOptions);
+};
+
+/**
+ * Helper method for any request Promise from the Dispatcher, unwraps the `data`
+ * value from the payload.
+ * @param  {Promise} promise A promise returned from a `Dispatcher` request.
+ * @return {Promise}         The `data` portion of the response payload.
+ */
+Resource.unwrap = function(promise) {
+  return promise.then(function(payload) {
+    return payload.data;
+  });
+};
+
+/**
+ * Dispatches a GET request to the API, where the expected result is a
+ * single resource.
+ * @param  {String}     path    The path of the API
+ * @param  {Object}     [query] The query params
+ * @param  {Object}     [dispatchOptions] Options for handling the request and
+ *     response. See `Dispatcher.dispatch`.
+ * @return {Promise}            The response for the request
+ */
+Resource.prototype.dispatchGet = function(path, query, dispatchOptions) {
+  return Resource.unwrap(this.dispatcher.get(path, query, dispatchOptions));
+};
+
+/**
+ * Dispatches a GET request to the API, where the expected result is a
+ * collection.
+ * @param  {String}     path    The path of the API
+ * @param  {Object}     [query] The query params
+ * @param  {Object}     [dispatchOptions] Options for handling the request and
+ *     response. See `Dispatcher.dispatch`.
+ * @return {Promise}            The response for the request
+ */
+Resource.prototype.dispatchGetCollection =
+    function(path, query, dispatchOptions) {
+  return Resource.getCollection(this.dispatcher, path, query, dispatchOptions);
+};
+
+/**
+ * Dispatches a POST request to the API, where the expected response is a
+ * single resource.
+ * @param  {String}     path    The path of the API
+ * @param  {Object}     [query] The query params
+ * @param  {Object}     [dispatchOptions] Options for handling the request and
+ *     response. See `Dispatcher.dispatch`.
+ * @return {Promise}            The response for the request
+ */
+Resource.prototype.dispatchPost = function(path, query, dispatchOptions) {
+  return Resource.unwrap(this.dispatcher.post(path, query, dispatchOptions));
+};
+
+/**
+ * Dispatches a POST request to the API, where the expected response is a
+ * single resource.
+ * @param  {String}     path    The path of the API
+ * @param  {Object}     [query] The query params
+ * @param  {Object}     [dispatchOptions] Options for handling the request and
+ *     response. See `Dispatcher.dispatch`.
+ * @return {Promise}            The response for the request
+ */
+Resource.prototype.dispatchPut = function(path, query, dispatchOptions) {
+  return Resource.unwrap(this.dispatcher.put(path, query, dispatchOptions));
+};
+
+/**
+ * Dispatches a DELETE request to the API. The expected response is an
+ * empty resource.
+ * @param  {String}     path    The path of the API
+ * @param  {Object}     [dispatchOptions] Options for handling the request and
+ *     response. See `Dispatcher.dispatch`.
+ * @return {Promise}            The response for the request
+ */
+Resource.prototype.dispatchDelete = function(path, dispatchOptions) {
+  return Resource.unwrap(this.dispatcher.delete(path, dispatchOptions));
+};
+
+module.exports = Resource;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a></li><li><a href="Attachments.html">Attachments</a></li><li><a href="Authenticator.html">Authenticator</a></li><li><a href="BaseBrowserFlow.html">BaseBrowserFlow</a></li><li><a href="BasicAuthenticator.html">BasicAuthenticator</a></li><li><a href="BufferedReadable.html">BufferedReadable</a></li><li><a href="ChromeExtensionFlow.html">ChromeExtensionFlow</a></li><li><a href="Client.html">Client</a></li><li><a href="Dispatcher.html">Dispatcher</a></li><li><a href="Events.html">Events</a></li><li><a href="NativeFlow.html">NativeFlow</a></li><li><a href="OauthAuthenticator.html">OauthAuthenticator</a></li><li><a href="OauthError.html">OauthError</a></li><li><a href="PopupFlow.html">PopupFlow</a></li><li><a href="Projects.html">Projects</a></li><li><a href="RedirectFlow.html">RedirectFlow</a></li><li><a href="Resource.html">Resource</a></li><li><a href="ResourceStream.html">ResourceStream</a></li><li><a href="Stories.html">Stories</a></li><li><a href="Tags.html">Tags</a></li><li><a href="Tasks.html">Tasks</a></li><li><a href="Teams.html">Teams</a></li><li><a href="Users.html">Users</a></li><li><a href="Workspaces.html">Workspaces</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Tue Jan 20 2015 16:55:05 GMT-0800 (PST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
