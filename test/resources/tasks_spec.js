@@ -4,6 +4,7 @@ var sinon = require('sinon');
 var Tasks = require('../../lib/resources/tasks');
 
 describe('Tasks', function() {
+
   describe('#new', function() {
     it('should add the dispatcher to itself', function() {
       var dispatcher = sinon.stub();
@@ -130,6 +131,39 @@ describe('Tasks', function() {
       var id = 'foobar';
       tasks.findById(id, params);
       assert(tasks.dispatchGet.calledWithExactly('/tasks/NaN', params));
+    });
+  });
+
+  describe('#findByExternalId', function() {
+    it('should handle without params', function() {
+      var dispatcher = {};
+      var tasks = new Tasks(dispatcher);
+      tasks.dispatchGet = sinon.stub();
+      tasks.findByExternalId(1);
+      assert(tasks.dispatchGet.calledWithExactly(
+          '/tasks/external%3A1', undefined));
+    });
+
+    it('should handle with params', function() {
+      var dispatcher = {};
+      var tasks = new Tasks(dispatcher);
+      tasks.dispatchGet = sinon.stub();
+      var params = {
+        'opt_fields': 'id,name'
+      };
+      tasks.findByExternalId(1, params);
+      assert(tasks.dispatchGet.calledWithExactly(
+          '/tasks/external%3A1', params));
+    });
+
+    it('should encode external ids', function() {
+      var dispatcher = {};
+      var tasks = new Tasks(dispatcher);
+      tasks.dispatchGet = sinon.stub();
+      tasks.findByExternalId('http://u@p:foo.com/?query#frag');
+      assert(tasks.dispatchGet.calledWithExactly(
+          '/tasks/external%3Ahttp%3A%2F%2Fu%40p%3Afoo.com%2F%3Fquery%23frag',
+          undefined));
     });
   });
 
