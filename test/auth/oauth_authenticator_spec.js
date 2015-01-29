@@ -68,19 +68,19 @@ describe('OauthAuthenticator', function() {
       });
       var p = oauthAuthenticator.ensureCredentials();
       assert.equal(true, p.isResolved());
+      // Check if we've stored the credentials correctly.
+      assert.deepEqual(
+        {'access_token': 'token'},
+        oauthAuthenticator.credentials
+      );
     });
 
-    it('should run the flow to update credentials', function(done){
-      var runStub = sinon.stub(BaseBrowserFlow.prototype, 'run');
-      runStub.returns(Bluebird.resolve('updated_credentials'));
-      var oauthAuthenticator = new OauthAuthenticator({
-        flow: new BaseBrowserFlow({})
-      });
-      oauthAuthenticator.ensureCredentials().then(function() {
+    it('should run the flow to update credentials', function(){
+      var flowStub = sinon.createStubInstance(BaseBrowserFlow);
+      flowStub.run.returns(Bluebird.resolve('updated_credentials'));
+      var oauthAuthenticator = new OauthAuthenticator({flow: flowStub});
+      return oauthAuthenticator.ensureCredentials().then(function() {
         assert.equal('updated_credentials', oauthAuthenticator.credentials);
-        done();
-      }).catch(function (err) {
-        done(err);
       });
     });
 
