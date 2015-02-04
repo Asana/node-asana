@@ -22,9 +22,10 @@
   },
   "homepage": "https://github.com/Asana/node-asana",
   "dependencies": {
-    "asana-gen": "^0.1.1",
+    "asana-gen": "^0.1.4",
     "bluebird": "^2.3.0",
     "browser-request": "^0.3.2",
+    "lodash": "^3.1.0",
     "request": "^2.45.0"
   },
   "devDependencies": {
