@@ -68,7 +68,7 @@ describe('ResourceStream', function() {
       assert.deepEqual(stream.pushBuffered.secondCall.args, ['second']);
       assert(nextPage.calledOnce);
       assert.deepEqual(
-          nextPage.firstCall.args, [dispatcher, response, undefined]);
+          nextPage.firstCall.args, [response, dispatcher, undefined]);
       assert.equal(stream.promise, nextPromise);
     });
 
