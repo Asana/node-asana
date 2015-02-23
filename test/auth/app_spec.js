@@ -124,9 +124,9 @@ describe('App', function() {
         'grant_type': 'refresh_token',
         'client_id': 'fake_id',
         'client_secret': 'fake_secret',
+        'redirect_uri': 'fake_uri',
         'refresh_token': 'fake_token'
       });
-      console.log(request.args);
     });
 
     it('should resolve to token on success', function() {
