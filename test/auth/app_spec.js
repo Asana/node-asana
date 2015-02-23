@@ -50,11 +50,18 @@ describe('App', function() {
 
       var app = createApp();
       app.asanaTokenUrl = sinon.stub().returns('token_url');
-      app.accessTokenFromCode('code');
+      app.accessTokenFromCode('fake_code');
 
       var params = request.args[0][0];
       assert.equal(params.method, 'POST');
       assert.equal(params.url, 'token_url');
+      assert.deepEqual(params.formData, {
+        'grant_type': 'authorization_code',
+        'client_id': 'fake_id',
+        'client_secret': 'fake_secret',
+        'redirect_uri': 'fake_uri',
+        'code': 'fake_code'
+      });
     });
 
     it('should resolve to token on success', function() {
@@ -80,6 +87,71 @@ describe('App', function() {
       App.__set__('request', request);
       var app = createApp();
       var response = app.accessTokenFromCode('code');
+      request.callArgWith(
+        1, 'error', null, 'payload');
+      return response.then(function() {
+        assert(false, 'request should not have succeeded');
+      }).catch(function(e) {
+        assert.equal(e, 'error');
+      });
+    });
+  });
+
+  describe('#accessTokenFromRefreshToken', function() {
+
+    function createApp() {
+      return new App({
+        clientId: 'fake_id',
+        clientSecret: 'fake_secret',
+        redirectUri: 'fake_uri',
+        scope: 'fake_scope'
+      });
+    }
+
+    it('should make post request for token', function() {
+      var request = sinon.mock();
+      request.once();
+      App.__set__('request', request);
+
+      var app = createApp();
+      app.asanaTokenUrl = sinon.stub().returns('token_url');
+      app.accessTokenFromRefreshToken('fake_token');
+
+      var params = request.args[0][0];
+      assert.equal(params.method, 'POST');
+      assert.equal(params.url, 'token_url');
+      assert.deepEqual(params.formData, {
+        'grant_type': 'refresh_token',
+        'client_id': 'fake_id',
+        'client_secret': 'fake_secret',
+        'refresh_token': 'fake_token'
+      });
+      console.log(request.args);
+    });
+
+    it('should resolve to token on success', function() {
+      var request = sinon.stub();
+      App.__set__('request', request);
+
+      var app = createApp();
+      var payload = {
+        'access_token': 123
+      };
+      var response = app.accessTokenFromRefreshToken('refresh_token');
+      request.callArgWith(
+        1, null, {
+          statusCode: 200
+        }, JSON.stringify(payload));
+      return response.then(function(value) {
+        assert.deepEqual(value, payload);
+      });
+    });
+
+    it('should reject with error on failure', function() {
+      var request = sinon.stub();
+      App.__set__('request', request);
+      var app = createApp();
+      var response = app.accessTokenFromRefreshToken('code');
       request.callArgWith(
         1, 'error', null, 'payload');
       return response.then(function() {
