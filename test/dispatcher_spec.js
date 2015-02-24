@@ -2,6 +2,7 @@
 var assert = require('assert');
 var sinon = require('sinon');
 var rewire = require('rewire');
+var Bluebird = require('bluebird');
 var errors = require('../lib/errors');
 var Dispatcher = rewire('../lib/dispatcher');
 var Authenticator = require('../lib/auth/authenticator');
@@ -47,7 +48,7 @@ describe('Dispatcher', function() {
     it('should delegate to the authenticator', function() {
       var fakePromise = {};
       var authStub = sinon.createStubInstance(Authenticator);
-      authStub.ensureCredentials.onFirstCall().returns(fakePromise);
+      authStub.establishCredentials.onFirstCall().returns(fakePromise);
       var client = new Dispatcher({ authenticator: authStub });
       assert.equal(client.authorize(), fakePromise);
     });
@@ -92,7 +93,10 @@ describe('Dispatcher', function() {
         var err = new errors[key]();
         Dispatcher.__set__('request', request);
         var auth = { authenticateRequest: sinon.stub() };
-        var dispatcher = new Dispatcher({ authenticator: auth });
+        var dispatcher = new Dispatcher({
+          authenticator: auth,
+          handleUnauthorized: null
+        });
         var res = dispatcher.dispatch({});
         request.callArgWith(1, null, {
           statusCode: err.status
@@ -127,6 +131,57 @@ describe('Dispatcher', function() {
 
       return res.then(function() {
         assert.equal(setTimeout.firstCall.args[1], 42500);
+      });
+    });
+
+    describe('unauthorized', function() {
+      it('should call handler and throw error if returns false', function() {
+        var request = sinon.stub();
+        request.onFirstCall().callsArgWith(
+            1, null, { statusCode: 401 }, {});
+        Dispatcher.__set__('request', request);
+
+        var handleUnauthorized = sinon.stub();
+        handleUnauthorized.onFirstCall().returns(false);
+
+        var auth = { authenticateRequest: sinon.stub() };
+        var dispatcher = new Dispatcher({
+          authenticator: auth,
+          handleUnauthorized: handleUnauthorized
+        });
+
+        var res = dispatcher.dispatch({});
+        var error = null;
+        return res.catch(function(err) {
+          error = err;
+        }).then(function() {
+          assert(error instanceof (errors.NoAuthorization));
+          assert(handleUnauthorized.called);
+        });
+      });
+
+      it('should call handler and retry if returns true', function() {
+        var request = sinon.stub();
+        request.onFirstCall().callsArgWith(
+            1, null, { statusCode: 401 }, {});
+        request.onSecondCall().callsArgWith(
+            1, null, { statusCode: 200 }, {});
+        Dispatcher.__set__('request', request);
+
+        var handleUnauthorized = sinon.stub();
+        handleUnauthorized.onFirstCall().returns(Bluebird.resolve(true));
+
+        var auth = { authenticateRequest: sinon.stub() };
+        var dispatcher = new Dispatcher({
+          authenticator: auth,
+          handleUnauthorized: handleUnauthorized
+        });
+
+        var res = dispatcher.dispatch({});
+        return res.then(function() {
+          assert(handleUnauthorized.calledOnce);
+          assert(auth.authenticateRequest.calledTwice);
+        });
       });
     });
 
