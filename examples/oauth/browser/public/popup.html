@@ -43,7 +43,7 @@
         $('#ui').html('Hello ' + me.name + '!');
       });
     }).catch(function(err) {
-      $('#ui').html('Error: ' + err);
+      $('#ui').html('Error: ' + err.code + ': ' + err.description);
     });
   }
 
