@@ -1,6 +1,6 @@
 {
   "name": "asana",
-  "version": "0.6.4",
+  "version": "0.7.0",
   "description": "A node.js client for the Asana API",
   "main": "index.js",
   "scripts": {
