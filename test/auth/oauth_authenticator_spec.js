@@ -59,7 +59,6 @@ describe('OauthAuthenticator', function() {
       assert.equal(request.headers.Authorization, 'Bearer token');
     });
   });
-  });
 
   describe('#ensureCredentials', function() {
 
