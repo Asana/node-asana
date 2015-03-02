@@ -26,7 +26,7 @@ describe('BasicAuthenticator', function() {
     it('should return a resolved Promise', function(){
       var basicAuthenticator = new BasicAuthenticator('apikey');
 
-      var p = basicAuthenticator.ensureCredentials();
+      var p = basicAuthenticator.establishCredentials();
       assert.equal(true, p.isResolved());
     });
 
