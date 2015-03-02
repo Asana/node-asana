@@ -62,11 +62,11 @@ describe('OauthAuthenticator', function() {
 
   describe('#ensureCredentials', function() {
 
-    it('should return a resolved Promise with fixed credentials', function(){
+    it('should return a resolved Promise when using access token', function(){
       var oauthAuthenticator = new OauthAuthenticator({
         credentials: 'token'
       });
-      var p = oauthAuthenticator.ensureCredentials();
+      var p = oauthAuthenticator.establishCredentials();
       assert.equal(true, p.isResolved());
       // Check if we've stored the credentials correctly.
       assert.deepEqual(
@@ -79,7 +79,7 @@ describe('OauthAuthenticator', function() {
       var flowStub = sinon.createStubInstance(BaseBrowserFlow);
       flowStub.run.returns(Bluebird.resolve('updated_credentials'));
       var oauthAuthenticator = new OauthAuthenticator({flow: flowStub});
-      return oauthAuthenticator.ensureCredentials().then(function() {
+      return oauthAuthenticator.establishCredentials().then(function() {
         assert.equal('updated_credentials', oauthAuthenticator.credentials);
       });
     });
