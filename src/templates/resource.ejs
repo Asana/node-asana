@@ -18,7 +18,7 @@ var util = require('util');
 var _ = require('lodash');
 
 /**
-<%= comment(resource.comment, 2) %>
+<%= comment(resource.comment) %>
  * @class
  * @param {Dispatcher} dispatcher The API dispatcher
  */
@@ -73,7 +73,7 @@ util.inherits(<%= thisType %>, Resource);
       .concat(extraParam ? [extraParam] : []);
 %>
 /**
-<%= comment(action.comment, 2) %>
+<%= comment(action.comment) %>
 <% _.forEach(explicitParams, function(param) { %><%= comment(
           '@param {' + typeName(param.type) + '} ' + paramNameInComment(param) + ' ' + param.comment, 2) %>
 <% });
