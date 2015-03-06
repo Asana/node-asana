@@ -63,6 +63,7 @@ describe('EventStream', function() {
     stream._schedule.verify();
   });
 
+// DISABLED: This test currently breaks the gulp-istanbul code coverage tool.
 //  it('should end on error if not handled', function() {
 //    var stream = new EventStream(events, 123);
 //    var callback = readForCatch(stream);
