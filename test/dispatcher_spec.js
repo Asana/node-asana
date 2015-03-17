@@ -104,6 +104,10 @@ describe('Dispatcher', function() {
         return res.then(function() {
           throw new Error('Should not have reached here');
         }, function(passedErr) {
+          // Compare everything but stack
+          assert(passedErr.stack);
+          delete passedErr.stack;
+          delete err.stack;
           return assert.deepEqual(passedErr, err);
         });
       });
