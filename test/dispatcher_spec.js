@@ -72,6 +72,20 @@ describe('Dispatcher', function() {
       }));
     });
 
+    it('should add version header to request', function() {
+      var request = sinon.stub();
+      Dispatcher.__set__('request', request);
+      var auth = { authenticateRequest: sinon.stub() };
+      var dispatcher = new Dispatcher({ authenticator: auth });
+      dispatcher._generateVersionInfo = function() {
+        return { fakeKey: 'fakeValue' };
+      };
+      dispatcher.dispatch({});
+      var requestParams = request.firstCall.args[0];
+      assert.equal(
+          requestParams.headers['X-Asana-Client-Lib'], 'fakeKey=fakeValue');
+    });
+
     it('should pass an error from request', function() {
       var request = sinon.stub();
       var err = new Error();
@@ -280,7 +294,8 @@ describe('Dispatcher', function() {
       assert(request.calledWith({
         method: 'GET',
         url: dispatcher.url('/users/me'),
-        json: true
+        json: true,
+        headers: sinon.match.object
       }), function() {});
     });
   });
@@ -378,6 +393,31 @@ describe('Dispatcher', function() {
       assert(request.calledWithMatch({
         url: dispatcher.url('/projects/1')
       }));
+    });
+  });
+
+  describe('#generateVersionInfo', function() {
+    it('should include OS info on node', function() {
+      Dispatcher.__set__('navigator', undefined);
+      var dispatcher = new Dispatcher();
+      var match = sinon.match({
+        'version': sinon.match.string,
+        'language': 'NodeJS',
+        'language_version': sinon.match.string,
+        'os': sinon.match.string,
+        'os_version': sinon.match.string
+      });
+      assert(match.test(dispatcher._generateVersionInfo()));
+    });
+    it('should include just lib info on browser', function() {
+      Dispatcher.__set__('navigator', {});
+      Dispatcher.__set__('window', {});
+      var dispatcher = new Dispatcher();
+      var match = sinon.match({
+        'version': sinon.match.string,
+        'language': 'BrowserJS'
+      });
+      assert(match.test(dispatcher._generateVersionInfo()));
     });
   });
 });
