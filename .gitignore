@@ -32,3 +32,6 @@ coverage
 
 # Dist
 dist
+
+#IDEA
+*.idea

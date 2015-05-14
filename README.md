@@ -45,12 +45,12 @@ client.users.me()
       opt_fields: 'id,name,assignee_status,completed'
     });
   })
-  .then(function(response)) {
+  .then(function(response) {
     // There may be more pages of data, we could stream or return a promise
     // to request those here - for now, let's just return the first page
     // of items.
     return response.data;
-  });
+  })
   .filter(function(task) {
     return task.assignee_status === 'today' ||
       task.assignee_status === 'new';

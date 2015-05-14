@@ -5,6 +5,12 @@ some very basic HTML pages. The JavaScript on those pages connects to Asana,
 authenticates a user, and accesses data without any intervention from another
 web server.
 
+# Setup
+In order to get started with either the redirect or popup examples follow these steps first. From this directory:
+
+  1. Run `npm install`
+  2. Run `gulp`
+
 ## Redirect Example
 
 This example shows how to use the `RedirectFlow` when using Oauth with Asana.
