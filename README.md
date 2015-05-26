@@ -1,4 +1,4 @@
-# Asana [![GitHub release](https://img.shields.io/github/release/qubyte/rubidium.svg)]()[![Build Status][travis-image]][travis-url] [![NPM Version][npm-image]][npm-url]
+# Asana [![GitHub release](https://img.shields.io/github/release/asana/node-asana.svg)]() [![Build Status][travis-image]][travis-url] [![NPM Version][npm-image]][npm-url]
 
 A JavaScript client (for both Node and browser) for the Asana API v1.0.
 
