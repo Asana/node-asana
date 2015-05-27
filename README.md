@@ -65,7 +65,7 @@ Authenticating through OAuth2 is preferred. There are many ways you can do this.
 In all cases, you should create a `Client` that contains your app information. The values in the below snippet should be substituted with the real properties from your application's settings.
 
 ```js
-var client =Asana.Client.create({
+var client = Asana.Client.create({
   clientId: 123,
   clientSecret: 'my_client_secret',
   redirectUri: 'my_redirect_uri'
