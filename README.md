@@ -99,11 +99,12 @@ client.useOauth({
 
 See `examples/oauth/webserver` for a working example of this.
 
-### Pagination
+### Collections
 
-Whenever you ask for a collection of resources, you can provide a number of
-results per page to fetch, between 1 and 100. If you don't provide any, it
-defaults to 50.
+Whenever you ask for a collection of resources, you will receive a `Collection`
+object which gives you access to a page of results at a time. You can provide
+a number of results per page to fetch, between 1 and 100. If you don't provide
+any, it defaults to 50.
 
 ```js
 client.tasks.findByTag(tagId, { limit: 5 }).then(function(collection) {
@@ -112,31 +113,48 @@ client.tasks.findByTag(tagId, { limit: 5 }).then(function(collection) {
 });
 ```
 
-There are a few useful functions that can help you deal with
-paginated requests.
+Additionally, `Collection` has a few useful methods that can make them
+more convenient to deal with.
 
-#### Page iteration
+#### Individual page iteration
 
-To get the next page of a collection, you do not have to manually construct the next request.
-The `Client.nextPage` method takes care of this for you:
+To get the next page of a collection, you do not have to manually construct
+the next request. The `nextPage` method takes care of this for you:
+
+```js
+client.tasks.findByTag(tagId).then(function(firstPage) {
+  console.log(firstPage.data);
+  collection.nextPage().then(function(secondPage) {
+    console.log(secondPage.data);
+  });
+});
+```
+
+#### Automatic page iteration
+
+To automatically fetch a bunch of results and have the client transparently
+request pages under the hood, use the `all` method.:
 
 ```js
 client.tasks.findByTag(tagId).then(function(collection) {
-  console.log(collection.data);
-  client.nextPage(collection).then(...);
+  // Fetch up to 200 tasks, using multiple pages if necessary
+  collection.all(200).then(function(tasks) {
+    console.log(tasks);
+  });
 });
 ```
 
 #### Streaming
 
-You can take the `Promise` returned by any collection response and "stream" it.
-This will transparently (and lazily) fetch the items in the underlying collection
-in pages as you iterate through them.
+You can also construct a `stream` from a collection. This will transparently
+(and lazily) fetch the items in the collection in pages as you iterate
+through them.
 
 ```js
-var stream = client.stream(tasks.findByTag(tagId));
-stream.on('data', function(task) {
-  console.log(task);
+client.tasks.findByTag(tagId).then(function(collection) {
+  collection.stream().on('data', function(task) {
+    console.log(task);
+  });
 });
 ```
 
