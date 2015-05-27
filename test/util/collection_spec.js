@@ -124,7 +124,7 @@ describe('Collection', function() {
 
   });
 
-  describe('#all', function() {
+  describe('#fetch', function() {
 
     it('should return empty if no results', function(done) {
       var response = {
@@ -135,7 +135,7 @@ describe('Collection', function() {
         dispatch: sinon.stub()
       };
       var collection = new Collection(response, dispatcher);
-      collection.all().then(function(results) {
+      collection.fetch().then(function(results) {
         assert.deepEqual(results, []);
         done();
       });
@@ -155,7 +155,7 @@ describe('Collection', function() {
       var dispatcher = dispatcherThatReturns(response2);
 
       var collection = new Collection(response1, dispatcher);
-      collection.all().then(function(results) {
+      collection.fetch().then(function(results) {
         assert.deepEqual(['a','b','c','d'], results);
         done();
       });
@@ -175,8 +175,28 @@ describe('Collection', function() {
       var dispatcher = dispatcherThatReturns(response2);
 
       var collection = new Collection(response1, dispatcher);
-      collection.all(3).then(function(results) {
+      collection.fetch(3).then(function(results) {
         assert.deepEqual(['a','b','c'], results);
+        done();
+      });
+    });
+
+    it('should return all results if max items is too big', function(done) {
+      var response1 = {
+        'data': ['a', 'b'],
+        'next_page': {
+          'uri': 'fake_url'
+        }
+      };
+      var response2 = {
+        'data': ['c', 'd'],
+        'next_page': null
+      };
+      var dispatcher = dispatcherThatReturns(response2);
+
+      var collection = new Collection(response1, dispatcher);
+      collection.fetch(7).then(function(results) {
+        assert.deepEqual(['a','b','c','d'], results);
         done();
       });
     });

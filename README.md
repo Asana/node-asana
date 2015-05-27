@@ -143,12 +143,12 @@ client.tasks.findByTag(tagId).then(function(firstPage) {
 #### Automatic page iteration
 
 To automatically fetch a bunch of results and have the client transparently
-request pages under the hood, use the `all` method.:
+request pages under the hood, use the `fetch` method.:
 
 ```js
 client.tasks.findByTag(tagId).then(function(collection) {
   // Fetch up to 200 tasks, using multiple pages if necessary
-  collection.all(200).then(function(tasks) {
+  collection.fetch(200).then(function(tasks) {
     console.log(tasks);
   });
 });
