@@ -1,0 +1,34 @@
+2015-06-12T06:12:57Z</dc:date>
+    </item>
+    <item>
+      <title>jira library java</title>
+      <link>https://answers.atlassian.com/questions/17433974/jira-library-java</link>
+      <description>&lt;p&gt;Somebody know library that use JIRA  in java.&lt;/p&gt;&lt;p&gt;I would like create a connect for java that I can download information&lt;/p&gt;&lt;p&gt; &lt;/p&gt;&lt;p&gt;Than you&lt;/p&gt;</description>
+      <category>answers</category>
+      <pubDate>Tue, 09 Jun 2015 08:30:28 GMT</pubDate>
+      <guid isPermaLink="false">tag:https://answers.atlassian.com,2014:question-17433974</guid>
+      <dc:creator>Jorge</dc:creator>
+      <dc:date>2015-06-09T08:30:28Z</dc:date>
+    </item>
+    <item>
+      <title>Can you set the issueType when creating an issue via email</title>
+      <link>https://answers.atlassian.com/questions/17436175/can-you-set-the-issuetype-when-creating-an-issue-via-email</link>
+      <description>&lt;p&gt;I am creating an issue via gmail email and it is working but I had to set the default issuetype and priority to a default option (bug) and this is not what I want to do so can I possibly format the email so that it can change the issueType for example doing it in the body like this (IssueType - Bug)?&lt;/p&gt;</description>
+      <category>email</category>
+      <category>jira</category>
+      <category>createissue</category>
+      <pubDate>Wed, 10 Jun 2015 08:12:06 GMT</pubDate>
+      <guid isPermaLink="false">tag:https://answers.atlassian.com,2014:question-17436175</guid>
+      <dc:creator>Ciaran O'Donoghue</dc:creator>
+      <dc:date>2015-06-10T08:12:06Z</dc:date>
+    </item>
+    <item>
+      <title>Is Answers broken?</title>
+      <link>https://answers.atlassian.com/questions/11577/is-answers-broken</link>
+      <description>&lt;p&gt;&lt;a href="https://answers.atlassian.com/users/" rel="nofollow"&gt;https://answers.atlassian.com/&lt;/a&gt; returns a 500 error.  I can search or use tags ok, but if I blank it out for &amp;quot;all questions&amp;quot; it gives me that.&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;div&gt;
+&lt;div&gt;
+&lt;h3 id="IsAnswersbroken?-500ServerError"&gt;500 Server Error&lt;/h3&gt;
+&lt;/div&gt;
+&lt;h3 id="IsAnswersbroken?-Sorry,you&amp;#39;veencounteredasystemerror."&gt;Sorry,
