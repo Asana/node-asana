@@ -51,7 +51,7 @@ The most minimal example would be as follows:
 ```js
 var asana = require('asana');
 var client = asana.Client.create().useBasicAuth('my_api_key');
-client.workspaces.me().then(function(me) {
+client.users.me().then(function(me) {
   console.log(me);
 });
 ```
