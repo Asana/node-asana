@@ -2,6 +2,7 @@
 var assert = require('assert');
 var sinon = require('sinon');
 var Bluebird = require('bluebird');
+var Collection = require('../../lib/util/collection');
 var Resource = require('../../lib/resources/resource');
 
 describe('Resource', function() {
@@ -44,25 +45,32 @@ describe('Resource', function() {
   });
 
   describe('#dispatchGetCollection', function() {
-    it('should call dispatcher get with limit', function() {
+    it('should call dispatcher get with limit and make collection',
+        function(done) {
       var dispatcher = {
         get: sinon.stub()
       };
-      var promise = Bluebird.resolve();
-      dispatcher.get.onFirstCall().returns(promise);
-      sandbox.stub(Resource, 'unwrap');
+      dispatcher.get.onFirstCall().returns(Bluebird.resolve({
+        data: ['a'],
+        nextPage: sinon.stub()
+      }));
       var resource = new Resource(dispatcher);
 
       var path = '/path';
       var query = {};
       var options = {};
-      resource.dispatchGetCollection(path, query, options);
+      var promise = resource.dispatchGetCollection(path, query, options);
 
       assert(dispatcher.get.called);
-      assert.equal(dispatcher.get.firstCall.args[0], path);
+      assert.deepEqual(dispatcher.get.firstCall.args[0], path);
       assert.deepEqual(dispatcher.get.firstCall.args[1], { limit: 50 });
       assert.equal(dispatcher.get.firstCall.args[2], options);
-      assert(!Resource.unwrap.called);
+
+      promise.then(function(collection) {
+        assert(collection instanceof Collection);
+        assert.deepEqual(collection.data, ['a']);
+        done();
+      });
     });
   });
 

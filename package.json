@@ -1,7 +1,7 @@
 {
   "name": "asana",
-  "version": "0.7.9",
-  "description": "A node.js client for the Asana API",
+  "version": "0.9.1",
+  "description": "Official NodeJS and BrowserJS client for the Asana API",
   "main": "index.js",
   "scripts": {
     "test": "node_modules/.bin/gulp test"

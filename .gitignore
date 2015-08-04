@@ -35,3 +35,6 @@ dist
 
 #IDEA
 *.idea
+
+# MAC OS files
+.DS_store

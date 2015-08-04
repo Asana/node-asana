@@ -1,90 +1,103 @@
 /* jshint mocha:true */
 var assert = require('assert');
 var sinon = require('sinon');
-var rewire = require('rewire');
-var ResourceStream = rewire('../../lib/util/resource_stream.js');
+var Bluebird = require('bluebird');
+var ResourceStream = require('../../lib/util/resource_stream.js');
 
 describe('ResourceStream', function() {
 
-  var dispatcher;
-  beforeEach(function() {
-    dispatcher = {};
-  });
-
-  function createPromise() {
-    return {
-      then: sinon.stub().returnsThis(),
-      catch: sinon.stub().returnsThis()
-    };
-  }
-
   describe('#read', function() {
 
-    it('should end if no pages', function() {
-      var stream = new ResourceStream(dispatcher, null);
-      stream.push = sinon.stub();
-      stream.read();
-      assert(stream.push.calledOnce);
-      assert.equal(stream.push.firstCall.args[0], null);
+  });
+
+  describe('#emit', function() {
+
+    it('should end if no data', function(done) {
+      var stream = new ResourceStream({
+        data: [],
+        nextPage: function() {
+          return Bluebird.resolve(null);
+        }
+      });
+      var onData = sinon.stub();
+      stream.on('data', onData);
+      stream.on('end', function() {
+        assert(!onData.called);
+        done();
+      });
     });
 
-    it('should fail if response not a collection', function() {
-      var promise = createPromise();
-      var stream = new ResourceStream(dispatcher, promise);
-      promise.then.onFirstCall().callsArgWith(0, {
-        data: {
-          id: 123
+    it('should emit data then end if no more pages', function(done) {
+      var stream = new ResourceStream({
+        data: ['a'],
+        nextPage: function() {
+          return Bluebird.resolve(null);
+        }
+      });
+      var onData = sinon.stub();
+      stream.on('data', onData);
+      stream.on('end', function() {
+        assert(onData.calledOnce);
+        assert.equal(onData.firstCall.args[0], 'a');
+        done();
+      });
+    });
+
+    it('should emit data over multiple pages', function(done) {
+      var stream = new ResourceStream({
+        data: ['a'],
+        nextPage: function() {
+          return Bluebird.resolve({
+            data: ['b'],
+            nextPage: function() {
+              return Bluebird.resolve(null);
+            }
+          });
+        }
+      });
+      var onData = sinon.stub();
+      stream.on('data', onData);
+      stream.on('end', function() {
+        assert(onData.calledTwice);
+        assert.equal(onData.firstCall.args[0], 'a');
+        assert.equal(onData.secondCall.args[0], 'b');
+        done();
+      });
+    });
+
+    it('should emit data and fetch next page only when needed', function(done) {
+      var nextPage = sinon.stub();
+      nextPage.returns(Bluebird.resolve(null));
+      var stream = new ResourceStream({
+        data: ['a'],
+        nextPage: nextPage
+      });
+
+      assert(!nextPage.called);
+
+      stream.on('data', function(data) {
+        assert.equal(data, 'a');
+      });
+      stream.on('end', function() {
+        assert(nextPage.calledOnce);
+        done();
+      });
+    });
+
+    it('should emit error on failed request', function(done) {
+      var stream = new ResourceStream({
+        data: [],
+        nextPage: function() {
+          return Bluebird.reject('fake_error');
         }
       });
       stream.pushBuffered = sinon.stub();
-
-      assert.throws(function() {
-        stream.read();
-      }, /response/i);
-
-      assert(!stream.pushBuffered.called);
-    });
-
-    it('should push resources and store promise for next page', function() {
-      /* jshint camelcase:false */
-      var promise = createPromise();
-      var nextPromise = createPromise();
-      var nextPage = sinon.stub().returns(nextPromise);
-      ResourceStream.__set__('paging', {
-        nextPage: nextPage
+      stream.on('error', function(error) {
+        assert.equal(error, 'fake_error');
+        assert(!stream.pushBuffered.called);
+        done();
       });
-      var stream = new ResourceStream(dispatcher, promise);
-      var response = {
-        data: ['first', 'second'],
-        next_page: nextPage
-      };
-      promise.then.onFirstCall().callsArgWith(0, response).returns(promise);
-      stream.pushBuffered = sinon.stub();
-
       stream.read();
-
-      assert(stream.pushBuffered.calledTwice);
-      assert.deepEqual(stream.pushBuffered.firstCall.args, ['first']);
-      assert.deepEqual(stream.pushBuffered.secondCall.args, ['second']);
-      assert(nextPage.calledOnce);
-      assert.deepEqual(
-          nextPage.firstCall.args, [response, dispatcher, undefined]);
-      assert.equal(stream.promise, nextPromise);
-    });
-
-    it('should emit error on failed request', function() {
-      /* jshint camelcase:false */
-      var promise = createPromise();
-      var stream = new ResourceStream(dispatcher, promise);
-      var onError = sinon.mock().once().withExactArgs('fake_error');
-      stream.on('error', onError);
-      promise.catch.onFirstCall().callsArgWith(0, 'fake_error')
-          .returns(promise);
-
-      stream.read();
-
-      assert(!stream.pushBuffered.called);
-      onError.verify();
     });
   });
 });

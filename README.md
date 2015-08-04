@@ -1,6 +1,30 @@
-# Asana [![Build Status][travis-image]][travis-url] [![NPM Version][npm-image]][npm-url]
+# Asana [![GitHub release](https://img.shields.io/github/release/asana/node-asana.svg)]() [![Build Status][travis-image]][travis-url] [![NPM Version][npm-image]][npm-url]
 
-A node.js client for the 1.0 version of the Asana API.
+A JavaScript client (for both Node and browser) for the Asana API v1.0.
+
+## Installation
+
+### Node
+
+Install with npm:
+
+```sh
+npm install asana --save
+```
+
+### Browser
+
+Include the latest release directly from GitHub.
+
+```html
+<script src="https://github.com/Asana/node-asana/releases/download/<LATEST_RELEASE>/asana-min.js"></script>
+```
+
+OR
+
+1. Download the latest distribution in [releases](https://github.com/Asana/node-asana/releases).
+2. Make sure to serve it from your webserver.
+3. Include it on the client from a `SCRIPT` tag.
 
 ## Design Decisions
 
@@ -15,6 +39,141 @@ A node.js client for the 1.0 version of the Asana API.
   [highland][highland] also support promises respectively. Beyond that, other
   major libraries such as mongoose, mocha, and elastic search (which uses 
   bluebird) also support promises.
+
+## Usage
+
+To do anything, you'll need always an instance of an `Asana.Client` configured
+with your preferred authentication method (see the Authentication section below
+for more complex scenarios) and other options.
+
+The most minimal example would be as follows:
+
+```js
+var asana = require('asana');
+var client = asana.Client.create().useBasicAuth('my_api_key');
+client.users.me().then(function(me) {
+  console.log(me);
+});
+```
+
+All resources are exposed as properties of the `Asana.Client` instance (e.g. `client.workspaces`). See the [developer documentation][api-reference] for docs on each of them.
+
+### Authentication
+
+This module supports authenticating against the Asana API with either an API key or through OAuth2.
+
+#### API Key
+
+```js
+var client = Asana.Client.create().useBasicAuth('my_api_key');
+```
+
+#### OAuth2
+
+Authenticating through OAuth2 is preferred. There are many ways you can do this.
+
+In all cases, you should create a `Client` that contains your app information. The values in the below snippet should be substituted with the real properties from your application's settings.
+
+```js
+var client = Asana.Client.create({
+  clientId: 123,
+  clientSecret: 'my_client_secret',
+  redirectUri: 'my_redirect_uri'
+});
+```
+
+##### With a plain bearer token (doesn't support auto-refresh)
+
+If you have a plain bearer token obtained somewhere else and you don't mind not
+having your token auto-refresh, you can authenticate with it as follows:
+
+```js
+client.useOauth({
+  credentials: 'my_access_token'
+});
+```
+
+##### With a refresh token
+
+If you obtained a refresh token (from a previos authorization), you can use it together with your client
+credentials to authenticate:
+
+```js
+var credentials = {
+  refresh_token: 'my_refresh_token'
+};
+client.useOauth({
+  credentials: credentials
+});
+```
+
+See `examples/oauth/webserver` for a working example of this.
+
+### Collections
+
+Whenever you ask for a collection of resources, you will receive a `Collection`
+object which gives you access to a page of results at a time. You can provide
+a number of results per page to fetch, between 1 and 100. If you don't provide
+any, it defaults to 50.
+
+```js
+client.tasks.findByTag(tagId, { limit: 5 }).then(function(collection) {
+  console.log(collection.data);
+  // [ .. array of up to 5 task objects .. ]
+});
+```
+
+Additionally, `Collection` has a few useful methods that can make them
+more convenient to deal with.
+
+#### Individual page iteration
+
+To get the next page of a collection, you do not have to manually construct
+the next request. The `nextPage` method takes care of this for you:
+
+```js
+client.tasks.findByTag(tagId).then(function(firstPage) {
+  console.log(firstPage.data);
+  collection.nextPage().then(function(secondPage) {
+    console.log(secondPage.data);
+  });
+});
+```
+
+#### Automatic page iteration
+
+To automatically fetch a bunch of results and have the client transparently
+request pages under the hood, use the `fetch` method.:
+
+```js
+client.tasks.findByTag(tagId).then(function(collection) {
+  // Fetch up to 200 tasks, using multiple pages if necessary
+  collection.fetch(200).then(function(tasks) {
+    console.log(tasks);
+  });
+});
+```
+
+#### Streaming
+
+You can also construct a `stream` from a collection. This will transparently
+(and lazily) fetch the items in the collection in pages as you iterate
+through them.
+
+```js
+client.tasks.findByTag(tagId).then(function(collection) {
+  collection.stream().on('data', function(task) {
+    console.log(task);
+  });
+});
+```
+
+### Error handling
+
+In any request against the Asana API, there a number of errors that could
+arise. Those are well documented in the [Asana API Documentation][api-reference], and
+are represented as exceptions under the namespace `Asana.errors`.
+
 
 ## Examples
 
@@ -63,18 +222,9 @@ client.users.me()
   });
 ```
 
-## Installation
-
-Install with npm:
-
-```sh
-npm install asana --save
-```
-
 ## Documentation
 
-The code is thoroughly documented with JsDoc tags, and online documentation can
-be found on the [wiki][wiki]. Also, the 
+The code is thoroughly documented with JsDoc tags. The 
 [Official Asana Documentation][asana-doc] is a great resource since this is 
 just a thin wrapper for the API.
 
@@ -91,6 +241,11 @@ npm install
 npm test
 ```
 
+### Code generation
+
+The specific Asana resource classes (`Tag`, `Workspace`, `Task`, etc) are
+generated code, hence they shouldn't be modified by hand. See the [asana-api-meta][meta] repo for details.
+
 [travis-url]: http://travis-ci.org/Asana/node-asana
 [travis-image]: http://img.shields.io/travis/Asana/node-asana.svg?style=flat-square
 
@@ -101,5 +256,7 @@ npm test
 [co]: https://github.com/visionmedia/co
 [highland]: http://highlandjs.org/
 
-[wiki]: https://github.com/Asana/node-asana/wiki
-[asana-doc]: http://developer.asana.com/documentation/
+[meta]: https://github.com/Asana/asana-api-meta
+[api-docs]: https://asana.com/developers
+[api-reference]: https://asana.com/developers/api-reference
+[io]: https://asana.com/developers/documentation/getting-started/input-output-options
