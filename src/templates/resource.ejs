@@ -32,30 +32,35 @@ util.inherits(<%= thisType %>, Resource);
     return;
   }
   var isGet = action.method === 'GET';
-  var extraParam = null;
+  var optionParams = [];
+  var requestOptionsParamName = null;
   var dispatchName = 'dispatch' + cap(action.method);
   if (isGet) {
-    extraParam = {
+    optionParams.push({
       name: 'params',
       type: 'Object',
       comment: 'Parameters for the request'
-    };
+    });
+    requestOptionsParamName = 'params';
     if (action.collection) {
       dispatchName = 'dispatchGetCollection';
     }
   } else if (action.method !== 'DELETE') {
-    extraParam = {
+    optionParams.push({
       name: 'data',
       type: 'Object',
-      comment: 'Data for the request'
-    };
+      comment: 'Data for the request',
+      required: true
+    });
+    requestOptionsParamName = 'data';
   }
+
   // Figure out how many params will be consumed by the path and put the
   // first N required params there - the rest go in options.
   var numPathParams = (action.path.match(/%/g) || []).length;
   var pathParams = [];
   var explicitNonPathParams = [];
-  var optionParams = [];
+  var optionChildParams = [];
   if (action.params) {
     action.params.forEach(function(param, index) {
       if (param.required && pathParams.length < numPathParams) {
@@ -63,22 +68,36 @@ util.inherits(<%= thisType %>, Resource);
       } else if (param.explicit) {
         explicitNonPathParams.push(param);
       } else {
-        optionParams.push(param);
+        optionChildParams.push(
+            _.extend({}, param, {
+                name: requestOptionsParamName + '.' + param.name
+            }));
       }
     });
   }
 
   // This includes the params that go on the path plus the request data param
-  var explicitParams = pathParams.concat(explicitNonPathParams)
-      .concat(extraParam ? [extraParam] : []);
+  // and the dispatchOptions param.
+  var explicitParams = pathParams
+      .concat(explicitNonPathParams)
+      .concat(optionParams);
+  var allOrderedParams = explicitParams
+      .concat(optionChildParams);
+
+  // Add a dispatchOptions as the last param to every method.
+  var dispatchOptionsParam = {
+    name: 'dispatchOptions',
+    type: 'Object',
+    comment: 'Options, if any, to pass the dispatcher for the request'
+  };
+  explicitParams.push(dispatchOptionsParam);
+  allOrderedParams.push(dispatchOptionsParam);
+
 %>
 /**
 <%= comment(action.comment) %>
-<% _.forEach(explicitParams, function(param) { %><%= comment(
+<% _.forEach(allOrderedParams, function(param) { %><%= comment(
           '@param {' + typeName(param.type) + '} ' + paramNameInComment(param) + ' ' + param.comment, 2) %>
-<% });
-   _.forEach(optionParams, function(param) { %><%= comment(
-          '@option {' + typeName(param.type) + '} ' + paramNameInComment(param) + ' ' + param.comment, 2) %>
 <% }); %><%= comment(
     '@return {Promise} ' +
         ((isGet && !action.collection) ?
@@ -91,10 +110,10 @@ util.inherits(<%= thisType %>, Resource);
 ) {
   var path = util.format('<%= action.path %>'<% _.forEach(pathParams, function(param) { %>, <%= param.name %><% }); %>);
   <% if (explicitNonPathParams.length > 0) { %>
-  <%= extraParam.name %> = _.extend({}, <%= extraParam.name %> || {}, {<% _.forEach(explicitNonPathParams, function(npp, npp_index) { %>
+  <%= requestOptionsParamName %> = _.extend({}, <%= requestOptionsParamName.name %> || {}, {<% _.forEach(explicitNonPathParams, function(npp, npp_index) { %>
     <%= npp.name %>: <%= npp.name %><%= npp_index !== explicitNonPathParams.length - 1 ? "," : "" %><% }); %>
   });<% } %>
-  return this.<%= dispatchName %>(path<%= extraParam ? (', ' + extraParam.name) : ''%>);
+  return this.<%= dispatchName %>(path<%= requestOptionsParamName ? (', ' + requestOptionsParamName) : ''%>, dispatchOptions);
 };
 <% }); %>
 
