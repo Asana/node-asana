@@ -20,7 +20,7 @@ describe('Attachments', function() {
       var id = 1;
       attachments.findById(id);
       assert(
-          attachments.dispatchGet.calledWithExactly(
+          attachments.dispatchGet.calledWith(
               '/attachments/1', undefined));
     });
 
@@ -34,7 +34,7 @@ describe('Attachments', function() {
       var id = 1;
       attachments.findById(id, params);
       assert(
-          attachments.dispatchGet.calledWithExactly('/attachments/1', params));
+          attachments.dispatchGet.calledWith('/attachments/1', params));
     });
 
     it('should handle string numbers', function() {
@@ -47,7 +47,7 @@ describe('Attachments', function() {
       var id = '1';
       attachments.findById(id, params);
       assert(
-          attachments.dispatchGet.calledWithExactly('/attachments/1', params));
+          attachments.dispatchGet.calledWith('/attachments/1', params));
     });
 
     it('should do weird things with real strings', function() {
@@ -60,7 +60,7 @@ describe('Attachments', function() {
       var id = 'foobar';
       attachments.findById(id, params);
       assert(
-          attachments.dispatchGet.calledWithExactly(
+          attachments.dispatchGet.calledWith(
               '/attachments/NaN', params));
     });
   });
@@ -73,7 +73,7 @@ describe('Attachments', function() {
       var id = 1;
       attachments.findByTask(id);
       assert(
-          attachments.dispatchGetCollection.calledWithExactly(
+          attachments.dispatchGetCollection.calledWith(
               '/tasks/1/attachments', undefined));
     });
 
@@ -87,7 +87,7 @@ describe('Attachments', function() {
       var id = 1;
       attachments.findByTask(id, params);
       assert(
-          attachments.dispatchGetCollection.calledWithExactly(
+          attachments.dispatchGetCollection.calledWith(
               '/tasks/1/attachments', params));
     });
 
@@ -101,7 +101,7 @@ describe('Attachments', function() {
       var id = '1';
       attachments.findByTask(id, params);
       assert(
-          attachments.dispatchGetCollection.calledWithExactly(
+          attachments.dispatchGetCollection.calledWith(
               '/tasks/1/attachments', params));
     });
 
@@ -115,7 +115,7 @@ describe('Attachments', function() {
       var id = 'foobar';
       attachments.findByTask(id, params);
       assert(
-        attachments.dispatchGetCollection.calledWithExactly(
+        attachments.dispatchGetCollection.calledWith(
             '/tasks/NaN/attachments', params));
     });
   });

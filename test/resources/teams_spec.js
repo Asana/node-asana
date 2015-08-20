@@ -20,7 +20,7 @@ describe('Teams', function() {
       var id = 1;
       teams.findByOrganization(id);
       assert(
-        teams.dispatchGetCollection.calledWithExactly(
+        teams.dispatchGetCollection.calledWith(
             '/organizations/1/teams', undefined));
     });
 
@@ -34,7 +34,7 @@ describe('Teams', function() {
       var id = 1;
       teams.findByOrganization(id, params);
       assert(
-        teams.dispatchGetCollection.calledWithExactly(
+        teams.dispatchGetCollection.calledWith(
             '/organizations/1/teams', params));
     });
 
@@ -48,7 +48,7 @@ describe('Teams', function() {
       var id = '1';
       teams.findByOrganization(id, params);
       assert(
-        teams.dispatchGetCollection.calledWithExactly(
+        teams.dispatchGetCollection.calledWith(
             '/organizations/1/teams', params));
     });
 
@@ -62,7 +62,7 @@ describe('Teams', function() {
       var id = 'foobar';
       teams.findByOrganization(id, params);
       assert(
-        teams.dispatchGetCollection.calledWithExactly(
+        teams.dispatchGetCollection.calledWith(
             '/organizations/NaN/teams', params));
     });
   });

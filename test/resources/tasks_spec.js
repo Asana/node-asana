@@ -22,7 +22,7 @@ describe('Tasks', function() {
         name: 'Test'
       };
       tasks.create(data);
-      assert(tasks.dispatchPost.calledWithExactly('/tasks', data));
+      assert(tasks.dispatchPost.calledWith('/tasks', data));
     });
   });
 
@@ -36,7 +36,7 @@ describe('Tasks', function() {
         name: 'Test'
       };
       tasks.createInWorkspace(id, data);
-      assert(tasks.dispatchPost.calledWithExactly('/workspaces/1/tasks', data));
+      assert(tasks.dispatchPost.calledWith('/workspaces/1/tasks', data));
     });
 
     it('should handle string numbers', function() {
@@ -48,7 +48,7 @@ describe('Tasks', function() {
         name: 'Test'
       };
       tasks.createInWorkspace(id, data);
-      assert(tasks.dispatchPost.calledWithExactly('/workspaces/1/tasks', data));
+      assert(tasks.dispatchPost.calledWith('/workspaces/1/tasks', data));
     });
 
     it('should do weird things with real strings', function() {
@@ -61,7 +61,7 @@ describe('Tasks', function() {
       };
       tasks.createInWorkspace(id, data);
       assert(
-        tasks.dispatchPost.calledWithExactly('/workspaces/NaN/tasks', data));
+        tasks.dispatchPost.calledWith('/workspaces/NaN/tasks', data));
     });
   });
 
@@ -72,7 +72,7 @@ describe('Tasks', function() {
       tasks.dispatchGetCollection = sinon.stub();
       tasks.findAll();
       assert(
-          tasks.dispatchGetCollection.calledWithExactly('/tasks', undefined));
+          tasks.dispatchGetCollection.calledWith('/tasks', undefined));
     });
 
     it('should handle with params', function() {
@@ -83,7 +83,7 @@ describe('Tasks', function() {
         'opt_fields': 'id,name'
       };
       tasks.findAll(params);
-      assert(tasks.dispatchGetCollection.calledWithExactly('/tasks', params));
+      assert(tasks.dispatchGetCollection.calledWith('/tasks', params));
     });
   });
 
@@ -94,7 +94,7 @@ describe('Tasks', function() {
       tasks.dispatchGet = sinon.stub();
       var id = 1;
       tasks.findById(id);
-      assert(tasks.dispatchGet.calledWithExactly('/tasks/1', undefined));
+      assert(tasks.dispatchGet.calledWith('/tasks/1', undefined));
     });
 
     it('should handle with params', function() {
@@ -106,7 +106,7 @@ describe('Tasks', function() {
       };
       var id = 1;
       tasks.findById(id, params);
-      assert(tasks.dispatchGet.calledWithExactly('/tasks/1', params));
+      assert(tasks.dispatchGet.calledWith('/tasks/1', params));
     });
 
     it('should handle string numbers', function() {
@@ -118,7 +118,7 @@ describe('Tasks', function() {
       };
       var id = '1';
       tasks.findById(id, params);
-      assert(tasks.dispatchGet.calledWithExactly('/tasks/1', params));
+      assert(tasks.dispatchGet.calledWith('/tasks/1', params));
     });
 
     it('should do weird things with real strings', function() {
@@ -130,7 +130,7 @@ describe('Tasks', function() {
       };
       var id = 'foobar';
       tasks.findById(id, params);
-      assert(tasks.dispatchGet.calledWithExactly('/tasks/NaN', params));
+      assert(tasks.dispatchGet.calledWith('/tasks/NaN', params));
     });
   });
 
@@ -140,7 +140,7 @@ describe('Tasks', function() {
       var tasks = new Tasks(dispatcher);
       tasks.dispatchGet = sinon.stub();
       tasks.findByExternalId(1);
-      assert(tasks.dispatchGet.calledWithExactly(
+      assert(tasks.dispatchGet.calledWith(
           '/tasks/external%3A1', undefined));
     });
 
@@ -152,7 +152,7 @@ describe('Tasks', function() {
         'opt_fields': 'id,name'
       };
       tasks.findByExternalId(1, params);
-      assert(tasks.dispatchGet.calledWithExactly(
+      assert(tasks.dispatchGet.calledWith(
           '/tasks/external%3A1', params));
     });
 
@@ -161,7 +161,7 @@ describe('Tasks', function() {
       var tasks = new Tasks(dispatcher);
       tasks.dispatchGet = sinon.stub();
       tasks.findByExternalId('http://u@p:foo.com/?query#frag');
-      assert(tasks.dispatchGet.calledWithExactly(
+      assert(tasks.dispatchGet.calledWith(
           '/tasks/external%3Ahttp%3A%2F%2Fu%40p%3Afoo.com%2F%3Fquery%23frag',
           undefined));
     });
@@ -175,7 +175,7 @@ describe('Tasks', function() {
       var id = 1;
       tasks.findByProject(id);
       assert(
-          tasks.dispatchGetCollection.calledWithExactly(
+          tasks.dispatchGetCollection.calledWith(
               '/projects/1/tasks', undefined));
     });
 
@@ -189,7 +189,7 @@ describe('Tasks', function() {
       var id = 1;
       tasks.findByProject(id, params);
       assert(
-          tasks.dispatchGetCollection.calledWithExactly(
+          tasks.dispatchGetCollection.calledWith(
               '/projects/1/tasks', params));
     });
 
@@ -203,7 +203,7 @@ describe('Tasks', function() {
       var id = '1';
       tasks.findByProject(id, params);
       assert(
-          tasks.dispatchGetCollection.calledWithExactly(
+          tasks.dispatchGetCollection.calledWith(
               '/projects/1/tasks', params));
     });
 
@@ -217,7 +217,7 @@ describe('Tasks', function() {
       var id = 'foobar';
       tasks.findByProject(id, params);
       assert(
-          tasks.dispatchGetCollection.calledWithExactly(
+          tasks.dispatchGetCollection.calledWith(
               '/projects/NaN/tasks', params));
     });
   });
@@ -230,7 +230,7 @@ describe('Tasks', function() {
       var id = 1;
       tasks.findByTag(id);
       assert(
-          tasks.dispatchGetCollection.calledWithExactly(
+          tasks.dispatchGetCollection.calledWith(
               '/tags/1/tasks', undefined));
     });
 
@@ -244,7 +244,7 @@ describe('Tasks', function() {
       var id = 1;
       tasks.findByTag(id, params);
       assert(
-        tasks.dispatchGetCollection.calledWithExactly('/tags/1/tasks', params));
+        tasks.dispatchGetCollection.calledWith('/tags/1/tasks', params));
     });
 
     it('should handle string numbers', function() {
@@ -257,7 +257,7 @@ describe('Tasks', function() {
       var id = '1';
       tasks.findByTag(id, params);
       assert(
-        tasks.dispatchGetCollection.calledWithExactly('/tags/1/tasks', params));
+        tasks.dispatchGetCollection.calledWith('/tags/1/tasks', params));
     });
 
     it('should do weird things with real strings', function() {
@@ -270,7 +270,7 @@ describe('Tasks', function() {
       var id = 'foobar';
       tasks.findByTag(id, params);
       assert(
-          tasks.dispatchGetCollection.calledWithExactly(
+          tasks.dispatchGetCollection.calledWith(
               '/tags/NaN/tasks', params));
     });
   });
@@ -285,7 +285,7 @@ describe('Tasks', function() {
         name: 'Test'
       };
       tasks.update(id, data);
-      assert(tasks.dispatchPut.calledWithExactly('/tasks/1', data));
+      assert(tasks.dispatchPut.calledWith('/tasks/1', data));
     });
 
     it('should handle string numbers', function() {
@@ -297,7 +297,7 @@ describe('Tasks', function() {
         name: 'Test'
       };
       tasks.update(id, data);
-      assert(tasks.dispatchPut.calledWithExactly('/tasks/1', data));
+      assert(tasks.dispatchPut.calledWith('/tasks/1', data));
     });
 
     it('should do weird things with real strings', function() {
@@ -309,7 +309,7 @@ describe('Tasks', function() {
         name: 'Test'
       };
       tasks.update(id, data);
-      assert(tasks.dispatchPut.calledWithExactly('/tasks/NaN', data));
+      assert(tasks.dispatchPut.calledWith('/tasks/NaN', data));
     });
   });
 
@@ -320,7 +320,7 @@ describe('Tasks', function() {
       tasks.dispatchDelete = sinon.stub();
       var id = 1;
       tasks.delete(id);
-      assert(tasks.dispatchDelete.calledWithExactly('/tasks/1'));
+      assert(tasks.dispatchDelete.calledWith('/tasks/1'));
     });
 
     it('should handle string numbers', function() {
@@ -329,7 +329,7 @@ describe('Tasks', function() {
       tasks.dispatchDelete = sinon.stub();
       var id = '1';
       tasks.delete(id);
-      assert(tasks.dispatchDelete.calledWithExactly('/tasks/1'));
+      assert(tasks.dispatchDelete.calledWith('/tasks/1'));
     });
 
     it('should do weird things with real strings', function() {
@@ -338,7 +338,7 @@ describe('Tasks', function() {
       tasks.dispatchDelete = sinon.stub();
       var id = 'foobar';
       tasks.delete(id);
-      assert(tasks.dispatchDelete.calledWithExactly('/tasks/NaN'));
+      assert(tasks.dispatchDelete.calledWith('/tasks/NaN'));
     });
   });
 
@@ -353,7 +353,7 @@ describe('Tasks', function() {
       };
       tasks.addFollowers(id, data);
       assert(
-          tasks.dispatchPost.calledWithExactly('/tasks/1/addFollowers', data));
+          tasks.dispatchPost.calledWith('/tasks/1/addFollowers', data));
     });
 
     it('should handle string numbers', function() {
@@ -366,7 +366,7 @@ describe('Tasks', function() {
       };
       tasks.addFollowers(id, data);
       assert(
-          tasks.dispatchPost.calledWithExactly('/tasks/1/addFollowers', data));
+          tasks.dispatchPost.calledWith('/tasks/1/addFollowers', data));
     });
 
     it('should do weird things with real strings', function() {
@@ -379,7 +379,7 @@ describe('Tasks', function() {
       };
       tasks.addFollowers(id, data);
       assert(
-        tasks.dispatchPost.calledWithExactly('/tasks/NaN/addFollowers', data));
+        tasks.dispatchPost.calledWith('/tasks/NaN/addFollowers', data));
     });
   });
 
@@ -394,7 +394,7 @@ describe('Tasks', function() {
       };
       tasks.removeFollowers(id, data);
       assert(
-        tasks.dispatchPost.calledWithExactly('/tasks/1/removeFollowers', data));
+        tasks.dispatchPost.calledWith('/tasks/1/removeFollowers', data));
     });
 
     it('should handle string numbers', function() {
@@ -407,7 +407,7 @@ describe('Tasks', function() {
       };
       tasks.removeFollowers(id, data);
       assert(
-        tasks.dispatchPost.calledWithExactly('/tasks/1/removeFollowers', data));
+        tasks.dispatchPost.calledWith('/tasks/1/removeFollowers', data));
     });
 
     it('should do weird things with real strings', function() {
@@ -420,7 +420,7 @@ describe('Tasks', function() {
       };
       tasks.removeFollowers(id, data);
       assert(
-          tasks.dispatchPost.calledWithExactly(
+          tasks.dispatchPost.calledWith(
               '/tasks/NaN/removeFollowers', data));
     });
   });
@@ -444,7 +444,7 @@ describe('Tasks', function() {
       var id = '1';
       tasks.projects(id);
       assert(
-          tasks.dispatchGetCollection.calledWithExactly(
+          tasks.dispatchGetCollection.calledWith(
               '/tasks/1/projects', undefined));
     });
 
@@ -455,7 +455,7 @@ describe('Tasks', function() {
       var id = 'foobar';
       tasks.projects(id);
       assert(
-        tasks.dispatchGetCollection.calledWithExactly(
+        tasks.dispatchGetCollection.calledWith(
             '/tasks/NaN/projects', undefined));
     });
   });
@@ -470,7 +470,7 @@ describe('Tasks', function() {
         project: [1]
       };
       tasks.addProject(id, data);
-      assert(tasks.dispatchPost.calledWithExactly('/tasks/1/addProject', data));
+      assert(tasks.dispatchPost.calledWith('/tasks/1/addProject', data));
     });
 
     it('should handle string numbers', function() {
@@ -482,7 +482,7 @@ describe('Tasks', function() {
         project: [1]
       };
       tasks.addProject(id, data);
-      assert(tasks.dispatchPost.calledWithExactly('/tasks/1/addProject', data));
+      assert(tasks.dispatchPost.calledWith('/tasks/1/addProject', data));
     });
 
     it('should do weird things with real strings', function() {
@@ -495,7 +495,7 @@ describe('Tasks', function() {
       };
       tasks.addProject(id, data);
       assert(
-        tasks.dispatchPost.calledWithExactly('/tasks/NaN/addProject', data));
+        tasks.dispatchPost.calledWith('/tasks/NaN/addProject', data));
     });
   });
 
@@ -510,7 +510,7 @@ describe('Tasks', function() {
       };
       tasks.removeProject(id, data);
       assert(
-          tasks.dispatchPost.calledWithExactly('/tasks/1/removeProject', data));
+          tasks.dispatchPost.calledWith('/tasks/1/removeProject', data));
     });
 
     it('should handle string numbers', function() {
@@ -523,7 +523,7 @@ describe('Tasks', function() {
       };
       tasks.removeProject(id, data);
       assert(
-          tasks.dispatchPost.calledWithExactly('/tasks/1/removeProject', data));
+          tasks.dispatchPost.calledWith('/tasks/1/removeProject', data));
     });
 
     it('should do weird things with real strings', function() {
@@ -536,7 +536,7 @@ describe('Tasks', function() {
       };
       tasks.removeProject(id, data);
       assert(
-          tasks.dispatchPost.calledWithExactly(
+          tasks.dispatchPost.calledWith(
               '/tasks/NaN/removeProject', data));
     });
   });
@@ -559,7 +559,7 @@ describe('Tasks', function() {
       var id = '1';
       tasks.tags(id);
       assert(
-          tasks.dispatchGetCollection.calledWithExactly(
+          tasks.dispatchGetCollection.calledWith(
               '/tasks/1/tags', undefined));
     });
 
@@ -570,7 +570,7 @@ describe('Tasks', function() {
       var id = 'foobar';
       tasks.tags(id);
       assert(
-          tasks.dispatchGetCollection.calledWithExactly(
+          tasks.dispatchGetCollection.calledWith(
               '/tasks/NaN/tags', undefined));
     });
   });
@@ -585,7 +585,7 @@ describe('Tasks', function() {
         tag: 1
       };
       tasks.addTag(id, data);
-      assert(tasks.dispatchPost.calledWithExactly('/tasks/1/addTag', data));
+      assert(tasks.dispatchPost.calledWith('/tasks/1/addTag', data));
     });
 
     it('should handle string numbers', function() {
@@ -597,7 +597,7 @@ describe('Tasks', function() {
         tag: 1
       };
       tasks.addTag(id, data);
-      assert(tasks.dispatchPost.calledWithExactly('/tasks/1/addTag', data));
+      assert(tasks.dispatchPost.calledWith('/tasks/1/addTag', data));
     });
 
     it('should do weird things with real strings', function() {
@@ -610,7 +610,7 @@ describe('Tasks', function() {
       };
       tasks.addTag(id, data);
       assert(
-        tasks.dispatchPost.calledWithExactly('/tasks/NaN/addTag', data));
+        tasks.dispatchPost.calledWith('/tasks/NaN/addTag', data));
     });
   });
 
@@ -624,7 +624,7 @@ describe('Tasks', function() {
         tag: 1
       };
       tasks.removeTag(id, data);
-      assert(tasks.dispatchPost.calledWithExactly('/tasks/1/removeTag', data));
+      assert(tasks.dispatchPost.calledWith('/tasks/1/removeTag', data));
     });
 
     it('should handle string numbers', function() {
@@ -636,7 +636,7 @@ describe('Tasks', function() {
         tag: 1
       };
       tasks.removeTag(id, data);
-      assert(tasks.dispatchPost.calledWithExactly('/tasks/1/removeTag', data));
+      assert(tasks.dispatchPost.calledWith('/tasks/1/removeTag', data));
     });
 
     it('should do weird things with real strings', function() {
@@ -649,7 +649,7 @@ describe('Tasks', function() {
       };
       tasks.removeTag(id, data);
       assert(
-        tasks.dispatchPost.calledWithExactly('/tasks/NaN/removeTag', data));
+        tasks.dispatchPost.calledWith('/tasks/NaN/removeTag', data));
     });
   });
 
@@ -671,7 +671,7 @@ describe('Tasks', function() {
       tasks.dispatchGetCollection = sinon.stub();
       var id = '1';
       tasks.subtasks(id);
-      assert(tasks.dispatchGetCollection.calledWithExactly(
+      assert(tasks.dispatchGetCollection.calledWith(
           '/tasks/1/subtasks', undefined));
     });
 
@@ -682,7 +682,7 @@ describe('Tasks', function() {
       var id = 'foobar';
       tasks.subtasks(id);
       assert(
-        tasks.dispatchGetCollection.calledWithExactly(
+        tasks.dispatchGetCollection.calledWith(
             '/tasks/NaN/subtasks', undefined));
     });
   });
@@ -698,7 +698,7 @@ describe('Tasks', function() {
         assignee: 1234
       };
       tasks.addSubtask(id, data);
-      assert(tasks.dispatchPost.calledWithExactly('/tasks/1/subtasks', data));
+      assert(tasks.dispatchPost.calledWith('/tasks/1/subtasks', data));
     });
 
     it('should handle string numbers', function() {
@@ -711,7 +711,7 @@ describe('Tasks', function() {
         assignee: 1234
       };
       tasks.addSubtask(id, data);
-      assert(tasks.dispatchPost.calledWithExactly('/tasks/1/subtasks', data));
+      assert(tasks.dispatchPost.calledWith('/tasks/1/subtasks', data));
     });
 
     it('should do weird things with real strings', function() {
@@ -725,7 +725,7 @@ describe('Tasks', function() {
       };
       tasks.addSubtask(id, data);
       assert(
-        tasks.dispatchPost.calledWithExactly('/tasks/NaN/subtasks', data));
+        tasks.dispatchPost.calledWith('/tasks/NaN/subtasks', data));
     });
   });
 
@@ -740,7 +740,7 @@ describe('Tasks', function() {
         parent: parentId
       };
       tasks.setParent(id, parentId);
-      assert(tasks.dispatchPost.calledWithExactly('/tasks/1/setParent', data));
+      assert(tasks.dispatchPost.calledWith('/tasks/1/setParent', data));
     });
 
     it('should handle string numbers', function() {
@@ -753,7 +753,7 @@ describe('Tasks', function() {
         parent: 2
       };
       tasks.setParent(id, parentId);
-      assert(tasks.dispatchPost.calledWithExactly('/tasks/1/setParent', data));
+      assert(tasks.dispatchPost.calledWith('/tasks/1/setParent', data));
     });
 
     it('should do weird things with real strings', function() {
@@ -767,7 +767,7 @@ describe('Tasks', function() {
       };
       tasks.setParent(id, parentId);
       assert(
-        tasks.dispatchPost.calledWithExactly('/tasks/NaN/setParent', data));
+        tasks.dispatchPost.calledWith('/tasks/NaN/setParent', data));
     });
   });
 });

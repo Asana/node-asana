@@ -19,7 +19,7 @@ describe('Stories', function() {
       stories.dispatchGet = sinon.stub();
       var id = 1;
       stories.findById(id);
-      assert(stories.dispatchGet.calledWithExactly('/stories/1', undefined));
+      assert(stories.dispatchGet.calledWith('/stories/1', undefined));
     });
 
     it('should handle with params', function() {
@@ -31,7 +31,7 @@ describe('Stories', function() {
       };
       var id = 1;
       stories.findById(id, params);
-      assert(stories.dispatchGet.calledWithExactly('/stories/1', params));
+      assert(stories.dispatchGet.calledWith('/stories/1', params));
     });
 
     it('should handle string numbers', function() {
@@ -43,7 +43,7 @@ describe('Stories', function() {
       };
       var id = '1';
       stories.findById(id, params);
-      assert(stories.dispatchGet.calledWithExactly('/stories/1', params));
+      assert(stories.dispatchGet.calledWith('/stories/1', params));
     });
 
     it('should do weird things with real strings', function() {
@@ -55,7 +55,7 @@ describe('Stories', function() {
       };
       var id = 'foobar';
       stories.findById(id, params);
-      assert(stories.dispatchGet.calledWithExactly('/stories/NaN', params));
+      assert(stories.dispatchGet.calledWith('/stories/NaN', params));
     });
   });
 
@@ -67,7 +67,7 @@ describe('Stories', function() {
       var id = 1;
       stories.findByTask(id);
       assert(
-        stories.dispatchGetCollection.calledWithExactly(
+        stories.dispatchGetCollection.calledWith(
             '/tasks/1/stories', undefined));
     });
 
@@ -81,7 +81,7 @@ describe('Stories', function() {
       var id = 1;
       stories.findByTask(id, params);
       assert(
-          stories.dispatchGetCollection.calledWithExactly(
+          stories.dispatchGetCollection.calledWith(
               '/tasks/1/stories', params));
     });
 
@@ -95,7 +95,7 @@ describe('Stories', function() {
       var id = '1';
       stories.findByTask(id, params);
       assert(
-          stories.dispatchGetCollection.calledWithExactly(
+          stories.dispatchGetCollection.calledWith(
               '/tasks/1/stories', params));
     });
 
@@ -109,7 +109,7 @@ describe('Stories', function() {
       var id = 'foobar';
       stories.findByTask(id, params);
       assert(
-          stories.dispatchGetCollection.calledWithExactly(
+          stories.dispatchGetCollection.calledWith(
               '/tasks/NaN/stories', params));
     });
   });
@@ -124,7 +124,7 @@ describe('Stories', function() {
         text: 'Test'
       };
       stories.createOnTask(id, data);
-      assert(stories.dispatchPost.calledWithExactly('/tasks/1/stories', data));
+      assert(stories.dispatchPost.calledWith('/tasks/1/stories', data));
     });
 
     it('should handle string numbers', function() {
@@ -136,7 +136,7 @@ describe('Stories', function() {
         text: 'Test'
       };
       stories.createOnTask(id, data);
-      assert(stories.dispatchPost.calledWithExactly('/tasks/1/stories', data));
+      assert(stories.dispatchPost.calledWith('/tasks/1/stories', data));
     });
 
     it('should do weird things with real strings', function() {
@@ -149,7 +149,7 @@ describe('Stories', function() {
       };
       stories.createOnTask(id, data);
       assert(
-          stories.dispatchPost.calledWithExactly('/tasks/NaN/stories', data));
+          stories.dispatchPost.calledWith('/tasks/NaN/stories', data));
     });
   });
 });

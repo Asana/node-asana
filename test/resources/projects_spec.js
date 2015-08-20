@@ -21,7 +21,7 @@ describe('Projects', function() {
         name: 'Test'
       };
       projects.create(data);
-      assert(projects.dispatchPost.calledWithExactly('/projects', data));
+      assert(projects.dispatchPost.calledWith('/projects', data));
     });
   });
 
@@ -36,7 +36,7 @@ describe('Projects', function() {
       };
       projects.createInWorkspace(id, data);
       assert(
-          projects.dispatchPost.calledWithExactly(
+          projects.dispatchPost.calledWith(
               '/workspaces/1/projects', data));
     });
 
@@ -50,7 +50,7 @@ describe('Projects', function() {
       };
       projects.createInWorkspace(id, data);
       assert(
-          projects.dispatchPost.calledWithExactly(
+          projects.dispatchPost.calledWith(
               '/workspaces/1/projects', data));
     });
 
@@ -64,7 +64,7 @@ describe('Projects', function() {
       };
       projects.createInWorkspace(id, data);
       assert(
-          projects.dispatchPost.calledWithExactly(
+          projects.dispatchPost.calledWith(
               '/workspaces/NaN/projects', data));
     });
   });
@@ -76,7 +76,7 @@ describe('Projects', function() {
       projects.dispatchGetCollection = sinon.stub();
       projects.findAll();
       assert(
-          projects.dispatchGetCollection.calledWithExactly(
+          projects.dispatchGetCollection.calledWith(
               '/projects', undefined));
     });
 
@@ -89,7 +89,7 @@ describe('Projects', function() {
       };
       projects.findAll(params);
       assert(
-          projects.dispatchGetCollection.calledWithExactly(
+          projects.dispatchGetCollection.calledWith(
               '/projects', params));
     });
   });
@@ -101,7 +101,7 @@ describe('Projects', function() {
       projects.dispatchGet = sinon.stub();
       var id = 1;
       projects.findById(id);
-      assert(projects.dispatchGet.calledWithExactly('/projects/1', undefined));
+      assert(projects.dispatchGet.calledWith('/projects/1', undefined));
     });
 
     it('should handle with params', function() {
@@ -113,7 +113,7 @@ describe('Projects', function() {
       };
       var id = 1;
       projects.findById(id, params);
-      assert(projects.dispatchGet.calledWithExactly('/projects/1', params));
+      assert(projects.dispatchGet.calledWith('/projects/1', params));
     });
 
     it('should handle string numbers', function() {
@@ -125,7 +125,7 @@ describe('Projects', function() {
       };
       var id = '1';
       projects.findById(id, params);
-      assert(projects.dispatchGet.calledWithExactly('/projects/1', params));
+      assert(projects.dispatchGet.calledWith('/projects/1', params));
     });
 
     it('should do weird things with real strings', function() {
@@ -137,7 +137,7 @@ describe('Projects', function() {
       };
       var id = 'foobar';
       projects.findById(id, params);
-      assert(projects.dispatchGet.calledWithExactly('/projects/NaN', params));
+      assert(projects.dispatchGet.calledWith('/projects/NaN', params));
     });
   });
 
@@ -149,7 +149,7 @@ describe('Projects', function() {
       var id = 1;
       projects.findByWorkspace(id);
       assert(
-          projects.dispatchGetCollection.calledWithExactly(
+          projects.dispatchGetCollection.calledWith(
               '/workspaces/1/projects', undefined));
     });
 
@@ -163,7 +163,7 @@ describe('Projects', function() {
       var id = 1;
       projects.findByWorkspace(id, params);
       assert(
-          projects.dispatchGetCollection.calledWithExactly(
+          projects.dispatchGetCollection.calledWith(
               '/workspaces/1/projects', params));
     });
 
@@ -177,7 +177,7 @@ describe('Projects', function() {
       var id = '1';
       projects.findByWorkspace(id, params);
       assert(
-          projects.dispatchGetCollection.calledWithExactly(
+          projects.dispatchGetCollection.calledWith(
               '/workspaces/1/projects', params));
     });
 
@@ -191,7 +191,7 @@ describe('Projects', function() {
       var id = 'foobar';
       projects.findByWorkspace(id, params);
       assert(
-          projects.dispatchGetCollection.calledWithExactly(
+          projects.dispatchGetCollection.calledWith(
               '/workspaces/NaN/projects', params));
     });
   });
@@ -206,7 +206,7 @@ describe('Projects', function() {
         name: 'Test'
       };
       projects.update(id, data);
-      assert(projects.dispatchPut.calledWithExactly('/projects/1', data));
+      assert(projects.dispatchPut.calledWith('/projects/1', data));
     });
 
     it('should handle string numbers', function() {
@@ -218,7 +218,7 @@ describe('Projects', function() {
         name: 'Test'
       };
       projects.update(id, data);
-      assert(projects.dispatchPut.calledWithExactly('/projects/1', data));
+      assert(projects.dispatchPut.calledWith('/projects/1', data));
     });
 
     it('should do weird things with real strings', function() {
@@ -230,7 +230,7 @@ describe('Projects', function() {
         name: 'Test'
       };
       projects.update(id, data);
-      assert(projects.dispatchPut.calledWithExactly('/projects/NaN', data));
+      assert(projects.dispatchPut.calledWith('/projects/NaN', data));
     });
   });
 
@@ -241,7 +241,7 @@ describe('Projects', function() {
       projects.dispatchDelete = sinon.stub();
       var id = 1;
       projects.delete(id);
-      assert(projects.dispatchDelete.calledWithExactly('/projects/1'));
+      assert(projects.dispatchDelete.calledWith('/projects/1'));
     });
 
     it('should handle string numbers', function() {
@@ -250,7 +250,7 @@ describe('Projects', function() {
       projects.dispatchDelete = sinon.stub();
       var id = '1';
       projects.delete(id);
-      assert(projects.dispatchDelete.calledWithExactly('/projects/1'));
+      assert(projects.dispatchDelete.calledWith('/projects/1'));
     });
 
     it('should do weird things with real strings', function() {
@@ -259,7 +259,7 @@ describe('Projects', function() {
       projects.dispatchDelete = sinon.stub();
       var id = 'foobar';
       projects.delete(id);
-      assert(projects.dispatchDelete.calledWithExactly('/projects/NaN'));
+      assert(projects.dispatchDelete.calledWith('/projects/NaN'));
     });
   });
 });
