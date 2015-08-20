@@ -21,7 +21,7 @@ describe('Tags', function() {
         name: 'Test'
       };
       tags.create(data);
-      assert(tags.dispatchPost.calledWithExactly('/tags', data));
+      assert(tags.dispatchPost.calledWith('/tags', data));
     });
   });
 
@@ -35,7 +35,7 @@ describe('Tags', function() {
         name: 'Test'
       };
       tags.createInWorkspace(id, data);
-      assert(tags.dispatchPost.calledWithExactly('/workspaces/1/tags', data));
+      assert(tags.dispatchPost.calledWith('/workspaces/1/tags', data));
     });
 
     it('should handle string numbers', function() {
@@ -47,7 +47,7 @@ describe('Tags', function() {
         name: 'Test'
       };
       tags.createInWorkspace(id, data);
-      assert(tags.dispatchPost.calledWithExactly('/workspaces/1/tags', data));
+      assert(tags.dispatchPost.calledWith('/workspaces/1/tags', data));
     });
 
     it('should do weird things with real strings', function() {
@@ -59,7 +59,7 @@ describe('Tags', function() {
         name: 'Test'
       };
       tags.createInWorkspace(id, data);
-      assert(tags.dispatchPost.calledWithExactly('/workspaces/NaN/tags', data));
+      assert(tags.dispatchPost.calledWith('/workspaces/NaN/tags', data));
     });
   });
 
@@ -69,7 +69,7 @@ describe('Tags', function() {
       var tags = new Tags(dispatcher);
       tags.dispatchGetCollection = sinon.stub();
       tags.findAll();
-      assert(tags.dispatchGetCollection.calledWithExactly('/tags', undefined));
+      assert(tags.dispatchGetCollection.calledWith('/tags', undefined));
     });
 
     it('should handle with params', function() {
@@ -80,7 +80,7 @@ describe('Tags', function() {
         'opt_fields': 'id,name'
       };
       tags.findAll(params);
-      assert(tags.dispatchGetCollection.calledWithExactly('/tags', params));
+      assert(tags.dispatchGetCollection.calledWith('/tags', params));
     });
   });
 
@@ -91,7 +91,7 @@ describe('Tags', function() {
       tags.dispatchGet = sinon.stub();
       var id = 1;
       tags.findById(id);
-      assert(tags.dispatchGet.calledWithExactly('/tags/1', undefined));
+      assert(tags.dispatchGet.calledWith('/tags/1', undefined));
     });
 
     it('should handle with params', function() {
@@ -103,7 +103,7 @@ describe('Tags', function() {
       };
       var id = 1;
       tags.findById(id, params);
-      assert(tags.dispatchGet.calledWithExactly('/tags/1', params));
+      assert(tags.dispatchGet.calledWith('/tags/1', params));
     });
 
     it('should handle string numbers', function() {
@@ -115,7 +115,7 @@ describe('Tags', function() {
       };
       var id = '1';
       tags.findById(id, params);
-      assert(tags.dispatchGet.calledWithExactly('/tags/1', params));
+      assert(tags.dispatchGet.calledWith('/tags/1', params));
     });
 
     it('should do weird things with real strings', function() {
@@ -127,7 +127,7 @@ describe('Tags', function() {
       };
       var id = 'foobar';
       tags.findById(id, params);
-      assert(tags.dispatchGet.calledWithExactly('/tags/NaN', params));
+      assert(tags.dispatchGet.calledWith('/tags/NaN', params));
     });
   });
 
@@ -139,7 +139,7 @@ describe('Tags', function() {
       var id = 1;
       tags.findByWorkspace(id);
       assert(
-          tags.dispatchGetCollection.calledWithExactly(
+          tags.dispatchGetCollection.calledWith(
               '/workspaces/1/tags', undefined));
     });
 
@@ -153,7 +153,7 @@ describe('Tags', function() {
       var id = 1;
       tags.findByWorkspace(id, params);
       assert(
-          tags.dispatchGetCollection.calledWithExactly(
+          tags.dispatchGetCollection.calledWith(
               '/workspaces/1/tags', params));
     });
 
@@ -167,7 +167,7 @@ describe('Tags', function() {
       var id = '1';
       tags.findByWorkspace(id, params);
       assert(
-          tags.dispatchGetCollection.calledWithExactly(
+          tags.dispatchGetCollection.calledWith(
               '/workspaces/1/tags', params));
     });
 
@@ -181,7 +181,7 @@ describe('Tags', function() {
       var id = 'foobar';
       tags.findByWorkspace(id, params);
       assert(
-          tags.dispatchGetCollection.calledWithExactly(
+          tags.dispatchGetCollection.calledWith(
               '/workspaces/NaN/tags', params));
     });
   });
@@ -196,7 +196,7 @@ describe('Tags', function() {
         name: 'Test'
       };
       tags.update(id, data);
-      assert(tags.dispatchPut.calledWithExactly('/tags/1', data));
+      assert(tags.dispatchPut.calledWith('/tags/1', data));
     });
 
     it('should handle string numbers', function() {
@@ -208,7 +208,7 @@ describe('Tags', function() {
         name: 'Test'
       };
       tags.update(id, data);
-      assert(tags.dispatchPut.calledWithExactly('/tags/1', data));
+      assert(tags.dispatchPut.calledWith('/tags/1', data));
     });
 
     it('should do weird things with real strings', function() {
@@ -220,7 +220,7 @@ describe('Tags', function() {
         name: 'Test'
       };
       tags.update(id, data);
-      assert(tags.dispatchPut.calledWithExactly('/tags/NaN', data));
+      assert(tags.dispatchPut.calledWith('/tags/NaN', data));
     });
   });
 });
