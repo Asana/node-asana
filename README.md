@@ -1,4 +1,4 @@
-# Asana [![GitHub release](https://img.shields.io/github/release/asana/node-asana.svg)]() [![Build Status][travis-image]][travis-url] [![NPM Version][npm-image]][npm-url]
+# Asana [![GitHub release][release-image]]() [![Build Status][travis-image]][travis-url] [![NPM Version][npm-image]][npm-url]
 
 A JavaScript client (for both Node and browser) for the Asana API v1.0.
 
@@ -246,8 +246,10 @@ npm test
 The specific Asana resource classes (`Tag`, `Workspace`, `Task`, etc) are
 generated code, hence they shouldn't be modified by hand. See the [asana-api-meta][meta] repo for details.
 
+[release-image]: https://img.shields.io/github/release/asana/node-asana.svg
+
 [travis-url]: http://travis-ci.org/Asana/node-asana
-[travis-image]: http://img.shields.io/travis/Asana/node-asana.svg?style=flat-square
+[travis-image]: http://img.shields.io/travis/Asana/node-asana.svg?style=flat-square&branch=master
 
 [npm-url]: https://www.npmjs.org/package/asana
 [npm-image]: http://img.shields.io/npm/v/asana.svg?style=flat-square
