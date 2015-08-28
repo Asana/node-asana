@@ -6,24 +6,23 @@ node_js:
 - '0.10'
 sudo: false
 deploy:
-  matrix:
   - provider: npm
     email: slobak@gmail.com
     skip_cleanup: true
     api_key:
       secure: ahwA9BC1ZWka/XABCDmaaetk1inNE6FnjndDL8PWQUEUFdai37pAr31n0/y0lSAcghnBrRQkekyHOZ0ddqBSoI0DRtqrP2B2nkZo/4eC/7q7y2QRl53yb/tvjvsI14fn5aSkyfdywMU5qOjOHpPDF5nk1scNpIDu3QlAuTWlN6o=
     on:
-      tags: true
+      branch: master
       repo: Asana/node-asana
   - provider: releases
     skip_cleanup: true
     api_key:
       secure: hdgzYozbeuefYWhyMqXdI3Hv1nY/Mz2Jr0+ChaIxaoJSqqi4xyBkBRxamhZxCO0JsSil4owMLk85WCy8Vwzpb2cu4vjxcUo9WjUsmUNhpcqG8SWj1tn765QSEHC+dkiLt1qRMVs0NXBedzmaFsz5M5BFHL8fdnA4u40hgTETxzc=
     file:
-    - dist/asana.js
-    - dist/asana-min.js
+      - dist/asana.js
+      - dist/asana-min.js
     on:
-      tags: true
+      branch: master
       repo: Asana/node-asana
 after_deploy:
 - git config --global user.email "git@asana.com"
