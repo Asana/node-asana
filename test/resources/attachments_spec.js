@@ -50,7 +50,7 @@ describe('Attachments', function() {
           attachments.dispatchGet.calledWith('/attachments/1', params));
     });
 
-    it('should do weird things with real strings', function() {
+    it('should handle real strings', function() {
       var dispatcher = {};
       var attachments = new Attachments(dispatcher);
       attachments.dispatchGet = sinon.stub();
@@ -61,7 +61,7 @@ describe('Attachments', function() {
       attachments.findById(id, params);
       assert(
           attachments.dispatchGet.calledWith(
-              '/attachments/NaN', params));
+              '/attachments/foobar', params));
     });
   });
 
@@ -105,7 +105,7 @@ describe('Attachments', function() {
               '/tasks/1/attachments', params));
     });
 
-    it('should do weird things with real strings', function() {
+    it('should handle real strings', function() {
       var dispatcher = {};
       var attachments = new Attachments(dispatcher);
       attachments.dispatchGetCollection = sinon.stub();
@@ -116,7 +116,7 @@ describe('Attachments', function() {
       attachments.findByTask(id, params);
       assert(
         attachments.dispatchGetCollection.calledWith(
-            '/tasks/NaN/attachments', params));
+            '/tasks/foobar/attachments', params));
     });
   });
 });

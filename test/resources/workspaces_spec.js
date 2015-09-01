@@ -61,7 +61,7 @@ describe('Workspaces', function() {
       assert(workspaces.dispatchPut.calledWith('/workspaces/1', data));
     });
 
-    it('should do weird things with real strings', function() {
+    it('should handle real strings', function() {
       var dispatcher = {};
       var workspaces = new Workspaces(dispatcher);
       workspaces.dispatchPut = sinon.stub();
@@ -70,7 +70,7 @@ describe('Workspaces', function() {
         name: 'Test'
       };
       workspaces.update(id, data);
-      assert(workspaces.dispatchPut.calledWith('/workspaces/NaN', data));
+      assert(workspaces.dispatchPut.calledWith('/workspaces/foobar', data));
     });
   });
 
@@ -101,7 +101,7 @@ describe('Workspaces', function() {
       assert(workspaces.dispatchGetCollection.calledWith(
         '/workspaces/1/typeahead', data));
     });
-    it('should do weird things with real strings', function() {
+    it('should handle real strings', function() {
       var dispatcher = {};
       var workspaces = new Workspaces(dispatcher);
       workspaces.dispatchGetCollection = sinon.stub();
@@ -112,7 +112,7 @@ describe('Workspaces', function() {
       };
       workspaces.typeahead(id, data);
       assert(workspaces.dispatchGetCollection.calledWith(
-        '/workspaces/NaN/typeahead', data));
+        '/workspaces/baz/typeahead', data));
     });
   });
 });

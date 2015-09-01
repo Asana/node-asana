@@ -54,7 +54,7 @@ describe('Projects', function() {
               '/workspaces/1/projects', data));
     });
 
-    it('should do weird things with real strings', function() {
+    it('should handle real strings', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
       projects.dispatchPost = sinon.stub();
@@ -65,7 +65,7 @@ describe('Projects', function() {
       projects.createInWorkspace(id, data);
       assert(
           projects.dispatchPost.calledWith(
-              '/workspaces/NaN/projects', data));
+              '/workspaces/foobar/projects', data));
     });
   });
 
@@ -128,7 +128,7 @@ describe('Projects', function() {
       assert(projects.dispatchGet.calledWith('/projects/1', params));
     });
 
-    it('should do weird things with real strings', function() {
+    it('should handle real strings', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
       projects.dispatchGet = sinon.stub();
@@ -137,7 +137,7 @@ describe('Projects', function() {
       };
       var id = 'foobar';
       projects.findById(id, params);
-      assert(projects.dispatchGet.calledWith('/projects/NaN', params));
+      assert(projects.dispatchGet.calledWith('/projects/foobar', params));
     });
   });
 
@@ -181,7 +181,7 @@ describe('Projects', function() {
               '/workspaces/1/projects', params));
     });
 
-    it('should do weird things with real strings', function() {
+    it('should handle real strings', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
       projects.dispatchGetCollection = sinon.stub();
@@ -192,7 +192,7 @@ describe('Projects', function() {
       projects.findByWorkspace(id, params);
       assert(
           projects.dispatchGetCollection.calledWith(
-              '/workspaces/NaN/projects', params));
+              '/workspaces/foobar/projects', params));
     });
   });
 
@@ -221,7 +221,7 @@ describe('Projects', function() {
       assert(projects.dispatchPut.calledWith('/projects/1', data));
     });
 
-    it('should do weird things with real strings', function() {
+    it('should handle real strings', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
       projects.dispatchPut = sinon.stub();
@@ -230,7 +230,7 @@ describe('Projects', function() {
         name: 'Test'
       };
       projects.update(id, data);
-      assert(projects.dispatchPut.calledWith('/projects/NaN', data));
+      assert(projects.dispatchPut.calledWith('/projects/foobar', data));
     });
   });
 
@@ -253,13 +253,13 @@ describe('Projects', function() {
       assert(projects.dispatchDelete.calledWith('/projects/1'));
     });
 
-    it('should do weird things with real strings', function() {
+    it('should handle real strings', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
       projects.dispatchDelete = sinon.stub();
       var id = 'foobar';
       projects.delete(id);
-      assert(projects.dispatchDelete.calledWith('/projects/NaN'));
+      assert(projects.dispatchDelete.calledWith('/projects/foobar'));
     });
   });
 });

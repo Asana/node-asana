@@ -52,7 +52,7 @@ describe('Teams', function() {
             '/organizations/1/teams', params));
     });
 
-    it('should do weird things with real strings', function() {
+    it('should handle real strings', function() {
       var dispatcher = {};
       var teams = new Teams(dispatcher);
       teams.dispatchGetCollection = sinon.stub();
@@ -63,7 +63,7 @@ describe('Teams', function() {
       teams.findByOrganization(id, params);
       assert(
         teams.dispatchGetCollection.calledWith(
-            '/organizations/NaN/teams', params));
+            '/organizations/foobar/teams', params));
     });
   });
 });
