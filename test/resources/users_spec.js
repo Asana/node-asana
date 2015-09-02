@@ -89,7 +89,7 @@ describe('Users', function() {
       assert(users.dispatchGet.calledWith('/users/1', params));
     });
 
-    it('should do weird things with real strings', function() {
+    it('should handle real strings', function() {
       var dispatcher = {};
       var users = new Users(dispatcher);
       users.dispatchGet = sinon.stub();
@@ -98,7 +98,7 @@ describe('Users', function() {
       };
       var id = 'foobar';
       users.findById(id, params);
-      assert(users.dispatchGet.calledWith('/users/NaN', params));
+      assert(users.dispatchGet.calledWith('/users/foobar', params));
     });
   });
 
@@ -140,7 +140,7 @@ describe('Users', function() {
           '/workspaces/1/users', params));
     });
 
-    it('should do weird things with real strings', function() {
+    it('should handle real strings', function() {
       var dispatcher = {};
       var users = new Users(dispatcher);
       users.dispatchGetCollection = sinon.stub();
@@ -150,7 +150,7 @@ describe('Users', function() {
       var id = 'foobar';
       users.findByWorkspace(id, params);
       assert(users.dispatchGetCollection.calledWith(
-          '/workspaces/NaN/users', params));
+          '/workspaces/foobar/users', params));
     });
   });
 });

@@ -50,7 +50,7 @@ describe('Tags', function() {
       assert(tags.dispatchPost.calledWith('/workspaces/1/tags', data));
     });
 
-    it('should do weird things with real strings', function() {
+    it('should handle real strings', function() {
       var dispatcher = {};
       var tags = new Tags(dispatcher);
       tags.dispatchPost = sinon.stub();
@@ -59,7 +59,7 @@ describe('Tags', function() {
         name: 'Test'
       };
       tags.createInWorkspace(id, data);
-      assert(tags.dispatchPost.calledWith('/workspaces/NaN/tags', data));
+      assert(tags.dispatchPost.calledWith('/workspaces/foobar/tags', data));
     });
   });
 
@@ -118,7 +118,7 @@ describe('Tags', function() {
       assert(tags.dispatchGet.calledWith('/tags/1', params));
     });
 
-    it('should do weird things with real strings', function() {
+    it('should handle real strings', function() {
       var dispatcher = {};
       var tags = new Tags(dispatcher);
       tags.dispatchGet = sinon.stub();
@@ -127,7 +127,7 @@ describe('Tags', function() {
       };
       var id = 'foobar';
       tags.findById(id, params);
-      assert(tags.dispatchGet.calledWith('/tags/NaN', params));
+      assert(tags.dispatchGet.calledWith('/tags/foobar', params));
     });
   });
 
@@ -171,7 +171,7 @@ describe('Tags', function() {
               '/workspaces/1/tags', params));
     });
 
-    it('should do weird things with real strings', function() {
+    it('should handle real strings', function() {
       var dispatcher = {};
       var tags = new Tags(dispatcher);
       tags.dispatchGetCollection = sinon.stub();
@@ -182,7 +182,7 @@ describe('Tags', function() {
       tags.findByWorkspace(id, params);
       assert(
           tags.dispatchGetCollection.calledWith(
-              '/workspaces/NaN/tags', params));
+              '/workspaces/foobar/tags', params));
     });
   });
 
@@ -211,7 +211,7 @@ describe('Tags', function() {
       assert(tags.dispatchPut.calledWith('/tags/1', data));
     });
 
-    it('should do weird things with real strings', function() {
+    it('should handle real strings', function() {
       var dispatcher = {};
       var tags = new Tags(dispatcher);
       tags.dispatchPut = sinon.stub();
@@ -220,7 +220,7 @@ describe('Tags', function() {
         name: 'Test'
       };
       tags.update(id, data);
-      assert(tags.dispatchPut.calledWith('/tags/NaN', data));
+      assert(tags.dispatchPut.calledWith('/tags/foobar', data));
     });
   });
 });

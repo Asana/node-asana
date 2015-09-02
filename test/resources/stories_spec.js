@@ -46,7 +46,7 @@ describe('Stories', function() {
       assert(stories.dispatchGet.calledWith('/stories/1', params));
     });
 
-    it('should do weird things with real strings', function() {
+    it('should handle real strings', function() {
       var dispatcher = {};
       var stories = new Stories(dispatcher);
       stories.dispatchGet = sinon.stub();
@@ -55,7 +55,7 @@ describe('Stories', function() {
       };
       var id = 'foobar';
       stories.findById(id, params);
-      assert(stories.dispatchGet.calledWith('/stories/NaN', params));
+      assert(stories.dispatchGet.calledWith('/stories/foobar', params));
     });
   });
 
@@ -99,7 +99,7 @@ describe('Stories', function() {
               '/tasks/1/stories', params));
     });
 
-    it('should do weird things with real strings', function() {
+    it('should handle real strings', function() {
       var dispatcher = {};
       var stories = new Stories(dispatcher);
       stories.dispatchGetCollection = sinon.stub();
@@ -110,7 +110,7 @@ describe('Stories', function() {
       stories.findByTask(id, params);
       assert(
           stories.dispatchGetCollection.calledWith(
-              '/tasks/NaN/stories', params));
+              '/tasks/foobar/stories', params));
     });
   });
 
@@ -139,7 +139,7 @@ describe('Stories', function() {
       assert(stories.dispatchPost.calledWith('/tasks/1/stories', data));
     });
 
-    it('should do weird things with real strings', function() {
+    it('should handle real strings', function() {
       var dispatcher = {};
       var stories = new Stories(dispatcher);
       stories.dispatchPost = sinon.stub();
@@ -149,7 +149,7 @@ describe('Stories', function() {
       };
       stories.createOnTask(id, data);
       assert(
-          stories.dispatchPost.calledWith('/tasks/NaN/stories', data));
+          stories.dispatchPost.calledWith('/tasks/foobar/stories', data));
     });
   });
 });
