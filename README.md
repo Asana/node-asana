@@ -246,6 +246,18 @@ npm test
 The specific Asana resource classes (`Tag`, `Workspace`, `Task`, etc) are
 generated code, hence they shouldn't be modified by hand. See the [asana-api-meta][meta] repo for details.
 
+### Deployment
+
+**Repo Owners Only.** Take the following steps to issue a new release of the library.
+
+  1. Merge in the desired changes into the `master` branch and commit them.
+  2. Clone the repo, work on master.
+  3. Bump the package version to indicate the [semantic version](http://semver.org/) change, using one of: `gulp bump-patch`, `gulp bump-feature`, or `gulp bump-release`
+  4. Push changes to origin, including tags:
+     `git push origin master --tags` 
+
+Travis CI will automatically build and deploy the tagged release.
+
 [release-image]: https://img.shields.io/github/release/asana/node-asana.svg
 
 [travis-url]: http://travis-ci.org/Asana/node-asana
