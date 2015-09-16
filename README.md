@@ -274,3 +274,4 @@ Travis CI will automatically build and deploy the tagged release.
 [api-docs]: https://asana.com/developers
 [api-reference]: https://asana.com/developers/api-reference
 [io]: https://asana.com/developers/documentation/getting-started/input-output-options
+[asana-doc]: https://asana.com/developers/documentation
