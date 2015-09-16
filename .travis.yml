@@ -15,7 +15,7 @@ deploy:
     api_key:
       secure: ahwA9BC1ZWka/XABCDmaaetk1inNE6FnjndDL8PWQUEUFdai37pAr31n0/y0lSAcghnBrRQkekyHOZ0ddqBSoI0DRtqrP2B2nkZo/4eC/7q7y2QRl53yb/tvjvsI14fn5aSkyfdywMU5qOjOHpPDF5nk1scNpIDu3QlAuTWlN6o=
     on:
-      branch: master
+      tags: true
       node: '0.10'
       repo: Asana/node-asana
   - provider: releases
@@ -26,7 +26,7 @@ deploy:
       - dist/asana.js
       - dist/asana-min.js
     on:
-      branch: master
+      tags: true
       node: '0.10'
       repo: Asana/node-asana
 after_deploy:
