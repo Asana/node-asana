@@ -8,6 +8,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "asana": "^0.4.4"
+    "asana": "file:../../"
   }
 }

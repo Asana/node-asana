@@ -62,10 +62,10 @@ All resources are exposed as properties of the `Asana.Client` instance (e.g. `cl
 
 This module supports authenticating against the Asana API with either an API key or through OAuth2.
 
-#### API Key
+#### Personal Access Token
 
 ```js
-var client = Asana.Client.create().useBasicAuth('my_api_key');
+var client = Asana.Client.create().userAccessToken('personal_access_token');
 ```
 
 #### OAuth2
