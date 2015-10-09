@@ -65,7 +65,7 @@ This module supports authenticating against the Asana API with either an API key
 #### Personal Access Token
 
 ```js
-var client = Asana.Client.create().userAccessToken('personal_access_token');
+var client = Asana.Client.create().useAccessToken('personal_access_token');
 ```
 
 #### OAuth2
