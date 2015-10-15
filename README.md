@@ -50,7 +50,7 @@ The most minimal example would be as follows:
 
 ```js
 var asana = require('asana');
-var client = asana.Client.create().useBasicAuth('my_api_key');
+var client = asana.Client.create().useAccessToken('my_access_token');
 client.users.me().then(function(me) {
   console.log(me);
 });
@@ -60,7 +60,7 @@ All resources are exposed as properties of the `Asana.Client` instance (e.g. `cl
 
 ### Authentication
 
-This module supports authenticating against the Asana API with either an API key or through OAuth2.
+This module supports authenticating against the Asana API with either a Personal Access Token or through OAuth 2.0.
 
 #### Personal Access Token
 
@@ -68,7 +68,7 @@ This module supports authenticating against the Asana API with either an API key
 var client = Asana.Client.create().useAccessToken('personal_access_token');
 ```
 
-#### OAuth2
+#### OAuth 2.0
 
 Authenticating through OAuth2 is preferred. There are many ways you can do this.
 
