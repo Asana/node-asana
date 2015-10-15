@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "asana": "^0.4.1"
+    "asana": "file:../../../"
   },
   "devDependencies": {
     "gulp": "^3.8.10"
