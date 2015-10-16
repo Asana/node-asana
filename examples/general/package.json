@@ -1,0 +1,13 @@
+{
+  "name": "general",
+  "description": "General Asana Examples",
+  "main": "app.js",
+  "private": true,
+  "scripts": {
+    "start": "node events.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "asana": "file:../../"
+  }
+}
