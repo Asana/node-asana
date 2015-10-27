@@ -35,7 +35,7 @@ Run the following commands, substituting the **Client ID** and **Client Secret**
 
     export ASANA_CLIENT_ID=...
     export ASANA_CLIENT_SECRET=...
-    node server.js
+    node oauth_webserver.js
 
 Then visit `http://localhost:8338/` to interact with the server. It stores
 the Oauth token in a cookie named `token`, so you can clear that cookie from
