@@ -95,11 +95,12 @@ client.useOauth({
 
 ##### With a refresh token
 
-If you obtained a refresh token (from a previos authorization), you can use it together with your client
+If you obtained a refresh token (from a previous authorization), you can use it together with your client
 credentials to authenticate:
 
 ```js
 var credentials = {
+  // access_token: 'my_access_token',
   refresh_token: 'my_refresh_token'
 };
 client.useOauth({
