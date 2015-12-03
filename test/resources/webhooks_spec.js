@@ -17,7 +17,7 @@ describe('Webhooks', function() {
     });
   });
 
-  describe('#get_by_id', function() {
+  describe('#get_all', function() {
     it('should get all webhooks', function() {
       var webhooks = new Webhooks({});
       webhooks.dispatchGetCollection = sinon.stub();
