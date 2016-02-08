@@ -76,6 +76,20 @@ describe('Collection', function() {
       });
     });
 
+    it('should resolve to null if no page info', function(done) {
+      var response = {
+        'data': [{ id: 123 }]
+      };
+      var dispatcher = {
+        dispatch: sinon.stub()
+      };
+      var collection = new Collection(response, dispatcher);
+      collection.nextPage().then(function(page) {
+        assert.equal(page, null);
+        done();
+      });
+    });
+
     it('should make request and return collection for page', function(done) {
       var response = {
         'data': ['abc'],
