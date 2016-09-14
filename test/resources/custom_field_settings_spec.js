@@ -1,0 +1,29 @@
+/* jshint mocha:true */
+var assert = require('assert');
+var sinon = require('sinon');
+var CustomFieldSettings = require('../../lib/resources/custom_field_settings');
+
+describe('CustomFieldSettings', function() {
+
+  describe('#new', function() {
+    it('should add the dispatcher to itself', function() {
+      var dispatcher = sinon.stub();
+      var customFieldSettings = new CustomFieldSettings(dispatcher);
+      assert.equal(customFieldSettings.dispatcher, dispatcher);
+    });
+  });
+
+  describe('#findByProject', function() {
+    it('should handle without params', function() {
+      var dispatcher = {};
+      var customFieldSettings = new CustomFieldSettings(dispatcher);
+      customFieldSettings.dispatchGet = sinon.stub();
+      var id = 1331;
+      customFieldSettings.findByProject(id);
+      assert(customFieldSettings.dispatchGet.calledWith(
+        '/projects/1331/custom_field_settings', undefined));
+    });
+
+  });
+
+});

@@ -262,4 +262,33 @@ describe('Projects', function() {
       assert(projects.dispatchDelete.calledWith('/projects/foobar'));
     });
   });
+  describe('#addCustomFieldSetting', function() {
+    it('should call the correct endpoint', function() {
+      var dispatcher = {};
+      var projects = new Projects(dispatcher);
+      projects.dispatchPost = sinon.stub();
+      var id = 1331;
+      var data = {
+        customField: 124578,
+        isImportant: true
+      };
+      projects.addCustomFieldSetting(id, data);
+      assert(projects.dispatchPost.calledWith(
+        '/projects/1331/addCustomFieldSetting', data));
+    });
+  });
+  describe('#removeCustomFieldSetting', function() {
+    it('should call the correct endpoint', function() {
+      var dispatcher = {};
+      var projects = new Projects(dispatcher);
+      projects.dispatchPost = sinon.stub();
+      var id = 1331;
+      var data = {
+        customField: 124578,
+      };
+      projects.removeCustomFieldSetting(id, data);
+      assert(projects.dispatchPost.calledWith(
+        '/projects/1331/removeCustomFieldSetting', data));
+    });
+  });
 });
