@@ -135,7 +135,7 @@ the next request. The `nextPage` method takes care of this for you:
 ```js
 client.tasks.findByTag(tagId).then(function(firstPage) {
   console.log(firstPage.data);
-  collection.nextPage().then(function(secondPage) {
+  firstPage.nextPage().then(function(secondPage) {
     console.log(secondPage.data);
   });
 });
