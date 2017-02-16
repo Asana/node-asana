@@ -60,7 +60,7 @@ app.get('/', function(req, res) {
 
 // Authorization callback - redirected to from Asana.
 app.get('/oauth_callback', function(req, res) {
-  var code = req.param('code');
+  var code = req.query.code;
   if (code) {
     // If we got a code back, then authorization succeeded.
     // Get token. Store it in the cookie and redirect home.
@@ -77,7 +77,7 @@ app.get('/oauth_callback', function(req, res) {
     });
   } else {
     // Authorization could have failed. Show an error.
-    res.end('Error getting authorization: ' + req.param('error'));
+    res.end('Error getting authorization: ' + req.query.error);
   }
 
 });
