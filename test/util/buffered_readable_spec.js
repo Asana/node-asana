@@ -50,7 +50,7 @@ describe('BufferedReadable', function() {
       assert(stream.push.calledTwice);
       assert.equal(stream.push.firstCall.args[0], 'abc');
       assert.equal(stream.push.secondCall.args[0], 'def');
-      assert.deepEqual(stream._buffer, ['def']);
+      assert.deepEqual(stream._buffer, []);
     });
 
     it('should drain buffer then call readUnbuffered', function() {
