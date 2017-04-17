@@ -107,8 +107,22 @@ client.useOauth({
   credentials: credentials
 });
 ```
-
 See `examples/oauth/webserver` for a working example of this.
+
+##### To enable token auto refresh by the client object
+The 'useOauth' method can accept a single string argument which is an access token, or a credentiails object, to support auto refresh when your access token expires:
+
+```js
+var credentials = {
+  access_token: 'my_access_token'
+  refresh_token: 'my_refresh_token'
+};
+client.useOauth({
+  credentials: credentials
+});
+
+
+
 
 ### Collections
 
