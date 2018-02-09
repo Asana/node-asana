@@ -1,7 +1,7 @@
 {
   "name": "asana",
   "main": "dist/asana.js",
-  "version": "0.15.0",
+  "version": "0.15.1",
   "homepage": "https://github.com/Asana/node-asana",
   "authors": [
     "Greg Slovacek <greg@asana.com>",
