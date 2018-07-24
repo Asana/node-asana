@@ -20,6 +20,12 @@ describe('Client', function() {
       });
       assert.equal(client.dispatcher.asanaBaseUrl, 'fake_url');
     });
+
+    it('should pass default headers to the dispatcher', function() {
+      var defaultHeaders = {'header-key': 'header-value'};
+      var client = Client.create({defaultHeaders: defaultHeaders});
+      assert.equal(client.dispatcher.defaultHeaders, defaultHeaders);
+    });
   });
 
   describe('#new', function() {

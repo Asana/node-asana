@@ -86,7 +86,7 @@ describe('Dispatcher', function() {
           requestParams.headers['X-Asana-Client-Lib'], 'fakeKey=fakeValue');
     });
 
-    it('should add extra headers to request', function() {
+    it('should add extra headers to the request', function() {
       var request = sinon.stub();
       Dispatcher.__set__('request', request);
       var auth = { authenticateRequest: sinon.stub() };
@@ -95,6 +95,34 @@ describe('Dispatcher', function() {
       var requestParams = request.firstCall.args[0];
       assert.equal(
           requestParams.headers['header-key'], 'header-value');
+    });
+
+    it('should add default headers to the request', function() {
+      var request = sinon.stub();
+      Dispatcher.__set__('request', request);
+      var auth = { authenticateRequest: sinon.stub() };
+      var dispatcher = new Dispatcher({
+          authenticator: auth,
+          defaultHeaders: {'header-key': 'header-value'}
+      });
+      dispatcher.dispatch({});
+      var requestParams = request.firstCall.args[0];
+      assert.equal(
+          requestParams.headers['header-key'], 'header-value');
+    });
+
+    it('should overwrite default headers with per-request headers', function() {
+      var request = sinon.stub();
+      Dispatcher.__set__('request', request);
+      var auth = { authenticateRequest: sinon.stub() };
+        var dispatcher = new Dispatcher({
+            authenticator: auth,
+            defaultHeaders: {'header-key': 'header-value'}
+        });
+      dispatcher.dispatch({}, {headers: {'header-key': 'new-value'}});
+      var requestParams = request.firstCall.args[0];
+      assert.equal(
+          requestParams.headers['header-key'], 'new-value');
     });
 
     it('should pass an error from request', function() {
