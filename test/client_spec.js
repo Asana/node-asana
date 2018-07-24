@@ -3,7 +3,6 @@ var assert = require('assert');
 var sinon = require('sinon');
 var Dispatcher = require('../lib/dispatcher');
 var resources = require('../lib/resources');
-var BasicAuthenticator = require('../lib/auth/basic_authenticator');
 var OauthAuthenticator = require('../lib/auth/oauth_authenticator');
 
 var rewire = require('rewire');
@@ -31,17 +30,16 @@ describe('Client', function() {
     });
   });
 
-  describe('#useBasicAuth', function() {
-    it('should add basic auth to client', function() {
-      var client = Client.create().useBasicAuth('apiKey');
+  describe('#usePat', function() {
+    it('should add PAT to client', function() {
+      var client = Client.create().useAccessToken('pat');
       var authenticator = client.dispatcher.authenticator;
-      assert(authenticator instanceof BasicAuthenticator);
-      assert.equal(authenticator.apiKey, 'apiKey');
+      assert(authenticator instanceof OauthAuthenticator);
+      assert.equal(authenticator.credentials.access_token, 'pat'); // jshint ignore:line
     });
   });
 
   describe('#useOauth', function() {
-
     it('should return an oauth client with autodetected flow by default',
       function() {
         var autoDetectStub = sinon.stub();

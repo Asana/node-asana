@@ -187,9 +187,9 @@ concepts are illustrated here.
 var Asana = require('asana');
 var util = require('util');
 
-// Using the API key for basic authentication. This is reasonable to get
+// Using a PAT for basic authentication. This is reasonable to get
 // started with, but Oauth is more secure and provides more features.
-var client = Asana.Client.create().useBasicAuth(process.env.ASANA_API_KEY);
+var client = Asana.Client.create().useAccessToken(process.env.ASANA_PAT);
 
 client.users.me()
   .then(function(user) {

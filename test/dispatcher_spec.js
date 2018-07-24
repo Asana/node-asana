@@ -1,4 +1,4 @@
-/* jshint mocha:true */ 
+/* jshint mocha:true */
 var assert = require('assert');
 var sinon = require('sinon');
 var rewire = require('rewire');
@@ -84,6 +84,17 @@ describe('Dispatcher', function() {
       var requestParams = request.firstCall.args[0];
       assert.equal(
           requestParams.headers['X-Asana-Client-Lib'], 'fakeKey=fakeValue');
+    });
+
+    it('should add extra headers to request', function() {
+      var request = sinon.stub();
+      Dispatcher.__set__('request', request);
+      var auth = { authenticateRequest: sinon.stub() };
+      var dispatcher = new Dispatcher({ authenticator: auth });
+      dispatcher.dispatch({}, {headers: {'header-key': 'header-value'}});
+      var requestParams = request.firstCall.args[0];
+      assert.equal(
+          requestParams.headers['header-key'], 'header-value');
     });
 
     it('should pass an error from request', function() {
