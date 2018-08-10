@@ -49,8 +49,8 @@ for more complex scenarios) and other options.
 The most minimal example would be as follows:
 
 ```js
-var asana = require('asana');
-var client = asana.Client.create().useAccessToken('my_access_token');
+const asana = require('asana');
+const client = asana.Client.create().useAccessToken('my_access_token');
 client.users.me().then(function(me) {
   console.log(me);
 });
