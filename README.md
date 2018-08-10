@@ -65,7 +65,7 @@ This module supports authenticating against the Asana API with either a Personal
 #### Personal Access Token
 
 ```js
-var client = Asana.Client.create().useAccessToken('personal_access_token');
+const client = Asana.Client.create().useAccessToken('personal_access_token');
 ```
 
 #### OAuth 2.0
@@ -75,7 +75,7 @@ Authenticating through OAuth2 is preferred. There are many ways you can do this.
 In all cases, you should create a `Client` that contains your app information. The values in the below snippet should be substituted with the real properties from your application's settings.
 
 ```js
-var client = Asana.Client.create({
+const client = Asana.Client.create({
   clientId: 123,
   clientSecret: 'my_client_secret',
   redirectUri: 'my_redirect_uri'
@@ -99,7 +99,7 @@ If you obtained a refresh token (from a previous authorization), you can use it 
 credentials to authenticate:
 
 ```js
-var credentials = {
+const credentials = {
   // access_token: 'my_access_token',
   refresh_token: 'my_refresh_token'
 };
@@ -133,9 +133,9 @@ To get the next page of a collection, you do not have to manually construct
 the next request. The `nextPage` method takes care of this for you:
 
 ```js
-client.tasks.findByTag(tagId).then(function(firstPage) {
+client.tasks.findByTag(tagId).then(firstPage => {
   console.log(firstPage.data);
-  firstPage.nextPage().then(function(secondPage) {
+  firstPage.nextPage().then(secondPage => {
     console.log(secondPage.data);
   });
 });
@@ -147,9 +147,9 @@ To automatically fetch a bunch of results and have the client transparently
 request pages under the hood, use the `fetch` method.:
 
 ```js
-client.tasks.findByTag(tagId).then(function(collection) {
+client.tasks.findByTag(tagId).then(collection => {
   // Fetch up to 200 tasks, using multiple pages if necessary
-  collection.fetch(200).then(function(tasks) {
+  collection.fetch(200).then(tasks => {
     console.log(tasks);
   });
 });
@@ -162,8 +162,8 @@ You can also construct a `stream` from a collection. This will transparently
 through them.
 
 ```js
-client.tasks.findByTag(tagId).then(function(collection) {
-  collection.stream().on('data', function(task) {
+client.tasks.findByTag(tagId).then(collection => {
+  collection.stream().on('data', task => {
     console.log(task);
   });
 });
@@ -184,20 +184,20 @@ concepts are illustrated here.
 ### Find some incomplete tasks assigned to me that are new or marked for today in my default workspace
 
 ```js
-var Asana = require('asana');
-var util = require('util');
+const Asana = require('asana');
+const util = require('util');
 
 // Using the API key for basic authentication. This is reasonable to get
 // started with, but Oauth is more secure and provides more features.
-var client = Asana.Client.create().useBasicAuth(process.env.ASANA_API_KEY);
+const client = Asana.Client.create().useBasicAuth(process.env.ASANA_API_KEY);
 
 client.users.me()
-  .then(function(user) {
-    var userId = user.id;
+  .then(user => {
+    const userId = user.id;
     // The user's "default" workspace is the first one in the list, though
     // any user can have multiple workspaces so you can't always assume this
     // is the one you want to work with.
-    var workspaceId = user.workspaces[0].id;
+    const workspaceId = user.workspaces[0].id;
     return client.tasks.findAll({
       assignee: userId,
       workspace: workspaceId,
@@ -205,21 +205,24 @@ client.users.me()
       opt_fields: 'id,name,assignee_status,completed'
     });
   })
-  .then(function(response) {
+  .then(response => {
     // There may be more pages of data, we could stream or return a promise
     // to request those here - for now, let's just return the first page
     // of items.
     return response.data;
   })
-  .filter(function(task) {
+  .filter(task => {
     return task.assignee_status === 'today' ||
       task.assignee_status === 'new';
   })
-  .then(function(list) {
+  .then(list => {
     console.log(util.inspect(list, {
       colors: true,
       depth: null
     }));
+  })
+  .catch(e => {
+    console.log(e);
   });
 ```
 
