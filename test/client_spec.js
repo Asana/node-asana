@@ -21,6 +21,12 @@ describe('Client', function() {
       });
       assert.equal(client.dispatcher.asanaBaseUrl, 'fake_url');
     });
+
+    it('should pass default headers to the dispatcher', function() {
+      var defaultHeaders = {'header-key': 'header-value'};
+      var client = Client.create({defaultHeaders: defaultHeaders});
+      assert.equal(client.dispatcher.defaultHeaders, defaultHeaders);
+    });
   });
 
   describe('#new', function() {
@@ -32,7 +38,7 @@ describe('Client', function() {
   });
 
   describe('#useBasicAuth', function() {
-    it('should add basic auth to client (backwards compatibility)', 
+    it('should add basic auth to client (backwards compatibility)',
       function() {
         var client = Client.create().useBasicAuth('pat');
         var authenticator = client.dispatcher.authenticator;
@@ -51,7 +57,6 @@ describe('Client', function() {
   });
 
   describe('#useOauth', function() {
-
     it('should return an oauth client with autodetected flow by default',
       function() {
         var autoDetectStub = sinon.stub();
