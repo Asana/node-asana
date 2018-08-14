@@ -3,6 +3,7 @@ var assert = require('assert');
 var sinon = require('sinon');
 var Dispatcher = require('../lib/dispatcher');
 var resources = require('../lib/resources');
+var BasicAuthenticator = require('../lib/auth/basic_authenticator');
 var OauthAuthenticator = require('../lib/auth/oauth_authenticator');
 
 var rewire = require('rewire');
@@ -20,12 +21,6 @@ describe('Client', function() {
       });
       assert.equal(client.dispatcher.asanaBaseUrl, 'fake_url');
     });
-
-    it('should pass default headers to the dispatcher', function() {
-      var defaultHeaders = {'header-key': 'header-value'};
-      var client = Client.create({defaultHeaders: defaultHeaders});
-      assert.equal(client.dispatcher.defaultHeaders, defaultHeaders);
-    });
   });
 
   describe('#new', function() {
@@ -34,6 +29,16 @@ describe('Client', function() {
       var client = new Client(dispatcher);
       assert.equal(client.dispatcher, dispatcher);
     });
+  });
+
+  describe('#useBasicAuth', function() {
+    it('should add basic auth to client (backwards compatibility)', 
+      function() {
+        var client = Client.create().useBasicAuth('pat');
+        var authenticator = client.dispatcher.authenticator;
+        assert(authenticator instanceof BasicAuthenticator);
+        assert.equal(authenticator.apiKey, 'pat');
+      });
   });
 
   describe('#usePat', function() {
@@ -46,6 +51,7 @@ describe('Client', function() {
   });
 
   describe('#useOauth', function() {
+
     it('should return an oauth client with autodetected flow by default',
       function() {
         var autoDetectStub = sinon.stub();
