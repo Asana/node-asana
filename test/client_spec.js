@@ -107,7 +107,8 @@ describe('Client', function() {
       it('should have ' + key, function() {
         var dispatcher = new Dispatcher({});
         var client = new Client(dispatcher);
-        assert(client[key.toLowerCase()]);
+        var expectedKey = key.charAt(0).toLowerCase() + key.slice(1);
+        assert(client[expectedKey]);
       });
     });
   });
