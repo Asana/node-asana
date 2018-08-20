@@ -21,7 +21,7 @@ deploy:
   - provider: releases
     skip_cleanup: true
     api_key:
-      secure: F3ZvlMIRloYi7oqN6QLFwE4lK2Z7xts6b1URVtIs0o1xiWQv526BNzpGe0ZFDdkwDrWkLWWazQDyvOD5cK+gxb4wx2kpPh7l0qUaOALd96Z51rJ2SwJSMXMSEKJzfkADClSmh3X46RCObgYgwcXvDp7ZWWUr7HvGKqn+nKCRiS4=
+      secure: "PXQ4an+jGX2FW3ufsLl0F6auyFr6TbwM/QgyBcuhijTqQLB+vtV13yvCU4OgBmtpGjctIfHIt/BloRlkRocaq4D27bHRNiFc76k9LxyIkDWEvPmogkN42YRcmr7cBB1VFYEFmEi9lrk2m5Cpl6tfMaU2LVBLsUMNrI7YHkrMp4A="
     file:
       - dist/asana.js
       - dist/asana-min.js
