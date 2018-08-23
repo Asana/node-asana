@@ -10,10 +10,10 @@ node_js:
 sudo: false
 deploy:
   - provider: npm
-    email: slobak@gmail.com
+    email: joetrollo@asana.com
     skip_cleanup: true
     api_key:
-      secure: ahwA9BC1ZWka/XABCDmaaetk1inNE6FnjndDL8PWQUEUFdai37pAr31n0/y0lSAcghnBrRQkekyHOZ0ddqBSoI0DRtqrP2B2nkZo/4eC/7q7y2QRl53yb/tvjvsI14fn5aSkyfdywMU5qOjOHpPDF5nk1scNpIDu3QlAuTWlN6o=
+      secure: GEDWdojeLCq6k9WdJy0C+KXIiZOc2NcAp4/o7WxHWcscrcRapm42Rt1DxMsAlyXKTkPNl6lURQKTQsJnV5l4HVtHSGzEXLusdTMRgHIxOz+XF1R51i001l9bmdem9onNwgGWhQrLTMTdL449aY42G09OaQbP1L7XK9NN8fHfiEY=
     on:
       tags: true
       node: '8'
