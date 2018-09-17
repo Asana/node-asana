@@ -21,6 +21,12 @@ describe('Client', function() {
       });
       assert.equal(client.dispatcher.asanaBaseUrl, 'fake_url');
     });
+
+    it('should pass default headers to the dispatcher', function() {
+      var defaultHeaders = {'header-key': 'header-value'};
+      var client = Client.create({defaultHeaders: defaultHeaders});
+      assert.equal(client.dispatcher.defaultHeaders, defaultHeaders);
+    });
   });
 
   describe('#new', function() {
@@ -32,16 +38,25 @@ describe('Client', function() {
   });
 
   describe('#useBasicAuth', function() {
-    it('should add basic auth to client', function() {
-      var client = Client.create().useBasicAuth('apiKey');
+    it('should add basic auth to client (backwards compatibility)',
+      function() {
+        var client = Client.create().useBasicAuth('pat');
+        var authenticator = client.dispatcher.authenticator;
+        assert(authenticator instanceof BasicAuthenticator);
+        assert.equal(authenticator.apiKey, 'pat');
+      });
+  });
+
+  describe('#usePat', function() {
+    it('should add PAT to client', function() {
+      var client = Client.create().useAccessToken('pat');
       var authenticator = client.dispatcher.authenticator;
-      assert(authenticator instanceof BasicAuthenticator);
-      assert.equal(authenticator.apiKey, 'apiKey');
+      assert(authenticator instanceof OauthAuthenticator);
+      assert.equal(authenticator.credentials.access_token, 'pat'); // jshint ignore:line
     });
   });
 
   describe('#useOauth', function() {
-
     it('should return an oauth client with autodetected flow by default',
       function() {
         var autoDetectStub = sinon.stub();
@@ -92,7 +107,8 @@ describe('Client', function() {
       it('should have ' + key, function() {
         var dispatcher = new Dispatcher({});
         var client = new Client(dispatcher);
-        assert(client[key.toLowerCase()]);
+        var expectedKey = key.charAt(0).toLowerCase() + key.slice(1);
+        assert(client[expectedKey]);
       });
     });
   });

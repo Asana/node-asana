@@ -1,4 +1,4 @@
-/* jshint mocha:true */ 
+/* jshint mocha:true */
 var assert = require('assert');
 var sinon = require('sinon');
 var rewire = require('rewire');
@@ -75,7 +75,13 @@ describe('Dispatcher', function() {
     it('should add version header to request', function() {
       var request = sinon.stub();
       Dispatcher.__set__('request', request);
-      var auth = { authenticateRequest: sinon.stub() };
+      var auth = {
+        authenticateRequest: function(params) {
+          params.headers = params.headers || {};
+          params.headers.Authorization = 'Bearer [token]';
+          return params;
+        }
+      };
       var dispatcher = new Dispatcher({ authenticator: auth });
       dispatcher._generateVersionInfo = function() {
         return { fakeKey: 'fakeValue' };
@@ -84,6 +90,67 @@ describe('Dispatcher', function() {
       var requestParams = request.firstCall.args[0];
       assert.equal(
           requestParams.headers['X-Asana-Client-Lib'], 'fakeKey=fakeValue');
+      assert(requestParams.headers.Authorization);
+    });
+
+    it('should add extra headers to the request', function() {
+      var request = sinon.stub();
+      Dispatcher.__set__('request', request);
+      var auth = {
+        authenticateRequest: function(params) {
+          params.headers = params.headers || {};
+          params.headers.Authorization = 'Bearer [token]';
+          return params;
+        }
+      };
+      var dispatcher = new Dispatcher({ authenticator: auth });
+      dispatcher.dispatch({}, {headers: {'header-key': 'header-value'}});
+      var requestParams = request.firstCall.args[0];
+      assert.equal(
+          requestParams.headers['header-key'], 'header-value');
+      assert(requestParams.headers.Authorization);
+    });
+
+    it('should add default headers to the request', function() {
+      var request = sinon.stub();
+      Dispatcher.__set__('request', request);
+      var auth = {
+        authenticateRequest: function(params) {
+          params.headers = params.headers || {};
+          params.headers.Authorization = 'Bearer [token]';
+          return params;
+        }
+      };
+      var dispatcher = new Dispatcher({
+        authenticator: auth,
+        defaultHeaders: {'header-key': 'header-value'}
+      });
+      dispatcher.dispatch({});
+      var requestParams = request.firstCall.args[0];
+      assert.equal(
+          requestParams.headers['header-key'], 'header-value');
+      assert(requestParams.headers.Authorization);
+    });
+
+    it('should overwrite default headers with per-request headers', function() {
+      var request = sinon.stub();
+      Dispatcher.__set__('request', request);
+      var auth = {
+        authenticateRequest: function(params) {
+          params.headers = params.headers || {};
+          params.headers.Authorization = 'Bearer [token]';
+          return params;
+        }
+      };
+      var dispatcher = new Dispatcher({
+        authenticator: auth,
+        defaultHeaders: {'header-key': 'header-value'}
+      });
+      dispatcher.dispatch({}, {headers: {'header-key': 'new-value'}});
+      var requestParams = request.firstCall.args[0];
+      assert.equal(
+          requestParams.headers['header-key'], 'new-value');
+      assert(requestParams.headers.Authorization);
     });
 
     it('should pass an error from request', function() {
