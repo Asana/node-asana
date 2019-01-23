@@ -1,5 +1,5 @@
 {
-  "name": "asana",
+  "name": "@screenful/asana",
   "version": "0.16.6",
   "description": "Official NodeJS and BrowserJS client for the Asana API",
   "main": "index.js",
