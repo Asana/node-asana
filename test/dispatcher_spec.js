@@ -169,9 +169,6 @@ describe('Dispatcher', function() {
     });
 
     Object.keys(errors).forEach(function(key) {
-      if (key === 'config') {
-        return;
-      }
       it('should create an error for ' + key, function() {
         var request = sinon.stub();
         var err = new errors[key]();
