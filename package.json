@@ -1,6 +1,6 @@
 {
   "name": "@screenful/asana",
-  "version": "0.16.6",
+  "version": "0.16.8",
   "description": "Official NodeJS and BrowserJS client for the Asana API",
   "main": "index.js",
   "scripts": {
