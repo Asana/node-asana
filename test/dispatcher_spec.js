@@ -471,11 +471,11 @@ describe('Dispatcher', function() {
         'version': sinon.match.string,
         'language': 'NodeJS',
         'language_version': sinon.match.string,
-        'os': sinon.match.string,
-        'os_version': sinon.match.string
+        'os': sinon.match.string
       });
       assert(match.test(dispatcher._generateVersionInfo()));
     });
+
     it('should include just lib info on browser', function() {
       Dispatcher.__set__('navigator', {});
       Dispatcher.__set__('window', {});
