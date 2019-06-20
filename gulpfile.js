@@ -63,11 +63,11 @@ gulp.task('browser-min', browserTask(true));
  */
 function bumpVersion(importance) {
   return gulp.src(['./package.json', './bower.json'])
-    .pipe(bump({type: importance}))
-    .pipe(gulp.dest('./'))
-    .pipe(git.commit('bump package version'))
-    .pipe(filter('package.json'))
-    .pipe(tagVersion());
+      .pipe(bump({type: importance}))
+      .pipe(gulp.dest('./'))
+      .pipe(git.commit('bump package version'))
+      .pipe(filter('package.json'))
+      .pipe(tagVersion());
 }
 gulp.task('bump-patch', ['ensure-git-clean'], function() {
   return bumpVersion('patch');
@@ -96,9 +96,9 @@ gulp.task('ensure-git-clean', function() {
  */
 gulp.task('lint', function() {
   return gulp.src([root, lib, test])
-      .pipe(jshint())
-      .pipe(jshint.reporter('jshint-stylish'))
-      .pipe(jshint.reporter('fail'));
+    .pipe(jshint())
+    .pipe(jshint.reporter('jshint-stylish'))
+    .pipe(jshint.reporter('fail'));
 });
 
 /**
