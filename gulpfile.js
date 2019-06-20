@@ -63,11 +63,11 @@ gulp.task('browser-min', browserTask(true));
  */
 function bumpVersion(importance) {
   return gulp.src(['./package.json', './bower.json'])
-      .pipe(bump({type: importance}))
-      .pipe(gulp.dest('./'))
-      .pipe(git.commit('bump package version'))
-      .pipe(filter('package.json'))
-      .pipe(tagVersion());
+    .pipe(bump({type: importance}))
+    .pipe(gulp.dest('./'))
+    .pipe(git.commit('bump package version'))
+    .pipe(filter('package.json'))
+    .pipe(tagVersion());
 }
 gulp.task('bump-patch', ['ensure-git-clean'], function() {
   return bumpVersion('patch');
@@ -106,28 +106,28 @@ gulp.task('lint', function() {
  */
 gulp.task('spec', ['lint'], function(callback) {
   gulp.src(lib)
-      .pipe(istanbul({
-        includeUntested: true
-      }))
-      .pipe(istanbul.hookRequire())
-      .on('finish', function() {
-        gulp.src(test)
-            .pipe(mocha({
-              reporter: process.env.TRAVIS ? 'spec' : 'nyan'
-            }))
-            .pipe(istanbul.writeReports({
-              reporters: ['text', 'text-summary']
-            }))
-            .on('end', function() {
-              var errOrNull = null;
-              var coverage = istanbul.summarizeCoverage();
-              var incomplete = Object.keys(coverage).filter(function(key) {
-                return coverage[key].pct < 49; // TODO: Get this to 100%
-              });
-              if (incomplete.length > 0) {
-                console.log('Incomplete coverage for ' + incomplete.join(', '));
-              }
-              callback(errOrNull);
-            });
-      });
+    .pipe(istanbul({
+      includeUntested: true
+    }))
+    .pipe(istanbul.hookRequire())
+    .on('finish', function() {
+      gulp.src(test)
+        .pipe(mocha({
+          reporter: process.env.TRAVIS ? 'spec' : 'nyan'
+        }))
+        .pipe(istanbul.writeReports({
+          reporters: ['text', 'text-summary']
+        }))
+        .on('end', function() {
+          var errOrNull = null;
+          var coverage = istanbul.summarizeCoverage();
+          var incomplete = Object.keys(coverage).filter(function(key) {
+            return coverage[key].pct < 49; // TODO: Get this to 100%
+          });
+          if (incomplete.length > 0) {
+            console.log('Incomplete coverage for ' + incomplete.join(', '));
+          }
+          callback(errOrNull);
+        });
+    });
 });
