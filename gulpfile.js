@@ -96,9 +96,9 @@ gulp.task('ensure-git-clean', function() {
  */
 gulp.task('lint', function() {
   return gulp.src([root, lib, test])
-    .pipe(jshint())
-    .pipe(jshint.reporter('jshint-stylish'))
-    .pipe(jshint.reporter('fail'));
+      .pipe(jshint())
+      .pipe(jshint.reporter('jshint-stylish'))
+      .pipe(jshint.reporter('fail'));
 });
 
 /**
@@ -106,28 +106,28 @@ gulp.task('lint', function() {
  */
 gulp.task('spec', ['lint'], function(callback) {
   gulp.src(lib)
-    .pipe(istanbul({
-      includeUntested: true
-    }))
-    .pipe(istanbul.hookRequire())
-    .on('finish', function() {
-      gulp.src(test)
-        .pipe(mocha({
-          reporter: process.env.TRAVIS ? 'spec' : 'nyan'
-        }))
-        .pipe(istanbul.writeReports({
-          reporters: ['text', 'text-summary']
-        }))
-        .on('end', function() {
-          var errOrNull = null;
-          var coverage = istanbul.summarizeCoverage();
-          var incomplete = Object.keys(coverage).filter(function(key) {
-            return coverage[key].pct < 49; // TODO: Get this to 100%
-          });
-          if (incomplete.length > 0) {
-            console.log('Incomplete coverage for ' + incomplete.join(', '));
-          }
-          callback(errOrNull);
-        });
-    });
+      .pipe(istanbul({
+        includeUntested: true
+      }))
+      .pipe(istanbul.hookRequire())
+      .on('finish', function() {
+        gulp.src(test)
+            .pipe(mocha({
+              reporter: process.env.TRAVIS ? 'spec' : 'nyan'
+            }))
+            .pipe(istanbul.writeReports({
+              reporters: ['text', 'text-summary']
+            }))
+            .on('end', function() {
+              var errOrNull = null;
+              var coverage = istanbul.summarizeCoverage();
+              var incomplete = Object.keys(coverage).filter(function(key) {
+                return coverage[key].pct < 49; // TODO: Get this to 100%
+              });
+              if (incomplete.length > 0) {
+                console.log('Incomplete coverage for ' + incomplete.join(', '));
+              }
+              callback(errOrNull);
+            });
+      });
 });
