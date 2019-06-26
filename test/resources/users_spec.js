@@ -153,4 +153,20 @@ describe('Users', function() {
           '/workspaces/foobar/users', params));
     });
   });
+
+
+  describe('#getUserFavorites', function() {
+    it('should hit the right endpoint', function() {
+      var dispatcher = {};
+      var users = new Users(dispatcher);
+      users.dispatchGetCollection = sinon.stub();
+
+      var id = 134679;
+      users.getUserFavorites(id, {'workspace': '123456',
+        'resource_type': 'project'});
+
+      assert(users.dispatchGetCollection.calledWith(
+          '/users/134679/favorites'));
+    });
+  });
 });

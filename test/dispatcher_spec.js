@@ -487,4 +487,42 @@ describe('Dispatcher', function() {
       assert(match.test(dispatcher._generateVersionInfo()));
     });
   });
+
+
+
+  describe('Asana-Change header', function() {
+    it('Should log a warning', function() {
+      console.error = sinon.stub();
+
+      var requestHeaders = {
+        'asana-enable': 'string_ids'
+      };
+      var responseHeaders = {
+        'asana-change': 'name=string_ids;info=something;affected=true,'+
+            'name=new_sections;info=something;affected=true'
+      };
+      var dispatcher = new Dispatcher({});
+      dispatcher
+          .logAsanaChangeHeader(requestHeaders, responseHeaders);
+
+      assert( console.error.called );
+    });
+
+    it('Should not care about header case', function() {
+      console.error = sinon.stub();
+
+      var requestHeaders = {
+        'asANa-enaBle': 'string_ids'
+      };
+      var responseHeaders = {
+        'asaNa-chaNge': 'name=string_ids;info=something;affected=true,'+
+            'name=new_sections;info=something;affected=true'
+      };
+      var dispatcher = new Dispatcher({});
+      dispatcher
+          .logAsanaChangeHeader(requestHeaders, responseHeaders);
+
+      assert( console.error.called );
+    });
+  });
 });

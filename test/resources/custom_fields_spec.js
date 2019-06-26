@@ -24,8 +24,63 @@ describe('CustomFields', function() {
       assert(customFields.dispatchGet.calledWith(
         '/custom_fields/134679', undefined));
     });
-    // TODO: specs for other types (enum, number)
+  });
 
+  describe('#addEnumOption', function() {
+    it('should call createEnumOption for backwards compatability', function() {
+      var dispatcher = {};
+      var customFields = new CustomFields(dispatcher);
+      customFields.dispatchPost = sinon.stub();
+
+      var id = 134679;
+      customFields.addEnumOption(id, {name: 'Test'});
+
+      assert(customFields.dispatchPost.calledWith(
+          '/custom_fields/134679/enum_options'));
+    });
+  });
+
+  describe('#createEnumOption', function() {
+    it('should handle enum creation', function() {
+      var dispatcher = {};
+      var customFields = new CustomFields(dispatcher);
+      customFields.dispatchPost = sinon.stub();
+
+      var id = 134679;
+      customFields.createEnumOption(id, {name: 'Test'});
+
+      console.log(customFields.dispatchPost.calledWith());
+      assert(customFields.dispatchPost.calledWith(
+          '/custom_fields/134679/enum_options'));
+    });
+  });
+
+  describe('#reorderEnumOption', function() {
+    it('should call insertEnumOption for backwards compatability', function() {
+      var dispatcher = {};
+      var customFields = new CustomFields(dispatcher);
+      customFields.dispatchPost = sinon.stub();
+
+      var id = 134679;
+      customFields.reorderEnumOption(id, {name: 'Test'});
+
+      assert(customFields.dispatchPost.calledWith(
+          '/custom_fields/134679/enum_options/insert'));
+    });
+  });
+
+  describe('#insertEnumOption', function() {
+    it('should handle enum insertion', function() {
+      var dispatcher = {};
+      var customFields = new CustomFields(dispatcher);
+      customFields.dispatchPost = sinon.stub();
+
+      var id = 134679;
+      customFields.insertEnumOption(id, {name: 'Test'});
+
+      assert(customFields.dispatchPost.calledWith(
+          '/custom_fields/134679/enum_options/insert'));
+    });
   });
 
 });
