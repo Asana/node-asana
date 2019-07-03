@@ -471,11 +471,11 @@ describe('Dispatcher', function() {
         'version': sinon.match.string,
         'language': 'NodeJS',
         'language_version': sinon.match.string,
-        'os': sinon.match.string,
-        'os_version': sinon.match.string
+        'os': sinon.match.string
       });
       assert(match.test(dispatcher._generateVersionInfo()));
     });
+
     it('should include just lib info on browser', function() {
       Dispatcher.__set__('navigator', {});
       Dispatcher.__set__('window', {});
@@ -485,6 +485,44 @@ describe('Dispatcher', function() {
         'language': 'BrowserJS'
       });
       assert(match.test(dispatcher._generateVersionInfo()));
+    });
+  });
+
+
+
+  describe('Asana-Change header', function() {
+    it('Should log a warning', function() {
+      console.error = sinon.stub();
+
+      var requestHeaders = {
+        'asana-enable': 'string_ids'
+      };
+      var responseHeaders = {
+        'asana-change': 'name=string_ids;info=something;affected=true,'+
+            'name=new_sections;info=something;affected=true'
+      };
+      var dispatcher = new Dispatcher({});
+      dispatcher
+          .logAsanaChangeHeader(requestHeaders, responseHeaders);
+
+      assert( console.error.called );
+    });
+
+    it('Should not care about header case', function() {
+      console.error = sinon.stub();
+
+      var requestHeaders = {
+        'asANa-enaBle': 'string_ids'
+      };
+      var responseHeaders = {
+        'asaNa-chaNge': 'name=string_ids;info=something;affected=true,'+
+            'name=new_sections;info=something;affected=true'
+      };
+      var dispatcher = new Dispatcher({});
+      dispatcher
+          .logAsanaChangeHeader(requestHeaders, responseHeaders);
+
+      assert( console.error.called );
     });
   });
 });

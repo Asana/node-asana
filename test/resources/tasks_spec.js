@@ -770,4 +770,34 @@ describe('Tasks', function() {
         tasks.dispatchPost.calledWith('/tasks/foobar/setParent', data));
     });
   });
+
+  describe('#search', function() {
+    it('should call searchInWorkspace for backwards compatability',
+        function() {
+          var dispatcher = {};
+          var tasks = new Tasks(dispatcher);
+          tasks.dispatchGetCollection = sinon.stub();
+
+          var id = 134679;
+          tasks.search(id);
+
+          assert(tasks.dispatchGetCollection.calledWith(
+              '/workspaces/134679/tasks/search'));
+        });
+  });
+
+  describe('#searchInWorkspace', function() {
+    it('should hit the workspace/{project-gid}/project_memberships endpoint',
+        function() {
+          var dispatcher = {};
+          var tasks = new Tasks(dispatcher);
+          tasks.dispatchGetCollection = sinon.stub();
+
+          var id = 134679;
+          tasks.searchInWorkspace(id);
+
+          assert(tasks.dispatchGetCollection.calledWith(
+              '/workspaces/134679/tasks/search'));
+        });
+  });
 });
