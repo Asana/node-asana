@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "browserify": "^16.2.3",
-    "gulp": "^3.8.5",
+    "gulp": "^4.0.2",
     "gulp-bump": "^3.0.0",
     "gulp-filter": "^5.1.0",
     "gulp-git": "^2.5.1",
@@ -43,7 +43,7 @@
     "jshint": "^2.9.6",
     "jshint-stylish": "^2.2.1",
     "rewire": "^4.0.1",
-    "sinon": "^4.2.2",
+    "sinon": "^7.3.2",
     "through": "^2.3.6",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^2.0.0"
