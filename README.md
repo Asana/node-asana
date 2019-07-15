@@ -175,6 +175,24 @@ In any request against the Asana API, there a number of errors that could
 arise. Those are well documented in the [Asana API Documentation][api-reference], and
 are represented as exceptions under the namespace `Asana.errors`.
 
+## Options
+
+To add global headers (like for our [deprecation framework](https://asana.com/developers/documentation/getting-started/deprecations)), you add them to the client.
+
+    asana.Client.create({"defaultHeaders", {"asana-enable": "new-sections"}});
+
+### Asana Change Warnings
+
+You will receive warning logs if performing requests that may be affected by a deprecation. The warning contains a link that explains the deprecation.
+
+If you receive one of these warnings, you should:
+* Read about the deprecation.
+* Resolve sections of your code that would be affected by the deprecation.
+* Add the deprecation flag to your "asana-enable" header.
+
+If you would rather suppress these warnings, you can set
+
+    asana.Client.create({"logAsanaChangeWarnings", false});
 
 ## Examples
 
