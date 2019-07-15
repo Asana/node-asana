@@ -20,16 +20,10 @@ var root = '*.js';
 var test = 'test/**/*.js';
 
 /**
- * High Level Tasks
- */
-gulp.task('test', ['bundle', 'spec']);
-gulp.task('bundle', ['browser', 'browser-min']);
-
-/**
  * Bundles the code, full version to `asana.js` and minified to `asana-min.js`
  */
 function browserTask(minify) {
-  return function() {
+  return function(done) {
     var task = browserify(
         {
           entries: [index],
@@ -42,11 +36,26 @@ function browserTask(minify) {
           .pipe(vinylBuffer())
           .pipe(uglify());
     }
-    return task.pipe(gulp.dest('dist'));
+    task.pipe(gulp.dest('dist'));
+
+    done();
   };
 }
-gulp.task('browser', browserTask(false));
-gulp.task('browser-min', browserTask(true));
+
+/**
+ * Ensure that the git working directory is clean.
+ */
+function ensureGitClean(done) {
+  git.status(function(err, out) {
+    if (err) { throw err; }
+    if (!/working directory clean/.exec(out)) {
+      throw new Error('Git working directory not clean, will not bump version');
+    }
+  });
+
+  done();
+}
+gulp.task('ensure-git-clean', ensureGitClean);
 
 /**
  * Bumping version number and tagging the repository with it.
@@ -69,65 +78,68 @@ function bumpVersion(importance) {
       .pipe(filter('package.json'))
       .pipe(tagVersion());
 }
-gulp.task('bump-patch', ['ensure-git-clean'], function() {
+function bumpPatch() {
   return bumpVersion('patch');
-});
-gulp.task('bump-feature', ['ensure-git-clean'], function() {
+}
+gulp.task('bump-patch', gulp.series('ensure-git-clean', bumpPatch));
+function bumpFeature() {
   return bumpVersion('minor');
-});
-gulp.task('bump-release', ['ensure-git-clean'], function() {
+}
+gulp.task('bump-feature', gulp.series('ensure-git-clean', bumpFeature));
+function bumpVersion() {
   return bumpVersion('major');
-});
-
-/**
- * Ensure that the git working directory is clean.
- */
-gulp.task('ensure-git-clean', function() {
-  git.status(function(err, out) {
-    if (err) { throw err; }
-    if (!/working directory clean/.exec(out)) {
-      throw new Error('Git working directory not clean, will not bump version');
-    }
-  });
-});
+}
+gulp.task('bump-release', gulp.series('ensure-git-clean', bumpVersion));
 
 /**
  * Lints all of the JavaScript files and fails if the tasks do not pass
  */
-gulp.task('lint', function() {
+function lint() {
   return gulp.src([root, lib, test])
-    .pipe(jshint())
-    .pipe(jshint.reporter('jshint-stylish'))
-    .pipe(jshint.reporter('fail'));
-});
+      .pipe(jshint())
+      .pipe(jshint.reporter('jshint-stylish'))
+      .pipe(jshint.reporter('fail'));
+}
+gulp.task('lint', lint);
 
 /**
  * Tests the code with mocha and ensures 100% code coverage
  */
-gulp.task('spec', ['lint'], function(callback) {
+function spec(callback) {
   gulp.src(lib)
-    .pipe(istanbul({
-      includeUntested: true
-    }))
-    .pipe(istanbul.hookRequire())
-    .on('finish', function() {
-      gulp.src(test)
-        .pipe(mocha({
-          reporter: process.env.TRAVIS ? 'spec' : 'nyan'
-        }))
-        .pipe(istanbul.writeReports({
-          reporters: ['text', 'text-summary']
-        }))
-        .on('end', function() {
-          var errOrNull = null;
-          var coverage = istanbul.summarizeCoverage();
-          var incomplete = Object.keys(coverage).filter(function(key) {
-            return coverage[key].pct < 49; // TODO: Get this to 100%
-          });
-          if (incomplete.length > 0) {
-            console.log('Incomplete coverage for ' + incomplete.join(', '));
-          }
-          callback(errOrNull);
-        });
-    });
-});
+      .pipe(istanbul({
+        includeUntested: true
+      }))
+      .pipe(istanbul.hookRequire())
+      .on('finish', function() {
+        gulp.src(test)
+            .pipe(mocha({
+              reporter: process.env.TRAVIS ? 'spec' : 'nyan'
+            }))
+            .pipe(istanbul.writeReports({
+              reporters: ['text', 'text-summary']
+            }))
+            .on('end', function() {
+              var errOrNull = null;
+              var coverage = istanbul.summarizeCoverage();
+              var incomplete = Object.keys(coverage).filter(function(key) {
+                return coverage[key].pct < 49; // TODO: Get this to 100%
+              });
+              if (incomplete.length > 0) {
+                console.log('Incomplete coverage for ' + incomplete.join(', '));
+              }
+              callback(errOrNull);
+            });
+      });
+}
+
+gulp.task('spec', gulp.series('lint', spec));
+
+gulp.task('browser', browserTask(false));
+gulp.task('browser-min', browserTask(true));
+
+/**
+ * High Level Tasks
+ */
+gulp.task('bundle', gulp.series('browser', 'browser-min'));
+gulp.task('test', gulp.series('bundle', 'spec'));
