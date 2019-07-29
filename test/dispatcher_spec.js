@@ -525,4 +525,37 @@ describe('Dispatcher', function() {
       assert( console.error.called );
     });
   });
+
+  describe('param options should work', function() {
+    it('get request', function() {
+      var request = setupRequest();
+      var dispatcher = setupDispatcher();
+
+      dispatcher.get('/users/me', {fields: 'a_field'});
+
+      assert(request.calledWithMatch({
+        'qs': {'opt_fields': 'a_field'}
+      }));
+    });
+    it('put request', function() {
+      var request = setupRequest();
+      var dispatcher = setupDispatcher();
+
+      dispatcher.put('/users', {expand: ''});
+
+      assert(request.calledWithMatch({
+        'qs': {'opt_expand': ''}
+      }));
+    });
+    it('post request', function() {
+      var request = setupRequest();
+      var dispatcher = setupDispatcher();
+
+      dispatcher.post('/users', {pretty: ''});
+
+      assert(request.calledWithMatch({
+        'qs': {'opt_pretty': ''}
+      }));
+    });
+  });
 });
