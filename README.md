@@ -179,7 +179,7 @@ are represented as exceptions under the namespace `Asana.errors`.
 
 To add global headers (like for our [deprecation framework](https://asana.com/developers/documentation/getting-started/deprecations)), you add them to the client.
 
-    asana.Client.create({"defaultHeaders": {"asana-enable": "new-sections"}});
+    asana.Client.create({"defaultHeaders": {"asana-enable": "string_ids,new_sections"}});
 
 ### Asana Change Warnings
 
