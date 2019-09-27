@@ -16,8 +16,7 @@ var client = asana.Client.create().useAccessToken(accessToken);
 console.log('Listening to new stories on project', projectId);
 
 client.events.stream(projectId, {
-    periodSeconds: 3,
-    continueOnError: true
+    periodSeconds: 3
 })
     .on('data', function (event) {
         // Here we filter to just the type of event we care about.
