@@ -192,7 +192,7 @@ If you receive one of these warnings, you should:
 
 If you would rather suppress these warnings, you can set
 
-    asana.Client.create({"logAsanaChangeWarnings", false});
+    asana.Client.create({"logAsanaChangeWarnings": false});
 
 ## Examples
 
