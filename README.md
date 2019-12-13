@@ -212,11 +212,11 @@ var client = Asana.Client.create().useAccessToken(process.env.ASANA_PAT);
 
 client.users.me()
   .then(user => {
-    const userId = user.id;
+    const userId = user.gid;
     // The user's "default" workspace is the first one in the list, though
     // any user can have multiple workspaces so you can't always assume this
     // is the one you want to work with.
-    const workspaceId = user.workspaces[0].id;
+    const workspaceId = user.workspaces[0].gid;
     return client.tasks.findAll({
       assignee: userId,
       workspace: workspaceId,
