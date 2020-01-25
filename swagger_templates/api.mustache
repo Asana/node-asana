@@ -41,12 +41,12 @@ util.inherits({{classname}}, Resource);
     {{paramName}},
     {{/pathParams}}
     {{#eq "GET" httpMethod}}
-    params = {},
+    params,
     {{/eq}}
     {{#neq "GET" httpMethod}}{{#neq "DELETE"}}
-    data = {},
+    data,
     {{/neq}}{{/neq}}
-    dispatchOptions = {}
+    dispatchOptions
 ) {
     var path = "{{path}}"{{#pathParams}}.replace("{ {{~baseName~}} }", {{paramName}}){{/pathParams}};
 
