@@ -16,7 +16,7 @@ function {{classname}}(dispatcher) {
 }
 util.inherits({{classname}}, Resource);
 
-{{#operation}}
+{{#operation}}{{^formParams}}
 {{#contents}}
 
 /**
@@ -54,7 +54,7 @@ util.inherits({{classname}}, Resource);
 };
 
 {{/contents}}
-{{/operation}}
+{{/formParams}}{{/operation}}
 {{/operations}}
 module.exports = {{classname}};
 /* jshint ignore:end */
