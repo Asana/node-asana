@@ -273,10 +273,10 @@ npm test
 
 ### Code generation
 
-The specific Asana resource classes (`Tag`, `Workspace`, `Task`, etc.) are
+The specific Asana resource classes within the gen folder (`Tag`, `Workspace`, `Task`, etc.) are
 generated code, hence they shouldn't be modified by hand. 
 
-See the [asana-api-meta][meta] repo for details.
+See our [openapi spec][https://github.com/Asana/developer-docs/blob/master/defs/asana_oas.yaml] and [swagger](https://github.com/swagger-api/swagger-codegen) for details.
 
 ### Deployment
 
@@ -302,8 +302,4 @@ Travis CI will automatically build and deploy the tagged release.
 [co]: https://github.com/visionmedia/co
 [highland]: http://highlandjs.org/
 
-[meta]: https://github.com/Asana/asana-api-meta
-[api-docs]: https://asana.com/developers
-[api-reference]: https://asana.com/developers/api-reference
-[io]: https://asana.com/developers/documentation/getting-started/input-output-options
-[asana-doc]: https://asana.com/developers/documentation
+[asana-docs]: https://developers.asana.com/docs
