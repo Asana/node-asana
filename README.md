@@ -170,6 +170,14 @@ client.tasks.findByTag(tagId).then(collection => {
 });
 ```
 
+### Debugging
+
+To quickly debug raw requests. Set debug to true on the Asana dispatcher.
+```js
+client.dispatcher.debug(true);
+```
+We use the [request](https://github.com/request/request) library under the hood, and this is equivalent to setting `request.debug = true;`
+
 ### Error handling
 
 In any request against the Asana API, there a number of errors that could
