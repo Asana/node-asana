@@ -34,7 +34,10 @@ function browserTask(minify) {
     if (minify) {
       task = task
           .pipe(vinylBuffer())
-          .pipe(uglify());
+          .pipe(uglify().on('error', function(err) {
+              console.log(err.toString());
+              this.emit('end');
+          }));
     }
     task.pipe(gulp.dest('dist'));
 
