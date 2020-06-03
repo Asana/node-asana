@@ -1,0 +1,12 @@
+events: 
+    getEvents: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.events.getEvents({param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });

@@ -1,0 +1,56 @@
+teams: 
+    addUserForTeam: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.teams.addUserForTeam(teamGid, {field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    getTeam: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.teams.getTeam(teamGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    getTeamsForOrganization: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.teams.getTeamsForOrganization(workspaceGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    getTeamsForUser: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.teams.getTeamsForUser(userGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    removeUserForTeam: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.teams.removeUserForTeam(teamGid, {field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
