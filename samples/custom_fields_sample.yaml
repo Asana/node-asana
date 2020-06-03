@@ -28,7 +28,7 @@ customfields:
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.customfields.deleteCustomField(customFieldGid, {field: "value", field: "value", pretty: true})
+        client.customfields.deleteCustomField(customFieldGid)
             .then((result) => {
                 console.log(result);
             });

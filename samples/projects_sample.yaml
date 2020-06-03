@@ -72,7 +72,7 @@ projects:
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.projects.deleteProject(projectGid, {field: "value", field: "value", pretty: true})
+        client.projects.deleteProject(projectGid)
             .then((result) => {
                 console.log(result);
             });

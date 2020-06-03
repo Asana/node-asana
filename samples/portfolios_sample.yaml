@@ -50,7 +50,7 @@ portfolios:
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.portfolios.deletePortfolio(portfolioGid, {field: "value", field: "value", pretty: true})
+        client.portfolios.deletePortfolio(portfolioGid)
             .then((result) => {
                 console.log(result);
             });

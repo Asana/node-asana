@@ -17,7 +17,7 @@ projectstatuses:
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.projectstatuses.deleteProjectStatus(projectStatusGid, {field: "value", field: "value", pretty: true})
+        client.projectstatuses.deleteProjectStatus(projectStatusGid)
             .then((result) => {
                 console.log(result);
             });

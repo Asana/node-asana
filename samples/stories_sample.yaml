@@ -17,7 +17,7 @@ stories:
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.stories.deleteStory(storyGid, {field: "value", field: "value", pretty: true})
+        client.stories.deleteStory(storyGid)
             .then((result) => {
                 console.log(result);
             });

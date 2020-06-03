@@ -83,7 +83,7 @@ tasks:
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.tasks.deleteTask(taskGid, {field: "value", field: "value", pretty: true})
+        client.tasks.deleteTask(taskGid)
             .then((result) => {
                 console.log(result);
             });

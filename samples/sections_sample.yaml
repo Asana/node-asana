@@ -28,7 +28,7 @@ sections:
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.sections.deleteSection(sectionGid, {field: "value", field: "value", pretty: true})
+        client.sections.deleteSection(sectionGid)
             .then((result) => {
                 console.log(result);
             });

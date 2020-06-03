@@ -17,7 +17,7 @@ attachments:
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.attachments.deleteAttachment(attachmentGid, {field: "value", field: "value", pretty: true})
+        client.attachments.deleteAttachment(attachmentGid)
             .then((result) => {
                 console.log(result);
             });

@@ -17,7 +17,7 @@ webhooks:
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.webhooks.deleteWebhook(webhookGid, {field: "value", field: "value", pretty: true})
+        client.webhooks.deleteWebhook(webhookGid)
             .then((result) => {
                 console.log(result);
             });
