@@ -110,6 +110,30 @@ client.useOauth({
 
 See `examples/oauth/webserver` for a working example of this.
 
+#### Client OAuth
+
+Currently, Asana has removed support for implicit grant and client-side authorization code grant. To correctly implement
+oauth in a browser, use your own server as the token exchange endpoint:
+
+```js
+Asana.Client.create({
+    clientId: clientId,
+    redirectUri: 'http://localhost:' + port + '/oauth_callback',
+    tokenExchangeEndpoint: 'https://my-app-server.io/oauth_token'
+  });
+```
+
+When a request comes to your server, verify it's a valid request (either using your own login cookie, cors, etc.). Then 
+take the body, add your `client_secret` to it, and send a POST request with the body to 
+`https://app.asana.com/-/oauth_token`. This will give your server the access and refresh tokens. Either return the 
+access_token to the browser, or keep it on your server if your server handles requests to Asana.
+
+Here is an [express example](https://github.com/Asana/devrel-examples/blob/master/javascript/pkce_oauth/server/index.js) 
+for AWS Lambda that works as an app server.
+
+Your client side code will look similar to the [webserver](https://github.com/Asana/node-asana/blob/master/examples/oauth/webserver/oauth_webserver.js)
+example, but with client side routing instead of express.
+
 ### Collections
 
 Whenever you ask for a collection of resources, you will receive a `Collection`
