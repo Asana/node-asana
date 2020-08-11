@@ -21,6 +21,17 @@ tags:
             .then((result) => {
                 console.log(result);
             });
+    deleteTag: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.tags.deleteTag(tagGid)
+            .then((result) => {
+                console.log(result);
+            });
     getTag: >-
         const asana = require('asana');
 
