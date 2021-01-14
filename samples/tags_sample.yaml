@@ -1,0 +1,89 @@
+tags: 
+    createTag: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.tags.createTag({field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    createTagForWorkspace: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.tags.createTagForWorkspace(workspaceGid, {field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    deleteTag: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.tags.deleteTag(tagGid)
+            .then((result) => {
+                console.log(result);
+            });
+    getTag: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.tags.getTag(tagGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    getTags: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.tags.getTags({param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    getTagsForTask: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.tags.getTagsForTask(taskGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    getTagsForWorkspace: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.tags.getTagsForWorkspace(workspaceGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    updateTag: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.tags.updateTag(tagGid, {field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });

@@ -1,0 +1,23 @@
+usertasklists: 
+    getUserTaskList: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.usertasklists.getUserTaskList(userTaskListGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    getUserTaskListForUser: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.usertasklists.getUserTaskListForUser(userGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });

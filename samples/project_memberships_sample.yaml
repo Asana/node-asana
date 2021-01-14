@@ -1,0 +1,23 @@
+projectmemberships: 
+    getProjectMembership: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projectmemberships.getProjectMembership(projectMembershipGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    getProjectMembershipsForProject: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projectmemberships.getProjectMembershipsForProject(projectGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });

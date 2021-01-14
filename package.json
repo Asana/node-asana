@@ -1,6 +1,6 @@
 {
   "name": "asana",
-  "version": "0.16.6",
+  "version": "0.18.5",
   "description": "Official NodeJS and BrowserJS client for the Asana API",
   "main": "index.js",
   "scripts": {
@@ -22,28 +22,28 @@
   },
   "homepage": "https://github.com/Asana/node-asana",
   "dependencies": {
-    "bluebird": "^2.3.0",
+    "bluebird": "^3.7.2",
     "browser-request": "^0.3.2",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.20",
     "readline": "^1.3.0",
-    "request": "^2.88.0"
+    "request": "^2.88.2"
   },
   "devDependencies": {
-    "browserify": "^15.2.0",
-    "gulp": "^3.8.5",
+    "browserify": "^16.5.1",
+    "gulp": "^4.0.2",
     "gulp-bump": "^3.0.0",
     "gulp-filter": "^5.1.0",
     "gulp-git": "^2.5.1",
     "gulp-istanbul": "^1.1.3",
     "gulp-jshint": "^2.1.0",
-    "gulp-mocha": "^5.0.0",
-    "gulp-shell": "^0.6.5",
+    "gulp-mocha": "^7.0.2",
+    "gulp-shell": "^0.7.1",
     "gulp-tag-version": "^1.2.1",
     "gulp-uglify": "^3.0.0",
-    "jshint": "^2.9.6",
+    "jshint": "^2.11.0",
     "jshint-stylish": "^2.2.1",
-    "rewire": "^3.0.2",
-    "sinon": "^4.2.2",
+    "rewire": "^4.0.1",
+    "sinon": "^7.3.2",
     "through": "^2.3.6",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^2.0.0"

@@ -1,0 +1,12 @@
+typeahead: 
+    typeaheadForWorkspace: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.typeahead.typeaheadForWorkspace(workspaceGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });

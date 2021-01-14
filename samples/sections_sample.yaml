@@ -1,0 +1,78 @@
+sections: 
+    addTaskForSection: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.sections.addTaskForSection(sectionGid, {field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    createSectionForProject: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.sections.createSectionForProject(projectGid, {field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    deleteSection: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.sections.deleteSection(sectionGid)
+            .then((result) => {
+                console.log(result);
+            });
+    getSection: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.sections.getSection(sectionGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    getSectionsForProject: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.sections.getSectionsForProject(projectGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    insertSectionForProject: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.sections.insertSectionForProject(projectGid, {field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    updateSection: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.sections.updateSection(sectionGid, {field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });

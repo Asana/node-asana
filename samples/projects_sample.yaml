@@ -1,0 +1,199 @@
+projects: 
+    addCustomFieldSettingForProject: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projects.addCustomFieldSettingForProject(projectGid, {field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    addFollowersForProject: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projects.addFollowersForProject(projectGid, {field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    addMembersForProject: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projects.addMembersForProject(projectGid, {field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    createProject: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projects.createProject({field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    createProjectForTeam: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projects.createProjectForTeam(teamGid, {field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    createProjectForWorkspace: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projects.createProjectForWorkspace(workspaceGid, {field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    deleteProject: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projects.deleteProject(projectGid)
+            .then((result) => {
+                console.log(result);
+            });
+    duplicateProject: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projects.duplicateProject(projectGid, {field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    getProject: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projects.getProject(projectGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    getProjects: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projects.getProjects({param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    getProjectsForTask: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projects.getProjectsForTask(taskGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    getProjectsForTeam: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projects.getProjectsForTeam(teamGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    getProjectsForWorkspace: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projects.getProjectsForWorkspace(workspaceGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    getTaskCountsForProject: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projects.getTaskCountsForProject(projectGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    removeCustomFieldSettingForProject: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projects.removeCustomFieldSettingForProject(projectGid, {field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    removeFollowersForProject: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projects.removeFollowersForProject(projectGid, {field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    removeMembersForProject: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projects.removeMembersForProject(projectGid, {field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    updateProject: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projects.updateProject(projectGid, {field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });

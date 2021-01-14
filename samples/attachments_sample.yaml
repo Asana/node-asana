@@ -1,0 +1,45 @@
+attachments: 
+    createAttachmentForTask: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.attachments.createAttachmentForTask(taskGid, {field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    deleteAttachment: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.attachments.deleteAttachment(attachmentGid)
+            .then((result) => {
+                console.log(result);
+            });
+    getAttachment: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.attachments.getAttachment(attachmentGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    getAttachmentsForTask: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.attachments.getAttachmentsForTask(taskGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });

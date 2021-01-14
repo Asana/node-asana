@@ -1,0 +1,45 @@
+webhooks: 
+    createWebhook: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.webhooks.createWebhook({field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    deleteWebhook: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.webhooks.deleteWebhook(webhookGid)
+            .then((result) => {
+                console.log(result);
+            });
+    getWebhook: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.webhooks.getWebhook(webhookGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    getWebhooks: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.webhooks.getWebhooks({param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
