@@ -10,6 +10,17 @@ teams:
             .then((result) => {
                 console.log(result);
             });
+    createTeam: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.teams.createTeam({field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
     getTeam: >-
         const asana = require('asana');
 
