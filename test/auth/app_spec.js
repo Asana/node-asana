@@ -55,7 +55,7 @@ describe('App', function() {
       var params = request.args[0][0];
       assert.equal(params.method, 'POST');
       assert.equal(params.url, 'token_url');
-      assert.deepEqual(params.formData, {
+      assert.deepEqual(params.form, {
         'grant_type': 'authorization_code',
         'client_id': 'fake_id',
         'client_secret': 'fake_secret',
@@ -120,7 +120,7 @@ describe('App', function() {
       var params = request.args[0][0];
       assert.equal(params.method, 'POST');
       assert.equal(params.url, 'token_url');
-      assert.deepEqual(params.formData, {
+      assert.deepEqual(params.form, {
         'grant_type': 'refresh_token',
         'client_id': 'fake_id',
         'client_secret': 'fake_secret',
