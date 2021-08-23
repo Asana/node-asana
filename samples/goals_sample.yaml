@@ -32,6 +32,17 @@ goals:
             .then((result) => {
                 console.log(result);
             });
+    createGoal: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.goals.createGoal({field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
     createGoalMetric: >-
         const asana = require('asana');
 
