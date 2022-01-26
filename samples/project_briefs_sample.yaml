@@ -1,0 +1,45 @@
+projectbriefs: 
+    createProjectBrief: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projectbriefs.createProjectBrief(projectGid, {field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    deleteProjectBrief: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projectbriefs.deleteProjectBrief(projectBriefGid)
+            .then((result) => {
+                console.log(result);
+            });
+    getProjectBrief: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projectbriefs.getProjectBrief(projectBriefGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    updateProjectBrief: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projectbriefs.updateProjectBrief(projectBriefGid, {field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
