@@ -1,0 +1,45 @@
+statusupdates: 
+    createStatusForObject: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.statusupdates.createStatusForObject({field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    deleteStatus: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.statusupdates.deleteStatus(statusGid)
+            .then((result) => {
+                console.log(result);
+            });
+    getStatus: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.statusupdates.getStatus(statusGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    getStatusesForObject: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.statusupdates.getStatusesForObject({param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
