@@ -153,6 +153,17 @@ projects:
             .then((result) => {
                 console.log(result);
             });
+    projectSaveAsTemplate: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projects.projectSaveAsTemplate(projectGid, {field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
     removeCustomFieldSettingForProject: >-
         const asana = require('asana');
 
