@@ -1,0 +1,45 @@
+projecttemplates: 
+    getProjectTemplate: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projecttemplates.getProjectTemplate(projectTemplateGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    getProjectTemplates: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projecttemplates.getProjectTemplates({param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    getProjectTemplatesForTeam: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projecttemplates.getProjectTemplatesForTeam(teamGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    instantiateProject: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.projecttemplates.instantiateProject(projectTemplateGid, {field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
