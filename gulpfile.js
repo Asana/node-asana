@@ -51,7 +51,7 @@ function browserTask(minify) {
 function ensureGitClean(done) {
   git.status(function(err, out) {
     if (err) { throw err; }
-    if (!/working directory clean/.exec(out)) {
+    if (!/nothing to commit/.exec(out)) {
       throw new Error('Git working directory not clean, will not bump version');
     }
   });
@@ -81,18 +81,10 @@ function bumpVersion(importance) {
       .pipe(filter('package.json'))
       .pipe(tagVersion());
 }
-function bumpPatch() {
-  return bumpVersion('patch');
-}
-gulp.task('bump-patch', gulp.series('ensure-git-clean', bumpPatch));
-function bumpFeature() {
-  return bumpVersion('minor');
-}
-gulp.task('bump-feature', gulp.series('ensure-git-clean', bumpFeature));
-function bumpVersion() {
-  return bumpVersion('major');
-}
-gulp.task('bump-release', gulp.series('ensure-git-clean', bumpVersion));
+
+gulp.task('bump-patch', gulp.series('ensure-git-clean', bumpVersion('patch')));
+gulp.task('bump-minor', gulp.series('ensure-git-clean', bumpVersion('minor')));
+gulp.task('bump-major', gulp.series('ensure-git-clean', bumpVersion('major')));
 
 /**
  * Lints all of the JavaScript files and fails if the tasks do not pass
