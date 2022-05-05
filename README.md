@@ -316,7 +316,8 @@ See our [openapi spec][https://github.com/Asana/developer-docs/blob/master/defs/
 
   1. Merge in the desired changes into the `master` branch and commit them.
   2. Clone the repo; work on `master`.
-  3. Bump the package version to indicate the [semantic version](http://semver.org) change, using one of: `gulp bump-patch`, `gulp bump-feature`, or `gulp bump-release`
+  3. Bump the package version to indicate the [semantic version](http://semver.org) change, using one of: `gulp bump-patch`, `gulp bump-minor`, or `gulp bump-major`
+  (NOTE: If this is your first time running gulp please install `gulp` globall using `npm i -g gulp`)
   4. Push changes to origin, including tags:
      `git push origin master --tags` 
 
