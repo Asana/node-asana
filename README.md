@@ -334,7 +334,9 @@ See our [openapi spec][https://github.com/Asana/developer-docs/blob/master/defs/
   6. Push changes to origin, including tags:
      `git push origin master --tags`
 
-GitHub Actions will automatically build and deploy the tagged release. Make sure to edit the [new release](https://github.com/Asana/node-asana/releases) description on GitHub after it has been deployed.
+GitHub Actions will automatically build and deploy the tagged release.
+
+:reminder_ribbon: Make sure to edit the [new release](https://github.com/Asana/node-asana/releases) description on GitHub after it has been deployed. Please use bullet points to indicate notable changes since the last version.
 
 [release-image]: https://img.shields.io/github/release/asana/node-asana.svg
 
