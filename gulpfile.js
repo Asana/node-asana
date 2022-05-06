@@ -1,4 +1,5 @@
 var browserify = require('browserify');
+var fs = require('fs');
 var bump = require('gulp-bump');
 var filter = require('gulp-filter');
 var git = require('gulp-git');
@@ -52,7 +53,9 @@ function ensureGitClean(done) {
   git.status(function(err, out) {
     if (err) { throw err; }
     if (!/nothing to commit/.exec(out)) {
-      throw new Error('Git working directory not clean, will not bump version');
+      throw new Error(
+        'Git working directory not clean, will not bump version'
+        );
     }
   });
 
@@ -66,7 +69,7 @@ gulp.task('ensure-git-clean', ensureGitClean);
  *
  * You can use the commands
  *
- *     gulp bump-patch     # makes v0.1.0 → v0.1.1
+ *     gulp bump-patch   # makes v0.1.0 → v0.1.1
  *     gulp bump-minor   # makes v0.1.1 → v0.2.0
  *     gulp bump-major   # makes v0.2.1 → v1.0.0
  *
@@ -74,6 +77,37 @@ gulp.task('ensure-git-clean', ensureGitClean);
  * introduced a feature or made a backwards-incompatible release.
  */
 function bumpVersion(importance) {
+  // Update VERSION file
+  fs.readFile('VERSION', 'utf-8', function(err, data) {
+    if (err) {
+      console.log(err);
+    }
+
+    var versionArray = data.split('.');
+    var major = versionArray[0];
+    var minor = versionArray[1];
+    var patch = versionArray[2];
+
+    if (importance === 'major') {
+      major = (parseInt(major) + 1).toString();
+    }
+    if (importance === 'minor') {
+      minor = (parseInt(minor) + 1).toString();
+    }
+    if (importance === 'patch') {
+      patch = (parseInt(patch) + 1).toString();
+    }
+
+    var updatedVersion = [major, minor, patch].join('.');
+
+    fs.writeFile('VERSION', updatedVersion, function(err) {
+      if (err) {
+        console.log(err);
+      }
+    });
+  });
+
+  // Update package.json and bower.json
   return gulp.src(['./package.json', './bower.json'])
       .pipe(bump({type: importance}))
       .pipe(gulp.dest('./'))

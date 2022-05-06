@@ -314,15 +314,29 @@ See our [openapi spec][https://github.com/Asana/developer-docs/blob/master/defs/
 
 **Repo Owners Only.** Take the following steps to issue a new release of the library.
 
+#### Automatic Deployment
+
   1. Merge in the desired changes into the `master` branch and commit them.
   2. Clone the repo; work on `master`.
   3. Bump the package version to indicate the [semantic version](http://semver.org) change, using one of: `gulp bump-patch`, `gulp bump-minor`, or `gulp bump-major`
-  (NOTE: If this is your first time running gulp please install `gulp` globall using `npm i -g gulp`)
+  (NOTE: If this is your first time running `gulp` please install `gulp` globally using `npm i -g gulp`)
   4. Push changes to origin, including tags:
      `git push origin master --tags` 
-  5. Edit/Update the release description on
+
+#### Manual Deployment
+
+  1. Merge in the desired changes into the `master` branch and commit them.
+  2. Clone the repo, work on master.
+  3. Edit package version in `package.json`, `bower.json` and `VERSION` to indicate the [semantic version](http://semver.org/) change.
+  4. Commit the change
+  5. Tag the commit with `v` plus the same version number you set in the file.
+     `git tag v1.2.3`
+  6. Push changes to origin, including tags:
+     `git push origin master --tags`
 
 GitHub Actions will automatically build and deploy the tagged release.
+
+:reminder_ribbon: Make sure to edit the [new release](https://github.com/Asana/node-asana/releases) description on GitHub after it has been deployed. Please use bullet points to indicate notable changes since the last version.
 
 [release-image]: https://img.shields.io/github/release/asana/node-asana.svg
 
