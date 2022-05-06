@@ -151,7 +151,7 @@ function spec(callback) {
       .on('finish', function() {
         gulp.src(test)
             .pipe(mocha({
-              reporter: process.env.TRAVIS ? 'spec' : 'nyan'
+              reporter: 'nyan'
             }))
             .pipe(istanbul.writeReports({
               reporters: ['text', 'text-summary']
