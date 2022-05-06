@@ -108,12 +108,16 @@ function bumpVersion(importance) {
   });
 
   // Update package.json and bower.json
-  return gulp.src(['./package.json', './bower.json'])
-      .pipe(bump({type: importance}))
-      .pipe(gulp.dest('./'))
-      .pipe(git.commit('bump package version'))
-      .pipe(filter('package.json'))
-      .pipe(tagVersion());
+  gulp.src(['./package.json', './bower.json'])
+    .pipe(bump({type: importance}))
+    .pipe(gulp.dest('./'));
+  
+  // Add, commit and tag changes
+  return gulp.src(['./package.json', './bower.json', './VERSION'])
+    .pipe(git.add())
+    .pipe(git.commit('Bump package version'))
+    .pipe(filter('package.json'))
+    .pipe(tagVersion());
 }
 function bumpPatch() {
   return bumpVersion('patch');
