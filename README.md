@@ -1,4 +1,4 @@
-# Asana [![GitHub release][release-image]]() [![Build Status][travis-image]][travis-url] [![NPM Version][npm-image]][npm-url]
+# Asana [![GitHub release][release-image]]() [![Build Status][github-actions-image]][github-actions-url] [![NPM Version][npm-image]][npm-url]
 
 A JavaScript client (for both Node and browser) for the Asana API v1.0.
 
@@ -320,13 +320,14 @@ See our [openapi spec][https://github.com/Asana/developer-docs/blob/master/defs/
   (NOTE: If this is your first time running gulp please install `gulp` globall using `npm i -g gulp`)
   4. Push changes to origin, including tags:
      `git push origin master --tags` 
+  5. Edit/Update the release description on
 
-Travis CI will automatically build and deploy the tagged release.
+GitHub Actions will automatically build and deploy the tagged release.
 
 [release-image]: https://img.shields.io/github/release/asana/node-asana.svg
 
-[travis-url]: http://travis-ci.org/Asana/node-asana
-[travis-image]: http://img.shields.io/travis/Asana/node-asana.svg?style=flat-square&branch=master
+[github-actions-url]: https://github.com/Asana/node-asana/actions
+[github-actions-image]: https://github.com/Asana/node-asana/workflows/Build/badge.svg
 
 [npm-url]: https://www.npmjs.org/package/asana
 [npm-image]: http://img.shields.io/npm/v/asana.svg?style=flat-square
