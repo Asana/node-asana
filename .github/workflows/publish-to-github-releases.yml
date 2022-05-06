@@ -1,0 +1,26 @@
+name: Publish to GitHub Releases
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  build-n-publish-to-github:
+    name: Build and publish to GitHub Releases
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '8.x'
+      - name: Bundle the code, full version to asana.js and minified to asana-min.js
+        run: |
+          npm i gulp
+          gulp bundle
+      - name: Publish to GitHub Releases
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            dist/asana.js
+            dist/asana-min.js

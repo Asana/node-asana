@@ -67,8 +67,8 @@ gulp.task('ensure-git-clean', ensureGitClean);
  * You can use the commands
  *
  *     gulp bump-patch     # makes v0.1.0 → v0.1.1
- *     gulp bump-feature   # makes v0.1.1 → v0.2.0
- *     gulp bump-release   # makes v0.2.1 → v1.0.0
+ *     gulp bump-minor   # makes v0.1.1 → v0.2.0
+ *     gulp bump-major   # makes v0.2.1 → v1.0.0
  *
  * To bump the version numbers accordingly after you did a patch,
  * introduced a feature or made a backwards-incompatible release.
@@ -81,10 +81,18 @@ function bumpVersion(importance) {
       .pipe(filter('package.json'))
       .pipe(tagVersion());
 }
-
-gulp.task('bump-patch', gulp.series('ensure-git-clean', bumpVersion('patch')));
-gulp.task('bump-minor', gulp.series('ensure-git-clean', bumpVersion('minor')));
-gulp.task('bump-major', gulp.series('ensure-git-clean', bumpVersion('major')));
+function bumpPatch() {
+  return bumpVersion('patch');
+}
+gulp.task('bump-patch', gulp.series('ensure-git-clean', bumpPatch));
+function bumpMinor() {
+  return bumpVersion('minor');
+}
+gulp.task('bump-minor', gulp.series('ensure-git-clean', bumpMinor));
+function bumpMajor() {
+  return bumpVersion('major');
+}
+gulp.task('bump-major', gulp.series('ensure-git-clean', bumpMajor));
 
 /**
  * Lints all of the JavaScript files and fails if the tasks do not pass
