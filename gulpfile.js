@@ -78,57 +78,76 @@ gulp.task('ensure-git-clean', ensureGitClean);
  */
 function bumpVersion(importance) {
   // Update VERSION file
-  fs.readFile('VERSION', 'utf-8', function(err, data) {
-    if (err) {
-      console.log(err);
-    }
-
-    var versionArray = data.split('.');
-    var major = versionArray[0];
-    var minor = versionArray[1];
-    var patch = versionArray[2];
-
-    if (importance === 'major') {
-      major = (parseInt(major) + 1).toString();
-    }
-    if (importance === 'minor') {
-      minor = (parseInt(minor) + 1).toString();
-    }
-    if (importance === 'patch') {
-      patch = (parseInt(patch) + 1).toString();
-    }
-
-    var updatedVersion = [major, minor, patch].join('.');
-
-    fs.writeFile('VERSION', updatedVersion, function(err) {
+  function updateVersionFile(cb) {
+    fs.readFile('VERSION', 'utf-8', function (err, data) {
       if (err) {
         console.log(err);
       }
-    });
-  });
 
-  // Update package.json and bower.json
-  gulp.src(['./package.json', './bower.json'])
-    .pipe(bump({type: importance}))
-    .pipe(gulp.dest('./'));
-  
-  // Add, commit and tag changes
-  return gulp.src(['./package.json', './bower.json', './VERSION'])
-    .pipe(git.add())
-    .pipe(git.commit('Bump package version'))
-    .pipe(filter('package.json'))
-    .pipe(tagVersion());
+      var versionArray = data.split('.');
+      var major = versionArray[0];
+      var minor = versionArray[1];
+      var patch = versionArray[2];
+
+      if (importance === 'major') {
+        major = (parseInt(major) + 1).toString();
+      }
+      if (importance === 'minor') {
+        minor = (parseInt(minor) + 1).toString();
+      }
+      if (importance === 'patch') {
+        patch = (parseInt(patch) + 1).toString();
+      }
+
+      var updatedVersion = [major, minor, patch].join('.');
+
+      fs.writeFile('VERSION', updatedVersion, function (err) {
+        if (err) {
+          console.log(err);
+        }
+      });
+    });
+    cb();
+  }
+
+  // Bump version in package.json and bower.json
+  function updateVersion() {
+    return gulp
+      .src(['./package.json', './bower.json'])
+      .pipe(bump({ type: importance }))
+      .pipe(gulp.dest('./'));
+  }
+
+  // Add, commit version files and tag commit with new version
+  function addCommitTagPush(cb) {
+    gulp
+      .src(['./package.json', './bower.json', './VERSION'])
+      .pipe(git.add())
+      .pipe(git.commit('Bump package version'))
+      .pipe(filter('package.json'))
+      .pipe(tagVersion());
+    cb();
+  }
+
+  // Update the version files in parallel and then commit the changes
+  return gulp.series(
+    gulp.parallel(updateVersionFile, updateVersion),
+    addCommitTagPush
+  )();
 }
-function bumpPatch() {
-  return bumpVersion('patch');
+function bumpPatch(cb) {
+  bumpVersion('patch');
+  cb();
 }
 gulp.task('bump-patch', gulp.series('ensure-git-clean', bumpPatch));
-function bumpMinor() {
-  return bumpVersion('minor');
+function bumpMinor(cb) {
+  bumpVersion('minor');
+  cb();
 }
 gulp.task('bump-minor', gulp.series('ensure-git-clean', bumpMinor));
-function bumpMajor() {
-  return bumpVersion('major');
+function bumpMajor(cb) {
+  bumpVersion('major');
+  cb();
 }
 gulp.task('bump-major', gulp.series('ensure-git-clean', bumpMajor));
 
