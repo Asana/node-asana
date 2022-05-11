@@ -321,7 +321,7 @@ See our [openapi spec][https://github.com/Asana/developer-docs/blob/master/defs/
   3. Bump the package version to indicate the [semantic version](http://semver.org) change, using one of: `gulp bump-patch`, `gulp bump-minor`, or `gulp bump-major`
   (NOTE: If this is your first time running `gulp` please install `gulp` globally using `npm i -g gulp`)
   4. Push changes to origin, including tags:
-     `git push origin master --tags` 
+     `git push --tags origin master:master`
 
 #### Manual Deployment
 
@@ -332,7 +332,7 @@ See our [openapi spec][https://github.com/Asana/developer-docs/blob/master/defs/
   5. Tag the commit with `v` plus the same version number you set in the file.
      `git tag v1.2.3`
   6. Push changes to origin, including tags:
-     `git push origin master --tags`
+     `git push --tags origin master:master`
 
 GitHub Actions will automatically build and deploy the tagged release.
 
