@@ -6,7 +6,7 @@ attachments:
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.attachments.createAttachmentForTask(taskGid, {field: "value", field: "value", pretty: true})
+        client.attachments.createAttachmentForTask({field: "value", field: "value", pretty: true})
             .then((result) => {
                 console.log(result);
             });
@@ -32,14 +32,14 @@ attachments:
             .then((result) => {
                 console.log(result);
             });
-    getAttachmentsForTask: >-
+    getAttachmentsForObject: >-
         const asana = require('asana');
 
 
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.attachments.getAttachmentsForTask(taskGid, {param: "value", param: "value", opt_pretty: true})
+        client.attachments.getAttachmentsForObject({param: "value", param: "value", opt_pretty: true})
             .then((result) => {
                 console.log(result);
             });

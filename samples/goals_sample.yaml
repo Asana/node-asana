@@ -6,7 +6,7 @@ goals:
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.goals.addFollowers({field: "value", field: "value", pretty: true})
+        client.goals.addFollowers(goalGid, {field: "value", field: "value", pretty: true})
             .then((result) => {
                 console.log(result);
             });
@@ -17,7 +17,7 @@ goals:
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.goals.addSubgoal({field: "value", field: "value", pretty: true})
+        client.goals.addSubgoal(goalGid, {field: "value", field: "value", pretty: true})
             .then((result) => {
                 console.log(result);
             });
@@ -28,7 +28,7 @@ goals:
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.goals.addSupportingWorkForGoal({field: "value", field: "value", pretty: true})
+        client.goals.addSupportingWorkForGoal(goalGid, {field: "value", field: "value", pretty: true})
             .then((result) => {
                 console.log(result);
             });
@@ -50,7 +50,7 @@ goals:
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.goals.createGoalMetric({field: "value", field: "value", pretty: true})
+        client.goals.createGoalMetric(goalGid, {field: "value", field: "value", pretty: true})
             .then((result) => {
                 console.log(result);
             });
@@ -94,7 +94,7 @@ goals:
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.goals.getParentGoalsForGoal({param: "value", param: "value", opt_pretty: true})
+        client.goals.getParentGoalsForGoal(goalGid, {param: "value", param: "value", opt_pretty: true})
             .then((result) => {
                 console.log(result);
             });
@@ -105,7 +105,7 @@ goals:
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.goals.getSubgoalsForGoal({param: "value", param: "value", opt_pretty: true})
+        client.goals.getSubgoalsForGoal(goalGid, {param: "value", param: "value", opt_pretty: true})
             .then((result) => {
                 console.log(result);
             });
@@ -116,7 +116,7 @@ goals:
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.goals.removeFollowers({field: "value", field: "value", pretty: true})
+        client.goals.removeFollowers(goalGid, {field: "value", field: "value", pretty: true})
             .then((result) => {
                 console.log(result);
             });
@@ -127,7 +127,7 @@ goals:
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.goals.removeSubgoal({field: "value", field: "value", pretty: true})
+        client.goals.removeSubgoal(goalGid, {field: "value", field: "value", pretty: true})
             .then((result) => {
                 console.log(result);
             });
@@ -138,7 +138,7 @@ goals:
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.goals.removeSupportingWorkForGoal({field: "value", field: "value", pretty: true})
+        client.goals.removeSupportingWorkForGoal(goalGid, {field: "value", field: "value", pretty: true})
             .then((result) => {
                 console.log(result);
             });
@@ -149,7 +149,7 @@ goals:
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.goals.supportingWork({param: "value", param: "value", opt_pretty: true})
+        client.goals.supportingWork(goalGid, {param: "value", param: "value", opt_pretty: true})
             .then((result) => {
                 console.log(result);
             });
@@ -171,7 +171,7 @@ goals:
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.goals.updateGoalMetric({field: "value", field: "value", pretty: true})
+        client.goals.updateGoalMetric(goalGid, {field: "value", field: "value", pretty: true})
             .then((result) => {
                 console.log(result);
             });
