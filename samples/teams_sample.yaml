@@ -32,17 +32,6 @@ teams:
             .then((result) => {
                 console.log(result);
             });
-    getTeamsForOrganization: >-
-        const asana = require('asana');
-
-
-        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
-
-
-        client.teams.getTeamsForOrganization(workspaceGid, {param: "value", param: "value", opt_pretty: true})
-            .then((result) => {
-                console.log(result);
-            });
     getTeamsForUser: >-
         const asana = require('asana');
 
@@ -51,6 +40,17 @@ teams:
 
 
         client.teams.getTeamsForUser(userGid, {param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    getTeamsForWorkspace: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.teams.getTeamsForWorkspace(workspaceGid, {param: "value", param: "value", opt_pretty: true})
             .then((result) => {
                 console.log(result);
             });
