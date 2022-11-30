@@ -4,7 +4,7 @@ var sinon = require('sinon');
 var Portfolios = require('../../lib/resources/portfolio_memberships');
 
 describe('Portfolio Memberships', function() {
-  describe('#findByPortfolio', function() {
+  describe('#getPortfolioMembershipsForPortfolio', function() {
     it('should hit the portfolios/{portfolio-gid}/portfolio_memberships' +
         ' endpoint',
         function() {
@@ -13,28 +13,28 @@ describe('Portfolio Memberships', function() {
           portfolios.dispatchGetCollection = sinon.stub();
 
           var id = 134679;
-          portfolios.findByPortfolio(id);
+          portfolios.getPortfolioMembershipsForPortfolio(id);
 
           assert(portfolios.dispatchGetCollection.calledWith(
               '/portfolios/' + id + '/portfolio_memberships'));
         });
   });
 
-  describe('#findAll', function() {
+  describe('#getPortfolioMemberships', function() {
     it('should hit the /portfolio_memberships endpoint',
         function() {
           var dispatcher = {};
           var portfolios = new Portfolios(dispatcher);
           portfolios.dispatchGetCollection = sinon.stub();
 
-          portfolios.findAll();
+          portfolios.getPortfolioMemberships();
 
           assert(portfolios.dispatchGetCollection.calledWith(
               '/portfolio_memberships'));
         });
   });
 
-  describe('#findById', function() {
+  describe('#getPortfolioMembership', function() {
     it('should hit the /portfolio_memberships/{id} endpoint',
         function() {
           var dispatcher = {};
@@ -42,7 +42,7 @@ describe('Portfolio Memberships', function() {
           portfolios.dispatchGet = sinon.stub();
 
           var id = 134679;
-          portfolios.findById(id);
+          portfolios.getPortfolioMembership(id);
 
           assert(portfolios.dispatchGet.calledWith(
               '/portfolio_memberships/' + id));

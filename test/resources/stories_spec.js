@@ -12,13 +12,13 @@ describe('Stories', function() {
     });
   });
 
-  describe('#findById', function() {
+  describe('#getStory', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var stories = new Stories(dispatcher);
       stories.dispatchGet = sinon.stub();
       var id = 1;
-      stories.findById(id);
+      stories.getStory(id);
       assert(stories.dispatchGet.calledWith('/stories/1', undefined));
     });
 
@@ -30,7 +30,7 @@ describe('Stories', function() {
         'opt_fields': 'id,name'
       };
       var id = 1;
-      stories.findById(id, params);
+      stories.getStory(id, params);
       assert(stories.dispatchGet.calledWith('/stories/1', params));
     });
 
@@ -42,7 +42,7 @@ describe('Stories', function() {
         'opt_fields': 'id,name'
       };
       var id = '1';
-      stories.findById(id, params);
+      stories.getStory(id, params);
       assert(stories.dispatchGet.calledWith('/stories/1', params));
     });
 
@@ -54,18 +54,18 @@ describe('Stories', function() {
         'opt_fields': 'id,name'
       };
       var id = 'foobar';
-      stories.findById(id, params);
+      stories.getStory(id, params);
       assert(stories.dispatchGet.calledWith('/stories/foobar', params));
     });
   });
 
-  describe('#findByTask', function() {
+  describe('#getStoriesForTask', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var stories = new Stories(dispatcher);
       stories.dispatchGetCollection = sinon.stub();
       var id = 1;
-      stories.findByTask(id);
+      stories.getStoriesForTask(id);
       assert(
         stories.dispatchGetCollection.calledWith(
             '/tasks/1/stories', undefined));
@@ -79,7 +79,7 @@ describe('Stories', function() {
         'opt_fields': 'id,name'
       };
       var id = 1;
-      stories.findByTask(id, params);
+      stories.getStoriesForTask(id, params);
       assert(
           stories.dispatchGetCollection.calledWith(
               '/tasks/1/stories', params));
@@ -93,7 +93,7 @@ describe('Stories', function() {
         'opt_fields': 'id,name'
       };
       var id = '1';
-      stories.findByTask(id, params);
+      stories.getStoriesForTask(id, params);
       assert(
           stories.dispatchGetCollection.calledWith(
               '/tasks/1/stories', params));
@@ -107,14 +107,14 @@ describe('Stories', function() {
         'opt_fields': 'id,name'
       };
       var id = 'foobar';
-      stories.findByTask(id, params);
+      stories.getStoriesForTask(id, params);
       assert(
           stories.dispatchGetCollection.calledWith(
               '/tasks/foobar/stories', params));
     });
   });
 
-  describe('#createOnTask', function() {
+  describe('#createStoryForTask', function() {
     it('should handle the creation', function() {
       var dispatcher = {};
       var stories = new Stories(dispatcher);
@@ -123,7 +123,7 @@ describe('Stories', function() {
       var data = {
         text: 'Test'
       };
-      stories.createOnTask(id, data);
+      stories.createStoryForTask(id, data);
       assert(stories.dispatchPost.calledWith('/tasks/1/stories', data));
     });
 
@@ -135,7 +135,7 @@ describe('Stories', function() {
       var data = {
         text: 'Test'
       };
-      stories.createOnTask(id, data);
+      stories.createStoryForTask(id, data);
       assert(stories.dispatchPost.calledWith('/tasks/1/stories', data));
     });
 
@@ -147,7 +147,7 @@ describe('Stories', function() {
       var data = {
         text: 'Test'
       };
-      stories.createOnTask(id, data);
+      stories.createStoryForTask(id, data);
       assert(
           stories.dispatchPost.calledWith('/tasks/foobar/stories', data));
     });

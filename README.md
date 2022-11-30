@@ -143,7 +143,7 @@ a number of results per page to fetch, between `1` and `100`.
 It defaults to `50` if you don't provide any.
 
 ```js
-client.tasks.findByTag(tagId, { limit: 5 }).then(function(collection) {
+client.tasks.getTasksForTag(tagId, { limit: 5 }).then(function(collection) {
   console.log(collection.data);
   // [ .. array of up to 5 task objects .. ]
 });
@@ -158,7 +158,7 @@ To get the next page of a collection, you do not have to manually construct
 the next request. The `nextPage()` method takes care of this for you:
 
 ```js
-client.tasks.findByTag(tagId).then(firstPage => {
+client.tasks.getTasksForTag(tagId).then(firstPage => {
   console.log(firstPage.data);
   firstPage.nextPage().then(secondPage => {
     console.log(secondPage.data);
@@ -172,7 +172,7 @@ To automatically fetch a bunch of results and have the client transparently
 request pages under the hood, use the `fetch()` method:
 
 ```js
-client.tasks.findByTag(tagId).then(collection => {
+client.tasks.getTasksForTag(tagId).then(collection => {
   // Fetch up to 200 tasks, using multiple pages if necessary
   collection.fetch(200).then(tasks => {
     console.log(tasks);
@@ -187,7 +187,7 @@ You can also construct a `stream` from a collection. This will transparently
 through them.
 
 ```js
-client.tasks.findByTag(tagId).then(collection => {
+client.tasks.getTasksForTag(tagId).then(collection => {
   collection.stream().on('data', task => {
     console.log(task);
   });
@@ -254,7 +254,7 @@ client.users.me()
     // any user can have multiple workspaces so you can't always assume this
     // is the one you want to work with.
     const workspaceId = user.workspaces[0].gid;
-    return client.tasks.findAll({
+    return client.tasks.getTasks({
       assignee: userId,
       workspace: workspaceId,
       completed_since: 'now',

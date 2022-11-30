@@ -13,13 +13,13 @@ describe('CustomFieldSettings', function() {
     });
   });
 
-  describe('#findByProject', function() {
+  describe('#getCustomFieldSettingsForProject', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var customFieldSettings = new CustomFieldSettings(dispatcher);
       customFieldSettings.dispatchGetCollection = sinon.stub();
       var id = 1331;
-      customFieldSettings.findByProject(id);
+      customFieldSettings.getCustomFieldSettingsForProject(id);
       assert(customFieldSettings.dispatchGetCollection.calledWith(
         '/projects/1331/custom_field_settings', undefined, undefined));
     });

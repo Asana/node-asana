@@ -4,7 +4,7 @@ var sinon = require('sinon');
 var UserTaskList = require('../../lib/resources/user_task_lists');
 
 describe('User Task Lists', function() {
-    describe('#findByUser', function() {
+    describe('#getUserTaskListForUser', function() {
         it('should hit the /users/{user_gid}/user_task_list endpoint',
             function() {
                 var dispatcher = {};
@@ -12,14 +12,14 @@ describe('User Task Lists', function() {
                 userTaskLists.dispatchGet = sinon.stub();
 
                 var id = 134679;
-                userTaskLists.findByUser(id);
+                userTaskLists.getUserTaskListForUser(id);
 
                 assert(userTaskLists.dispatchGet.calledWith(
                   '/users/' + id + '/user_task_list'));
             });
     });
 
-    describe('#findById', function() {
+    describe('#getUserTaskList', function() {
         it('should hit the /user_task_list/{user_task_list_gid} endpoint',
             function() {
                 var dispatcher = {};
@@ -27,7 +27,7 @@ describe('User Task Lists', function() {
                 userTaskLists.dispatchGet = sinon.stub();
 
                 var id = 134679;
-                userTaskLists.findById(id);
+                userTaskLists.getUserTaskList(id);
 
                 assert(userTaskLists.dispatchGet.calledWith(
                   '/user_task_lists/' + id));

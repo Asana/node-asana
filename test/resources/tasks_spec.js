@@ -65,12 +65,12 @@ describe('Tasks', function() {
     });
   });
 
-  describe('#findAll', function() {
+  describe('#getTasks', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       tasks.dispatchGetCollection = sinon.stub();
-      tasks.findAll();
+      tasks.getTasks();
       assert(
           tasks.dispatchGetCollection.calledWith('/tasks', undefined));
     });
@@ -82,18 +82,18 @@ describe('Tasks', function() {
       var params = {
         'opt_fields': 'id,name'
       };
-      tasks.findAll(params);
+      tasks.getTasks(params);
       assert(tasks.dispatchGetCollection.calledWith('/tasks', params));
     });
   });
 
-  describe('#findById', function() {
+  describe('#getTask', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       tasks.dispatchGet = sinon.stub();
       var id = 1;
-      tasks.findById(id);
+      tasks.getTask(id);
       assert(tasks.dispatchGet.calledWith('/tasks/1', undefined));
     });
 
@@ -105,7 +105,7 @@ describe('Tasks', function() {
         'opt_fields': 'id,name'
       };
       var id = 1;
-      tasks.findById(id, params);
+      tasks.getTask(id, params);
       assert(tasks.dispatchGet.calledWith('/tasks/1', params));
     });
 
@@ -117,7 +117,7 @@ describe('Tasks', function() {
         'opt_fields': 'id,name'
       };
       var id = '1';
-      tasks.findById(id, params);
+      tasks.getTask(id, params);
       assert(tasks.dispatchGet.calledWith('/tasks/1', params));
     });
 
@@ -129,7 +129,7 @@ describe('Tasks', function() {
         'opt_fields': 'id,name'
       };
       var id = 'foobar';
-      tasks.findById(id, params);
+      tasks.getTask(id, params);
       assert(tasks.dispatchGet.calledWith('/tasks/foobar', params));
     });
   });
@@ -167,13 +167,13 @@ describe('Tasks', function() {
     });
   });
 
-  describe('#findByProject', function() {
+  describe('#getTasksForProject', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       tasks.dispatchGetCollection = sinon.stub();
       var id = 1;
-      tasks.findByProject(id);
+      tasks.getTasksForProject(id);
       assert(
           tasks.dispatchGetCollection.calledWith(
               '/projects/1/tasks', undefined));
@@ -187,7 +187,7 @@ describe('Tasks', function() {
         'opt_fields': 'id,name'
       };
       var id = 1;
-      tasks.findByProject(id, params);
+      tasks.getTasksForProject(id, params);
       assert(
           tasks.dispatchGetCollection.calledWith(
               '/projects/1/tasks', params));
@@ -201,7 +201,7 @@ describe('Tasks', function() {
         'opt_fields': 'id,name'
       };
       var id = '1';
-      tasks.findByProject(id, params);
+      tasks.getTasksForProject(id, params);
       assert(
           tasks.dispatchGetCollection.calledWith(
               '/projects/1/tasks', params));
@@ -215,20 +215,20 @@ describe('Tasks', function() {
         'opt_fields': 'id,name'
       };
       var id = 'foobar';
-      tasks.findByProject(id, params);
+      tasks.getTasksForProject(id, params);
       assert(
           tasks.dispatchGetCollection.calledWith(
               '/projects/foobar/tasks', params));
     });
   });
 
-  describe('#findByTag', function() {
+  describe('#getTasksForTag', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       tasks.dispatchGetCollection = sinon.stub();
       var id = 1;
-      tasks.findByTag(id);
+      tasks.getTasksForTag(id);
       assert(
           tasks.dispatchGetCollection.calledWith(
               '/tags/1/tasks', undefined));
@@ -242,7 +242,7 @@ describe('Tasks', function() {
         'opt_fields': 'id,name'
       };
       var id = 1;
-      tasks.findByTag(id, params);
+      tasks.getTasksForTag(id, params);
       assert(
         tasks.dispatchGetCollection.calledWith('/tags/1/tasks', params));
     });
@@ -255,7 +255,7 @@ describe('Tasks', function() {
         'opt_fields': 'id,name'
       };
       var id = '1';
-      tasks.findByTag(id, params);
+      tasks.getTasksForTag(id, params);
       assert(
         tasks.dispatchGetCollection.calledWith('/tags/1/tasks', params));
     });
@@ -268,14 +268,14 @@ describe('Tasks', function() {
         'opt_fields': 'id,name'
       };
       var id = 'foobar';
-      tasks.findByTag(id, params);
+      tasks.getTasksForTag(id, params);
       assert(
           tasks.dispatchGetCollection.calledWith(
               '/tags/foobar/tasks', params));
     });
   });
 
-  describe('#update', function() {
+  describe('#updateTask', function() {
     it('should handle the update', function() {
       var dispatcher = {};
       var tasks = new Tasks(dispatcher);
@@ -284,7 +284,7 @@ describe('Tasks', function() {
       var data = {
         name: 'Test'
       };
-      tasks.update(id, data);
+      tasks.updateTask(id, data);
       assert(tasks.dispatchPut.calledWith('/tasks/1', data));
     });
 
@@ -296,7 +296,7 @@ describe('Tasks', function() {
       var data = {
         name: 'Test'
       };
-      tasks.update(id, data);
+      tasks.updateTask(id, data);
       assert(tasks.dispatchPut.calledWith('/tasks/1', data));
     });
 
@@ -308,18 +308,18 @@ describe('Tasks', function() {
       var data = {
         name: 'Test'
       };
-      tasks.update(id, data);
+      tasks.updateTask(id, data);
       assert(tasks.dispatchPut.calledWith('/tasks/foobar', data));
     });
   });
 
-  describe('#delete', function() {
+  describe('#deleteTask', function() {
     it('should handle the deletion', function() {
       var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       tasks.dispatchDelete = sinon.stub();
       var id = 1;
-      tasks.delete(id);
+      tasks.deleteTask(id);
       assert(tasks.dispatchDelete.calledWith('/tasks/1'));
     });
 
@@ -328,7 +328,7 @@ describe('Tasks', function() {
       var tasks = new Tasks(dispatcher);
       tasks.dispatchDelete = sinon.stub();
       var id = '1';
-      tasks.delete(id);
+      tasks.deleteTask(id);
       assert(tasks.dispatchDelete.calledWith('/tasks/1'));
     });
 
@@ -337,12 +337,12 @@ describe('Tasks', function() {
       var tasks = new Tasks(dispatcher);
       tasks.dispatchDelete = sinon.stub();
       var id = 'foobar';
-      tasks.delete(id);
+      tasks.deleteTask(id);
       assert(tasks.dispatchDelete.calledWith('/tasks/foobar'));
     });
   });
 
-  describe('#addFollowers', function() {
+  describe('#addFollowersForTask', function() {
     it('should handle the update', function() {
       var dispatcher = {};
       var tasks = new Tasks(dispatcher);
@@ -351,7 +351,7 @@ describe('Tasks', function() {
       var data = {
         followers: [1]
       };
-      tasks.addFollowers(id, data);
+      tasks.addFollowersForTask(id, data);
       assert(
           tasks.dispatchPost.calledWith('/tasks/1/addFollowers', data));
     });
@@ -364,7 +364,7 @@ describe('Tasks', function() {
       var data = {
         followers: [1]
       };
-      tasks.addFollowers(id, data);
+      tasks.addFollowersForTask(id, data);
       assert(
           tasks.dispatchPost.calledWith('/tasks/1/addFollowers', data));
     });
@@ -377,13 +377,13 @@ describe('Tasks', function() {
       var data = {
         followers: [1]
       };
-      tasks.addFollowers(id, data);
+      tasks.addFollowersForTask(id, data);
       assert(
         tasks.dispatchPost.calledWith('/tasks/foobar/addFollowers', data));
     });
   });
 
-  describe('#removeFollowers', function() {
+  describe('#removeFollowerForTask', function() {
     it('should handle the update', function() {
       var dispatcher = {};
       var tasks = new Tasks(dispatcher);
@@ -392,7 +392,7 @@ describe('Tasks', function() {
       var data = {
         followers: [1]
       };
-      tasks.removeFollowers(id, data);
+      tasks.removeFollowerForTask(id, data);
       assert(
         tasks.dispatchPost.calledWith('/tasks/1/removeFollowers', data));
     });
@@ -405,7 +405,7 @@ describe('Tasks', function() {
       var data = {
         followers: [1]
       };
-      tasks.removeFollowers(id, data);
+      tasks.removeFollowerForTask(id, data);
       assert(
         tasks.dispatchPost.calledWith('/tasks/1/removeFollowers', data));
     });
@@ -418,7 +418,7 @@ describe('Tasks', function() {
       var data = {
         followers: [1]
       };
-      tasks.removeFollowers(id, data);
+      tasks.removeFollowerForTask(id, data);
       assert(
           tasks.dispatchPost.calledWith(
               '/tasks/foobar/removeFollowers', data));
@@ -460,7 +460,7 @@ describe('Tasks', function() {
     });
   });
 
-  describe('#addProject', function() {
+  describe('#addProjectForTask', function() {
     it('should handle the update', function() {
       var dispatcher = {};
       var tasks = new Tasks(dispatcher);
@@ -469,7 +469,7 @@ describe('Tasks', function() {
       var data = {
         project: [1]
       };
-      tasks.addProject(id, data);
+      tasks.addProjectForTask(id, data);
       assert(tasks.dispatchPost.calledWith('/tasks/1/addProject', data));
     });
 
@@ -481,7 +481,7 @@ describe('Tasks', function() {
       var data = {
         project: [1]
       };
-      tasks.addProject(id, data);
+      tasks.addProjectForTask(id, data);
       assert(tasks.dispatchPost.calledWith('/tasks/1/addProject', data));
     });
 
@@ -493,13 +493,13 @@ describe('Tasks', function() {
       var data = {
         project: [1]
       };
-      tasks.addProject(id, data);
+      tasks.addProjectForTask(id, data);
       assert(
         tasks.dispatchPost.calledWith('/tasks/foobar/addProject', data));
     });
   });
 
-  describe('#removeProject', function() {
+  describe('#removeProjectForTask', function() {
     it('should handle the update', function() {
       var dispatcher = {};
       var tasks = new Tasks(dispatcher);
@@ -508,7 +508,7 @@ describe('Tasks', function() {
       var data = {
         project: [1]
       };
-      tasks.removeProject(id, data);
+      tasks.removeProjectForTask(id, data);
       assert(
           tasks.dispatchPost.calledWith('/tasks/1/removeProject', data));
     });
@@ -521,7 +521,7 @@ describe('Tasks', function() {
       var data = {
         project: [1]
       };
-      tasks.removeProject(id, data);
+      tasks.removeProjectForTask(id, data);
       assert(
           tasks.dispatchPost.calledWith('/tasks/1/removeProject', data));
     });
@@ -534,7 +534,7 @@ describe('Tasks', function() {
       var data = {
         project: [1]
       };
-      tasks.removeProject(id, data);
+      tasks.removeProjectForTask(id, data);
       assert(
           tasks.dispatchPost.calledWith(
               '/tasks/foobar/removeProject', data));
@@ -575,7 +575,7 @@ describe('Tasks', function() {
     });
   });
 
-  describe('#addTag', function() {
+  describe('#addTagForTask', function() {
     it('should handle the update', function() {
       var dispatcher = {};
       var tasks = new Tasks(dispatcher);
@@ -584,7 +584,7 @@ describe('Tasks', function() {
       var data = {
         tag: 1
       };
-      tasks.addTag(id, data);
+      tasks.addTagForTask(id, data);
       assert(tasks.dispatchPost.calledWith('/tasks/1/addTag', data));
     });
 
@@ -596,7 +596,7 @@ describe('Tasks', function() {
       var data = {
         tag: 1
       };
-      tasks.addTag(id, data);
+      tasks.addTagForTask(id, data);
       assert(tasks.dispatchPost.calledWith('/tasks/1/addTag', data));
     });
 
@@ -608,13 +608,13 @@ describe('Tasks', function() {
       var data = {
         tag: 1
       };
-      tasks.addTag(id, data);
+      tasks.addTagForTask(id, data);
       assert(
         tasks.dispatchPost.calledWith('/tasks/foobar/addTag', data));
     });
   });
 
-  describe('#removeTag', function() {
+  describe('#removeTagForTask', function() {
     it('should handle the update', function() {
       var dispatcher = {};
       var tasks = new Tasks(dispatcher);
@@ -623,7 +623,7 @@ describe('Tasks', function() {
       var data = {
         tag: 1
       };
-      tasks.removeTag(id, data);
+      tasks.removeTagForTask(id, data);
       assert(tasks.dispatchPost.calledWith('/tasks/1/removeTag', data));
     });
 
@@ -635,7 +635,7 @@ describe('Tasks', function() {
       var data = {
         tag: 1
       };
-      tasks.removeTag(id, data);
+      tasks.removeTagForTask(id, data);
       assert(tasks.dispatchPost.calledWith('/tasks/1/removeTag', data));
     });
 
@@ -647,19 +647,19 @@ describe('Tasks', function() {
       var data = {
         tag: 1
       };
-      tasks.removeTag(id, data);
+      tasks.removeTagForTask(id, data);
       assert(
         tasks.dispatchPost.calledWith('/tasks/foobar/removeTag', data));
     });
   });
 
-  describe('#subtasks', function() {
+  describe('#getSubtasksForTask', function() {
     it('should handle the request', function() {
       var dispatcher = {};
       var tasks = new Tasks(dispatcher);
       tasks.dispatchGetCollection = sinon.stub();
       var id = 1;
-      tasks.subtasks(id);
+      tasks.getSubtasksForTask(id);
       assert(
           tasks.dispatchGetCollection.calledWith(
               '/tasks/1/subtasks', undefined));
@@ -670,7 +670,7 @@ describe('Tasks', function() {
       var tasks = new Tasks(dispatcher);
       tasks.dispatchGetCollection = sinon.stub();
       var id = '1';
-      tasks.subtasks(id);
+      tasks.getSubtasksForTask(id);
       assert(tasks.dispatchGetCollection.calledWith(
           '/tasks/1/subtasks', undefined));
     });
@@ -680,14 +680,14 @@ describe('Tasks', function() {
       var tasks = new Tasks(dispatcher);
       tasks.dispatchGetCollection = sinon.stub();
       var id = 'foobar';
-      tasks.subtasks(id);
+      tasks.getSubtasksForTask(id);
       assert(
         tasks.dispatchGetCollection.calledWith(
             '/tasks/foobar/subtasks', undefined));
     });
   });
 
-  describe('#addSubtask', function() {
+  describe('#createSubtaskForTask', function() {
     it('should handle the update', function() {
       var dispatcher = {};
       var tasks = new Tasks(dispatcher);
@@ -697,7 +697,7 @@ describe('Tasks', function() {
         name: 'foo',
         assignee: 1234
       };
-      tasks.addSubtask(id, data);
+      tasks.createSubtaskForTask(id, data);
       assert(tasks.dispatchPost.calledWith('/tasks/1/subtasks', data));
     });
 
@@ -710,7 +710,7 @@ describe('Tasks', function() {
         name: 'foo',
         assignee: 1234
       };
-      tasks.addSubtask(id, data);
+      tasks.createSubtaskForTask(id, data);
       assert(tasks.dispatchPost.calledWith('/tasks/1/subtasks', data));
     });
 
@@ -723,13 +723,13 @@ describe('Tasks', function() {
         name: 'foo',
         assignee: 1234
       };
-      tasks.addSubtask(id, data);
+      tasks.createSubtaskForTask(id, data);
       assert(
         tasks.dispatchPost.calledWith('/tasks/foobar/subtasks', data));
     });
   });
 
-  describe('#setParent', function() {
+  describe('#setParentForTask', function() {
     it('should handle the update', function() {
       var dispatcher = {};
       var tasks = new Tasks(dispatcher);
@@ -737,10 +737,13 @@ describe('Tasks', function() {
       var id = 1;
       var parentId = 2;
       var data = {
-        parent: '2'
+        parent: parentId
       };
-      tasks.setParent(id, parentId);
-      assert(tasks.dispatchPost.calledWith('/tasks/1/setParent', data));
+      var expectedData = {
+        parent: parentId
+      };
+      tasks.setParentForTask(id, data);
+      assert(tasks.dispatchPost.calledWith('/tasks/1/setParent', expectedData));
     });
 
     it('should handle string numbers', function() {
@@ -749,10 +752,13 @@ describe('Tasks', function() {
       tasks.dispatchPost = sinon.stub();
       var id = '1';
       var parentId = '2';
+      var data = {
+        parent: parentId
+      };
       var expectedData = {
         parent: parentId
       };
-      tasks.setParent(id, parentId);
+      tasks.setParentForTask(id, data);
       assert(tasks.dispatchPost.calledWith('/tasks/1/setParent', expectedData));
     });
 
@@ -765,13 +771,13 @@ describe('Tasks', function() {
       var data = {
         parent: parentId
       };
-      tasks.setParent(id, parentId);
+      tasks.setParentForTask(id, data);
       assert(
         tasks.dispatchPost.calledWith('/tasks/foobar/setParent', data));
     });
   });
 
-  describe('#search', function() {
+  describe('#searchTasksForWorkspace', function() {
     it('should call searchInWorkspace for backwards compatability',
         function() {
           var dispatcher = {};
@@ -779,7 +785,7 @@ describe('Tasks', function() {
           tasks.dispatchGetCollection = sinon.stub();
 
           var id = 134679;
-          tasks.search(id);
+          tasks.searchTasksForWorkspace(id);
 
           assert(tasks.dispatchGetCollection.calledWith(
               '/workspaces/134679/tasks/search'));

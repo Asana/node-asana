@@ -12,12 +12,12 @@ describe('Users', function() {
     });
   });
 
-  describe('#findAll', function() {
+  describe('#getUsers', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var users = new Users(dispatcher);
       users.dispatchGetCollection = sinon.stub();
-      users.findAll();
+      users.getUsers();
       assert(
           users.dispatchGetCollection.calledWith('/users', undefined));
     });
@@ -29,7 +29,7 @@ describe('Users', function() {
         'opt_fields': 'id,name'
       };
       users.dispatchGetCollection = sinon.stub();
-      users.findAll(params);
+      users.getUsers(params);
       assert(users.dispatchGetCollection.calledWith('/users', params));
     });
   });
@@ -50,18 +50,18 @@ describe('Users', function() {
       var params = {
         'opt_fields': 'id,name'
       };
-      users.me(params);
+      users.getUser('me', params);
       assert(users.dispatchGet.calledWith('/users/me', params));
     });
   });
 
-  describe('#findById', function() {
+  describe('#getUser', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var users = new Users(dispatcher);
       users.dispatchGet = sinon.stub();
       var id = 1;
-      users.findById(id);
+      users.getUser(id);
       assert(users.dispatchGet.calledWith('/users/1', undefined));
     });
 
@@ -73,7 +73,7 @@ describe('Users', function() {
         'opt_fields': 'id,name'
       };
       var id = 1;
-      users.findById(id, params);
+      users.getUser(id, params);
       assert(users.dispatchGet.calledWith('/users/1', params));
     });
 
@@ -85,7 +85,7 @@ describe('Users', function() {
         'opt_fields': 'id,name'
       };
       var id = '1';
-      users.findById(id, params);
+      users.getUser(id, params);
       assert(users.dispatchGet.calledWith('/users/1', params));
     });
 
@@ -97,18 +97,18 @@ describe('Users', function() {
         'opt_fields': 'id,name'
       };
       var id = 'foobar';
-      users.findById(id, params);
+      users.getUser(id, params);
       assert(users.dispatchGet.calledWith('/users/foobar', params));
     });
   });
 
-  describe('#findByWorkspace', function() {
+  describe('#getUsersForWorkspace', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var users = new Users(dispatcher);
       users.dispatchGetCollection = sinon.stub();
       var id = 1;
-      users.findByWorkspace(id);
+      users.getUsersForWorkspace(id);
       assert(
         users.dispatchGetCollection.calledWith(
             '/workspaces/1/users', undefined));
@@ -122,7 +122,7 @@ describe('Users', function() {
         'opt_fields': 'id,name'
       };
       var id = 1;
-      users.findByWorkspace(id, params);
+      users.getUsersForWorkspace(id, params);
       assert(users.dispatchGetCollection.calledWith(
           '/workspaces/1/users', params));
     });
@@ -135,7 +135,7 @@ describe('Users', function() {
         'opt_fields': 'id,name'
       };
       var id = '1';
-      users.findByWorkspace(id, params);
+      users.getUsersForWorkspace(id, params);
       assert(users.dispatchGetCollection.calledWith(
           '/workspaces/1/users', params));
     });
@@ -148,21 +148,21 @@ describe('Users', function() {
         'opt_fields': 'id,name'
       };
       var id = 'foobar';
-      users.findByWorkspace(id, params);
+      users.getUsersForWorkspace(id, params);
       assert(users.dispatchGetCollection.calledWith(
           '/workspaces/foobar/users', params));
     });
   });
 
 
-  describe('#getUserFavorites', function() {
+  describe('#getFavoritesForUser', function() {
     it('should hit the right endpoint', function() {
       var dispatcher = {};
       var users = new Users(dispatcher);
       users.dispatchGetCollection = sinon.stub();
 
       var id = 134679;
-      users.getUserFavorites(id, {'workspace': '123456',
+      users.getFavoritesForUser(id, {'workspace': '123456',
         'resource_type': 'project'});
 
       assert(users.dispatchGetCollection.calledWith(

@@ -18,7 +18,7 @@ describe('Project Memberships', function() {
     });
   });
 
-  describe('#findByProject', function() {
+  describe('#getProjectMembershipsForProject', function() {
     it('should hit the projects/{project-gid}/project_memberships endpoint',
         function() {
       var dispatcher = {};
@@ -26,7 +26,7 @@ describe('Project Memberships', function() {
       projects.dispatchGetCollection = sinon.stub();
 
       var id = 134679;
-      projects.findByProject(id);
+      projects.getProjectMembershipsForProject(id);
 
       assert(projects.dispatchGetCollection.calledWith(
           '/projects/134679/project_memberships'));

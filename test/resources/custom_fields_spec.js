@@ -13,14 +13,14 @@ describe('CustomFields', function() {
     });
   });
 
-  describe('#findById', function() {
+  describe('#getCustomField', function() {
     it('should handle text-type custom fields', function() {
       // TODO: this doesn't really check the return value for correct type.
       var dispatcher = {};
       var customFields = new CustomFields(dispatcher);
       customFields.dispatchGet = sinon.stub();
       var id = 134679;
-      customFields.findById(id);
+      customFields.getCustomField(id);
       assert(customFields.dispatchGet.calledWith(
         '/custom_fields/134679', undefined));
     });
