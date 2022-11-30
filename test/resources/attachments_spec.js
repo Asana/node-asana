@@ -12,13 +12,13 @@ describe('Attachments', function() {
     });
   });
 
-  describe('#findById', function() {
+  describe('#getAttachment', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var attachments = new Attachments(dispatcher);
       attachments.dispatchGet = sinon.stub();
       var id = 1;
-      attachments.findById(id);
+      attachments.getAttachment(id);
       assert(
           attachments.dispatchGet.calledWith(
               '/attachments/1', undefined));
@@ -32,7 +32,7 @@ describe('Attachments', function() {
         'opt_fields': 'id,name'
       };
       var id = 1;
-      attachments.findById(id, params);
+      attachments.getAttachment(id, params);
       assert(
           attachments.dispatchGet.calledWith('/attachments/1', params));
     });
@@ -45,7 +45,7 @@ describe('Attachments', function() {
         'opt_fields': 'id,name'
       };
       var id = '1';
-      attachments.findById(id, params);
+      attachments.getAttachment(id, params);
       assert(
           attachments.dispatchGet.calledWith('/attachments/1', params));
     });
@@ -58,7 +58,7 @@ describe('Attachments', function() {
         'opt_fields': 'id,name'
       };
       var id = 'foobar';
-      attachments.findById(id, params);
+      attachments.getAttachment(id, params);
       assert(
           attachments.dispatchGet.calledWith(
               '/attachments/foobar', params));

@@ -23,7 +23,7 @@ client.events.stream(projectId, {
         if (event.type === 'story' && event.action === 'added') {
             // Fetch the story and then process it.
             var storyId = event.resource.id;
-            return client.stories.findById(storyId)
+            return client.stories.getStory(storyId)
                 .then(function (story) {
                     console.log(
                         'New story on task',

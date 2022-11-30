@@ -12,16 +12,16 @@ describe('Teams', function() {
     });
   });
 
-  describe('#findByOrganization', function() {
+  describe('#getTeamsForWorkspace', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var teams = new Teams(dispatcher);
       teams.dispatchGetCollection = sinon.stub();
       var id = 1;
-      teams.findByOrganization(id);
+      teams.getTeamsForWorkspace(id);
       assert(
         teams.dispatchGetCollection.calledWith(
-            '/organizations/1/teams', undefined));
+            '/workspaces/1/teams', undefined));
     });
 
     it('should handle with params', function() {
@@ -32,10 +32,10 @@ describe('Teams', function() {
         'opt_fields': 'id,name'
       };
       var id = 1;
-      teams.findByOrganization(id, params);
+      teams.getTeamsForWorkspace(id, params);
       assert(
         teams.dispatchGetCollection.calledWith(
-            '/organizations/1/teams', params));
+            '/workspaces/1/teams', params));
     });
 
     it('should handle string numbers', function() {
@@ -46,10 +46,10 @@ describe('Teams', function() {
         'opt_fields': 'id,name'
       };
       var id = '1';
-      teams.findByOrganization(id, params);
+      teams.getTeamsForWorkspace(id, params);
       assert(
         teams.dispatchGetCollection.calledWith(
-            '/organizations/1/teams', params));
+            '/workspaces/1/teams', params));
     });
 
     it('should handle real strings', function() {
@@ -60,10 +60,10 @@ describe('Teams', function() {
         'opt_fields': 'id,name'
       };
       var id = 'foobar';
-      teams.findByOrganization(id, params);
+      teams.getTeamsForWorkspace(id, params);
       assert(
         teams.dispatchGetCollection.calledWith(
-            '/organizations/foobar/teams', params));
+            '/workspaces/foobar/teams', params));
     });
   });
 });

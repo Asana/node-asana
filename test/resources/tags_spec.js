@@ -12,7 +12,7 @@ describe('Tags', function() {
     });
   });
 
-  describe('#create', function() {
+  describe('#createTag', function() {
     it('should handle the creation', function() {
       var dispatcher = {};
       var tags = new Tags(dispatcher);
@@ -20,12 +20,12 @@ describe('Tags', function() {
       var data = {
         name: 'Test'
       };
-      tags.create(data);
+      tags.createTag(data);
       assert(tags.dispatchPost.calledWith('/tags', data));
     });
   });
 
-  describe('#createInWorkspace', function() {
+  describe('#createTagForWorkspace', function() {
     it('should handle the creation', function() {
       var dispatcher = {};
       var tags = new Tags(dispatcher);
@@ -34,7 +34,7 @@ describe('Tags', function() {
       var data = {
         name: 'Test'
       };
-      tags.createInWorkspace(id, data);
+      tags.createTagForWorkspace(id, data);
       assert(tags.dispatchPost.calledWith('/workspaces/1/tags', data));
     });
 
@@ -46,7 +46,7 @@ describe('Tags', function() {
       var data = {
         name: 'Test'
       };
-      tags.createInWorkspace(id, data);
+      tags.createTagForWorkspace(id, data);
       assert(tags.dispatchPost.calledWith('/workspaces/1/tags', data));
     });
 
@@ -58,17 +58,17 @@ describe('Tags', function() {
       var data = {
         name: 'Test'
       };
-      tags.createInWorkspace(id, data);
+      tags.createTagForWorkspace(id, data);
       assert(tags.dispatchPost.calledWith('/workspaces/foobar/tags', data));
     });
   });
 
-  describe('#findAll', function() {
+  describe('#getTags', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var tags = new Tags(dispatcher);
       tags.dispatchGetCollection = sinon.stub();
-      tags.findAll();
+      tags.getTags();
       assert(tags.dispatchGetCollection.calledWith('/tags', undefined));
     });
 
@@ -79,18 +79,18 @@ describe('Tags', function() {
       var params = {
         'opt_fields': 'id,name'
       };
-      tags.findAll(params);
+      tags.getTags(params);
       assert(tags.dispatchGetCollection.calledWith('/tags', params));
     });
   });
 
-  describe('#findById', function() {
+  describe('#getTag', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var tags = new Tags(dispatcher);
       tags.dispatchGet = sinon.stub();
       var id = 1;
-      tags.findById(id);
+      tags.getTag(id);
       assert(tags.dispatchGet.calledWith('/tags/1', undefined));
     });
 
@@ -102,7 +102,7 @@ describe('Tags', function() {
         'opt_fields': 'id,name'
       };
       var id = 1;
-      tags.findById(id, params);
+      tags.getTag(id, params);
       assert(tags.dispatchGet.calledWith('/tags/1', params));
     });
 
@@ -114,7 +114,7 @@ describe('Tags', function() {
         'opt_fields': 'id,name'
       };
       var id = '1';
-      tags.findById(id, params);
+      tags.getTag(id, params);
       assert(tags.dispatchGet.calledWith('/tags/1', params));
     });
 
@@ -126,18 +126,18 @@ describe('Tags', function() {
         'opt_fields': 'id,name'
       };
       var id = 'foobar';
-      tags.findById(id, params);
+      tags.getTag(id, params);
       assert(tags.dispatchGet.calledWith('/tags/foobar', params));
     });
   });
 
-  describe('#findByWorkspace', function() {
+  describe('#getTagsForWorkspace', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var tags = new Tags(dispatcher);
       tags.dispatchGetCollection = sinon.stub();
       var id = 1;
-      tags.findByWorkspace(id);
+      tags.getTagsForWorkspace(id);
       assert(
           tags.dispatchGetCollection.calledWith(
               '/workspaces/1/tags', undefined));
@@ -151,7 +151,7 @@ describe('Tags', function() {
         'opt_fields': 'id,name'
       };
       var id = 1;
-      tags.findByWorkspace(id, params);
+      tags.getTagsForWorkspace(id, params);
       assert(
           tags.dispatchGetCollection.calledWith(
               '/workspaces/1/tags', params));
@@ -165,7 +165,7 @@ describe('Tags', function() {
         'opt_fields': 'id,name'
       };
       var id = '1';
-      tags.findByWorkspace(id, params);
+      tags.getTagsForWorkspace(id, params);
       assert(
           tags.dispatchGetCollection.calledWith(
               '/workspaces/1/tags', params));
@@ -179,14 +179,14 @@ describe('Tags', function() {
         'opt_fields': 'id,name'
       };
       var id = 'foobar';
-      tags.findByWorkspace(id, params);
+      tags.getTagsForWorkspace(id, params);
       assert(
           tags.dispatchGetCollection.calledWith(
               '/workspaces/foobar/tags', params));
     });
   });
 
-  describe('#update', function() {
+  describe('#updateTag', function() {
     it('should handle the update', function() {
       var dispatcher = {};
       var tags = new Tags(dispatcher);
@@ -195,7 +195,7 @@ describe('Tags', function() {
       var data = {
         name: 'Test'
       };
-      tags.update(id, data);
+      tags.updateTag(id, data);
       assert(tags.dispatchPut.calledWith('/tags/1', data));
     });
 
@@ -207,7 +207,7 @@ describe('Tags', function() {
       var data = {
         name: 'Test'
       };
-      tags.update(id, data);
+      tags.updateTag(id, data);
       assert(tags.dispatchPut.calledWith('/tags/1', data));
     });
 
@@ -219,7 +219,7 @@ describe('Tags', function() {
       var data = {
         name: 'Test'
       };
-      tags.update(id, data);
+      tags.updateTag(id, data);
       assert(tags.dispatchPut.calledWith('/tags/foobar', data));
     });
   });

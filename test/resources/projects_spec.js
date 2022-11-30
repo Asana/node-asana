@@ -12,7 +12,7 @@ describe('Projects', function() {
     });
   });
 
-  describe('#create', function() {
+  describe('#createProject', function() {
     it('should handle the creation', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
@@ -20,7 +20,7 @@ describe('Projects', function() {
       var data = {
         name: 'Test'
       };
-      projects.create(data);
+      projects.createProject(data);
       assert(projects.dispatchPost.calledWith('/projects', data));
     });
   });
@@ -69,12 +69,12 @@ describe('Projects', function() {
     });
   });
 
-  describe('#findAll', function() {
+  describe('#getProjects', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
       projects.dispatchGetCollection = sinon.stub();
-      projects.findAll();
+      projects.getProjects();
       assert(
           projects.dispatchGetCollection.calledWith(
               '/projects', undefined));
@@ -87,20 +87,20 @@ describe('Projects', function() {
       var params = {
         'opt_fields': 'id,name'
       };
-      projects.findAll(params);
+      projects.getProjects(params);
       assert(
           projects.dispatchGetCollection.calledWith(
               '/projects', params));
     });
   });
 
-  describe('#findById', function() {
+  describe('#getProject', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
       projects.dispatchGet = sinon.stub();
       var id = 1;
-      projects.findById(id);
+      projects.getProject(id);
       assert(projects.dispatchGet.calledWith('/projects/1', undefined));
     });
 
@@ -112,7 +112,7 @@ describe('Projects', function() {
         'opt_fields': 'id,name'
       };
       var id = 1;
-      projects.findById(id, params);
+      projects.getProject(id, params);
       assert(projects.dispatchGet.calledWith('/projects/1', params));
     });
 
@@ -124,7 +124,7 @@ describe('Projects', function() {
         'opt_fields': 'id,name'
       };
       var id = '1';
-      projects.findById(id, params);
+      projects.getProject(id, params);
       assert(projects.dispatchGet.calledWith('/projects/1', params));
     });
 
@@ -136,18 +136,18 @@ describe('Projects', function() {
         'opt_fields': 'id,name'
       };
       var id = 'foobar';
-      projects.findById(id, params);
+      projects.getProject(id, params);
       assert(projects.dispatchGet.calledWith('/projects/foobar', params));
     });
   });
 
-  describe('#findByWorkspace', function() {
+  describe('#getProjectsForWorkspace', function() {
     it('should handle without params', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
       projects.dispatchGetCollection = sinon.stub();
       var id = 1;
-      projects.findByWorkspace(id);
+      projects.getProjectsForWorkspace(id);
       assert(
           projects.dispatchGetCollection.calledWith(
               '/workspaces/1/projects', undefined));
@@ -161,7 +161,7 @@ describe('Projects', function() {
         'opt_fields': 'id,name'
       };
       var id = 1;
-      projects.findByWorkspace(id, params);
+      projects.getProjectsForWorkspace(id, params);
       assert(
           projects.dispatchGetCollection.calledWith(
               '/workspaces/1/projects', params));
@@ -175,7 +175,7 @@ describe('Projects', function() {
         'opt_fields': 'id,name'
       };
       var id = '1';
-      projects.findByWorkspace(id, params);
+      projects.getProjectsForWorkspace(id, params);
       assert(
           projects.dispatchGetCollection.calledWith(
               '/workspaces/1/projects', params));
@@ -189,14 +189,14 @@ describe('Projects', function() {
         'opt_fields': 'id,name'
       };
       var id = 'foobar';
-      projects.findByWorkspace(id, params);
+      projects.getProjectsForWorkspace(id, params);
       assert(
           projects.dispatchGetCollection.calledWith(
               '/workspaces/foobar/projects', params));
     });
   });
 
-  describe('#update', function() {
+  describe('#updateProject', function() {
     it('should handle the update', function() {
       var dispatcher = {};
       var projects = new Projects(dispatcher);
@@ -205,7 +205,7 @@ describe('Projects', function() {
       var data = {
         name: 'Test'
       };
-      projects.update(id, data);
+      projects.updateProject(id, data);
       assert(projects.dispatchPut.calledWith('/projects/1', data));
     });
 
@@ -217,7 +217,7 @@ describe('Projects', function() {
       var data = {
         name: 'Test'
       };
-      projects.update(id, data);
+      projects.updateProject(id, data);
       assert(projects.dispatchPut.calledWith('/projects/1', data));
     });
 
@@ -229,7 +229,7 @@ describe('Projects', function() {
       var data = {
         name: 'Test'
       };
-      projects.update(id, data);
+      projects.updateProject(id, data);
       assert(projects.dispatchPut.calledWith('/projects/foobar', data));
     });
   });
@@ -240,7 +240,7 @@ describe('Projects', function() {
       var projects = new Projects(dispatcher);
       projects.dispatchDelete = sinon.stub();
       var id = 1;
-      projects.delete(id);
+      projects.deleteProject(id);
       assert(projects.dispatchDelete.calledWith('/projects/1'));
     });
 
@@ -249,7 +249,7 @@ describe('Projects', function() {
       var projects = new Projects(dispatcher);
       projects.dispatchDelete = sinon.stub();
       var id = '1';
-      projects.delete(id);
+      projects.deleteProject(id);
       assert(projects.dispatchDelete.calledWith('/projects/1'));
     });
 
@@ -258,7 +258,7 @@ describe('Projects', function() {
       var projects = new Projects(dispatcher);
       projects.dispatchDelete = sinon.stub();
       var id = 'foobar';
-      projects.delete(id);
+      projects.deleteProject(id);
       assert(projects.dispatchDelete.calledWith('/projects/foobar'));
     });
   });
