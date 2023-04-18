@@ -2,6 +2,12 @@
 
 A JavaScript client (for both Node and browser) for the Asana API v1.0.
 
+<hr>
+
+### ✨ Try a preview of our new node client library: [node-asana-preview](https://github.com/Asana/node-asana-preview)
+
+<hr>
+
 ## Installation
 
 ### Node
