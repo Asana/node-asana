@@ -1,0 +1,72 @@
+name: Generate Client Library + Publish 📦 to npmjs
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        required: true
+
+jobs:
+  generate-javascript-library:
+    name: Generate updated JavaScript client library
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: "17"
+      - name: Setup environment variables
+        run: |
+          echo "generator_version=3.0.46" >> "$GITHUB_ENV"
+          echo "generator_name=swagger-codegen-cli.jar" >> "$GITHUB_ENV"
+          echo "jar_asana=codegen/swagger/target/AsanaClientCodegen-swagger-codegen-1.0.0.jar" >> "$GITHUB_ENV"
+          echo "actual_lang=com.asana.codegen.JavascriptClientCodegenGenerator" >> "$GITHUB_ENV"
+          echo "name=asana" >> "$GITHUB_ENV"
+      - name: Download generator
+        run: |
+          wget -q -O $generator_name https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/${{ env.generator_version }}/swagger-codegen-cli-${{ env.generator_version }}.jar
+      - name: Build custom code
+        run: |
+          pushd codegen/swagger >/dev/null
+          mvn package
+          popd >/dev/null
+      - name: Generate library
+        run: >-
+          java -cp "${{ env.jar_asana }}:${{ env.generator_name }}"
+          io.swagger.codegen.v3.cli.SwaggerCodegen
+          generate
+          --input-spec https://raw.githubusercontent.com/Asana/openapi/master/defs/asana_sdk_oas.yaml
+          --template-dir "codegen/templates"
+          --lang "${{ env.actual_lang }}"
+          -DpackageName=${{ env.name }}
+          --additional-properties "projectVersion=${{ inputs.version }},projectName=${{ env.name }},packageName=${{ env.name }}"
+      - name: Clean up generator
+        run: rm -rf codegen/swagger/target ${{ env.generator_name }} 
+      - name: Push changes to master branch
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: Updated JavaScript SDK
+          committer_name: GitHub Actions
+          committer_email: actions@github.com
+  build-n-publish-to-npmjs:
+    needs: [generate-javascript-library]
+    name: Build and publish 📦 to npmjs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: master
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+          registry-url: "https://registry.npmjs.com"
+      - run: |
+          npm pkg set 'main'='dist/index.js'
+          npm pkg set 'scripts.build'='babel src -d dist'
+          npm pkg set 'scripts.prepare'='npm run build'
+          npm install
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
