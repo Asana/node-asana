@@ -1,0 +1,47 @@
+const {{{moduleName}}} = require('{{{projectName}}}');
+{{#hasAuthMethods}}
+let defaultClient = {{{moduleName}}}.ApiClient.instance;
+{{#hasParams}}
+{{#vendorExtensions.x-codegen-isCreateAttachmentForObject}}
+const fs = require("fs");
+{{/vendorExtensions.x-codegen-isCreateAttachmentForObject}}
+{{/hasParams}}
+{{#authMethods}}{{#isBasic}}
+// Configure HTTP basic authorization: {{{name}}}
+let {{{name}}} = defaultClient.authentications['{{{name}}}'];
+{{{name}}}.username = 'YOUR USERNAME';
+{{{name}}}.password = 'YOUR PASSWORD';{{/isBasic}}{{#isApiKey}}
+// Configure API key authorization: {{{name}}}
+let {{{name}}} = defaultClient.authentications['{{{name}}}'];
+{{{name}}}.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//{{{name}}}.apiKeyPrefix = 'Token';{{/isApiKey}}{{#isOAuth}}
+// Configure OAuth2 access token for authorization: {{{name}}}
+let {{{name}}} = defaultClient.authentications['{{{name}}}'];
+{{{name}}}.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';{{/isOAuth}}
+{{/authMethods}}
+{{/hasAuthMethods}}
+
+let apiInstance = new {{{moduleName}}}.{{{classname}}}();{{#hasParams}}
+{{#vendorExtensions.x-codegen-hasRequiredParams}}{{#parameters}}{{#required}}
+let {{{paramName}}} = {{{example}}}; // {{{dataType}}} | {{{description}}}
+{{/required}}{{/parameters}}{{/vendorExtensions.x-codegen-hasRequiredParams}}{{#hasOptionalParams}}
+let opts = { {{#parameters}}{{^required}}
+  '{{{paramName}}}': {{{example}}}{{#vendorExtensions.x-codegen-hasMoreOptional}},{{/vendorExtensions.x-codegen-hasMoreOptional}} // {{{dataType}}} | {{{description}}}{{/required}}{{/parameters}}
+};{{/hasOptionalParams}}{{/hasParams}}
+{{#usePromises}}
+apiInstance.{{{operationId}}}({{#parameters}}{{#required}}{{{paramName}}}{{#vendorExtensions.x-codegen-hasMoreRequired}}, {{/vendorExtensions.x-codegen-hasMoreRequired}}{{/required}}{{/parameters}}{{#hasOptionalParams}}{{#vendorExtensions.x-codegen-hasRequiredParams}}, {{/vendorExtensions.x-codegen-hasRequiredParams}}opts{{/hasOptionalParams}}).then(({{#returnType}}data{{/returnType}}) => {
+  {{#returnType}}console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));{{/returnType}}{{^returnType}}console.log('API called successfully.');{{/returnType}}
+}, (error) => {
+  console.error(error);
+});
+
+{{/usePromises}}{{^usePromises}}
+apiInstance.{{{operationId}}}({{#parameters}}{{#required}}{{{paramName}}}{{#vendorExtensions.x-codegen-hasMoreRequired}}, {{/vendorExtensions.x-codegen-hasMoreRequired}}{{/required}}{{/parameters}}{{#hasOptionalParams}}{{#vendorExtensions.x-codegen-hasRequiredParams}}, {{/vendorExtensions.x-codegen-hasRequiredParams}}opts{{/hasOptionalParams}}{{#hasParams}}, {{/hasParams}}(error, data, response) => {
+  if (error) {
+  console.error(error);
+  } else {
+  {{#returnType}}console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));{{/returnType}}{{^returnType}}console.log('API called successfully.');{{/returnType}}
+  }
+});
+{{/usePromises}}

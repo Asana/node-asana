@@ -1,6 +1,5 @@
 docs
-examples
-coverage
 test
 .gitignore
-.jshintrc
+.travis.yml
+git_push.sh
