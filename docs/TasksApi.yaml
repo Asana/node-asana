@@ -1,0 +1,592 @@
+TasksApi:
+  addDependenciesForTask: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let body = new Asana.TaskGidAddDependenciesBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // TaskGidAddDependenciesBody | The list of tasks to set as dependencies.
+    let task_gid = "321654"; // String | The task to operate on.
+
+    apiInstance.addDependenciesForTask(bodytask_gid, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  addDependentsForTask: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let body = new Asana.TaskGidAddDependentsBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // TaskGidAddDependentsBody | The list of tasks to add as dependents.
+    let task_gid = "321654"; // String | The task to operate on.
+
+    apiInstance.addDependentsForTask(bodytask_gid, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  addFollowersForTask: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let body = new Asana.TaskGidAddFollowersBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // TaskGidAddFollowersBody | The followers to add to the task.
+    let task_gid = "321654"; // String | The task to operate on.
+    let opts = { 
+      'opt_fields': ["actual_time_minutes","approval_status","assignee","assignee.name","assignee_section","assignee_section.name","assignee_status","completed","completed_at","completed_by","completed_by.name","created_at","custom_fields","custom_fields.asana_created_field","custom_fields.created_by","custom_fields.created_by.name","custom_fields.currency_code","custom_fields.custom_label","custom_fields.custom_label_position","custom_fields.date_value","custom_fields.date_value.date","custom_fields.date_value.date_time","custom_fields.description","custom_fields.display_value","custom_fields.enabled","custom_fields.enum_options","custom_fields.enum_options.color","custom_fields.enum_options.enabled","custom_fields.enum_options.name","custom_fields.enum_value","custom_fields.enum_value.color","custom_fields.enum_value.enabled","custom_fields.enum_value.name","custom_fields.format","custom_fields.has_notifications_enabled","custom_fields.is_formula_field","custom_fields.is_global_to_workspace","custom_fields.is_value_read_only","custom_fields.multi_enum_values","custom_fields.multi_enum_values.color","custom_fields.multi_enum_values.enabled","custom_fields.multi_enum_values.name","custom_fields.name","custom_fields.number_value","custom_fields.people_value","custom_fields.people_value.name","custom_fields.precision","custom_fields.resource_subtype","custom_fields.text_value","custom_fields.type","dependencies","dependents","due_at","due_on","external","external.data","followers","followers.name","hearted","hearts","hearts.user","hearts.user.name","html_notes","is_rendered_as_separator","liked","likes","likes.user","likes.user.name","memberships","memberships.project","memberships.project.name","memberships.section","memberships.section.name","modified_at","name","notes","num_hearts","num_likes","num_subtasks","parent","parent.name","parent.resource_subtype","permalink_url","projects","projects.name","resource_subtype","start_at","start_on","tags","tags.name","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    };
+    apiInstance.addFollowersForTask(bodytask_gid, opts, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  addProjectForTask: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let body = new Asana.TaskGidAddProjectBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // TaskGidAddProjectBody | The project to add the task to.
+    let task_gid = "321654"; // String | The task to operate on.
+
+    apiInstance.addProjectForTask(bodytask_gid, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  addTagForTask: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let body = new Asana.TaskGidAddTagBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // TaskGidAddTagBody | The tag to add to the task.
+    let task_gid = "321654"; // String | The task to operate on.
+
+    apiInstance.addTagForTask(bodytask_gid, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  createSubtaskForTask: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let body = new Asana.TaskGidSubtasksBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // TaskGidSubtasksBody | The new subtask to create.
+    let task_gid = "321654"; // String | The task to operate on.
+    let opts = { 
+      'opt_fields': ["actual_time_minutes","approval_status","assignee","assignee.name","assignee_section","assignee_section.name","assignee_status","completed","completed_at","completed_by","completed_by.name","created_at","custom_fields","custom_fields.asana_created_field","custom_fields.created_by","custom_fields.created_by.name","custom_fields.currency_code","custom_fields.custom_label","custom_fields.custom_label_position","custom_fields.date_value","custom_fields.date_value.date","custom_fields.date_value.date_time","custom_fields.description","custom_fields.display_value","custom_fields.enabled","custom_fields.enum_options","custom_fields.enum_options.color","custom_fields.enum_options.enabled","custom_fields.enum_options.name","custom_fields.enum_value","custom_fields.enum_value.color","custom_fields.enum_value.enabled","custom_fields.enum_value.name","custom_fields.format","custom_fields.has_notifications_enabled","custom_fields.is_formula_field","custom_fields.is_global_to_workspace","custom_fields.is_value_read_only","custom_fields.multi_enum_values","custom_fields.multi_enum_values.color","custom_fields.multi_enum_values.enabled","custom_fields.multi_enum_values.name","custom_fields.name","custom_fields.number_value","custom_fields.people_value","custom_fields.people_value.name","custom_fields.precision","custom_fields.resource_subtype","custom_fields.text_value","custom_fields.type","dependencies","dependents","due_at","due_on","external","external.data","followers","followers.name","hearted","hearts","hearts.user","hearts.user.name","html_notes","is_rendered_as_separator","liked","likes","likes.user","likes.user.name","memberships","memberships.project","memberships.project.name","memberships.section","memberships.section.name","modified_at","name","notes","num_hearts","num_likes","num_subtasks","parent","parent.name","parent.resource_subtype","permalink_url","projects","projects.name","resource_subtype","start_at","start_on","tags","tags.name","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    };
+    apiInstance.createSubtaskForTask(bodytask_gid, opts, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  createTask: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let body = new Asana.TasksBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // TasksBody | The task to create.
+    let opts = { 
+      'opt_fields': ["actual_time_minutes","approval_status","assignee","assignee.name","assignee_section","assignee_section.name","assignee_status","completed","completed_at","completed_by","completed_by.name","created_at","custom_fields","custom_fields.asana_created_field","custom_fields.created_by","custom_fields.created_by.name","custom_fields.currency_code","custom_fields.custom_label","custom_fields.custom_label_position","custom_fields.date_value","custom_fields.date_value.date","custom_fields.date_value.date_time","custom_fields.description","custom_fields.display_value","custom_fields.enabled","custom_fields.enum_options","custom_fields.enum_options.color","custom_fields.enum_options.enabled","custom_fields.enum_options.name","custom_fields.enum_value","custom_fields.enum_value.color","custom_fields.enum_value.enabled","custom_fields.enum_value.name","custom_fields.format","custom_fields.has_notifications_enabled","custom_fields.is_formula_field","custom_fields.is_global_to_workspace","custom_fields.is_value_read_only","custom_fields.multi_enum_values","custom_fields.multi_enum_values.color","custom_fields.multi_enum_values.enabled","custom_fields.multi_enum_values.name","custom_fields.name","custom_fields.number_value","custom_fields.people_value","custom_fields.people_value.name","custom_fields.precision","custom_fields.resource_subtype","custom_fields.text_value","custom_fields.type","dependencies","dependents","due_at","due_on","external","external.data","followers","followers.name","hearted","hearts","hearts.user","hearts.user.name","html_notes","is_rendered_as_separator","liked","likes","likes.user","likes.user.name","memberships","memberships.project","memberships.project.name","memberships.section","memberships.section.name","modified_at","name","notes","num_hearts","num_likes","num_subtasks","parent","parent.name","parent.resource_subtype","permalink_url","projects","projects.name","resource_subtype","start_at","start_on","tags","tags.name","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    };
+    apiInstance.createTask(body, opts, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  deleteTask: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let task_gid = "321654"; // String | The task to operate on.
+
+    apiInstance.deleteTask(task_gid, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  duplicateTask: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let body = new Asana.TaskGidDuplicateBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // TaskGidDuplicateBody | Describes the duplicate's name and the fields that will be duplicated.
+    let task_gid = "321654"; // String | The task to operate on.
+    let opts = { 
+      'opt_fields': ["new_project","new_project.name","new_project_template","new_project_template.name","new_task","new_task.name","new_task.resource_subtype","resource_subtype","status"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    };
+    apiInstance.duplicateTask(bodytask_gid, opts, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  getDependenciesForTask: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let task_gid = "321654"; // String | The task to operate on.
+    let opts = { 
+      'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
+      'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
+      'opt_fields': ["actual_time_minutes","approval_status","assignee","assignee.name","assignee_section","assignee_section.name","assignee_status","completed","completed_at","completed_by","completed_by.name","created_at","custom_fields","custom_fields.asana_created_field","custom_fields.created_by","custom_fields.created_by.name","custom_fields.currency_code","custom_fields.custom_label","custom_fields.custom_label_position","custom_fields.date_value","custom_fields.date_value.date","custom_fields.date_value.date_time","custom_fields.description","custom_fields.display_value","custom_fields.enabled","custom_fields.enum_options","custom_fields.enum_options.color","custom_fields.enum_options.enabled","custom_fields.enum_options.name","custom_fields.enum_value","custom_fields.enum_value.color","custom_fields.enum_value.enabled","custom_fields.enum_value.name","custom_fields.format","custom_fields.has_notifications_enabled","custom_fields.is_formula_field","custom_fields.is_global_to_workspace","custom_fields.is_value_read_only","custom_fields.multi_enum_values","custom_fields.multi_enum_values.color","custom_fields.multi_enum_values.enabled","custom_fields.multi_enum_values.name","custom_fields.name","custom_fields.number_value","custom_fields.people_value","custom_fields.people_value.name","custom_fields.precision","custom_fields.resource_subtype","custom_fields.text_value","custom_fields.type","dependencies","dependents","due_at","due_on","external","external.data","followers","followers.name","hearted","hearts","hearts.user","hearts.user.name","html_notes","is_rendered_as_separator","liked","likes","likes.user","likes.user.name","memberships","memberships.project","memberships.project.name","memberships.section","memberships.section.name","modified_at","name","notes","num_hearts","num_likes","num_subtasks","offset","parent","parent.name","parent.resource_subtype","path","permalink_url","projects","projects.name","resource_subtype","start_at","start_on","tags","tags.name","uri","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    };
+    apiInstance.getDependenciesForTask(task_gid, opts, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  getDependentsForTask: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let task_gid = "321654"; // String | The task to operate on.
+    let opts = { 
+      'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
+      'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
+      'opt_fields': ["actual_time_minutes","approval_status","assignee","assignee.name","assignee_section","assignee_section.name","assignee_status","completed","completed_at","completed_by","completed_by.name","created_at","custom_fields","custom_fields.asana_created_field","custom_fields.created_by","custom_fields.created_by.name","custom_fields.currency_code","custom_fields.custom_label","custom_fields.custom_label_position","custom_fields.date_value","custom_fields.date_value.date","custom_fields.date_value.date_time","custom_fields.description","custom_fields.display_value","custom_fields.enabled","custom_fields.enum_options","custom_fields.enum_options.color","custom_fields.enum_options.enabled","custom_fields.enum_options.name","custom_fields.enum_value","custom_fields.enum_value.color","custom_fields.enum_value.enabled","custom_fields.enum_value.name","custom_fields.format","custom_fields.has_notifications_enabled","custom_fields.is_formula_field","custom_fields.is_global_to_workspace","custom_fields.is_value_read_only","custom_fields.multi_enum_values","custom_fields.multi_enum_values.color","custom_fields.multi_enum_values.enabled","custom_fields.multi_enum_values.name","custom_fields.name","custom_fields.number_value","custom_fields.people_value","custom_fields.people_value.name","custom_fields.precision","custom_fields.resource_subtype","custom_fields.text_value","custom_fields.type","dependencies","dependents","due_at","due_on","external","external.data","followers","followers.name","hearted","hearts","hearts.user","hearts.user.name","html_notes","is_rendered_as_separator","liked","likes","likes.user","likes.user.name","memberships","memberships.project","memberships.project.name","memberships.section","memberships.section.name","modified_at","name","notes","num_hearts","num_likes","num_subtasks","offset","parent","parent.name","parent.resource_subtype","path","permalink_url","projects","projects.name","resource_subtype","start_at","start_on","tags","tags.name","uri","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    };
+    apiInstance.getDependentsForTask(task_gid, opts, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  getSubtasksForTask: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let task_gid = "321654"; // String | The task to operate on.
+    let opts = { 
+      'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
+      'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
+      'opt_fields': ["actual_time_minutes","approval_status","assignee","assignee.name","assignee_section","assignee_section.name","assignee_status","completed","completed_at","completed_by","completed_by.name","created_at","custom_fields","custom_fields.asana_created_field","custom_fields.created_by","custom_fields.created_by.name","custom_fields.currency_code","custom_fields.custom_label","custom_fields.custom_label_position","custom_fields.date_value","custom_fields.date_value.date","custom_fields.date_value.date_time","custom_fields.description","custom_fields.display_value","custom_fields.enabled","custom_fields.enum_options","custom_fields.enum_options.color","custom_fields.enum_options.enabled","custom_fields.enum_options.name","custom_fields.enum_value","custom_fields.enum_value.color","custom_fields.enum_value.enabled","custom_fields.enum_value.name","custom_fields.format","custom_fields.has_notifications_enabled","custom_fields.is_formula_field","custom_fields.is_global_to_workspace","custom_fields.is_value_read_only","custom_fields.multi_enum_values","custom_fields.multi_enum_values.color","custom_fields.multi_enum_values.enabled","custom_fields.multi_enum_values.name","custom_fields.name","custom_fields.number_value","custom_fields.people_value","custom_fields.people_value.name","custom_fields.precision","custom_fields.resource_subtype","custom_fields.text_value","custom_fields.type","dependencies","dependents","due_at","due_on","external","external.data","followers","followers.name","hearted","hearts","hearts.user","hearts.user.name","html_notes","is_rendered_as_separator","liked","likes","likes.user","likes.user.name","memberships","memberships.project","memberships.project.name","memberships.section","memberships.section.name","modified_at","name","notes","num_hearts","num_likes","num_subtasks","offset","parent","parent.name","parent.resource_subtype","path","permalink_url","projects","projects.name","resource_subtype","start_at","start_on","tags","tags.name","uri","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    };
+    apiInstance.getSubtasksForTask(task_gid, opts, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  getTask: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let task_gid = "321654"; // String | The task to operate on.
+    let opts = { 
+      'opt_fields': ["actual_time_minutes","approval_status","assignee","assignee.name","assignee_section","assignee_section.name","assignee_status","completed","completed_at","completed_by","completed_by.name","created_at","custom_fields","custom_fields.asana_created_field","custom_fields.created_by","custom_fields.created_by.name","custom_fields.currency_code","custom_fields.custom_label","custom_fields.custom_label_position","custom_fields.date_value","custom_fields.date_value.date","custom_fields.date_value.date_time","custom_fields.description","custom_fields.display_value","custom_fields.enabled","custom_fields.enum_options","custom_fields.enum_options.color","custom_fields.enum_options.enabled","custom_fields.enum_options.name","custom_fields.enum_value","custom_fields.enum_value.color","custom_fields.enum_value.enabled","custom_fields.enum_value.name","custom_fields.format","custom_fields.has_notifications_enabled","custom_fields.is_formula_field","custom_fields.is_global_to_workspace","custom_fields.is_value_read_only","custom_fields.multi_enum_values","custom_fields.multi_enum_values.color","custom_fields.multi_enum_values.enabled","custom_fields.multi_enum_values.name","custom_fields.name","custom_fields.number_value","custom_fields.people_value","custom_fields.people_value.name","custom_fields.precision","custom_fields.resource_subtype","custom_fields.text_value","custom_fields.type","dependencies","dependents","due_at","due_on","external","external.data","followers","followers.name","hearted","hearts","hearts.user","hearts.user.name","html_notes","is_rendered_as_separator","liked","likes","likes.user","likes.user.name","memberships","memberships.project","memberships.project.name","memberships.section","memberships.section.name","modified_at","name","notes","num_hearts","num_likes","num_subtasks","parent","parent.name","parent.resource_subtype","permalink_url","projects","projects.name","resource_subtype","start_at","start_on","tags","tags.name","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    };
+    apiInstance.getTask(task_gid, opts, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  getTasks: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let opts = { 
+      'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
+      'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
+      'assignee': "14641", // String | The assignee to filter tasks on. If searching for unassigned tasks, assignee.any = null can be specified. *Note: If you specify `assignee`, you must also specify the `workspace` to filter on.*
+      'project': "321654", // String | The project to filter tasks on.
+      'section': "321654", // String | The section to filter tasks on.
+      'workspace': "321654", // String | The workspace to filter tasks on. *Note: If you specify `workspace`, you must also specify the `assignee` to filter on.*
+      'completed_since': new Date("2012-02-22T02:06:58.158Z"), // Date | Only return tasks that are either incomplete or that have been completed since this time.
+      'modified_since': new Date("2012-02-22T02:06:58.158Z"), // Date | Only return tasks that have been modified since the given time.  *Note: A task is considered “modified” if any of its properties change, or associations between it and other objects are modified (e.g.  a task being added to a project). A task is not considered modified just because another object it is associated with (e.g. a subtask) is modified. Actions that count as modifying the task include assigning, renaming, completing, and adding stories.*
+      'opt_fields': ["actual_time_minutes","approval_status","assignee","assignee.name","assignee_section","assignee_section.name","assignee_status","completed","completed_at","completed_by","completed_by.name","created_at","custom_fields","custom_fields.asana_created_field","custom_fields.created_by","custom_fields.created_by.name","custom_fields.currency_code","custom_fields.custom_label","custom_fields.custom_label_position","custom_fields.date_value","custom_fields.date_value.date","custom_fields.date_value.date_time","custom_fields.description","custom_fields.display_value","custom_fields.enabled","custom_fields.enum_options","custom_fields.enum_options.color","custom_fields.enum_options.enabled","custom_fields.enum_options.name","custom_fields.enum_value","custom_fields.enum_value.color","custom_fields.enum_value.enabled","custom_fields.enum_value.name","custom_fields.format","custom_fields.has_notifications_enabled","custom_fields.is_formula_field","custom_fields.is_global_to_workspace","custom_fields.is_value_read_only","custom_fields.multi_enum_values","custom_fields.multi_enum_values.color","custom_fields.multi_enum_values.enabled","custom_fields.multi_enum_values.name","custom_fields.name","custom_fields.number_value","custom_fields.people_value","custom_fields.people_value.name","custom_fields.precision","custom_fields.resource_subtype","custom_fields.text_value","custom_fields.type","dependencies","dependents","due_at","due_on","external","external.data","followers","followers.name","hearted","hearts","hearts.user","hearts.user.name","html_notes","is_rendered_as_separator","liked","likes","likes.user","likes.user.name","memberships","memberships.project","memberships.project.name","memberships.section","memberships.section.name","modified_at","name","notes","num_hearts","num_likes","num_subtasks","offset","parent","parent.name","parent.resource_subtype","path","permalink_url","projects","projects.name","resource_subtype","start_at","start_on","tags","tags.name","uri","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    };
+    apiInstance.getTasks(opts, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  getTasksForProject: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let project_gid = "1331"; // String | Globally unique identifier for the project.
+    let opts = { 
+      'completed_since': "2012-02-22T02:06:58.158Z", // String | Only return tasks that are either incomplete or that have been completed since this time. Accepts a date-time string or the keyword *now*. 
+      'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
+      'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
+      'opt_fields': ["actual_time_minutes","approval_status","assignee","assignee.name","assignee_section","assignee_section.name","assignee_status","completed","completed_at","completed_by","completed_by.name","created_at","custom_fields","custom_fields.asana_created_field","custom_fields.created_by","custom_fields.created_by.name","custom_fields.currency_code","custom_fields.custom_label","custom_fields.custom_label_position","custom_fields.date_value","custom_fields.date_value.date","custom_fields.date_value.date_time","custom_fields.description","custom_fields.display_value","custom_fields.enabled","custom_fields.enum_options","custom_fields.enum_options.color","custom_fields.enum_options.enabled","custom_fields.enum_options.name","custom_fields.enum_value","custom_fields.enum_value.color","custom_fields.enum_value.enabled","custom_fields.enum_value.name","custom_fields.format","custom_fields.has_notifications_enabled","custom_fields.is_formula_field","custom_fields.is_global_to_workspace","custom_fields.is_value_read_only","custom_fields.multi_enum_values","custom_fields.multi_enum_values.color","custom_fields.multi_enum_values.enabled","custom_fields.multi_enum_values.name","custom_fields.name","custom_fields.number_value","custom_fields.people_value","custom_fields.people_value.name","custom_fields.precision","custom_fields.resource_subtype","custom_fields.text_value","custom_fields.type","dependencies","dependents","due_at","due_on","external","external.data","followers","followers.name","hearted","hearts","hearts.user","hearts.user.name","html_notes","is_rendered_as_separator","liked","likes","likes.user","likes.user.name","memberships","memberships.project","memberships.project.name","memberships.section","memberships.section.name","modified_at","name","notes","num_hearts","num_likes","num_subtasks","offset","parent","parent.name","parent.resource_subtype","path","permalink_url","projects","projects.name","resource_subtype","start_at","start_on","tags","tags.name","uri","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    };
+    apiInstance.getTasksForProject(project_gid, opts, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  getTasksForSection: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let section_gid = "321654"; // String | The globally unique identifier for the section.
+    let opts = { 
+      'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
+      'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
+      'opt_fields': ["actual_time_minutes","approval_status","assignee","assignee.name","assignee_section","assignee_section.name","assignee_status","completed","completed_at","completed_by","completed_by.name","created_at","custom_fields","custom_fields.asana_created_field","custom_fields.created_by","custom_fields.created_by.name","custom_fields.currency_code","custom_fields.custom_label","custom_fields.custom_label_position","custom_fields.date_value","custom_fields.date_value.date","custom_fields.date_value.date_time","custom_fields.description","custom_fields.display_value","custom_fields.enabled","custom_fields.enum_options","custom_fields.enum_options.color","custom_fields.enum_options.enabled","custom_fields.enum_options.name","custom_fields.enum_value","custom_fields.enum_value.color","custom_fields.enum_value.enabled","custom_fields.enum_value.name","custom_fields.format","custom_fields.has_notifications_enabled","custom_fields.is_formula_field","custom_fields.is_global_to_workspace","custom_fields.is_value_read_only","custom_fields.multi_enum_values","custom_fields.multi_enum_values.color","custom_fields.multi_enum_values.enabled","custom_fields.multi_enum_values.name","custom_fields.name","custom_fields.number_value","custom_fields.people_value","custom_fields.people_value.name","custom_fields.precision","custom_fields.resource_subtype","custom_fields.text_value","custom_fields.type","dependencies","dependents","due_at","due_on","external","external.data","followers","followers.name","hearted","hearts","hearts.user","hearts.user.name","html_notes","is_rendered_as_separator","liked","likes","likes.user","likes.user.name","memberships","memberships.project","memberships.project.name","memberships.section","memberships.section.name","modified_at","name","notes","num_hearts","num_likes","num_subtasks","offset","parent","parent.name","parent.resource_subtype","path","permalink_url","projects","projects.name","resource_subtype","start_at","start_on","tags","tags.name","uri","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    };
+    apiInstance.getTasksForSection(section_gid, opts, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  getTasksForTag: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let tag_gid = "11235"; // String | Globally unique identifier for the tag.
+    let opts = { 
+      'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
+      'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
+      'opt_fields': ["actual_time_minutes","approval_status","assignee","assignee.name","assignee_section","assignee_section.name","assignee_status","completed","completed_at","completed_by","completed_by.name","created_at","custom_fields","custom_fields.asana_created_field","custom_fields.created_by","custom_fields.created_by.name","custom_fields.currency_code","custom_fields.custom_label","custom_fields.custom_label_position","custom_fields.date_value","custom_fields.date_value.date","custom_fields.date_value.date_time","custom_fields.description","custom_fields.display_value","custom_fields.enabled","custom_fields.enum_options","custom_fields.enum_options.color","custom_fields.enum_options.enabled","custom_fields.enum_options.name","custom_fields.enum_value","custom_fields.enum_value.color","custom_fields.enum_value.enabled","custom_fields.enum_value.name","custom_fields.format","custom_fields.has_notifications_enabled","custom_fields.is_formula_field","custom_fields.is_global_to_workspace","custom_fields.is_value_read_only","custom_fields.multi_enum_values","custom_fields.multi_enum_values.color","custom_fields.multi_enum_values.enabled","custom_fields.multi_enum_values.name","custom_fields.name","custom_fields.number_value","custom_fields.people_value","custom_fields.people_value.name","custom_fields.precision","custom_fields.resource_subtype","custom_fields.text_value","custom_fields.type","dependencies","dependents","due_at","due_on","external","external.data","followers","followers.name","hearted","hearts","hearts.user","hearts.user.name","html_notes","is_rendered_as_separator","liked","likes","likes.user","likes.user.name","memberships","memberships.project","memberships.project.name","memberships.section","memberships.section.name","modified_at","name","notes","num_hearts","num_likes","num_subtasks","offset","parent","parent.name","parent.resource_subtype","path","permalink_url","projects","projects.name","resource_subtype","start_at","start_on","tags","tags.name","uri","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    };
+    apiInstance.getTasksForTag(tag_gid, opts, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  getTasksForUserTaskList: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let user_task_list_gid = "12345"; // String | Globally unique identifier for the user task list.
+    let opts = { 
+      'completed_since': "2012-02-22T02:06:58.158Z", // String | Only return tasks that are either incomplete or that have been completed since this time. Accepts a date-time string or the keyword *now*. 
+      'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
+      'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
+      'opt_fields': ["actual_time_minutes","approval_status","assignee","assignee.name","assignee_section","assignee_section.name","assignee_status","completed","completed_at","completed_by","completed_by.name","created_at","custom_fields","custom_fields.asana_created_field","custom_fields.created_by","custom_fields.created_by.name","custom_fields.currency_code","custom_fields.custom_label","custom_fields.custom_label_position","custom_fields.date_value","custom_fields.date_value.date","custom_fields.date_value.date_time","custom_fields.description","custom_fields.display_value","custom_fields.enabled","custom_fields.enum_options","custom_fields.enum_options.color","custom_fields.enum_options.enabled","custom_fields.enum_options.name","custom_fields.enum_value","custom_fields.enum_value.color","custom_fields.enum_value.enabled","custom_fields.enum_value.name","custom_fields.format","custom_fields.has_notifications_enabled","custom_fields.is_formula_field","custom_fields.is_global_to_workspace","custom_fields.is_value_read_only","custom_fields.multi_enum_values","custom_fields.multi_enum_values.color","custom_fields.multi_enum_values.enabled","custom_fields.multi_enum_values.name","custom_fields.name","custom_fields.number_value","custom_fields.people_value","custom_fields.people_value.name","custom_fields.precision","custom_fields.resource_subtype","custom_fields.text_value","custom_fields.type","dependencies","dependents","due_at","due_on","external","external.data","followers","followers.name","hearted","hearts","hearts.user","hearts.user.name","html_notes","is_rendered_as_separator","liked","likes","likes.user","likes.user.name","memberships","memberships.project","memberships.project.name","memberships.section","memberships.section.name","modified_at","name","notes","num_hearts","num_likes","num_subtasks","offset","parent","parent.name","parent.resource_subtype","path","permalink_url","projects","projects.name","resource_subtype","start_at","start_on","tags","tags.name","uri","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    };
+    apiInstance.getTasksForUserTaskList(user_task_list_gid, opts, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  removeDependenciesForTask: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let body = new Asana.TaskGidRemoveDependenciesBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // TaskGidRemoveDependenciesBody | The list of tasks to unlink as dependencies.
+    let task_gid = "321654"; // String | The task to operate on.
+
+    apiInstance.removeDependenciesForTask(bodytask_gid, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  removeDependentsForTask: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let body = new Asana.TaskGidRemoveDependentsBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // TaskGidRemoveDependentsBody | The list of tasks to remove as dependents.
+    let task_gid = "321654"; // String | The task to operate on.
+
+    apiInstance.removeDependentsForTask(bodytask_gid, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  removeFollowerForTask: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let body = new Asana.TaskGidRemoveFollowersBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // TaskGidRemoveFollowersBody | The followers to remove from the task.
+    let task_gid = "321654"; // String | The task to operate on.
+    let opts = { 
+      'opt_fields': ["actual_time_minutes","approval_status","assignee","assignee.name","assignee_section","assignee_section.name","assignee_status","completed","completed_at","completed_by","completed_by.name","created_at","custom_fields","custom_fields.asana_created_field","custom_fields.created_by","custom_fields.created_by.name","custom_fields.currency_code","custom_fields.custom_label","custom_fields.custom_label_position","custom_fields.date_value","custom_fields.date_value.date","custom_fields.date_value.date_time","custom_fields.description","custom_fields.display_value","custom_fields.enabled","custom_fields.enum_options","custom_fields.enum_options.color","custom_fields.enum_options.enabled","custom_fields.enum_options.name","custom_fields.enum_value","custom_fields.enum_value.color","custom_fields.enum_value.enabled","custom_fields.enum_value.name","custom_fields.format","custom_fields.has_notifications_enabled","custom_fields.is_formula_field","custom_fields.is_global_to_workspace","custom_fields.is_value_read_only","custom_fields.multi_enum_values","custom_fields.multi_enum_values.color","custom_fields.multi_enum_values.enabled","custom_fields.multi_enum_values.name","custom_fields.name","custom_fields.number_value","custom_fields.people_value","custom_fields.people_value.name","custom_fields.precision","custom_fields.resource_subtype","custom_fields.text_value","custom_fields.type","dependencies","dependents","due_at","due_on","external","external.data","followers","followers.name","hearted","hearts","hearts.user","hearts.user.name","html_notes","is_rendered_as_separator","liked","likes","likes.user","likes.user.name","memberships","memberships.project","memberships.project.name","memberships.section","memberships.section.name","modified_at","name","notes","num_hearts","num_likes","num_subtasks","parent","parent.name","parent.resource_subtype","permalink_url","projects","projects.name","resource_subtype","start_at","start_on","tags","tags.name","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    };
+    apiInstance.removeFollowerForTask(bodytask_gid, opts, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  removeProjectForTask: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let body = new Asana.TaskGidRemoveProjectBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // TaskGidRemoveProjectBody | The project to remove the task from.
+    let task_gid = "321654"; // String | The task to operate on.
+
+    apiInstance.removeProjectForTask(bodytask_gid, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  removeTagForTask: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let body = new Asana.TaskGidRemoveTagBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // TaskGidRemoveTagBody | The tag to remove from the task.
+    let task_gid = "321654"; // String | The task to operate on.
+
+    apiInstance.removeTagForTask(bodytask_gid, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  searchTasksForWorkspace: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
+    let opts = { 
+      'text': "Bug", // String | Performs full-text search on both task name and description
+      'resource_subtype': "milestone", // String | Filters results by the task's resource_subtype
+      'assignee_any': "12345,23456,34567", // String | Comma-separated list of user identifiers
+      'assignee_not': "12345,23456,34567", // String | Comma-separated list of user identifiers
+      'portfolios_any': "12345,23456,34567", // String | Comma-separated list of portfolio IDs
+      'projects_any': "12345,23456,34567", // String | Comma-separated list of project IDs
+      'projects_not': "12345,23456,34567", // String | Comma-separated list of project IDs
+      'projects_all': "12345,23456,34567", // String | Comma-separated list of project IDs
+      'sections_any': "12345,23456,34567", // String | Comma-separated list of section or column IDs
+      'sections_not': "12345,23456,34567", // String | Comma-separated list of section or column IDs
+      'sections_all': "12345,23456,34567", // String | Comma-separated list of section or column IDs
+      'tags_any': "12345,23456,34567", // String | Comma-separated list of tag IDs
+      'tags_not': "12345,23456,34567", // String | Comma-separated list of tag IDs
+      'tags_all': "12345,23456,34567", // String | Comma-separated list of tag IDs
+      'teams_any': "12345,23456,34567", // String | Comma-separated list of team IDs
+      'followers_not': "12345,23456,34567", // String | Comma-separated list of user identifiers
+      'created_by_any': "12345,23456,34567", // String | Comma-separated list of user identifiers
+      'created_by_not': "12345,23456,34567", // String | Comma-separated list of user identifiers
+      'assigned_by_any': "12345,23456,34567", // String | Comma-separated list of user identifiers
+      'assigned_by_not': "12345,23456,34567", // String | Comma-separated list of user identifiers
+      'liked_by_not': "12345,23456,34567", // String | Comma-separated list of user identifiers
+      'commented_on_by_not': "12345,23456,34567", // String | Comma-separated list of user identifiers
+      'due_on_before': new Date("2019-09-15"), // Date | ISO 8601 date string
+      'due_on_after': new Date("2019-09-15"), // Date | ISO 8601 date string
+      'due_on': new Date("2019-09-15"), // Date | ISO 8601 date string or `null`
+      'due_at_before': new Date("2019-04-15T01:01:46.055Z"), // Date | ISO 8601 datetime string
+      'due_at_after': new Date("2019-04-15T01:01:46.055Z"), // Date | ISO 8601 datetime string
+      'start_on_before': new Date("2019-09-15"), // Date | ISO 8601 date string
+      'start_on_after': new Date("2019-09-15"), // Date | ISO 8601 date string
+      'start_on': new Date("2019-09-15"), // Date | ISO 8601 date string or `null`
+      'created_on_before': new Date("2019-09-15"), // Date | ISO 8601 date string
+      'created_on_after': new Date("2019-09-15"), // Date | ISO 8601 date string
+      'created_on': new Date("2019-09-15"), // Date | ISO 8601 date string or `null`
+      'created_at_before': new Date("2019-04-15T01:01:46.055Z"), // Date | ISO 8601 datetime string
+      'created_at_after': new Date("2019-04-15T01:01:46.055Z"), // Date | ISO 8601 datetime string
+      'completed_on_before': new Date("2019-09-15"), // Date | ISO 8601 date string
+      'completed_on_after': new Date("2019-09-15"), // Date | ISO 8601 date string
+      'completed_on': new Date("2019-09-15"), // Date | ISO 8601 date string or `null`
+      'completed_at_before': new Date("2019-04-15T01:01:46.055Z"), // Date | ISO 8601 datetime string
+      'completed_at_after': new Date("2019-04-15T01:01:46.055Z"), // Date | ISO 8601 datetime string
+      'modified_on_before': new Date("2019-09-15"), // Date | ISO 8601 date string
+      'modified_on_after': new Date("2019-09-15"), // Date | ISO 8601 date string
+      'modified_on': new Date("2019-09-15"), // Date | ISO 8601 date string or `null`
+      'modified_at_before': new Date("2019-04-15T01:01:46.055Z"), // Date | ISO 8601 datetime string
+      'modified_at_after': new Date("2019-04-15T01:01:46.055Z"), // Date | ISO 8601 datetime string
+      'is_blocking': false, // Boolean | Filter to incomplete tasks with dependents
+      'is_blocked': false, // Boolean | Filter to tasks with incomplete dependencies
+      'has_attachment': false, // Boolean | Filter to tasks with attachments
+      'completed': false, // Boolean | Filter to completed tasks
+      'is_subtask': false, // Boolean | Filter to subtasks
+      'sort_by': "modified_at", // String | One of `due_date`, `created_at`, `completed_at`, `likes`, or `modified_at`, defaults to `modified_at`
+      'sort_ascending': false, // Boolean | Default `false`
+      'opt_fields': ["actual_time_minutes","approval_status","assignee","assignee.name","assignee_section","assignee_section.name","assignee_status","completed","completed_at","completed_by","completed_by.name","created_at","custom_fields","custom_fields.asana_created_field","custom_fields.created_by","custom_fields.created_by.name","custom_fields.currency_code","custom_fields.custom_label","custom_fields.custom_label_position","custom_fields.date_value","custom_fields.date_value.date","custom_fields.date_value.date_time","custom_fields.description","custom_fields.display_value","custom_fields.enabled","custom_fields.enum_options","custom_fields.enum_options.color","custom_fields.enum_options.enabled","custom_fields.enum_options.name","custom_fields.enum_value","custom_fields.enum_value.color","custom_fields.enum_value.enabled","custom_fields.enum_value.name","custom_fields.format","custom_fields.has_notifications_enabled","custom_fields.is_formula_field","custom_fields.is_global_to_workspace","custom_fields.is_value_read_only","custom_fields.multi_enum_values","custom_fields.multi_enum_values.color","custom_fields.multi_enum_values.enabled","custom_fields.multi_enum_values.name","custom_fields.name","custom_fields.number_value","custom_fields.people_value","custom_fields.people_value.name","custom_fields.precision","custom_fields.resource_subtype","custom_fields.text_value","custom_fields.type","dependencies","dependents","due_at","due_on","external","external.data","followers","followers.name","hearted","hearts","hearts.user","hearts.user.name","html_notes","is_rendered_as_separator","liked","likes","likes.user","likes.user.name","memberships","memberships.project","memberships.project.name","memberships.section","memberships.section.name","modified_at","name","notes","num_hearts","num_likes","num_subtasks","parent","parent.name","parent.resource_subtype","permalink_url","projects","projects.name","resource_subtype","start_at","start_on","tags","tags.name","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    };
+    apiInstance.searchTasksForWorkspace(workspace_gid, opts, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  setParentForTask: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let body = new Asana.TaskGidSetParentBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // TaskGidSetParentBody | The new parent of the subtask.
+    let task_gid = "321654"; // String | The task to operate on.
+    let opts = { 
+      'opt_fields': ["actual_time_minutes","approval_status","assignee","assignee.name","assignee_section","assignee_section.name","assignee_status","completed","completed_at","completed_by","completed_by.name","created_at","custom_fields","custom_fields.asana_created_field","custom_fields.created_by","custom_fields.created_by.name","custom_fields.currency_code","custom_fields.custom_label","custom_fields.custom_label_position","custom_fields.date_value","custom_fields.date_value.date","custom_fields.date_value.date_time","custom_fields.description","custom_fields.display_value","custom_fields.enabled","custom_fields.enum_options","custom_fields.enum_options.color","custom_fields.enum_options.enabled","custom_fields.enum_options.name","custom_fields.enum_value","custom_fields.enum_value.color","custom_fields.enum_value.enabled","custom_fields.enum_value.name","custom_fields.format","custom_fields.has_notifications_enabled","custom_fields.is_formula_field","custom_fields.is_global_to_workspace","custom_fields.is_value_read_only","custom_fields.multi_enum_values","custom_fields.multi_enum_values.color","custom_fields.multi_enum_values.enabled","custom_fields.multi_enum_values.name","custom_fields.name","custom_fields.number_value","custom_fields.people_value","custom_fields.people_value.name","custom_fields.precision","custom_fields.resource_subtype","custom_fields.text_value","custom_fields.type","dependencies","dependents","due_at","due_on","external","external.data","followers","followers.name","hearted","hearts","hearts.user","hearts.user.name","html_notes","is_rendered_as_separator","liked","likes","likes.user","likes.user.name","memberships","memberships.project","memberships.project.name","memberships.section","memberships.section.name","modified_at","name","notes","num_hearts","num_likes","num_subtasks","parent","parent.name","parent.resource_subtype","permalink_url","projects","projects.name","resource_subtype","start_at","start_on","tags","tags.name","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    };
+    apiInstance.setParentForTask(bodytask_gid, opts, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  updateTask: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.TasksApi();
+    let body = new Asana.TasksTaskGidBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // TasksTaskGidBody | The task to update.
+    let task_gid = "321654"; // String | The task to operate on.
+    let opts = { 
+      'opt_fields': ["actual_time_minutes","approval_status","assignee","assignee.name","assignee_section","assignee_section.name","assignee_status","completed","completed_at","completed_by","completed_by.name","created_at","custom_fields","custom_fields.asana_created_field","custom_fields.created_by","custom_fields.created_by.name","custom_fields.currency_code","custom_fields.custom_label","custom_fields.custom_label_position","custom_fields.date_value","custom_fields.date_value.date","custom_fields.date_value.date_time","custom_fields.description","custom_fields.display_value","custom_fields.enabled","custom_fields.enum_options","custom_fields.enum_options.color","custom_fields.enum_options.enabled","custom_fields.enum_options.name","custom_fields.enum_value","custom_fields.enum_value.color","custom_fields.enum_value.enabled","custom_fields.enum_value.name","custom_fields.format","custom_fields.has_notifications_enabled","custom_fields.is_formula_field","custom_fields.is_global_to_workspace","custom_fields.is_value_read_only","custom_fields.multi_enum_values","custom_fields.multi_enum_values.color","custom_fields.multi_enum_values.enabled","custom_fields.multi_enum_values.name","custom_fields.name","custom_fields.number_value","custom_fields.people_value","custom_fields.people_value.name","custom_fields.precision","custom_fields.resource_subtype","custom_fields.text_value","custom_fields.type","dependencies","dependents","due_at","due_on","external","external.data","followers","followers.name","hearted","hearts","hearts.user","hearts.user.name","html_notes","is_rendered_as_separator","liked","likes","likes.user","likes.user.name","memberships","memberships.project","memberships.project.name","memberships.section","memberships.section.name","modified_at","name","notes","num_hearts","num_likes","num_subtasks","parent","parent.name","parent.resource_subtype","permalink_url","projects","projects.name","resource_subtype","start_at","start_on","tags","tags.name","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    };
+    apiInstance.updateTask(bodytask_gid, opts, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });

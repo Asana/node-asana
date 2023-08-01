@@ -1,0 +1,243 @@
+PortfoliosApi:
+  addCustomFieldSettingForPortfolio: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.PortfoliosApi();
+    let body = new Asana.PortfolioGidAddCustomFieldSettingBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // PortfolioGidAddCustomFieldSettingBody | Information about the custom field setting.
+    let portfolio_gid = "12345"; // String | Globally unique identifier for the portfolio.
+
+    apiInstance.addCustomFieldSettingForPortfolio(bodyportfolio_gid, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  addItemForPortfolio: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.PortfoliosApi();
+    let body = new Asana.PortfolioGidAddItemBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // PortfolioGidAddItemBody | Information about the item being inserted.
+    let portfolio_gid = "12345"; // String | Globally unique identifier for the portfolio.
+
+    apiInstance.addItemForPortfolio(bodyportfolio_gid, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  addMembersForPortfolio: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.PortfoliosApi();
+    let body = new Asana.PortfolioGidAddMembersBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // PortfolioGidAddMembersBody | Information about the members being added.
+    let portfolio_gid = "12345"; // String | Globally unique identifier for the portfolio.
+    let opts = { 
+      'opt_fields': ["color","created_at","created_by","created_by.name","current_status_update","current_status_update.resource_subtype","current_status_update.title","custom_field_settings","custom_field_settings.custom_field","custom_field_settings.custom_field.asana_created_field","custom_field_settings.custom_field.created_by","custom_field_settings.custom_field.created_by.name","custom_field_settings.custom_field.currency_code","custom_field_settings.custom_field.custom_label","custom_field_settings.custom_field.custom_label_position","custom_field_settings.custom_field.date_value","custom_field_settings.custom_field.date_value.date","custom_field_settings.custom_field.date_value.date_time","custom_field_settings.custom_field.description","custom_field_settings.custom_field.display_value","custom_field_settings.custom_field.enabled","custom_field_settings.custom_field.enum_options","custom_field_settings.custom_field.enum_options.color","custom_field_settings.custom_field.enum_options.enabled","custom_field_settings.custom_field.enum_options.name","custom_field_settings.custom_field.enum_value","custom_field_settings.custom_field.enum_value.color","custom_field_settings.custom_field.enum_value.enabled","custom_field_settings.custom_field.enum_value.name","custom_field_settings.custom_field.format","custom_field_settings.custom_field.has_notifications_enabled","custom_field_settings.custom_field.is_formula_field","custom_field_settings.custom_field.is_global_to_workspace","custom_field_settings.custom_field.is_value_read_only","custom_field_settings.custom_field.multi_enum_values","custom_field_settings.custom_field.multi_enum_values.color","custom_field_settings.custom_field.multi_enum_values.enabled","custom_field_settings.custom_field.multi_enum_values.name","custom_field_settings.custom_field.name","custom_field_settings.custom_field.number_value","custom_field_settings.custom_field.people_value","custom_field_settings.custom_field.people_value.name","custom_field_settings.custom_field.precision","custom_field_settings.custom_field.resource_subtype","custom_field_settings.custom_field.text_value","custom_field_settings.custom_field.type","custom_field_settings.is_important","custom_field_settings.parent","custom_field_settings.parent.name","custom_field_settings.project","custom_field_settings.project.name","custom_fields","custom_fields.date_value","custom_fields.date_value.date","custom_fields.date_value.date_time","custom_fields.display_value","custom_fields.enabled","custom_fields.enum_options","custom_fields.enum_options.color","custom_fields.enum_options.enabled","custom_fields.enum_options.name","custom_fields.enum_value","custom_fields.enum_value.color","custom_fields.enum_value.enabled","custom_fields.enum_value.name","custom_fields.is_formula_field","custom_fields.multi_enum_values","custom_fields.multi_enum_values.color","custom_fields.multi_enum_values.enabled","custom_fields.multi_enum_values.name","custom_fields.name","custom_fields.number_value","custom_fields.resource_subtype","custom_fields.text_value","custom_fields.type","due_on","members","members.name","name","owner","owner.name","permalink_url","project_templates","project_templates.name","public","start_on","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    };
+    apiInstance.addMembersForPortfolio(bodyportfolio_gid, opts, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  createPortfolio: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.PortfoliosApi();
+    let body = new Asana.PortfoliosBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // PortfoliosBody | The portfolio to create.
+    let opts = { 
+      'opt_fields': ["color","created_at","created_by","created_by.name","current_status_update","current_status_update.resource_subtype","current_status_update.title","custom_field_settings","custom_field_settings.custom_field","custom_field_settings.custom_field.asana_created_field","custom_field_settings.custom_field.created_by","custom_field_settings.custom_field.created_by.name","custom_field_settings.custom_field.currency_code","custom_field_settings.custom_field.custom_label","custom_field_settings.custom_field.custom_label_position","custom_field_settings.custom_field.date_value","custom_field_settings.custom_field.date_value.date","custom_field_settings.custom_field.date_value.date_time","custom_field_settings.custom_field.description","custom_field_settings.custom_field.display_value","custom_field_settings.custom_field.enabled","custom_field_settings.custom_field.enum_options","custom_field_settings.custom_field.enum_options.color","custom_field_settings.custom_field.enum_options.enabled","custom_field_settings.custom_field.enum_options.name","custom_field_settings.custom_field.enum_value","custom_field_settings.custom_field.enum_value.color","custom_field_settings.custom_field.enum_value.enabled","custom_field_settings.custom_field.enum_value.name","custom_field_settings.custom_field.format","custom_field_settings.custom_field.has_notifications_enabled","custom_field_settings.custom_field.is_formula_field","custom_field_settings.custom_field.is_global_to_workspace","custom_field_settings.custom_field.is_value_read_only","custom_field_settings.custom_field.multi_enum_values","custom_field_settings.custom_field.multi_enum_values.color","custom_field_settings.custom_field.multi_enum_values.enabled","custom_field_settings.custom_field.multi_enum_values.name","custom_field_settings.custom_field.name","custom_field_settings.custom_field.number_value","custom_field_settings.custom_field.people_value","custom_field_settings.custom_field.people_value.name","custom_field_settings.custom_field.precision","custom_field_settings.custom_field.resource_subtype","custom_field_settings.custom_field.text_value","custom_field_settings.custom_field.type","custom_field_settings.is_important","custom_field_settings.parent","custom_field_settings.parent.name","custom_field_settings.project","custom_field_settings.project.name","custom_fields","custom_fields.date_value","custom_fields.date_value.date","custom_fields.date_value.date_time","custom_fields.display_value","custom_fields.enabled","custom_fields.enum_options","custom_fields.enum_options.color","custom_fields.enum_options.enabled","custom_fields.enum_options.name","custom_fields.enum_value","custom_fields.enum_value.color","custom_fields.enum_value.enabled","custom_fields.enum_value.name","custom_fields.is_formula_field","custom_fields.multi_enum_values","custom_fields.multi_enum_values.color","custom_fields.multi_enum_values.enabled","custom_fields.multi_enum_values.name","custom_fields.name","custom_fields.number_value","custom_fields.resource_subtype","custom_fields.text_value","custom_fields.type","due_on","members","members.name","name","owner","owner.name","permalink_url","project_templates","project_templates.name","public","start_on","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    };
+    apiInstance.createPortfolio(body, opts, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  deletePortfolio: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.PortfoliosApi();
+    let portfolio_gid = "12345"; // String | Globally unique identifier for the portfolio.
+
+    apiInstance.deletePortfolio(portfolio_gid, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  getItemsForPortfolio: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.PortfoliosApi();
+    let portfolio_gid = "12345"; // String | Globally unique identifier for the portfolio.
+    let opts = { 
+      'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
+      'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
+      'opt_fields': ["archived","color","completed","completed_at","completed_by","completed_by.name","created_at","created_from_template","created_from_template.name","current_status","current_status.author","current_status.author.name","current_status.color","current_status.created_at","current_status.created_by","current_status.created_by.name","current_status.html_text","current_status.modified_at","current_status.text","current_status.title","current_status_update","current_status_update.resource_subtype","current_status_update.title","custom_field_settings","custom_field_settings.custom_field","custom_field_settings.custom_field.asana_created_field","custom_field_settings.custom_field.created_by","custom_field_settings.custom_field.created_by.name","custom_field_settings.custom_field.currency_code","custom_field_settings.custom_field.custom_label","custom_field_settings.custom_field.custom_label_position","custom_field_settings.custom_field.date_value","custom_field_settings.custom_field.date_value.date","custom_field_settings.custom_field.date_value.date_time","custom_field_settings.custom_field.description","custom_field_settings.custom_field.display_value","custom_field_settings.custom_field.enabled","custom_field_settings.custom_field.enum_options","custom_field_settings.custom_field.enum_options.color","custom_field_settings.custom_field.enum_options.enabled","custom_field_settings.custom_field.enum_options.name","custom_field_settings.custom_field.enum_value","custom_field_settings.custom_field.enum_value.color","custom_field_settings.custom_field.enum_value.enabled","custom_field_settings.custom_field.enum_value.name","custom_field_settings.custom_field.format","custom_field_settings.custom_field.has_notifications_enabled","custom_field_settings.custom_field.is_formula_field","custom_field_settings.custom_field.is_global_to_workspace","custom_field_settings.custom_field.is_value_read_only","custom_field_settings.custom_field.multi_enum_values","custom_field_settings.custom_field.multi_enum_values.color","custom_field_settings.custom_field.multi_enum_values.enabled","custom_field_settings.custom_field.multi_enum_values.name","custom_field_settings.custom_field.name","custom_field_settings.custom_field.number_value","custom_field_settings.custom_field.people_value","custom_field_settings.custom_field.people_value.name","custom_field_settings.custom_field.precision","custom_field_settings.custom_field.resource_subtype","custom_field_settings.custom_field.text_value","custom_field_settings.custom_field.type","custom_field_settings.is_important","custom_field_settings.parent","custom_field_settings.parent.name","custom_field_settings.project","custom_field_settings.project.name","custom_fields","custom_fields.date_value","custom_fields.date_value.date","custom_fields.date_value.date_time","custom_fields.display_value","custom_fields.enabled","custom_fields.enum_options","custom_fields.enum_options.color","custom_fields.enum_options.enabled","custom_fields.enum_options.name","custom_fields.enum_value","custom_fields.enum_value.color","custom_fields.enum_value.enabled","custom_fields.enum_value.name","custom_fields.is_formula_field","custom_fields.multi_enum_values","custom_fields.multi_enum_values.color","custom_fields.multi_enum_values.enabled","custom_fields.multi_enum_values.name","custom_fields.name","custom_fields.number_value","custom_fields.resource_subtype","custom_fields.text_value","custom_fields.type","default_view","due_date","due_on","followers","followers.name","html_notes","icon","members","members.name","modified_at","name","notes","offset","owner","path","permalink_url","project_brief","public","start_on","team","team.name","uri","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    };
+    apiInstance.getItemsForPortfolio(portfolio_gid, opts, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  getPortfolio: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.PortfoliosApi();
+    let portfolio_gid = "12345"; // String | Globally unique identifier for the portfolio.
+    let opts = { 
+      'opt_fields': ["color","created_at","created_by","created_by.name","current_status_update","current_status_update.resource_subtype","current_status_update.title","custom_field_settings","custom_field_settings.custom_field","custom_field_settings.custom_field.asana_created_field","custom_field_settings.custom_field.created_by","custom_field_settings.custom_field.created_by.name","custom_field_settings.custom_field.currency_code","custom_field_settings.custom_field.custom_label","custom_field_settings.custom_field.custom_label_position","custom_field_settings.custom_field.date_value","custom_field_settings.custom_field.date_value.date","custom_field_settings.custom_field.date_value.date_time","custom_field_settings.custom_field.description","custom_field_settings.custom_field.display_value","custom_field_settings.custom_field.enabled","custom_field_settings.custom_field.enum_options","custom_field_settings.custom_field.enum_options.color","custom_field_settings.custom_field.enum_options.enabled","custom_field_settings.custom_field.enum_options.name","custom_field_settings.custom_field.enum_value","custom_field_settings.custom_field.enum_value.color","custom_field_settings.custom_field.enum_value.enabled","custom_field_settings.custom_field.enum_value.name","custom_field_settings.custom_field.format","custom_field_settings.custom_field.has_notifications_enabled","custom_field_settings.custom_field.is_formula_field","custom_field_settings.custom_field.is_global_to_workspace","custom_field_settings.custom_field.is_value_read_only","custom_field_settings.custom_field.multi_enum_values","custom_field_settings.custom_field.multi_enum_values.color","custom_field_settings.custom_field.multi_enum_values.enabled","custom_field_settings.custom_field.multi_enum_values.name","custom_field_settings.custom_field.name","custom_field_settings.custom_field.number_value","custom_field_settings.custom_field.people_value","custom_field_settings.custom_field.people_value.name","custom_field_settings.custom_field.precision","custom_field_settings.custom_field.resource_subtype","custom_field_settings.custom_field.text_value","custom_field_settings.custom_field.type","custom_field_settings.is_important","custom_field_settings.parent","custom_field_settings.parent.name","custom_field_settings.project","custom_field_settings.project.name","custom_fields","custom_fields.date_value","custom_fields.date_value.date","custom_fields.date_value.date_time","custom_fields.display_value","custom_fields.enabled","custom_fields.enum_options","custom_fields.enum_options.color","custom_fields.enum_options.enabled","custom_fields.enum_options.name","custom_fields.enum_value","custom_fields.enum_value.color","custom_fields.enum_value.enabled","custom_fields.enum_value.name","custom_fields.is_formula_field","custom_fields.multi_enum_values","custom_fields.multi_enum_values.color","custom_fields.multi_enum_values.enabled","custom_fields.multi_enum_values.name","custom_fields.name","custom_fields.number_value","custom_fields.resource_subtype","custom_fields.text_value","custom_fields.type","due_on","members","members.name","name","owner","owner.name","permalink_url","project_templates","project_templates.name","public","start_on","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    };
+    apiInstance.getPortfolio(portfolio_gid, opts, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  getPortfolios: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.PortfoliosApi();
+    let workspace = "1331"; // String | The workspace or organization to filter portfolios on.
+    let opts = { 
+      'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
+      'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
+      'owner': "14916", // String | The user who owns the portfolio. Currently, API users can only get a list of portfolios that they themselves own, unless the request is made from a Service Account. In the case of a Service Account, if this parameter is specified, then all portfolios owned by this parameter are returned. Otherwise, all portfolios across the workspace are returned.
+      'opt_fields': ["color","created_at","created_by","created_by.name","current_status_update","current_status_update.resource_subtype","current_status_update.title","custom_field_settings","custom_field_settings.custom_field","custom_field_settings.custom_field.asana_created_field","custom_field_settings.custom_field.created_by","custom_field_settings.custom_field.created_by.name","custom_field_settings.custom_field.currency_code","custom_field_settings.custom_field.custom_label","custom_field_settings.custom_field.custom_label_position","custom_field_settings.custom_field.date_value","custom_field_settings.custom_field.date_value.date","custom_field_settings.custom_field.date_value.date_time","custom_field_settings.custom_field.description","custom_field_settings.custom_field.display_value","custom_field_settings.custom_field.enabled","custom_field_settings.custom_field.enum_options","custom_field_settings.custom_field.enum_options.color","custom_field_settings.custom_field.enum_options.enabled","custom_field_settings.custom_field.enum_options.name","custom_field_settings.custom_field.enum_value","custom_field_settings.custom_field.enum_value.color","custom_field_settings.custom_field.enum_value.enabled","custom_field_settings.custom_field.enum_value.name","custom_field_settings.custom_field.format","custom_field_settings.custom_field.has_notifications_enabled","custom_field_settings.custom_field.is_formula_field","custom_field_settings.custom_field.is_global_to_workspace","custom_field_settings.custom_field.is_value_read_only","custom_field_settings.custom_field.multi_enum_values","custom_field_settings.custom_field.multi_enum_values.color","custom_field_settings.custom_field.multi_enum_values.enabled","custom_field_settings.custom_field.multi_enum_values.name","custom_field_settings.custom_field.name","custom_field_settings.custom_field.number_value","custom_field_settings.custom_field.people_value","custom_field_settings.custom_field.people_value.name","custom_field_settings.custom_field.precision","custom_field_settings.custom_field.resource_subtype","custom_field_settings.custom_field.text_value","custom_field_settings.custom_field.type","custom_field_settings.is_important","custom_field_settings.parent","custom_field_settings.parent.name","custom_field_settings.project","custom_field_settings.project.name","custom_fields","custom_fields.date_value","custom_fields.date_value.date","custom_fields.date_value.date_time","custom_fields.display_value","custom_fields.enabled","custom_fields.enum_options","custom_fields.enum_options.color","custom_fields.enum_options.enabled","custom_fields.enum_options.name","custom_fields.enum_value","custom_fields.enum_value.color","custom_fields.enum_value.enabled","custom_fields.enum_value.name","custom_fields.is_formula_field","custom_fields.multi_enum_values","custom_fields.multi_enum_values.color","custom_fields.multi_enum_values.enabled","custom_fields.multi_enum_values.name","custom_fields.name","custom_fields.number_value","custom_fields.resource_subtype","custom_fields.text_value","custom_fields.type","due_on","members","members.name","name","offset","owner","owner.name","path","permalink_url","project_templates","project_templates.name","public","start_on","uri","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    };
+    apiInstance.getPortfolios(workspace, opts, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  removeCustomFieldSettingForPortfolio: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.PortfoliosApi();
+    let body = new Asana.PortfolioGidRemoveCustomFieldSettingBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // PortfolioGidRemoveCustomFieldSettingBody | Information about the custom field setting being removed.
+    let portfolio_gid = "12345"; // String | Globally unique identifier for the portfolio.
+
+    apiInstance.removeCustomFieldSettingForPortfolio(bodyportfolio_gid, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  removeItemForPortfolio: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.PortfoliosApi();
+    let body = new Asana.PortfolioGidRemoveItemBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // PortfolioGidRemoveItemBody | Information about the item being removed.
+    let portfolio_gid = "12345"; // String | Globally unique identifier for the portfolio.
+
+    apiInstance.removeItemForPortfolio(bodyportfolio_gid, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  removeMembersForPortfolio: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.PortfoliosApi();
+    let body = new Asana.PortfolioGidRemoveMembersBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // PortfolioGidRemoveMembersBody | Information about the members being removed.
+    let portfolio_gid = "12345"; // String | Globally unique identifier for the portfolio.
+    let opts = { 
+      'opt_fields': ["color","created_at","created_by","created_by.name","current_status_update","current_status_update.resource_subtype","current_status_update.title","custom_field_settings","custom_field_settings.custom_field","custom_field_settings.custom_field.asana_created_field","custom_field_settings.custom_field.created_by","custom_field_settings.custom_field.created_by.name","custom_field_settings.custom_field.currency_code","custom_field_settings.custom_field.custom_label","custom_field_settings.custom_field.custom_label_position","custom_field_settings.custom_field.date_value","custom_field_settings.custom_field.date_value.date","custom_field_settings.custom_field.date_value.date_time","custom_field_settings.custom_field.description","custom_field_settings.custom_field.display_value","custom_field_settings.custom_field.enabled","custom_field_settings.custom_field.enum_options","custom_field_settings.custom_field.enum_options.color","custom_field_settings.custom_field.enum_options.enabled","custom_field_settings.custom_field.enum_options.name","custom_field_settings.custom_field.enum_value","custom_field_settings.custom_field.enum_value.color","custom_field_settings.custom_field.enum_value.enabled","custom_field_settings.custom_field.enum_value.name","custom_field_settings.custom_field.format","custom_field_settings.custom_field.has_notifications_enabled","custom_field_settings.custom_field.is_formula_field","custom_field_settings.custom_field.is_global_to_workspace","custom_field_settings.custom_field.is_value_read_only","custom_field_settings.custom_field.multi_enum_values","custom_field_settings.custom_field.multi_enum_values.color","custom_field_settings.custom_field.multi_enum_values.enabled","custom_field_settings.custom_field.multi_enum_values.name","custom_field_settings.custom_field.name","custom_field_settings.custom_field.number_value","custom_field_settings.custom_field.people_value","custom_field_settings.custom_field.people_value.name","custom_field_settings.custom_field.precision","custom_field_settings.custom_field.resource_subtype","custom_field_settings.custom_field.text_value","custom_field_settings.custom_field.type","custom_field_settings.is_important","custom_field_settings.parent","custom_field_settings.parent.name","custom_field_settings.project","custom_field_settings.project.name","custom_fields","custom_fields.date_value","custom_fields.date_value.date","custom_fields.date_value.date_time","custom_fields.display_value","custom_fields.enabled","custom_fields.enum_options","custom_fields.enum_options.color","custom_fields.enum_options.enabled","custom_fields.enum_options.name","custom_fields.enum_value","custom_fields.enum_value.color","custom_fields.enum_value.enabled","custom_fields.enum_value.name","custom_fields.is_formula_field","custom_fields.multi_enum_values","custom_fields.multi_enum_values.color","custom_fields.multi_enum_values.enabled","custom_fields.multi_enum_values.name","custom_fields.name","custom_fields.number_value","custom_fields.resource_subtype","custom_fields.text_value","custom_fields.type","due_on","members","members.name","name","owner","owner.name","permalink_url","project_templates","project_templates.name","public","start_on","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    };
+    apiInstance.removeMembersForPortfolio(bodyportfolio_gid, opts, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
+  updatePortfolio: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.PortfoliosApi();
+    let body = new Asana.PortfoliosPortfolioGidBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // PortfoliosPortfolioGidBody | The updated fields for the portfolio.
+    let portfolio_gid = "12345"; // String | Globally unique identifier for the portfolio.
+    let opts = { 
+      'opt_fields': ["color","created_at","created_by","created_by.name","current_status_update","current_status_update.resource_subtype","current_status_update.title","custom_field_settings","custom_field_settings.custom_field","custom_field_settings.custom_field.asana_created_field","custom_field_settings.custom_field.created_by","custom_field_settings.custom_field.created_by.name","custom_field_settings.custom_field.currency_code","custom_field_settings.custom_field.custom_label","custom_field_settings.custom_field.custom_label_position","custom_field_settings.custom_field.date_value","custom_field_settings.custom_field.date_value.date","custom_field_settings.custom_field.date_value.date_time","custom_field_settings.custom_field.description","custom_field_settings.custom_field.display_value","custom_field_settings.custom_field.enabled","custom_field_settings.custom_field.enum_options","custom_field_settings.custom_field.enum_options.color","custom_field_settings.custom_field.enum_options.enabled","custom_field_settings.custom_field.enum_options.name","custom_field_settings.custom_field.enum_value","custom_field_settings.custom_field.enum_value.color","custom_field_settings.custom_field.enum_value.enabled","custom_field_settings.custom_field.enum_value.name","custom_field_settings.custom_field.format","custom_field_settings.custom_field.has_notifications_enabled","custom_field_settings.custom_field.is_formula_field","custom_field_settings.custom_field.is_global_to_workspace","custom_field_settings.custom_field.is_value_read_only","custom_field_settings.custom_field.multi_enum_values","custom_field_settings.custom_field.multi_enum_values.color","custom_field_settings.custom_field.multi_enum_values.enabled","custom_field_settings.custom_field.multi_enum_values.name","custom_field_settings.custom_field.name","custom_field_settings.custom_field.number_value","custom_field_settings.custom_field.people_value","custom_field_settings.custom_field.people_value.name","custom_field_settings.custom_field.precision","custom_field_settings.custom_field.resource_subtype","custom_field_settings.custom_field.text_value","custom_field_settings.custom_field.type","custom_field_settings.is_important","custom_field_settings.parent","custom_field_settings.parent.name","custom_field_settings.project","custom_field_settings.project.name","custom_fields","custom_fields.date_value","custom_fields.date_value.date","custom_fields.date_value.date_time","custom_fields.display_value","custom_fields.enabled","custom_fields.enum_options","custom_fields.enum_options.color","custom_fields.enum_options.enabled","custom_fields.enum_options.name","custom_fields.enum_value","custom_fields.enum_value.color","custom_fields.enum_value.enabled","custom_fields.enum_value.name","custom_fields.is_formula_field","custom_fields.multi_enum_values","custom_fields.multi_enum_values.color","custom_fields.multi_enum_values.enabled","custom_fields.multi_enum_values.name","custom_fields.name","custom_fields.number_value","custom_fields.resource_subtype","custom_fields.text_value","custom_fields.type","due_on","members","members.name","name","owner","owner.name","permalink_url","project_templates","project_templates.name","public","start_on","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    };
+    apiInstance.updatePortfolio(bodyportfolio_gid, opts, (error, data, response) => {
+      if (error) {
+      console.error(error);
+      } else {
+      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+      }
+    });
