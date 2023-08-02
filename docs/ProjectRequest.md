@@ -21,11 +21,12 @@ Name | Type | Description | Notes
 **notes** | **String** | Free-form textual information associated with the project (ie., its description). | [optional] 
 **_public** | **Boolean** | True if the project is public to its team. | [optional] 
 **start_on** | **Date** | The day on which work for this project begins, or null if the project has no start date. This takes a date with &#x60;YYYY-MM-DD&#x60; format. *Note: &#x60;due_on&#x60; or &#x60;due_at&#x60; must be present in the request when setting or unsetting the &#x60;start_on&#x60; parameter. Additionally, &#x60;start_on&#x60; and &#x60;due_on&#x60; cannot be the same date.* | [optional] 
-**workspace** | [**ProjectBaseWorkspace**](ProjectBaseWorkspace.md) |  | [optional] 
 **custom_fields** | **{String: String}** | An object where each key is a Custom Field GID and each value is an enum GID, string, number, or object. | [optional] 
 **followers** | **String** | *Create-only*. Comma separated string of users. Followers are a subset of members who have opted in to receive \&quot;tasks added\&quot; notifications for a project. | [optional] 
 **owner** | **String** | The current owner of the project, may be null. | [optional] 
 **team** | **String** | The team that this project is shared with. | [optional] 
+**default_access_level** | **String** | The default access users for users who join or are added as members to the project. | [optional] 
+**workspace** | **String** | The &#x60;gid&#x60; of a workspace. | [optional] 
 
 <a name="ColorEnum"></a>
 ## Enum: ColorEnum
@@ -59,4 +60,13 @@ Name | Type | Description | Notes
 * `board` (value: `"board"`)
 * `calendar` (value: `"calendar"`)
 * `timeline` (value: `"timeline"`)
+
+
+<a name="DefaultAccessLevelEnum"></a>
+## Enum: DefaultAccessLevelEnum
+
+* `admin` (value: `"admin"`)
+* `editor` (value: `"editor"`)
+* `commenter` (value: `"commenter"`)
+* `viewer` (value: `"viewer"`)
 

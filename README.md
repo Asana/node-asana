@@ -3,7 +3,7 @@
 JavaScript client library for Asana.
 
 - API version: 1.0
-- Package version: 2.0.0
+- Package version: 2.0.1
 
 ## Installation
 
@@ -27,15 +27,36 @@ then install it via:
 
 ### For browser
 
-The library also works in the browser environment via npm and [browserify](http://browserify.org/). After following
-the above steps with Node.js and installing browserify with `npm install -g browserify`,
-perform the following (assuming *main.js* is your entry file):
+Include the latest release directly from GitHub:
 
-```shell
-browserify main.js > bundle.js
+```html
+<script src="https://github.com/Asana/node-asana/releases/download/v2.0.1/asana-min.js"></script>
 ```
 
-Then include *bundle.js* in the HTML pages.
+Example usage:
+
+```html
+<script>
+  const defaultClient = Asana.ApiClient.instance;
+  const oauth2 = defaultClient.authentications["oauth2"];
+  oauth2.accessToken =
+    "<YOUR_PERSONAL_ACCESS_TOKEN>";
+
+  let usersApiInstance = new Asana.UsersApi();
+  let user_gid = "me";
+  let opts = {};
+
+  usersApiInstance.getUser(user_gid, opts, (error, data, response) => {
+    if (error) {
+      console.error(error);
+    } else {
+      console.log(
+        "API called successfully. Returned data: " + JSON.stringify(data, null, 2)
+      );
+    }
+  });
+</script>
+```
 
 ### Webpack Configuration
 
@@ -65,7 +86,7 @@ const defaultClient = Asana.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: oauth2
 const oauth2 = defaultClient.authentications['oauth2'];
-oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>"
+oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
 
 let usersApiInstance = new Asana.UsersApi()
 let user_gid = "me"; // String | A string identifying a user. This can either be the string \"me\", an email, or the gid of a user.
@@ -91,7 +112,7 @@ const defaultClient = Asana.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: oauth2
 const oauth2 = defaultClient.authentications['oauth2'];
-oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>"
+oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
 
 let tasksApiInstance = new Asana.TasksApi()
 let opts = { 
@@ -118,7 +139,7 @@ const defaultClient = Asana.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: oauth2
 const oauth2 = defaultClient.authentications['oauth2'];
-oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>"
+oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
 
 let tasksApiInstance = new Asana.TasksApi()
 let body = new Asana.TasksBody.constructFromObject({
@@ -159,7 +180,7 @@ const defaultClient = Asana.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: oauth2
 const oauth2 = defaultClient.authentications['oauth2'];
-oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>"
+oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
 
 let tasksApiInstance = new Asana.TasksApi()
 let task_gid = "<YOUR_TASK_GID>";
@@ -188,7 +209,7 @@ const defaultClient = Asana.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: oauth2
 const oauth2 = defaultClient.authentications['oauth2'];
-oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>"
+oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
 
 let tasksApiInstance = new Asana.TasksApi()
 let task_gid = "<YOUR_TASK_GID>";
@@ -487,9 +508,10 @@ Class | Method | HTTP request | Description
  - [Asana.GoalGidSetMetricBody](docs/GoalGidSetMetricBody.md)
  - [Asana.GoalGidSetMetricCurrentValueBody](docs/GoalGidSetMetricCurrentValueBody.md)
  - [Asana.GoalMembershipBase](docs/GoalMembershipBase.md)
- - [Asana.GoalMembershipBaseGoal](docs/GoalMembershipBaseGoal.md)
  - [Asana.GoalMembershipCompact](docs/GoalMembershipCompact.md)
  - [Asana.GoalMembershipResponse](docs/GoalMembershipResponse.md)
+ - [Asana.GoalMembershipResponseUser](docs/GoalMembershipResponseUser.md)
+ - [Asana.GoalMembershipResponseWorkspace](docs/GoalMembershipResponseWorkspace.md)
  - [Asana.GoalMetricBase](docs/GoalMetricBase.md)
  - [Asana.GoalMetricCurrentValueRequest](docs/GoalMetricCurrentValueRequest.md)
  - [Asana.GoalMetricRequest](docs/GoalMetricRequest.md)
@@ -529,6 +551,10 @@ Class | Method | HTTP request | Description
  - [Asana.JobResponseData](docs/JobResponseData.md)
  - [Asana.Like](docs/Like.md)
  - [Asana.MemberCompact](docs/MemberCompact.md)
+ - [Asana.MembershipCompact](docs/MembershipCompact.md)
+ - [Asana.MembershipCompactGoal](docs/MembershipCompactGoal.md)
+ - [Asana.MembershipCompactMember](docs/MembershipCompactMember.md)
+ - [Asana.MembershipCompactParent](docs/MembershipCompactParent.md)
  - [Asana.MembershipRequest](docs/MembershipRequest.md)
  - [Asana.MembershipResponse](docs/MembershipResponse.md)
  - [Asana.MembershipResponseArray](docs/MembershipResponseArray.md)
@@ -573,7 +599,6 @@ Class | Method | HTTP request | Description
  - [Asana.ProjectBase](docs/ProjectBase.md)
  - [Asana.ProjectBaseCurrentStatus](docs/ProjectBaseCurrentStatus.md)
  - [Asana.ProjectBaseCurrentStatusUpdate](docs/ProjectBaseCurrentStatusUpdate.md)
- - [Asana.ProjectBaseWorkspace](docs/ProjectBaseWorkspace.md)
  - [Asana.ProjectBriefBase](docs/ProjectBriefBase.md)
  - [Asana.ProjectBriefCompact](docs/ProjectBriefCompact.md)
  - [Asana.ProjectBriefRequest](docs/ProjectBriefRequest.md)
@@ -597,10 +622,10 @@ Class | Method | HTTP request | Description
  - [Asana.ProjectGidSectionsBody](docs/ProjectGidSectionsBody.md)
  - [Asana.ProjectMembershipBase](docs/ProjectMembershipBase.md)
  - [Asana.ProjectMembershipCompact](docs/ProjectMembershipCompact.md)
- - [Asana.ProjectMembershipResponse](docs/ProjectMembershipResponse.md)
- - [Asana.ProjectMembershipResponseArray](docs/ProjectMembershipResponseArray.md)
- - [Asana.ProjectMembershipResponseData](docs/ProjectMembershipResponseData.md)
- - [Asana.ProjectMembershipResponseMember](docs/ProjectMembershipResponseMember.md)
+ - [Asana.ProjectMembershipCompactArray](docs/ProjectMembershipCompactArray.md)
+ - [Asana.ProjectMembershipCompactResponse](docs/ProjectMembershipCompactResponse.md)
+ - [Asana.ProjectMembershipNormalResponse](docs/ProjectMembershipNormalResponse.md)
+ - [Asana.ProjectMembershipNormalResponseData](docs/ProjectMembershipNormalResponseData.md)
  - [Asana.ProjectRequest](docs/ProjectRequest.md)
  - [Asana.ProjectResponse](docs/ProjectResponse.md)
  - [Asana.ProjectResponseArray](docs/ProjectResponseArray.md)
@@ -609,6 +634,7 @@ Class | Method | HTTP request | Description
  - [Asana.ProjectResponseData](docs/ProjectResponseData.md)
  - [Asana.ProjectResponseProjectBrief](docs/ProjectResponseProjectBrief.md)
  - [Asana.ProjectResponseTeam](docs/ProjectResponseTeam.md)
+ - [Asana.ProjectResponseWorkspace](docs/ProjectResponseWorkspace.md)
  - [Asana.ProjectSaveAsTemplateRequest](docs/ProjectSaveAsTemplateRequest.md)
  - [Asana.ProjectSectionInsertRequest](docs/ProjectSectionInsertRequest.md)
  - [Asana.ProjectStatusBase](docs/ProjectStatusBase.md)
@@ -629,6 +655,7 @@ Class | Method | HTTP request | Description
  - [Asana.ProjectTemplateResponse](docs/ProjectTemplateResponse.md)
  - [Asana.ProjectTemplateResponseArray](docs/ProjectTemplateResponseArray.md)
  - [Asana.ProjectTemplateResponseData](docs/ProjectTemplateResponseData.md)
+ - [Asana.ProjectUpdateRequest](docs/ProjectUpdateRequest.md)
  - [Asana.ProjectsBody](docs/ProjectsBody.md)
  - [Asana.ProjectsProjectGidBody](docs/ProjectsProjectGidBody.md)
  - [Asana.RemoveCustomFieldSettingRequest](docs/RemoveCustomFieldSettingRequest.md)
@@ -828,7 +855,7 @@ const defaultClient = Asana.ApiClient.instance;
 
 // Configure OAuth2 access token for authorization: oauth2
 const oauth2 = defaultClient.authentications['oauth2'];
-oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>"
+oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
 
 // GET - get a task
 defaultClient.callApi(

@@ -19,7 +19,7 @@ import {UserResponse} from './UserResponse';
 /**
  * The UserResponseArray model module.
  * @module model/UserResponseArray
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class UserResponseArray {
   /**

@@ -19,7 +19,7 @@ import {PortfolioMembershipResponse} from './PortfolioMembershipResponse';
 /**
  * The PortfolioMembershipResponseArray model module.
  * @module model/PortfolioMembershipResponseArray
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class PortfolioMembershipResponseArray {
   /**

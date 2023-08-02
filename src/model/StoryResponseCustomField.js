@@ -20,7 +20,7 @@ import {CustomFieldBaseEnumValue} from './CustomFieldBaseEnumValue';
 /**
  * The StoryResponseCustomField model module.
  * @module model/StoryResponseCustomField
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class StoryResponseCustomField {
   /**

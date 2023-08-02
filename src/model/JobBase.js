@@ -20,7 +20,7 @@ import {JobBaseNewTask} from './JobBaseNewTask';
 /**
  * The JobBase model module.
  * @module model/JobBase
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class JobBase {
   /**

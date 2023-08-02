@@ -13,13 +13,16 @@
  *
  */
 import {ApiClient} from '../ApiClient';
-import {GoalMembershipBaseGoal} from './GoalMembershipBaseGoal';
-import {ProjectMembershipResponseMember} from './ProjectMembershipResponseMember';
+import {GoalMembershipResponseUser} from './GoalMembershipResponseUser';
+import {GoalMembershipResponseWorkspace} from './GoalMembershipResponseWorkspace';
+import {MembershipCompactGoal} from './MembershipCompactGoal';
+import {MembershipCompactMember} from './MembershipCompactMember';
+import {MembershipCompactParent} from './MembershipCompactParent';
 
 /**
  * The GoalMembershipResponse model module.
  * @module model/GoalMembershipResponse
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class GoalMembershipResponse {
   /**
@@ -45,14 +48,20 @@ export class GoalMembershipResponse {
         obj.gid = ApiClient.convertToType(data['gid'], 'String');
       if (data.hasOwnProperty('resource_type'))
         obj.resource_type = ApiClient.convertToType(data['resource_type'], 'String');
+      if (data.hasOwnProperty('resource_subtype'))
+        obj.resource_subtype = ApiClient.convertToType(data['resource_subtype'], 'String');
       if (data.hasOwnProperty('member'))
-        obj.member = ProjectMembershipResponseMember.constructFromObject(data['member']);
+        obj.member = MembershipCompactMember.constructFromObject(data['member']);
+      if (data.hasOwnProperty('parent'))
+        obj.parent = MembershipCompactParent.constructFromObject(data['parent']);
+      if (data.hasOwnProperty('role'))
+        obj.role = ApiClient.convertToType(data['role'], 'String');
       if (data.hasOwnProperty('goal'))
-        obj.goal = GoalMembershipBaseGoal.constructFromObject(data['goal']);
-      if (data.hasOwnProperty('is_commenter'))
-        obj.is_commenter = ApiClient.convertToType(data['is_commenter'], 'Boolean');
-      if (data.hasOwnProperty('is_editor'))
-        obj.is_editor = ApiClient.convertToType(data['is_editor'], 'Boolean');
+        obj.goal = MembershipCompactGoal.constructFromObject(data['goal']);
+      if (data.hasOwnProperty('user'))
+        obj.user = GoalMembershipResponseUser.constructFromObject(data['user']);
+      if (data.hasOwnProperty('workspace'))
+        obj.workspace = GoalMembershipResponseWorkspace.constructFromObject(data['workspace']);
     }
     return obj;
   }
@@ -71,24 +80,57 @@ GoalMembershipResponse.prototype.gid = undefined;
 GoalMembershipResponse.prototype.resource_type = undefined;
 
 /**
- * @member {module:model/ProjectMembershipResponseMember} member
+ * The type of membership.
+ * @member {String} resource_subtype
+ */
+GoalMembershipResponse.prototype.resource_subtype = undefined;
+
+/**
+ * @member {module:model/MembershipCompactMember} member
  */
 GoalMembershipResponse.prototype.member = undefined;
 
 /**
- * @member {module:model/GoalMembershipBaseGoal} goal
+ * @member {module:model/MembershipCompactParent} parent
+ */
+GoalMembershipResponse.prototype.parent = undefined;
+
+/**
+ * Allowed values for the <code>role</code> property.
+ * @enum {String}
+ * @readonly
+ */
+GoalMembershipResponse.RoleEnum = {
+  /**
+   * value: "commenter"
+   * @const
+   */
+  commenter: "commenter",
+
+  /**
+   * value: "editor"
+   * @const
+   */
+  editor: "editor"
+};
+/**
+ * Describes if the member is a commenter or editor in goal.
+ * @member {module:model/GoalMembershipResponse.RoleEnum} role
+ */
+GoalMembershipResponse.prototype.role = undefined;
+
+/**
+ * @member {module:model/MembershipCompactGoal} goal
  */
 GoalMembershipResponse.prototype.goal = undefined;
 
 /**
- * Describes if the member is comment only in goal.
- * @member {Boolean} is_commenter
+ * @member {module:model/GoalMembershipResponseUser} user
  */
-GoalMembershipResponse.prototype.is_commenter = undefined;
+GoalMembershipResponse.prototype.user = undefined;
 
 /**
- * Describes if the member is editor in goal.
- * @member {Boolean} is_editor
+ * @member {module:model/GoalMembershipResponseWorkspace} workspace
  */
-GoalMembershipResponse.prototype.is_editor = undefined;
+GoalMembershipResponse.prototype.workspace = undefined;
 

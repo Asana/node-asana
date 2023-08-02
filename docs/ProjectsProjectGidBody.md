@@ -3,4 +3,4 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**ProjectRequest**](ProjectRequest.md) |  | [optional] 
+**data** | [**ProjectUpdateRequest**](ProjectUpdateRequest.md) |  | [optional] 

@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The GoalMetricCurrentValueRequest model module.
  * @module model/GoalMetricCurrentValueRequest
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class GoalMetricCurrentValueRequest {
   /**

@@ -18,7 +18,7 @@ import {TagRequest} from './TagRequest';
 /**
  * The TagsBody model module.
  * @module model/TagsBody
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class TagsBody {
   /**

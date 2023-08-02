@@ -22,7 +22,7 @@ import {TaskBaseMemberships} from './TaskBaseMemberships';
 /**
  * The TaskRequest model module.
  * @module model/TaskRequest
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class TaskRequest {
   /**

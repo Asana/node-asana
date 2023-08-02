@@ -17,12 +17,11 @@ import {CustomFieldResponsePeopleValue} from './CustomFieldResponsePeopleValue';
 import {PortfolioResponseCustomFieldSettings} from './PortfolioResponseCustomFieldSettings';
 import {ProjectBaseCurrentStatus} from './ProjectBaseCurrentStatus';
 import {ProjectBaseCurrentStatusUpdate} from './ProjectBaseCurrentStatusUpdate';
-import {ProjectBaseWorkspace} from './ProjectBaseWorkspace';
 
 /**
  * The ProjectRequest model module.
  * @module model/ProjectRequest
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class ProjectRequest {
   /**
@@ -80,8 +79,6 @@ export class ProjectRequest {
         obj._public = ApiClient.convertToType(data['public'], 'Boolean');
       if (data.hasOwnProperty('start_on'))
         obj.start_on = ApiClient.convertToType(data['start_on'], 'Date');
-      if (data.hasOwnProperty('workspace'))
-        obj.workspace = ProjectBaseWorkspace.constructFromObject(data['workspace']);
       if (data.hasOwnProperty('custom_fields'))
         obj.custom_fields = ApiClient.convertToType(data['custom_fields'], {'String': 'String'});
       if (data.hasOwnProperty('followers'))
@@ -90,6 +87,10 @@ export class ProjectRequest {
         obj.owner = ApiClient.convertToType(data['owner'], 'String');
       if (data.hasOwnProperty('team'))
         obj.team = ApiClient.convertToType(data['team'], 'String');
+      if (data.hasOwnProperty('default_access_level'))
+        obj.default_access_level = ApiClient.convertToType(data['default_access_level'], 'String');
+      if (data.hasOwnProperty('workspace'))
+        obj.workspace = ApiClient.convertToType(data['workspace'], 'String');
     }
     return obj;
   }
@@ -358,11 +359,6 @@ ProjectRequest.prototype._public = undefined;
 ProjectRequest.prototype.start_on = undefined;
 
 /**
- * @member {module:model/ProjectBaseWorkspace} workspace
- */
-ProjectRequest.prototype.workspace = undefined;
-
-/**
  * An object where each key is a Custom Field GID and each value is an enum GID, string, number, or object.
  * @member {Object.<String, String>} custom_fields
  */
@@ -385,4 +381,46 @@ ProjectRequest.prototype.owner = undefined;
  * @member {String} team
  */
 ProjectRequest.prototype.team = undefined;
+
+/**
+ * Allowed values for the <code>default_access_level</code> property.
+ * @enum {String}
+ * @readonly
+ */
+ProjectRequest.DefaultAccessLevelEnum = {
+  /**
+   * value: "admin"
+   * @const
+   */
+  admin: "admin",
+
+  /**
+   * value: "editor"
+   * @const
+   */
+  editor: "editor",
+
+  /**
+   * value: "commenter"
+   * @const
+   */
+  commenter: "commenter",
+
+  /**
+   * value: "viewer"
+   * @const
+   */
+  viewer: "viewer"
+};
+/**
+ * The default access users for users who join or are added as members to the project.
+ * @member {module:model/ProjectRequest.DefaultAccessLevelEnum} default_access_level
+ */
+ProjectRequest.prototype.default_access_level = undefined;
+
+/**
+ * The `gid` of a workspace.
+ * @member {String} workspace
+ */
+ProjectRequest.prototype.workspace = undefined;
 

@@ -21,7 +21,6 @@ Name | Type | Description | Notes
 **notes** | **String** | Free-form textual information associated with the project (ie., its description). | [optional] 
 **_public** | **Boolean** | True if the project is public to its team. | [optional] 
 **start_on** | **Date** | The day on which work for this project begins, or null if the project has no start date. This takes a date with &#x60;YYYY-MM-DD&#x60; format. *Note: &#x60;due_on&#x60; or &#x60;due_at&#x60; must be present in the request when setting or unsetting the &#x60;start_on&#x60; parameter. Additionally, &#x60;start_on&#x60; and &#x60;due_on&#x60; cannot be the same date.* | [optional] 
-**workspace** | [**ProjectBaseWorkspace**](ProjectBaseWorkspace.md) |  | [optional] 
 
 <a name="ColorEnum"></a>
 ## Enum: ColorEnum

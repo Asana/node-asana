@@ -18,7 +18,7 @@ import {ModifyDependentsRequest} from './ModifyDependentsRequest';
 /**
  * The TaskGidRemoveDependentsBody model module.
  * @module model/TaskGidRemoveDependentsBody
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class TaskGidRemoveDependentsBody {
   /**

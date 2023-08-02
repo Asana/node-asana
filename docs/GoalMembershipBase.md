@@ -5,7 +5,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **gid** | **String** | Globally unique identifier of the resource, as a string. | [optional] 
 **resource_type** | **String** | The base type of this resource. | [optional] 
-**member** | [**ProjectMembershipResponseMember**](ProjectMembershipResponseMember.md) |  | [optional] 
-**goal** | [**GoalMembershipBaseGoal**](GoalMembershipBaseGoal.md) |  | [optional] 
-**is_commenter** | **Boolean** | Describes if the member is comment only in goal. | [optional] 
-**is_editor** | **Boolean** | Describes if the member is editor in goal. | [optional] 
+**resource_subtype** | **String** | The type of membership. | [optional] 
+**member** | [**MembershipCompactMember**](MembershipCompactMember.md) |  | [optional] 
+**parent** | [**MembershipCompactParent**](MembershipCompactParent.md) |  | [optional] 
+**role** | **String** | Describes if the member is a commenter or editor in goal. | [optional] 
+**goal** | [**MembershipCompactGoal**](MembershipCompactGoal.md) |  | [optional] 
+
+<a name="RoleEnum"></a>
+## Enum: RoleEnum
+
+* `commenter` (value: `"commenter"`)
+* `editor` (value: `"editor"`)
+

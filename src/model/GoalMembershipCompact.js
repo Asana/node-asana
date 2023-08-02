@@ -13,13 +13,14 @@
  *
  */
 import {ApiClient} from '../ApiClient';
-import {GoalMembershipBaseGoal} from './GoalMembershipBaseGoal';
-import {ProjectMembershipResponseMember} from './ProjectMembershipResponseMember';
+import {MembershipCompactGoal} from './MembershipCompactGoal';
+import {MembershipCompactMember} from './MembershipCompactMember';
+import {MembershipCompactParent} from './MembershipCompactParent';
 
 /**
  * The GoalMembershipCompact model module.
  * @module model/GoalMembershipCompact
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class GoalMembershipCompact {
   /**
@@ -45,10 +46,16 @@ export class GoalMembershipCompact {
         obj.gid = ApiClient.convertToType(data['gid'], 'String');
       if (data.hasOwnProperty('resource_type'))
         obj.resource_type = ApiClient.convertToType(data['resource_type'], 'String');
+      if (data.hasOwnProperty('resource_subtype'))
+        obj.resource_subtype = ApiClient.convertToType(data['resource_subtype'], 'String');
       if (data.hasOwnProperty('member'))
-        obj.member = ProjectMembershipResponseMember.constructFromObject(data['member']);
+        obj.member = MembershipCompactMember.constructFromObject(data['member']);
+      if (data.hasOwnProperty('parent'))
+        obj.parent = MembershipCompactParent.constructFromObject(data['parent']);
+      if (data.hasOwnProperty('role'))
+        obj.role = ApiClient.convertToType(data['role'], 'String');
       if (data.hasOwnProperty('goal'))
-        obj.goal = GoalMembershipBaseGoal.constructFromObject(data['goal']);
+        obj.goal = MembershipCompactGoal.constructFromObject(data['goal']);
       if (data.hasOwnProperty('is_commenter'))
         obj.is_commenter = ApiClient.convertToType(data['is_commenter'], 'Boolean');
       if (data.hasOwnProperty('is_editor'))
@@ -71,23 +78,58 @@ GoalMembershipCompact.prototype.gid = undefined;
 GoalMembershipCompact.prototype.resource_type = undefined;
 
 /**
- * @member {module:model/ProjectMembershipResponseMember} member
+ * The type of membership.
+ * @member {String} resource_subtype
+ */
+GoalMembershipCompact.prototype.resource_subtype = undefined;
+
+/**
+ * @member {module:model/MembershipCompactMember} member
  */
 GoalMembershipCompact.prototype.member = undefined;
 
 /**
- * @member {module:model/GoalMembershipBaseGoal} goal
+ * @member {module:model/MembershipCompactParent} parent
+ */
+GoalMembershipCompact.prototype.parent = undefined;
+
+/**
+ * Allowed values for the <code>role</code> property.
+ * @enum {String}
+ * @readonly
+ */
+GoalMembershipCompact.RoleEnum = {
+  /**
+   * value: "commenter"
+   * @const
+   */
+  commenter: "commenter",
+
+  /**
+   * value: "editor"
+   * @const
+   */
+  editor: "editor"
+};
+/**
+ * Describes if the member is a commenter or editor in goal.
+ * @member {module:model/GoalMembershipCompact.RoleEnum} role
+ */
+GoalMembershipCompact.prototype.role = undefined;
+
+/**
+ * @member {module:model/MembershipCompactGoal} goal
  */
 GoalMembershipCompact.prototype.goal = undefined;
 
 /**
- * Describes if the member is comment only in goal.
+ * *Deprecated: new integrations should prefer the `role` field.* Describes if the member is comment only in goal.
  * @member {Boolean} is_commenter
  */
 GoalMembershipCompact.prototype.is_commenter = undefined;
 
 /**
- * Describes if the member is editor in goal.
+ * *Deprecated: new integrations should prefer the `role` field.* Describes if the member is editor in goal.
  * @member {Boolean} is_editor
  */
 GoalMembershipCompact.prototype.is_editor = undefined;

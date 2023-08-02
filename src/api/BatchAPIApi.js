@@ -20,7 +20,7 @@ import {ErrorResponse} from '../model/ErrorResponse';
 /**
 * BatchAPI service.
 * @module api/BatchAPIApi
-* @version 2.0.0
+* @version 2.0.1
 */
 export class BatchAPIApi {
 

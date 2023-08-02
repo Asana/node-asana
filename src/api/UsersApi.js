@@ -21,7 +21,7 @@ import {UserResponseData} from '../model/UserResponseData';
 /**
 * Users service.
 * @module api/UsersApi
-* @version 2.0.0
+* @version 2.0.1
 */
 export class UsersApi {
 

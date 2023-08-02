@@ -18,7 +18,7 @@ import {CreateTimeTrackingEntryRequest} from './CreateTimeTrackingEntryRequest';
 /**
  * The TaskGidTimeTrackingEntriesBody model module.
  * @module model/TaskGidTimeTrackingEntriesBody
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class TaskGidTimeTrackingEntriesBody {
   /**

@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The AllOfStoryResponseNewDateValue model module.
  * @module model/AllOfStoryResponseNewDateValue
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class AllOfStoryResponseNewDateValue {
   /**

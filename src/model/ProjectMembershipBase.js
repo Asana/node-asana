@@ -14,11 +14,13 @@
  */
 import {ApiClient} from '../ApiClient';
 import {CustomFieldResponsePeopleValue} from './CustomFieldResponsePeopleValue';
+import {JobBaseNewProject} from './JobBaseNewProject';
+import {MembershipCompactMember} from './MembershipCompactMember';
 
 /**
  * The ProjectMembershipBase model module.
  * @module model/ProjectMembershipBase
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class ProjectMembershipBase {
   /**
@@ -46,6 +48,12 @@ export class ProjectMembershipBase {
         obj.resource_type = ApiClient.convertToType(data['resource_type'], 'String');
       if (data.hasOwnProperty('user'))
         obj.user = CustomFieldResponsePeopleValue.constructFromObject(data['user']);
+      if (data.hasOwnProperty('parent'))
+        obj.parent = JobBaseNewProject.constructFromObject(data['parent']);
+      if (data.hasOwnProperty('member'))
+        obj.member = MembershipCompactMember.constructFromObject(data['member']);
+      if (data.hasOwnProperty('access_level'))
+        obj.access_level = ApiClient.convertToType(data['access_level'], 'String');
     }
     return obj;
   }
@@ -67,4 +75,50 @@ ProjectMembershipBase.prototype.resource_type = undefined;
  * @member {module:model/CustomFieldResponsePeopleValue} user
  */
 ProjectMembershipBase.prototype.user = undefined;
+
+/**
+ * @member {module:model/JobBaseNewProject} parent
+ */
+ProjectMembershipBase.prototype.parent = undefined;
+
+/**
+ * @member {module:model/MembershipCompactMember} member
+ */
+ProjectMembershipBase.prototype.member = undefined;
+
+/**
+ * Allowed values for the <code>access_level</code> property.
+ * @enum {String}
+ * @readonly
+ */
+ProjectMembershipBase.AccessLevelEnum = {
+  /**
+   * value: "admin"
+   * @const
+   */
+  admin: "admin",
+
+  /**
+   * value: "editor"
+   * @const
+   */
+  editor: "editor",
+
+  /**
+   * value: "commenter"
+   * @const
+   */
+  commenter: "commenter",
+
+  /**
+   * value: "viewer"
+   * @const
+   */
+  viewer: "viewer"
+};
+/**
+ * Whether the member has admin, editor, commenter, or viewer access to the project.
+ * @member {module:model/ProjectMembershipBase.AccessLevelEnum} access_level
+ */
+ProjectMembershipBase.prototype.access_level = undefined;
 

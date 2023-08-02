@@ -13,12 +13,12 @@
  *
  */
 import {ApiClient} from '../ApiClient';
-import {ProjectRequest} from './ProjectRequest';
+import {ProjectUpdateRequest} from './ProjectUpdateRequest';
 
 /**
  * The ProjectsProjectGidBody model module.
  * @module model/ProjectsProjectGidBody
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class ProjectsProjectGidBody {
   /**
@@ -40,14 +40,14 @@ export class ProjectsProjectGidBody {
     if (data) {
       obj = obj || new ProjectsProjectGidBody();
       if (data.hasOwnProperty('data'))
-        obj.data = ProjectRequest.constructFromObject(data['data']);
+        obj.data = ProjectUpdateRequest.constructFromObject(data['data']);
     }
     return obj;
   }
 }
 
 /**
- * @member {module:model/ProjectRequest} data
+ * @member {module:model/ProjectUpdateRequest} data
  */
 ProjectsProjectGidBody.prototype.data = undefined;
 

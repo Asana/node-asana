@@ -19,7 +19,7 @@ import {NextPage} from './NextPage';
 /**
  * The AsanaNamedResourceArray model module.
  * @module model/AsanaNamedResourceArray
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class AsanaNamedResourceArray {
   /**

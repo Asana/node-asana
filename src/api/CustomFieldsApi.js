@@ -27,7 +27,7 @@ import {ErrorResponse} from '../model/ErrorResponse';
 /**
 * CustomFields service.
 * @module api/CustomFieldsApi
-* @version 2.0.0
+* @version 2.0.1
 */
 export class CustomFieldsApi {
 
@@ -54,15 +54,19 @@ export class CustomFieldsApi {
     /**
      * Create a custom field
      * Creates a new custom field in a workspace. Every custom field is required to be created in a specific workspace, and this workspace cannot be changed once set.  A custom field’s name must be unique within a workspace and not conflict with names of existing task properties such as &#x60;Due Date&#x60; or &#x60;Assignee&#x60;. A custom field’s type must be one of &#x60;text&#x60;, &#x60;enum&#x60;, &#x60;multi_enum&#x60;, &#x60;number&#x60;, &#x60;date&#x60;, or &#x60;people&#x60;.  Returns the full record of the newly created custom field.
+     * @param {module:model/CustomFieldsBody} body The custom field object to create.
      * @param {Object} opts Optional parameters
-     * @param {module:model/CustomFieldsBody} opts.body The custom field object to create.
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @param {module:api/CustomFieldsApi~createCustomFieldCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
-    createCustomField(opts, callback) {
+    createCustomField(body, opts, callback) {
       opts = opts || {};
-      let postBody = opts['body'];
+      let postBody = body;
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling createCustomField");
+      }
 
       let pathParams = {
         

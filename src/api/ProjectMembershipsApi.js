@@ -14,13 +14,13 @@
  */
 import {ApiClient} from "../ApiClient";
 import {ErrorResponse} from '../model/ErrorResponse';
-import {ProjectMembershipResponseArray} from '../model/ProjectMembershipResponseArray';
-import {ProjectMembershipResponseData} from '../model/ProjectMembershipResponseData';
+import {ProjectMembershipCompactArray} from '../model/ProjectMembershipCompactArray';
+import {ProjectMembershipNormalResponseData} from '../model/ProjectMembershipNormalResponseData';
 
 /**
 * ProjectMemberships service.
 * @module api/ProjectMembershipsApi
-* @version 2.0.0
+* @version 2.0.1
 */
 export class ProjectMembershipsApi {
 
@@ -40,7 +40,7 @@ export class ProjectMembershipsApi {
      * Callback function to receive the result of the getProjectMembership operation.
      * @callback moduleapi/ProjectMembershipsApi~getProjectMembershipCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/ProjectMembershipResponseData{ data The data returned by the service call.
+     * @param {module:model/ProjectMembershipNormalResponseData{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -77,7 +77,7 @@ export class ProjectMembershipsApi {
       let authNames = ['oauth2'];
       let contentTypes = [];
       let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectMembershipResponseData;
+      let returnType = ProjectMembershipNormalResponseData;
 
       return this.apiClient.callApi(
         '/project_memberships/{project_membership_gid}', 'GET',
@@ -89,7 +89,7 @@ export class ProjectMembershipsApi {
      * Callback function to receive the result of the getProjectMembershipsForProject operation.
      * @callback moduleapi/ProjectMembershipsApi~getProjectMembershipsForProjectCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/ProjectMembershipResponseArray{ data The data returned by the service call.
+     * @param {module:model/ProjectMembershipCompactArray{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -129,7 +129,7 @@ export class ProjectMembershipsApi {
       let authNames = ['oauth2'];
       let contentTypes = [];
       let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectMembershipResponseArray;
+      let returnType = ProjectMembershipCompactArray;
 
       return this.apiClient.callApi(
         '/projects/{project_gid}/project_memberships', 'GET',

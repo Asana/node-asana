@@ -19,7 +19,7 @@ import {TimeTrackingEntryCompact} from './TimeTrackingEntryCompact';
 /**
  * The TimeTrackingEntryCompactArray model module.
  * @module model/TimeTrackingEntryCompactArray
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class TimeTrackingEntryCompactArray {
   /**

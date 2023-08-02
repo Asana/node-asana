@@ -18,7 +18,7 @@ import {OrganizationExportRequest} from './OrganizationExportRequest';
 /**
  * The OrganizationExportsBody model module.
  * @module model/OrganizationExportsBody
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class OrganizationExportsBody {
   /**

@@ -110,9 +110,10 @@ import {GoalGidRemoveSupportingRelationshipBody} from './model/GoalGidRemoveSupp
 import {GoalGidSetMetricBody} from './model/GoalGidSetMetricBody';
 import {GoalGidSetMetricCurrentValueBody} from './model/GoalGidSetMetricCurrentValueBody';
 import {GoalMembershipBase} from './model/GoalMembershipBase';
-import {GoalMembershipBaseGoal} from './model/GoalMembershipBaseGoal';
 import {GoalMembershipCompact} from './model/GoalMembershipCompact';
 import {GoalMembershipResponse} from './model/GoalMembershipResponse';
+import {GoalMembershipResponseUser} from './model/GoalMembershipResponseUser';
+import {GoalMembershipResponseWorkspace} from './model/GoalMembershipResponseWorkspace';
 import {GoalMetricBase} from './model/GoalMetricBase';
 import {GoalMetricCurrentValueRequest} from './model/GoalMetricCurrentValueRequest';
 import {GoalMetricRequest} from './model/GoalMetricRequest';
@@ -152,6 +153,10 @@ import {JobResponse} from './model/JobResponse';
 import {JobResponseData} from './model/JobResponseData';
 import {Like} from './model/Like';
 import {MemberCompact} from './model/MemberCompact';
+import {MembershipCompact} from './model/MembershipCompact';
+import {MembershipCompactGoal} from './model/MembershipCompactGoal';
+import {MembershipCompactMember} from './model/MembershipCompactMember';
+import {MembershipCompactParent} from './model/MembershipCompactParent';
 import {MembershipRequest} from './model/MembershipRequest';
 import {MembershipResponse} from './model/MembershipResponse';
 import {MembershipResponseArray} from './model/MembershipResponseArray';
@@ -196,7 +201,6 @@ import {Preview} from './model/Preview';
 import {ProjectBase} from './model/ProjectBase';
 import {ProjectBaseCurrentStatus} from './model/ProjectBaseCurrentStatus';
 import {ProjectBaseCurrentStatusUpdate} from './model/ProjectBaseCurrentStatusUpdate';
-import {ProjectBaseWorkspace} from './model/ProjectBaseWorkspace';
 import {ProjectBriefBase} from './model/ProjectBriefBase';
 import {ProjectBriefCompact} from './model/ProjectBriefCompact';
 import {ProjectBriefRequest} from './model/ProjectBriefRequest';
@@ -220,10 +224,10 @@ import {ProjectGidSaveAsTemplateBody} from './model/ProjectGidSaveAsTemplateBody
 import {ProjectGidSectionsBody} from './model/ProjectGidSectionsBody';
 import {ProjectMembershipBase} from './model/ProjectMembershipBase';
 import {ProjectMembershipCompact} from './model/ProjectMembershipCompact';
-import {ProjectMembershipResponse} from './model/ProjectMembershipResponse';
-import {ProjectMembershipResponseArray} from './model/ProjectMembershipResponseArray';
-import {ProjectMembershipResponseData} from './model/ProjectMembershipResponseData';
-import {ProjectMembershipResponseMember} from './model/ProjectMembershipResponseMember';
+import {ProjectMembershipCompactArray} from './model/ProjectMembershipCompactArray';
+import {ProjectMembershipCompactResponse} from './model/ProjectMembershipCompactResponse';
+import {ProjectMembershipNormalResponse} from './model/ProjectMembershipNormalResponse';
+import {ProjectMembershipNormalResponseData} from './model/ProjectMembershipNormalResponseData';
 import {ProjectRequest} from './model/ProjectRequest';
 import {ProjectResponse} from './model/ProjectResponse';
 import {ProjectResponseArray} from './model/ProjectResponseArray';
@@ -232,6 +236,7 @@ import {ProjectResponseCreatedFromTemplate} from './model/ProjectResponseCreated
 import {ProjectResponseData} from './model/ProjectResponseData';
 import {ProjectResponseProjectBrief} from './model/ProjectResponseProjectBrief';
 import {ProjectResponseTeam} from './model/ProjectResponseTeam';
+import {ProjectResponseWorkspace} from './model/ProjectResponseWorkspace';
 import {ProjectSaveAsTemplateRequest} from './model/ProjectSaveAsTemplateRequest';
 import {ProjectSectionInsertRequest} from './model/ProjectSectionInsertRequest';
 import {ProjectStatusBase} from './model/ProjectStatusBase';
@@ -252,6 +257,7 @@ import {ProjectTemplateInstantiateProjectRequestRequestedRoles} from './model/Pr
 import {ProjectTemplateResponse} from './model/ProjectTemplateResponse';
 import {ProjectTemplateResponseArray} from './model/ProjectTemplateResponseArray';
 import {ProjectTemplateResponseData} from './model/ProjectTemplateResponseData';
+import {ProjectUpdateRequest} from './model/ProjectUpdateRequest';
 import {ProjectsBody} from './model/ProjectsBody';
 import {ProjectsProjectGidBody} from './model/ProjectsProjectGidBody';
 import {RemoveCustomFieldSettingRequest} from './model/RemoveCustomFieldSettingRequest';
@@ -490,7 +496,7 @@ import {WorkspacesApi} from './api/WorkspacesApi';
 * </pre>
 * </p>
 * @module index
-* @version 2.0.0
+* @version 2.0.1
 */
 export {
     /**
@@ -1082,12 +1088,6 @@ export {
     GoalMembershipBase,
 
     /**
-     * The GoalMembershipBaseGoal model constructor.
-     * @property {module:model/GoalMembershipBaseGoal}
-     */
-    GoalMembershipBaseGoal,
-
-    /**
      * The GoalMembershipCompact model constructor.
      * @property {module:model/GoalMembershipCompact}
      */
@@ -1098,6 +1098,18 @@ export {
      * @property {module:model/GoalMembershipResponse}
      */
     GoalMembershipResponse,
+
+    /**
+     * The GoalMembershipResponseUser model constructor.
+     * @property {module:model/GoalMembershipResponseUser}
+     */
+    GoalMembershipResponseUser,
+
+    /**
+     * The GoalMembershipResponseWorkspace model constructor.
+     * @property {module:model/GoalMembershipResponseWorkspace}
+     */
+    GoalMembershipResponseWorkspace,
 
     /**
      * The GoalMetricBase model constructor.
@@ -1332,6 +1344,30 @@ export {
      * @property {module:model/MemberCompact}
      */
     MemberCompact,
+
+    /**
+     * The MembershipCompact model constructor.
+     * @property {module:model/MembershipCompact}
+     */
+    MembershipCompact,
+
+    /**
+     * The MembershipCompactGoal model constructor.
+     * @property {module:model/MembershipCompactGoal}
+     */
+    MembershipCompactGoal,
+
+    /**
+     * The MembershipCompactMember model constructor.
+     * @property {module:model/MembershipCompactMember}
+     */
+    MembershipCompactMember,
+
+    /**
+     * The MembershipCompactParent model constructor.
+     * @property {module:model/MembershipCompactParent}
+     */
+    MembershipCompactParent,
 
     /**
      * The MembershipRequest model constructor.
@@ -1598,12 +1634,6 @@ export {
     ProjectBaseCurrentStatusUpdate,
 
     /**
-     * The ProjectBaseWorkspace model constructor.
-     * @property {module:model/ProjectBaseWorkspace}
-     */
-    ProjectBaseWorkspace,
-
-    /**
      * The ProjectBriefBase model constructor.
      * @property {module:model/ProjectBriefBase}
      */
@@ -1742,28 +1772,28 @@ export {
     ProjectMembershipCompact,
 
     /**
-     * The ProjectMembershipResponse model constructor.
-     * @property {module:model/ProjectMembershipResponse}
+     * The ProjectMembershipCompactArray model constructor.
+     * @property {module:model/ProjectMembershipCompactArray}
      */
-    ProjectMembershipResponse,
+    ProjectMembershipCompactArray,
 
     /**
-     * The ProjectMembershipResponseArray model constructor.
-     * @property {module:model/ProjectMembershipResponseArray}
+     * The ProjectMembershipCompactResponse model constructor.
+     * @property {module:model/ProjectMembershipCompactResponse}
      */
-    ProjectMembershipResponseArray,
+    ProjectMembershipCompactResponse,
 
     /**
-     * The ProjectMembershipResponseData model constructor.
-     * @property {module:model/ProjectMembershipResponseData}
+     * The ProjectMembershipNormalResponse model constructor.
+     * @property {module:model/ProjectMembershipNormalResponse}
      */
-    ProjectMembershipResponseData,
+    ProjectMembershipNormalResponse,
 
     /**
-     * The ProjectMembershipResponseMember model constructor.
-     * @property {module:model/ProjectMembershipResponseMember}
+     * The ProjectMembershipNormalResponseData model constructor.
+     * @property {module:model/ProjectMembershipNormalResponseData}
      */
-    ProjectMembershipResponseMember,
+    ProjectMembershipNormalResponseData,
 
     /**
      * The ProjectRequest model constructor.
@@ -1812,6 +1842,12 @@ export {
      * @property {module:model/ProjectResponseTeam}
      */
     ProjectResponseTeam,
+
+    /**
+     * The ProjectResponseWorkspace model constructor.
+     * @property {module:model/ProjectResponseWorkspace}
+     */
+    ProjectResponseWorkspace,
 
     /**
      * The ProjectSaveAsTemplateRequest model constructor.
@@ -1932,6 +1968,12 @@ export {
      * @property {module:model/ProjectTemplateResponseData}
      */
     ProjectTemplateResponseData,
+
+    /**
+     * The ProjectUpdateRequest model constructor.
+     * @property {module:model/ProjectUpdateRequest}
+     */
+    ProjectUpdateRequest,
 
     /**
      * The ProjectsBody model constructor.

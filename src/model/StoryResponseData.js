@@ -18,7 +18,7 @@ import {StoryResponse} from './StoryResponse';
 /**
  * The StoryResponseData model module.
  * @module model/StoryResponseData
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class StoryResponseData {
   /**

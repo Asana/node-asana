@@ -18,7 +18,7 @@ import {TaskRemoveProjectRequest} from './TaskRemoveProjectRequest';
 /**
  * The TaskGidRemoveProjectBody model module.
  * @module model/TaskGidRemoveProjectBody
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class TaskGidRemoveProjectBody {
   /**

@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The ProjectStatusBase model module.
  * @module model/ProjectStatusBase
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class ProjectStatusBase {
   /**

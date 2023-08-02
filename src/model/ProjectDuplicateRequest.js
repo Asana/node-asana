@@ -18,7 +18,7 @@ import {ProjectDuplicateRequestScheduleDates} from './ProjectDuplicateRequestSch
 /**
  * The ProjectDuplicateRequest model module.
  * @module model/ProjectDuplicateRequest
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class ProjectDuplicateRequest {
   /**

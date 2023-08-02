@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="getProjectMembership"></a>
 # **getProjectMembership**
-> ProjectMembershipResponseData getProjectMembership(project_membership_gid, opts)
+> ProjectMembershipNormalResponseData getProjectMembership(project_membership_gid, opts)
 
 Get a project membership
 
@@ -27,7 +27,7 @@ oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
 let apiInstance = new Asana.ProjectMembershipsApi();
 let project_membership_gid = "1331"; // String | 
 let opts = { 
-  'opt_fields': ["access_level","member","member.name","project","project.name","user","user.name","write_access"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+  'opt_fields': ["access_level","member","member.name","parent","parent.name","project","project.name","user","user.name","write_access"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.getProjectMembership(project_membership_gid, opts, (error, data, response) => {
   if (error) {
@@ -47,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectMembershipResponseData**](ProjectMembershipResponseData.md)
+[**ProjectMembershipNormalResponseData**](ProjectMembershipNormalResponseData.md)
 
 ### Authorization
 
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 <a name="getProjectMembershipsForProject"></a>
 # **getProjectMembershipsForProject**
-> ProjectMembershipResponseArray getProjectMembershipsForProject(project_gid, opts)
+> ProjectMembershipCompactArray getProjectMembershipsForProject(project_gid, opts)
 
 Get memberships from a project
 
@@ -81,7 +81,7 @@ let opts = {
   'user': "me", // String | A string identifying a user. This can either be the string \"me\", an email, or the gid of a user.
   'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
   'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
-  'opt_fields': ["access_level","member","member.name","offset","path","project","project.name","uri","user","user.name","write_access"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+  'opt_fields': ["access_level","member","member.name","offset","parent","parent.name","path","uri","user","user.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.getProjectMembershipsForProject(project_gid, opts, (error, data, response) => {
   if (error) {
@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectMembershipResponseArray**](ProjectMembershipResponseArray.md)
+[**ProjectMembershipCompactArray**](ProjectMembershipCompactArray.md)
 
 ### Authorization
 

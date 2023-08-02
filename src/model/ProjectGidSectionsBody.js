@@ -18,7 +18,7 @@ import {SectionRequest} from './SectionRequest';
 /**
  * The ProjectGidSectionsBody model module.
  * @module model/ProjectGidSectionsBody
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class ProjectGidSectionsBody {
   /**

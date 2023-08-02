@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 <a name="createCustomField"></a>
 # **createCustomField**
-> CustomFieldResponseData createCustomField(opts)
+> CustomFieldResponseData createCustomField(body, opts)
 
 Create a custom field
 
@@ -31,11 +31,11 @@ let oauth2 = defaultClient.authentications['oauth2'];
 oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
 
 let apiInstance = new Asana.CustomFieldsApi();
+let body = new Asana.CustomFieldsBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // CustomFieldsBody | The custom field object to create.
 let opts = { 
-  'body': new Asana.CustomFieldsBody.constructFromObject({data: {param1: "value1", param2: "value2",}}) // CustomFieldsBody | The custom field object to create.
   'opt_fields': ["asana_created_field","created_by","created_by.name","currency_code","custom_label","custom_label_position","date_value","date_value.date","date_value.date_time","description","display_value","enabled","enum_options","enum_options.color","enum_options.enabled","enum_options.name","enum_value","enum_value.color","enum_value.enabled","enum_value.name","format","has_notifications_enabled","is_formula_field","is_global_to_workspace","is_value_read_only","multi_enum_values","multi_enum_values.color","multi_enum_values.enabled","multi_enum_values.name","name","number_value","people_value","people_value.name","precision","resource_subtype","text_value","type"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
-apiInstance.createCustomField(opts, (error, data, response) => {
+apiInstance.createCustomField(body, opts, (error, data, response) => {
   if (error) {
   console.error(error);
   } else {
@@ -48,7 +48,7 @@ apiInstance.createCustomField(opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**CustomFieldsBody**](CustomFieldsBody.md)| The custom field object to create. | [optional] 
+ **body** | [**CustomFieldsBody**](CustomFieldsBody.md)| The custom field object to create. | 
  **opt_fields** | [**[String]**](String.md)| This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
 
 ### Return type

@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The PortfolioBase model module.
  * @module model/PortfolioBase
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class PortfolioBase {
   /**

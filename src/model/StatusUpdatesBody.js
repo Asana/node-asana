@@ -18,7 +18,7 @@ import {StatusUpdateRequest} from './StatusUpdateRequest';
 /**
  * The StatusUpdatesBody model module.
  * @module model/StatusUpdatesBody
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class StatusUpdatesBody {
   /**

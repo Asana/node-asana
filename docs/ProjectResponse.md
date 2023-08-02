@@ -21,7 +21,6 @@ Name | Type | Description | Notes
 **notes** | **String** | Free-form textual information associated with the project (ie., its description). | [optional] 
 **_public** | **Boolean** | True if the project is public to its team. | [optional] 
 **start_on** | **Date** | The day on which work for this project begins, or null if the project has no start date. This takes a date with &#x60;YYYY-MM-DD&#x60; format. *Note: &#x60;due_on&#x60; or &#x60;due_at&#x60; must be present in the request when setting or unsetting the &#x60;start_on&#x60; parameter. Additionally, &#x60;start_on&#x60; and &#x60;due_on&#x60; cannot be the same date.* | [optional] 
-**workspace** | [**ProjectBaseWorkspace**](ProjectBaseWorkspace.md) |  | [optional] 
 **custom_fields** | [**[PortfolioResponseCustomFields]**](PortfolioResponseCustomFields.md) | Array of Custom Fields. | [optional] 
 **completed** | **Boolean** | True if the project is currently marked complete, false if not. | [optional] 
 **completed_at** | **Date** | The time at which this project was completed, or null if the project is not completed. | [optional] 
@@ -33,6 +32,8 @@ Name | Type | Description | Notes
 **permalink_url** | **String** | A url that points directly to the object within Asana. | [optional] 
 **project_brief** | [**ProjectResponseProjectBrief**](ProjectResponseProjectBrief.md) |  | [optional] 
 **created_from_template** | [**ProjectResponseCreatedFromTemplate**](ProjectResponseCreatedFromTemplate.md) |  | [optional] 
+**default_access_level** | **String** | The default access users for users who join or are added as members to the project. | [optional] 
+**workspace** | [**ProjectResponseWorkspace**](ProjectResponseWorkspace.md) |  | [optional] 
 
 <a name="ColorEnum"></a>
 ## Enum: ColorEnum
@@ -103,4 +104,13 @@ Name | Type | Description | Notes
 * `map` (value: `"map"`)
 * `ticket` (value: `"ticket"`)
 * `coins` (value: `"coins"`)
+
+
+<a name="DefaultAccessLevelEnum"></a>
+## Enum: DefaultAccessLevelEnum
+
+* `admin` (value: `"admin"`)
+* `editor` (value: `"editor"`)
+* `commenter` (value: `"commenter"`)
+* `viewer` (value: `"viewer"`)
 

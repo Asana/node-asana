@@ -18,7 +18,7 @@ import {PortfolioRequest} from './PortfolioRequest';
 /**
  * The PortfoliosBody model module.
  * @module model/PortfoliosBody
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class PortfoliosBody {
   /**

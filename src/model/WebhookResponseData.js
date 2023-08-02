@@ -18,7 +18,7 @@ import {WebhookResponse} from './WebhookResponse';
 /**
  * The WebhookResponseData model module.
  * @module model/WebhookResponseData
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class WebhookResponseData {
   /**

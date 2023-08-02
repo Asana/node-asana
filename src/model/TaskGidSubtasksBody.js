@@ -18,7 +18,7 @@ import {TaskRequest} from './TaskRequest';
 /**
  * The TaskGidSubtasksBody model module.
  * @module model/TaskGidSubtasksBody
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class TaskGidSubtasksBody {
   /**

@@ -17,12 +17,11 @@ import {CustomFieldResponsePeopleValue} from './CustomFieldResponsePeopleValue';
 import {PortfolioResponseCustomFieldSettings} from './PortfolioResponseCustomFieldSettings';
 import {ProjectBaseCurrentStatus} from './ProjectBaseCurrentStatus';
 import {ProjectBaseCurrentStatusUpdate} from './ProjectBaseCurrentStatusUpdate';
-import {ProjectBaseWorkspace} from './ProjectBaseWorkspace';
 
 /**
  * The ProjectBase model module.
  * @module model/ProjectBase
- * @version 2.0.0
+ * @version 2.0.1
  */
 export class ProjectBase {
   /**
@@ -80,8 +79,6 @@ export class ProjectBase {
         obj._public = ApiClient.convertToType(data['public'], 'Boolean');
       if (data.hasOwnProperty('start_on'))
         obj.start_on = ApiClient.convertToType(data['start_on'], 'Date');
-      if (data.hasOwnProperty('workspace'))
-        obj.workspace = ProjectBaseWorkspace.constructFromObject(data['workspace']);
     }
     return obj;
   }
@@ -348,9 +345,4 @@ ProjectBase.prototype._public = undefined;
  * @member {Date} start_on
  */
 ProjectBase.prototype.start_on = undefined;
-
-/**
- * @member {module:model/ProjectBaseWorkspace} workspace
- */
-ProjectBase.prototype.workspace = undefined;
 
