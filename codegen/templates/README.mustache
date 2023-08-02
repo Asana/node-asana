@@ -30,15 +30,36 @@ then install it via:
 
 ### For browser
 
-The library also works in the browser environment via npm and [browserify](http://browserify.org/). After following
-the above steps with Node.js and installing browserify with `npm install -g browserify`,
-perform the following (assuming *main.js* is your entry file):
+Include the latest release directly from GitHub:
 
-```shell
-browserify main.js > bundle.js
+```html
+<script src="https://github.com/Asana/node-asana/releases/download/v{{projectVersion}}/asana-min.js"></script>
 ```
 
-Then include *bundle.js* in the HTML pages.
+Example usage:
+
+```html
+<script>
+  const defaultClient = Asana.ApiClient.instance;
+  const oauth2 = defaultClient.authentications["oauth2"];
+  oauth2.accessToken =
+    "<YOUR_PERSONAL_ACCESS_TOKEN>";
+
+  let usersApiInstance = new Asana.UsersApi();
+  let user_gid = "me";
+  let opts = {};
+
+  usersApiInstance.getUser(user_gid, opts, (error, data, response) => {
+    if (error) {
+      console.error(error);
+    } else {
+      console.log(
+        "API called successfully. Returned data: " + JSON.stringify(data, null, 2)
+      );
+    }
+  });
+</script>
+```
 
 ### Webpack Configuration
 
@@ -78,7 +99,7 @@ const {{{name}}} = defaultClient.authentications['{{{name}}}'];
 //{{{name}}}.apiKeyPrefix['{{{keyParamName}}}'] = "Token"{{/isApiKey}}{{#isOAuth}}
 // Configure OAuth2 access token for authorization: {{{name}}}
 const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>"{{/isOAuth}}
+{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";{{/isOAuth}}
 {{/authMethods}}
 {{/hasAuthMethods}}
 
@@ -117,7 +138,7 @@ const {{{name}}} = defaultClient.authentications['{{{name}}}'];
 //{{{name}}}.apiKeyPrefix['{{{keyParamName}}}'] = "Token"{{/isApiKey}}{{#isOAuth}}
 // Configure OAuth2 access token for authorization: {{{name}}}
 const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>"{{/isOAuth}}
+{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";{{/isOAuth}}
 {{/authMethods}}
 {{/hasAuthMethods}}{{/@first}}{{/operation}}{{/operations}}{{/@first}}{{/apis}}{{/apiInfo}}
 
@@ -156,7 +177,7 @@ const {{{name}}} = defaultClient.authentications['{{{name}}}'];
 //{{{name}}}.apiKeyPrefix['{{{keyParamName}}}'] = "Token"{{/isApiKey}}{{#isOAuth}}
 // Configure OAuth2 access token for authorization: {{{name}}}
 const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>"{{/isOAuth}}
+{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";{{/isOAuth}}
 {{/authMethods}}
 {{/hasAuthMethods}}{{/@first}}{{/operation}}{{/operations}}{{/@first}}{{/apis}}{{/apiInfo}}
 
@@ -209,7 +230,7 @@ const {{{name}}} = defaultClient.authentications['{{{name}}}'];
 //{{{name}}}.apiKeyPrefix['{{{keyParamName}}}'] = "Token"{{/isApiKey}}{{#isOAuth}}
 // Configure OAuth2 access token for authorization: {{{name}}}
 const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>"{{/isOAuth}}
+{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";{{/isOAuth}}
 {{/authMethods}}
 {{/hasAuthMethods}}{{/@first}}{{/operation}}{{/operations}}{{/@first}}{{/apis}}{{/apiInfo}}
 
@@ -250,7 +271,7 @@ const {{{name}}} = defaultClient.authentications['{{{name}}}'];
 //{{{name}}}.apiKeyPrefix['{{{keyParamName}}}'] = "Token"{{/isApiKey}}{{#isOAuth}}
 // Configure OAuth2 access token for authorization: {{{name}}}
 const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>"{{/isOAuth}}
+{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";{{/isOAuth}}
 {{/authMethods}}
 {{/hasAuthMethods}}{{/@first}}{{/operation}}{{/operations}}{{/@first}}{{/apis}}{{/apiInfo}}
 
@@ -322,7 +343,7 @@ const {{{name}}} = defaultClient.authentications['{{{name}}}'];
 //{{{name}}}.apiKeyPrefix['{{{keyParamName}}}'] = "Token"{{/isApiKey}}{{#isOAuth}}
 // Configure OAuth2 access token for authorization: {{{name}}}
 const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>"{{/isOAuth}}
+{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";{{/isOAuth}}
 {{/authMethods}}
 {{/hasAuthMethods}}{{/@first}}{{/operation}}{{/operations}}{{/@first}}{{/apis}}{{/apiInfo}}
 

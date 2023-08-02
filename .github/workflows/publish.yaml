@@ -1,4 +1,4 @@
-name: Generate Client Library + Publish 📦 to npmjs
+name: Generate Client Library + Publish 📦 to npmjs + Publish to GitHub Releases
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   generate-javascript-library:
-    name: Generate updated JavaScript client library
+    name: Generate JavaScript client library
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -46,11 +46,13 @@ jobs:
       - name: Push changes to master branch
         uses: EndBug/add-and-commit@v9
         with:
-          message: Updated JavaScript SDK
+          message: 'Updated JavaScript SDK: v${{ inputs.version }}'
           committer_name: GitHub Actions
           committer_email: actions@github.com
+          tag: 'v${{ inputs.version }} --force'
+          tag_push: '--force'
   build-n-publish-to-npmjs:
-    needs: [generate-javascript-library]
+    needs: generate-javascript-library
     name: Build and publish 📦 to npmjs
     runs-on: ubuntu-latest
     steps:
@@ -62,7 +64,8 @@ jobs:
         with:
           node-version: "18.x"
           registry-url: "https://registry.npmjs.com"
-      - run: |
+      - name: Build distribution
+        run: |
           npm pkg set 'main'='dist/index.js'
           npm pkg set 'scripts.build'='babel src -d dist'
           npm pkg set 'scripts.prepare'='npm run build'
@@ -70,3 +73,37 @@ jobs:
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  publish-to-github:
+    needs: build-n-publish-to-npmjs
+    name: Publish to GitHub Releases
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: master
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+          registry-url: "https://registry.npmjs.com"
+      - name: Build distribution
+        run: |
+          npm pkg set 'main'='dist/index.js'
+          npm pkg set 'scripts.build'='babel src -d dist'
+          npm pkg set 'scripts.prepare'='npm run build'
+          npm install
+      - name: Bundle code for browser
+        run: |
+          npm install -g browserify
+          npm install -g uglify-js
+          browserify dist/index.js -s Asana | uglifyjs > dist/asana-min.js
+          browserify dist/index.js -s Asana > dist/asana.js
+      - name: Publish to GitHub Releases
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ inputs.version }}
+          files: |
+            dist/asana.js
+            dist/asana-min.js
