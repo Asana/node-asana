@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The CustomFieldResponsePeopleValue model module.
  * @module model/CustomFieldResponsePeopleValue
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class CustomFieldResponsePeopleValue {
   /**

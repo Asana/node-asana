@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The AuditLogEventResource model module.
  * @module model/AuditLogEventResource
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class AuditLogEventResource {
   /**

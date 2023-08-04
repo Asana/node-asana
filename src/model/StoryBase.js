@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The StoryBase model module.
  * @module model/StoryBase
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class StoryBase {
   /**

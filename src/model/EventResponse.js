@@ -21,7 +21,7 @@ import {EventResponseUser} from './EventResponseUser';
 /**
  * The EventResponse model module.
  * @module model/EventResponse
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class EventResponse {
   /**

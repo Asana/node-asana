@@ -406,7 +406,7 @@ let apiInstance = new Asana.ProjectsApi();
 let project_gid = "1331"; // String | Globally unique identifier for the project.
 let opts = { 
   'body': new Asana.ProjectGidDuplicateBody.constructFromObject({data: {param1: "value1", param2: "value2",}}) // ProjectGidDuplicateBody | Describes the duplicate's name and the elements that will be duplicated.
-  'opt_fields': ["new_project","new_project.name","new_project_template","new_project_template.name","new_task","new_task.name","new_task.resource_subtype","resource_subtype","status"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+  'opt_fields': ["new_project","new_project.name","new_project_template","new_project_template.name","new_task","new_task.created_by","new_task.name","new_task.resource_subtype","resource_subtype","status"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.duplicateProject(project_gid, opts, (error, data, response) => {
   if (error) {
@@ -789,7 +789,7 @@ let apiInstance = new Asana.ProjectsApi();
 let body = new Asana.ProjectGidSaveAsTemplateBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // ProjectGidSaveAsTemplateBody | Describes the inputs used for creating a project template, such as the resulting project template's name, which team it should be created in.
 let project_gid = "1331"; // String | Globally unique identifier for the project.
 let opts = { 
-  'opt_fields': ["new_project","new_project.name","new_project_template","new_project_template.name","new_task","new_task.name","new_task.resource_subtype","resource_subtype","status"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+  'opt_fields': ["new_project","new_project.name","new_project_template","new_project_template.name","new_task","new_task.created_by","new_task.name","new_task.resource_subtype","resource_subtype","status"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.projectSaveAsTemplate(bodyproject_gid, opts, (error, data, response) => {
   if (error) {

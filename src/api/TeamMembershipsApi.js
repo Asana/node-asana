@@ -20,7 +20,7 @@ import {TeamMembershipResponseData} from '../model/TeamMembershipResponseData';
 /**
 * TeamMemberships service.
 * @module api/TeamMembershipsApi
-* @version 2.0.1
+* @version 2.0.2
 */
 export class TeamMembershipsApi {
 

@@ -18,7 +18,7 @@ import {AttachmentResponse} from './AttachmentResponse';
 /**
  * The AttachmentResponseData model module.
  * @module model/AttachmentResponseData
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class AttachmentResponseData {
   /**

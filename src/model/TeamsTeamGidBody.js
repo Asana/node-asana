@@ -18,7 +18,7 @@ import {TeamRequest} from './TeamRequest';
 /**
  * The TeamsTeamGidBody model module.
  * @module model/TeamsTeamGidBody
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class TeamsTeamGidBody {
   /**

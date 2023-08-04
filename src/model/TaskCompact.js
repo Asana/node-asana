@@ -13,11 +13,12 @@
  *
  */
 import {ApiClient} from '../ApiClient';
+import {AttachmentResponseParentCreatedBy} from './AttachmentResponseParentCreatedBy';
 
 /**
  * The TaskCompact model module.
  * @module model/TaskCompact
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class TaskCompact {
   /**
@@ -47,6 +48,8 @@ export class TaskCompact {
         obj.name = ApiClient.convertToType(data['name'], 'String');
       if (data.hasOwnProperty('resource_subtype'))
         obj.resource_subtype = ApiClient.convertToType(data['resource_subtype'], 'String');
+      if (data.hasOwnProperty('created_by'))
+        obj.created_by = AttachmentResponseParentCreatedBy.constructFromObject(data['created_by']);
     }
     return obj;
   }
@@ -105,4 +108,9 @@ TaskCompact.ResourceSubtypeEnum = {
  * @member {module:model/TaskCompact.ResourceSubtypeEnum} resource_subtype
  */
 TaskCompact.prototype.resource_subtype = undefined;
+
+/**
+ * @member {module:model/AttachmentResponseParentCreatedBy} created_by
+ */
+TaskCompact.prototype.created_by = undefined;
 

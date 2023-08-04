@@ -27,7 +27,7 @@ import {GoalsGoalGidBody} from '../model/GoalsGoalGidBody';
 /**
 * Goals service.
 * @module api/GoalsApi
-* @version 2.0.1
+* @version 2.0.2
 */
 export class GoalsApi {
 

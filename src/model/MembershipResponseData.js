@@ -18,7 +18,7 @@ import {MembershipResponse} from './MembershipResponse';
 /**
  * The MembershipResponseData model module.
  * @module model/MembershipResponseData
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class MembershipResponseData {
   /**

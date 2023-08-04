@@ -23,7 +23,7 @@ import {TaskGidStoriesBody} from '../model/TaskGidStoriesBody';
 /**
 * Stories service.
 * @module api/StoriesApi
-* @version 2.0.1
+* @version 2.0.2
 */
 export class StoriesApi {
 

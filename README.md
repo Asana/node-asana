@@ -3,7 +3,7 @@
 JavaScript client library for Asana.
 
 - API version: 1.0
-- Package version: 2.0.1
+- Package version: 2.0.2
 
 ## Installation
 
@@ -30,7 +30,7 @@ then install it via:
 Include the latest release directly from GitHub:
 
 ```html
-<script src="https://github.com/Asana/node-asana/releases/download/v2.0.1/asana-min.js"></script>
+<script src="https://github.com/Asana/node-asana/releases/download/v2.0.2/asana-min.js"></script>
 ```
 
 Example usage:
@@ -439,6 +439,7 @@ Class | Method | HTTP request | Description
  - [Asana.AttachmentResponseArray](docs/AttachmentResponseArray.md)
  - [Asana.AttachmentResponseData](docs/AttachmentResponseData.md)
  - [Asana.AttachmentResponseParent](docs/AttachmentResponseParent.md)
+ - [Asana.AttachmentResponseParentCreatedBy](docs/AttachmentResponseParentCreatedBy.md)
  - [Asana.AuditLogEvent](docs/AuditLogEvent.md)
  - [Asana.AuditLogEventActor](docs/AuditLogEventActor.md)
  - [Asana.AuditLogEventArray](docs/AuditLogEventArray.md)

@@ -20,7 +20,7 @@ import {ProjectMembershipNormalResponseData} from '../model/ProjectMembershipNor
 /**
 * ProjectMemberships service.
 * @module api/ProjectMembershipsApi
-* @version 2.0.1
+* @version 2.0.2
 */
 export class ProjectMembershipsApi {
 

@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The StoryResponseOldEnumValue model module.
  * @module model/StoryResponseOldEnumValue
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class StoryResponseOldEnumValue {
   /**

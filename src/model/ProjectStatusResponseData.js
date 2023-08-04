@@ -18,7 +18,7 @@ import {ProjectStatusResponse} from './ProjectStatusResponse';
 /**
  * The ProjectStatusResponseData model module.
  * @module model/ProjectStatusResponseData
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class ProjectStatusResponseData {
   /**

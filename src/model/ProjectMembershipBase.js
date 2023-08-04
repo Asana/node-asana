@@ -20,7 +20,7 @@ import {MembershipCompactMember} from './MembershipCompactMember';
 /**
  * The ProjectMembershipBase model module.
  * @module model/ProjectMembershipBase
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class ProjectMembershipBase {
   /**

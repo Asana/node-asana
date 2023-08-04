@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The BatchResponse model module.
  * @module model/BatchResponse
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class BatchResponse {
   /**

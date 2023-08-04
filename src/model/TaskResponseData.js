@@ -18,7 +18,7 @@ import {TaskResponse} from './TaskResponse';
 /**
  * The TaskResponseData model module.
  * @module model/TaskResponseData
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class TaskResponseData {
   /**

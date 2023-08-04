@@ -18,7 +18,7 @@ import {CustomFieldResponseCreatedBy} from './CustomFieldResponseCreatedBy';
 /**
  * The GoalCompact model module.
  * @module model/GoalCompact
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class GoalCompact {
   /**

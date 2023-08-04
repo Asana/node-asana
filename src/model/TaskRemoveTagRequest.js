@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The TaskRemoveTagRequest model module.
  * @module model/TaskRemoveTagRequest
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class TaskRemoveTagRequest {
   /**

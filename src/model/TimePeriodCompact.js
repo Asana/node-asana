@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The TimePeriodCompact model module.
  * @module model/TimePeriodCompact
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class TimePeriodCompact {
   /**

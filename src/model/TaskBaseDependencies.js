@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The TaskBaseDependencies model module.
  * @module model/TaskBaseDependencies
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class TaskBaseDependencies {
   /**

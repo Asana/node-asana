@@ -19,7 +19,7 @@ import {WebhookResponse} from './WebhookResponse';
 /**
  * The WebhookResponseArray model module.
  * @module model/WebhookResponseArray
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class WebhookResponseArray {
   /**

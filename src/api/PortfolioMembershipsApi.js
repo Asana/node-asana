@@ -20,7 +20,7 @@ import {PortfolioMembershipResponseData} from '../model/PortfolioMembershipRespo
 /**
 * PortfolioMemberships service.
 * @module api/PortfolioMembershipsApi
-* @version 2.0.1
+* @version 2.0.2
 */
 export class PortfolioMembershipsApi {
 

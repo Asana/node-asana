@@ -13,11 +13,12 @@
  *
  */
 import {ApiClient} from '../ApiClient';
+import {AttachmentResponseParentCreatedBy} from './AttachmentResponseParentCreatedBy';
 
 /**
  * The JobBaseNewTask model module.
  * @module model/JobBaseNewTask
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class JobBaseNewTask {
   /**
@@ -47,6 +48,8 @@ export class JobBaseNewTask {
         obj.name = ApiClient.convertToType(data['name'], 'String');
       if (data.hasOwnProperty('resource_subtype'))
         obj.resource_subtype = ApiClient.convertToType(data['resource_subtype'], 'String');
+      if (data.hasOwnProperty('created_by'))
+        obj.created_by = AttachmentResponseParentCreatedBy.constructFromObject(data['created_by']);
     }
     return obj;
   }
@@ -105,4 +108,9 @@ JobBaseNewTask.ResourceSubtypeEnum = {
  * @member {module:model/JobBaseNewTask.ResourceSubtypeEnum} resource_subtype
  */
 JobBaseNewTask.prototype.resource_subtype = undefined;
+
+/**
+ * @member {module:model/AttachmentResponseParentCreatedBy} created_by
+ */
+JobBaseNewTask.prototype.created_by = undefined;
 

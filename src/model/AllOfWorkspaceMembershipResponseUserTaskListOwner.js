@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The AllOfWorkspaceMembershipResponseUserTaskListOwner model module.
  * @module model/AllOfWorkspaceMembershipResponseUserTaskListOwner
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class AllOfWorkspaceMembershipResponseUserTaskListOwner {
   /**

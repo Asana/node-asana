@@ -18,7 +18,7 @@ import {GoalRelationshipRequest} from './GoalRelationshipRequest';
 /**
  * The GoalRelationshipsGoalRelationshipGidBody model module.
  * @module model/GoalRelationshipsGoalRelationshipGidBody
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class GoalRelationshipsGoalRelationshipGidBody {
   /**

@@ -19,7 +19,7 @@ import {GoalResponseWorkspace} from './GoalResponseWorkspace';
 /**
  * The TagResponse model module.
  * @module model/TagResponse
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class TagResponse {
   /**

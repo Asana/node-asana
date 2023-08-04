@@ -18,7 +18,7 @@ import {CustomFieldResponsePeopleValue} from './CustomFieldResponsePeopleValue';
 /**
  * The Like model module.
  * @module model/Like
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class Like {
   /**

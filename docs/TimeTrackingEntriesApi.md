@@ -31,7 +31,7 @@ let apiInstance = new Asana.TimeTrackingEntriesApi();
 let body = new Asana.TaskGidTimeTrackingEntriesBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // TaskGidTimeTrackingEntriesBody | Information about the time tracking entry.
 let task_gid = "321654"; // String | The task to operate on.
 let opts = { 
-  'opt_fields': ["created_at","created_by","created_by.name","duration_minutes","entered_on","task","task.name","task.resource_subtype"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+  'opt_fields': ["created_at","created_by","created_by.name","duration_minutes","entered_on","task","task.created_by","task.name","task.resource_subtype"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.createTimeTrackingEntry(bodytask_gid, opts, (error, data, response) => {
   if (error) {
@@ -186,7 +186,7 @@ oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
 let apiInstance = new Asana.TimeTrackingEntriesApi();
 let time_tracking_entry_gid = "917392"; // String | Globally unique identifier for the time tracking entry.
 let opts = { 
-  'opt_fields': ["created_at","created_by","created_by.name","duration_minutes","entered_on","task","task.name","task.resource_subtype"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+  'opt_fields': ["created_at","created_by","created_by.name","duration_minutes","entered_on","task","task.created_by","task.name","task.resource_subtype"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.getTimeTrackingEntry(time_tracking_entry_gid, opts, (error, data, response) => {
   if (error) {
@@ -238,7 +238,7 @@ let apiInstance = new Asana.TimeTrackingEntriesApi();
 let body = new Asana.TimeTrackingEntriesTimeTrackingEntryGidBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // TimeTrackingEntriesTimeTrackingEntryGidBody | The updated fields for the time tracking entry.
 let time_tracking_entry_gid = "917392"; // String | Globally unique identifier for the time tracking entry.
 let opts = { 
-  'opt_fields': ["created_at","created_by","created_by.name","duration_minutes","entered_on","task","task.name","task.resource_subtype"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+  'opt_fields': ["created_at","created_by","created_by.name","duration_minutes","entered_on","task","task.created_by","task.name","task.resource_subtype"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.updateTimeTrackingEntry(bodytime_tracking_entry_gid, opts, (error, data, response) => {
   if (error) {

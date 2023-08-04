@@ -18,7 +18,7 @@ import {GoalResponseTimePeriod} from './GoalResponseTimePeriod';
 /**
  * The TimePeriodResponse model module.
  * @module model/TimePeriodResponse
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class TimePeriodResponse {
   /**

@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The GoalResponseMetric model module.
  * @module model/GoalResponseMetric
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class GoalResponseMetric {
   /**

@@ -19,7 +19,7 @@ import {ProjectStatusResponse} from './ProjectStatusResponse';
 /**
  * The ProjectStatusResponseArray model module.
  * @module model/ProjectStatusResponseArray
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class ProjectStatusResponseArray {
   /**

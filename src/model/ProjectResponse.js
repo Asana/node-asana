@@ -27,7 +27,7 @@ import {ProjectResponseWorkspace} from './ProjectResponseWorkspace';
 /**
  * The ProjectResponse model module.
  * @module model/ProjectResponse
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class ProjectResponse {
   /**

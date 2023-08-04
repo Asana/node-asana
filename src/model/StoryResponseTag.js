@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The StoryResponseTag model module.
  * @module model/StoryResponseTag
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class StoryResponseTag {
   /**

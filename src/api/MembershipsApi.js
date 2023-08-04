@@ -22,7 +22,7 @@ import {MembershipsBody} from '../model/MembershipsBody';
 /**
 * Memberships service.
 * @module api/MembershipsApi
-* @version 2.0.1
+* @version 2.0.2
 */
 export class MembershipsApi {
 

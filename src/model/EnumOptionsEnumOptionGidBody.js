@@ -18,7 +18,7 @@ import {EnumOptionBase} from './EnumOptionBase';
 /**
  * The EnumOptionsEnumOptionGidBody model module.
  * @module model/EnumOptionsEnumOptionGidBody
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class EnumOptionsEnumOptionGidBody {
   /**

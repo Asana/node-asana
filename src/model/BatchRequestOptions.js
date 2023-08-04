@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The BatchRequestOptions model module.
  * @module model/BatchRequestOptions
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class BatchRequestOptions {
   /**

@@ -18,7 +18,7 @@ import {TaskSetParentRequest} from './TaskSetParentRequest';
 /**
  * The TaskGidSetParentBody model module.
  * @module model/TaskGidSetParentBody
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class TaskGidSetParentBody {
   /**

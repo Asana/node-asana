@@ -41,6 +41,7 @@ import {AttachmentResponse} from './model/AttachmentResponse';
 import {AttachmentResponseArray} from './model/AttachmentResponseArray';
 import {AttachmentResponseData} from './model/AttachmentResponseData';
 import {AttachmentResponseParent} from './model/AttachmentResponseParent';
+import {AttachmentResponseParentCreatedBy} from './model/AttachmentResponseParentCreatedBy';
 import {AuditLogEvent} from './model/AuditLogEvent';
 import {AuditLogEventActor} from './model/AuditLogEventActor';
 import {AuditLogEventArray} from './model/AuditLogEventArray';
@@ -496,7 +497,7 @@ import {WorkspacesApi} from './api/WorkspacesApi';
 * </pre>
 * </p>
 * @module index
-* @version 2.0.1
+* @version 2.0.2
 */
 export {
     /**
@@ -672,6 +673,12 @@ export {
      * @property {module:model/AttachmentResponseParent}
      */
     AttachmentResponseParent,
+
+    /**
+     * The AttachmentResponseParentCreatedBy model constructor.
+     * @property {module:model/AttachmentResponseParentCreatedBy}
+     */
+    AttachmentResponseParentCreatedBy,
 
     /**
      * The AuditLogEvent model constructor.

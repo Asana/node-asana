@@ -18,7 +18,7 @@ import {ProjectSaveAsTemplateRequest} from './ProjectSaveAsTemplateRequest';
 /**
  * The ProjectGidSaveAsTemplateBody model module.
  * @module model/ProjectGidSaveAsTemplateBody
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class ProjectGidSaveAsTemplateBody {
   /**

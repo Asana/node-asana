@@ -18,7 +18,7 @@ import {CreateMembershipRequest} from './CreateMembershipRequest';
 /**
  * The MembershipsBody model module.
  * @module model/MembershipsBody
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class MembershipsBody {
   /**

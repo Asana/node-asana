@@ -13,11 +13,12 @@
  *
  */
 import {ApiClient} from '../ApiClient';
+import {AttachmentResponseParentCreatedBy} from './AttachmentResponseParentCreatedBy';
 
 /**
  * The StoryResponseTask model module.
  * @module model/StoryResponseTask
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class StoryResponseTask {
   /**
@@ -47,6 +48,8 @@ export class StoryResponseTask {
         obj.name = ApiClient.convertToType(data['name'], 'String');
       if (data.hasOwnProperty('resource_subtype'))
         obj.resource_subtype = ApiClient.convertToType(data['resource_subtype'], 'String');
+      if (data.hasOwnProperty('created_by'))
+        obj.created_by = AttachmentResponseParentCreatedBy.constructFromObject(data['created_by']);
     }
     return obj;
   }
@@ -105,4 +108,9 @@ StoryResponseTask.ResourceSubtypeEnum = {
  * @member {module:model/StoryResponseTask.ResourceSubtypeEnum} resource_subtype
  */
 StoryResponseTask.prototype.resource_subtype = undefined;
+
+/**
+ * @member {module:model/AttachmentResponseParentCreatedBy} created_by
+ */
+StoryResponseTask.prototype.created_by = undefined;
 

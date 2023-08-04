@@ -37,7 +37,7 @@ import {TasksTaskGidBody} from '../model/TasksTaskGidBody';
 /**
 * Tasks service.
 * @module api/TasksApi
-* @version 2.0.1
+* @version 2.0.2
 */
 export class TasksApi {
 

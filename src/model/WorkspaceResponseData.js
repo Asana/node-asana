@@ -18,7 +18,7 @@ import {WorkspaceResponse} from './WorkspaceResponse';
 /**
  * The WorkspaceResponseData model module.
  * @module model/WorkspaceResponseData
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class WorkspaceResponseData {
   /**

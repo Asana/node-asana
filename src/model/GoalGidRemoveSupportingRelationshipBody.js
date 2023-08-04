@@ -18,7 +18,7 @@ import {GoalRemoveSupportingRelationshipRequest} from './GoalRemoveSupportingRel
 /**
  * The GoalGidRemoveSupportingRelationshipBody model module.
  * @module model/GoalGidRemoveSupportingRelationshipBody
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class GoalGidRemoveSupportingRelationshipBody {
   /**

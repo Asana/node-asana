@@ -19,7 +19,7 @@ import {JobResponseData} from '../model/JobResponseData';
 /**
 * Jobs service.
 * @module api/JobsApi
-* @version 2.0.1
+* @version 2.0.2
 */
 export class JobsApi {
 

@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The PortfolioMembershipBasePortfolio model module.
  * @module model/PortfolioMembershipBasePortfolio
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class PortfolioMembershipBasePortfolio {
   /**

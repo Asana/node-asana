@@ -13,6 +13,7 @@
  *
  */
 import {ApiClient} from '../ApiClient';
+import {AttachmentResponseParentCreatedBy} from './AttachmentResponseParentCreatedBy';
 import {GoalResponseLikes} from './GoalResponseLikes';
 import {TaskBaseCompletedBy} from './TaskBaseCompletedBy';
 import {TaskBaseDependencies} from './TaskBaseDependencies';
@@ -22,7 +23,7 @@ import {TaskBaseMemberships} from './TaskBaseMemberships';
 /**
  * The TaskRequest model module.
  * @module model/TaskRequest
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class TaskRequest {
   /**
@@ -52,6 +53,8 @@ export class TaskRequest {
         obj.name = ApiClient.convertToType(data['name'], 'String');
       if (data.hasOwnProperty('resource_subtype'))
         obj.resource_subtype = ApiClient.convertToType(data['resource_subtype'], 'String');
+      if (data.hasOwnProperty('created_by'))
+        obj.created_by = AttachmentResponseParentCreatedBy.constructFromObject(data['created_by']);
       if (data.hasOwnProperty('approval_status'))
         obj.approval_status = ApiClient.convertToType(data['approval_status'], 'String');
       if (data.hasOwnProperty('assignee_status'))
@@ -178,6 +181,11 @@ TaskRequest.ResourceSubtypeEnum = {
  * @member {module:model/TaskRequest.ResourceSubtypeEnum} resource_subtype
  */
 TaskRequest.prototype.resource_subtype = undefined;
+
+/**
+ * @member {module:model/AttachmentResponseParentCreatedBy} created_by
+ */
+TaskRequest.prototype.created_by = undefined;
 
 /**
  * Allowed values for the <code>approval_status</code> property.

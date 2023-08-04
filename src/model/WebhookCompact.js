@@ -18,7 +18,7 @@ import {WebhookCompactResource} from './WebhookCompactResource';
 /**
  * The WebhookCompact model module.
  * @module model/WebhookCompact
- * @version 2.0.1
+ * @version 2.0.2
  */
 export class WebhookCompact {
   /**
