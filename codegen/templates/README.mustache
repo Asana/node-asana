@@ -25,7 +25,7 @@ https://github.com/{{#gitUserId}}{{.}}{{/gitUserId}}{{^gitUserId}}YOUR_USERNAME{
 then install it via:
 
 ```shell
-    npm install {{#gitUserId}}{{.}}{{/gitUserId}}{{^gitUserId}}YOUR_USERNAME{{/gitUserId}}/{{#gitRepoId}}{{.}}{{/gitRepoId}}{{^gitRepoId}}{{projectName}}{{/gitRepoId}} --save
+npm install {{#gitUserId}}{{.}}{{/gitUserId}}{{^gitUserId}}YOUR_USERNAME{{/gitUserId}}/{{#gitRepoId}}{{.}}{{/gitRepoId}}{{^gitRepoId}}{{projectName}}{{/gitRepoId}} --save
 ```
 
 ### For browser
@@ -40,24 +40,23 @@ Example usage:
 
 ```html
 <script>
-  const defaultClient = Asana.ApiClient.instance;
-  const oauth2 = defaultClient.authentications["oauth2"];
-  oauth2.accessToken =
-    "<YOUR_PERSONAL_ACCESS_TOKEN>";
+    const defaultClient = Asana.ApiClient.instance;
+    const oauth2 = defaultClient.authentications["oauth2"];
+    oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
 
-  let usersApiInstance = new Asana.UsersApi();
-  let user_gid = "me";
-  let opts = {};
+    let usersApiInstance = new Asana.UsersApi();
+    let user_gid = "me";
+    let opts = {};
 
-  usersApiInstance.getUser(user_gid, opts, (error, data, response) => {
-    if (error) {
-      console.error(error);
-    } else {
-      console.log(
-        "API called successfully. Returned data: " + JSON.stringify(data, null, 2)
-      );
-    }
-  });
+    usersApiInstance.getUser(user_gid, opts, (error, data, response) => {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log(
+            "API called successfully. Returned data: " + JSON.stringify(data, null, 2)
+            );
+        }
+    });
 </script>
 ```
 
@@ -106,15 +105,15 @@ const {{{name}}} = defaultClient.authentications['{{{name}}}'];
 let usersApiInstance = new {{{moduleName}}}.UsersApi()
 let user_gid = "me"; // String | A string identifying a user. This can either be the string \"me\", an email, or the gid of a user.
 let opts = { 
-  'opt_fields': ["email","name","photo","photo.image_1024x1024","photo.image_128x128","photo.image_21x21","photo.image_27x27","photo.image_36x36","photo.image_60x60","workspaces","workspaces.name"] // [String] | Properties to include in the response. Set this query parameter to a comma-separated list of the properties you wish to include.
+    'opt_fields': ["email","name","photo","photo.image_1024x1024","photo.image_128x128","photo.image_21x21","photo.image_27x27","photo.image_36x36","photo.image_60x60","workspaces","workspaces.name"] // [String] | Properties to include in the response. Set this query parameter to a comma-separated list of the properties you wish to include.
 };
 
 usersApiInstance.getUser(user_gid, opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 {{/@first}}{{/operation}}{{/operations}}{{/@first}}{{/apis}}{{/apiInfo}}
 ```
@@ -183,33 +182,31 @@ const {{{name}}} = defaultClient.authentications['{{{name}}}'];
 
 let tasksApiInstance = new {{{moduleName}}}.TasksApi()
 let body = new {{{moduleName}}}.TasksBody.constructFromObject({
-  data: {
-    name: "New Task",
-    approval_status: "pending",
-    assignee_status: "upcoming",
-    completed: false,
-    external: {
-      gid: "1234",
-      data: "A blob of information.",
+    data: {
+        name: "New Task",
+        approval_status: "pending",
+        assignee_status: "upcoming",
+        completed: false,
+        external: {
+            gid: "1234",
+            data: "A blob of information.",
+        },
+        html_notes: "<body>Mittens <em>really</em> likes the stuff from Humboldt.</body>",
+        is_rendered_as_separator: false,
+        liked: true,
+        assignee: "me",
+        projects: ["<YOUR_PROJECT_GID>"],
     },
-    html_notes:
-      "<body>Mittens <em>really</em> likes the stuff from Humboldt.</body>",
-    is_rendered_as_separator: false,
-    liked: true,
-    assignee: "me",
-    projects: ["<YOUR_PROJECT_GID>"],
-  },
 });
 let opts = {};
 
 // POST - Create a task
 tasksApiInstance.createTask(body, opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-    throw new Error(error);
-  } else {
-    console.log("API called successfully. Returned data: " + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log("API called successfully. Returned data: " + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -237,20 +234,19 @@ const {{{name}}} = defaultClient.authentications['{{{name}}}'];
 let tasksApiInstance = new {{{moduleName}}}.TasksApi()
 let task_gid = "<YOUR_TASK_GID>";
 let body = new {{{moduleName}}}.TasksTaskGidBody.constructFromObject({
-  data: {
-    name: "Updated Task",
-  },
+    data: {
+        name: "Updated Task",
+    },
 });
 let opts = {};
 
 // PUT - Update a task
 tasksApiInstance.updateTask(body, task_gid, opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-    throw new Error(error);
-  } else {
-    console.log("API called successfully. Returned data: " + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log("API called successfully. Returned data: " + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -280,12 +276,11 @@ let task_gid = "<YOUR_TASK_GID>";
 
 // DELETE - Delete a task
 tasksApiInstance.deleteTask(task_gid, (error, data, response) => {
-  if (error) {
-    console.error(error);
-    throw new Error(error);
-  } else {
-    console.log("API called successfully. Returned data: " + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log("API called successfully. Returned data: " + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -323,10 +318,39 @@ Class | Method | HTTP request | Description
 {{/each}}
 {{/isOAuth}}
 
+## Adding deprecation flag to your "asana-enable" header
+
+```javascript
+const {{{moduleName}}} = require('{{{projectName}}}');
+{{#apiInfo}}{{#apis}}{{#@first}}{{#operations}}{{#operation}}{{#@first}}{{#hasAuthMethods}}
+const defaultClient = {{{moduleName}}}.ApiClient.instance;
+{{#authMethods}}{{#isBasic}}
+// Configure HTTP basic authorization: {{{name}}}
+const {{{name}}} = defaultClient.authentications['{{{name}}}'];
+{{{name}}}.username = 'YOUR USERNAME'
+{{{name}}}.password = 'YOUR PASSWORD'{{/isBasic}}{{#isApiKey}}
+// Configure API key authorization: {{{name}}}
+const {{{name}}} = defaultClient.authentications['{{{name}}}'];
+{{{name}}}.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//{{{name}}}.apiKeyPrefix['{{{keyParamName}}}'] = "Token"{{/isApiKey}}{{#isOAuth}}
+// Configure OAuth2 access token for authorization: {{{name}}}
+const {{{name}}} = defaultClient.authentications['{{{name}}}'];
+{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";{{/isOAuth}}
+{{/authMethods}}
+{{/hasAuthMethods}}
+
+// Add asana-enable header for the client
+defaultClient.defaultHeaders['asana-enabled'] = 'string_ids';
+```
+
 ## Documentation for Using the `callApi` method
 
 Use this to make http calls when the endpoint does not exist in the current library version or has bugs
 
+### Example: GET, POST, PUT, DELETE on tasks
+
+#### GET - get a task
 ```javascript
 const {{{moduleName}}} = require('{{{projectName}}}');
 {{#apiInfo}}{{#apis}}{{#@first}}{{#operations}}{{#operation}}{{#@first}}{{#hasAuthMethods}}
@@ -349,103 +373,189 @@ const {{{name}}} = defaultClient.authentications['{{{name}}}'];
 
 // GET - get a task
 defaultClient.callApi(
-  "/tasks/{task_gid}",
-  "GET",
-  (pathParams = { task_gid: "<YOUR_TASK_GID>" }),
-  (queryParams = {}),
-  (headerParams = {}),
-  (formParams = {}),
-  (bodyParam = null),
-  (authNames = ["oauth2"]),
-  (contentTypes = []),
-  (accepts = ["application/json; charset=UTF-8"]),
-  (returnType = "Blob"), // Can be one of: "Blob", "String"
-  (callback = (error, data, response) => {
-    if (error) {
-      console.error(error);
-      throw new Error(error);
-    } else {
-      console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
-    }
-  })
+    "/tasks/{task_gid}",
+    "GET",
+    (pathParams = { task_gid: "<YOUR_TASK_GID>" }),
+    (queryParams = {}),
+    (headerParams = {}),
+    (formParams = {}),
+    (bodyParam = null),
+    (authNames = ["oauth2"]),
+    (contentTypes = []),
+    (accepts = ["application/json; charset=UTF-8"]),
+    (returnType = "Blob"), // Can be one of: "Blob", "String"
+    (callback = (error, data, response) => {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
+        }
+    })
 );
+```
+
+#### GET - get multiple tasks -> with opt_fields
+```javascript
+defaultClient.callApi(
+    "/tasks",
+    "GET",
+    (pathParams = {}),
+    (queryParams = { opt_fields: "name,notes,projects" }),
+    (headerParams = {}),
+    (formParams = {}),
+    (bodyParam = null),
+    (authNames = ["oauth2"]),
+    (contentTypes = []),
+    (accepts = ["application/json; charset=UTF-8"]),
+    (returnType = "Blob"), // Can be one of: "Blob", "String"
+    (callback = (error, data, response) => {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
+        }
+    })
+);
+```
+
+#### POST - create a task
+```javascript
+const {{{moduleName}}} = require('{{{projectName}}}');
+{{#apiInfo}}{{#apis}}{{#@first}}{{#operations}}{{#operation}}{{#@first}}{{#hasAuthMethods}}
+const defaultClient = {{{moduleName}}}.ApiClient.instance;
+{{#authMethods}}{{#isBasic}}
+// Configure HTTP basic authorization: {{{name}}}
+const {{{name}}} = defaultClient.authentications['{{{name}}}'];
+{{{name}}}.username = 'YOUR USERNAME'
+{{{name}}}.password = 'YOUR PASSWORD'{{/isBasic}}{{#isApiKey}}
+// Configure API key authorization: {{{name}}}
+const {{{name}}} = defaultClient.authentications['{{{name}}}'];
+{{{name}}}.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//{{{name}}}.apiKeyPrefix['{{{keyParamName}}}'] = "Token"{{/isApiKey}}{{#isOAuth}}
+// Configure OAuth2 access token for authorization: {{{name}}}
+const {{{name}}} = defaultClient.authentications['{{{name}}}'];
+{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";{{/isOAuth}}
+{{/authMethods}}
+{{/hasAuthMethods}}{{/@first}}{{/operation}}{{/operations}}{{/@first}}{{/apis}}{{/apiInfo}}
 
 // POST - create a task
 defaultClient.callApi(
-  "/tasks",
-  "POST",
-  (pathParams = {}),
-  (queryParams = {}),
-  (headerParams = {}),
-  (formParams = {}),
-  (bodyParam = {
-    data: {
-      name: "New Task",
-      projects: ["<YOUR_PROJECT_GID>"],
-    },
-  }),
-  (authNames = ["oauth2"]),
-  (contentTypes = ["application/json; charset=UTF-8"]),
-  (accepts = ["application/json; charset=UTF-8"]),
-  (returnType = "Blob"), // Can be one of: "Blob", "String"
-  (callback = (error, data, response) => {
-    if (error) {
-      console.error(error);
-      throw new Error(error);
-    } else {
-      console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
-    }
-  })
+    "/tasks",
+    "POST",
+    (pathParams = {}),
+    (queryParams = {}),
+    (headerParams = {}),
+    (formParams = {}),
+    (bodyParam = {
+        data: {
+            name: "New Task",
+            projects: ["<YOUR_PROJECT_GID>"],
+        },
+    }),
+    (authNames = ["oauth2"]),
+    (contentTypes = ["application/json; charset=UTF-8"]),
+    (accepts = ["application/json; charset=UTF-8"]),
+    (returnType = "Blob"), // Can be one of: "Blob", "String"
+    (callback = (error, data, response) => {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
+        }
+    })
 );
+```
+
+#### PUT - update a task
+```javascript
+const {{{moduleName}}} = require('{{{projectName}}}');
+{{#apiInfo}}{{#apis}}{{#@first}}{{#operations}}{{#operation}}{{#@first}}{{#hasAuthMethods}}
+const defaultClient = {{{moduleName}}}.ApiClient.instance;
+{{#authMethods}}{{#isBasic}}
+// Configure HTTP basic authorization: {{{name}}}
+const {{{name}}} = defaultClient.authentications['{{{name}}}'];
+{{{name}}}.username = 'YOUR USERNAME'
+{{{name}}}.password = 'YOUR PASSWORD'{{/isBasic}}{{#isApiKey}}
+// Configure API key authorization: {{{name}}}
+const {{{name}}} = defaultClient.authentications['{{{name}}}'];
+{{{name}}}.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//{{{name}}}.apiKeyPrefix['{{{keyParamName}}}'] = "Token"{{/isApiKey}}{{#isOAuth}}
+// Configure OAuth2 access token for authorization: {{{name}}}
+const {{{name}}} = defaultClient.authentications['{{{name}}}'];
+{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";{{/isOAuth}}
+{{/authMethods}}
+{{/hasAuthMethods}}{{/@first}}{{/operation}}{{/operations}}{{/@first}}{{/apis}}{{/apiInfo}}
 
 // PUT - update a task
 defaultClient.callApi(
-  "/tasks/{task_gid}",
-  "PUT",
-  (pathParams = { task_gid: "<YOUR_TASK_GID>" }),
-  (queryParams = {}),
-  (headerParams = {}),
-  (formParams = {}),
-  (bodyParam = {
-    data: {
-      name: "Updated Task",
-    },
-  }),
-  (authNames = ["oauth2"]),
-  (contentTypes = ["application/json; charset=UTF-8"]),
-  (accepts = ["application/json; charset=UTF-8"]),
-  (returnType = "Blob"), // Can be one of: "Blob", "String"
-  (callback = (error, data, response) => {
-    if (error) {
-      console.error(error);
-      throw new Error(error);
-    } else {
-      console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
-    }
-  })
+    "/tasks/{task_gid}",
+    "PUT",
+    (pathParams = { task_gid: "<YOUR_TASK_GID>" }),
+    (queryParams = {}),
+    (headerParams = {}),
+    (formParams = {}),
+    (bodyParam = {
+        data: {
+            name: "Updated Task",
+        },
+    }),
+    (authNames = ["oauth2"]),
+    (contentTypes = ["application/json; charset=UTF-8"]),
+    (accepts = ["application/json; charset=UTF-8"]),
+    (returnType = "Blob"), // Can be one of: "Blob", "String"
+    (callback = (error, data, response) => {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
+        }
+    })
 );
+```
+
+#### DELETE - delete a task
+```javascript
+const {{{moduleName}}} = require('{{{projectName}}}');
+{{#apiInfo}}{{#apis}}{{#@first}}{{#operations}}{{#operation}}{{#@first}}{{#hasAuthMethods}}
+const defaultClient = {{{moduleName}}}.ApiClient.instance;
+{{#authMethods}}{{#isBasic}}
+// Configure HTTP basic authorization: {{{name}}}
+const {{{name}}} = defaultClient.authentications['{{{name}}}'];
+{{{name}}}.username = 'YOUR USERNAME'
+{{{name}}}.password = 'YOUR PASSWORD'{{/isBasic}}{{#isApiKey}}
+// Configure API key authorization: {{{name}}}
+const {{{name}}} = defaultClient.authentications['{{{name}}}'];
+{{{name}}}.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//{{{name}}}.apiKeyPrefix['{{{keyParamName}}}'] = "Token"{{/isApiKey}}{{#isOAuth}}
+// Configure OAuth2 access token for authorization: {{{name}}}
+const {{{name}}} = defaultClient.authentications['{{{name}}}'];
+{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";{{/isOAuth}}
+{{/authMethods}}
+{{/hasAuthMethods}}{{/@first}}{{/operation}}{{/operations}}{{/@first}}{{/apis}}{{/apiInfo}}
 
 // DELETE - delete a task
 defaultClient.callApi(
-  "/tasks/{task_gid}",
-  "DELETE",
-  (pathParams = { task_gid: "<YOUR_TASK_GID>" }),
-  (queryParams = {}),
-  (headerParams = {}),
-  (formParams = {}),
-  (bodyParam = null),
-  (authNames = ["oauth2"]),
-  (contentTypes = []),
-  (accepts = ["application/json; charset=UTF-8"]),
-  (returnType = "Blob"), // Can be one of: "Blob", "String"
-  (callback = (error, data, response) => {
-    if (error) {
-      console.error(error);
-      throw new Error(error);
-    } else {
-      console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
-    }
-  })
+    "/tasks/{task_gid}",
+    "DELETE",
+    (pathParams = { task_gid: "<YOUR_TASK_GID>" }),
+    (queryParams = {}),
+    (headerParams = {}),
+    (formParams = {}),
+    (bodyParam = null),
+    (authNames = ["oauth2"]),
+    (contentTypes = []),
+    (accepts = ["application/json; charset=UTF-8"]),
+    (returnType = "Blob"), // Can be one of: "Blob", "String"
+    (callback = (error, data, response) => {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
+        }
+    })
 );
 ```
 

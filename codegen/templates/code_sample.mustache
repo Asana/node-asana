@@ -27,21 +27,21 @@ let apiInstance = new {{{moduleName}}}.{{{classname}}}();{{#hasParams}}
 let {{{paramName}}} = {{{example}}}; // {{{dataType}}} | {{{description}}}
 {{/required}}{{/parameters}}{{/vendorExtensions.x-codegen-hasRequiredParams}}{{#hasOptionalParams}}
 let opts = { {{#parameters}}{{^required}}
-  '{{{paramName}}}': {{{example}}}{{#vendorExtensions.x-codegen-hasMoreOptional}},{{/vendorExtensions.x-codegen-hasMoreOptional}} // {{{dataType}}} | {{{description}}}{{/required}}{{/parameters}}
+    '{{{paramName}}}': {{{example}}}{{#vendorExtensions.x-codegen-hasMoreOptional}},{{/vendorExtensions.x-codegen-hasMoreOptional}} // {{{dataType}}} | {{{description}}}{{/required}}{{/parameters}}
 };{{/hasOptionalParams}}{{/hasParams}}
 {{#usePromises}}
 apiInstance.{{{operationId}}}({{#parameters}}{{#required}}{{{paramName}}}{{#vendorExtensions.x-codegen-hasMoreRequired}}, {{/vendorExtensions.x-codegen-hasMoreRequired}}{{/required}}{{/parameters}}{{#hasOptionalParams}}{{#vendorExtensions.x-codegen-hasRequiredParams}}, {{/vendorExtensions.x-codegen-hasRequiredParams}}opts{{/hasOptionalParams}}).then(({{#returnType}}data{{/returnType}}) => {
-  {{#returnType}}console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));{{/returnType}}{{^returnType}}console.log('API called successfully.');{{/returnType}}
+    {{#returnType}}console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));{{/returnType}}{{^returnType}}console.log('API called successfully.');{{/returnType}}
 }, (error) => {
-  console.error(error);
+    console.error(error);
 });
 
 {{/usePromises}}{{^usePromises}}
 apiInstance.{{{operationId}}}({{#parameters}}{{#required}}{{{paramName}}}{{#vendorExtensions.x-codegen-hasMoreRequired}}, {{/vendorExtensions.x-codegen-hasMoreRequired}}{{/required}}{{/parameters}}{{#hasOptionalParams}}{{#vendorExtensions.x-codegen-hasRequiredParams}}, {{/vendorExtensions.x-codegen-hasRequiredParams}}opts{{/hasOptionalParams}}{{#hasParams}}, {{/hasParams}}(error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  {{#returnType}}console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));{{/returnType}}{{^returnType}}console.log('API called successfully.');{{/returnType}}
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        {{#returnType}}console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));{{/returnType}}{{^returnType}}console.log('API called successfully.');{{/returnType}}
+    }
 });
 {{/usePromises}}
