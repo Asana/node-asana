@@ -308,6 +308,64 @@ Class | Method | HTTP request | Description
 {{/each}}
 {{/isOAuth}}
 
+## Accessing repsonse data
+
+By default, the client library returns a class object of the resource. You can use dot notation to access the response data.
+
+TIP: look at the "Return type" section of the documented endpoint to understand which properties are accessible. (EX: [get_task](docs/TasksApi.md#get_task))
+
+```javascript
+.
+.
+.
+tasksApiInstance.getTask(task_gid, opts, (error, task, response) => {
+    if (error) {
+        console.error(error);
+    } else {
+        let taskName = task.data.name
+        let taskNotes = task.data.notes
+    }
+});
+```
+
+## Accessing response status code and headers
+
+```javascript
+const {{{moduleName}}} = require('{{{projectName}}}');
+{{#apiInfo}}{{#apis}}{{#@first}}{{#operations}}{{#operation}}{{#@first}}{{#hasAuthMethods}}
+const defaultClient = {{{moduleName}}}.ApiClient.instance;
+{{#authMethods}}{{#isBasic}}
+// Configure HTTP basic authorization: {{{name}}}
+const {{{name}}} = defaultClient.authentications['{{{name}}}'];
+{{{name}}}.username = 'YOUR USERNAME'
+{{{name}}}.password = 'YOUR PASSWORD'{{/isBasic}}{{#isApiKey}}
+// Configure API key authorization: {{{name}}}
+const {{{name}}} = defaultClient.authentications['{{{name}}}'];
+{{{name}}}.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//{{{name}}}.apiKeyPrefix['{{{keyParamName}}}'] = "Token"{{/isApiKey}}{{#isOAuth}}
+// Configure OAuth2 access token for authorization: {{{name}}}
+const {{{name}}} = defaultClient.authentications['{{{name}}}'];
+{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";{{/isOAuth}}
+{{/authMethods}}
+{{/hasAuthMethods}}{{/@first}}{{/operation}}{{/operations}}{{/@first}}{{/apis}}{{/apiInfo}}
+
+let usersApiInstance = new {{{moduleName}}}.UsersApi()
+let user_gid = "me"; // String | A string identifying a user. This can either be the string \"me\", an email, or the gid of a user.
+let opts = {};
+
+usersApiInstance.getUser(user_gid, opts, (error, data, response) => {
+    if (error) {
+        console.error(error);
+    } else {
+        // Response Status
+        console.log("Response Status:" + response.status)
+        // Response Headers
+        console.log("Response Headers": + JSON.stringify(response.headers))
+    }
+});
+```
+
 ## Adding deprecation flag to your "asana-enable" header
 
 ```javascript
@@ -328,7 +386,7 @@ const {{{name}}} = defaultClient.authentications['{{{name}}}'];
 const {{{name}}} = defaultClient.authentications['{{{name}}}'];
 {{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";{{/isOAuth}}
 {{/authMethods}}
-{{/hasAuthMethods}}
+{{/hasAuthMethods}}{{/@first}}{{/operation}}{{/operations}}{{/@first}}{{/apis}}{{/apiInfo}}
 
 // Add asana-enable header for the client
 defaultClient.defaultHeaders['asana-enabled'] = 'string_ids';
