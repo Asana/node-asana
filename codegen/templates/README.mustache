@@ -308,6 +308,52 @@ Class | Method | HTTP request | Description
 {{/each}}
 {{/isOAuth}}
 
+## Getting events
+
+In order to get events you will need a sync token. This sync token can be acquired in the error message from the initial
+request to [getEvents](docs/EventsApi.md#getEvents).
+
+```javascript
+const {{{moduleName}}} = require('{{{projectName}}}');
+{{#apiInfo}}{{#apis}}{{#@first}}{{#operations}}{{#operation}}{{#@first}}{{#hasAuthMethods}}
+const defaultClient = {{{moduleName}}}.ApiClient.instance;
+{{#authMethods}}{{#isBasic}}
+// Configure HTTP basic authorization: {{{name}}}
+const {{{name}}} = defaultClient.authentications['{{{name}}}'];
+{{{name}}}.username = 'YOUR USERNAME'
+{{{name}}}.password = 'YOUR PASSWORD'{{/isBasic}}{{#isApiKey}}
+// Configure API key authorization: {{{name}}}
+const {{{name}}} = defaultClient.authentications['{{{name}}}'];
+{{{name}}}.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//{{{name}}}.apiKeyPrefix['{{{keyParamName}}}'] = "Token"{{/isApiKey}}{{#isOAuth}}
+// Configure OAuth2 access token for authorization: {{{name}}}
+const {{{name}}} = defaultClient.authentications['{{{name}}}'];
+{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";{{/isOAuth}}
+{{/authMethods}}
+{{/hasAuthMethods}}{{/@first}}{{/operation}}{{/operations}}{{/@first}}{{/apis}}{{/apiInfo}}
+
+let eventsApiInstance = new {{{moduleName}}}.EventsApi();
+let resource = "12345"; // String | A resource ID to subscribe to. The resource can be a task or project.
+let opts = {
+    sync: ''
+};
+
+// Initial request to get the sync token
+eventsApiInstance.getEvents(resource, opts, (error, data, response) => {
+    // Set the sync token
+    opts['sync'] = JSON.parse(response.text)['sync']
+    // Follow up request to get events
+    eventsApiInstance.getEvents(resource, opts, (error, data, response) => {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+        }
+    });
+});
+```
+
 ## Accessing repsonse data
 
 By default, the client library returns a class object of the resource. You can use dot notation to access the response data.
