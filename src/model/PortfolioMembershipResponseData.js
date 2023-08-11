@@ -18,7 +18,7 @@ import {PortfolioMembershipResponse} from './PortfolioMembershipResponse';
 /**
  * The PortfolioMembershipResponseData model module.
  * @module model/PortfolioMembershipResponseData
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class PortfolioMembershipResponseData {
   /**

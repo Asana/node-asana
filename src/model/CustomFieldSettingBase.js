@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The CustomFieldSettingBase model module.
  * @module model/CustomFieldSettingBase
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class CustomFieldSettingBase {
   /**

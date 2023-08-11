@@ -17,7 +17,7 @@ import querystring from "querystring";
 
 /**
 * @module ApiClient
-* @version 2.0.2
+* @version 2.0.3
 */
 
 /**
@@ -401,7 +401,7 @@ export class ApiClient {
         // set header parameters
         headerParams['X-Asana-Client-Lib'] = querystring.stringify(
             {
-                'version': "2.0.2",
+                'version': "2.0.3",
                 'language': 'NodeJS',
                 'language_version': process.version,
                 'os': process.platform

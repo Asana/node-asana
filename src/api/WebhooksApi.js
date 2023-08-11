@@ -23,7 +23,7 @@ import {WebhooksWebhookGidBody} from '../model/WebhooksWebhookGidBody';
 /**
 * Webhooks service.
 * @module api/WebhooksApi
-* @version 2.0.2
+* @version 2.0.3
 */
 export class WebhooksApi {
 

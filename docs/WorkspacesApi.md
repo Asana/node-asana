@@ -31,14 +31,14 @@ let apiInstance = new Asana.WorkspacesApi();
 let body = new Asana.WorkspaceGidAddUserBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // WorkspaceGidAddUserBody | The user to add to the workspace.
 let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
 let opts = { 
-  'opt_fields': ["email","name","photo","photo.image_1024x1024","photo.image_128x128","photo.image_21x21","photo.image_27x27","photo.image_36x36","photo.image_60x60"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'opt_fields': ["email","name","photo","photo.image_1024x1024","photo.image_128x128","photo.image_21x21","photo.image_27x27","photo.image_36x36","photo.image_60x60"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.addUserForWorkspace(bodyworkspace_gid, opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -83,14 +83,14 @@ oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
 let apiInstance = new Asana.WorkspacesApi();
 let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
 let opts = { 
-  'opt_fields': ["email_domains","is_organization","name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'opt_fields': ["email_domains","is_organization","name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.getWorkspace(workspace_gid, opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -133,16 +133,16 @@ oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
 
 let apiInstance = new Asana.WorkspacesApi();
 let opts = { 
-  'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
-  'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
-  'opt_fields': ["email_domains","is_organization","name","offset","path","uri"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
+    'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
+    'opt_fields': ["email_domains","is_organization","name","offset","path","uri"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.getWorkspaces(opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -189,11 +189,11 @@ let body = new Asana.WorkspaceGidRemoveUserBody.constructFromObject({data: {para
 let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
 
 apiInstance.removeUserForWorkspace(bodyworkspace_gid, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -238,14 +238,14 @@ let apiInstance = new Asana.WorkspacesApi();
 let body = new Asana.WorkspacesWorkspaceGidBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // WorkspacesWorkspaceGidBody | The workspace object with all updated properties.
 let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
 let opts = { 
-  'opt_fields': ["email_domains","is_organization","name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'opt_fields': ["email_domains","is_organization","name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.updateWorkspace(bodyworkspace_gid, opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 

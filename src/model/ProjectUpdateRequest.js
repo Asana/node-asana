@@ -21,7 +21,7 @@ import {ProjectBaseCurrentStatusUpdate} from './ProjectBaseCurrentStatusUpdate';
 /**
  * The ProjectUpdateRequest model module.
  * @module model/ProjectUpdateRequest
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class ProjectUpdateRequest {
   /**
@@ -79,6 +79,8 @@ export class ProjectUpdateRequest {
         obj._public = ApiClient.convertToType(data['public'], 'Boolean');
       if (data.hasOwnProperty('start_on'))
         obj.start_on = ApiClient.convertToType(data['start_on'], 'Date');
+      if (data.hasOwnProperty('default_access_level'))
+        obj.default_access_level = ApiClient.convertToType(data['default_access_level'], 'String');
       if (data.hasOwnProperty('custom_fields'))
         obj.custom_fields = ApiClient.convertToType(data['custom_fields'], {'String': 'String'});
       if (data.hasOwnProperty('followers'))
@@ -353,6 +355,42 @@ ProjectUpdateRequest.prototype._public = undefined;
  * @member {Date} start_on
  */
 ProjectUpdateRequest.prototype.start_on = undefined;
+
+/**
+ * Allowed values for the <code>default_access_level</code> property.
+ * @enum {String}
+ * @readonly
+ */
+ProjectUpdateRequest.DefaultAccessLevelEnum = {
+  /**
+   * value: "admin"
+   * @const
+   */
+  admin: "admin",
+
+  /**
+   * value: "editor"
+   * @const
+   */
+  editor: "editor",
+
+  /**
+   * value: "commenter"
+   * @const
+   */
+  commenter: "commenter",
+
+  /**
+   * value: "viewer"
+   * @const
+   */
+  viewer: "viewer"
+};
+/**
+ * The default access for users or teams who join or are added as members to the project.
+ * @member {module:model/ProjectUpdateRequest.DefaultAccessLevelEnum} default_access_level
+ */
+ProjectUpdateRequest.prototype.default_access_level = undefined;
 
 /**
  * An object where each key is a Custom Field GID and each value is an enum GID, string, number, or object.

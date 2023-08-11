@@ -18,7 +18,7 @@ import {RemoveCustomFieldSettingRequest} from './RemoveCustomFieldSettingRequest
 /**
  * The PortfolioGidRemoveCustomFieldSettingBody model module.
  * @module model/PortfolioGidRemoveCustomFieldSettingBody
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class PortfolioGidRemoveCustomFieldSettingBody {
   /**

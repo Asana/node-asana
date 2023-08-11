@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The ProjectTemplateInstantiateProjectRequestRequestedDates model module.
  * @module model/ProjectTemplateInstantiateProjectRequestRequestedDates
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class ProjectTemplateInstantiateProjectRequestRequestedDates {
   /**

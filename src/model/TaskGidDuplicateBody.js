@@ -18,7 +18,7 @@ import {TaskDuplicateRequest} from './TaskDuplicateRequest';
 /**
  * The TaskGidDuplicateBody model module.
  * @module model/TaskGidDuplicateBody
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class TaskGidDuplicateBody {
   /**

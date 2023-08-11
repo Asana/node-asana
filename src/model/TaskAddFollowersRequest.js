@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The TaskAddFollowersRequest model module.
  * @module model/TaskAddFollowersRequest
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class TaskAddFollowersRequest {
   /**

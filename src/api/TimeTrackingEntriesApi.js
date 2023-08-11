@@ -23,7 +23,7 @@ import {TimeTrackingEntryCompactArray} from '../model/TimeTrackingEntryCompactAr
 /**
 * TimeTrackingEntries service.
 * @module api/TimeTrackingEntriesApi
-* @version 2.0.2
+* @version 2.0.3
 */
 export class TimeTrackingEntriesApi {
 

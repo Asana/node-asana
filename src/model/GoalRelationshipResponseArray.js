@@ -19,7 +19,7 @@ import {NextPage} from './NextPage';
 /**
  * The GoalRelationshipResponseArray model module.
  * @module model/GoalRelationshipResponseArray
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class GoalRelationshipResponseArray {
   /**

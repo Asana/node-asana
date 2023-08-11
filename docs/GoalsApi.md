@@ -36,14 +36,14 @@ let apiInstance = new Asana.GoalsApi();
 let body = new Asana.GoalGidAddFollowersBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // GoalGidAddFollowersBody | The followers to be added as collaborators
 let goal_gid = "12345"; // String | Globally unique identifier for the goal.
 let opts = { 
-  'opt_fields': ["current_status_update","current_status_update.resource_subtype","current_status_update.title","due_on","followers","followers.name","html_notes","is_workspace_level","liked","likes","likes.user","likes.user.name","metric","metric.can_manage","metric.currency_code","metric.current_display_value","metric.current_number_value","metric.initial_number_value","metric.precision","metric.progress_source","metric.resource_subtype","metric.target_number_value","metric.unit","name","notes","num_likes","owner","owner.name","start_on","status","team","team.name","time_period","time_period.display_name","time_period.end_on","time_period.period","time_period.start_on","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'opt_fields': ["current_status_update","current_status_update.resource_subtype","current_status_update.title","due_on","followers","followers.name","html_notes","is_workspace_level","liked","likes","likes.user","likes.user.name","metric","metric.can_manage","metric.currency_code","metric.current_display_value","metric.current_number_value","metric.initial_number_value","metric.precision","metric.progress_source","metric.resource_subtype","metric.target_number_value","metric.unit","name","notes","num_likes","owner","owner.name","start_on","status","team","team.name","time_period","time_period.display_name","time_period.end_on","time_period.period","time_period.start_on","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.addFollowers(bodygoal_gid, opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -88,14 +88,14 @@ oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
 let apiInstance = new Asana.GoalsApi();
 let body = new Asana.GoalsBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // GoalsBody | The goal to create.
 let opts = { 
-  'opt_fields': ["current_status_update","current_status_update.resource_subtype","current_status_update.title","due_on","followers","followers.name","html_notes","is_workspace_level","liked","likes","likes.user","likes.user.name","metric","metric.can_manage","metric.currency_code","metric.current_display_value","metric.current_number_value","metric.initial_number_value","metric.precision","metric.progress_source","metric.resource_subtype","metric.target_number_value","metric.unit","name","notes","num_likes","owner","owner.name","start_on","status","team","team.name","time_period","time_period.display_name","time_period.end_on","time_period.period","time_period.start_on","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'opt_fields': ["current_status_update","current_status_update.resource_subtype","current_status_update.title","due_on","followers","followers.name","html_notes","is_workspace_level","liked","likes","likes.user","likes.user.name","metric","metric.can_manage","metric.currency_code","metric.current_display_value","metric.current_number_value","metric.initial_number_value","metric.precision","metric.progress_source","metric.resource_subtype","metric.target_number_value","metric.unit","name","notes","num_likes","owner","owner.name","start_on","status","team","team.name","time_period","time_period.display_name","time_period.end_on","time_period.period","time_period.start_on","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.createGoal(body, opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -140,14 +140,14 @@ let apiInstance = new Asana.GoalsApi();
 let body = new Asana.GoalGidSetMetricBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // GoalGidSetMetricBody | The goal metric to create.
 let goal_gid = "12345"; // String | Globally unique identifier for the goal.
 let opts = { 
-  'opt_fields': ["current_status_update","current_status_update.resource_subtype","current_status_update.title","due_on","followers","followers.name","html_notes","is_workspace_level","liked","likes","likes.user","likes.user.name","metric","metric.can_manage","metric.currency_code","metric.current_display_value","metric.current_number_value","metric.initial_number_value","metric.precision","metric.progress_source","metric.resource_subtype","metric.target_number_value","metric.unit","name","notes","num_likes","owner","owner.name","start_on","status","team","team.name","time_period","time_period.display_name","time_period.end_on","time_period.period","time_period.start_on","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'opt_fields': ["current_status_update","current_status_update.resource_subtype","current_status_update.title","due_on","followers","followers.name","html_notes","is_workspace_level","liked","likes","likes.user","likes.user.name","metric","metric.can_manage","metric.currency_code","metric.current_display_value","metric.current_number_value","metric.initial_number_value","metric.precision","metric.progress_source","metric.resource_subtype","metric.target_number_value","metric.unit","name","notes","num_likes","owner","owner.name","start_on","status","team","team.name","time_period","time_period.display_name","time_period.end_on","time_period.period","time_period.start_on","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.createGoalMetric(bodygoal_gid, opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -193,11 +193,11 @@ let apiInstance = new Asana.GoalsApi();
 let goal_gid = "12345"; // String | Globally unique identifier for the goal.
 
 apiInstance.deleteGoal(goal_gid, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -240,14 +240,14 @@ oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
 let apiInstance = new Asana.GoalsApi();
 let goal_gid = "12345"; // String | Globally unique identifier for the goal.
 let opts = { 
-  'opt_fields': ["current_status_update","current_status_update.resource_subtype","current_status_update.title","due_on","followers","followers.name","html_notes","is_workspace_level","liked","likes","likes.user","likes.user.name","metric","metric.can_manage","metric.currency_code","metric.current_display_value","metric.current_number_value","metric.initial_number_value","metric.precision","metric.progress_source","metric.resource_subtype","metric.target_number_value","metric.unit","name","notes","num_likes","owner","owner.name","start_on","status","team","team.name","time_period","time_period.display_name","time_period.end_on","time_period.period","time_period.start_on","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'opt_fields': ["current_status_update","current_status_update.resource_subtype","current_status_update.title","due_on","followers","followers.name","html_notes","is_workspace_level","liked","likes","likes.user","likes.user.name","metric","metric.can_manage","metric.currency_code","metric.current_display_value","metric.current_number_value","metric.initial_number_value","metric.precision","metric.progress_source","metric.resource_subtype","metric.target_number_value","metric.unit","name","notes","num_likes","owner","owner.name","start_on","status","team","team.name","time_period","time_period.display_name","time_period.end_on","time_period.period","time_period.start_on","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.getGoal(goal_gid, opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -290,22 +290,22 @@ oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
 
 let apiInstance = new Asana.GoalsApi();
 let opts = { 
-  'portfolio': "159874", // String | Globally unique identifier for supporting portfolio.
-  'project': "512241", // String | Globally unique identifier for supporting project.
-  'is_workspace_level': false, // Boolean | Filter to goals with is_workspace_level set to query value. Must be used with the workspace parameter.
-  'team': "31326", // String | Globally unique identifier for the team.
-  'workspace': "31326", // String | Globally unique identifier for the workspace.
-  'time_periods': ["221693,506165"], // [String] | Globally unique identifiers for the time periods.
-  'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
-  'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
-  'opt_fields': ["current_status_update","current_status_update.resource_subtype","current_status_update.title","due_on","followers","followers.name","html_notes","is_workspace_level","liked","likes","likes.user","likes.user.name","metric","metric.can_manage","metric.currency_code","metric.current_display_value","metric.current_number_value","metric.initial_number_value","metric.precision","metric.progress_source","metric.resource_subtype","metric.target_number_value","metric.unit","name","notes","num_likes","offset","owner","owner.name","path","start_on","status","team","team.name","time_period","time_period.display_name","time_period.end_on","time_period.period","time_period.start_on","uri","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'portfolio': "159874", // String | Globally unique identifier for supporting portfolio.
+    'project': "512241", // String | Globally unique identifier for supporting project.
+    'is_workspace_level': false, // Boolean | Filter to goals with is_workspace_level set to query value. Must be used with the workspace parameter.
+    'team': "31326", // String | Globally unique identifier for the team.
+    'workspace': "31326", // String | Globally unique identifier for the workspace.
+    'time_periods': ["221693,506165"], // [String] | Globally unique identifiers for the time periods.
+    'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
+    'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
+    'opt_fields': ["current_status_update","current_status_update.resource_subtype","current_status_update.title","due_on","followers","followers.name","html_notes","is_workspace_level","liked","likes","likes.user","likes.user.name","metric","metric.can_manage","metric.currency_code","metric.current_display_value","metric.current_number_value","metric.initial_number_value","metric.precision","metric.progress_source","metric.resource_subtype","metric.target_number_value","metric.unit","name","notes","num_likes","offset","owner","owner.name","path","start_on","status","team","team.name","time_period","time_period.display_name","time_period.end_on","time_period.period","time_period.start_on","uri","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.getGoals(opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -356,14 +356,14 @@ oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
 let apiInstance = new Asana.GoalsApi();
 let goal_gid = "12345"; // String | Globally unique identifier for the goal.
 let opts = { 
-  'opt_fields': ["current_status_update","current_status_update.resource_subtype","current_status_update.title","due_on","followers","followers.name","html_notes","is_workspace_level","liked","likes","likes.user","likes.user.name","metric","metric.can_manage","metric.currency_code","metric.current_display_value","metric.current_number_value","metric.initial_number_value","metric.precision","metric.progress_source","metric.resource_subtype","metric.target_number_value","metric.unit","name","notes","num_likes","owner","owner.name","start_on","status","team","team.name","time_period","time_period.display_name","time_period.end_on","time_period.period","time_period.start_on","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'opt_fields': ["current_status_update","current_status_update.resource_subtype","current_status_update.title","due_on","followers","followers.name","html_notes","is_workspace_level","liked","likes","likes.user","likes.user.name","metric","metric.can_manage","metric.currency_code","metric.current_display_value","metric.current_number_value","metric.initial_number_value","metric.precision","metric.progress_source","metric.resource_subtype","metric.target_number_value","metric.unit","name","notes","num_likes","owner","owner.name","start_on","status","team","team.name","time_period","time_period.display_name","time_period.end_on","time_period.period","time_period.start_on","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.getParentGoalsForGoal(goal_gid, opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -408,14 +408,14 @@ let apiInstance = new Asana.GoalsApi();
 let body = new Asana.GoalGidRemoveFollowersBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // GoalGidRemoveFollowersBody | The followers to be removed as collaborators
 let goal_gid = "12345"; // String | Globally unique identifier for the goal.
 let opts = { 
-  'opt_fields': ["current_status_update","current_status_update.resource_subtype","current_status_update.title","due_on","followers","followers.name","html_notes","is_workspace_level","liked","likes","likes.user","likes.user.name","metric","metric.can_manage","metric.currency_code","metric.current_display_value","metric.current_number_value","metric.initial_number_value","metric.precision","metric.progress_source","metric.resource_subtype","metric.target_number_value","metric.unit","name","notes","num_likes","owner","owner.name","start_on","status","team","team.name","time_period","time_period.display_name","time_period.end_on","time_period.period","time_period.start_on","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'opt_fields': ["current_status_update","current_status_update.resource_subtype","current_status_update.title","due_on","followers","followers.name","html_notes","is_workspace_level","liked","likes","likes.user","likes.user.name","metric","metric.can_manage","metric.currency_code","metric.current_display_value","metric.current_number_value","metric.initial_number_value","metric.precision","metric.progress_source","metric.resource_subtype","metric.target_number_value","metric.unit","name","notes","num_likes","owner","owner.name","start_on","status","team","team.name","time_period","time_period.display_name","time_period.end_on","time_period.period","time_period.start_on","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.removeFollowers(bodygoal_gid, opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -461,14 +461,14 @@ let apiInstance = new Asana.GoalsApi();
 let body = new Asana.GoalsGoalGidBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // GoalsGoalGidBody | The updated fields for the goal.
 let goal_gid = "12345"; // String | Globally unique identifier for the goal.
 let opts = { 
-  'opt_fields': ["current_status_update","current_status_update.resource_subtype","current_status_update.title","due_on","followers","followers.name","html_notes","is_workspace_level","liked","likes","likes.user","likes.user.name","metric","metric.can_manage","metric.currency_code","metric.current_display_value","metric.current_number_value","metric.initial_number_value","metric.precision","metric.progress_source","metric.resource_subtype","metric.target_number_value","metric.unit","name","notes","num_likes","owner","owner.name","start_on","status","team","team.name","time_period","time_period.display_name","time_period.end_on","time_period.period","time_period.start_on","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'opt_fields': ["current_status_update","current_status_update.resource_subtype","current_status_update.title","due_on","followers","followers.name","html_notes","is_workspace_level","liked","likes","likes.user","likes.user.name","metric","metric.can_manage","metric.currency_code","metric.current_display_value","metric.current_number_value","metric.initial_number_value","metric.precision","metric.progress_source","metric.resource_subtype","metric.target_number_value","metric.unit","name","notes","num_likes","owner","owner.name","start_on","status","team","team.name","time_period","time_period.display_name","time_period.end_on","time_period.period","time_period.start_on","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.updateGoal(bodygoal_gid, opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -514,14 +514,14 @@ let apiInstance = new Asana.GoalsApi();
 let body = new Asana.GoalGidSetMetricCurrentValueBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // GoalGidSetMetricCurrentValueBody | The updated fields for the goal metric.
 let goal_gid = "12345"; // String | Globally unique identifier for the goal.
 let opts = { 
-  'opt_fields': ["current_status_update","current_status_update.resource_subtype","current_status_update.title","due_on","followers","followers.name","html_notes","is_workspace_level","liked","likes","likes.user","likes.user.name","metric","metric.can_manage","metric.currency_code","metric.current_display_value","metric.current_number_value","metric.initial_number_value","metric.precision","metric.progress_source","metric.resource_subtype","metric.target_number_value","metric.unit","name","notes","num_likes","owner","owner.name","start_on","status","team","team.name","time_period","time_period.display_name","time_period.end_on","time_period.period","time_period.start_on","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'opt_fields': ["current_status_update","current_status_update.resource_subtype","current_status_update.title","due_on","followers","followers.name","html_notes","is_workspace_level","liked","likes","likes.user","likes.user.name","metric","metric.can_manage","metric.currency_code","metric.current_display_value","metric.current_number_value","metric.initial_number_value","metric.precision","metric.progress_source","metric.resource_subtype","metric.target_number_value","metric.unit","name","notes","num_likes","owner","owner.name","start_on","status","team","team.name","time_period","time_period.display_name","time_period.end_on","time_period.period","time_period.start_on","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.updateGoalMetric(bodygoal_gid, opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 

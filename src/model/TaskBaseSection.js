@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The TaskBaseSection model module.
  * @module model/TaskBaseSection
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class TaskBaseSection {
   /**

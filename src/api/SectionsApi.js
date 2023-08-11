@@ -25,7 +25,7 @@ import {SectionsSectionGidBody} from '../model/SectionsSectionGidBody';
 /**
 * Sections service.
 * @module api/SectionsApi
-* @version 2.0.2
+* @version 2.0.3
 */
 export class SectionsApi {
 

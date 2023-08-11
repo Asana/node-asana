@@ -21,7 +21,7 @@ import {ProjectBaseCurrentStatusUpdate} from './ProjectBaseCurrentStatusUpdate';
 /**
  * The ProjectRequest model module.
  * @module model/ProjectRequest
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class ProjectRequest {
   /**
@@ -79,6 +79,8 @@ export class ProjectRequest {
         obj._public = ApiClient.convertToType(data['public'], 'Boolean');
       if (data.hasOwnProperty('start_on'))
         obj.start_on = ApiClient.convertToType(data['start_on'], 'Date');
+      if (data.hasOwnProperty('default_access_level'))
+        obj.default_access_level = ApiClient.convertToType(data['default_access_level'], 'String');
       if (data.hasOwnProperty('custom_fields'))
         obj.custom_fields = ApiClient.convertToType(data['custom_fields'], {'String': 'String'});
       if (data.hasOwnProperty('followers'))
@@ -87,8 +89,6 @@ export class ProjectRequest {
         obj.owner = ApiClient.convertToType(data['owner'], 'String');
       if (data.hasOwnProperty('team'))
         obj.team = ApiClient.convertToType(data['team'], 'String');
-      if (data.hasOwnProperty('default_access_level'))
-        obj.default_access_level = ApiClient.convertToType(data['default_access_level'], 'String');
       if (data.hasOwnProperty('workspace'))
         obj.workspace = ApiClient.convertToType(data['workspace'], 'String');
     }
@@ -359,30 +359,6 @@ ProjectRequest.prototype._public = undefined;
 ProjectRequest.prototype.start_on = undefined;
 
 /**
- * An object where each key is a Custom Field GID and each value is an enum GID, string, number, or object.
- * @member {Object.<String, String>} custom_fields
- */
-ProjectRequest.prototype.custom_fields = undefined;
-
-/**
- * *Create-only*. Comma separated string of users. Followers are a subset of members who have opted in to receive \"tasks added\" notifications for a project.
- * @member {String} followers
- */
-ProjectRequest.prototype.followers = undefined;
-
-/**
- * The current owner of the project, may be null.
- * @member {String} owner
- */
-ProjectRequest.prototype.owner = undefined;
-
-/**
- * The team that this project is shared with.
- * @member {String} team
- */
-ProjectRequest.prototype.team = undefined;
-
-/**
  * Allowed values for the <code>default_access_level</code> property.
  * @enum {String}
  * @readonly
@@ -413,10 +389,34 @@ ProjectRequest.DefaultAccessLevelEnum = {
   viewer: "viewer"
 };
 /**
- * The default access users for users who join or are added as members to the project.
+ * The default access for users or teams who join or are added as members to the project.
  * @member {module:model/ProjectRequest.DefaultAccessLevelEnum} default_access_level
  */
 ProjectRequest.prototype.default_access_level = undefined;
+
+/**
+ * An object where each key is a Custom Field GID and each value is an enum GID, string, number, or object.
+ * @member {Object.<String, String>} custom_fields
+ */
+ProjectRequest.prototype.custom_fields = undefined;
+
+/**
+ * *Create-only*. Comma separated string of users. Followers are a subset of members who have opted in to receive \"tasks added\" notifications for a project.
+ * @member {String} followers
+ */
+ProjectRequest.prototype.followers = undefined;
+
+/**
+ * The current owner of the project, may be null.
+ * @member {String} owner
+ */
+ProjectRequest.prototype.owner = undefined;
+
+/**
+ * The team that this project is shared with.
+ * @member {String} team
+ */
+ProjectRequest.prototype.team = undefined;
 
 /**
  * The `gid` of a workspace.

@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The ProjectResponseCompletedBy model module.
  * @module model/ProjectResponseCompletedBy
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class ProjectResponseCompletedBy {
   /**

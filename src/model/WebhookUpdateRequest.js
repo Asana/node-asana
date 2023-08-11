@@ -18,7 +18,7 @@ import {WebhookRequestFilters} from './WebhookRequestFilters';
 /**
  * The WebhookUpdateRequest model module.
  * @module model/WebhookUpdateRequest
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class WebhookUpdateRequest {
   /**

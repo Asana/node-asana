@@ -18,7 +18,7 @@ import {TeamRemoveUserRequest} from './TeamRemoveUserRequest';
 /**
  * The TeamGidRemoveUserBody model module.
  * @module model/TeamGidRemoveUserBody
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class TeamGidRemoveUserBody {
   /**

@@ -18,7 +18,7 @@ import {AttachmentResponseParentCreatedBy} from './AttachmentResponseParentCreat
 /**
  * The AttachmentResponseParent model module.
  * @module model/AttachmentResponseParent
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class AttachmentResponseParent {
   /**

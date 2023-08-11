@@ -3,7 +3,7 @@
 JavaScript client library for Asana.
 
 - API version: 1.0
-- Package version: 2.0.2
+- Package version: 2.0.3
 
 ## Installation
 
@@ -15,46 +15,35 @@ JavaScript client library for Asana.
 npm install asana --save
 ```
 
-#### git
-#
-If the library is hosted at a git repository, e.g.
-https://github.com/GIT_USER_ID/GIT_REPO_ID
-then install it via:
-
-```shell
-    npm install GIT_USER_ID/GIT_REPO_ID --save
-```
-
 ### For browser
 
 Include the latest release directly from GitHub:
 
 ```html
-<script src="https://github.com/Asana/node-asana/releases/download/v2.0.2/asana-min.js"></script>
+<script src="https://github.com/Asana/node-asana/releases/download/v2.0.3/asana-min.js"></script>
 ```
 
 Example usage:
 
 ```html
 <script>
-  const defaultClient = Asana.ApiClient.instance;
-  const oauth2 = defaultClient.authentications["oauth2"];
-  oauth2.accessToken =
-    "<YOUR_PERSONAL_ACCESS_TOKEN>";
+    const defaultClient = Asana.ApiClient.instance;
+    const oauth2 = defaultClient.authentications["oauth2"];
+    oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
 
-  let usersApiInstance = new Asana.UsersApi();
-  let user_gid = "me";
-  let opts = {};
+    let usersApiInstance = new Asana.UsersApi();
+    let user_gid = "me";
+    let opts = {};
 
-  usersApiInstance.getUser(user_gid, opts, (error, data, response) => {
-    if (error) {
-      console.error(error);
-    } else {
-      console.log(
-        "API called successfully. Returned data: " + JSON.stringify(data, null, 2)
-      );
-    }
-  });
+    usersApiInstance.getUser(user_gid, opts, (error, data, response) => {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log(
+            "API called successfully. Returned data: " + JSON.stringify(data, null, 2)
+            );
+        }
+    });
 </script>
 ```
 
@@ -91,15 +80,15 @@ oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
 let usersApiInstance = new Asana.UsersApi()
 let user_gid = "me"; // String | A string identifying a user. This can either be the string \"me\", an email, or the gid of a user.
 let opts = { 
-  'opt_fields': ["email","name","photo","photo.image_1024x1024","photo.image_128x128","photo.image_21x21","photo.image_27x27","photo.image_36x36","photo.image_60x60","workspaces","workspaces.name"] // [String] | Properties to include in the response. Set this query parameter to a comma-separated list of the properties you wish to include.
+    'opt_fields': ["email","name","photo","photo.image_1024x1024","photo.image_128x128","photo.image_21x21","photo.image_27x27","photo.image_36x36","photo.image_60x60","workspaces","workspaces.name"] // [String] | Properties to include in the response. Set this query parameter to a comma-separated list of the properties you wish to include.
 };
 
 usersApiInstance.getUser(user_gid, opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -143,33 +132,31 @@ oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
 
 let tasksApiInstance = new Asana.TasksApi()
 let body = new Asana.TasksBody.constructFromObject({
-  data: {
-    name: "New Task",
-    approval_status: "pending",
-    assignee_status: "upcoming",
-    completed: false,
-    external: {
-      gid: "1234",
-      data: "A blob of information.",
+    data: {
+        name: "New Task",
+        approval_status: "pending",
+        assignee_status: "upcoming",
+        completed: false,
+        external: {
+            gid: "1234",
+            data: "A blob of information.",
+        },
+        html_notes: "<body>Mittens <em>really</em> likes the stuff from Humboldt.</body>",
+        is_rendered_as_separator: false,
+        liked: true,
+        assignee: "me",
+        projects: ["<YOUR_PROJECT_GID>"],
     },
-    html_notes:
-      "<body>Mittens <em>really</em> likes the stuff from Humboldt.</body>",
-    is_rendered_as_separator: false,
-    liked: true,
-    assignee: "me",
-    projects: ["<YOUR_PROJECT_GID>"],
-  },
 });
 let opts = {};
 
 // POST - Create a task
 tasksApiInstance.createTask(body, opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-    throw new Error(error);
-  } else {
-    console.log("API called successfully. Returned data: " + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log("API called successfully. Returned data: " + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -185,20 +172,19 @@ oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
 let tasksApiInstance = new Asana.TasksApi()
 let task_gid = "<YOUR_TASK_GID>";
 let body = new Asana.TasksTaskGidBody.constructFromObject({
-  data: {
-    name: "Updated Task",
-  },
+    data: {
+        name: "Updated Task",
+    },
 });
 let opts = {};
 
 // PUT - Update a task
 tasksApiInstance.updateTask(body, task_gid, opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-    throw new Error(error);
-  } else {
-    console.log("API called successfully. Returned data: " + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log("API called successfully. Returned data: " + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -216,12 +202,11 @@ let task_gid = "<YOUR_TASK_GID>";
 
 // DELETE - Delete a task
 tasksApiInstance.deleteTask(task_gid, (error, data, response) => {
-  if (error) {
-    console.error(error);
-    throw new Error(error);
-  } else {
-    console.log("API called successfully. Returned data: " + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log("API called successfully. Returned data: " + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -846,10 +831,107 @@ Class | Method | HTTP request | Description
   - email: Provides access to the user’s email through the OpenID Connect user info endpoint.
   - profile: Provides access to the user’s name and profile photo through the OpenID Connect user info endpoint.
 
+## Getting events
+
+In order to get events you will need a sync token. This sync token can be acquired in the error message from the initial
+request to [getEvents](docs/EventsApi.md#getEvents).
+
+```javascript
+const Asana = require('asana');
+const defaultClient = Asana.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: oauth2
+const oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
+
+let eventsApiInstance = new Asana.EventsApi();
+let resource = "12345"; // String | A resource ID to subscribe to. The resource can be a task or project.
+let opts = {
+    sync: ''
+};
+
+// Initial request to get the sync token
+eventsApiInstance.getEvents(resource, opts, (error, data, response) => {
+    // Set the sync token
+    opts['sync'] = JSON.parse(response.text)['sync']
+    // Follow up request to get events
+    eventsApiInstance.getEvents(resource, opts, (error, data, response) => {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+        }
+    });
+});
+```
+
+## Accessing repsonse data
+
+By default, the client library returns a class object of the resource. You can use dot notation to access the response data.
+
+TIP: look at the "Return type" section of the documented endpoint to understand which properties are accessible. (EX: [get_task](docs/TasksApi.md#get_task))
+
+```javascript
+.
+.
+.
+tasksApiInstance.getTask(task_gid, opts, (error, task, response) => {
+    if (error) {
+        console.error(error);
+    } else {
+        let taskName = task.data.name
+        let taskNotes = task.data.notes
+    }
+});
+```
+
+## Accessing response status code and headers
+
+```javascript
+const Asana = require('asana');
+const defaultClient = Asana.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: oauth2
+const oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
+
+let usersApiInstance = new Asana.UsersApi()
+let user_gid = "me"; // String | A string identifying a user. This can either be the string \"me\", an email, or the gid of a user.
+let opts = {};
+
+usersApiInstance.getUser(user_gid, opts, (error, data, response) => {
+    if (error) {
+        console.error(error);
+    } else {
+        // Response Status
+        console.log("Response Status:" + response.status)
+        // Response Headers
+        console.log("Response Headers": + JSON.stringify(response.headers))
+    }
+});
+```
+
+## Adding deprecation flag to your "asana-enable" header
+
+```javascript
+const Asana = require('asana');
+const defaultClient = Asana.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: oauth2
+const oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
+
+// Add asana-enable header for the client
+defaultClient.defaultHeaders['asana-enabled'] = 'string_ids';
+```
+
 ## Documentation for Using the `callApi` method
 
 Use this to make http calls when the endpoint does not exist in the current library version or has bugs
 
+### Example: GET, POST, PUT, DELETE on tasks
+
+#### GET - get a task
 ```javascript
 const Asana = require('asana');
 const defaultClient = Asana.ApiClient.instance;
@@ -860,103 +942,153 @@ oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
 
 // GET - get a task
 defaultClient.callApi(
-  "/tasks/{task_gid}",
-  "GET",
-  (pathParams = { task_gid: "<YOUR_TASK_GID>" }),
-  (queryParams = {}),
-  (headerParams = {}),
-  (formParams = {}),
-  (bodyParam = null),
-  (authNames = ["oauth2"]),
-  (contentTypes = []),
-  (accepts = ["application/json; charset=UTF-8"]),
-  (returnType = "Blob"), // Can be one of: "Blob", "String"
-  (callback = (error, data, response) => {
-    if (error) {
-      console.error(error);
-      throw new Error(error);
-    } else {
-      console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
-    }
-  })
+    "/tasks/{task_gid}",
+    "GET",
+    (pathParams = { task_gid: "<YOUR_TASK_GID>" }),
+    (queryParams = {}),
+    (headerParams = {}),
+    (formParams = {}),
+    (bodyParam = null),
+    (authNames = ["oauth2"]),
+    (contentTypes = []),
+    (accepts = ["application/json; charset=UTF-8"]),
+    (returnType = "Blob"), // Can be one of: "Blob", "String"
+    (callback = (error, data, response) => {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
+        }
+    })
 );
+```
+
+#### GET - get multiple tasks -> with opt_fields
+```javascript
+defaultClient.callApi(
+    "/tasks",
+    "GET",
+    (pathParams = {}),
+    (queryParams = { opt_fields: "name,notes,projects" }),
+    (headerParams = {}),
+    (formParams = {}),
+    (bodyParam = null),
+    (authNames = ["oauth2"]),
+    (contentTypes = []),
+    (accepts = ["application/json; charset=UTF-8"]),
+    (returnType = "Blob"), // Can be one of: "Blob", "String"
+    (callback = (error, data, response) => {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
+        }
+    })
+);
+```
+
+#### POST - create a task
+```javascript
+const Asana = require('asana');
+const defaultClient = Asana.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: oauth2
+const oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
 
 // POST - create a task
 defaultClient.callApi(
-  "/tasks",
-  "POST",
-  (pathParams = {}),
-  (queryParams = {}),
-  (headerParams = {}),
-  (formParams = {}),
-  (bodyParam = {
-    data: {
-      name: "New Task",
-      projects: ["<YOUR_PROJECT_GID>"],
-    },
-  }),
-  (authNames = ["oauth2"]),
-  (contentTypes = ["application/json; charset=UTF-8"]),
-  (accepts = ["application/json; charset=UTF-8"]),
-  (returnType = "Blob"), // Can be one of: "Blob", "String"
-  (callback = (error, data, response) => {
-    if (error) {
-      console.error(error);
-      throw new Error(error);
-    } else {
-      console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
-    }
-  })
+    "/tasks",
+    "POST",
+    (pathParams = {}),
+    (queryParams = {}),
+    (headerParams = {}),
+    (formParams = {}),
+    (bodyParam = {
+        data: {
+            name: "New Task",
+            projects: ["<YOUR_PROJECT_GID>"],
+        },
+    }),
+    (authNames = ["oauth2"]),
+    (contentTypes = ["application/json; charset=UTF-8"]),
+    (accepts = ["application/json; charset=UTF-8"]),
+    (returnType = "Blob"), // Can be one of: "Blob", "String"
+    (callback = (error, data, response) => {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
+        }
+    })
 );
+```
+
+#### PUT - update a task
+```javascript
+const Asana = require('asana');
+const defaultClient = Asana.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: oauth2
+const oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
 
 // PUT - update a task
 defaultClient.callApi(
-  "/tasks/{task_gid}",
-  "PUT",
-  (pathParams = { task_gid: "<YOUR_TASK_GID>" }),
-  (queryParams = {}),
-  (headerParams = {}),
-  (formParams = {}),
-  (bodyParam = {
-    data: {
-      name: "Updated Task",
-    },
-  }),
-  (authNames = ["oauth2"]),
-  (contentTypes = ["application/json; charset=UTF-8"]),
-  (accepts = ["application/json; charset=UTF-8"]),
-  (returnType = "Blob"), // Can be one of: "Blob", "String"
-  (callback = (error, data, response) => {
-    if (error) {
-      console.error(error);
-      throw new Error(error);
-    } else {
-      console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
-    }
-  })
+    "/tasks/{task_gid}",
+    "PUT",
+    (pathParams = { task_gid: "<YOUR_TASK_GID>" }),
+    (queryParams = {}),
+    (headerParams = {}),
+    (formParams = {}),
+    (bodyParam = {
+        data: {
+            name: "Updated Task",
+        },
+    }),
+    (authNames = ["oauth2"]),
+    (contentTypes = ["application/json; charset=UTF-8"]),
+    (accepts = ["application/json; charset=UTF-8"]),
+    (returnType = "Blob"), // Can be one of: "Blob", "String"
+    (callback = (error, data, response) => {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
+        }
+    })
 );
+```
+
+#### DELETE - delete a task
+```javascript
+const Asana = require('asana');
+const defaultClient = Asana.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: oauth2
+const oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
 
 // DELETE - delete a task
 defaultClient.callApi(
-  "/tasks/{task_gid}",
-  "DELETE",
-  (pathParams = { task_gid: "<YOUR_TASK_GID>" }),
-  (queryParams = {}),
-  (headerParams = {}),
-  (formParams = {}),
-  (bodyParam = null),
-  (authNames = ["oauth2"]),
-  (contentTypes = []),
-  (accepts = ["application/json; charset=UTF-8"]),
-  (returnType = "Blob"), // Can be one of: "Blob", "String"
-  (callback = (error, data, response) => {
-    if (error) {
-      console.error(error);
-      throw new Error(error);
-    } else {
-      console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
-    }
-  })
+    "/tasks/{task_gid}",
+    "DELETE",
+    (pathParams = { task_gid: "<YOUR_TASK_GID>" }),
+    (queryParams = {}),
+    (headerParams = {}),
+    (formParams = {}),
+    (bodyParam = null),
+    (authNames = ["oauth2"]),
+    (contentTypes = []),
+    (accepts = ["application/json; charset=UTF-8"]),
+    (returnType = "Blob"), // Can be one of: "Blob", "String"
+    (callback = (error, data, response) => {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
+        }
+    })
 );
 ```
 

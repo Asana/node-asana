@@ -18,7 +18,7 @@ import {BatchRequest} from './BatchRequest';
 /**
  * The BatchBody model module.
  * @module model/BatchBody
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class BatchBody {
   /**

@@ -22,7 +22,7 @@ import {MembershipsBody} from '../model/MembershipsBody';
 /**
 * Memberships service.
 * @module api/MembershipsApi
-* @version 2.0.2
+* @version 2.0.3
 */
 export class MembershipsApi {
 
@@ -139,9 +139,9 @@ export class MembershipsApi {
 
     /**
      * Get multiple memberships
-     * Returns compact &#x60;goal_membership&#x60; records. The possible types for &#x60;parent&#x60; in this request are &#x60;goal&#x60;. An additional member (user GID or team GID) can be passed in to filter to a specific membership.
+     * Returns compact &#x60;goal_membership&#x60; or &#x60;project_membership&#x60; records. The possible types for &#x60;parent&#x60; in this request are &#x60;goal&#x60; or &#x60;project&#x60;. An additional member (user GID or team GID) can be passed in to filter to a specific membership.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.parent Globally unique identifier for &#x60;goal&#x60;.
+     * @param {String} opts.parent Globally unique identifier for &#x60;goal&#x60; or &#x60;project&#x60;.
      * @param {String} opts.member Globally unique identifier for &#x60;team&#x60; or &#x60;user&#x60;.
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. &#x27;Note: You can only pass in an offset that was returned to you via a previously paginated request.&#x27;

@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The ProjectTemplateBaseRequestedRoles model module.
  * @module model/ProjectTemplateBaseRequestedRoles
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class ProjectTemplateBaseRequestedRoles {
   /**

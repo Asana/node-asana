@@ -27,14 +27,14 @@ oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
 let apiInstance = new Asana.OrganizationExportsApi();
 let body = new Asana.OrganizationExportsBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // OrganizationExportsBody | The organization to export.
 let opts = { 
-  'opt_fields': ["created_at","download_url","organization","organization.name","state"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'opt_fields': ["created_at","download_url","organization","organization.name","state"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.createOrganizationExport(body, opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -78,14 +78,14 @@ oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
 let apiInstance = new Asana.OrganizationExportsApi();
 let organization_export_gid = "12345"; // String | Globally unique identifier for the organization export.
 let opts = { 
-  'opt_fields': ["created_at","download_url","organization","organization.name","state"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'opt_fields': ["created_at","download_url","organization","organization.name","state"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.getOrganizationExport(organization_export_gid, opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 

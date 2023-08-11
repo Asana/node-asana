@@ -21,7 +21,7 @@ import {ProjectBaseCurrentStatusUpdate} from './ProjectBaseCurrentStatusUpdate';
 /**
  * The ProjectBase model module.
  * @module model/ProjectBase
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class ProjectBase {
   /**
@@ -79,6 +79,8 @@ export class ProjectBase {
         obj._public = ApiClient.convertToType(data['public'], 'Boolean');
       if (data.hasOwnProperty('start_on'))
         obj.start_on = ApiClient.convertToType(data['start_on'], 'Date');
+      if (data.hasOwnProperty('default_access_level'))
+        obj.default_access_level = ApiClient.convertToType(data['default_access_level'], 'String');
     }
     return obj;
   }
@@ -345,4 +347,40 @@ ProjectBase.prototype._public = undefined;
  * @member {Date} start_on
  */
 ProjectBase.prototype.start_on = undefined;
+
+/**
+ * Allowed values for the <code>default_access_level</code> property.
+ * @enum {String}
+ * @readonly
+ */
+ProjectBase.DefaultAccessLevelEnum = {
+  /**
+   * value: "admin"
+   * @const
+   */
+  admin: "admin",
+
+  /**
+   * value: "editor"
+   * @const
+   */
+  editor: "editor",
+
+  /**
+   * value: "commenter"
+   * @const
+   */
+  commenter: "commenter",
+
+  /**
+   * value: "viewer"
+   * @const
+   */
+  viewer: "viewer"
+};
+/**
+ * The default access for users or teams who join or are added as members to the project.
+ * @member {module:model/ProjectBase.DefaultAccessLevelEnum} default_access_level
+ */
+ProjectBase.prototype.default_access_level = undefined;
 

@@ -10,14 +10,14 @@ TagsApi:
     let apiInstance = new Asana.TagsApi();
     let body = new Asana.TagsBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // TagsBody | The tag to create.
     let opts = { 
-      'opt_fields': ["color","created_at","followers","followers.name","name","notes","permalink_url","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+        'opt_fields': ["color","created_at","followers","followers.name","name","notes","permalink_url","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
     };
     apiInstance.createTag(body, opts, (error, data, response) => {
-      if (error) {
-      console.error(error);
-      } else {
-      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-      }
+        if (error) {
+            console.error(error);
+        } else {
+            console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+        }
     });
   createTagForWorkspace: |-
     const Asana = require('asana');
@@ -31,14 +31,14 @@ TagsApi:
     let body = new Asana.WorkspaceGidTagsBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // WorkspaceGidTagsBody | The tag to create.
     let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
     let opts = { 
-      'opt_fields': ["color","created_at","followers","followers.name","name","notes","permalink_url","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+        'opt_fields': ["color","created_at","followers","followers.name","name","notes","permalink_url","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
     };
     apiInstance.createTagForWorkspace(bodyworkspace_gid, opts, (error, data, response) => {
-      if (error) {
-      console.error(error);
-      } else {
-      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-      }
+        if (error) {
+            console.error(error);
+        } else {
+            console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+        }
     });
   deleteTag: |-
     const Asana = require('asana');
@@ -52,11 +52,11 @@ TagsApi:
     let tag_gid = "11235"; // String | Globally unique identifier for the tag.
 
     apiInstance.deleteTag(tag_gid, (error, data, response) => {
-      if (error) {
-      console.error(error);
-      } else {
-      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-      }
+        if (error) {
+            console.error(error);
+        } else {
+            console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+        }
     });
   getTag: |-
     const Asana = require('asana');
@@ -69,14 +69,14 @@ TagsApi:
     let apiInstance = new Asana.TagsApi();
     let tag_gid = "11235"; // String | Globally unique identifier for the tag.
     let opts = { 
-      'opt_fields': ["color","created_at","followers","followers.name","name","notes","permalink_url","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+        'opt_fields': ["color","created_at","followers","followers.name","name","notes","permalink_url","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
     };
     apiInstance.getTag(tag_gid, opts, (error, data, response) => {
-      if (error) {
-      console.error(error);
-      } else {
-      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-      }
+        if (error) {
+            console.error(error);
+        } else {
+            console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+        }
     });
   getTags: |-
     const Asana = require('asana');
@@ -88,17 +88,17 @@ TagsApi:
     
     let apiInstance = new Asana.TagsApi();
     let opts = { 
-      'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
-      'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
-      'workspace': "1331", // String | The workspace to filter tags on.
-      'opt_fields': ["color","created_at","followers","followers.name","name","notes","offset","path","permalink_url","uri","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+        'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
+        'workspace': "1331", // String | The workspace to filter tags on.
+        'opt_fields': ["color","created_at","followers","followers.name","name","notes","offset","path","permalink_url","uri","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
     };
     apiInstance.getTags(opts, (error, data, response) => {
-      if (error) {
-      console.error(error);
-      } else {
-      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-      }
+        if (error) {
+            console.error(error);
+        } else {
+            console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+        }
     });
   getTagsForTask: |-
     const Asana = require('asana');
@@ -111,16 +111,16 @@ TagsApi:
     let apiInstance = new Asana.TagsApi();
     let task_gid = "321654"; // String | The task to operate on.
     let opts = { 
-      'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
-      'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
-      'opt_fields': ["color","created_at","followers","followers.name","name","notes","offset","path","permalink_url","uri","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+        'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
+        'opt_fields': ["color","created_at","followers","followers.name","name","notes","offset","path","permalink_url","uri","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
     };
     apiInstance.getTagsForTask(task_gid, opts, (error, data, response) => {
-      if (error) {
-      console.error(error);
-      } else {
-      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-      }
+        if (error) {
+            console.error(error);
+        } else {
+            console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+        }
     });
   getTagsForWorkspace: |-
     const Asana = require('asana');
@@ -133,16 +133,16 @@ TagsApi:
     let apiInstance = new Asana.TagsApi();
     let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
     let opts = { 
-      'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
-      'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
-      'opt_fields': ["color","created_at","followers","followers.name","name","notes","offset","path","permalink_url","uri","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+        'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
+        'opt_fields': ["color","created_at","followers","followers.name","name","notes","offset","path","permalink_url","uri","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
     };
     apiInstance.getTagsForWorkspace(workspace_gid, opts, (error, data, response) => {
-      if (error) {
-      console.error(error);
-      } else {
-      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-      }
+        if (error) {
+            console.error(error);
+        } else {
+            console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+        }
     });
   updateTag: |-
     const Asana = require('asana');
@@ -155,12 +155,12 @@ TagsApi:
     let apiInstance = new Asana.TagsApi();
     let tag_gid = "11235"; // String | Globally unique identifier for the tag.
     let opts = { 
-      'opt_fields': ["color","created_at","followers","followers.name","name","notes","permalink_url","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+        'opt_fields': ["color","created_at","followers","followers.name","name","notes","permalink_url","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
     };
     apiInstance.updateTag(tag_gid, opts, (error, data, response) => {
-      if (error) {
-      console.error(error);
-      } else {
-      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-      }
+        if (error) {
+            console.error(error);
+        } else {
+            console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+        }
     });

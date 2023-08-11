@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The TaskResponseAssigneeSection model module.
  * @module model/TaskResponseAssigneeSection
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class TaskResponseAssigneeSection {
   /**

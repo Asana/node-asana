@@ -18,7 +18,7 @@ import {CustomFieldResponsePeopleValue} from './CustomFieldResponsePeopleValue';
 /**
  * The StoryResponseStory model module.
  * @module model/StoryResponseStory
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class StoryResponseStory {
   /**

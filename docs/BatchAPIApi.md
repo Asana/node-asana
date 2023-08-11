@@ -26,14 +26,14 @@ oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
 let apiInstance = new Asana.BatchAPIApi();
 let body = new Asana.BatchBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // BatchBody | The requests to batch together via the Batch API.
 let opts = { 
-  'opt_fields': ["body","headers","status_code"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'opt_fields': ["body","headers","status_code"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.createBatchRequest(body, opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 

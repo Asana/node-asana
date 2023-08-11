@@ -18,7 +18,7 @@ import {RemoveCustomFieldSettingRequest} from './RemoveCustomFieldSettingRequest
 /**
  * The ProjectGidRemoveCustomFieldSettingBody model module.
  * @module model/ProjectGidRemoveCustomFieldSettingBody
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class ProjectGidRemoveCustomFieldSettingBody {
   /**

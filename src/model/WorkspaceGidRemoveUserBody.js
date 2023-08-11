@@ -18,7 +18,7 @@ import {WorkspaceRemoveUserRequest} from './WorkspaceRemoveUserRequest';
 /**
  * The WorkspaceGidRemoveUserBody model module.
  * @module model/WorkspaceGidRemoveUserBody
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class WorkspaceGidRemoveUserBody {
   /**

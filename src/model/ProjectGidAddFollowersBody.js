@@ -18,7 +18,7 @@ import {AddFollowersRequest} from './AddFollowersRequest';
 /**
  * The ProjectGidAddFollowersBody model module.
  * @module model/ProjectGidAddFollowersBody
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class ProjectGidAddFollowersBody {
   /**

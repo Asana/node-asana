@@ -18,7 +18,7 @@ import {CustomFieldResponseCreatedBy} from './CustomFieldResponseCreatedBy';
 /**
  * The MembershipCompactGoal model module.
  * @module model/MembershipCompactGoal
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class MembershipCompactGoal {
   /**

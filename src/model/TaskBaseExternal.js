@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The TaskBaseExternal model module.
  * @module model/TaskBaseExternal
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class TaskBaseExternal {
   /**

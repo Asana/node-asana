@@ -18,7 +18,7 @@ import {WebhookUpdateRequest} from './WebhookUpdateRequest';
 /**
  * The WebhooksWebhookGidBody model module.
  * @module model/WebhooksWebhookGidBody
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class WebhooksWebhookGidBody {
   /**

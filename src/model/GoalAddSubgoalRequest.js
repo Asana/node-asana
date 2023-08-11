@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The GoalAddSubgoalRequest model module.
  * @module model/GoalAddSubgoalRequest
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class GoalAddSubgoalRequest {
   /**

@@ -27,14 +27,14 @@ oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
 let apiInstance = new Asana.UserTaskListsApi();
 let user_task_list_gid = "12345"; // String | Globally unique identifier for the user task list.
 let opts = { 
-  'opt_fields': ["name","owner","workspace"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'opt_fields': ["name","owner","workspace"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.getUserTaskList(user_task_list_gid, opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -79,14 +79,14 @@ let apiInstance = new Asana.UserTaskListsApi();
 let user_gid = "me"; // String | A string identifying a user. This can either be the string \"me\", an email, or the gid of a user.
 let workspace = "1234"; // String | The workspace in which to get the user task list.
 let opts = { 
-  'opt_fields': ["name","owner","workspace"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'opt_fields': ["name","owner","workspace"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.getUserTaskListForUser(user_gid, workspace, opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 

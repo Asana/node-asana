@@ -27,7 +27,7 @@ import {ProjectResponseWorkspace} from './ProjectResponseWorkspace';
 /**
  * The ProjectResponse model module.
  * @module model/ProjectResponse
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class ProjectResponse {
   /**
@@ -85,6 +85,8 @@ export class ProjectResponse {
         obj._public = ApiClient.convertToType(data['public'], 'Boolean');
       if (data.hasOwnProperty('start_on'))
         obj.start_on = ApiClient.convertToType(data['start_on'], 'Date');
+      if (data.hasOwnProperty('default_access_level'))
+        obj.default_access_level = ApiClient.convertToType(data['default_access_level'], 'String');
       if (data.hasOwnProperty('custom_fields'))
         obj.custom_fields = ApiClient.convertToType(data['custom_fields'], [PortfolioResponseCustomFields]);
       if (data.hasOwnProperty('completed'))
@@ -107,8 +109,6 @@ export class ProjectResponse {
         obj.project_brief = ProjectResponseProjectBrief.constructFromObject(data['project_brief']);
       if (data.hasOwnProperty('created_from_template'))
         obj.created_from_template = ProjectResponseCreatedFromTemplate.constructFromObject(data['created_from_template']);
-      if (data.hasOwnProperty('default_access_level'))
-        obj.default_access_level = ApiClient.convertToType(data['default_access_level'], 'String');
       if (data.hasOwnProperty('workspace'))
         obj.workspace = ProjectResponseWorkspace.constructFromObject(data['workspace']);
     }
@@ -379,6 +379,42 @@ ProjectResponse.prototype._public = undefined;
 ProjectResponse.prototype.start_on = undefined;
 
 /**
+ * Allowed values for the <code>default_access_level</code> property.
+ * @enum {String}
+ * @readonly
+ */
+ProjectResponse.DefaultAccessLevelEnum = {
+  /**
+   * value: "admin"
+   * @const
+   */
+  admin: "admin",
+
+  /**
+   * value: "editor"
+   * @const
+   */
+  editor: "editor",
+
+  /**
+   * value: "commenter"
+   * @const
+   */
+  commenter: "commenter",
+
+  /**
+   * value: "viewer"
+   * @const
+   */
+  viewer: "viewer"
+};
+/**
+ * The default access for users or teams who join or are added as members to the project.
+ * @member {module:model/ProjectResponse.DefaultAccessLevelEnum} default_access_level
+ */
+ProjectResponse.prototype.default_access_level = undefined;
+
+/**
  * Array of Custom Fields.
  * @member {Array.<module:model/PortfolioResponseCustomFields>} custom_fields
  */
@@ -637,42 +673,6 @@ ProjectResponse.prototype.project_brief = undefined;
  * @member {module:model/ProjectResponseCreatedFromTemplate} created_from_template
  */
 ProjectResponse.prototype.created_from_template = undefined;
-
-/**
- * Allowed values for the <code>default_access_level</code> property.
- * @enum {String}
- * @readonly
- */
-ProjectResponse.DefaultAccessLevelEnum = {
-  /**
-   * value: "admin"
-   * @const
-   */
-  admin: "admin",
-
-  /**
-   * value: "editor"
-   * @const
-   */
-  editor: "editor",
-
-  /**
-   * value: "commenter"
-   * @const
-   */
-  commenter: "commenter",
-
-  /**
-   * value: "viewer"
-   * @const
-   */
-  viewer: "viewer"
-};
-/**
- * The default access users for users who join or are added as members to the project.
- * @member {module:model/ProjectResponse.DefaultAccessLevelEnum} default_access_level
- */
-ProjectResponse.prototype.default_access_level = undefined;
 
 /**
  * @member {module:model/ProjectResponseWorkspace} workspace

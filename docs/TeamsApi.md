@@ -33,14 +33,14 @@ let apiInstance = new Asana.TeamsApi();
 let body = new Asana.TeamGidAddUserBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // TeamGidAddUserBody | The user to add to the team.
 let team_gid = "159874"; // String | Globally unique identifier for the team.
 let opts = { 
-  'opt_fields': ["is_admin","is_guest","is_limited_access","team","team.name","user","user.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'opt_fields': ["is_admin","is_guest","is_limited_access","team","team.name","user","user.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.addUserForTeam(bodyteam_gid, opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -85,14 +85,14 @@ oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
 let apiInstance = new Asana.TeamsApi();
 let body = new Asana.TeamsBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // TeamsBody | The team to create.
 let opts = { 
-  'opt_fields': ["description","edit_team_name_or_description_access_level","edit_team_visibility_or_trash_team_access_level","guest_invite_management_access_level","html_description","join_request_management_access_level","member_invite_management_access_level","name","organization","organization.name","permalink_url","team_member_removal_access_level","visibility"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'opt_fields': ["description","edit_team_name_or_description_access_level","edit_team_visibility_or_trash_team_access_level","guest_invite_management_access_level","html_description","join_request_management_access_level","member_invite_management_access_level","name","organization","organization.name","permalink_url","team_member_removal_access_level","visibility"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.createTeam(body, opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -136,14 +136,14 @@ oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
 let apiInstance = new Asana.TeamsApi();
 let team_gid = "159874"; // String | Globally unique identifier for the team.
 let opts = { 
-  'opt_fields': ["description","edit_team_name_or_description_access_level","edit_team_visibility_or_trash_team_access_level","guest_invite_management_access_level","html_description","join_request_management_access_level","member_invite_management_access_level","name","organization","organization.name","permalink_url","team_member_removal_access_level","visibility"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'opt_fields': ["description","edit_team_name_or_description_access_level","edit_team_visibility_or_trash_team_access_level","guest_invite_management_access_level","html_description","join_request_management_access_level","member_invite_management_access_level","name","organization","organization.name","permalink_url","team_member_removal_access_level","visibility"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.getTeam(team_gid, opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -188,16 +188,16 @@ let apiInstance = new Asana.TeamsApi();
 let user_gid = "me"; // String | A string identifying a user. This can either be the string \"me\", an email, or the gid of a user.
 let organization = "1331"; // String | The workspace or organization to filter teams on.
 let opts = { 
-  'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
-  'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
-  'opt_fields': ["description","edit_team_name_or_description_access_level","edit_team_visibility_or_trash_team_access_level","guest_invite_management_access_level","html_description","join_request_management_access_level","member_invite_management_access_level","name","offset","organization","organization.name","path","permalink_url","team_member_removal_access_level","uri","visibility"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
+    'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
+    'opt_fields': ["description","edit_team_name_or_description_access_level","edit_team_visibility_or_trash_team_access_level","guest_invite_management_access_level","html_description","join_request_management_access_level","member_invite_management_access_level","name","offset","organization","organization.name","path","permalink_url","team_member_removal_access_level","uri","visibility"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.getTeamsForUser(user_gid, organization, opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -244,16 +244,16 @@ oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
 let apiInstance = new Asana.TeamsApi();
 let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
 let opts = { 
-  'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
-  'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
-  'opt_fields': ["description","edit_team_name_or_description_access_level","edit_team_visibility_or_trash_team_access_level","guest_invite_management_access_level","html_description","join_request_management_access_level","member_invite_management_access_level","name","offset","organization","organization.name","path","permalink_url","team_member_removal_access_level","uri","visibility"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
+    'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
+    'opt_fields': ["description","edit_team_name_or_description_access_level","edit_team_visibility_or_trash_team_access_level","guest_invite_management_access_level","html_description","join_request_management_access_level","member_invite_management_access_level","name","offset","organization","organization.name","path","permalink_url","team_member_removal_access_level","uri","visibility"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.getTeamsForWorkspace(workspace_gid, opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -301,11 +301,11 @@ let body = new Asana.TeamGidRemoveUserBody.constructFromObject({data: {param1: "
 let team_gid = "159874"; // String | Globally unique identifier for the team.
 
 apiInstance.removeUserForTeam(bodyteam_gid, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -350,14 +350,14 @@ let apiInstance = new Asana.TeamsApi();
 let body = new Asana.TeamsTeamGidBody.constructFromObject({data: {param1: "value1", param2: "value2",}}); // TeamsTeamGidBody | The team to update.
 let team_gid = "159874"; // String | Globally unique identifier for the team.
 let opts = { 
-  'opt_fields': ["description","edit_team_name_or_description_access_level","edit_team_visibility_or_trash_team_access_level","guest_invite_management_access_level","html_description","join_request_management_access_level","member_invite_management_access_level","name","organization","organization.name","permalink_url","team_member_removal_access_level","visibility"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'opt_fields': ["description","edit_team_name_or_description_access_level","edit_team_visibility_or_trash_team_access_level","guest_invite_management_access_level","html_description","join_request_management_access_level","member_invite_management_access_level","name","organization","organization.name","permalink_url","team_member_removal_access_level","visibility"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.updateTeam(bodyteam_gid, opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 

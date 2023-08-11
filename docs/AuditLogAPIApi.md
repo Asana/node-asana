@@ -26,21 +26,21 @@ oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
 let apiInstance = new Asana.AuditLogAPIApi();
 let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
 let opts = { 
-  'start_at': new Date("2013-10-20T19:20:30+01:00"), // Date | Filter to events created after this time (inclusive).
-  'end_at': new Date("2013-10-20T19:20:30+01:00"), // Date | Filter to events created before this time (exclusive).
-  'event_type': "event_type_example", // String | Filter to events of this type. Refer to the [supported audit log events](/docs/audit-log-events#supported-audit-log-events) for a full list of values.
-  'actor_type': "actor_type_example", // String | Filter to events with an actor of this type. This only needs to be included if querying for actor types without an ID. If `actor_gid` is included, this should be excluded.
-  'actor_gid': "actor_gid_example", // String | Filter to events triggered by the actor with this ID.
-  'resource_gid': "resource_gid_example", // String | Filter to events with this resource ID.
-  'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
-  'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9" // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
+    'start_at': new Date("2013-10-20T19:20:30+01:00"), // Date | Filter to events created after this time (inclusive).
+    'end_at': new Date("2013-10-20T19:20:30+01:00"), // Date | Filter to events created before this time (exclusive).
+    'event_type': "event_type_example", // String | Filter to events of this type. Refer to the [supported audit log events](/docs/audit-log-events#supported-audit-log-events) for a full list of values.
+    'actor_type': "actor_type_example", // String | Filter to events with an actor of this type. This only needs to be included if querying for actor types without an ID. If `actor_gid` is included, this should be excluded.
+    'actor_gid': "actor_gid_example", // String | Filter to events triggered by the actor with this ID.
+    'resource_gid': "resource_gid_example", // String | Filter to events with this resource ID.
+    'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
+    'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9" // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
 };
 apiInstance.getAuditLogEvents(workspace_gid, opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 

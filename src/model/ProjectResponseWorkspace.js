@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The ProjectResponseWorkspace model module.
  * @module model/ProjectResponseWorkspace
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class ProjectResponseWorkspace {
   /**

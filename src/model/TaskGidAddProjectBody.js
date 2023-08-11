@@ -18,7 +18,7 @@ import {TaskAddProjectRequest} from './TaskAddProjectRequest';
 /**
  * The TaskGidAddProjectBody model module.
  * @module model/TaskGidAddProjectBody
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class TaskGidAddProjectBody {
   /**

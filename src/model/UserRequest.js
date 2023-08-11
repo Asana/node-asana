@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The UserRequest model module.
  * @module model/UserRequest
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class UserRequest {
   /**

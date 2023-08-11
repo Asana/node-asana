@@ -18,7 +18,7 @@ import {EnumOptionRequest} from './EnumOptionRequest';
 /**
  * The CustomFieldGidEnumOptionsBody model module.
  * @module model/CustomFieldGidEnumOptionsBody
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class CustomFieldGidEnumOptionsBody {
   /**

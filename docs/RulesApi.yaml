@@ -12,9 +12,9 @@ RulesApi:
     let rule_trigger_gid = "12345"; // String | The ID of the incoming web request trigger. This value is a path parameter that is automatically generated for the API endpoint.
 
     apiInstance.triggerRule(bodyrule_trigger_gid, (error, data, response) => {
-      if (error) {
-      console.error(error);
-      } else {
-      console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-      }
+        if (error) {
+            console.error(error);
+        } else {
+            console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+        }
     });

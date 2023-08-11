@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The AddFollowersRequest model module.
  * @module model/AddFollowersRequest
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class AddFollowersRequest {
   /**

@@ -18,7 +18,7 @@ import {WorkspaceMembershipResponse} from './WorkspaceMembershipResponse';
 /**
  * The WorkspaceMembershipResponseData model module.
  * @module model/WorkspaceMembershipResponseData
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class WorkspaceMembershipResponseData {
   /**

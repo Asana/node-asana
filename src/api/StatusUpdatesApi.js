@@ -22,7 +22,7 @@ import {StatusUpdatesBody} from '../model/StatusUpdatesBody';
 /**
 * StatusUpdates service.
 * @module api/StatusUpdatesApi
-* @version 2.0.2
+* @version 2.0.3
 */
 export class StatusUpdatesApi {
 

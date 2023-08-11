@@ -18,7 +18,7 @@ import {ProjectBriefResponseProject} from './ProjectBriefResponseProject';
 /**
  * The ProjectBriefResponse model module.
  * @module model/ProjectBriefResponse
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class ProjectBriefResponse {
   /**

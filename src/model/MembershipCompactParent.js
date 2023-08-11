@@ -18,7 +18,7 @@ import {CustomFieldResponseCreatedBy} from './CustomFieldResponseCreatedBy';
 /**
  * The MembershipCompactParent model module.
  * @module model/MembershipCompactParent
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class MembershipCompactParent {
   /**

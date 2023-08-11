@@ -18,7 +18,7 @@ import {AddCustomFieldSettingRequest} from './AddCustomFieldSettingRequest';
 /**
  * The PortfolioGidAddCustomFieldSettingBody model module.
  * @module model/PortfolioGidAddCustomFieldSettingBody
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class PortfolioGidAddCustomFieldSettingBody {
   /**

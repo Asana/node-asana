@@ -19,7 +19,7 @@ import {TagResponse} from './TagResponse';
 /**
  * The TagResponseArray model module.
  * @module model/TagResponseArray
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class TagResponseArray {
   /**

@@ -18,7 +18,7 @@ import {TagResponse} from './TagResponse';
 /**
  * The TagResponseData model module.
  * @module model/TagResponseData
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class TagResponseData {
   /**

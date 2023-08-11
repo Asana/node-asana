@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The PortfolioAddItemRequest model module.
  * @module model/PortfolioAddItemRequest
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class PortfolioAddItemRequest {
   /**

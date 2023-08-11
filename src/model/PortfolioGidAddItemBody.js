@@ -18,7 +18,7 @@ import {PortfolioAddItemRequest} from './PortfolioAddItemRequest';
 /**
  * The PortfolioGidAddItemBody model module.
  * @module model/PortfolioGidAddItemBody
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class PortfolioGidAddItemBody {
   /**

@@ -18,7 +18,7 @@ import {UserTaskListResponse} from './UserTaskListResponse';
 /**
  * The UserTaskListResponseData model module.
  * @module model/UserTaskListResponseData
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class UserTaskListResponseData {
   /**

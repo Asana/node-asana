@@ -18,7 +18,7 @@ import {TaskAddFollowersRequest} from './TaskAddFollowersRequest';
 /**
  * The GoalGidRemoveFollowersBody model module.
  * @module model/GoalGidRemoveFollowersBody
- * @version 2.0.2
+ * @version 2.0.3
  */
 export class GoalGidRemoveFollowersBody {
   /**

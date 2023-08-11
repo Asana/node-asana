@@ -29,20 +29,20 @@ oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
 
 let apiInstance = new Asana.AttachmentsApi();
 let opts = { 
-  'resource_subtype': "external" // String | 
-  'file': fs.createReadStream("file_example") // Blob | 
-  'parent': "parent_example" // String | 
-  'url': "url_example" // String | 
-  'name': "name_example" // String | 
-  'connect_to_app': true // Boolean | 
-  'opt_fields': ["connected_to_app","created_at","download_url","host","name","parent","parent.created_by","parent.name","parent.resource_subtype","permanent_url","resource_subtype","size","view_url"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'resource_subtype': "external" // String | 
+    'file': fs.createReadStream("file_example") // Blob | 
+    'parent': "parent_example" // String | 
+    'url': "url_example" // String | 
+    'name': "name_example" // String | 
+    'connect_to_app': true // Boolean | 
+    'opt_fields': ["connected_to_app","created_at","download_url","host","name","parent","parent.created_by","parent.name","parent.resource_subtype","permanent_url","resource_subtype","size","view_url"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.createAttachmentForObject(opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -92,11 +92,11 @@ let apiInstance = new Asana.AttachmentsApi();
 let attachment_gid = "12345"; // String | Globally unique identifier for the attachment.
 
 apiInstance.deleteAttachment(attachment_gid, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -139,14 +139,14 @@ oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
 let apiInstance = new Asana.AttachmentsApi();
 let attachment_gid = "12345"; // String | Globally unique identifier for the attachment.
 let opts = { 
-  'opt_fields': ["connected_to_app","created_at","download_url","host","name","parent","parent.created_by","parent.name","parent.resource_subtype","permanent_url","resource_subtype","size","view_url"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'opt_fields': ["connected_to_app","created_at","download_url","host","name","parent","parent.created_by","parent.name","parent.resource_subtype","permanent_url","resource_subtype","size","view_url"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.getAttachment(attachment_gid, opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -190,16 +190,16 @@ oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
 let apiInstance = new Asana.AttachmentsApi();
 let parent = "159874"; // String | Globally unique identifier for object to fetch statuses from. Must be a GID for a `project`, `project_brief`, or `task`.
 let opts = { 
-  'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
-  'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
-  'opt_fields': ["connected_to_app","created_at","download_url","host","name","offset","parent","parent.created_by","parent.name","parent.resource_subtype","path","permanent_url","resource_subtype","size","uri","view_url"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
+    'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
+    'opt_fields': ["connected_to_app","created_at","download_url","host","name","offset","parent","parent.created_by","parent.name","parent.resource_subtype","path","permanent_url","resource_subtype","size","uri","view_url"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.getAttachmentsForObject(parent, opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 

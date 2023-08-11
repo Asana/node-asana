@@ -27,14 +27,14 @@ oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
 
 let apiInstance = new Asana.MembershipsApi();
 let opts = { 
-  'body': new Asana.MembershipsBody.constructFromObject({data: {param1: "value1", param2: "value2",}}) // MembershipsBody | The updated fields for the membership.
+    'body': new Asana.MembershipsBody.constructFromObject({data: {param1: "value1", param2: "value2",}}) // MembershipsBody | The updated fields for the membership.
 };
 apiInstance.createMembership(opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -78,11 +78,11 @@ let apiInstance = new Asana.MembershipsApi();
 let membership_gid = "12345"; // String | Globally unique identifier for the membership.
 
 apiInstance.deleteMembership(membership_gid, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 
 Get multiple memberships
 
-Returns compact &#x60;goal_membership&#x60; records. The possible types for &#x60;parent&#x60; in this request are &#x60;goal&#x60;. An additional member (user GID or team GID) can be passed in to filter to a specific membership.
+Returns compact &#x60;goal_membership&#x60; or &#x60;project_membership&#x60; records. The possible types for &#x60;parent&#x60; in this request are &#x60;goal&#x60; or &#x60;project&#x60;. An additional member (user GID or team GID) can be passed in to filter to a specific membership.
 
 ### Example
 ```javascript
@@ -124,18 +124,18 @@ oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
 
 let apiInstance = new Asana.MembershipsApi();
 let opts = { 
-  'parent': "159874", // String | Globally unique identifier for `goal`.
-  'member': "1061493", // String | Globally unique identifier for `team` or `user`.
-  'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
-  'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
-  'opt_fields': ["offset","path","uri"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    'parent': "159874", // String | Globally unique identifier for `goal` or `project`.
+    'member': "1061493", // String | Globally unique identifier for `team` or `user`.
+    'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
+    'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", // String | Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. 'Note: You can only pass in an offset that was returned to you via a previously paginated request.'
+    'opt_fields': ["offset","path","uri"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 apiInstance.getMemberships(opts, (error, data, response) => {
-  if (error) {
-  console.error(error);
-  } else {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-  }
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
 });
 ```
 
@@ -143,7 +143,7 @@ apiInstance.getMemberships(opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parent** | **String**| Globally unique identifier for &#x60;goal&#x60;. | [optional] 
+ **parent** | **String**| Globally unique identifier for &#x60;goal&#x60; or &#x60;project&#x60;. | [optional] 
  **member** | **String**| Globally unique identifier for &#x60;team&#x60; or &#x60;user&#x60;. | [optional] 
  **limit** | **Number**| Results per page. The number of objects to return per page. The value must be between 1 and 100. | [optional] 
  **offset** | **String**| Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. &#x27;Note: You can only pass in an offset that was returned to you via a previously paginated request.&#x27; | [optional] 
