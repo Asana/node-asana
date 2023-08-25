@@ -20,12 +20,12 @@ import {MembershipCompactMember} from './MembershipCompactMember';
 /**
  * The ProjectMembershipNormalResponse model module.
  * @module model/ProjectMembershipNormalResponse
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class ProjectMembershipNormalResponse {
   /**
    * Constructs a new <code>ProjectMembershipNormalResponse</code>.
-   * A generic Asana Resource, containing a globally unique identifier.A generic Asana Resource, containing a globally unique identifier. With the introduction of “comment-only” projects in Asana, a user’s membership in a project comes with associated permissions. These permissions (whether a user has full access to the project or comment-only access) are accessible through the project memberships endpoints described here.
+   * A generic Asana Resource, containing a globally unique identifier.A generic Asana Resource, containing a globally unique identifier. This object describes a team or a user&#x27;s membership to a project including their level of access (Admin, Editor, Commenter, or Viewer).
    * @alias module:model/ProjectMembershipNormalResponse
    * @class
    */
@@ -46,14 +46,14 @@ export class ProjectMembershipNormalResponse {
         obj.gid = ApiClient.convertToType(data['gid'], 'String');
       if (data.hasOwnProperty('resource_type'))
         obj.resource_type = ApiClient.convertToType(data['resource_type'], 'String');
-      if (data.hasOwnProperty('user'))
-        obj.user = CustomFieldResponsePeopleValue.constructFromObject(data['user']);
       if (data.hasOwnProperty('parent'))
         obj.parent = JobBaseNewProject.constructFromObject(data['parent']);
       if (data.hasOwnProperty('member'))
         obj.member = MembershipCompactMember.constructFromObject(data['member']);
       if (data.hasOwnProperty('access_level'))
         obj.access_level = ApiClient.convertToType(data['access_level'], 'String');
+      if (data.hasOwnProperty('user'))
+        obj.user = CustomFieldResponsePeopleValue.constructFromObject(data['user']);
       if (data.hasOwnProperty('project'))
         obj.project = JobBaseNewProject.constructFromObject(data['project']);
       if (data.hasOwnProperty('write_access'))
@@ -74,11 +74,6 @@ ProjectMembershipNormalResponse.prototype.gid = undefined;
  * @member {String} resource_type
  */
 ProjectMembershipNormalResponse.prototype.resource_type = undefined;
-
-/**
- * @member {module:model/CustomFieldResponsePeopleValue} user
- */
-ProjectMembershipNormalResponse.prototype.user = undefined;
 
 /**
  * @member {module:model/JobBaseNewProject} parent
@@ -125,6 +120,11 @@ ProjectMembershipNormalResponse.AccessLevelEnum = {
  * @member {module:model/ProjectMembershipNormalResponse.AccessLevelEnum} access_level
  */
 ProjectMembershipNormalResponse.prototype.access_level = undefined;
+
+/**
+ * @member {module:model/CustomFieldResponsePeopleValue} user
+ */
+ProjectMembershipNormalResponse.prototype.user = undefined;
 
 /**
  * @member {module:model/JobBaseNewProject} project

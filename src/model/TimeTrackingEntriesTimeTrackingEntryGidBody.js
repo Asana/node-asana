@@ -18,7 +18,7 @@ import {UpdateTimeTrackingEntryRequest} from './UpdateTimeTrackingEntryRequest';
 /**
  * The TimeTrackingEntriesTimeTrackingEntryGidBody model module.
  * @module model/TimeTrackingEntriesTimeTrackingEntryGidBody
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class TimeTrackingEntriesTimeTrackingEntryGidBody {
   /**

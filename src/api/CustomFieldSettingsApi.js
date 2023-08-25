@@ -19,7 +19,7 @@ import {ErrorResponse} from '../model/ErrorResponse';
 /**
 * CustomFieldSettings service.
 * @module api/CustomFieldSettingsApi
-* @version 2.0.3
+* @version 2.0.4
 */
 export class CustomFieldSettingsApi {
 

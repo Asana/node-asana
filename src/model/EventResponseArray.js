@@ -19,7 +19,7 @@ import {NextPage} from './NextPage';
 /**
  * The EventResponseArray model module.
  * @module model/EventResponseArray
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class EventResponseArray {
   /**

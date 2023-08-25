@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The PortfolioResponseCurrentStatusUpdate model module.
  * @module model/PortfolioResponseCurrentStatusUpdate
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class PortfolioResponseCurrentStatusUpdate {
   /**

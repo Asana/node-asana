@@ -22,7 +22,7 @@ import {ProjectGidProjectBriefsBody} from '../model/ProjectGidProjectBriefsBody'
 /**
 * ProjectBriefs service.
 * @module api/ProjectBriefsApi
-* @version 2.0.3
+* @version 2.0.4
 */
 export class ProjectBriefsApi {
 

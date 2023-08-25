@@ -25,7 +25,7 @@ import {GoalResponseWorkspace} from './GoalResponseWorkspace';
 /**
  * The GoalResponse model module.
  * @module model/GoalResponse
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class GoalResponse {
   /**

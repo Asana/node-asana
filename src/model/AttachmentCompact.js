@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The AttachmentCompact model module.
  * @module model/AttachmentCompact
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class AttachmentCompact {
   /**

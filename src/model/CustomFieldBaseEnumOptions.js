@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The CustomFieldBaseEnumOptions model module.
  * @module model/CustomFieldBaseEnumOptions
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class CustomFieldBaseEnumOptions {
   /**

@@ -21,7 +21,7 @@ import {ErrorResponse} from '../model/ErrorResponse';
 /**
 * Attachments service.
 * @module api/AttachmentsApi
-* @version 2.0.3
+* @version 2.0.4
 */
 export class AttachmentsApi {
 

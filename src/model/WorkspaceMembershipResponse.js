@@ -21,7 +21,7 @@ import {WorkspaceMembershipResponseVacationDates} from './WorkspaceMembershipRes
 /**
  * The WorkspaceMembershipResponse model module.
  * @module model/WorkspaceMembershipResponse
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class WorkspaceMembershipResponse {
   /**

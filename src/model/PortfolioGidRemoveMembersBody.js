@@ -18,7 +18,7 @@ import {RemoveMembersRequest} from './RemoveMembersRequest';
 /**
  * The PortfolioGidRemoveMembersBody model module.
  * @module model/PortfolioGidRemoveMembersBody
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class PortfolioGidRemoveMembersBody {
   /**

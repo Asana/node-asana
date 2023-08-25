@@ -36,6 +36,26 @@ MembershipsApi:
             console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
         }
     });
+  getMembership: |-
+    const Asana = require('asana');
+    let defaultClient = Asana.ApiClient.instance;
+
+    // Configure OAuth2 access token for authorization: oauth2
+    let oauth2 = defaultClient.authentications['oauth2'];
+    oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+    
+    let apiInstance = new Asana.MembershipsApi();
+    let membership_gid = "12345"; // String | Globally unique identifier for the membership.
+    let opts = { 
+        'opt_fields': ["access_level","member","member.name","parent","parent.name","resource_subtype"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    };
+    apiInstance.getMembership(membership_gid, opts, (error, data, response) => {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+        }
+    });
   getMemberships: |-
     const Asana = require('asana');
     let defaultClient = Asana.ApiClient.instance;

@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The UserCompact model module.
  * @module model/UserCompact
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class UserCompact {
   /**

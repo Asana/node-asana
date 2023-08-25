@@ -18,7 +18,7 @@ import {CustomFieldSettingResponse} from './CustomFieldSettingResponse';
 /**
  * The CustomFieldSettingResponseData model module.
  * @module model/CustomFieldSettingResponseData
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class CustomFieldSettingResponseData {
   /**

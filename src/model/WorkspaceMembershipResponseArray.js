@@ -19,7 +19,7 @@ import {WorkspaceMembershipResponse} from './WorkspaceMembershipResponse';
 /**
  * The WorkspaceMembershipResponseArray model module.
  * @module model/WorkspaceMembershipResponseArray
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class WorkspaceMembershipResponseArray {
   /**

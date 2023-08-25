@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The TeamBase model module.
  * @module model/TeamBase
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class TeamBase {
   /**

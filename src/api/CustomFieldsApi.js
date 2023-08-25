@@ -27,7 +27,7 @@ import {ErrorResponse} from '../model/ErrorResponse';
 /**
 * CustomFields service.
 * @module api/CustomFieldsApi
-* @version 2.0.3
+* @version 2.0.4
 */
 export class CustomFieldsApi {
 

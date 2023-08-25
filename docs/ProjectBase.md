@@ -22,6 +22,8 @@ Name | Type | Description | Notes
 **_public** | **Boolean** | True if the project is public to its team. | [optional] 
 **start_on** | **Date** | The day on which work for this project begins, or null if the project has no start date. This takes a date with &#x60;YYYY-MM-DD&#x60; format. *Note: &#x60;due_on&#x60; or &#x60;due_at&#x60; must be present in the request when setting or unsetting the &#x60;start_on&#x60; parameter. Additionally, &#x60;start_on&#x60; and &#x60;due_on&#x60; cannot be the same date.* | [optional] 
 **default_access_level** | **String** | The default access for users or teams who join or are added as members to the project. | [optional] 
+**minimum_access_level_for_customization** | **String** | The minimum access level needed for project members to modify this project&#x27;s workflow and appearance. | [optional] 
+**minimum_access_level_for_sharing** | **String** | The minimum access level needed for project members to share the project and manage project memberships. | [optional] 
 
 <a name="ColorEnum"></a>
 ## Enum: ColorEnum
@@ -64,4 +66,18 @@ Name | Type | Description | Notes
 * `editor` (value: `"editor"`)
 * `commenter` (value: `"commenter"`)
 * `viewer` (value: `"viewer"`)
+
+
+<a name="MinimumAccessLevelForCustomizationEnum"></a>
+## Enum: MinimumAccessLevelForCustomizationEnum
+
+* `admin` (value: `"admin"`)
+* `editor` (value: `"editor"`)
+
+
+<a name="MinimumAccessLevelForSharingEnum"></a>
+## Enum: MinimumAccessLevelForSharingEnum
+
+* `admin` (value: `"admin"`)
+* `editor` (value: `"editor"`)
 

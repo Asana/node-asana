@@ -21,7 +21,7 @@ import {ProjectBaseCurrentStatusUpdate} from './ProjectBaseCurrentStatusUpdate';
 /**
  * The ProjectRequest model module.
  * @module model/ProjectRequest
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class ProjectRequest {
   /**
@@ -81,6 +81,10 @@ export class ProjectRequest {
         obj.start_on = ApiClient.convertToType(data['start_on'], 'Date');
       if (data.hasOwnProperty('default_access_level'))
         obj.default_access_level = ApiClient.convertToType(data['default_access_level'], 'String');
+      if (data.hasOwnProperty('minimum_access_level_for_customization'))
+        obj.minimum_access_level_for_customization = ApiClient.convertToType(data['minimum_access_level_for_customization'], 'String');
+      if (data.hasOwnProperty('minimum_access_level_for_sharing'))
+        obj.minimum_access_level_for_sharing = ApiClient.convertToType(data['minimum_access_level_for_sharing'], 'String');
       if (data.hasOwnProperty('custom_fields'))
         obj.custom_fields = ApiClient.convertToType(data['custom_fields'], {'String': 'String'});
       if (data.hasOwnProperty('followers'))
@@ -393,6 +397,54 @@ ProjectRequest.DefaultAccessLevelEnum = {
  * @member {module:model/ProjectRequest.DefaultAccessLevelEnum} default_access_level
  */
 ProjectRequest.prototype.default_access_level = undefined;
+
+/**
+ * Allowed values for the <code>minimum_access_level_for_customization</code> property.
+ * @enum {String}
+ * @readonly
+ */
+ProjectRequest.MinimumAccessLevelForCustomizationEnum = {
+  /**
+   * value: "admin"
+   * @const
+   */
+  admin: "admin",
+
+  /**
+   * value: "editor"
+   * @const
+   */
+  editor: "editor"
+};
+/**
+ * The minimum access level needed for project members to modify this project's workflow and appearance.
+ * @member {module:model/ProjectRequest.MinimumAccessLevelForCustomizationEnum} minimum_access_level_for_customization
+ */
+ProjectRequest.prototype.minimum_access_level_for_customization = undefined;
+
+/**
+ * Allowed values for the <code>minimum_access_level_for_sharing</code> property.
+ * @enum {String}
+ * @readonly
+ */
+ProjectRequest.MinimumAccessLevelForSharingEnum = {
+  /**
+   * value: "admin"
+   * @const
+   */
+  admin: "admin",
+
+  /**
+   * value: "editor"
+   * @const
+   */
+  editor: "editor"
+};
+/**
+ * The minimum access level needed for project members to share the project and manage project memberships.
+ * @member {module:model/ProjectRequest.MinimumAccessLevelForSharingEnum} minimum_access_level_for_sharing
+ */
+ProjectRequest.prototype.minimum_access_level_for_sharing = undefined;
 
 /**
  * An object where each key is a Custom Field GID and each value is an enum GID, string, number, or object.

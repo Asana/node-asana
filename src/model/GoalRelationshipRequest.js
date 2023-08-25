@@ -19,7 +19,7 @@ import {GoalRelationshipBaseSupportingResource} from './GoalRelationshipBaseSupp
 /**
  * The GoalRelationshipRequest model module.
  * @module model/GoalRelationshipRequest
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class GoalRelationshipRequest {
   /**

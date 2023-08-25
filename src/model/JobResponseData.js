@@ -18,7 +18,7 @@ import {JobResponse} from './JobResponse';
 /**
  * The JobResponseData model module.
  * @module model/JobResponseData
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class JobResponseData {
   /**

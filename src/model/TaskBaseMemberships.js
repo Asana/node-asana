@@ -19,7 +19,7 @@ import {TaskBaseSection} from './TaskBaseSection';
 /**
  * The TaskBaseMemberships model module.
  * @module model/TaskBaseMemberships
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class TaskBaseMemberships {
   /**

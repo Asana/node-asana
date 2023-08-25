@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The ProjectSectionInsertRequest model module.
  * @module model/ProjectSectionInsertRequest
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class ProjectSectionInsertRequest {
   /**

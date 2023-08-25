@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The TeamRemoveUserRequest model module.
  * @module model/TeamRemoveUserRequest
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class TeamRemoveUserRequest {
   /**

@@ -18,7 +18,7 @@ import {CustomFieldResponsePeopleValue} from './CustomFieldResponsePeopleValue';
 /**
  * The ProjectStatusResponse model module.
  * @module model/ProjectStatusResponse
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class ProjectStatusResponse {
   /**
@@ -26,12 +26,8 @@ export class ProjectStatusResponse {
    * A generic Asana Resource, containing a globally unique identifier.A generic Asana Resource, containing a globally unique identifier. *Deprecated: new integrations should prefer the &#x60;status_update&#x60; resource.* A *project status* is an update on the progress of a particular project, and is sent out to all project followers when created. These updates include both text describing the update and a color code intended to represent the overall state of the project: \&quot;green\&quot; for projects that are on track, \&quot;yellow\&quot; for projects at risk, and \&quot;red\&quot; for projects that are behind.
    * @alias module:model/ProjectStatusResponse
    * @class
-   * @param text {String} The text content of the status update.
-   * @param color {module:model/ProjectStatusResponse.ColorEnum} The color associated with the status update.
    */
-  constructor(text, color) {
-    this.text = text;
-    this.color = color;
+  constructor() {
   }
 
   /**

@@ -21,7 +21,7 @@ import {ProjectBaseCurrentStatusUpdate} from './ProjectBaseCurrentStatusUpdate';
 /**
  * The ProjectBase model module.
  * @module model/ProjectBase
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class ProjectBase {
   /**
@@ -81,6 +81,10 @@ export class ProjectBase {
         obj.start_on = ApiClient.convertToType(data['start_on'], 'Date');
       if (data.hasOwnProperty('default_access_level'))
         obj.default_access_level = ApiClient.convertToType(data['default_access_level'], 'String');
+      if (data.hasOwnProperty('minimum_access_level_for_customization'))
+        obj.minimum_access_level_for_customization = ApiClient.convertToType(data['minimum_access_level_for_customization'], 'String');
+      if (data.hasOwnProperty('minimum_access_level_for_sharing'))
+        obj.minimum_access_level_for_sharing = ApiClient.convertToType(data['minimum_access_level_for_sharing'], 'String');
     }
     return obj;
   }
@@ -383,4 +387,52 @@ ProjectBase.DefaultAccessLevelEnum = {
  * @member {module:model/ProjectBase.DefaultAccessLevelEnum} default_access_level
  */
 ProjectBase.prototype.default_access_level = undefined;
+
+/**
+ * Allowed values for the <code>minimum_access_level_for_customization</code> property.
+ * @enum {String}
+ * @readonly
+ */
+ProjectBase.MinimumAccessLevelForCustomizationEnum = {
+  /**
+   * value: "admin"
+   * @const
+   */
+  admin: "admin",
+
+  /**
+   * value: "editor"
+   * @const
+   */
+  editor: "editor"
+};
+/**
+ * The minimum access level needed for project members to modify this project's workflow and appearance.
+ * @member {module:model/ProjectBase.MinimumAccessLevelForCustomizationEnum} minimum_access_level_for_customization
+ */
+ProjectBase.prototype.minimum_access_level_for_customization = undefined;
+
+/**
+ * Allowed values for the <code>minimum_access_level_for_sharing</code> property.
+ * @enum {String}
+ * @readonly
+ */
+ProjectBase.MinimumAccessLevelForSharingEnum = {
+  /**
+   * value: "admin"
+   * @const
+   */
+  admin: "admin",
+
+  /**
+   * value: "editor"
+   * @const
+   */
+  editor: "editor"
+};
+/**
+ * The minimum access level needed for project members to share the project and manage project memberships.
+ * @member {module:model/ProjectBase.MinimumAccessLevelForSharingEnum} minimum_access_level_for_sharing
+ */
+ProjectBase.prototype.minimum_access_level_for_sharing = undefined;
 

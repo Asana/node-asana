@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The EnumOptionBase model module.
  * @module model/EnumOptionBase
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class EnumOptionBase {
   /**

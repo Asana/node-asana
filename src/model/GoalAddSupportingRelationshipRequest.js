@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The GoalAddSupportingRelationshipRequest model module.
  * @module model/GoalAddSupportingRelationshipRequest
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class GoalAddSupportingRelationshipRequest {
   /**

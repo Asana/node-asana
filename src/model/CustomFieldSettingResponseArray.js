@@ -19,7 +19,7 @@ import {NextPage} from './NextPage';
 /**
  * The CustomFieldSettingResponseArray model module.
  * @module model/CustomFieldSettingResponseArray
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class CustomFieldSettingResponseArray {
   /**

@@ -26,7 +26,7 @@ import {TeamsTeamGidBody} from '../model/TeamsTeamGidBody';
 /**
 * Teams service.
 * @module api/TeamsApi
-* @version 2.0.3
+* @version 2.0.4
 */
 export class TeamsApi {
 

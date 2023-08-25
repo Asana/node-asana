@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The CustomFieldResponseCreatedBy model module.
  * @module model/CustomFieldResponseCreatedBy
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class CustomFieldResponseCreatedBy {
   /**

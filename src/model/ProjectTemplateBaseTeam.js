@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The ProjectTemplateBaseTeam model module.
  * @module model/ProjectTemplateBaseTeam
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class ProjectTemplateBaseTeam {
   /**

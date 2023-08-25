@@ -20,7 +20,7 @@ import {OrganizationExportsBody} from '../model/OrganizationExportsBody';
 /**
 * OrganizationExports service.
 * @module api/OrganizationExportsApi
-* @version 2.0.3
+* @version 2.0.4
 */
 export class OrganizationExportsApi {
 

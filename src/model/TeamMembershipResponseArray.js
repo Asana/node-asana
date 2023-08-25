@@ -19,7 +19,7 @@ import {TeamMembershipResponse} from './TeamMembershipResponse';
 /**
  * The TeamMembershipResponseArray model module.
  * @module model/TeamMembershipResponseArray
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class TeamMembershipResponseArray {
   /**

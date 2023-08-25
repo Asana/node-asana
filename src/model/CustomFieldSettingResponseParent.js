@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The CustomFieldSettingResponseParent model module.
  * @module model/CustomFieldSettingResponseParent
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class CustomFieldSettingResponseParent {
   /**

@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The TaskRemoveProjectRequest model module.
  * @module model/TaskRemoveProjectRequest
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class TaskRemoveProjectRequest {
   /**

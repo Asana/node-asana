@@ -22,7 +22,7 @@ import {ProjectStatusResponseData} from '../model/ProjectStatusResponseData';
 /**
 * ProjectStatuses service.
 * @module api/ProjectStatusesApi
-* @version 2.0.3
+* @version 2.0.4
 */
 export class ProjectStatusesApi {
 

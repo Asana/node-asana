@@ -19,7 +19,7 @@ import {ErrorResponse} from '../model/ErrorResponse';
 /**
 * Typeahead service.
 * @module api/TypeaheadApi
-* @version 2.0.3
+* @version 2.0.4
 */
 export class TypeaheadApi {
 

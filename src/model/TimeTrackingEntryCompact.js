@@ -18,7 +18,7 @@ import {StoryResponseAssignee} from './StoryResponseAssignee';
 /**
  * The TimeTrackingEntryCompact model module.
  * @module model/TimeTrackingEntryCompact
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class TimeTrackingEntryCompact {
   /**

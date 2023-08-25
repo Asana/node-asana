@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The StatusUpdateRequest model module.
  * @module model/StatusUpdateRequest
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class StatusUpdateRequest {
   /**

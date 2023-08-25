@@ -19,7 +19,7 @@ import {ProjectMembershipCompact} from './ProjectMembershipCompact';
 /**
  * The ProjectMembershipCompactArray model module.
  * @module model/ProjectMembershipCompactArray
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class ProjectMembershipCompactArray {
   /**

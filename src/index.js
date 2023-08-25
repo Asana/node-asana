@@ -227,6 +227,7 @@ import {ProjectMembershipBase} from './model/ProjectMembershipBase';
 import {ProjectMembershipCompact} from './model/ProjectMembershipCompact';
 import {ProjectMembershipCompactArray} from './model/ProjectMembershipCompactArray';
 import {ProjectMembershipCompactResponse} from './model/ProjectMembershipCompactResponse';
+import {ProjectMembershipCompactResponseData} from './model/ProjectMembershipCompactResponseData';
 import {ProjectMembershipNormalResponse} from './model/ProjectMembershipNormalResponse';
 import {ProjectMembershipNormalResponseData} from './model/ProjectMembershipNormalResponseData';
 import {ProjectRequest} from './model/ProjectRequest';
@@ -497,7 +498,7 @@ import {WorkspacesApi} from './api/WorkspacesApi';
 * </pre>
 * </p>
 * @module index
-* @version 2.0.3
+* @version 2.0.4
 */
 export {
     /**
@@ -1789,6 +1790,12 @@ export {
      * @property {module:model/ProjectMembershipCompactResponse}
      */
     ProjectMembershipCompactResponse,
+
+    /**
+     * The ProjectMembershipCompactResponseData model constructor.
+     * @property {module:model/ProjectMembershipCompactResponseData}
+     */
+    ProjectMembershipCompactResponseData,
 
     /**
      * The ProjectMembershipNormalResponse model constructor.

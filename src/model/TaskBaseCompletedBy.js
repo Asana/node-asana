@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The TaskBaseCompletedBy model module.
  * @module model/TaskBaseCompletedBy
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class TaskBaseCompletedBy {
   /**

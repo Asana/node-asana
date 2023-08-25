@@ -20,7 +20,7 @@ import {CustomFieldSettingResponseProject} from './CustomFieldSettingResponsePro
 /**
  * The CustomFieldSettingResponse model module.
  * @module model/CustomFieldSettingResponse
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class CustomFieldSettingResponse {
   /**

@@ -23,7 +23,7 @@ import {WorkspaceGidTagsBody} from '../model/WorkspaceGidTagsBody';
 /**
 * Tags service.
 * @module api/TagsApi
-* @version 2.0.3
+* @version 2.0.4
 */
 export class TagsApi {
 

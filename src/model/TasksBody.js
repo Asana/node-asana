@@ -18,7 +18,7 @@ import {TaskRequest} from './TaskRequest';
 /**
  * The TasksBody model module.
  * @module model/TasksBody
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class TasksBody {
   /**

@@ -18,7 +18,7 @@ import {PortfolioRequest} from './PortfolioRequest';
 /**
  * The PortfoliosPortfolioGidBody model module.
  * @module model/PortfoliosPortfolioGidBody
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class PortfoliosPortfolioGidBody {
   /**

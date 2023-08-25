@@ -18,7 +18,7 @@ import {ProjectMembershipNormalResponse} from './ProjectMembershipNormalResponse
 /**
  * The ProjectMembershipNormalResponseData model module.
  * @module model/ProjectMembershipNormalResponseData
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class ProjectMembershipNormalResponseData {
   /**

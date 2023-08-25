@@ -18,7 +18,7 @@ import {TeamAddUserRequest} from './TeamAddUserRequest';
 /**
  * The TeamGidAddUserBody model module.
  * @module model/TeamGidAddUserBody
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class TeamGidAddUserBody {
   /**

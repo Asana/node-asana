@@ -37,7 +37,7 @@ import {TasksTaskGidBody} from '../model/TasksTaskGidBody';
 /**
 * Tasks service.
 * @module api/TasksApi
-* @version 2.0.3
+* @version 2.0.4
 */
 export class TasksApi {
 
@@ -840,6 +840,7 @@ export class TasksApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. &#x27;Note: You can only pass in an offset that was returned to you via a previously paginated request.&#x27;
+     * @param {String} opts.completed_since Only return tasks that are either incomplete or that have been completed since this time. Accepts a date-time string or the keyword *now*. 
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @param {module:api/TasksApi~getTasksForSectionCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
@@ -856,7 +857,7 @@ export class TasksApi {
         'section_gid': section_gid
       };
       let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        'limit': opts['limit'],'offset': opts['offset'],'completed_since': opts['completed_since'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
       };
       let headerParams = {
         

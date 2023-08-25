@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The TeamResponseOrganization model module.
  * @module model/TeamResponseOrganization
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class TeamResponseOrganization {
   /**

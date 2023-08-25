@@ -19,7 +19,7 @@ import {SectionResponse} from './SectionResponse';
 /**
  * The SectionResponseArray model module.
  * @module model/SectionResponseArray
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class SectionResponseArray {
   /**

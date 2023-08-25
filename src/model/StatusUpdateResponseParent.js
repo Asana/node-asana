@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The StatusUpdateResponseParent model module.
  * @module model/StatusUpdateResponseParent
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class StatusUpdateResponseParent {
   /**

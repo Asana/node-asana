@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The ProjectResponseCreatedFromTemplate model module.
  * @module model/ProjectResponseCreatedFromTemplate
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class ProjectResponseCreatedFromTemplate {
   /**

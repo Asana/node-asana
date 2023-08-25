@@ -18,7 +18,7 @@ import {JobBaseNewProject} from './JobBaseNewProject';
 /**
  * The SectionResponse model module.
  * @module model/SectionResponse
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class SectionResponse {
   /**

@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The WorkspaceBase model module.
  * @module model/WorkspaceBase
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class WorkspaceBase {
   /**

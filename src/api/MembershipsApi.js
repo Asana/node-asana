@@ -18,11 +18,12 @@ import {ErrorResponse} from '../model/ErrorResponse';
 import {MembershipResponseArray} from '../model/MembershipResponseArray';
 import {MembershipResponseData} from '../model/MembershipResponseData';
 import {MembershipsBody} from '../model/MembershipsBody';
+import {ProjectMembershipCompactResponseData} from '../model/ProjectMembershipCompactResponseData';
 
 /**
 * Memberships service.
 * @module api/MembershipsApi
-* @version 2.0.3
+* @version 2.0.4
 */
 export class MembershipsApi {
 
@@ -125,6 +126,55 @@ export class MembershipsApi {
 
       return this.apiClient.callApi(
         '/memberships/{membership_gid}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+    /**
+     * Callback function to receive the result of the getMembership operation.
+     * @callback moduleapi/MembershipsApi~getMembershipCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ProjectMembershipCompactResponseData{ data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get a membership
+     * Returns compact &#x60;project_membership&#x60; record for a single membership. &#x60;GET&#x60; only supports project memberships currently
+     * @param {String} membership_gid Globally unique identifier for the membership.
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {module:api/MembershipsApi~getMembershipCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
+     */
+    getMembership(membership_gid, opts, callback) {
+      opts = opts || {};
+      let postBody = null;
+      // verify the required parameter 'membership_gid' is set
+      if (membership_gid === undefined || membership_gid === null) {
+        throw new Error("Missing the required parameter 'membership_gid' when calling getMembership");
+      }
+
+      let pathParams = {
+        'membership_gid': membership_gid
+      };
+      let queryParams = {
+        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+      };
+      let headerParams = {
+        
+      };
+      let formParams = {
+        
+      };
+
+      let authNames = ['oauth2'];
+      let contentTypes = [];
+      let accepts = ['application/json; charset=UTF-8'];
+      let returnType = ProjectMembershipCompactResponseData;
+
+      return this.apiClient.callApi(
+        '/memberships/{membership_gid}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

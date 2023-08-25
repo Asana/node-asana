@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The TeamCompact model module.
  * @module model/TeamCompact
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class TeamCompact {
   /**

@@ -31,7 +31,7 @@ import {TaskResponseWorkspace} from './TaskResponseWorkspace';
 /**
  * The TaskResponse model module.
  * @module model/TaskResponse
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class TaskResponse {
   /**

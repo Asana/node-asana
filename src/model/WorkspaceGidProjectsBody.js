@@ -18,7 +18,7 @@ import {ProjectRequest} from './ProjectRequest';
 /**
  * The WorkspaceGidProjectsBody model module.
  * @module model/WorkspaceGidProjectsBody
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class WorkspaceGidProjectsBody {
   /**

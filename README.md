@@ -3,7 +3,7 @@
 JavaScript client library for Asana.
 
 - API version: 1.0
-- Package version: 2.0.3
+- Package version: 2.0.4
 
 ## Installation
 
@@ -20,7 +20,7 @@ npm install asana --save
 Include the latest release directly from GitHub:
 
 ```html
-<script src="https://github.com/Asana/node-asana/releases/download/v2.0.3/asana-min.js"></script>
+<script src="https://github.com/Asana/node-asana/releases/download/v2.0.4/asana-min.js"></script>
 ```
 
 Example usage:
@@ -251,6 +251,7 @@ Class | Method | HTTP request | Description
 *Asana.JobsApi* | [**getJob**](docs/JobsApi.md#getJob) | **GET** /jobs/{job_gid} | Get a job by id
 *Asana.MembershipsApi* | [**createMembership**](docs/MembershipsApi.md#createMembership) | **POST** /memberships | Create a membership
 *Asana.MembershipsApi* | [**deleteMembership**](docs/MembershipsApi.md#deleteMembership) | **DELETE** /memberships/{membership_gid} | Delete a membership
+*Asana.MembershipsApi* | [**getMembership**](docs/MembershipsApi.md#getMembership) | **GET** /memberships/{membership_gid} | Get a membership
 *Asana.MembershipsApi* | [**getMemberships**](docs/MembershipsApi.md#getMemberships) | **GET** /memberships | Get multiple memberships
 *Asana.OrganizationExportsApi* | [**createOrganizationExport**](docs/OrganizationExportsApi.md#createOrganizationExport) | **POST** /organization_exports | Create an organization export request
 *Asana.OrganizationExportsApi* | [**getOrganizationExport**](docs/OrganizationExportsApi.md#getOrganizationExport) | **GET** /organization_exports/{organization_export_gid} | Get details on an org export request
@@ -610,6 +611,7 @@ Class | Method | HTTP request | Description
  - [Asana.ProjectMembershipCompact](docs/ProjectMembershipCompact.md)
  - [Asana.ProjectMembershipCompactArray](docs/ProjectMembershipCompactArray.md)
  - [Asana.ProjectMembershipCompactResponse](docs/ProjectMembershipCompactResponse.md)
+ - [Asana.ProjectMembershipCompactResponseData](docs/ProjectMembershipCompactResponseData.md)
  - [Asana.ProjectMembershipNormalResponse](docs/ProjectMembershipNormalResponse.md)
  - [Asana.ProjectMembershipNormalResponseData](docs/ProjectMembershipNormalResponseData.md)
  - [Asana.ProjectRequest](docs/ProjectRequest.md)
@@ -922,7 +924,7 @@ const oauth2 = defaultClient.authentications['oauth2'];
 oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
 
 // Add asana-enable header for the client
-defaultClient.defaultHeaders['asana-enabled'] = 'string_ids';
+defaultClient.defaultHeaders['asana-enable'] = 'string_ids';
 ```
 
 ## Documentation for Using the `callApi` method

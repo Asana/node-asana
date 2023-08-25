@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The PortfolioResponseWorkspace model module.
  * @module model/PortfolioResponseWorkspace
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class PortfolioResponseWorkspace {
   /**

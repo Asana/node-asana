@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The TaskDuplicateRequest model module.
  * @module model/TaskDuplicateRequest
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class TaskDuplicateRequest {
   /**

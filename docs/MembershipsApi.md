@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createMembership**](MembershipsApi.md#createMembership) | **POST** /memberships | Create a membership
 [**deleteMembership**](MembershipsApi.md#deleteMembership) | **DELETE** /memberships/{membership_gid} | Delete a membership
+[**getMembership**](MembershipsApi.md#getMembership) | **GET** /memberships/{membership_gid} | Get a membership
 [**getMemberships**](MembershipsApi.md#getMemberships) | **GET** /memberships | Get multiple memberships
 
 <a name="createMembership"></a>
@@ -95,6 +96,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EmptyResponseData**](EmptyResponseData.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json; charset=UTF-8
+
+<a name="getMembership"></a>
+# **getMembership**
+> ProjectMembershipCompactResponseData getMembership(membership_gid, opts)
+
+Get a membership
+
+Returns compact &#x60;project_membership&#x60; record for a single membership. &#x60;GET&#x60; only supports project memberships currently
+
+### Example
+```javascript
+const Asana = require('asana');
+let defaultClient = Asana.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: oauth2
+let oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = '<YOUR_PERSONAL_ACCESS_TOKEN>';
+
+let apiInstance = new Asana.MembershipsApi();
+let membership_gid = "12345"; // String | Globally unique identifier for the membership.
+let opts = { 
+    'opt_fields': ["access_level","member","member.name","parent","parent.name","resource_subtype"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+};
+apiInstance.getMembership(membership_gid, opts, (error, data, response) => {
+    if (error) {
+        console.error(error);
+    } else {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
+    }
+});
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **membership_gid** | **String**| Globally unique identifier for the membership. | 
+ **opt_fields** | [**[String]**](String.md)| This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+
+### Return type
+
+[**ProjectMembershipCompactResponseData**](ProjectMembershipCompactResponseData.md)
 
 ### Authorization
 

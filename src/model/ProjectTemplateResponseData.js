@@ -18,7 +18,7 @@ import {ProjectTemplateResponse} from './ProjectTemplateResponse';
 /**
  * The ProjectTemplateResponseData model module.
  * @module model/ProjectTemplateResponseData
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class ProjectTemplateResponseData {
   /**

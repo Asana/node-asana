@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The RemoveMembersRequest model module.
  * @module model/RemoveMembersRequest
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class RemoveMembersRequest {
   /**

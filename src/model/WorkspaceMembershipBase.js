@@ -19,7 +19,7 @@ import {GoalResponseWorkspace} from './GoalResponseWorkspace';
 /**
  * The WorkspaceMembershipBase model module.
  * @module model/WorkspaceMembershipBase
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class WorkspaceMembershipBase {
   /**

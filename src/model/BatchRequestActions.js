@@ -18,7 +18,7 @@ import {BatchRequestOptions} from './BatchRequestOptions';
 /**
  * The BatchRequestActions model module.
  * @module model/BatchRequestActions
- * @version 2.0.3
+ * @version 2.0.4
  */
 export class BatchRequestActions {
   /**
