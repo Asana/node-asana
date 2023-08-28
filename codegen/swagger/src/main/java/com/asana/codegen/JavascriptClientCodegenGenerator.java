@@ -74,6 +74,9 @@ public class JavascriptClientCodegenGenerator extends JavaScriptClientCodegen {
     if(op.operationId.equalsIgnoreCase("createAttachmentForObject")) {
       op.vendorExtensions.put("x-codegen-isCreateAttachmentForObject", true);
     }
+    if(op.operationId.equalsIgnoreCase("searchTasksForWorkspace")) {
+      op.vendorExtensions.put("x-codegen-isSearchTasksForWorkspace", true);
+    }
     return op;
   }
 }
