@@ -31,7 +31,13 @@ let opts = { {{#parameters}}{{^required}}
 };{{/hasOptionalParams}}{{/hasParams}}
 {{#vendorExtensions.x-codegen-isSearchTasksForWorkspace}}
 // Custom fields query
+opts['custom_fields_123_is_set'] = true; // The format of this query parameter should be custom_fields_<CUSTOM_FIELD_GID>_is_set. NOTE: searching for multiple exact matches of a custom field, searching for multi-enum custom field
 opts['custom_fields_123_value'] = '456'; // The format of this query parameter should be custom_fields_<CUSTOM_FIELD_GID>_value. NOTE: searching for multiple exact matches of a custom field, searching for multi-enum custom field
+opts['custom_fields_123_starts_with'] = 'start'; // The format of this query parameter should be custom_fields_<CUSTOM_FIELD_GID>_starts_with. NOTE: searching for multiple exact matches of a custom field, searching for multi-enum custom field
+opts['custom_fields_123_ends_with'] = 'end'; // The format of this query parameter should be custom_fields_<CUSTOM_FIELD_GID>_ends_with. NOTE: searching for multiple exact matches of a custom field, searching for multi-enum custom field
+opts['custom_fields_123_contains'] = 'first'; // The format of this query parameter should be custom_fields_<CUSTOM_FIELD_GID>_contains. NOTE: searching for multiple exact matches of a custom field, searching for multi-enum custom field
+opts['custom_fields_123_less_than'] = 10; // The format of this query parameter should be custom_fields_<CUSTOM_FIELD_GID>_less_than. NOTE: searching for multiple exact matches of a custom field, searching for multi-enum custom field
+opts['custom_fields_123_greater_than'] = 100; // The format of this query parameter should be custom_fields_<CUSTOM_FIELD_GID>_greater_than. NOTE: searching for multiple exact matches of a custom field, searching for multi-enum custom field
 {{/vendorExtensions.x-codegen-isSearchTasksForWorkspace}}
 {{#usePromises}}
 apiInstance.{{{operationId}}}({{#parameters}}{{#required}}{{{paramName}}}{{#vendorExtensions.x-codegen-hasMoreRequired}}, {{/vendorExtensions.x-codegen-hasMoreRequired}}{{/required}}{{/parameters}}{{#hasOptionalParams}}{{#vendorExtensions.x-codegen-hasRequiredParams}}, {{/vendorExtensions.x-codegen-hasRequiredParams}}opts{{/hasOptionalParams}}).then(({{#returnType}}data{{/returnType}}) => {
