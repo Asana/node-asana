@@ -18,7 +18,7 @@ import {AttachmentResponseParentCreatedBy} from './AttachmentResponseParentCreat
 /**
  * The TaskCompact model module.
  * @module model/TaskCompact
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class TaskCompact {
   /**

@@ -23,7 +23,7 @@ import {WorkspaceGidTagsBody} from '../model/WorkspaceGidTagsBody';
 /**
 * Tags service.
 * @module api/TagsApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class TagsApi {
 
@@ -57,36 +57,36 @@ export class TagsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     createTag(body, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling createTag");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling createTag");
+        }
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TagResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TagResponseData;
 
-      return this.apiClient.callApi(
-        '/tags', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/tags', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the createTagForWorkspace operation.
@@ -107,40 +107,40 @@ export class TagsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     createTagForWorkspace(body, workspace_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling createTagForWorkspace");
-      }
-      // verify the required parameter 'workspace_gid' is set
-      if (workspace_gid === undefined || workspace_gid === null) {
-        throw new Error("Missing the required parameter 'workspace_gid' when calling createTagForWorkspace");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling createTagForWorkspace");
+        }
+        // verify the required parameter 'workspace_gid' is set
+        if (workspace_gid === undefined || workspace_gid === null) {
+            throw new Error("Missing the required parameter 'workspace_gid' when calling createTagForWorkspace");
+        }
 
-      let pathParams = {
-        'workspace_gid': workspace_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'workspace_gid': workspace_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TagResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TagResponseData;
 
-      return this.apiClient.callApi(
-        '/workspaces/{workspace_gid}/tags', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/workspaces/{workspace_gid}/tags', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the deleteTag operation.
@@ -158,36 +158,36 @@ export class TagsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     deleteTag(tag_gid, callback) {
-      
-      let postBody = null;
-      // verify the required parameter 'tag_gid' is set
-      if (tag_gid === undefined || tag_gid === null) {
-        throw new Error("Missing the required parameter 'tag_gid' when calling deleteTag");
-      }
-
-      let pathParams = {
-        'tag_gid': tag_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = null;
+        // verify the required parameter 'tag_gid' is set
+        if (tag_gid === undefined || tag_gid === null) {
+            throw new Error("Missing the required parameter 'tag_gid' when calling deleteTag");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'tag_gid': tag_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/tags/{tag_gid}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/tags/{tag_gid}', 'DELETE',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getTag operation.
@@ -207,36 +207,36 @@ export class TagsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getTag(tag_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'tag_gid' is set
-      if (tag_gid === undefined || tag_gid === null) {
-        throw new Error("Missing the required parameter 'tag_gid' when calling getTag");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'tag_gid' is set
+        if (tag_gid === undefined || tag_gid === null) {
+            throw new Error("Missing the required parameter 'tag_gid' when calling getTag");
+        }
 
-      let pathParams = {
-        'tag_gid': tag_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'tag_gid': tag_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TagResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TagResponseData;
 
-      return this.apiClient.callApi(
-        '/tags/{tag_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/tags/{tag_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getTags operation.
@@ -258,32 +258,32 @@ export class TagsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getTags(opts, callback) {
-      opts = opts || {};
-      let postBody = null;
+        opts = opts || {};
+        let postBody = null;
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'workspace': opts['workspace'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'workspace': opts['workspace'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TagResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TagResponseArray;
 
-      return this.apiClient.callApi(
-        '/tags', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/tags', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getTagsForTask operation.
@@ -305,36 +305,36 @@ export class TagsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getTagsForTask(task_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'task_gid' is set
-      if (task_gid === undefined || task_gid === null) {
-        throw new Error("Missing the required parameter 'task_gid' when calling getTagsForTask");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'task_gid' is set
+        if (task_gid === undefined || task_gid === null) {
+            throw new Error("Missing the required parameter 'task_gid' when calling getTagsForTask");
+        }
 
-      let pathParams = {
-        'task_gid': task_gid
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'task_gid': task_gid
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TagResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TagResponseArray;
 
-      return this.apiClient.callApi(
-        '/tasks/{task_gid}/tags', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/tasks/{task_gid}/tags', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getTagsForWorkspace operation.
@@ -356,36 +356,36 @@ export class TagsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getTagsForWorkspace(workspace_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'workspace_gid' is set
-      if (workspace_gid === undefined || workspace_gid === null) {
-        throw new Error("Missing the required parameter 'workspace_gid' when calling getTagsForWorkspace");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'workspace_gid' is set
+        if (workspace_gid === undefined || workspace_gid === null) {
+            throw new Error("Missing the required parameter 'workspace_gid' when calling getTagsForWorkspace");
+        }
 
-      let pathParams = {
-        'workspace_gid': workspace_gid
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'workspace_gid': workspace_gid
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TagResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TagResponseArray;
 
-      return this.apiClient.callApi(
-        '/workspaces/{workspace_gid}/tags', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/workspaces/{workspace_gid}/tags', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the updateTag operation.
@@ -405,36 +405,36 @@ export class TagsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     updateTag(tag_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'tag_gid' is set
-      if (tag_gid === undefined || tag_gid === null) {
-        throw new Error("Missing the required parameter 'tag_gid' when calling updateTag");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'tag_gid' is set
+        if (tag_gid === undefined || tag_gid === null) {
+            throw new Error("Missing the required parameter 'tag_gid' when calling updateTag");
+        }
 
-      let pathParams = {
-        'tag_gid': tag_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'tag_gid': tag_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TagResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TagResponseData;
 
-      return this.apiClient.callApi(
-        '/tags/{tag_gid}', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/tags/{tag_gid}', 'PUT',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

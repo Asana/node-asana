@@ -18,7 +18,7 @@ import {StatusUpdateResponse} from './StatusUpdateResponse';
 /**
  * The StatusUpdateResponseData model module.
  * @module model/StatusUpdateResponseData
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class StatusUpdateResponseData {
   /**

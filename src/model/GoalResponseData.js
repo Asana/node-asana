@@ -18,7 +18,7 @@ import {GoalResponse} from './GoalResponse';
 /**
  * The GoalResponseData model module.
  * @module model/GoalResponseData
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class GoalResponseData {
   /**

@@ -31,7 +31,7 @@ import {ProjectResponseArray} from '../model/ProjectResponseArray';
 /**
 * Portfolios service.
 * @module api/PortfoliosApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class PortfoliosApi {
 
@@ -64,40 +64,40 @@ export class PortfoliosApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     addCustomFieldSettingForPortfolio(body, portfolio_gid, callback) {
-      
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling addCustomFieldSettingForPortfolio");
-      }
-      // verify the required parameter 'portfolio_gid' is set
-      if (portfolio_gid === undefined || portfolio_gid === null) {
-        throw new Error("Missing the required parameter 'portfolio_gid' when calling addCustomFieldSettingForPortfolio");
-      }
-
-      let pathParams = {
-        'portfolio_gid': portfolio_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling addCustomFieldSettingForPortfolio");
+        }
+        // verify the required parameter 'portfolio_gid' is set
+        if (portfolio_gid === undefined || portfolio_gid === null) {
+            throw new Error("Missing the required parameter 'portfolio_gid' when calling addCustomFieldSettingForPortfolio");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = CustomFieldSettingResponseData;
+        let pathParams = {
+            'portfolio_gid': portfolio_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/portfolios/{portfolio_gid}/addCustomFieldSetting', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = CustomFieldSettingResponseData;
+
+        return this.apiClient.callApi(
+            '/portfolios/{portfolio_gid}/addCustomFieldSetting', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the addItemForPortfolio operation.
@@ -116,40 +116,40 @@ export class PortfoliosApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     addItemForPortfolio(body, portfolio_gid, callback) {
-      
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling addItemForPortfolio");
-      }
-      // verify the required parameter 'portfolio_gid' is set
-      if (portfolio_gid === undefined || portfolio_gid === null) {
-        throw new Error("Missing the required parameter 'portfolio_gid' when calling addItemForPortfolio");
-      }
-
-      let pathParams = {
-        'portfolio_gid': portfolio_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling addItemForPortfolio");
+        }
+        // verify the required parameter 'portfolio_gid' is set
+        if (portfolio_gid === undefined || portfolio_gid === null) {
+            throw new Error("Missing the required parameter 'portfolio_gid' when calling addItemForPortfolio");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'portfolio_gid': portfolio_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/portfolios/{portfolio_gid}/addItem', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/portfolios/{portfolio_gid}/addItem', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the addMembersForPortfolio operation.
@@ -170,40 +170,40 @@ export class PortfoliosApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     addMembersForPortfolio(body, portfolio_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling addMembersForPortfolio");
-      }
-      // verify the required parameter 'portfolio_gid' is set
-      if (portfolio_gid === undefined || portfolio_gid === null) {
-        throw new Error("Missing the required parameter 'portfolio_gid' when calling addMembersForPortfolio");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling addMembersForPortfolio");
+        }
+        // verify the required parameter 'portfolio_gid' is set
+        if (portfolio_gid === undefined || portfolio_gid === null) {
+            throw new Error("Missing the required parameter 'portfolio_gid' when calling addMembersForPortfolio");
+        }
 
-      let pathParams = {
-        'portfolio_gid': portfolio_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'portfolio_gid': portfolio_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = PortfolioResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = PortfolioResponseData;
 
-      return this.apiClient.callApi(
-        '/portfolios/{portfolio_gid}/addMembers', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/portfolios/{portfolio_gid}/addMembers', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the createPortfolio operation.
@@ -223,36 +223,36 @@ export class PortfoliosApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     createPortfolio(body, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling createPortfolio");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling createPortfolio");
+        }
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = PortfolioResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = PortfolioResponseData;
 
-      return this.apiClient.callApi(
-        '/portfolios', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/portfolios', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the deletePortfolio operation.
@@ -270,36 +270,36 @@ export class PortfoliosApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     deletePortfolio(portfolio_gid, callback) {
-      
-      let postBody = null;
-      // verify the required parameter 'portfolio_gid' is set
-      if (portfolio_gid === undefined || portfolio_gid === null) {
-        throw new Error("Missing the required parameter 'portfolio_gid' when calling deletePortfolio");
-      }
-
-      let pathParams = {
-        'portfolio_gid': portfolio_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = null;
+        // verify the required parameter 'portfolio_gid' is set
+        if (portfolio_gid === undefined || portfolio_gid === null) {
+            throw new Error("Missing the required parameter 'portfolio_gid' when calling deletePortfolio");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'portfolio_gid': portfolio_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/portfolios/{portfolio_gid}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/portfolios/{portfolio_gid}', 'DELETE',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getItemsForPortfolio operation.
@@ -321,36 +321,36 @@ export class PortfoliosApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getItemsForPortfolio(portfolio_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'portfolio_gid' is set
-      if (portfolio_gid === undefined || portfolio_gid === null) {
-        throw new Error("Missing the required parameter 'portfolio_gid' when calling getItemsForPortfolio");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'portfolio_gid' is set
+        if (portfolio_gid === undefined || portfolio_gid === null) {
+            throw new Error("Missing the required parameter 'portfolio_gid' when calling getItemsForPortfolio");
+        }
 
-      let pathParams = {
-        'portfolio_gid': portfolio_gid
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'portfolio_gid': portfolio_gid
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectResponseArray;
 
-      return this.apiClient.callApi(
-        '/portfolios/{portfolio_gid}/items', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/portfolios/{portfolio_gid}/items', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getPortfolio operation.
@@ -370,36 +370,36 @@ export class PortfoliosApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getPortfolio(portfolio_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'portfolio_gid' is set
-      if (portfolio_gid === undefined || portfolio_gid === null) {
-        throw new Error("Missing the required parameter 'portfolio_gid' when calling getPortfolio");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'portfolio_gid' is set
+        if (portfolio_gid === undefined || portfolio_gid === null) {
+            throw new Error("Missing the required parameter 'portfolio_gid' when calling getPortfolio");
+        }
 
-      let pathParams = {
-        'portfolio_gid': portfolio_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'portfolio_gid': portfolio_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = PortfolioResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = PortfolioResponseData;
 
-      return this.apiClient.callApi(
-        '/portfolios/{portfolio_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/portfolios/{portfolio_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getPortfolios operation.
@@ -422,36 +422,36 @@ export class PortfoliosApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getPortfolios(workspace, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'workspace' is set
-      if (workspace === undefined || workspace === null) {
-        throw new Error("Missing the required parameter 'workspace' when calling getPortfolios");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'workspace' is set
+        if (workspace === undefined || workspace === null) {
+            throw new Error("Missing the required parameter 'workspace' when calling getPortfolios");
+        }
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'workspace': workspace,'owner': opts['owner'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'workspace': workspace,'owner': opts['owner'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = PortfolioResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = PortfolioResponseArray;
 
-      return this.apiClient.callApi(
-        '/portfolios', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/portfolios', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the removeCustomFieldSettingForPortfolio operation.
@@ -470,40 +470,40 @@ export class PortfoliosApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     removeCustomFieldSettingForPortfolio(body, portfolio_gid, callback) {
-      
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling removeCustomFieldSettingForPortfolio");
-      }
-      // verify the required parameter 'portfolio_gid' is set
-      if (portfolio_gid === undefined || portfolio_gid === null) {
-        throw new Error("Missing the required parameter 'portfolio_gid' when calling removeCustomFieldSettingForPortfolio");
-      }
-
-      let pathParams = {
-        'portfolio_gid': portfolio_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling removeCustomFieldSettingForPortfolio");
+        }
+        // verify the required parameter 'portfolio_gid' is set
+        if (portfolio_gid === undefined || portfolio_gid === null) {
+            throw new Error("Missing the required parameter 'portfolio_gid' when calling removeCustomFieldSettingForPortfolio");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'portfolio_gid': portfolio_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/portfolios/{portfolio_gid}/removeCustomFieldSetting', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/portfolios/{portfolio_gid}/removeCustomFieldSetting', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the removeItemForPortfolio operation.
@@ -522,40 +522,40 @@ export class PortfoliosApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     removeItemForPortfolio(body, portfolio_gid, callback) {
-      
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling removeItemForPortfolio");
-      }
-      // verify the required parameter 'portfolio_gid' is set
-      if (portfolio_gid === undefined || portfolio_gid === null) {
-        throw new Error("Missing the required parameter 'portfolio_gid' when calling removeItemForPortfolio");
-      }
-
-      let pathParams = {
-        'portfolio_gid': portfolio_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling removeItemForPortfolio");
+        }
+        // verify the required parameter 'portfolio_gid' is set
+        if (portfolio_gid === undefined || portfolio_gid === null) {
+            throw new Error("Missing the required parameter 'portfolio_gid' when calling removeItemForPortfolio");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'portfolio_gid': portfolio_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/portfolios/{portfolio_gid}/removeItem', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/portfolios/{portfolio_gid}/removeItem', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the removeMembersForPortfolio operation.
@@ -576,40 +576,40 @@ export class PortfoliosApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     removeMembersForPortfolio(body, portfolio_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling removeMembersForPortfolio");
-      }
-      // verify the required parameter 'portfolio_gid' is set
-      if (portfolio_gid === undefined || portfolio_gid === null) {
-        throw new Error("Missing the required parameter 'portfolio_gid' when calling removeMembersForPortfolio");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling removeMembersForPortfolio");
+        }
+        // verify the required parameter 'portfolio_gid' is set
+        if (portfolio_gid === undefined || portfolio_gid === null) {
+            throw new Error("Missing the required parameter 'portfolio_gid' when calling removeMembersForPortfolio");
+        }
 
-      let pathParams = {
-        'portfolio_gid': portfolio_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'portfolio_gid': portfolio_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = PortfolioResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = PortfolioResponseData;
 
-      return this.apiClient.callApi(
-        '/portfolios/{portfolio_gid}/removeMembers', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/portfolios/{portfolio_gid}/removeMembers', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the updatePortfolio operation.
@@ -630,40 +630,40 @@ export class PortfoliosApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     updatePortfolio(body, portfolio_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling updatePortfolio");
-      }
-      // verify the required parameter 'portfolio_gid' is set
-      if (portfolio_gid === undefined || portfolio_gid === null) {
-        throw new Error("Missing the required parameter 'portfolio_gid' when calling updatePortfolio");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling updatePortfolio");
+        }
+        // verify the required parameter 'portfolio_gid' is set
+        if (portfolio_gid === undefined || portfolio_gid === null) {
+            throw new Error("Missing the required parameter 'portfolio_gid' when calling updatePortfolio");
+        }
 
-      let pathParams = {
-        'portfolio_gid': portfolio_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'portfolio_gid': portfolio_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = PortfolioResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = PortfolioResponseData;
 
-      return this.apiClient.callApi(
-        '/portfolios/{portfolio_gid}', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/portfolios/{portfolio_gid}', 'PUT',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

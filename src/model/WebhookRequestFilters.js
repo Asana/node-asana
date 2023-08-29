@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The WebhookRequestFilters model module.
  * @module model/WebhookRequestFilters
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class WebhookRequestFilters {
   /**

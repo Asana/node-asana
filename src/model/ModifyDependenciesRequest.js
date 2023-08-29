@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The ModifyDependenciesRequest model module.
  * @module model/ModifyDependenciesRequest
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class ModifyDependenciesRequest {
   /**

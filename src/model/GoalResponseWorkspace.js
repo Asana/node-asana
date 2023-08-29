@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The GoalResponseWorkspace model module.
  * @module model/GoalResponseWorkspace
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class GoalResponseWorkspace {
   /**

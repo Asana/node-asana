@@ -19,7 +19,7 @@ import {UserTaskListResponseData} from '../model/UserTaskListResponseData';
 /**
 * UserTaskLists service.
 * @module api/UserTaskListsApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class UserTaskListsApi {
 
@@ -53,36 +53,36 @@ export class UserTaskListsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getUserTaskList(user_task_list_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'user_task_list_gid' is set
-      if (user_task_list_gid === undefined || user_task_list_gid === null) {
-        throw new Error("Missing the required parameter 'user_task_list_gid' when calling getUserTaskList");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'user_task_list_gid' is set
+        if (user_task_list_gid === undefined || user_task_list_gid === null) {
+            throw new Error("Missing the required parameter 'user_task_list_gid' when calling getUserTaskList");
+        }
 
-      let pathParams = {
-        'user_task_list_gid': user_task_list_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'user_task_list_gid': user_task_list_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = UserTaskListResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = UserTaskListResponseData;
 
-      return this.apiClient.callApi(
-        '/user_task_lists/{user_task_list_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/user_task_lists/{user_task_list_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getUserTaskListForUser operation.
@@ -103,40 +103,40 @@ export class UserTaskListsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getUserTaskListForUser(user_gid, workspace, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'user_gid' is set
-      if (user_gid === undefined || user_gid === null) {
-        throw new Error("Missing the required parameter 'user_gid' when calling getUserTaskListForUser");
-      }
-      // verify the required parameter 'workspace' is set
-      if (workspace === undefined || workspace === null) {
-        throw new Error("Missing the required parameter 'workspace' when calling getUserTaskListForUser");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'user_gid' is set
+        if (user_gid === undefined || user_gid === null) {
+            throw new Error("Missing the required parameter 'user_gid' when calling getUserTaskListForUser");
+        }
+        // verify the required parameter 'workspace' is set
+        if (workspace === undefined || workspace === null) {
+            throw new Error("Missing the required parameter 'workspace' when calling getUserTaskListForUser");
+        }
 
-      let pathParams = {
-        'user_gid': user_gid
-      };
-      let queryParams = {
-        'workspace': workspace,'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'user_gid': user_gid
+        };
+        let queryParams = {
+            'workspace': workspace,'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = UserTaskListResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = UserTaskListResponseData;
 
-      return this.apiClient.callApi(
-        '/users/{user_gid}/user_task_list', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/users/{user_gid}/user_task_list', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

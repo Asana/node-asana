@@ -20,7 +20,7 @@ import {TimePeriodResponseData} from '../model/TimePeriodResponseData';
 /**
 * TimePeriods service.
 * @module api/TimePeriodsApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class TimePeriodsApi {
 
@@ -54,36 +54,36 @@ export class TimePeriodsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getTimePeriod(time_period_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'time_period_gid' is set
-      if (time_period_gid === undefined || time_period_gid === null) {
-        throw new Error("Missing the required parameter 'time_period_gid' when calling getTimePeriod");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'time_period_gid' is set
+        if (time_period_gid === undefined || time_period_gid === null) {
+            throw new Error("Missing the required parameter 'time_period_gid' when calling getTimePeriod");
+        }
 
-      let pathParams = {
-        'time_period_gid': time_period_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'time_period_gid': time_period_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TimePeriodResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TimePeriodResponseData;
 
-      return this.apiClient.callApi(
-        '/time_periods/{time_period_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/time_periods/{time_period_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getTimePeriods operation.
@@ -107,36 +107,36 @@ export class TimePeriodsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getTimePeriods(workspace, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'workspace' is set
-      if (workspace === undefined || workspace === null) {
-        throw new Error("Missing the required parameter 'workspace' when calling getTimePeriods");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'workspace' is set
+        if (workspace === undefined || workspace === null) {
+            throw new Error("Missing the required parameter 'workspace' when calling getTimePeriods");
+        }
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'start_on': opts['start_on'],'end_on': opts['end_on'],'workspace': workspace,'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'start_on': opts['start_on'],'end_on': opts['end_on'],'workspace': workspace,'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TimePeriodResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TimePeriodResponseArray;
 
-      return this.apiClient.callApi(
-        '/time_periods', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/time_periods', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

@@ -3,7 +3,7 @@
 JavaScript client library for Asana.
 
 - API version: 1.0
-- Package version: 2.0.4
+- Package version: 2.0.5
 
 ## Installation
 
@@ -20,7 +20,7 @@ npm install asana --save
 Include the latest release directly from GitHub:
 
 ```html
-<script src="https://github.com/Asana/node-asana/releases/download/v2.0.4/asana-min.js"></script>
+<script src="https://github.com/Asana/node-asana/releases/download/v2.0.5/asana-min.js"></script>
 ```
 
 Example usage:

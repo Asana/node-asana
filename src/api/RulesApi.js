@@ -20,7 +20,7 @@ import {RuleTriggerResponseData} from '../model/RuleTriggerResponseData';
 /**
 * Rules service.
 * @module api/RulesApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class RulesApi {
 
@@ -53,40 +53,40 @@ export class RulesApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     triggerRule(body, rule_trigger_gid, callback) {
-      
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling triggerRule");
-      }
-      // verify the required parameter 'rule_trigger_gid' is set
-      if (rule_trigger_gid === undefined || rule_trigger_gid === null) {
-        throw new Error("Missing the required parameter 'rule_trigger_gid' when calling triggerRule");
-      }
-
-      let pathParams = {
-        'rule_trigger_gid': rule_trigger_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling triggerRule");
+        }
+        // verify the required parameter 'rule_trigger_gid' is set
+        if (rule_trigger_gid === undefined || rule_trigger_gid === null) {
+            throw new Error("Missing the required parameter 'rule_trigger_gid' when calling triggerRule");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = RuleTriggerResponseData;
+        let pathParams = {
+            'rule_trigger_gid': rule_trigger_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/rule_triggers/{rule_trigger_gid}/run', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = RuleTriggerResponseData;
+
+        return this.apiClient.callApi(
+            '/rule_triggers/{rule_trigger_gid}/run', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

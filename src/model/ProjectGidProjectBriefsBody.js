@@ -18,7 +18,7 @@ import {ProjectBriefRequest} from './ProjectBriefRequest';
 /**
  * The ProjectGidProjectBriefsBody model module.
  * @module model/ProjectGidProjectBriefsBody
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class ProjectGidProjectBriefsBody {
   /**

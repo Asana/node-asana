@@ -20,7 +20,7 @@ import {OrganizationExportsBody} from '../model/OrganizationExportsBody';
 /**
 * OrganizationExports service.
 * @module api/OrganizationExportsApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class OrganizationExportsApi {
 
@@ -54,36 +54,36 @@ export class OrganizationExportsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     createOrganizationExport(body, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling createOrganizationExport");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling createOrganizationExport");
+        }
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = OrganizationExportResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = OrganizationExportResponseData;
 
-      return this.apiClient.callApi(
-        '/organization_exports', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/organization_exports', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getOrganizationExport operation.
@@ -103,36 +103,36 @@ export class OrganizationExportsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getOrganizationExport(organization_export_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'organization_export_gid' is set
-      if (organization_export_gid === undefined || organization_export_gid === null) {
-        throw new Error("Missing the required parameter 'organization_export_gid' when calling getOrganizationExport");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'organization_export_gid' is set
+        if (organization_export_gid === undefined || organization_export_gid === null) {
+            throw new Error("Missing the required parameter 'organization_export_gid' when calling getOrganizationExport");
+        }
 
-      let pathParams = {
-        'organization_export_gid': organization_export_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'organization_export_gid': organization_export_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = OrganizationExportResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = OrganizationExportResponseData;
 
-      return this.apiClient.callApi(
-        '/organization_exports/{organization_export_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/organization_exports/{organization_export_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

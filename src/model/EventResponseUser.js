@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The EventResponseUser model module.
  * @module model/EventResponseUser
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class EventResponseUser {
   /**

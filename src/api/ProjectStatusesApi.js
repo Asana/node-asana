@@ -22,7 +22,7 @@ import {ProjectStatusResponseData} from '../model/ProjectStatusResponseData';
 /**
 * ProjectStatuses service.
 * @module api/ProjectStatusesApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class ProjectStatusesApi {
 
@@ -57,40 +57,40 @@ export class ProjectStatusesApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     createProjectStatusForProject(body, project_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling createProjectStatusForProject");
-      }
-      // verify the required parameter 'project_gid' is set
-      if (project_gid === undefined || project_gid === null) {
-        throw new Error("Missing the required parameter 'project_gid' when calling createProjectStatusForProject");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling createProjectStatusForProject");
+        }
+        // verify the required parameter 'project_gid' is set
+        if (project_gid === undefined || project_gid === null) {
+            throw new Error("Missing the required parameter 'project_gid' when calling createProjectStatusForProject");
+        }
 
-      let pathParams = {
-        'project_gid': project_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'project_gid': project_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectStatusResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectStatusResponseData;
 
-      return this.apiClient.callApi(
-        '/projects/{project_gid}/project_statuses', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/projects/{project_gid}/project_statuses', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the deleteProjectStatus operation.
@@ -108,36 +108,36 @@ export class ProjectStatusesApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     deleteProjectStatus(project_status_gid, callback) {
-      
-      let postBody = null;
-      // verify the required parameter 'project_status_gid' is set
-      if (project_status_gid === undefined || project_status_gid === null) {
-        throw new Error("Missing the required parameter 'project_status_gid' when calling deleteProjectStatus");
-      }
-
-      let pathParams = {
-        'project_status_gid': project_status_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = null;
+        // verify the required parameter 'project_status_gid' is set
+        if (project_status_gid === undefined || project_status_gid === null) {
+            throw new Error("Missing the required parameter 'project_status_gid' when calling deleteProjectStatus");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'project_status_gid': project_status_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/project_statuses/{project_status_gid}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/project_statuses/{project_status_gid}', 'DELETE',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getProjectStatus operation.
@@ -157,36 +157,36 @@ export class ProjectStatusesApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getProjectStatus(project_status_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'project_status_gid' is set
-      if (project_status_gid === undefined || project_status_gid === null) {
-        throw new Error("Missing the required parameter 'project_status_gid' when calling getProjectStatus");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'project_status_gid' is set
+        if (project_status_gid === undefined || project_status_gid === null) {
+            throw new Error("Missing the required parameter 'project_status_gid' when calling getProjectStatus");
+        }
 
-      let pathParams = {
-        'project_status_gid': project_status_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'project_status_gid': project_status_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectStatusResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectStatusResponseData;
 
-      return this.apiClient.callApi(
-        '/project_statuses/{project_status_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/project_statuses/{project_status_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getProjectStatusesForProject operation.
@@ -208,36 +208,36 @@ export class ProjectStatusesApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getProjectStatusesForProject(project_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'project_gid' is set
-      if (project_gid === undefined || project_gid === null) {
-        throw new Error("Missing the required parameter 'project_gid' when calling getProjectStatusesForProject");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'project_gid' is set
+        if (project_gid === undefined || project_gid === null) {
+            throw new Error("Missing the required parameter 'project_gid' when calling getProjectStatusesForProject");
+        }
 
-      let pathParams = {
-        'project_gid': project_gid
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'project_gid': project_gid
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectStatusResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectStatusResponseArray;
 
-      return this.apiClient.callApi(
-        '/projects/{project_gid}/project_statuses', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/projects/{project_gid}/project_statuses', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

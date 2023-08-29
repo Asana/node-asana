@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The PortfolioRemoveItemRequest model module.
  * @module model/PortfolioRemoveItemRequest
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class PortfolioRemoveItemRequest {
   /**

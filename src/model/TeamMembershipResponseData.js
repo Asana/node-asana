@@ -18,7 +18,7 @@ import {TeamMembershipResponse} from './TeamMembershipResponse';
 /**
  * The TeamMembershipResponseData model module.
  * @module model/TeamMembershipResponseData
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class TeamMembershipResponseData {
   /**

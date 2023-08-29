@@ -18,7 +18,7 @@ import {AddMembersRequest} from './AddMembersRequest';
 /**
  * The PortfolioGidAddMembersBody model module.
  * @module model/PortfolioGidAddMembersBody
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class PortfolioGidAddMembersBody {
   /**

@@ -19,7 +19,7 @@ import {StatusUpdateResponse} from './StatusUpdateResponse';
 /**
  * The StatusUpdateResponseArray model module.
  * @module model/StatusUpdateResponseArray
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class StatusUpdateResponseArray {
   /**

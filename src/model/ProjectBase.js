@@ -21,7 +21,7 @@ import {ProjectBaseCurrentStatusUpdate} from './ProjectBaseCurrentStatusUpdate';
 /**
  * The ProjectBase model module.
  * @module model/ProjectBase
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class ProjectBase {
   /**

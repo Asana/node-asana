@@ -22,7 +22,7 @@ import {ProjectGidProjectBriefsBody} from '../model/ProjectGidProjectBriefsBody'
 /**
 * ProjectBriefs service.
 * @module api/ProjectBriefsApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class ProjectBriefsApi {
 
@@ -57,40 +57,40 @@ export class ProjectBriefsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     createProjectBrief(body, project_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling createProjectBrief");
-      }
-      // verify the required parameter 'project_gid' is set
-      if (project_gid === undefined || project_gid === null) {
-        throw new Error("Missing the required parameter 'project_gid' when calling createProjectBrief");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling createProjectBrief");
+        }
+        // verify the required parameter 'project_gid' is set
+        if (project_gid === undefined || project_gid === null) {
+            throw new Error("Missing the required parameter 'project_gid' when calling createProjectBrief");
+        }
 
-      let pathParams = {
-        'project_gid': project_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'project_gid': project_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectBriefResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectBriefResponseData;
 
-      return this.apiClient.callApi(
-        '/projects/{project_gid}/project_briefs', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/projects/{project_gid}/project_briefs', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the deleteProjectBrief operation.
@@ -108,36 +108,36 @@ export class ProjectBriefsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     deleteProjectBrief(project_brief_gid, callback) {
-      
-      let postBody = null;
-      // verify the required parameter 'project_brief_gid' is set
-      if (project_brief_gid === undefined || project_brief_gid === null) {
-        throw new Error("Missing the required parameter 'project_brief_gid' when calling deleteProjectBrief");
-      }
-
-      let pathParams = {
-        'project_brief_gid': project_brief_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = null;
+        // verify the required parameter 'project_brief_gid' is set
+        if (project_brief_gid === undefined || project_brief_gid === null) {
+            throw new Error("Missing the required parameter 'project_brief_gid' when calling deleteProjectBrief");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'project_brief_gid': project_brief_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/project_briefs/{project_brief_gid}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/project_briefs/{project_brief_gid}', 'DELETE',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getProjectBrief operation.
@@ -157,36 +157,36 @@ export class ProjectBriefsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getProjectBrief(project_brief_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'project_brief_gid' is set
-      if (project_brief_gid === undefined || project_brief_gid === null) {
-        throw new Error("Missing the required parameter 'project_brief_gid' when calling getProjectBrief");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'project_brief_gid' is set
+        if (project_brief_gid === undefined || project_brief_gid === null) {
+            throw new Error("Missing the required parameter 'project_brief_gid' when calling getProjectBrief");
+        }
 
-      let pathParams = {
-        'project_brief_gid': project_brief_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'project_brief_gid': project_brief_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectBriefResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectBriefResponseData;
 
-      return this.apiClient.callApi(
-        '/project_briefs/{project_brief_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/project_briefs/{project_brief_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the updateProjectBrief operation.
@@ -207,40 +207,40 @@ export class ProjectBriefsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     updateProjectBrief(body, project_brief_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling updateProjectBrief");
-      }
-      // verify the required parameter 'project_brief_gid' is set
-      if (project_brief_gid === undefined || project_brief_gid === null) {
-        throw new Error("Missing the required parameter 'project_brief_gid' when calling updateProjectBrief");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling updateProjectBrief");
+        }
+        // verify the required parameter 'project_brief_gid' is set
+        if (project_brief_gid === undefined || project_brief_gid === null) {
+            throw new Error("Missing the required parameter 'project_brief_gid' when calling updateProjectBrief");
+        }
 
-      let pathParams = {
-        'project_brief_gid': project_brief_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'project_brief_gid': project_brief_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectBriefResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectBriefResponseData;
 
-      return this.apiClient.callApi(
-        '/project_briefs/{project_brief_gid}', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/project_briefs/{project_brief_gid}', 'PUT',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

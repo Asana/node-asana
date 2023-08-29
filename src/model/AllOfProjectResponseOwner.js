@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The AllOfProjectResponseOwner model module.
  * @module model/AllOfProjectResponseOwner
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class AllOfProjectResponseOwner {
   /**

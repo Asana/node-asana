@@ -20,7 +20,7 @@ import {ProjectMembershipNormalResponseData} from '../model/ProjectMembershipNor
 /**
 * ProjectMemberships service.
 * @module api/ProjectMembershipsApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class ProjectMembershipsApi {
 
@@ -54,36 +54,36 @@ export class ProjectMembershipsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getProjectMembership(project_membership_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'project_membership_gid' is set
-      if (project_membership_gid === undefined || project_membership_gid === null) {
-        throw new Error("Missing the required parameter 'project_membership_gid' when calling getProjectMembership");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'project_membership_gid' is set
+        if (project_membership_gid === undefined || project_membership_gid === null) {
+            throw new Error("Missing the required parameter 'project_membership_gid' when calling getProjectMembership");
+        }
 
-      let pathParams = {
-        'project_membership_gid': project_membership_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'project_membership_gid': project_membership_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectMembershipNormalResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectMembershipNormalResponseData;
 
-      return this.apiClient.callApi(
-        '/project_memberships/{project_membership_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/project_memberships/{project_membership_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getProjectMembershipsForProject operation.
@@ -106,36 +106,36 @@ export class ProjectMembershipsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getProjectMembershipsForProject(project_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'project_gid' is set
-      if (project_gid === undefined || project_gid === null) {
-        throw new Error("Missing the required parameter 'project_gid' when calling getProjectMembershipsForProject");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'project_gid' is set
+        if (project_gid === undefined || project_gid === null) {
+            throw new Error("Missing the required parameter 'project_gid' when calling getProjectMembershipsForProject");
+        }
 
-      let pathParams = {
-        'project_gid': project_gid
-      };
-      let queryParams = {
-        'user': opts['user'],'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'project_gid': project_gid
+        };
+        let queryParams = {
+            'user': opts['user'],'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectMembershipCompactArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectMembershipCompactArray;
 
-      return this.apiClient.callApi(
-        '/projects/{project_gid}/project_memberships', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/projects/{project_gid}/project_memberships', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

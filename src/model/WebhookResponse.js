@@ -19,7 +19,7 @@ import {WebhookRequestFilters} from './WebhookRequestFilters';
 /**
  * The WebhookResponse model module.
  * @module model/WebhookResponse
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class WebhookResponse {
   /**

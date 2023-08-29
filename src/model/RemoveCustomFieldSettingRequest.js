@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The RemoveCustomFieldSettingRequest model module.
  * @module model/RemoveCustomFieldSettingRequest
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class RemoveCustomFieldSettingRequest {
   /**

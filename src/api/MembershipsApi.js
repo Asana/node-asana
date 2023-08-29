@@ -23,7 +23,7 @@ import {ProjectMembershipCompactResponseData} from '../model/ProjectMembershipCo
 /**
 * Memberships service.
 * @module api/MembershipsApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class MembershipsApi {
 
@@ -56,32 +56,32 @@ export class MembershipsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     createMembership(opts, callback) {
-      opts = opts || {};
-      let postBody = opts['body'];
+        opts = opts || {};
+        let postBody = opts['body'];
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = MembershipResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = MembershipResponseData;
 
-      return this.apiClient.callApi(
-        '/memberships', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/memberships', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the deleteMembership operation.
@@ -99,36 +99,36 @@ export class MembershipsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     deleteMembership(membership_gid, callback) {
-      
-      let postBody = null;
-      // verify the required parameter 'membership_gid' is set
-      if (membership_gid === undefined || membership_gid === null) {
-        throw new Error("Missing the required parameter 'membership_gid' when calling deleteMembership");
-      }
-
-      let pathParams = {
-        'membership_gid': membership_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = null;
+        // verify the required parameter 'membership_gid' is set
+        if (membership_gid === undefined || membership_gid === null) {
+            throw new Error("Missing the required parameter 'membership_gid' when calling deleteMembership");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'membership_gid': membership_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/memberships/{membership_gid}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/memberships/{membership_gid}', 'DELETE',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getMembership operation.
@@ -148,36 +148,36 @@ export class MembershipsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getMembership(membership_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'membership_gid' is set
-      if (membership_gid === undefined || membership_gid === null) {
-        throw new Error("Missing the required parameter 'membership_gid' when calling getMembership");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'membership_gid' is set
+        if (membership_gid === undefined || membership_gid === null) {
+            throw new Error("Missing the required parameter 'membership_gid' when calling getMembership");
+        }
 
-      let pathParams = {
-        'membership_gid': membership_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'membership_gid': membership_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectMembershipCompactResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectMembershipCompactResponseData;
 
-      return this.apiClient.callApi(
-        '/memberships/{membership_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/memberships/{membership_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getMemberships operation.
@@ -200,32 +200,32 @@ export class MembershipsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getMemberships(opts, callback) {
-      opts = opts || {};
-      let postBody = null;
+        opts = opts || {};
+        let postBody = null;
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'parent': opts['parent'],'member': opts['member'],'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'parent': opts['parent'],'member': opts['member'],'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = MembershipResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = MembershipResponseArray;
 
-      return this.apiClient.callApi(
-        '/memberships', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/memberships', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

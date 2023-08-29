@@ -18,7 +18,7 @@ import {GoalResponseWorkspace} from './GoalResponseWorkspace';
 /**
  * The OrganizationExportCompact model module.
  * @module model/OrganizationExportCompact
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class OrganizationExportCompact {
   /**

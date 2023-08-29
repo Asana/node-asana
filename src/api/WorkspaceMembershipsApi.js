@@ -20,7 +20,7 @@ import {WorkspaceMembershipResponseData} from '../model/WorkspaceMembershipRespo
 /**
 * WorkspaceMemberships service.
 * @module api/WorkspaceMembershipsApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class WorkspaceMembershipsApi {
 
@@ -54,36 +54,36 @@ export class WorkspaceMembershipsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getWorkspaceMembership(workspace_membership_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'workspace_membership_gid' is set
-      if (workspace_membership_gid === undefined || workspace_membership_gid === null) {
-        throw new Error("Missing the required parameter 'workspace_membership_gid' when calling getWorkspaceMembership");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'workspace_membership_gid' is set
+        if (workspace_membership_gid === undefined || workspace_membership_gid === null) {
+            throw new Error("Missing the required parameter 'workspace_membership_gid' when calling getWorkspaceMembership");
+        }
 
-      let pathParams = {
-        'workspace_membership_gid': workspace_membership_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'workspace_membership_gid': workspace_membership_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = WorkspaceMembershipResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = WorkspaceMembershipResponseData;
 
-      return this.apiClient.callApi(
-        '/workspace_memberships/{workspace_membership_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/workspace_memberships/{workspace_membership_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getWorkspaceMembershipsForUser operation.
@@ -105,36 +105,36 @@ export class WorkspaceMembershipsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getWorkspaceMembershipsForUser(user_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'user_gid' is set
-      if (user_gid === undefined || user_gid === null) {
-        throw new Error("Missing the required parameter 'user_gid' when calling getWorkspaceMembershipsForUser");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'user_gid' is set
+        if (user_gid === undefined || user_gid === null) {
+            throw new Error("Missing the required parameter 'user_gid' when calling getWorkspaceMembershipsForUser");
+        }
 
-      let pathParams = {
-        'user_gid': user_gid
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'user_gid': user_gid
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = WorkspaceMembershipResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = WorkspaceMembershipResponseArray;
 
-      return this.apiClient.callApi(
-        '/users/{user_gid}/workspace_memberships', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/users/{user_gid}/workspace_memberships', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getWorkspaceMembershipsForWorkspace operation.
@@ -157,36 +157,36 @@ export class WorkspaceMembershipsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getWorkspaceMembershipsForWorkspace(workspace_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'workspace_gid' is set
-      if (workspace_gid === undefined || workspace_gid === null) {
-        throw new Error("Missing the required parameter 'workspace_gid' when calling getWorkspaceMembershipsForWorkspace");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'workspace_gid' is set
+        if (workspace_gid === undefined || workspace_gid === null) {
+            throw new Error("Missing the required parameter 'workspace_gid' when calling getWorkspaceMembershipsForWorkspace");
+        }
 
-      let pathParams = {
-        'workspace_gid': workspace_gid
-      };
-      let queryParams = {
-        'user': opts['user'],'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'workspace_gid': workspace_gid
+        };
+        let queryParams = {
+            'user': opts['user'],'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = WorkspaceMembershipResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = WorkspaceMembershipResponseArray;
 
-      return this.apiClient.callApi(
-        '/workspaces/{workspace_gid}/workspace_memberships', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/workspaces/{workspace_gid}/workspace_memberships', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

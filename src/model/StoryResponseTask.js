@@ -18,7 +18,7 @@ import {AttachmentResponseParentCreatedBy} from './AttachmentResponseParentCreat
 /**
  * The StoryResponseTask model module.
  * @module model/StoryResponseTask
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class StoryResponseTask {
   /**

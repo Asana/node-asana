@@ -27,7 +27,7 @@ import {ErrorResponse} from '../model/ErrorResponse';
 /**
 * CustomFields service.
 * @module api/CustomFieldsApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class CustomFieldsApi {
 
@@ -61,36 +61,36 @@ export class CustomFieldsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     createCustomField(body, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling createCustomField");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling createCustomField");
+        }
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = CustomFieldResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = CustomFieldResponseData;
 
-      return this.apiClient.callApi(
-        '/custom_fields', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/custom_fields', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the createEnumOptionForCustomField operation.
@@ -111,36 +111,36 @@ export class CustomFieldsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     createEnumOptionForCustomField(custom_field_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = opts['body'];
-      // verify the required parameter 'custom_field_gid' is set
-      if (custom_field_gid === undefined || custom_field_gid === null) {
-        throw new Error("Missing the required parameter 'custom_field_gid' when calling createEnumOptionForCustomField");
-      }
+        opts = opts || {};
+        let postBody = opts['body'];
+        // verify the required parameter 'custom_field_gid' is set
+        if (custom_field_gid === undefined || custom_field_gid === null) {
+            throw new Error("Missing the required parameter 'custom_field_gid' when calling createEnumOptionForCustomField");
+        }
 
-      let pathParams = {
-        'custom_field_gid': custom_field_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'custom_field_gid': custom_field_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EnumOptionData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EnumOptionData;
 
-      return this.apiClient.callApi(
-        '/custom_fields/{custom_field_gid}/enum_options', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/custom_fields/{custom_field_gid}/enum_options', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the deleteCustomField operation.
@@ -158,36 +158,36 @@ export class CustomFieldsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     deleteCustomField(custom_field_gid, callback) {
-      
-      let postBody = null;
-      // verify the required parameter 'custom_field_gid' is set
-      if (custom_field_gid === undefined || custom_field_gid === null) {
-        throw new Error("Missing the required parameter 'custom_field_gid' when calling deleteCustomField");
-      }
-
-      let pathParams = {
-        'custom_field_gid': custom_field_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = null;
+        // verify the required parameter 'custom_field_gid' is set
+        if (custom_field_gid === undefined || custom_field_gid === null) {
+            throw new Error("Missing the required parameter 'custom_field_gid' when calling deleteCustomField");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'custom_field_gid': custom_field_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/custom_fields/{custom_field_gid}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/custom_fields/{custom_field_gid}', 'DELETE',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getCustomField operation.
@@ -207,36 +207,36 @@ export class CustomFieldsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getCustomField(custom_field_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'custom_field_gid' is set
-      if (custom_field_gid === undefined || custom_field_gid === null) {
-        throw new Error("Missing the required parameter 'custom_field_gid' when calling getCustomField");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'custom_field_gid' is set
+        if (custom_field_gid === undefined || custom_field_gid === null) {
+            throw new Error("Missing the required parameter 'custom_field_gid' when calling getCustomField");
+        }
 
-      let pathParams = {
-        'custom_field_gid': custom_field_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'custom_field_gid': custom_field_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = CustomFieldResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = CustomFieldResponseData;
 
-      return this.apiClient.callApi(
-        '/custom_fields/{custom_field_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/custom_fields/{custom_field_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getCustomFieldsForWorkspace operation.
@@ -258,36 +258,36 @@ export class CustomFieldsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getCustomFieldsForWorkspace(workspace_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'workspace_gid' is set
-      if (workspace_gid === undefined || workspace_gid === null) {
-        throw new Error("Missing the required parameter 'workspace_gid' when calling getCustomFieldsForWorkspace");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'workspace_gid' is set
+        if (workspace_gid === undefined || workspace_gid === null) {
+            throw new Error("Missing the required parameter 'workspace_gid' when calling getCustomFieldsForWorkspace");
+        }
 
-      let pathParams = {
-        'workspace_gid': workspace_gid
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'workspace_gid': workspace_gid
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = CustomFieldResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = CustomFieldResponseArray;
 
-      return this.apiClient.callApi(
-        '/workspaces/{workspace_gid}/custom_fields', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/workspaces/{workspace_gid}/custom_fields', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the insertEnumOptionForCustomField operation.
@@ -308,36 +308,36 @@ export class CustomFieldsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     insertEnumOptionForCustomField(custom_field_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = opts['body'];
-      // verify the required parameter 'custom_field_gid' is set
-      if (custom_field_gid === undefined || custom_field_gid === null) {
-        throw new Error("Missing the required parameter 'custom_field_gid' when calling insertEnumOptionForCustomField");
-      }
+        opts = opts || {};
+        let postBody = opts['body'];
+        // verify the required parameter 'custom_field_gid' is set
+        if (custom_field_gid === undefined || custom_field_gid === null) {
+            throw new Error("Missing the required parameter 'custom_field_gid' when calling insertEnumOptionForCustomField");
+        }
 
-      let pathParams = {
-        'custom_field_gid': custom_field_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'custom_field_gid': custom_field_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EnumOptionData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EnumOptionData;
 
-      return this.apiClient.callApi(
-        '/custom_fields/{custom_field_gid}/enum_options/insert', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/custom_fields/{custom_field_gid}/enum_options/insert', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the updateCustomField operation.
@@ -358,36 +358,36 @@ export class CustomFieldsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     updateCustomField(custom_field_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = opts['body'];
-      // verify the required parameter 'custom_field_gid' is set
-      if (custom_field_gid === undefined || custom_field_gid === null) {
-        throw new Error("Missing the required parameter 'custom_field_gid' when calling updateCustomField");
-      }
+        opts = opts || {};
+        let postBody = opts['body'];
+        // verify the required parameter 'custom_field_gid' is set
+        if (custom_field_gid === undefined || custom_field_gid === null) {
+            throw new Error("Missing the required parameter 'custom_field_gid' when calling updateCustomField");
+        }
 
-      let pathParams = {
-        'custom_field_gid': custom_field_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'custom_field_gid': custom_field_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = CustomFieldResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = CustomFieldResponseData;
 
-      return this.apiClient.callApi(
-        '/custom_fields/{custom_field_gid}', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/custom_fields/{custom_field_gid}', 'PUT',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the updateEnumOption operation.
@@ -408,36 +408,36 @@ export class CustomFieldsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     updateEnumOption(enum_option_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = opts['body'];
-      // verify the required parameter 'enum_option_gid' is set
-      if (enum_option_gid === undefined || enum_option_gid === null) {
-        throw new Error("Missing the required parameter 'enum_option_gid' when calling updateEnumOption");
-      }
+        opts = opts || {};
+        let postBody = opts['body'];
+        // verify the required parameter 'enum_option_gid' is set
+        if (enum_option_gid === undefined || enum_option_gid === null) {
+            throw new Error("Missing the required parameter 'enum_option_gid' when calling updateEnumOption");
+        }
 
-      let pathParams = {
-        'enum_option_gid': enum_option_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'enum_option_gid': enum_option_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EnumOptionData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EnumOptionData;
 
-      return this.apiClient.callApi(
-        '/enum_options/{enum_option_gid}', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/enum_options/{enum_option_gid}', 'PUT',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

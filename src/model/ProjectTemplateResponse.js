@@ -20,7 +20,7 @@ import {ProjectTemplateBaseTeam} from './ProjectTemplateBaseTeam';
 /**
  * The ProjectTemplateResponse model module.
  * @module model/ProjectTemplateResponse
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class ProjectTemplateResponse {
   /**

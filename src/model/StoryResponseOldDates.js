@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The StoryResponseOldDates model module.
  * @module model/StoryResponseOldDates
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class StoryResponseOldDates {
   /**

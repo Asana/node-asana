@@ -23,7 +23,7 @@ import {TaskGidStoriesBody} from '../model/TaskGidStoriesBody';
 /**
 * Stories service.
 * @module api/StoriesApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class StoriesApi {
 
@@ -58,40 +58,40 @@ export class StoriesApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     createStoryForTask(body, task_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling createStoryForTask");
-      }
-      // verify the required parameter 'task_gid' is set
-      if (task_gid === undefined || task_gid === null) {
-        throw new Error("Missing the required parameter 'task_gid' when calling createStoryForTask");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling createStoryForTask");
+        }
+        // verify the required parameter 'task_gid' is set
+        if (task_gid === undefined || task_gid === null) {
+            throw new Error("Missing the required parameter 'task_gid' when calling createStoryForTask");
+        }
 
-      let pathParams = {
-        'task_gid': task_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'task_gid': task_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = StoryResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = StoryResponseData;
 
-      return this.apiClient.callApi(
-        '/tasks/{task_gid}/stories', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/tasks/{task_gid}/stories', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the deleteStory operation.
@@ -109,36 +109,36 @@ export class StoriesApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     deleteStory(story_gid, callback) {
-      
-      let postBody = null;
-      // verify the required parameter 'story_gid' is set
-      if (story_gid === undefined || story_gid === null) {
-        throw new Error("Missing the required parameter 'story_gid' when calling deleteStory");
-      }
-
-      let pathParams = {
-        'story_gid': story_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = null;
+        // verify the required parameter 'story_gid' is set
+        if (story_gid === undefined || story_gid === null) {
+            throw new Error("Missing the required parameter 'story_gid' when calling deleteStory");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'story_gid': story_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/stories/{story_gid}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/stories/{story_gid}', 'DELETE',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getStoriesForTask operation.
@@ -160,36 +160,36 @@ export class StoriesApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getStoriesForTask(task_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'task_gid' is set
-      if (task_gid === undefined || task_gid === null) {
-        throw new Error("Missing the required parameter 'task_gid' when calling getStoriesForTask");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'task_gid' is set
+        if (task_gid === undefined || task_gid === null) {
+            throw new Error("Missing the required parameter 'task_gid' when calling getStoriesForTask");
+        }
 
-      let pathParams = {
-        'task_gid': task_gid
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'task_gid': task_gid
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = StoryResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = StoryResponseArray;
 
-      return this.apiClient.callApi(
-        '/tasks/{task_gid}/stories', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/tasks/{task_gid}/stories', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getStory operation.
@@ -209,36 +209,36 @@ export class StoriesApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getStory(story_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'story_gid' is set
-      if (story_gid === undefined || story_gid === null) {
-        throw new Error("Missing the required parameter 'story_gid' when calling getStory");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'story_gid' is set
+        if (story_gid === undefined || story_gid === null) {
+            throw new Error("Missing the required parameter 'story_gid' when calling getStory");
+        }
 
-      let pathParams = {
-        'story_gid': story_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'story_gid': story_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = StoryResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = StoryResponseData;
 
-      return this.apiClient.callApi(
-        '/stories/{story_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/stories/{story_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the updateStory operation.
@@ -259,40 +259,40 @@ export class StoriesApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     updateStory(body, story_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling updateStory");
-      }
-      // verify the required parameter 'story_gid' is set
-      if (story_gid === undefined || story_gid === null) {
-        throw new Error("Missing the required parameter 'story_gid' when calling updateStory");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling updateStory");
+        }
+        // verify the required parameter 'story_gid' is set
+        if (story_gid === undefined || story_gid === null) {
+            throw new Error("Missing the required parameter 'story_gid' when calling updateStory");
+        }
 
-      let pathParams = {
-        'story_gid': story_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'story_gid': story_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = StoryResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = StoryResponseData;
 
-      return this.apiClient.callApi(
-        '/stories/{story_gid}', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/stories/{story_gid}', 'PUT',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

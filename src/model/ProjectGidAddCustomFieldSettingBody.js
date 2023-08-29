@@ -18,7 +18,7 @@ import {AddCustomFieldSettingRequest} from './AddCustomFieldSettingRequest';
 /**
  * The ProjectGidAddCustomFieldSettingBody model module.
  * @module model/ProjectGidAddCustomFieldSettingBody
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class ProjectGidAddCustomFieldSettingBody {
   /**

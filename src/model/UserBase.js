@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The UserBase model module.
  * @module model/UserBase
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class UserBase {
   /**

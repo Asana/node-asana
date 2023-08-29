@@ -25,7 +25,7 @@ import {SectionsSectionGidBody} from '../model/SectionsSectionGidBody';
 /**
 * Sections service.
 * @module api/SectionsApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class SectionsApi {
 
@@ -59,36 +59,36 @@ export class SectionsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     addTaskForSection(section_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = opts['body'];
-      // verify the required parameter 'section_gid' is set
-      if (section_gid === undefined || section_gid === null) {
-        throw new Error("Missing the required parameter 'section_gid' when calling addTaskForSection");
-      }
+        opts = opts || {};
+        let postBody = opts['body'];
+        // verify the required parameter 'section_gid' is set
+        if (section_gid === undefined || section_gid === null) {
+            throw new Error("Missing the required parameter 'section_gid' when calling addTaskForSection");
+        }
 
-      let pathParams = {
-        'section_gid': section_gid
-      };
-      let queryParams = {
-        
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'section_gid': section_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
 
-      return this.apiClient.callApi(
-        '/sections/{section_gid}/addTask', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/sections/{section_gid}/addTask', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the createSectionForProject operation.
@@ -109,36 +109,36 @@ export class SectionsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     createSectionForProject(project_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = opts['body'];
-      // verify the required parameter 'project_gid' is set
-      if (project_gid === undefined || project_gid === null) {
-        throw new Error("Missing the required parameter 'project_gid' when calling createSectionForProject");
-      }
+        opts = opts || {};
+        let postBody = opts['body'];
+        // verify the required parameter 'project_gid' is set
+        if (project_gid === undefined || project_gid === null) {
+            throw new Error("Missing the required parameter 'project_gid' when calling createSectionForProject");
+        }
 
-      let pathParams = {
-        'project_gid': project_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'project_gid': project_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = SectionResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = SectionResponseData;
 
-      return this.apiClient.callApi(
-        '/projects/{project_gid}/sections', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/projects/{project_gid}/sections', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the deleteSection operation.
@@ -156,36 +156,36 @@ export class SectionsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     deleteSection(section_gid, callback) {
-      
-      let postBody = null;
-      // verify the required parameter 'section_gid' is set
-      if (section_gid === undefined || section_gid === null) {
-        throw new Error("Missing the required parameter 'section_gid' when calling deleteSection");
-      }
-
-      let pathParams = {
-        'section_gid': section_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = null;
+        // verify the required parameter 'section_gid' is set
+        if (section_gid === undefined || section_gid === null) {
+            throw new Error("Missing the required parameter 'section_gid' when calling deleteSection");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'section_gid': section_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/sections/{section_gid}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/sections/{section_gid}', 'DELETE',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getSection operation.
@@ -205,36 +205,36 @@ export class SectionsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getSection(section_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'section_gid' is set
-      if (section_gid === undefined || section_gid === null) {
-        throw new Error("Missing the required parameter 'section_gid' when calling getSection");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'section_gid' is set
+        if (section_gid === undefined || section_gid === null) {
+            throw new Error("Missing the required parameter 'section_gid' when calling getSection");
+        }
 
-      let pathParams = {
-        'section_gid': section_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'section_gid': section_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = SectionResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = SectionResponseData;
 
-      return this.apiClient.callApi(
-        '/sections/{section_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/sections/{section_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getSectionsForProject operation.
@@ -256,36 +256,36 @@ export class SectionsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getSectionsForProject(project_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'project_gid' is set
-      if (project_gid === undefined || project_gid === null) {
-        throw new Error("Missing the required parameter 'project_gid' when calling getSectionsForProject");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'project_gid' is set
+        if (project_gid === undefined || project_gid === null) {
+            throw new Error("Missing the required parameter 'project_gid' when calling getSectionsForProject");
+        }
 
-      let pathParams = {
-        'project_gid': project_gid
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'project_gid': project_gid
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = SectionResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = SectionResponseArray;
 
-      return this.apiClient.callApi(
-        '/projects/{project_gid}/sections', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/projects/{project_gid}/sections', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the insertSectionForProject operation.
@@ -305,36 +305,36 @@ export class SectionsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     insertSectionForProject(project_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = opts['body'];
-      // verify the required parameter 'project_gid' is set
-      if (project_gid === undefined || project_gid === null) {
-        throw new Error("Missing the required parameter 'project_gid' when calling insertSectionForProject");
-      }
+        opts = opts || {};
+        let postBody = opts['body'];
+        // verify the required parameter 'project_gid' is set
+        if (project_gid === undefined || project_gid === null) {
+            throw new Error("Missing the required parameter 'project_gid' when calling insertSectionForProject");
+        }
 
-      let pathParams = {
-        'project_gid': project_gid
-      };
-      let queryParams = {
-        
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'project_gid': project_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
 
-      return this.apiClient.callApi(
-        '/projects/{project_gid}/sections/insert', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/projects/{project_gid}/sections/insert', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the updateSection operation.
@@ -355,36 +355,36 @@ export class SectionsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     updateSection(section_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = opts['body'];
-      // verify the required parameter 'section_gid' is set
-      if (section_gid === undefined || section_gid === null) {
-        throw new Error("Missing the required parameter 'section_gid' when calling updateSection");
-      }
+        opts = opts || {};
+        let postBody = opts['body'];
+        // verify the required parameter 'section_gid' is set
+        if (section_gid === undefined || section_gid === null) {
+            throw new Error("Missing the required parameter 'section_gid' when calling updateSection");
+        }
 
-      let pathParams = {
-        'section_gid': section_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'section_gid': section_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = SectionResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = SectionResponseData;
 
-      return this.apiClient.callApi(
-        '/sections/{section_gid}', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/sections/{section_gid}', 'PUT',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

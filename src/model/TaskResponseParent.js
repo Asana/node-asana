@@ -18,7 +18,7 @@ import {AttachmentResponseParentCreatedBy} from './AttachmentResponseParentCreat
 /**
  * The TaskResponseParent model module.
  * @module model/TaskResponseParent
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class TaskResponseParent {
   /**

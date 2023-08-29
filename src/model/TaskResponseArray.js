@@ -19,7 +19,7 @@ import {TaskResponse} from './TaskResponse';
 /**
  * The TaskResponseArray model module.
  * @module model/TaskResponseArray
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class TaskResponseArray {
   /**

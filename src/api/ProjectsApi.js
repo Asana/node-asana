@@ -36,7 +36,7 @@ import {WorkspaceGidProjectsBody} from '../model/WorkspaceGidProjectsBody';
 /**
 * Projects service.
 * @module api/ProjectsApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class ProjectsApi {
 
@@ -69,40 +69,40 @@ export class ProjectsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     addCustomFieldSettingForProject(body, project_gid, callback) {
-      
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling addCustomFieldSettingForProject");
-      }
-      // verify the required parameter 'project_gid' is set
-      if (project_gid === undefined || project_gid === null) {
-        throw new Error("Missing the required parameter 'project_gid' when calling addCustomFieldSettingForProject");
-      }
-
-      let pathParams = {
-        'project_gid': project_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling addCustomFieldSettingForProject");
+        }
+        // verify the required parameter 'project_gid' is set
+        if (project_gid === undefined || project_gid === null) {
+            throw new Error("Missing the required parameter 'project_gid' when calling addCustomFieldSettingForProject");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = CustomFieldSettingResponseData;
+        let pathParams = {
+            'project_gid': project_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/projects/{project_gid}/addCustomFieldSetting', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = CustomFieldSettingResponseData;
+
+        return this.apiClient.callApi(
+            '/projects/{project_gid}/addCustomFieldSetting', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the addFollowersForProject operation.
@@ -123,40 +123,40 @@ export class ProjectsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     addFollowersForProject(body, project_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling addFollowersForProject");
-      }
-      // verify the required parameter 'project_gid' is set
-      if (project_gid === undefined || project_gid === null) {
-        throw new Error("Missing the required parameter 'project_gid' when calling addFollowersForProject");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling addFollowersForProject");
+        }
+        // verify the required parameter 'project_gid' is set
+        if (project_gid === undefined || project_gid === null) {
+            throw new Error("Missing the required parameter 'project_gid' when calling addFollowersForProject");
+        }
 
-      let pathParams = {
-        'project_gid': project_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'project_gid': project_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectResponseData;
 
-      return this.apiClient.callApi(
-        '/projects/{project_gid}/addFollowers', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/projects/{project_gid}/addFollowers', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the addMembersForProject operation.
@@ -177,40 +177,40 @@ export class ProjectsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     addMembersForProject(body, project_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling addMembersForProject");
-      }
-      // verify the required parameter 'project_gid' is set
-      if (project_gid === undefined || project_gid === null) {
-        throw new Error("Missing the required parameter 'project_gid' when calling addMembersForProject");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling addMembersForProject");
+        }
+        // verify the required parameter 'project_gid' is set
+        if (project_gid === undefined || project_gid === null) {
+            throw new Error("Missing the required parameter 'project_gid' when calling addMembersForProject");
+        }
 
-      let pathParams = {
-        'project_gid': project_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'project_gid': project_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectResponseData;
 
-      return this.apiClient.callApi(
-        '/projects/{project_gid}/addMembers', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/projects/{project_gid}/addMembers', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the createProject operation.
@@ -230,36 +230,36 @@ export class ProjectsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     createProject(body, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling createProject");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling createProject");
+        }
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectResponseData;
 
-      return this.apiClient.callApi(
-        '/projects', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/projects', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the createProjectForTeam operation.
@@ -280,40 +280,40 @@ export class ProjectsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     createProjectForTeam(body, team_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling createProjectForTeam");
-      }
-      // verify the required parameter 'team_gid' is set
-      if (team_gid === undefined || team_gid === null) {
-        throw new Error("Missing the required parameter 'team_gid' when calling createProjectForTeam");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling createProjectForTeam");
+        }
+        // verify the required parameter 'team_gid' is set
+        if (team_gid === undefined || team_gid === null) {
+            throw new Error("Missing the required parameter 'team_gid' when calling createProjectForTeam");
+        }
 
-      let pathParams = {
-        'team_gid': team_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'team_gid': team_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectResponseData;
 
-      return this.apiClient.callApi(
-        '/teams/{team_gid}/projects', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/teams/{team_gid}/projects', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the createProjectForWorkspace operation.
@@ -334,40 +334,40 @@ export class ProjectsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     createProjectForWorkspace(body, workspace_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling createProjectForWorkspace");
-      }
-      // verify the required parameter 'workspace_gid' is set
-      if (workspace_gid === undefined || workspace_gid === null) {
-        throw new Error("Missing the required parameter 'workspace_gid' when calling createProjectForWorkspace");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling createProjectForWorkspace");
+        }
+        // verify the required parameter 'workspace_gid' is set
+        if (workspace_gid === undefined || workspace_gid === null) {
+            throw new Error("Missing the required parameter 'workspace_gid' when calling createProjectForWorkspace");
+        }
 
-      let pathParams = {
-        'workspace_gid': workspace_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'workspace_gid': workspace_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectResponseData;
 
-      return this.apiClient.callApi(
-        '/workspaces/{workspace_gid}/projects', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/workspaces/{workspace_gid}/projects', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the deleteProject operation.
@@ -385,36 +385,36 @@ export class ProjectsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     deleteProject(project_gid, callback) {
-      
-      let postBody = null;
-      // verify the required parameter 'project_gid' is set
-      if (project_gid === undefined || project_gid === null) {
-        throw new Error("Missing the required parameter 'project_gid' when calling deleteProject");
-      }
-
-      let pathParams = {
-        'project_gid': project_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = null;
+        // verify the required parameter 'project_gid' is set
+        if (project_gid === undefined || project_gid === null) {
+            throw new Error("Missing the required parameter 'project_gid' when calling deleteProject");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'project_gid': project_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/projects/{project_gid}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/projects/{project_gid}', 'DELETE',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the duplicateProject operation.
@@ -435,36 +435,36 @@ export class ProjectsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     duplicateProject(project_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = opts['body'];
-      // verify the required parameter 'project_gid' is set
-      if (project_gid === undefined || project_gid === null) {
-        throw new Error("Missing the required parameter 'project_gid' when calling duplicateProject");
-      }
+        opts = opts || {};
+        let postBody = opts['body'];
+        // verify the required parameter 'project_gid' is set
+        if (project_gid === undefined || project_gid === null) {
+            throw new Error("Missing the required parameter 'project_gid' when calling duplicateProject");
+        }
 
-      let pathParams = {
-        'project_gid': project_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'project_gid': project_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = JobResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = JobResponseData;
 
-      return this.apiClient.callApi(
-        '/projects/{project_gid}/duplicate', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/projects/{project_gid}/duplicate', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getProject operation.
@@ -484,36 +484,36 @@ export class ProjectsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getProject(project_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'project_gid' is set
-      if (project_gid === undefined || project_gid === null) {
-        throw new Error("Missing the required parameter 'project_gid' when calling getProject");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'project_gid' is set
+        if (project_gid === undefined || project_gid === null) {
+            throw new Error("Missing the required parameter 'project_gid' when calling getProject");
+        }
 
-      let pathParams = {
-        'project_gid': project_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'project_gid': project_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectResponseData;
 
-      return this.apiClient.callApi(
-        '/projects/{project_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/projects/{project_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getProjects operation.
@@ -537,32 +537,32 @@ export class ProjectsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getProjects(opts, callback) {
-      opts = opts || {};
-      let postBody = null;
+        opts = opts || {};
+        let postBody = null;
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'workspace': opts['workspace'],'team': opts['team'],'archived': opts['archived'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'workspace': opts['workspace'],'team': opts['team'],'archived': opts['archived'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectResponseArray;
 
-      return this.apiClient.callApi(
-        '/projects', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/projects', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getProjectsForTask operation.
@@ -584,36 +584,36 @@ export class ProjectsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getProjectsForTask(task_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'task_gid' is set
-      if (task_gid === undefined || task_gid === null) {
-        throw new Error("Missing the required parameter 'task_gid' when calling getProjectsForTask");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'task_gid' is set
+        if (task_gid === undefined || task_gid === null) {
+            throw new Error("Missing the required parameter 'task_gid' when calling getProjectsForTask");
+        }
 
-      let pathParams = {
-        'task_gid': task_gid
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'task_gid': task_gid
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectResponseArray;
 
-      return this.apiClient.callApi(
-        '/tasks/{task_gid}/projects', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/tasks/{task_gid}/projects', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getProjectsForTeam operation.
@@ -636,36 +636,36 @@ export class ProjectsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getProjectsForTeam(team_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'team_gid' is set
-      if (team_gid === undefined || team_gid === null) {
-        throw new Error("Missing the required parameter 'team_gid' when calling getProjectsForTeam");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'team_gid' is set
+        if (team_gid === undefined || team_gid === null) {
+            throw new Error("Missing the required parameter 'team_gid' when calling getProjectsForTeam");
+        }
 
-      let pathParams = {
-        'team_gid': team_gid
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'archived': opts['archived'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'team_gid': team_gid
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'archived': opts['archived'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectResponseArray;
 
-      return this.apiClient.callApi(
-        '/teams/{team_gid}/projects', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/teams/{team_gid}/projects', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getProjectsForWorkspace operation.
@@ -688,36 +688,36 @@ export class ProjectsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getProjectsForWorkspace(workspace_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'workspace_gid' is set
-      if (workspace_gid === undefined || workspace_gid === null) {
-        throw new Error("Missing the required parameter 'workspace_gid' when calling getProjectsForWorkspace");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'workspace_gid' is set
+        if (workspace_gid === undefined || workspace_gid === null) {
+            throw new Error("Missing the required parameter 'workspace_gid' when calling getProjectsForWorkspace");
+        }
 
-      let pathParams = {
-        'workspace_gid': workspace_gid
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'archived': opts['archived'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'workspace_gid': workspace_gid
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'archived': opts['archived'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectResponseArray;
 
-      return this.apiClient.callApi(
-        '/workspaces/{workspace_gid}/projects', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/workspaces/{workspace_gid}/projects', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getTaskCountsForProject operation.
@@ -737,36 +737,36 @@ export class ProjectsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getTaskCountsForProject(project_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'project_gid' is set
-      if (project_gid === undefined || project_gid === null) {
-        throw new Error("Missing the required parameter 'project_gid' when calling getTaskCountsForProject");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'project_gid' is set
+        if (project_gid === undefined || project_gid === null) {
+            throw new Error("Missing the required parameter 'project_gid' when calling getTaskCountsForProject");
+        }
 
-      let pathParams = {
-        'project_gid': project_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'project_gid': project_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TaskCountResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TaskCountResponseData;
 
-      return this.apiClient.callApi(
-        '/projects/{project_gid}/task_counts', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/projects/{project_gid}/task_counts', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the projectSaveAsTemplate operation.
@@ -787,40 +787,40 @@ export class ProjectsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     projectSaveAsTemplate(body, project_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling projectSaveAsTemplate");
-      }
-      // verify the required parameter 'project_gid' is set
-      if (project_gid === undefined || project_gid === null) {
-        throw new Error("Missing the required parameter 'project_gid' when calling projectSaveAsTemplate");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling projectSaveAsTemplate");
+        }
+        // verify the required parameter 'project_gid' is set
+        if (project_gid === undefined || project_gid === null) {
+            throw new Error("Missing the required parameter 'project_gid' when calling projectSaveAsTemplate");
+        }
 
-      let pathParams = {
-        'project_gid': project_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'project_gid': project_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = JobResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = JobResponseData;
 
-      return this.apiClient.callApi(
-        '/projects/{project_gid}/saveAsTemplate', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/projects/{project_gid}/saveAsTemplate', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the removeCustomFieldSettingForProject operation.
@@ -839,40 +839,40 @@ export class ProjectsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     removeCustomFieldSettingForProject(body, project_gid, callback) {
-      
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling removeCustomFieldSettingForProject");
-      }
-      // verify the required parameter 'project_gid' is set
-      if (project_gid === undefined || project_gid === null) {
-        throw new Error("Missing the required parameter 'project_gid' when calling removeCustomFieldSettingForProject");
-      }
-
-      let pathParams = {
-        'project_gid': project_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling removeCustomFieldSettingForProject");
+        }
+        // verify the required parameter 'project_gid' is set
+        if (project_gid === undefined || project_gid === null) {
+            throw new Error("Missing the required parameter 'project_gid' when calling removeCustomFieldSettingForProject");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'project_gid': project_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/projects/{project_gid}/removeCustomFieldSetting', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/projects/{project_gid}/removeCustomFieldSetting', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the removeFollowersForProject operation.
@@ -893,40 +893,40 @@ export class ProjectsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     removeFollowersForProject(body, project_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling removeFollowersForProject");
-      }
-      // verify the required parameter 'project_gid' is set
-      if (project_gid === undefined || project_gid === null) {
-        throw new Error("Missing the required parameter 'project_gid' when calling removeFollowersForProject");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling removeFollowersForProject");
+        }
+        // verify the required parameter 'project_gid' is set
+        if (project_gid === undefined || project_gid === null) {
+            throw new Error("Missing the required parameter 'project_gid' when calling removeFollowersForProject");
+        }
 
-      let pathParams = {
-        'project_gid': project_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'project_gid': project_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectResponseData;
 
-      return this.apiClient.callApi(
-        '/projects/{project_gid}/removeFollowers', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/projects/{project_gid}/removeFollowers', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the removeMembersForProject operation.
@@ -947,40 +947,40 @@ export class ProjectsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     removeMembersForProject(body, project_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling removeMembersForProject");
-      }
-      // verify the required parameter 'project_gid' is set
-      if (project_gid === undefined || project_gid === null) {
-        throw new Error("Missing the required parameter 'project_gid' when calling removeMembersForProject");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling removeMembersForProject");
+        }
+        // verify the required parameter 'project_gid' is set
+        if (project_gid === undefined || project_gid === null) {
+            throw new Error("Missing the required parameter 'project_gid' when calling removeMembersForProject");
+        }
 
-      let pathParams = {
-        'project_gid': project_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'project_gid': project_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectResponseData;
 
-      return this.apiClient.callApi(
-        '/projects/{project_gid}/removeMembers', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/projects/{project_gid}/removeMembers', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the updateProject operation.
@@ -1001,40 +1001,40 @@ export class ProjectsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     updateProject(body, project_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling updateProject");
-      }
-      // verify the required parameter 'project_gid' is set
-      if (project_gid === undefined || project_gid === null) {
-        throw new Error("Missing the required parameter 'project_gid' when calling updateProject");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling updateProject");
+        }
+        // verify the required parameter 'project_gid' is set
+        if (project_gid === undefined || project_gid === null) {
+            throw new Error("Missing the required parameter 'project_gid' when calling updateProject");
+        }
 
-      let pathParams = {
-        'project_gid': project_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'project_gid': project_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectResponseData;
 
-      return this.apiClient.callApi(
-        '/projects/{project_gid}', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/projects/{project_gid}', 'PUT',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

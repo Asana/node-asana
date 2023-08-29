@@ -18,7 +18,7 @@ import {ProjectUpdateRequest} from './ProjectUpdateRequest';
 /**
  * The ProjectsProjectGidBody model module.
  * @module model/ProjectsProjectGidBody
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class ProjectsProjectGidBody {
   /**

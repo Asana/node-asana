@@ -18,7 +18,7 @@ import {GoalMetricRequest} from './GoalMetricRequest';
 /**
  * The GoalGidSetMetricBody model module.
  * @module model/GoalGidSetMetricBody
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class GoalGidSetMetricBody {
   /**

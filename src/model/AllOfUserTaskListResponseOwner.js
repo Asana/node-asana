@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The AllOfUserTaskListResponseOwner model module.
  * @module model/AllOfUserTaskListResponseOwner
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class AllOfUserTaskListResponseOwner {
   /**

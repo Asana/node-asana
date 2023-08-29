@@ -18,7 +18,7 @@ import {ModifyDependentsRequest} from './ModifyDependentsRequest';
 /**
  * The TaskGidAddDependentsBody model module.
  * @module model/TaskGidAddDependentsBody
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class TaskGidAddDependentsBody {
   /**

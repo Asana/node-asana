@@ -18,7 +18,7 @@ import {UserBaseResponse} from './UserBaseResponse';
 /**
  * The UserBaseResponseData model module.
  * @module model/UserBaseResponseData
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class UserBaseResponseData {
   /**

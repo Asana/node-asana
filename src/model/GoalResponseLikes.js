@@ -18,7 +18,7 @@ import {CustomFieldResponsePeopleValue} from './CustomFieldResponsePeopleValue';
 /**
  * The GoalResponseLikes model module.
  * @module model/GoalResponseLikes
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class GoalResponseLikes {
   /**

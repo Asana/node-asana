@@ -19,7 +19,7 @@ import {NextPage} from './NextPage';
 /**
  * The MembershipResponseArray model module.
  * @module model/MembershipResponseArray
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class MembershipResponseArray {
   /**

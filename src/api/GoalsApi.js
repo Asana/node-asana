@@ -27,7 +27,7 @@ import {GoalsGoalGidBody} from '../model/GoalsGoalGidBody';
 /**
 * Goals service.
 * @module api/GoalsApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class GoalsApi {
 
@@ -62,40 +62,40 @@ export class GoalsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     addFollowers(body, goal_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling addFollowers");
-      }
-      // verify the required parameter 'goal_gid' is set
-      if (goal_gid === undefined || goal_gid === null) {
-        throw new Error("Missing the required parameter 'goal_gid' when calling addFollowers");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling addFollowers");
+        }
+        // verify the required parameter 'goal_gid' is set
+        if (goal_gid === undefined || goal_gid === null) {
+            throw new Error("Missing the required parameter 'goal_gid' when calling addFollowers");
+        }
 
-      let pathParams = {
-        'goal_gid': goal_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'goal_gid': goal_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = GoalResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = GoalResponseData;
 
-      return this.apiClient.callApi(
-        '/goals/{goal_gid}/addFollowers', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/goals/{goal_gid}/addFollowers', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the createGoal operation.
@@ -115,36 +115,36 @@ export class GoalsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     createGoal(body, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling createGoal");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling createGoal");
+        }
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = GoalResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = GoalResponseData;
 
-      return this.apiClient.callApi(
-        '/goals', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/goals', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the createGoalMetric operation.
@@ -165,40 +165,40 @@ export class GoalsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     createGoalMetric(body, goal_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling createGoalMetric");
-      }
-      // verify the required parameter 'goal_gid' is set
-      if (goal_gid === undefined || goal_gid === null) {
-        throw new Error("Missing the required parameter 'goal_gid' when calling createGoalMetric");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling createGoalMetric");
+        }
+        // verify the required parameter 'goal_gid' is set
+        if (goal_gid === undefined || goal_gid === null) {
+            throw new Error("Missing the required parameter 'goal_gid' when calling createGoalMetric");
+        }
 
-      let pathParams = {
-        'goal_gid': goal_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'goal_gid': goal_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = GoalResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = GoalResponseData;
 
-      return this.apiClient.callApi(
-        '/goals/{goal_gid}/setMetric', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/goals/{goal_gid}/setMetric', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the deleteGoal operation.
@@ -216,36 +216,36 @@ export class GoalsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     deleteGoal(goal_gid, callback) {
-      
-      let postBody = null;
-      // verify the required parameter 'goal_gid' is set
-      if (goal_gid === undefined || goal_gid === null) {
-        throw new Error("Missing the required parameter 'goal_gid' when calling deleteGoal");
-      }
-
-      let pathParams = {
-        'goal_gid': goal_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = null;
+        // verify the required parameter 'goal_gid' is set
+        if (goal_gid === undefined || goal_gid === null) {
+            throw new Error("Missing the required parameter 'goal_gid' when calling deleteGoal");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'goal_gid': goal_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/goals/{goal_gid}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/goals/{goal_gid}', 'DELETE',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getGoal operation.
@@ -265,36 +265,36 @@ export class GoalsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getGoal(goal_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'goal_gid' is set
-      if (goal_gid === undefined || goal_gid === null) {
-        throw new Error("Missing the required parameter 'goal_gid' when calling getGoal");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'goal_gid' is set
+        if (goal_gid === undefined || goal_gid === null) {
+            throw new Error("Missing the required parameter 'goal_gid' when calling getGoal");
+        }
 
-      let pathParams = {
-        'goal_gid': goal_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'goal_gid': goal_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = GoalResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = GoalResponseData;
 
-      return this.apiClient.callApi(
-        '/goals/{goal_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/goals/{goal_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getGoals operation.
@@ -321,32 +321,32 @@ export class GoalsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getGoals(opts, callback) {
-      opts = opts || {};
-      let postBody = null;
+        opts = opts || {};
+        let postBody = null;
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'portfolio': opts['portfolio'],'project': opts['project'],'is_workspace_level': opts['is_workspace_level'],'team': opts['team'],'workspace': opts['workspace'],'time_periods': this.apiClient.buildCollectionParam(opts['time_periods'], 'multi'),'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'portfolio': opts['portfolio'],'project': opts['project'],'is_workspace_level': opts['is_workspace_level'],'team': opts['team'],'workspace': opts['workspace'],'time_periods': this.apiClient.buildCollectionParam(opts['time_periods'], 'multi'),'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = GoalResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = GoalResponseArray;
 
-      return this.apiClient.callApi(
-        '/goals', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/goals', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getParentGoalsForGoal operation.
@@ -366,36 +366,36 @@ export class GoalsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getParentGoalsForGoal(goal_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'goal_gid' is set
-      if (goal_gid === undefined || goal_gid === null) {
-        throw new Error("Missing the required parameter 'goal_gid' when calling getParentGoalsForGoal");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'goal_gid' is set
+        if (goal_gid === undefined || goal_gid === null) {
+            throw new Error("Missing the required parameter 'goal_gid' when calling getParentGoalsForGoal");
+        }
 
-      let pathParams = {
-        'goal_gid': goal_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'goal_gid': goal_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = GoalResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = GoalResponseArray;
 
-      return this.apiClient.callApi(
-        '/goals/{goal_gid}/parentGoals', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/goals/{goal_gid}/parentGoals', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the removeFollowers operation.
@@ -416,40 +416,40 @@ export class GoalsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     removeFollowers(body, goal_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling removeFollowers");
-      }
-      // verify the required parameter 'goal_gid' is set
-      if (goal_gid === undefined || goal_gid === null) {
-        throw new Error("Missing the required parameter 'goal_gid' when calling removeFollowers");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling removeFollowers");
+        }
+        // verify the required parameter 'goal_gid' is set
+        if (goal_gid === undefined || goal_gid === null) {
+            throw new Error("Missing the required parameter 'goal_gid' when calling removeFollowers");
+        }
 
-      let pathParams = {
-        'goal_gid': goal_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'goal_gid': goal_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = GoalResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = GoalResponseData;
 
-      return this.apiClient.callApi(
-        '/goals/{goal_gid}/removeFollowers', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/goals/{goal_gid}/removeFollowers', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the updateGoal operation.
@@ -470,40 +470,40 @@ export class GoalsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     updateGoal(body, goal_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling updateGoal");
-      }
-      // verify the required parameter 'goal_gid' is set
-      if (goal_gid === undefined || goal_gid === null) {
-        throw new Error("Missing the required parameter 'goal_gid' when calling updateGoal");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling updateGoal");
+        }
+        // verify the required parameter 'goal_gid' is set
+        if (goal_gid === undefined || goal_gid === null) {
+            throw new Error("Missing the required parameter 'goal_gid' when calling updateGoal");
+        }
 
-      let pathParams = {
-        'goal_gid': goal_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'goal_gid': goal_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = GoalResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = GoalResponseData;
 
-      return this.apiClient.callApi(
-        '/goals/{goal_gid}', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/goals/{goal_gid}', 'PUT',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the updateGoalMetric operation.
@@ -524,40 +524,40 @@ export class GoalsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     updateGoalMetric(body, goal_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling updateGoalMetric");
-      }
-      // verify the required parameter 'goal_gid' is set
-      if (goal_gid === undefined || goal_gid === null) {
-        throw new Error("Missing the required parameter 'goal_gid' when calling updateGoalMetric");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling updateGoalMetric");
+        }
+        // verify the required parameter 'goal_gid' is set
+        if (goal_gid === undefined || goal_gid === null) {
+            throw new Error("Missing the required parameter 'goal_gid' when calling updateGoalMetric");
+        }
 
-      let pathParams = {
-        'goal_gid': goal_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'goal_gid': goal_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = GoalResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = GoalResponseData;
 
-      return this.apiClient.callApi(
-        '/goals/{goal_gid}/setMetricCurrentValue', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/goals/{goal_gid}/setMetricCurrentValue', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The GoalRequestBase model module.
  * @module model/GoalRequestBase
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class GoalRequestBase {
   /**

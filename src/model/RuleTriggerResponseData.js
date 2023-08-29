@@ -18,7 +18,7 @@ import {RuleTriggerResponse} from './RuleTriggerResponse';
 /**
  * The RuleTriggerResponseData model module.
  * @module model/RuleTriggerResponseData
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class RuleTriggerResponseData {
   /**

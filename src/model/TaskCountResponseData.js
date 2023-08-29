@@ -18,7 +18,7 @@ import {TaskCountResponse} from './TaskCountResponse';
 /**
  * The TaskCountResponseData model module.
  * @module model/TaskCountResponseData
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class TaskCountResponseData {
   /**

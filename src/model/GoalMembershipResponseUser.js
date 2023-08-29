@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The GoalMembershipResponseUser model module.
  * @module model/GoalMembershipResponseUser
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class GoalMembershipResponseUser {
   /**

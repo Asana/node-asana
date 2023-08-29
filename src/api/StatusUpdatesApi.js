@@ -22,7 +22,7 @@ import {StatusUpdatesBody} from '../model/StatusUpdatesBody';
 /**
 * StatusUpdates service.
 * @module api/StatusUpdatesApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class StatusUpdatesApi {
 
@@ -58,36 +58,36 @@ export class StatusUpdatesApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     createStatusForObject(body, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling createStatusForObject");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling createStatusForObject");
+        }
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = StatusUpdateResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = StatusUpdateResponseData;
 
-      return this.apiClient.callApi(
-        '/status_updates', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/status_updates', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the deleteStatus operation.
@@ -105,36 +105,36 @@ export class StatusUpdatesApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     deleteStatus(status_update_gid, callback) {
-      
-      let postBody = null;
-      // verify the required parameter 'status_update_gid' is set
-      if (status_update_gid === undefined || status_update_gid === null) {
-        throw new Error("Missing the required parameter 'status_update_gid' when calling deleteStatus");
-      }
-
-      let pathParams = {
-        'status_update_gid': status_update_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = null;
+        // verify the required parameter 'status_update_gid' is set
+        if (status_update_gid === undefined || status_update_gid === null) {
+            throw new Error("Missing the required parameter 'status_update_gid' when calling deleteStatus");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'status_update_gid': status_update_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/status_updates/{status_update_gid}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/status_updates/{status_update_gid}', 'DELETE',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getStatus operation.
@@ -154,36 +154,36 @@ export class StatusUpdatesApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getStatus(status_update_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'status_update_gid' is set
-      if (status_update_gid === undefined || status_update_gid === null) {
-        throw new Error("Missing the required parameter 'status_update_gid' when calling getStatus");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'status_update_gid' is set
+        if (status_update_gid === undefined || status_update_gid === null) {
+            throw new Error("Missing the required parameter 'status_update_gid' when calling getStatus");
+        }
 
-      let pathParams = {
-        'status_update_gid': status_update_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'status_update_gid': status_update_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = StatusUpdateResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = StatusUpdateResponseData;
 
-      return this.apiClient.callApi(
-        '/status_updates/{status_update_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/status_updates/{status_update_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getStatusesForObject operation.
@@ -206,36 +206,36 @@ export class StatusUpdatesApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getStatusesForObject(parent, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'parent' is set
-      if (parent === undefined || parent === null) {
-        throw new Error("Missing the required parameter 'parent' when calling getStatusesForObject");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'parent' is set
+        if (parent === undefined || parent === null) {
+            throw new Error("Missing the required parameter 'parent' when calling getStatusesForObject");
+        }
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'parent': parent,'created_since': opts['created_since'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'parent': parent,'created_since': opts['created_since'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = StatusUpdateResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = StatusUpdateResponseArray;
 
-      return this.apiClient.callApi(
-        '/status_updates', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/status_updates', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

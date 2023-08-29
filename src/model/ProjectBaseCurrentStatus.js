@@ -18,7 +18,7 @@ import {CustomFieldResponsePeopleValue} from './CustomFieldResponsePeopleValue';
 /**
  * The ProjectBaseCurrentStatus model module.
  * @module model/ProjectBaseCurrentStatus
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class ProjectBaseCurrentStatus {
   /**

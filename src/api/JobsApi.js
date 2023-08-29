@@ -19,7 +19,7 @@ import {JobResponseData} from '../model/JobResponseData';
 /**
 * Jobs service.
 * @module api/JobsApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class JobsApi {
 
@@ -53,36 +53,36 @@ export class JobsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getJob(job_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'job_gid' is set
-      if (job_gid === undefined || job_gid === null) {
-        throw new Error("Missing the required parameter 'job_gid' when calling getJob");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'job_gid' is set
+        if (job_gid === undefined || job_gid === null) {
+            throw new Error("Missing the required parameter 'job_gid' when calling getJob");
+        }
 
-      let pathParams = {
-        'job_gid': job_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'job_gid': job_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = JobResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = JobResponseData;
 
-      return this.apiClient.callApi(
-        '/jobs/{job_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/jobs/{job_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

@@ -19,7 +19,7 @@ import {ErrorResponse} from '../model/ErrorResponse';
 /**
 * CustomFieldSettings service.
 * @module api/CustomFieldSettingsApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class CustomFieldSettingsApi {
 
@@ -55,36 +55,36 @@ export class CustomFieldSettingsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getCustomFieldSettingsForPortfolio(portfolio_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'portfolio_gid' is set
-      if (portfolio_gid === undefined || portfolio_gid === null) {
-        throw new Error("Missing the required parameter 'portfolio_gid' when calling getCustomFieldSettingsForPortfolio");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'portfolio_gid' is set
+        if (portfolio_gid === undefined || portfolio_gid === null) {
+            throw new Error("Missing the required parameter 'portfolio_gid' when calling getCustomFieldSettingsForPortfolio");
+        }
 
-      let pathParams = {
-        'portfolio_gid': portfolio_gid
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'portfolio_gid': portfolio_gid
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = CustomFieldSettingResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = CustomFieldSettingResponseArray;
 
-      return this.apiClient.callApi(
-        '/portfolios/{portfolio_gid}/custom_field_settings', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/portfolios/{portfolio_gid}/custom_field_settings', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getCustomFieldSettingsForProject operation.
@@ -106,36 +106,36 @@ export class CustomFieldSettingsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getCustomFieldSettingsForProject(project_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'project_gid' is set
-      if (project_gid === undefined || project_gid === null) {
-        throw new Error("Missing the required parameter 'project_gid' when calling getCustomFieldSettingsForProject");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'project_gid' is set
+        if (project_gid === undefined || project_gid === null) {
+            throw new Error("Missing the required parameter 'project_gid' when calling getCustomFieldSettingsForProject");
+        }
 
-      let pathParams = {
-        'project_gid': project_gid
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'project_gid': project_gid
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = CustomFieldSettingResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = CustomFieldSettingResponseArray;
 
-      return this.apiClient.callApi(
-        '/projects/{project_gid}/custom_field_settings', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/projects/{project_gid}/custom_field_settings', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

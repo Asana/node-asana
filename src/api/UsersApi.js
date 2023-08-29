@@ -21,7 +21,7 @@ import {UserResponseData} from '../model/UserResponseData';
 /**
 * Users service.
 * @module api/UsersApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class UsersApi {
 
@@ -59,44 +59,44 @@ export class UsersApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getFavoritesForUser(user_gid, resource_type, workspace, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'user_gid' is set
-      if (user_gid === undefined || user_gid === null) {
-        throw new Error("Missing the required parameter 'user_gid' when calling getFavoritesForUser");
-      }
-      // verify the required parameter 'resource_type' is set
-      if (resource_type === undefined || resource_type === null) {
-        throw new Error("Missing the required parameter 'resource_type' when calling getFavoritesForUser");
-      }
-      // verify the required parameter 'workspace' is set
-      if (workspace === undefined || workspace === null) {
-        throw new Error("Missing the required parameter 'workspace' when calling getFavoritesForUser");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'user_gid' is set
+        if (user_gid === undefined || user_gid === null) {
+            throw new Error("Missing the required parameter 'user_gid' when calling getFavoritesForUser");
+        }
+        // verify the required parameter 'resource_type' is set
+        if (resource_type === undefined || resource_type === null) {
+            throw new Error("Missing the required parameter 'resource_type' when calling getFavoritesForUser");
+        }
+        // verify the required parameter 'workspace' is set
+        if (workspace === undefined || workspace === null) {
+            throw new Error("Missing the required parameter 'workspace' when calling getFavoritesForUser");
+        }
 
-      let pathParams = {
-        'user_gid': user_gid
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'resource_type': resource_type,'workspace': workspace,'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'user_gid': user_gid
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'resource_type': resource_type,'workspace': workspace,'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = AsanaNamedResourceArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = AsanaNamedResourceArray;
 
-      return this.apiClient.callApi(
-        '/users/{user_gid}/favorites', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/users/{user_gid}/favorites', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getUser operation.
@@ -116,36 +116,36 @@ export class UsersApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getUser(user_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'user_gid' is set
-      if (user_gid === undefined || user_gid === null) {
-        throw new Error("Missing the required parameter 'user_gid' when calling getUser");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'user_gid' is set
+        if (user_gid === undefined || user_gid === null) {
+            throw new Error("Missing the required parameter 'user_gid' when calling getUser");
+        }
 
-      let pathParams = {
-        'user_gid': user_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'user_gid': user_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = UserResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = UserResponseData;
 
-      return this.apiClient.callApi(
-        '/users/{user_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/users/{user_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getUsers operation.
@@ -168,32 +168,32 @@ export class UsersApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getUsers(opts, callback) {
-      opts = opts || {};
-      let postBody = null;
+        opts = opts || {};
+        let postBody = null;
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'workspace': opts['workspace'],'team': opts['team'],'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'workspace': opts['workspace'],'team': opts['team'],'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = UserResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = UserResponseArray;
 
-      return this.apiClient.callApi(
-        '/users', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/users', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getUsersForTeam operation.
@@ -214,36 +214,36 @@ export class UsersApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getUsersForTeam(team_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'team_gid' is set
-      if (team_gid === undefined || team_gid === null) {
-        throw new Error("Missing the required parameter 'team_gid' when calling getUsersForTeam");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'team_gid' is set
+        if (team_gid === undefined || team_gid === null) {
+            throw new Error("Missing the required parameter 'team_gid' when calling getUsersForTeam");
+        }
 
-      let pathParams = {
-        'team_gid': team_gid
-      };
-      let queryParams = {
-        'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'team_gid': team_gid
+        };
+        let queryParams = {
+            'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = UserResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = UserResponseArray;
 
-      return this.apiClient.callApi(
-        '/teams/{team_gid}/users', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/teams/{team_gid}/users', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getUsersForWorkspace operation.
@@ -264,36 +264,36 @@ export class UsersApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getUsersForWorkspace(workspace_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'workspace_gid' is set
-      if (workspace_gid === undefined || workspace_gid === null) {
-        throw new Error("Missing the required parameter 'workspace_gid' when calling getUsersForWorkspace");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'workspace_gid' is set
+        if (workspace_gid === undefined || workspace_gid === null) {
+            throw new Error("Missing the required parameter 'workspace_gid' when calling getUsersForWorkspace");
+        }
 
-      let pathParams = {
-        'workspace_gid': workspace_gid
-      };
-      let queryParams = {
-        'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'workspace_gid': workspace_gid
+        };
+        let queryParams = {
+            'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = UserResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = UserResponseArray;
 
-      return this.apiClient.callApi(
-        '/workspaces/{workspace_gid}/users', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/workspaces/{workspace_gid}/users', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

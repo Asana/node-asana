@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The RuleTriggerResponse model module.
  * @module model/RuleTriggerResponse
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class RuleTriggerResponse {
   /**

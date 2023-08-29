@@ -37,7 +37,7 @@ import {TasksTaskGidBody} from '../model/TasksTaskGidBody';
 /**
 * Tasks service.
 * @module api/TasksApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class TasksApi {
 
@@ -70,40 +70,40 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     addDependenciesForTask(body, task_gid, callback) {
-      
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling addDependenciesForTask");
-      }
-      // verify the required parameter 'task_gid' is set
-      if (task_gid === undefined || task_gid === null) {
-        throw new Error("Missing the required parameter 'task_gid' when calling addDependenciesForTask");
-      }
-
-      let pathParams = {
-        'task_gid': task_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling addDependenciesForTask");
+        }
+        // verify the required parameter 'task_gid' is set
+        if (task_gid === undefined || task_gid === null) {
+            throw new Error("Missing the required parameter 'task_gid' when calling addDependenciesForTask");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'task_gid': task_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/tasks/{task_gid}/addDependencies', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/tasks/{task_gid}/addDependencies', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the addDependentsForTask operation.
@@ -122,40 +122,40 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     addDependentsForTask(body, task_gid, callback) {
-      
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling addDependentsForTask");
-      }
-      // verify the required parameter 'task_gid' is set
-      if (task_gid === undefined || task_gid === null) {
-        throw new Error("Missing the required parameter 'task_gid' when calling addDependentsForTask");
-      }
-
-      let pathParams = {
-        'task_gid': task_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling addDependentsForTask");
+        }
+        // verify the required parameter 'task_gid' is set
+        if (task_gid === undefined || task_gid === null) {
+            throw new Error("Missing the required parameter 'task_gid' when calling addDependentsForTask");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'task_gid': task_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/tasks/{task_gid}/addDependents', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/tasks/{task_gid}/addDependents', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the addFollowersForTask operation.
@@ -176,40 +176,40 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     addFollowersForTask(body, task_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling addFollowersForTask");
-      }
-      // verify the required parameter 'task_gid' is set
-      if (task_gid === undefined || task_gid === null) {
-        throw new Error("Missing the required parameter 'task_gid' when calling addFollowersForTask");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling addFollowersForTask");
+        }
+        // verify the required parameter 'task_gid' is set
+        if (task_gid === undefined || task_gid === null) {
+            throw new Error("Missing the required parameter 'task_gid' when calling addFollowersForTask");
+        }
 
-      let pathParams = {
-        'task_gid': task_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'task_gid': task_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TaskResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TaskResponseData;
 
-      return this.apiClient.callApi(
-        '/tasks/{task_gid}/addFollowers', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/tasks/{task_gid}/addFollowers', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the addProjectForTask operation.
@@ -228,40 +228,40 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     addProjectForTask(body, task_gid, callback) {
-      
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling addProjectForTask");
-      }
-      // verify the required parameter 'task_gid' is set
-      if (task_gid === undefined || task_gid === null) {
-        throw new Error("Missing the required parameter 'task_gid' when calling addProjectForTask");
-      }
-
-      let pathParams = {
-        'task_gid': task_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling addProjectForTask");
+        }
+        // verify the required parameter 'task_gid' is set
+        if (task_gid === undefined || task_gid === null) {
+            throw new Error("Missing the required parameter 'task_gid' when calling addProjectForTask");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'task_gid': task_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/tasks/{task_gid}/addProject', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/tasks/{task_gid}/addProject', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the addTagForTask operation.
@@ -280,40 +280,40 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     addTagForTask(body, task_gid, callback) {
-      
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling addTagForTask");
-      }
-      // verify the required parameter 'task_gid' is set
-      if (task_gid === undefined || task_gid === null) {
-        throw new Error("Missing the required parameter 'task_gid' when calling addTagForTask");
-      }
-
-      let pathParams = {
-        'task_gid': task_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling addTagForTask");
+        }
+        // verify the required parameter 'task_gid' is set
+        if (task_gid === undefined || task_gid === null) {
+            throw new Error("Missing the required parameter 'task_gid' when calling addTagForTask");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'task_gid': task_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/tasks/{task_gid}/addTag', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/tasks/{task_gid}/addTag', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the createSubtaskForTask operation.
@@ -334,40 +334,40 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     createSubtaskForTask(body, task_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling createSubtaskForTask");
-      }
-      // verify the required parameter 'task_gid' is set
-      if (task_gid === undefined || task_gid === null) {
-        throw new Error("Missing the required parameter 'task_gid' when calling createSubtaskForTask");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling createSubtaskForTask");
+        }
+        // verify the required parameter 'task_gid' is set
+        if (task_gid === undefined || task_gid === null) {
+            throw new Error("Missing the required parameter 'task_gid' when calling createSubtaskForTask");
+        }
 
-      let pathParams = {
-        'task_gid': task_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'task_gid': task_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TaskResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TaskResponseData;
 
-      return this.apiClient.callApi(
-        '/tasks/{task_gid}/subtasks', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/tasks/{task_gid}/subtasks', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the createTask operation.
@@ -387,36 +387,36 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     createTask(body, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling createTask");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling createTask");
+        }
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TaskResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TaskResponseData;
 
-      return this.apiClient.callApi(
-        '/tasks', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/tasks', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the deleteTask operation.
@@ -434,36 +434,36 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     deleteTask(task_gid, callback) {
-      
-      let postBody = null;
-      // verify the required parameter 'task_gid' is set
-      if (task_gid === undefined || task_gid === null) {
-        throw new Error("Missing the required parameter 'task_gid' when calling deleteTask");
-      }
-
-      let pathParams = {
-        'task_gid': task_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = null;
+        // verify the required parameter 'task_gid' is set
+        if (task_gid === undefined || task_gid === null) {
+            throw new Error("Missing the required parameter 'task_gid' when calling deleteTask");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'task_gid': task_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/tasks/{task_gid}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/tasks/{task_gid}', 'DELETE',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the duplicateTask operation.
@@ -484,40 +484,40 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     duplicateTask(body, task_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling duplicateTask");
-      }
-      // verify the required parameter 'task_gid' is set
-      if (task_gid === undefined || task_gid === null) {
-        throw new Error("Missing the required parameter 'task_gid' when calling duplicateTask");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling duplicateTask");
+        }
+        // verify the required parameter 'task_gid' is set
+        if (task_gid === undefined || task_gid === null) {
+            throw new Error("Missing the required parameter 'task_gid' when calling duplicateTask");
+        }
 
-      let pathParams = {
-        'task_gid': task_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'task_gid': task_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = JobResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = JobResponseData;
 
-      return this.apiClient.callApi(
-        '/tasks/{task_gid}/duplicate', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/tasks/{task_gid}/duplicate', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getDependenciesForTask operation.
@@ -539,36 +539,36 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getDependenciesForTask(task_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'task_gid' is set
-      if (task_gid === undefined || task_gid === null) {
-        throw new Error("Missing the required parameter 'task_gid' when calling getDependenciesForTask");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'task_gid' is set
+        if (task_gid === undefined || task_gid === null) {
+            throw new Error("Missing the required parameter 'task_gid' when calling getDependenciesForTask");
+        }
 
-      let pathParams = {
-        'task_gid': task_gid
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'task_gid': task_gid
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TaskResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TaskResponseArray;
 
-      return this.apiClient.callApi(
-        '/tasks/{task_gid}/dependencies', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/tasks/{task_gid}/dependencies', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getDependentsForTask operation.
@@ -590,36 +590,36 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getDependentsForTask(task_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'task_gid' is set
-      if (task_gid === undefined || task_gid === null) {
-        throw new Error("Missing the required parameter 'task_gid' when calling getDependentsForTask");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'task_gid' is set
+        if (task_gid === undefined || task_gid === null) {
+            throw new Error("Missing the required parameter 'task_gid' when calling getDependentsForTask");
+        }
 
-      let pathParams = {
-        'task_gid': task_gid
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'task_gid': task_gid
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TaskResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TaskResponseArray;
 
-      return this.apiClient.callApi(
-        '/tasks/{task_gid}/dependents', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/tasks/{task_gid}/dependents', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getSubtasksForTask operation.
@@ -641,36 +641,36 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getSubtasksForTask(task_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'task_gid' is set
-      if (task_gid === undefined || task_gid === null) {
-        throw new Error("Missing the required parameter 'task_gid' when calling getSubtasksForTask");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'task_gid' is set
+        if (task_gid === undefined || task_gid === null) {
+            throw new Error("Missing the required parameter 'task_gid' when calling getSubtasksForTask");
+        }
 
-      let pathParams = {
-        'task_gid': task_gid
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'task_gid': task_gid
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TaskResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TaskResponseArray;
 
-      return this.apiClient.callApi(
-        '/tasks/{task_gid}/subtasks', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/tasks/{task_gid}/subtasks', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getTask operation.
@@ -690,36 +690,36 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getTask(task_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'task_gid' is set
-      if (task_gid === undefined || task_gid === null) {
-        throw new Error("Missing the required parameter 'task_gid' when calling getTask");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'task_gid' is set
+        if (task_gid === undefined || task_gid === null) {
+            throw new Error("Missing the required parameter 'task_gid' when calling getTask");
+        }
 
-      let pathParams = {
-        'task_gid': task_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'task_gid': task_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TaskResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TaskResponseData;
 
-      return this.apiClient.callApi(
-        '/tasks/{task_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/tasks/{task_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getTasks operation.
@@ -746,32 +746,32 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getTasks(opts, callback) {
-      opts = opts || {};
-      let postBody = null;
+        opts = opts || {};
+        let postBody = null;
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'assignee': opts['assignee'],'project': opts['project'],'section': opts['section'],'workspace': opts['workspace'],'completed_since': opts['completed_since'],'modified_since': opts['modified_since'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'assignee': opts['assignee'],'project': opts['project'],'section': opts['section'],'workspace': opts['workspace'],'completed_since': opts['completed_since'],'modified_since': opts['modified_since'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TaskResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TaskResponseArray;
 
-      return this.apiClient.callApi(
-        '/tasks', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/tasks', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getTasksForProject operation.
@@ -794,36 +794,36 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getTasksForProject(project_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'project_gid' is set
-      if (project_gid === undefined || project_gid === null) {
-        throw new Error("Missing the required parameter 'project_gid' when calling getTasksForProject");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'project_gid' is set
+        if (project_gid === undefined || project_gid === null) {
+            throw new Error("Missing the required parameter 'project_gid' when calling getTasksForProject");
+        }
 
-      let pathParams = {
-        'project_gid': project_gid
-      };
-      let queryParams = {
-        'completed_since': opts['completed_since'],'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'project_gid': project_gid
+        };
+        let queryParams = {
+            'completed_since': opts['completed_since'],'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TaskResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TaskResponseArray;
 
-      return this.apiClient.callApi(
-        '/projects/{project_gid}/tasks', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/projects/{project_gid}/tasks', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getTasksForSection operation.
@@ -846,36 +846,36 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getTasksForSection(section_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'section_gid' is set
-      if (section_gid === undefined || section_gid === null) {
-        throw new Error("Missing the required parameter 'section_gid' when calling getTasksForSection");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'section_gid' is set
+        if (section_gid === undefined || section_gid === null) {
+            throw new Error("Missing the required parameter 'section_gid' when calling getTasksForSection");
+        }
 
-      let pathParams = {
-        'section_gid': section_gid
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'completed_since': opts['completed_since'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'section_gid': section_gid
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'completed_since': opts['completed_since'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TaskResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TaskResponseArray;
 
-      return this.apiClient.callApi(
-        '/sections/{section_gid}/tasks', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/sections/{section_gid}/tasks', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getTasksForTag operation.
@@ -897,36 +897,36 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getTasksForTag(tag_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'tag_gid' is set
-      if (tag_gid === undefined || tag_gid === null) {
-        throw new Error("Missing the required parameter 'tag_gid' when calling getTasksForTag");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'tag_gid' is set
+        if (tag_gid === undefined || tag_gid === null) {
+            throw new Error("Missing the required parameter 'tag_gid' when calling getTasksForTag");
+        }
 
-      let pathParams = {
-        'tag_gid': tag_gid
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'tag_gid': tag_gid
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TaskResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TaskResponseArray;
 
-      return this.apiClient.callApi(
-        '/tags/{tag_gid}/tasks', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/tags/{tag_gid}/tasks', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getTasksForUserTaskList operation.
@@ -949,36 +949,36 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getTasksForUserTaskList(user_task_list_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'user_task_list_gid' is set
-      if (user_task_list_gid === undefined || user_task_list_gid === null) {
-        throw new Error("Missing the required parameter 'user_task_list_gid' when calling getTasksForUserTaskList");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'user_task_list_gid' is set
+        if (user_task_list_gid === undefined || user_task_list_gid === null) {
+            throw new Error("Missing the required parameter 'user_task_list_gid' when calling getTasksForUserTaskList");
+        }
 
-      let pathParams = {
-        'user_task_list_gid': user_task_list_gid
-      };
-      let queryParams = {
-        'completed_since': opts['completed_since'],'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'user_task_list_gid': user_task_list_gid
+        };
+        let queryParams = {
+            'completed_since': opts['completed_since'],'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TaskResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TaskResponseArray;
 
-      return this.apiClient.callApi(
-        '/user_task_lists/{user_task_list_gid}/tasks', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/user_task_lists/{user_task_list_gid}/tasks', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the removeDependenciesForTask operation.
@@ -997,40 +997,40 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     removeDependenciesForTask(body, task_gid, callback) {
-      
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling removeDependenciesForTask");
-      }
-      // verify the required parameter 'task_gid' is set
-      if (task_gid === undefined || task_gid === null) {
-        throw new Error("Missing the required parameter 'task_gid' when calling removeDependenciesForTask");
-      }
-
-      let pathParams = {
-        'task_gid': task_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling removeDependenciesForTask");
+        }
+        // verify the required parameter 'task_gid' is set
+        if (task_gid === undefined || task_gid === null) {
+            throw new Error("Missing the required parameter 'task_gid' when calling removeDependenciesForTask");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'task_gid': task_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/tasks/{task_gid}/removeDependencies', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/tasks/{task_gid}/removeDependencies', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the removeDependentsForTask operation.
@@ -1049,40 +1049,40 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     removeDependentsForTask(body, task_gid, callback) {
-      
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling removeDependentsForTask");
-      }
-      // verify the required parameter 'task_gid' is set
-      if (task_gid === undefined || task_gid === null) {
-        throw new Error("Missing the required parameter 'task_gid' when calling removeDependentsForTask");
-      }
-
-      let pathParams = {
-        'task_gid': task_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling removeDependentsForTask");
+        }
+        // verify the required parameter 'task_gid' is set
+        if (task_gid === undefined || task_gid === null) {
+            throw new Error("Missing the required parameter 'task_gid' when calling removeDependentsForTask");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'task_gid': task_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/tasks/{task_gid}/removeDependents', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/tasks/{task_gid}/removeDependents', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the removeFollowerForTask operation.
@@ -1103,40 +1103,40 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     removeFollowerForTask(body, task_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling removeFollowerForTask");
-      }
-      // verify the required parameter 'task_gid' is set
-      if (task_gid === undefined || task_gid === null) {
-        throw new Error("Missing the required parameter 'task_gid' when calling removeFollowerForTask");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling removeFollowerForTask");
+        }
+        // verify the required parameter 'task_gid' is set
+        if (task_gid === undefined || task_gid === null) {
+            throw new Error("Missing the required parameter 'task_gid' when calling removeFollowerForTask");
+        }
 
-      let pathParams = {
-        'task_gid': task_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'task_gid': task_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TaskResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TaskResponseData;
 
-      return this.apiClient.callApi(
-        '/tasks/{task_gid}/removeFollowers', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/tasks/{task_gid}/removeFollowers', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the removeProjectForTask operation.
@@ -1155,40 +1155,40 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     removeProjectForTask(body, task_gid, callback) {
-      
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling removeProjectForTask");
-      }
-      // verify the required parameter 'task_gid' is set
-      if (task_gid === undefined || task_gid === null) {
-        throw new Error("Missing the required parameter 'task_gid' when calling removeProjectForTask");
-      }
-
-      let pathParams = {
-        'task_gid': task_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling removeProjectForTask");
+        }
+        // verify the required parameter 'task_gid' is set
+        if (task_gid === undefined || task_gid === null) {
+            throw new Error("Missing the required parameter 'task_gid' when calling removeProjectForTask");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'task_gid': task_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/tasks/{task_gid}/removeProject', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/tasks/{task_gid}/removeProject', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the removeTagForTask operation.
@@ -1207,40 +1207,40 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     removeTagForTask(body, task_gid, callback) {
-      
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling removeTagForTask");
-      }
-      // verify the required parameter 'task_gid' is set
-      if (task_gid === undefined || task_gid === null) {
-        throw new Error("Missing the required parameter 'task_gid' when calling removeTagForTask");
-      }
-
-      let pathParams = {
-        'task_gid': task_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling removeTagForTask");
+        }
+        // verify the required parameter 'task_gid' is set
+        if (task_gid === undefined || task_gid === null) {
+            throw new Error("Missing the required parameter 'task_gid' when calling removeTagForTask");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'task_gid': task_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/tasks/{task_gid}/removeTag', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/tasks/{task_gid}/removeTag', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the searchTasksForWorkspace operation.
@@ -1312,36 +1312,48 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     searchTasksForWorkspace(workspace_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'workspace_gid' is set
-      if (workspace_gid === undefined || workspace_gid === null) {
-        throw new Error("Missing the required parameter 'workspace_gid' when calling searchTasksForWorkspace");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'workspace_gid' is set
+        if (workspace_gid === undefined || workspace_gid === null) {
+            throw new Error("Missing the required parameter 'workspace_gid' when calling searchTasksForWorkspace");
+        }
 
-      let pathParams = {
-        'workspace_gid': workspace_gid
-      };
-      let queryParams = {
-        'text': opts['text'],'resource_subtype': opts['resource_subtype'],'assignee.any': opts['assignee_any'],'assignee.not': opts['assignee_not'],'portfolios.any': opts['portfolios_any'],'projects.any': opts['projects_any'],'projects.not': opts['projects_not'],'projects.all': opts['projects_all'],'sections.any': opts['sections_any'],'sections.not': opts['sections_not'],'sections.all': opts['sections_all'],'tags.any': opts['tags_any'],'tags.not': opts['tags_not'],'tags.all': opts['tags_all'],'teams.any': opts['teams_any'],'followers.not': opts['followers_not'],'created_by.any': opts['created_by_any'],'created_by.not': opts['created_by_not'],'assigned_by.any': opts['assigned_by_any'],'assigned_by.not': opts['assigned_by_not'],'liked_by.not': opts['liked_by_not'],'commented_on_by.not': opts['commented_on_by_not'],'due_on.before': opts['due_on_before'],'due_on.after': opts['due_on_after'],'due_on': opts['due_on'],'due_at.before': opts['due_at_before'],'due_at.after': opts['due_at_after'],'start_on.before': opts['start_on_before'],'start_on.after': opts['start_on_after'],'start_on': opts['start_on'],'created_on.before': opts['created_on_before'],'created_on.after': opts['created_on_after'],'created_on': opts['created_on'],'created_at.before': opts['created_at_before'],'created_at.after': opts['created_at_after'],'completed_on.before': opts['completed_on_before'],'completed_on.after': opts['completed_on_after'],'completed_on': opts['completed_on'],'completed_at.before': opts['completed_at_before'],'completed_at.after': opts['completed_at_after'],'modified_on.before': opts['modified_on_before'],'modified_on.after': opts['modified_on_after'],'modified_on': opts['modified_on'],'modified_at.before': opts['modified_at_before'],'modified_at.after': opts['modified_at_after'],'is_blocking': opts['is_blocking'],'is_blocked': opts['is_blocked'],'has_attachment': opts['has_attachment'],'completed': opts['completed'],'is_subtask': opts['is_subtask'],'sort_by': opts['sort_by'],'sort_ascending': opts['sort_ascending'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'workspace_gid': workspace_gid
+        };
+        let queryParams = {
+            'text': opts['text'],'resource_subtype': opts['resource_subtype'],'assignee.any': opts['assignee_any'],'assignee.not': opts['assignee_not'],'portfolios.any': opts['portfolios_any'],'projects.any': opts['projects_any'],'projects.not': opts['projects_not'],'projects.all': opts['projects_all'],'sections.any': opts['sections_any'],'sections.not': opts['sections_not'],'sections.all': opts['sections_all'],'tags.any': opts['tags_any'],'tags.not': opts['tags_not'],'tags.all': opts['tags_all'],'teams.any': opts['teams_any'],'followers.not': opts['followers_not'],'created_by.any': opts['created_by_any'],'created_by.not': opts['created_by_not'],'assigned_by.any': opts['assigned_by_any'],'assigned_by.not': opts['assigned_by_not'],'liked_by.not': opts['liked_by_not'],'commented_on_by.not': opts['commented_on_by_not'],'due_on.before': opts['due_on_before'],'due_on.after': opts['due_on_after'],'due_on': opts['due_on'],'due_at.before': opts['due_at_before'],'due_at.after': opts['due_at_after'],'start_on.before': opts['start_on_before'],'start_on.after': opts['start_on_after'],'start_on': opts['start_on'],'created_on.before': opts['created_on_before'],'created_on.after': opts['created_on_after'],'created_on': opts['created_on'],'created_at.before': opts['created_at_before'],'created_at.after': opts['created_at_after'],'completed_on.before': opts['completed_on_before'],'completed_on.after': opts['completed_on_after'],'completed_on': opts['completed_on'],'completed_at.before': opts['completed_at_before'],'completed_at.after': opts['completed_at_after'],'modified_on.before': opts['modified_on_before'],'modified_on.after': opts['modified_on_after'],'modified_on': opts['modified_on'],'modified_at.before': opts['modified_at_before'],'modified_at.after': opts['modified_at_after'],'is_blocking': opts['is_blocking'],'is_blocked': opts['is_blocked'],'has_attachment': opts['has_attachment'],'completed': opts['completed'],'is_subtask': opts['is_subtask'],'sort_by': opts['sort_by'],'sort_ascending': opts['sort_ascending'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        // Checks if the user provided custom field query parameters and adds it to the request
+        for (const [key, value] of Object.entries(opts)) {
+            // If user provided in format: custom_fields.<CUSTOM_FIELD_GID>.value
+            if (/^custom_fields\.(.*?)\.value$/.test(key)) {
+                queryParams[key] = value;
+            // If user provided in format: custom_fields_<CUSTOM_FIELD_GID>_value
+            } else if (/^custom_fields_(.*?)_value$/.test(key)) {
+                let removed_prefix = key.replace('custom_fields_','');
+                let custom_field_gid = removed_prefix.replace('_value','');
+                queryParams[`custom_fields.${custom_field_gid}.value`] = value;
+            }
+        }
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TaskResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TaskResponseArray;
 
-      return this.apiClient.callApi(
-        '/workspaces/{workspace_gid}/tasks/search', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/workspaces/{workspace_gid}/tasks/search', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the setParentForTask operation.
@@ -1362,40 +1374,40 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     setParentForTask(body, task_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling setParentForTask");
-      }
-      // verify the required parameter 'task_gid' is set
-      if (task_gid === undefined || task_gid === null) {
-        throw new Error("Missing the required parameter 'task_gid' when calling setParentForTask");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling setParentForTask");
+        }
+        // verify the required parameter 'task_gid' is set
+        if (task_gid === undefined || task_gid === null) {
+            throw new Error("Missing the required parameter 'task_gid' when calling setParentForTask");
+        }
 
-      let pathParams = {
-        'task_gid': task_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'task_gid': task_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TaskResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TaskResponseData;
 
-      return this.apiClient.callApi(
-        '/tasks/{task_gid}/setParent', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/tasks/{task_gid}/setParent', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the updateTask operation.
@@ -1416,40 +1428,40 @@ export class TasksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     updateTask(body, task_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling updateTask");
-      }
-      // verify the required parameter 'task_gid' is set
-      if (task_gid === undefined || task_gid === null) {
-        throw new Error("Missing the required parameter 'task_gid' when calling updateTask");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling updateTask");
+        }
+        // verify the required parameter 'task_gid' is set
+        if (task_gid === undefined || task_gid === null) {
+            throw new Error("Missing the required parameter 'task_gid' when calling updateTask");
+        }
 
-      let pathParams = {
-        'task_gid': task_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'task_gid': task_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TaskResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TaskResponseData;
 
-      return this.apiClient.callApi(
-        '/tasks/{task_gid}', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/tasks/{task_gid}', 'PUT',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

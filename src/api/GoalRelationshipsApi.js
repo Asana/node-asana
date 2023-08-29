@@ -24,7 +24,7 @@ import {GoalRelationshipsGoalRelationshipGidBody} from '../model/GoalRelationshi
 /**
 * GoalRelationships service.
 * @module api/GoalRelationshipsApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class GoalRelationshipsApi {
 
@@ -59,40 +59,40 @@ export class GoalRelationshipsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     addSupportingRelationship(body, goal_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling addSupportingRelationship");
-      }
-      // verify the required parameter 'goal_gid' is set
-      if (goal_gid === undefined || goal_gid === null) {
-        throw new Error("Missing the required parameter 'goal_gid' when calling addSupportingRelationship");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling addSupportingRelationship");
+        }
+        // verify the required parameter 'goal_gid' is set
+        if (goal_gid === undefined || goal_gid === null) {
+            throw new Error("Missing the required parameter 'goal_gid' when calling addSupportingRelationship");
+        }
 
-      let pathParams = {
-        'goal_gid': goal_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'goal_gid': goal_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = GoalRelationshipResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = GoalRelationshipResponseData;
 
-      return this.apiClient.callApi(
-        '/goals/{goal_gid}/addSupportingRelationship', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/goals/{goal_gid}/addSupportingRelationship', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getGoalRelationship operation.
@@ -112,36 +112,36 @@ export class GoalRelationshipsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getGoalRelationship(goal_relationship_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'goal_relationship_gid' is set
-      if (goal_relationship_gid === undefined || goal_relationship_gid === null) {
-        throw new Error("Missing the required parameter 'goal_relationship_gid' when calling getGoalRelationship");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'goal_relationship_gid' is set
+        if (goal_relationship_gid === undefined || goal_relationship_gid === null) {
+            throw new Error("Missing the required parameter 'goal_relationship_gid' when calling getGoalRelationship");
+        }
 
-      let pathParams = {
-        'goal_relationship_gid': goal_relationship_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'goal_relationship_gid': goal_relationship_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = GoalRelationshipResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = GoalRelationshipResponseData;
 
-      return this.apiClient.callApi(
-        '/goal_relationships/{goal_relationship_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/goal_relationships/{goal_relationship_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getGoalRelationships operation.
@@ -164,36 +164,36 @@ export class GoalRelationshipsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getGoalRelationships(supported_goal, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'supported_goal' is set
-      if (supported_goal === undefined || supported_goal === null) {
-        throw new Error("Missing the required parameter 'supported_goal' when calling getGoalRelationships");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'supported_goal' is set
+        if (supported_goal === undefined || supported_goal === null) {
+            throw new Error("Missing the required parameter 'supported_goal' when calling getGoalRelationships");
+        }
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'supported_goal': supported_goal,'resource_subtype': opts['resource_subtype'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'supported_goal': supported_goal,'resource_subtype': opts['resource_subtype'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = GoalRelationshipResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = GoalRelationshipResponseArray;
 
-      return this.apiClient.callApi(
-        '/goal_relationships', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/goal_relationships', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the removeSupportingRelationship operation.
@@ -212,40 +212,40 @@ export class GoalRelationshipsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     removeSupportingRelationship(body, goal_gid, callback) {
-      
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling removeSupportingRelationship");
-      }
-      // verify the required parameter 'goal_gid' is set
-      if (goal_gid === undefined || goal_gid === null) {
-        throw new Error("Missing the required parameter 'goal_gid' when calling removeSupportingRelationship");
-      }
-
-      let pathParams = {
-        'goal_gid': goal_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling removeSupportingRelationship");
+        }
+        // verify the required parameter 'goal_gid' is set
+        if (goal_gid === undefined || goal_gid === null) {
+            throw new Error("Missing the required parameter 'goal_gid' when calling removeSupportingRelationship");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'goal_gid': goal_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/goals/{goal_gid}/removeSupportingRelationship', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/goals/{goal_gid}/removeSupportingRelationship', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the updateGoalRelationship operation.
@@ -266,40 +266,40 @@ export class GoalRelationshipsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     updateGoalRelationship(body, goal_relationship_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling updateGoalRelationship");
-      }
-      // verify the required parameter 'goal_relationship_gid' is set
-      if (goal_relationship_gid === undefined || goal_relationship_gid === null) {
-        throw new Error("Missing the required parameter 'goal_relationship_gid' when calling updateGoalRelationship");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling updateGoalRelationship");
+        }
+        // verify the required parameter 'goal_relationship_gid' is set
+        if (goal_relationship_gid === undefined || goal_relationship_gid === null) {
+            throw new Error("Missing the required parameter 'goal_relationship_gid' when calling updateGoalRelationship");
+        }
 
-      let pathParams = {
-        'goal_relationship_gid': goal_relationship_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'goal_relationship_gid': goal_relationship_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = GoalRelationshipResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = GoalRelationshipResponseData;
 
-      return this.apiClient.callApi(
-        '/goal_relationships/{goal_relationship_gid}', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/goal_relationships/{goal_relationship_gid}', 'PUT',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

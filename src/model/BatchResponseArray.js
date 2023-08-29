@@ -19,7 +19,7 @@ import {NextPage} from './NextPage';
 /**
  * The BatchResponseArray model module.
  * @module model/BatchResponseArray
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class BatchResponseArray {
   /**

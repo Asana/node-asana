@@ -21,7 +21,7 @@ import {ErrorResponse} from '../model/ErrorResponse';
 /**
 * Attachments service.
 * @module api/AttachmentsApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class AttachmentsApi {
 
@@ -60,32 +60,32 @@ export class AttachmentsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     createAttachmentForObject(opts, callback) {
-      opts = opts || {};
-      let postBody = null;
+        opts = opts || {};
+        let postBody = null;
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        'resource_subtype': opts['resource_subtype'],'file': opts['file'],'parent': opts['parent'],'url': opts['url'],'name': opts['name'],'connect_to_app': opts['connect_to_app']
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            'resource_subtype': opts['resource_subtype'],'file': opts['file'],'parent': opts['parent'],'url': opts['url'],'name': opts['name'],'connect_to_app': opts['connect_to_app']
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['multipart/form-data'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = AttachmentResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['multipart/form-data'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = AttachmentResponseData;
 
-      return this.apiClient.callApi(
-        '/attachments', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/attachments', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the deleteAttachment operation.
@@ -103,36 +103,36 @@ export class AttachmentsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     deleteAttachment(attachment_gid, callback) {
-      
-      let postBody = null;
-      // verify the required parameter 'attachment_gid' is set
-      if (attachment_gid === undefined || attachment_gid === null) {
-        throw new Error("Missing the required parameter 'attachment_gid' when calling deleteAttachment");
-      }
-
-      let pathParams = {
-        'attachment_gid': attachment_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = null;
+        // verify the required parameter 'attachment_gid' is set
+        if (attachment_gid === undefined || attachment_gid === null) {
+            throw new Error("Missing the required parameter 'attachment_gid' when calling deleteAttachment");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'attachment_gid': attachment_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/attachments/{attachment_gid}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/attachments/{attachment_gid}', 'DELETE',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getAttachment operation.
@@ -152,36 +152,36 @@ export class AttachmentsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getAttachment(attachment_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'attachment_gid' is set
-      if (attachment_gid === undefined || attachment_gid === null) {
-        throw new Error("Missing the required parameter 'attachment_gid' when calling getAttachment");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'attachment_gid' is set
+        if (attachment_gid === undefined || attachment_gid === null) {
+            throw new Error("Missing the required parameter 'attachment_gid' when calling getAttachment");
+        }
 
-      let pathParams = {
-        'attachment_gid': attachment_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'attachment_gid': attachment_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = AttachmentResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = AttachmentResponseData;
 
-      return this.apiClient.callApi(
-        '/attachments/{attachment_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/attachments/{attachment_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getAttachmentsForObject operation.
@@ -203,36 +203,36 @@ export class AttachmentsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getAttachmentsForObject(parent, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'parent' is set
-      if (parent === undefined || parent === null) {
-        throw new Error("Missing the required parameter 'parent' when calling getAttachmentsForObject");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'parent' is set
+        if (parent === undefined || parent === null) {
+            throw new Error("Missing the required parameter 'parent' when calling getAttachmentsForObject");
+        }
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'parent': parent,'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'parent': parent,'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = AttachmentResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = AttachmentResponseArray;
 
-      return this.apiClient.callApi(
-        '/attachments', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/attachments', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

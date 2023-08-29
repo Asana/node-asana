@@ -22,7 +22,7 @@ import {CustomFieldResponsePeopleValue} from './CustomFieldResponsePeopleValue';
 /**
  * The CustomFieldResponse model module.
  * @module model/CustomFieldResponse
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class CustomFieldResponse {
   /**

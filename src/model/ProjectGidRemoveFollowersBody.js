@@ -18,7 +18,7 @@ import {RemoveFollowersRequest} from './RemoveFollowersRequest';
 /**
  * The ProjectGidRemoveFollowersBody model module.
  * @module model/ProjectGidRemoveFollowersBody
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class ProjectGidRemoveFollowersBody {
   /**

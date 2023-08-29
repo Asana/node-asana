@@ -19,7 +19,7 @@ import {PortfolioMembershipBasePortfolio} from './PortfolioMembershipBasePortfol
 /**
  * The PortfolioMembershipCompact model module.
  * @module model/PortfolioMembershipCompact
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class PortfolioMembershipCompact {
   /**

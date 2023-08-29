@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The AsanaResource model module.
  * @module model/AsanaResource
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class AsanaResource {
   /**

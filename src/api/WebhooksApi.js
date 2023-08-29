@@ -23,7 +23,7 @@ import {WebhooksWebhookGidBody} from '../model/WebhooksWebhookGidBody';
 /**
 * Webhooks service.
 * @module api/WebhooksApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class WebhooksApi {
 
@@ -57,36 +57,36 @@ export class WebhooksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     createWebhook(body, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling createWebhook");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling createWebhook");
+        }
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = WebhookResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = WebhookResponseData;
 
-      return this.apiClient.callApi(
-        '/webhooks', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/webhooks', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the deleteWebhook operation.
@@ -104,36 +104,36 @@ export class WebhooksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     deleteWebhook(webhook_gid, callback) {
-      
-      let postBody = null;
-      // verify the required parameter 'webhook_gid' is set
-      if (webhook_gid === undefined || webhook_gid === null) {
-        throw new Error("Missing the required parameter 'webhook_gid' when calling deleteWebhook");
-      }
-
-      let pathParams = {
-        'webhook_gid': webhook_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = null;
+        // verify the required parameter 'webhook_gid' is set
+        if (webhook_gid === undefined || webhook_gid === null) {
+            throw new Error("Missing the required parameter 'webhook_gid' when calling deleteWebhook");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'webhook_gid': webhook_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/webhooks/{webhook_gid}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/webhooks/{webhook_gid}', 'DELETE',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getWebhook operation.
@@ -153,36 +153,36 @@ export class WebhooksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getWebhook(webhook_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'webhook_gid' is set
-      if (webhook_gid === undefined || webhook_gid === null) {
-        throw new Error("Missing the required parameter 'webhook_gid' when calling getWebhook");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'webhook_gid' is set
+        if (webhook_gid === undefined || webhook_gid === null) {
+            throw new Error("Missing the required parameter 'webhook_gid' when calling getWebhook");
+        }
 
-      let pathParams = {
-        'webhook_gid': webhook_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'webhook_gid': webhook_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = WebhookResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = WebhookResponseData;
 
-      return this.apiClient.callApi(
-        '/webhooks/{webhook_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/webhooks/{webhook_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getWebhooks operation.
@@ -205,36 +205,36 @@ export class WebhooksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getWebhooks(workspace, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'workspace' is set
-      if (workspace === undefined || workspace === null) {
-        throw new Error("Missing the required parameter 'workspace' when calling getWebhooks");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'workspace' is set
+        if (workspace === undefined || workspace === null) {
+            throw new Error("Missing the required parameter 'workspace' when calling getWebhooks");
+        }
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'workspace': workspace,'resource': opts['resource'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'workspace': workspace,'resource': opts['resource'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = WebhookResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = WebhookResponseArray;
 
-      return this.apiClient.callApi(
-        '/webhooks', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/webhooks', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the updateWebhook operation.
@@ -255,40 +255,40 @@ export class WebhooksApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     updateWebhook(body, webhook_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling updateWebhook");
-      }
-      // verify the required parameter 'webhook_gid' is set
-      if (webhook_gid === undefined || webhook_gid === null) {
-        throw new Error("Missing the required parameter 'webhook_gid' when calling updateWebhook");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling updateWebhook");
+        }
+        // verify the required parameter 'webhook_gid' is set
+        if (webhook_gid === undefined || webhook_gid === null) {
+            throw new Error("Missing the required parameter 'webhook_gid' when calling updateWebhook");
+        }
 
-      let pathParams = {
-        'webhook_gid': webhook_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'webhook_gid': webhook_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = WebhookResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = WebhookResponseData;
 
-      return this.apiClient.callApi(
-        '/webhooks/{webhook_gid}', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/webhooks/{webhook_gid}', 'PUT',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

@@ -18,7 +18,7 @@ import {ProjectDuplicateRequest} from './ProjectDuplicateRequest';
 /**
  * The ProjectGidDuplicateBody model module.
  * @module model/ProjectGidDuplicateBody
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class ProjectGidDuplicateBody {
   /**

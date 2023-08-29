@@ -20,7 +20,7 @@ import {InlineResponse412} from '../model/InlineResponse412';
 /**
 * Events service.
 * @module api/EventsApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class EventsApi {
 
@@ -55,36 +55,36 @@ export class EventsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getEvents(resource, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'resource' is set
-      if (resource === undefined || resource === null) {
-        throw new Error("Missing the required parameter 'resource' when calling getEvents");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'resource' is set
+        if (resource === undefined || resource === null) {
+            throw new Error("Missing the required parameter 'resource' when calling getEvents");
+        }
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'resource': resource,'sync': opts['sync'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'resource': resource,'sync': opts['sync'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EventResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EventResponseArray;
 
-      return this.apiClient.callApi(
-        '/events', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/events', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

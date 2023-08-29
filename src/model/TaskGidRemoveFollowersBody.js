@@ -18,7 +18,7 @@ import {TaskRemoveFollowersRequest} from './TaskRemoveFollowersRequest';
 /**
  * The TaskGidRemoveFollowersBody model module.
  * @module model/TaskGidRemoveFollowersBody
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class TaskGidRemoveFollowersBody {
   /**

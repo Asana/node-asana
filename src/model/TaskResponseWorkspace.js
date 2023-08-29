@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The TaskResponseWorkspace model module.
  * @module model/TaskResponseWorkspace
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class TaskResponseWorkspace {
   /**

@@ -23,7 +23,7 @@ import {TimeTrackingEntryCompactArray} from '../model/TimeTrackingEntryCompactAr
 /**
 * TimeTrackingEntries service.
 * @module api/TimeTrackingEntriesApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class TimeTrackingEntriesApi {
 
@@ -58,40 +58,40 @@ export class TimeTrackingEntriesApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     createTimeTrackingEntry(body, task_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling createTimeTrackingEntry");
-      }
-      // verify the required parameter 'task_gid' is set
-      if (task_gid === undefined || task_gid === null) {
-        throw new Error("Missing the required parameter 'task_gid' when calling createTimeTrackingEntry");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling createTimeTrackingEntry");
+        }
+        // verify the required parameter 'task_gid' is set
+        if (task_gid === undefined || task_gid === null) {
+            throw new Error("Missing the required parameter 'task_gid' when calling createTimeTrackingEntry");
+        }
 
-      let pathParams = {
-        'task_gid': task_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'task_gid': task_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TimeTrackingEntryBaseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TimeTrackingEntryBaseData;
 
-      return this.apiClient.callApi(
-        '/tasks/{task_gid}/time_tracking_entries', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/tasks/{task_gid}/time_tracking_entries', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the deleteTimeTrackingEntry operation.
@@ -109,36 +109,36 @@ export class TimeTrackingEntriesApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     deleteTimeTrackingEntry(time_tracking_entry_gid, callback) {
-      
-      let postBody = null;
-      // verify the required parameter 'time_tracking_entry_gid' is set
-      if (time_tracking_entry_gid === undefined || time_tracking_entry_gid === null) {
-        throw new Error("Missing the required parameter 'time_tracking_entry_gid' when calling deleteTimeTrackingEntry");
-      }
-
-      let pathParams = {
-        'time_tracking_entry_gid': time_tracking_entry_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = null;
+        // verify the required parameter 'time_tracking_entry_gid' is set
+        if (time_tracking_entry_gid === undefined || time_tracking_entry_gid === null) {
+            throw new Error("Missing the required parameter 'time_tracking_entry_gid' when calling deleteTimeTrackingEntry");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'time_tracking_entry_gid': time_tracking_entry_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/time_tracking_entries/{time_tracking_entry_gid}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/time_tracking_entries/{time_tracking_entry_gid}', 'DELETE',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getTimeTrackingEntriesForTask operation.
@@ -160,36 +160,36 @@ export class TimeTrackingEntriesApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getTimeTrackingEntriesForTask(task_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'task_gid' is set
-      if (task_gid === undefined || task_gid === null) {
-        throw new Error("Missing the required parameter 'task_gid' when calling getTimeTrackingEntriesForTask");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'task_gid' is set
+        if (task_gid === undefined || task_gid === null) {
+            throw new Error("Missing the required parameter 'task_gid' when calling getTimeTrackingEntriesForTask");
+        }
 
-      let pathParams = {
-        'task_gid': task_gid
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'task_gid': task_gid
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TimeTrackingEntryCompactArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TimeTrackingEntryCompactArray;
 
-      return this.apiClient.callApi(
-        '/tasks/{task_gid}/time_tracking_entries', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/tasks/{task_gid}/time_tracking_entries', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getTimeTrackingEntry operation.
@@ -209,36 +209,36 @@ export class TimeTrackingEntriesApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getTimeTrackingEntry(time_tracking_entry_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'time_tracking_entry_gid' is set
-      if (time_tracking_entry_gid === undefined || time_tracking_entry_gid === null) {
-        throw new Error("Missing the required parameter 'time_tracking_entry_gid' when calling getTimeTrackingEntry");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'time_tracking_entry_gid' is set
+        if (time_tracking_entry_gid === undefined || time_tracking_entry_gid === null) {
+            throw new Error("Missing the required parameter 'time_tracking_entry_gid' when calling getTimeTrackingEntry");
+        }
 
-      let pathParams = {
-        'time_tracking_entry_gid': time_tracking_entry_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'time_tracking_entry_gid': time_tracking_entry_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TimeTrackingEntryBaseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TimeTrackingEntryBaseData;
 
-      return this.apiClient.callApi(
-        '/time_tracking_entries/{time_tracking_entry_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/time_tracking_entries/{time_tracking_entry_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the updateTimeTrackingEntry operation.
@@ -259,40 +259,40 @@ export class TimeTrackingEntriesApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     updateTimeTrackingEntry(body, time_tracking_entry_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling updateTimeTrackingEntry");
-      }
-      // verify the required parameter 'time_tracking_entry_gid' is set
-      if (time_tracking_entry_gid === undefined || time_tracking_entry_gid === null) {
-        throw new Error("Missing the required parameter 'time_tracking_entry_gid' when calling updateTimeTrackingEntry");
-      }
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling updateTimeTrackingEntry");
+        }
+        // verify the required parameter 'time_tracking_entry_gid' is set
+        if (time_tracking_entry_gid === undefined || time_tracking_entry_gid === null) {
+            throw new Error("Missing the required parameter 'time_tracking_entry_gid' when calling updateTimeTrackingEntry");
+        }
 
-      let pathParams = {
-        'time_tracking_entry_gid': time_tracking_entry_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'time_tracking_entry_gid': time_tracking_entry_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TimeTrackingEntryBaseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TimeTrackingEntryBaseData;
 
-      return this.apiClient.callApi(
-        '/time_tracking_entries/{time_tracking_entry_gid}', 'PUT',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/time_tracking_entries/{time_tracking_entry_gid}', 'PUT',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

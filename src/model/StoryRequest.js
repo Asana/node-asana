@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The StoryRequest model module.
  * @module model/StoryRequest
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class StoryRequest {
   /**

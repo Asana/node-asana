@@ -18,7 +18,7 @@ import {AddMembersRequest} from './AddMembersRequest';
 /**
  * The ProjectGidAddMembersBody model module.
  * @module model/ProjectGidAddMembersBody
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class ProjectGidAddMembersBody {
   /**

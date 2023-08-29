@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The AllOfProjectTemplateBaseOwner model module.
  * @module model/AllOfProjectTemplateBaseOwner
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class AllOfProjectTemplateBaseOwner {
   /**

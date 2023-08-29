@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The EmptyResponse model module.
  * @module model/EmptyResponse
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class EmptyResponse {
   /**

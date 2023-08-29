@@ -18,7 +18,7 @@ import {TaskAddFollowersRequest} from './TaskAddFollowersRequest';
 /**
  * The TaskGidAddFollowersBody model module.
  * @module model/TaskGidAddFollowersBody
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class TaskGidAddFollowersBody {
   /**

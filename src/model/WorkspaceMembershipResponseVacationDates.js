@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The WorkspaceMembershipResponseVacationDates model module.
  * @module model/WorkspaceMembershipResponseVacationDates
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class WorkspaceMembershipResponseVacationDates {
   /**

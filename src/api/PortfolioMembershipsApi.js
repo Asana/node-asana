@@ -20,7 +20,7 @@ import {PortfolioMembershipResponseData} from '../model/PortfolioMembershipRespo
 /**
 * PortfolioMemberships service.
 * @module api/PortfolioMembershipsApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class PortfolioMembershipsApi {
 
@@ -54,36 +54,36 @@ export class PortfolioMembershipsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getPortfolioMembership(portfolio_membership_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'portfolio_membership_gid' is set
-      if (portfolio_membership_gid === undefined || portfolio_membership_gid === null) {
-        throw new Error("Missing the required parameter 'portfolio_membership_gid' when calling getPortfolioMembership");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'portfolio_membership_gid' is set
+        if (portfolio_membership_gid === undefined || portfolio_membership_gid === null) {
+            throw new Error("Missing the required parameter 'portfolio_membership_gid' when calling getPortfolioMembership");
+        }
 
-      let pathParams = {
-        'portfolio_membership_gid': portfolio_membership_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'portfolio_membership_gid': portfolio_membership_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = PortfolioMembershipResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = PortfolioMembershipResponseData;
 
-      return this.apiClient.callApi(
-        '/portfolio_memberships/{portfolio_membership_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/portfolio_memberships/{portfolio_membership_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getPortfolioMemberships operation.
@@ -107,32 +107,32 @@ export class PortfolioMembershipsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getPortfolioMemberships(opts, callback) {
-      opts = opts || {};
-      let postBody = null;
+        opts = opts || {};
+        let postBody = null;
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'portfolio': opts['portfolio'],'workspace': opts['workspace'],'user': opts['user'],'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'portfolio': opts['portfolio'],'workspace': opts['workspace'],'user': opts['user'],'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = PortfolioMembershipResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = PortfolioMembershipResponseArray;
 
-      return this.apiClient.callApi(
-        '/portfolio_memberships', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/portfolio_memberships', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getPortfolioMembershipsForPortfolio operation.
@@ -155,36 +155,36 @@ export class PortfolioMembershipsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getPortfolioMembershipsForPortfolio(portfolio_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'portfolio_gid' is set
-      if (portfolio_gid === undefined || portfolio_gid === null) {
-        throw new Error("Missing the required parameter 'portfolio_gid' when calling getPortfolioMembershipsForPortfolio");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'portfolio_gid' is set
+        if (portfolio_gid === undefined || portfolio_gid === null) {
+            throw new Error("Missing the required parameter 'portfolio_gid' when calling getPortfolioMembershipsForPortfolio");
+        }
 
-      let pathParams = {
-        'portfolio_gid': portfolio_gid
-      };
-      let queryParams = {
-        'user': opts['user'],'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'portfolio_gid': portfolio_gid
+        };
+        let queryParams = {
+            'user': opts['user'],'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = PortfolioMembershipResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = PortfolioMembershipResponseArray;
 
-      return this.apiClient.callApi(
-        '/portfolios/{portfolio_gid}/portfolio_memberships', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/portfolios/{portfolio_gid}/portfolio_memberships', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

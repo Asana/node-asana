@@ -19,7 +19,7 @@ import {ErrorResponse} from '../model/ErrorResponse';
 /**
 * AuditLogAPI service.
 * @module api/AuditLogAPIApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class AuditLogAPIApi {
 
@@ -60,36 +60,36 @@ export class AuditLogAPIApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getAuditLogEvents(workspace_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'workspace_gid' is set
-      if (workspace_gid === undefined || workspace_gid === null) {
-        throw new Error("Missing the required parameter 'workspace_gid' when calling getAuditLogEvents");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'workspace_gid' is set
+        if (workspace_gid === undefined || workspace_gid === null) {
+            throw new Error("Missing the required parameter 'workspace_gid' when calling getAuditLogEvents");
+        }
 
-      let pathParams = {
-        'workspace_gid': workspace_gid
-      };
-      let queryParams = {
-        'start_at': opts['start_at'],'end_at': opts['end_at'],'event_type': opts['event_type'],'actor_type': opts['actor_type'],'actor_gid': opts['actor_gid'],'resource_gid': opts['resource_gid'],'limit': opts['limit'],'offset': opts['offset']
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'workspace_gid': workspace_gid
+        };
+        let queryParams = {
+            'start_at': opts['start_at'],'end_at': opts['end_at'],'event_type': opts['event_type'],'actor_type': opts['actor_type'],'actor_gid': opts['actor_gid'],'resource_gid': opts['resource_gid'],'limit': opts['limit'],'offset': opts['offset']
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = AuditLogEventArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = AuditLogEventArray;
 
-      return this.apiClient.callApi(
-        '/workspaces/{workspace_gid}/audit_log_events', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/workspaces/{workspace_gid}/audit_log_events', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

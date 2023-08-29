@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The WorkspaceRemoveUserRequest model module.
  * @module model/WorkspaceRemoveUserRequest
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class WorkspaceRemoveUserRequest {
   /**

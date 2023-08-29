@@ -20,7 +20,7 @@ import {TeamMembershipResponseData} from '../model/TeamMembershipResponseData';
 /**
 * TeamMemberships service.
 * @module api/TeamMembershipsApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class TeamMembershipsApi {
 
@@ -54,36 +54,36 @@ export class TeamMembershipsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getTeamMembership(team_membership_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'team_membership_gid' is set
-      if (team_membership_gid === undefined || team_membership_gid === null) {
-        throw new Error("Missing the required parameter 'team_membership_gid' when calling getTeamMembership");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'team_membership_gid' is set
+        if (team_membership_gid === undefined || team_membership_gid === null) {
+            throw new Error("Missing the required parameter 'team_membership_gid' when calling getTeamMembership");
+        }
 
-      let pathParams = {
-        'team_membership_gid': team_membership_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'team_membership_gid': team_membership_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TeamMembershipResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TeamMembershipResponseData;
 
-      return this.apiClient.callApi(
-        '/team_memberships/{team_membership_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/team_memberships/{team_membership_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getTeamMemberships operation.
@@ -107,32 +107,32 @@ export class TeamMembershipsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getTeamMemberships(opts, callback) {
-      opts = opts || {};
-      let postBody = null;
+        opts = opts || {};
+        let postBody = null;
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'team': opts['team'],'user': opts['user'],'workspace': opts['workspace'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'team': opts['team'],'user': opts['user'],'workspace': opts['workspace'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TeamMembershipResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TeamMembershipResponseArray;
 
-      return this.apiClient.callApi(
-        '/team_memberships', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/team_memberships', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getTeamMembershipsForTeam operation.
@@ -154,36 +154,36 @@ export class TeamMembershipsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getTeamMembershipsForTeam(team_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'team_gid' is set
-      if (team_gid === undefined || team_gid === null) {
-        throw new Error("Missing the required parameter 'team_gid' when calling getTeamMembershipsForTeam");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'team_gid' is set
+        if (team_gid === undefined || team_gid === null) {
+            throw new Error("Missing the required parameter 'team_gid' when calling getTeamMembershipsForTeam");
+        }
 
-      let pathParams = {
-        'team_gid': team_gid
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'team_gid': team_gid
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TeamMembershipResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TeamMembershipResponseArray;
 
-      return this.apiClient.callApi(
-        '/teams/{team_gid}/team_memberships', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/teams/{team_gid}/team_memberships', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getTeamMembershipsForUser operation.
@@ -206,40 +206,40 @@ export class TeamMembershipsApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getTeamMembershipsForUser(user_gid, workspace, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'user_gid' is set
-      if (user_gid === undefined || user_gid === null) {
-        throw new Error("Missing the required parameter 'user_gid' when calling getTeamMembershipsForUser");
-      }
-      // verify the required parameter 'workspace' is set
-      if (workspace === undefined || workspace === null) {
-        throw new Error("Missing the required parameter 'workspace' when calling getTeamMembershipsForUser");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'user_gid' is set
+        if (user_gid === undefined || user_gid === null) {
+            throw new Error("Missing the required parameter 'user_gid' when calling getTeamMembershipsForUser");
+        }
+        // verify the required parameter 'workspace' is set
+        if (workspace === undefined || workspace === null) {
+            throw new Error("Missing the required parameter 'workspace' when calling getTeamMembershipsForUser");
+        }
 
-      let pathParams = {
-        'user_gid': user_gid
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'workspace': workspace,'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'user_gid': user_gid
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'workspace': workspace,'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = TeamMembershipResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = TeamMembershipResponseArray;
 
-      return this.apiClient.callApi(
-        '/users/{user_gid}/team_memberships', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/users/{user_gid}/team_memberships', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

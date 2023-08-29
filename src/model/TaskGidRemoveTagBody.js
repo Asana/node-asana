@@ -18,7 +18,7 @@ import {TaskRemoveTagRequest} from './TaskRemoveTagRequest';
 /**
  * The TaskGidRemoveTagBody model module.
  * @module model/TaskGidRemoveTagBody
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class TaskGidRemoveTagBody {
   /**

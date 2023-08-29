@@ -19,7 +19,7 @@ import {NextPage} from './NextPage';
 /**
  * The AuditLogEventArray model module.
  * @module model/AuditLogEventArray
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class AuditLogEventArray {
   /**

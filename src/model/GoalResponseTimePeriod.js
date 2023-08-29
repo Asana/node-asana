@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The GoalResponseTimePeriod model module.
  * @module model/GoalResponseTimePeriod
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class GoalResponseTimePeriod {
   /**

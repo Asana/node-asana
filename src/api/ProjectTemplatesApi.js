@@ -23,7 +23,7 @@ import {ProjectTemplateResponseData} from '../model/ProjectTemplateResponseData'
 /**
 * ProjectTemplates service.
 * @module api/ProjectTemplatesApi
-* @version 2.0.4
+* @version 2.0.5
 */
 export class ProjectTemplatesApi {
 
@@ -55,36 +55,36 @@ export class ProjectTemplatesApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     deleteProjectTemplate(project_template_gid, callback) {
-      
-      let postBody = null;
-      // verify the required parameter 'project_template_gid' is set
-      if (project_template_gid === undefined || project_template_gid === null) {
-        throw new Error("Missing the required parameter 'project_template_gid' when calling deleteProjectTemplate");
-      }
-
-      let pathParams = {
-        'project_template_gid': project_template_gid
-      };
-      let queryParams = {
         
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let postBody = null;
+        // verify the required parameter 'project_template_gid' is set
+        if (project_template_gid === undefined || project_template_gid === null) {
+            throw new Error("Missing the required parameter 'project_template_gid' when calling deleteProjectTemplate");
+        }
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = EmptyResponseData;
+        let pathParams = {
+            'project_template_gid': project_template_gid
+        };
+        let queryParams = {
+            
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      return this.apiClient.callApi(
-        '/project_templates/{project_template_gid}', 'DELETE',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = EmptyResponseData;
+
+        return this.apiClient.callApi(
+            '/project_templates/{project_template_gid}', 'DELETE',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getProjectTemplate operation.
@@ -104,36 +104,36 @@ export class ProjectTemplatesApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getProjectTemplate(project_template_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'project_template_gid' is set
-      if (project_template_gid === undefined || project_template_gid === null) {
-        throw new Error("Missing the required parameter 'project_template_gid' when calling getProjectTemplate");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'project_template_gid' is set
+        if (project_template_gid === undefined || project_template_gid === null) {
+            throw new Error("Missing the required parameter 'project_template_gid' when calling getProjectTemplate");
+        }
 
-      let pathParams = {
-        'project_template_gid': project_template_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'project_template_gid': project_template_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectTemplateResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectTemplateResponseData;
 
-      return this.apiClient.callApi(
-        '/project_templates/{project_template_gid}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/project_templates/{project_template_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getProjectTemplates operation.
@@ -156,32 +156,32 @@ export class ProjectTemplatesApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getProjectTemplates(opts, callback) {
-      opts = opts || {};
-      let postBody = null;
+        opts = opts || {};
+        let postBody = null;
 
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'workspace': opts['workspace'],'team': opts['team'],'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            
+        };
+        let queryParams = {
+            'workspace': opts['workspace'],'team': opts['team'],'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectTemplateResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectTemplateResponseArray;
 
-      return this.apiClient.callApi(
-        '/project_templates', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/project_templates', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the getProjectTemplatesForTeam operation.
@@ -203,36 +203,36 @@ export class ProjectTemplatesApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     getProjectTemplatesForTeam(team_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = null;
-      // verify the required parameter 'team_gid' is set
-      if (team_gid === undefined || team_gid === null) {
-        throw new Error("Missing the required parameter 'team_gid' when calling getProjectTemplatesForTeam");
-      }
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'team_gid' is set
+        if (team_gid === undefined || team_gid === null) {
+            throw new Error("Missing the required parameter 'team_gid' when calling getProjectTemplatesForTeam");
+        }
 
-      let pathParams = {
-        'team_gid': team_gid
-      };
-      let queryParams = {
-        'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'team_gid': team_gid
+        };
+        let queryParams = {
+            'limit': opts['limit'],'offset': opts['offset'],'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = [];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = ProjectTemplateResponseArray;
+        let authNames = ['oauth2'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = ProjectTemplateResponseArray;
 
-      return this.apiClient.callApi(
-        '/teams/{team_gid}/project_templates', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/teams/{team_gid}/project_templates', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
     /**
      * Callback function to receive the result of the instantiateProject operation.
@@ -253,36 +253,36 @@ export class ProjectTemplatesApi {
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
     instantiateProject(project_template_gid, opts, callback) {
-      opts = opts || {};
-      let postBody = opts['body'];
-      // verify the required parameter 'project_template_gid' is set
-      if (project_template_gid === undefined || project_template_gid === null) {
-        throw new Error("Missing the required parameter 'project_template_gid' when calling instantiateProject");
-      }
+        opts = opts || {};
+        let postBody = opts['body'];
+        // verify the required parameter 'project_template_gid' is set
+        if (project_template_gid === undefined || project_template_gid === null) {
+            throw new Error("Missing the required parameter 'project_template_gid' when calling instantiateProject");
+        }
 
-      let pathParams = {
-        'project_template_gid': project_template_gid
-      };
-      let queryParams = {
-        'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
+        let pathParams = {
+            'project_template_gid': project_template_gid
+        };
+        let queryParams = {
+            'opt_fields': this.apiClient.buildCollectionParam(opts['opt_fields'], 'csv')
+        };
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
 
-      let authNames = ['oauth2'];
-      let contentTypes = ['application/json; charset=UTF-8'];
-      let accepts = ['application/json; charset=UTF-8'];
-      let returnType = JobResponseData;
+        let authNames = ['oauth2'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = JobResponseData;
 
-      return this.apiClient.callApi(
-        '/project_templates/{project_template_gid}/instantiateProject', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
+        return this.apiClient.callApi(
+            '/project_templates/{project_template_gid}/instantiateProject', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType, callback
+        );
     }
 
 }

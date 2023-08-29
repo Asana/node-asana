@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The ProjectBriefBase model module.
  * @module model/ProjectBriefBase
- * @version 2.0.4
+ * @version 2.0.5
  */
 export class ProjectBriefBase {
   /**
