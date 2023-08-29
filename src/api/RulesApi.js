@@ -20,7 +20,7 @@ import {RuleTriggerResponseData} from '../model/RuleTriggerResponseData';
 /**
 * Rules service.
 * @module api/RulesApi
-* @version 2.0.5
+* @version 2.0.6
 */
 export class RulesApi {
 

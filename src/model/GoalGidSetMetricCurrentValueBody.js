@@ -18,7 +18,7 @@ import {GoalMetricCurrentValueRequest} from './GoalMetricCurrentValueRequest';
 /**
  * The GoalGidSetMetricCurrentValueBody model module.
  * @module model/GoalGidSetMetricCurrentValueBody
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class GoalGidSetMetricCurrentValueBody {
   /**

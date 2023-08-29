@@ -19,7 +19,7 @@ import {ProjectTemplateInstantiateProjectRequestRequestedRoles} from './ProjectT
 /**
  * The ProjectTemplateInstantiateProjectRequest model module.
  * @module model/ProjectTemplateInstantiateProjectRequest
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class ProjectTemplateInstantiateProjectRequest {
   /**

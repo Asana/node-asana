@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The DateVariableRequest model module.
  * @module model/DateVariableRequest
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class DateVariableRequest {
   /**

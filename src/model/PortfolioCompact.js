@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The PortfolioCompact model module.
  * @module model/PortfolioCompact
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class PortfolioCompact {
   /**

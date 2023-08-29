@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The GoalResponseTeam model module.
  * @module model/GoalResponseTeam
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class GoalResponseTeam {
   /**

@@ -20,7 +20,7 @@ import {InlineResponse412} from '../model/InlineResponse412';
 /**
 * Events service.
 * @module api/EventsApi
-* @version 2.0.5
+* @version 2.0.6
 */
 export class EventsApi {
 

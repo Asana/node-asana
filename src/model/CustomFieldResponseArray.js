@@ -19,7 +19,7 @@ import {NextPage} from './NextPage';
 /**
  * The CustomFieldResponseArray model module.
  * @module model/CustomFieldResponseArray
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class CustomFieldResponseArray {
   /**

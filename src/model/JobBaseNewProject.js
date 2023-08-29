@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The JobBaseNewProject model module.
  * @module model/JobBaseNewProject
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class JobBaseNewProject {
   /**

@@ -18,7 +18,7 @@ import {AttachmentResponseParentCreatedBy} from './AttachmentResponseParentCreat
 /**
  * The JobBaseNewTask model module.
  * @module model/JobBaseNewTask
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class JobBaseNewTask {
   /**

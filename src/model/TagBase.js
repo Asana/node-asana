@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The TagBase model module.
  * @module model/TagBase
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class TagBase {
   /**

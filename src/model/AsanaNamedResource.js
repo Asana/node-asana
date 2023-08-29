@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The AsanaNamedResource model module.
  * @module model/AsanaNamedResource
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class AsanaNamedResource {
   /**

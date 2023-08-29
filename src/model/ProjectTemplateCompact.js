@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The ProjectTemplateCompact model module.
  * @module model/ProjectTemplateCompact
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class ProjectTemplateCompact {
   /**

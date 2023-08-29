@@ -18,7 +18,7 @@ import {GoalUpdateRequest} from './GoalUpdateRequest';
 /**
  * The GoalsGoalGidBody model module.
  * @module model/GoalsGoalGidBody
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class GoalsGoalGidBody {
   /**

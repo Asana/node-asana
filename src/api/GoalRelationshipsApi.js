@@ -24,7 +24,7 @@ import {GoalRelationshipsGoalRelationshipGidBody} from '../model/GoalRelationshi
 /**
 * GoalRelationships service.
 * @module api/GoalRelationshipsApi
-* @version 2.0.5
+* @version 2.0.6
 */
 export class GoalRelationshipsApi {
 

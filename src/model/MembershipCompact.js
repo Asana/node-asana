@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The MembershipCompact model module.
  * @module model/MembershipCompact
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class MembershipCompact {
   /**

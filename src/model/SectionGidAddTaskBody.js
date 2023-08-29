@@ -18,7 +18,7 @@ import {SectionTaskInsertRequest} from './SectionTaskInsertRequest';
 /**
  * The SectionGidAddTaskBody model module.
  * @module model/SectionGidAddTaskBody
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class SectionGidAddTaskBody {
   /**

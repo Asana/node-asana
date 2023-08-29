@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The TaskCountResponse model module.
  * @module model/TaskCountResponse
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class TaskCountResponse {
   /**

@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The AllOfUserTaskListBaseWorkspace model module.
  * @module model/AllOfUserTaskListBaseWorkspace
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class AllOfUserTaskListBaseWorkspace {
   /**

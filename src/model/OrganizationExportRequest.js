@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The OrganizationExportRequest model module.
  * @module model/OrganizationExportRequest
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class OrganizationExportRequest {
   /**

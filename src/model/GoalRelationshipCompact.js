@@ -18,7 +18,7 @@ import {GoalRelationshipBaseSupportingResource} from './GoalRelationshipBaseSupp
 /**
  * The GoalRelationshipCompact model module.
  * @module model/GoalRelationshipCompact
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class GoalRelationshipCompact {
   /**

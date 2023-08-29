@@ -18,7 +18,7 @@ import {ProjectStatusRequest} from './ProjectStatusRequest';
 /**
  * The ProjectGidProjectStatusesBody model module.
  * @module model/ProjectGidProjectStatusesBody
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class ProjectGidProjectStatusesBody {
   /**

@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The WorkspaceMembershipResponseUserTaskList model module.
  * @module model/WorkspaceMembershipResponseUserTaskList
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class WorkspaceMembershipResponseUserTaskList {
   /**

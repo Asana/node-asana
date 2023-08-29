@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The TemplateRole model module.
  * @module model/TemplateRole
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class TemplateRole {
   /**

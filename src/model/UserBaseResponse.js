@@ -18,7 +18,7 @@ import {UserBaseResponsePhoto} from './UserBaseResponsePhoto';
 /**
  * The UserBaseResponse model module.
  * @module model/UserBaseResponse
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class UserBaseResponse {
   /**

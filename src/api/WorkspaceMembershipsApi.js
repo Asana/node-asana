@@ -20,7 +20,7 @@ import {WorkspaceMembershipResponseData} from '../model/WorkspaceMembershipRespo
 /**
 * WorkspaceMemberships service.
 * @module api/WorkspaceMembershipsApi
-* @version 2.0.5
+* @version 2.0.6
 */
 export class WorkspaceMembershipsApi {
 

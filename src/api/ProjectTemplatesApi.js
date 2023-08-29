@@ -23,7 +23,7 @@ import {ProjectTemplateResponseData} from '../model/ProjectTemplateResponseData'
 /**
 * ProjectTemplates service.
 * @module api/ProjectTemplatesApi
-* @version 2.0.5
+* @version 2.0.6
 */
 export class ProjectTemplatesApi {
 

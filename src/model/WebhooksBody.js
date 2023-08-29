@@ -18,7 +18,7 @@ import {WebhookRequest} from './WebhookRequest';
 /**
  * The WebhooksBody model module.
  * @module model/WebhooksBody
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class WebhooksBody {
   /**

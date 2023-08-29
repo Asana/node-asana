@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The InlineResponse412Errors model module.
  * @module model/InlineResponse412Errors
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class InlineResponse412Errors {
   /**

@@ -18,7 +18,7 @@ import {EmptyResponse} from './EmptyResponse';
 /**
  * The EmptyResponseData model module.
  * @module model/EmptyResponseData
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class EmptyResponseData {
   /**

@@ -18,7 +18,7 @@ import {CustomFieldRequest} from './CustomFieldRequest';
 /**
  * The CustomFieldsBody model module.
  * @module model/CustomFieldsBody
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class CustomFieldsBody {
   /**

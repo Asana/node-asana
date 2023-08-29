@@ -18,7 +18,7 @@ import {WorkspaceRequest} from './WorkspaceRequest';
 /**
  * The WorkspacesWorkspaceGidBody model module.
  * @module model/WorkspacesWorkspaceGidBody
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class WorkspacesWorkspaceGidBody {
   /**

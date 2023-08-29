@@ -21,7 +21,7 @@ import {ProjectBaseCurrentStatusUpdate} from './ProjectBaseCurrentStatusUpdate';
 /**
  * The ProjectRequest model module.
  * @module model/ProjectRequest
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class ProjectRequest {
   /**
@@ -447,7 +447,7 @@ ProjectRequest.MinimumAccessLevelForSharingEnum = {
 ProjectRequest.prototype.minimum_access_level_for_sharing = undefined;
 
 /**
- * An object where each key is a Custom Field GID and each value is an enum GID, string, number, or object.
+ * An object where each key is the GID of a custom field and its corresponding value is either an enum GID, string, number, or object (depending on the custom field type). See the [custom fields guide](/docs/custom-fields-guide) for details on creating and updating custom field values.
  * @member {Object.<String, String>} custom_fields
  */
 ProjectRequest.prototype.custom_fields = undefined;

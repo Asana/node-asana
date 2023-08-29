@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The ProjectSaveAsTemplateRequest model module.
  * @module model/ProjectSaveAsTemplateRequest
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class ProjectSaveAsTemplateRequest {
   /**

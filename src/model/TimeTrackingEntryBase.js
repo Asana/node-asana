@@ -19,7 +19,7 @@ import {StoryResponseTask} from './StoryResponseTask';
 /**
  * The TimeTrackingEntryBase model module.
  * @module model/TimeTrackingEntryBase
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class TimeTrackingEntryBase {
   /**

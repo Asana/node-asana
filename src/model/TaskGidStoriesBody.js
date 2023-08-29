@@ -18,7 +18,7 @@ import {StoryRequest} from './StoryRequest';
 /**
  * The TaskGidStoriesBody model module.
  * @module model/TaskGidStoriesBody
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class TaskGidStoriesBody {
   /**

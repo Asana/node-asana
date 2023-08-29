@@ -19,7 +19,7 @@ import {NextPage} from './NextPage';
 /**
  * The AttachmentResponseArray model module.
  * @module model/AttachmentResponseArray
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class AttachmentResponseArray {
   /**

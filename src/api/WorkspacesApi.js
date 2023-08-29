@@ -25,7 +25,7 @@ import {WorkspacesWorkspaceGidBody} from '../model/WorkspacesWorkspaceGidBody';
 /**
 * Workspaces service.
 * @module api/WorkspacesApi
-* @version 2.0.5
+* @version 2.0.6
 */
 export class WorkspacesApi {
 

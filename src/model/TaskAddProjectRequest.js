@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The TaskAddProjectRequest model module.
  * @module model/TaskAddProjectRequest
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class TaskAddProjectRequest {
   /**

@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The SectionRequest model module.
  * @module model/SectionRequest
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class SectionRequest {
   /**

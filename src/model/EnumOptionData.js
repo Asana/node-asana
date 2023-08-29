@@ -18,7 +18,7 @@ import {EnumOption} from './EnumOption';
 /**
  * The EnumOptionData model module.
  * @module model/EnumOptionData
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class EnumOptionData {
   /**

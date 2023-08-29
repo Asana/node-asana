@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The UserBaseResponsePhoto model module.
  * @module model/UserBaseResponsePhoto
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class UserBaseResponsePhoto {
   /**

@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The CustomFieldBaseDateValue model module.
  * @module model/CustomFieldBaseDateValue
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class CustomFieldBaseDateValue {
   /**

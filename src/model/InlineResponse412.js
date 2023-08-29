@@ -18,7 +18,7 @@ import {InlineResponse412Errors} from './InlineResponse412Errors';
 /**
  * The InlineResponse412 model module.
  * @module model/InlineResponse412
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class InlineResponse412 {
   /**

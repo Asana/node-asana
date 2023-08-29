@@ -18,7 +18,7 @@ import {OrganizationExportResponse} from './OrganizationExportResponse';
 /**
  * The OrganizationExportResponseData model module.
  * @module model/OrganizationExportResponseData
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class OrganizationExportResponseData {
   /**

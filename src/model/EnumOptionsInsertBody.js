@@ -18,7 +18,7 @@ import {EnumOptionInsertRequest} from './EnumOptionInsertRequest';
 /**
  * The EnumOptionsInsertBody model module.
  * @module model/EnumOptionsInsertBody
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class EnumOptionsInsertBody {
   /**

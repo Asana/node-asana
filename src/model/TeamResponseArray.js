@@ -19,7 +19,7 @@ import {TeamResponse} from './TeamResponse';
 /**
  * The TeamResponseArray model module.
  * @module model/TeamResponseArray
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class TeamResponseArray {
   /**

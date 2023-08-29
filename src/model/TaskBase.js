@@ -23,7 +23,7 @@ import {TaskBaseMemberships} from './TaskBaseMemberships';
 /**
  * The TaskBase model module.
  * @module model/TaskBase
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class TaskBase {
   /**

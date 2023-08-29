@@ -20,7 +20,7 @@ import {MembershipCompactParent} from './MembershipCompactParent';
 /**
  * The GoalMembershipCompact model module.
  * @module model/GoalMembershipCompact
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class GoalMembershipCompact {
   /**

@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The UserTaskListRequest model module.
  * @module model/UserTaskListRequest
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class UserTaskListRequest {
   /**

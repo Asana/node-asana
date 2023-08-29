@@ -17,7 +17,7 @@ import {ApiClient} from '../ApiClient';
 /**
  * The GoalAddSupportingWorkRequest model module.
  * @module model/GoalAddSupportingWorkRequest
- * @version 2.0.5
+ * @version 2.0.6
  */
 export class GoalAddSupportingWorkRequest {
   /**

@@ -37,7 +37,7 @@ import {TasksTaskGidBody} from '../model/TasksTaskGidBody';
 /**
 * Tasks service.
 * @module api/TasksApi
-* @version 2.0.5
+* @version 2.0.6
 */
 export class TasksApi {
 
@@ -1327,14 +1327,16 @@ export class TasksApi {
         };
         // Checks if the user provided custom field query parameters and adds it to the request
         for (const [key, value] of Object.entries(opts)) {
-            // If user provided in format: custom_fields.<CUSTOM_FIELD_GID>.value
-            if (/^custom_fields\.(.*?)\.value$/.test(key)) {
+            var matchDotCase = /custom_fields\.(.*?)\..*/;
+            var matchSnakeCase = /custom_fields_(.*?)_.*/;
+            // If the provided custom fields query param key is in the following format: custom_fields.<CUSTOM_FIELD_GID>.<QUERY> (EX: custom_fields.123.is_set)
+            if (matchDotCase.test(key)) {
                 queryParams[key] = value;
-            // If user provided in format: custom_fields_<CUSTOM_FIELD_GID>_value
-            } else if (/^custom_fields_(.*?)_value$/.test(key)) {
-                let removed_prefix = key.replace('custom_fields_','');
-                let custom_field_gid = removed_prefix.replace('_value','');
-                queryParams[`custom_fields.${custom_field_gid}.value`] = value;
+            // If the provided custom fields query param key is in the following format: custom_fields_<CUSTOM_FIELD_GID>_<QUERY> (EX: custom_fields_123_is_set)
+            } else if (matchSnakeCase.test(key)) {
+                var custom_field_gid = matchSnakeCase.exec(key)[1];
+                var custom_field_query_param_key = key.replace(`custom_fields_${custom_field_gid}_`, `custom_fields.${custom_field_gid}.`);
+                queryParams[custom_field_query_param_key] = value;
             }
         }
         let headerParams = {
