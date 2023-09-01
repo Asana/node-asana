@@ -1,5 +1,8 @@
 # asana [![GitHub release][release-image]]() [![Build Status][github-actions-image]][github-actions-url] [![NPM Version][npm-image]][npm-url]
 
+> **Warning**
+> v2.0.X is currently in BETA and subject to change. Please use v1.0.2 for stable / production environments  `npm i asana@1.0.2`. If you have feedback on v2, please open a GitHub issue or [submit here](https://form.asana.com/?k=C4sELCq6hAUsoWEY0kJwAA&d=15793206719).
+
 JavaScript client library for Asana.
 
 - API version: 1.0
