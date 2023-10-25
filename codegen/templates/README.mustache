@@ -207,6 +207,184 @@ Class | Method | HTTP request | Description
 {{#apiInfo}}{{#apis}}{{#operations}}{{#operation}}*{{moduleName}}.{{classname}}* | [**{{operationId}}**]({{apiDocPath}}{{classname}}.md#{{operationId}}) | **{{httpMethod}}** {{path}} | {{#summary}}{{summary}}{{/summary}}
 {{/operation}}{{/operations}}{{/apis}}{{/apiInfo}}
 
+## Optional fields
+
+Our `opt_fields` feature allows you to request for properties of a resource that you want to be returned in the response (more information [here](https://developers.asana.com/docs/inputoutput-options)).
+
+**NOTE**: by default, endpoints that return an array of results (EX: [Get multiple tasks](https://developers.asana.com/reference/gettasks), [Get multiple projects](https://developers.asana.com/reference/getprojects)), will return a compact version of those results (EX: [Get multiple tasks](https://developers.asana.com/reference/gettasks) returns an array of [TaskCompact](https://developers.asana.com/reference/tasks#taskcompact) objects).
+
+### EX: [Get multiple tasks](https://developers.asana.com/reference/gettasks) / [**getTasks**](docs/TasksApi.md#getTasks) without `opt_fields`
+
+#### Example Request
+```javascript
+{{>code_sample_client}}
+
+let tasksApiInstance = new {{{moduleName}}}.TasksApi();
+let opts = {
+    "limit": 2,
+    "project": "<YOUR_PROJECT_GID>"
+};
+
+// GET - get multiple tasks
+tasksApiInstance.getTasks(opts).then((result) => {
+    console.log(JSON.stringify(result.data, null, 2));
+}, (error) => {
+    console.error(error.response.body);
+});
+```
+
+#### Example Response
+```javascript
+[
+  {
+    "gid": "123",
+    "name": "Task 1",
+    "resource_type": "task",
+    "resource_subtype": "default_task"
+  },
+  {
+    "gid": "456",
+    "name": "Task 2",
+    "resource_type": "task",
+    "resource_subtype": "default_task"
+  }
+]
+```
+
+### EX: [Get multiple tasks](https://developers.asana.com/reference/gettasks) / [**getTasks**](docs/TasksApi.md#getTasks) with `opt_fields`
+
+#### Example Request
+```javascript
+{{>code_sample_client}}
+
+let tasksApiInstance = new {{{moduleName}}}.TasksApi();
+let opts = { 
+    "limit": 1,
+    "project": "<YOUR_PROJECT_GID>",
+    "opt_fields": "actual_time_minutes,approval_status,assignee,assignee.name,assignee_section,assignee_section.name,assignee_status,completed,completed_at,completed_by,completed_by.name,created_at,created_by,custom_fields,custom_fields.asana_created_field,custom_fields.created_by,custom_fields.created_by.name,custom_fields.currency_code,custom_fields.custom_label,custom_fields.custom_label_position,custom_fields.date_value,custom_fields.date_value.date,custom_fields.date_value.date_time,custom_fields.description,custom_fields.display_value,custom_fields.enabled,custom_fields.enum_options,custom_fields.enum_options.color,custom_fields.enum_options.enabled,custom_fields.enum_options.name,custom_fields.enum_value,custom_fields.enum_value.color,custom_fields.enum_value.enabled,custom_fields.enum_value.name,custom_fields.format,custom_fields.has_notifications_enabled,custom_fields.is_formula_field,custom_fields.is_global_to_workspace,custom_fields.is_value_read_only,custom_fields.multi_enum_values,custom_fields.multi_enum_values.color,custom_fields.multi_enum_values.enabled,custom_fields.multi_enum_values.name,custom_fields.name,custom_fields.number_value,custom_fields.people_value,custom_fields.people_value.name,custom_fields.precision,custom_fields.resource_subtype,custom_fields.text_value,custom_fields.type,dependencies,dependents,due_at,due_on,external,external.data,followers,followers.name,hearted,hearts,hearts.user,hearts.user.name,html_notes,is_rendered_as_separator,liked,likes,likes.user,likes.user.name,memberships,memberships.project,memberships.project.name,memberships.section,memberships.section.name,modified_at,name,notes,num_hearts,num_likes,num_subtasks,offset,parent,parent.created_by,parent.name,parent.resource_subtype,path,permalink_url,projects,projects.name,resource_subtype,start_at,start_on,tags,tags.name,uri,workspace,workspace.name"
+};
+
+// GET - get multiple tasks
+tasksApiInstance.getTasks(opts).then((result) => {
+    console.log(JSON.stringify(result.data, null, 2));
+}, (error) => {
+    console.error(error.response.body);
+});
+```
+
+#### Example Response
+```javascript
+[
+  {
+    "gid": "129839839",
+    "actual_time_minutes": null,
+    "assignee": {
+      "gid": "120938293",
+      "name": "user@example.com"
+    },
+    "assignee_status": "upcoming",
+    "assignee_section": {
+      "gid": "1094838938",
+      "name": "Recently assigned"
+    },
+    "completed": false,
+    "completed_at": null,
+    "completed_by": null,
+    "created_at": "2023-01-01T20:31:21.717Z",
+    "created_by": {
+      "gid": "1201784467042440",
+      "resource_type": "user"
+    },
+    "custom_fields": [
+      {
+        "gid": "191859815",
+        "enabled": true,
+        "name": "Estimated time",
+        "description": "Asana-created. Estimate time to complete a task.",
+        "number_value": null,
+        "precision": 0,
+        "format": "duration",
+        "currency_code": null,
+        "custom_label": null,
+        "created_by": null,
+        "custom_label_position": null,
+        "display_value": null,
+        "resource_subtype": "number",
+        "is_formula_field": false,
+        "is_value_read_only": false,
+        "type": "number"
+      }
+    ],
+    "dependencies": [],
+    "dependents": [],
+    "due_at": "2025-01-20T02:06:58.000Z",
+    "due_on": "2025-01-19",
+    "followers": [
+      {
+        "gid": "120938293",
+        "name": "user@example.com"
+      }
+    ],
+    "hearted": true,
+    "hearts": [
+      {
+        "gid": "594849843",
+        "user": {
+          "gid": "120938293",
+          "name": "user@example.com"
+        }
+      }
+    ],
+    "html_notes": "<body>Example task notes</body>",
+    "is_rendered_as_separator": false,
+    "liked": true,
+    "likes": [
+      {
+        "gid": "58303939",
+        "user": {
+          "gid": "120938293",
+          "name": "user@example.com"
+        }
+      }
+    ],
+    "memberships": [
+      {
+        "project": {
+          "gid": "4567",
+          "name": "Example Project"
+        },
+        "section": {
+          "gid": "8900",
+          "name": "Untitled section"
+        }
+      }
+    ],
+    "modified_at": "2023-01-25T21:24:06.996Z",
+    "name": "Task 1",
+    "notes": "Example task notes",
+    "num_hearts": 1,
+    "num_likes": 1,
+    "num_subtasks": 0,
+    "parent": null,
+    "permalink_url": "https://app.asana.com/0/58303939/129839839",
+    "projects": [
+      {
+        "gid": "4567",
+        "name": "Example Project"
+      }
+    ],
+    "start_at": null,
+    "start_on": null,
+    "tags": [],
+    "resource_subtype": "default_task",
+    "workspace": {
+      "gid": "111111",
+      "name": "Example Workspace"
+    }
+  }
+]
+```
+
 ## Pagination
 
 By default, endpoints that return an array of results (EX: [Get multiple tasks](https://developers.asana.com/reference/gettasks), [Get multiple projects](https://developers.asana.com/reference/getprojects)), will return a [Collection](src/utils/collection.js) object.
@@ -428,7 +606,7 @@ EX: Asana-Disable header
 client.defaultHeaders['asana-disable'] = 'new_goal_memberships';
 ```
 
-## Documentation for Using the `callApi` method
+## Documentation for using the `callApi` method
 
 Use this to make http calls when the endpoint does not exist in the current library version or has bugs
 
