@@ -606,9 +606,9 @@ EX: Asana-Disable header
 client.defaultHeaders['asana-disable'] = 'new_goal_memberships';
 ```
 
-## Documentation for using the `callApi` method
+## Using the `callApi` method
 
-Use this to make http calls when the endpoint does not exist in the current library version or has bugs
+Use the `callApi` method to make http calls when the endpoint does not exist in the current library version or has bugs
 
 ### Example: GET, POST, PUT, DELETE on tasks
 
@@ -620,7 +620,7 @@ Use this to make http calls when the endpoint does not exist in the current libr
 client.callApi(
     path='/tasks/{task_gid}',
     httpMethod='GET',
-    pathParams={task_gid: "<YOUR_TASK_GID>"},
+    pathParams={"task_gid": "<YOUR_TASK_GID>"},
     queryParams={},
     headerParams={},
     formParams={},
@@ -648,10 +648,10 @@ client.callApi(
     httpMethod='GET',
     pathParams={},
     queryParams={
-        limit: 50,
-        modified_since: '2012-02-22T02:06:58.158Z', // OR new Date("2012-02-22T02:06:58.158Z")
-        project: '<YOUR_PROJECT_GID>',
-        opt_fields: 'name,notes'
+        "limit": 50,
+        "modified_since": '2012-02-22T02:06:58.158Z', // OR new Date("2012-02-22T02:06:58.158Z")
+        "project": '<YOUR_PROJECT_GID>',
+        "opt_fields": 'name,notes'
     },
     headerParams={},
     formParams={},
@@ -686,15 +686,15 @@ client.callApi(
     formParams={},
     bodyParam={
         data: {
-            name: "New Task",
-            approval_status: "pending",
-            assignee_status: "upcoming",
-            completed: false,
-            html_notes: "<body>Mittens <em>really</em> likes the stuff from Humboldt.</body>",
-            is_rendered_as_separator: false,
-            liked: true,
-            assignee: "me",
-            projects: ["<YOUR_PROJECT_GID>"],
+            "name": "New Task",
+            "approval_status": "pending",
+            "assignee_status": "upcoming",
+            "completed": false,
+            "html_notes": "<body>Mittens <em>really</em> likes the stuff from Humboldt.</body>",
+            "is_rendered_as_separator": false,
+            "liked": true,
+            "assignee": "me",
+            "projects": ["<YOUR_PROJECT_GID>"],
         }
     },
     authNames=['token'],
@@ -723,10 +723,10 @@ client.callApi(
     headerParams={},
     formParams={},
     bodyParam={
-        data: {
-            name: "Updated Task",
-            html_notes: "<body>Updated task notes</body>",
-            due_at: "2025-01-20T02:06:58.147Z"
+        "data": {
+            "name": "Updated Task",
+            "html_notes": "<body>Updated task notes</body>",
+            "due_at": "2025-01-20T02:06:58.147Z"
         }
     },
     authNames=['token'],
@@ -750,7 +750,7 @@ client.callApi(
 client.callApi(
     path='/tasks/{task_gid}',
     httpMethod='DELETE',
-    pathParams={task_gid: "<YOUR_TASK_GID>"},
+    pathParams={"task_gid": "<YOUR_TASK_GID>"},
     queryParams={},
     headerParams={},
     formParams={},
