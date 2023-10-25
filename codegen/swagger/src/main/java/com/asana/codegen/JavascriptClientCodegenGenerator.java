@@ -112,6 +112,8 @@ public class JavascriptClientCodegenGenerator extends JavaScriptClientCodegen {
         if(op.operationId.equalsIgnoreCase("searchTasksForWorkspace")) {
             op.vendorExtensions.put("x-codegen-isSearchTasksForWorkspace", true);
         }
+        // Add a lower case operation ID to link to developer docs
+        op.vendorExtensions.put("x-codegen-operationIdLowerCase", op.operationId.toLowerCase());
         // Check if the returnType has "Array" in the name EX: TaskResponseArray is so set isArrayResponse to true
         // This will be used to check if an endpoint should return a collection object or not
         op.vendorExtensions.put("x-codegen-isArrayResponse", op.returnType.contains("Array"));
