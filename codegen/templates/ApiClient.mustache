@@ -23,6 +23,8 @@ export class ApiClient {
          */{{/emitJSDoc}}
         this.basePath = '{{{basePath}}}'.replace(/\/+$/, '');
 
+        this.RETURN_COLLECTION = true;
+
         {{#emitJSDoc}}/**
          * The authentication methods to be included for all API calls.
          * @type {Array.<String>}
@@ -36,8 +38,12 @@ export class ApiClient {
             '{{name}}': {{braces "left"}}type: 'apiKey', 'in': {{#isKeyInHeader}}'header'{{/isKeyInHeader}}{{^isKeyInHeader}}'query'{{/isKeyInHeader}}, name: '{{keyParamName}}'{{braces "right"}}{{^@last}},{{/@last}}
 {{/isApiKey}}
 {{#isOAuth}}
-            '{{name}}': {{braces "left"}}type: 'oauth2'{{braces "right"}}{{^@last}},{{/@last}}
+            '{{name}}': {{braces "left"}}type: 'oauth2'{{braces "right"}}{{^@last}},{{/@last}},
 {{/isOAuth}}
+{{#isBearer}}
+            // Add an option to support bearer OAS security definition
+            'token': {{braces "left"}}type: 'personalAccessToken'{{braces "right"}}{{^@last}},{{/@last}},
+{{/isBearer}}
 {{/authMethods}}
         }
 
@@ -292,7 +298,16 @@ export class ApiClient {
     */{{/emitJSDoc}}
     applyAuthToRequest(request, authNames) {
         authNames.forEach((authName) => {
-            var auth = this.authentications[authName];
+            // We named the bearer auth in our OAS as "personalAccessToken".
+            // This logic is here because we want to change client.authentications['personalAccessToken'] -> client.authentications['token']
+            // This makes it so that we don't have to change the name "personalAccessToken" -> "token" in the OAS or
+            // makes us need to modify the api.mustache template to pass in "token" in authNames
+            var auth = {};
+            if (authName === "personalAccessToken") {
+                auth = this.authentications["token"];
+            } else {
+                auth = this.authentications[authName];
+            }
             switch (auth.type) {
                 case 'basic':
                     if (auth.username || auth.password) {
@@ -318,6 +333,12 @@ export class ApiClient {
 
                     break;
                 case 'oauth2':
+                    if (auth.accessToken) {
+                        request.set({'Authorization': 'Bearer ' + auth.accessToken});
+                    }
+
+                    break;
+                case 'personalAccessToken':
                     if (auth.accessToken) {
                         request.set({'Authorization': 'Bearer ' + auth.accessToken});
                     }
@@ -455,12 +476,6 @@ export class ApiClient {
         var accept = this.jsonPreferredMime(accepts);
         if (accept) {
             request.accept(accept);
-        }
-
-        if (returnType === 'Blob') {
-          request.responseType('blob');
-        } else if (returnType === 'String') {
-          request.responseType('string');
         }
 
         // Attach previously saved cookies, if enabled

@@ -40,7 +40,7 @@ jobs:
           --template-dir "codegen/templates"
           --lang "${{ env.actual_lang }}"
           -DpackageName=${{ env.name }}
-          --additional-properties "projectVersion=${{ inputs.version }},projectName=${{ env.name }},packageName=${{ env.name }}"
+          --additional-properties "projectVersion=${{ inputs.version }},projectName=${{ env.name }},packageName=${{ env.name }},usePromises=true,useES6=true"
       - name: Clean up generator
         run: rm -rf codegen/swagger/target ${{ env.generator_name }} 
       - name: Push changes to master branch

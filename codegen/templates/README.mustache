@@ -1,9 +1,15 @@
-# {{projectName}} [![GitHub release][release-image]]() [![Build Status][github-actions-image]][github-actions-url] [![NPM Version][npm-image]][npm-url]
+# {{projectName}} [![GitHub release][release-image]]() [![NPM Version][npm-image]][npm-url]
 
-> **Warning**
-> v2.0.X is currently in BETA and subject to change. Please use v1.0.2 for stable / production environments  `npm i asana` or `npm i asana@1.0.2`. If you have feedback on v2, please open a GitHub issue or [submit here](https://form.asana.com/?k=C4sELCq6hAUsoWEY0kJwAA&d=15793206719).
-
-JavaScript client library for Asana.
+> **Important**
+> Version 3.X.X is the newest release of our Node client library and currently in public beta. This means that while it has the latest Asana features, we're still putting on the final touches to ensure it's as stable and reliable as possible.
+>
+>🛠️ **Looking Ahead**
+>
+> This version will receive updates going forward, and it’s on track to reach full stability soon. Your input is invaluable in this process! If you spot any issues, have suggestions, or need help, don’t hesitate to reach out. You can open a GitHub issue or submit your feedback directly to us.
+> 
+>📖 **Get Started with Examples and Resources**
+>
+> For now, if you’re in search of a version that has stood the test of time and is proven to be stable, we recommend using version 1.0.2. You can easily install it using:  npm install asana@1.0.2 and following v1 samples and documentation.
 
 - API version: {{appVersion}}
 - Package version: {{projectVersion}}
@@ -18,7 +24,7 @@ JavaScript client library for Asana.
 #### npm install from [npm](https://www.npmjs.com/package/asana)
 
 ```shell
-npm install {{{projectName}}}@{{projectVersion}} --save
+npm install {{{projectName}}} --save
 ```
 
 ### For browser
@@ -29,26 +35,37 @@ Include the latest release directly from GitHub:
 <script src="https://github.com/Asana/node-asana/releases/download/v{{projectVersion}}/asana-min.js"></script>
 ```
 
-Example usage:
+Example usage (**NOTE**: be careful not to expose your access token):
 
 ```html
 <script>
-    const defaultClient = Asana.ApiClient.instance;
-    const oauth2 = defaultClient.authentications["oauth2"];
-    oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
+    {{#hasAuthMethods}}
+    let client = {{{moduleName}}}.ApiClient.instance;{{#authMethods}}{{#isBasic}}
+    // Configure HTTP basic authorization: {{{name}}}
+    let {{{name}}} = client.authentications['{{{name}}}'];
+    {{{name}}}.username = 'YOUR USERNAME';
+    {{{name}}}.password = 'YOUR PASSWORD';{{/isBasic}}{{#isApiKey}}
+    // Configure API key authorization: {{{name}}}
+    let {{{name}}} = client.authentications['{{{name}}}'];
+    {{{name}}}.apiKey = 'YOUR API KEY';
+    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+    //{{{name}}}.apiKeyPrefix = 'Token';{{/isApiKey}}{{#isOAuth}}
+    // Configure OAuth2 access token for authorization: {{{name}}}
+    let {{{name}}} = client.authentications['{{{name}}}'];
+    {{{name}}}.accessToken = '<YOUR_ACCESS_TOKEN>';{{/isOAuth}}{{#isBearer}}
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';{{/isBearer}}
+    {{/authMethods}}
+    {{/hasAuthMethods}}
 
-    let usersApiInstance = new Asana.UsersApi();
+    let usersApiInstance = new {{{moduleName}}}.UsersApi();
     let user_gid = "me";
     let opts = {};
 
-    usersApiInstance.getUser(user_gid, opts, (error, data, response) => {
-        if (error) {
-            console.error(error);
-        } else {
-            console.log(
-            "API called successfully. Returned data: " + JSON.stringify(data, null, 2)
-            );
-        }
+    usersApiInstance.getUser(user_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' +  JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
     });
 </script>
 ```
@@ -76,204 +93,108 @@ module: {
 Please follow the [installation](#installation) instruction and execute the following JS code:
 
 ```javascript
-const {{{moduleName}}} = require('{{{projectName}}}');
-{{#apiInfo}}{{#apis}}{{#@first}}{{#operations}}{{#operation}}{{#@first}}{{#hasAuthMethods}}
-const defaultClient = {{{moduleName}}}.ApiClient.instance;
-{{#authMethods}}{{#isBasic}}
-// Configure HTTP basic authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.username = 'YOUR USERNAME'
-{{{name}}}.password = 'YOUR PASSWORD'{{/isBasic}}{{#isApiKey}}
-// Configure API key authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//{{{name}}}.apiKeyPrefix['{{{keyParamName}}}'] = "Token"{{/isApiKey}}{{#isOAuth}}
-// Configure OAuth2 access token for authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";{{/isOAuth}}
-{{/authMethods}}
-{{/hasAuthMethods}}
+{{>code_sample_client}}
 
-let usersApiInstance = new {{{moduleName}}}.UsersApi()
+let usersApiInstance = new {{{moduleName}}}.UsersApi();
 let user_gid = "me"; // String | A string identifying a user. This can either be the string \"me\", an email, or the gid of a user.
 let opts = { 
-    'opt_fields': ["email","name","photo","photo.image_1024x1024","photo.image_128x128","photo.image_21x21","photo.image_27x27","photo.image_36x36","photo.image_60x60","workspaces","workspaces.name"] // [String] | Properties to include in the response. Set this query parameter to a comma-separated list of the properties you wish to include.
+    "opt_fields": "email,name,photo,photo.image_1024x1024,photo.image_128x128,photo.image_21x21,photo.image_27x27,photo.image_36x36,photo.image_60x60,workspaces,workspaces.name" // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 
-usersApiInstance.getUser(user_gid, opts, (error, data, response) => {
-    if (error) {
-        console.error(error);
-    } else {
-        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-    }
+usersApiInstance.getUser(user_gid, opts).then((result) => {
+    console.log('API called successfully. Returned data: ' +  JSON.stringify(result.data, null, 2));
+}, (error) => {
+    console.error(error.response.body);
 });
-{{/@first}}{{/operation}}{{/operations}}{{/@first}}{{/apis}}{{/apiInfo}}
 ```
 
 ### Example: GET, POST, PUT, DELETE on tasks
 
 #### GET - get multiple tasks
 ```javascript
-const {{{moduleName}}} = require('{{{projectName}}}');
-{{#apiInfo}}{{#apis}}{{#@first}}{{#operations}}{{#operation}}{{#@first}}{{#hasAuthMethods}}
-const defaultClient = {{{moduleName}}}.ApiClient.instance;
-{{#authMethods}}{{#isBasic}}
-// Configure HTTP basic authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.username = 'YOUR USERNAME'
-{{{name}}}.password = 'YOUR PASSWORD'{{/isBasic}}{{#isApiKey}}
-// Configure API key authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//{{{name}}}.apiKeyPrefix['{{{keyParamName}}}'] = "Token"{{/isApiKey}}{{#isOAuth}}
-// Configure OAuth2 access token for authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";{{/isOAuth}}
-{{/authMethods}}
-{{/hasAuthMethods}}{{/@first}}{{/operation}}{{/operations}}{{/@first}}{{/apis}}{{/apiInfo}}
+{{>code_sample_client}}
 
-let tasksApiInstance = new {{{moduleName}}}.TasksApi()
+let tasksApiInstance = new {{{moduleName}}}.TasksApi();
 let opts = { 
-    'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
-    'project': "<YOUR_PROJECT_GID>", // String | The project to filter tasks on.
-    'modified_since': new Date("2012-02-22T02:06:58.158Z"), // Date | Only return tasks that have been modified since the given time.  *Note: A task is considered “modified” if any of its properties change, or associations between it and other objects are modified (e.g.  a task being added to a project). A task is not considered modified just because another object it is associated with (e.g. a subtask) is modified. Actions that count as modifying the task include assigning, renaming, completing, and adding stories.*
-    'opt_fields': ["actual_time_minutes","approval_status","assignee","assignee.name","assignee_section","assignee_section.name","assignee_status","completed","completed_at","completed_by","completed_by.name","created_at","custom_fields","custom_fields.asana_created_field","custom_fields.created_by","custom_fields.created_by.name","custom_fields.currency_code","custom_fields.custom_label","custom_fields.custom_label_position","custom_fields.date_value","custom_fields.date_value.date","custom_fields.date_value.date_time","custom_fields.description","custom_fields.display_value","custom_fields.enabled","custom_fields.enum_options","custom_fields.enum_options.color","custom_fields.enum_options.enabled","custom_fields.enum_options.name","custom_fields.enum_value","custom_fields.enum_value.color","custom_fields.enum_value.enabled","custom_fields.enum_value.name","custom_fields.format","custom_fields.has_notifications_enabled","custom_fields.is_formula_field","custom_fields.is_global_to_workspace","custom_fields.is_value_read_only","custom_fields.multi_enum_values","custom_fields.multi_enum_values.color","custom_fields.multi_enum_values.enabled","custom_fields.multi_enum_values.name","custom_fields.name","custom_fields.number_value","custom_fields.people_value","custom_fields.people_value.name","custom_fields.precision","custom_fields.resource_subtype","custom_fields.text_value","custom_fields.type","dependencies","dependents","due_at","due_on","external","external.data","followers","followers.name","hearted","hearts","hearts.user","hearts.user.name","html_notes","is_rendered_as_separator","liked","likes","likes.user","likes.user.name","memberships","memberships.project","memberships.project.name","memberships.section","memberships.section.name","modified_at","name","notes","num_hearts","num_likes","num_subtasks","offset","parent","parent.name","parent.resource_subtype","path","permalink_url","projects","projects.name","resource_subtype","start_at","start_on","tags","tags.name","uri","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    "limit": 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
+    "project": "<YOUR_PROJECT_GID>", // String | The project to filter tasks on.
+    "modified_since": "2012-02-22T02:06:58.158Z", // Date | Only return tasks that have been modified since the given time.  *Note: A task is considered “modified” if any of its properties change, or associations between it and other objects are modified (e.g.  a task being added to a project). A task is not considered modified just because another object it is associated with (e.g. a subtask) is modified. Actions that count as modifying the task include assigning, renaming, completing, and adding stories.*
+    "opt_fields": "actual_time_minutes,approval_status,assignee,assignee.name,assignee_section,assignee_section.name,assignee_status,completed,completed_at,completed_by,completed_by.name,created_at,created_by,custom_fields,custom_fields.asana_created_field,custom_fields.created_by,custom_fields.created_by.name,custom_fields.currency_code,custom_fields.custom_label,custom_fields.custom_label_position,custom_fields.date_value,custom_fields.date_value.date,custom_fields.date_value.date_time,custom_fields.description,custom_fields.display_value,custom_fields.enabled,custom_fields.enum_options,custom_fields.enum_options.color,custom_fields.enum_options.enabled,custom_fields.enum_options.name,custom_fields.enum_value,custom_fields.enum_value.color,custom_fields.enum_value.enabled,custom_fields.enum_value.name,custom_fields.format,custom_fields.has_notifications_enabled,custom_fields.is_formula_field,custom_fields.is_global_to_workspace,custom_fields.is_value_read_only,custom_fields.multi_enum_values,custom_fields.multi_enum_values.color,custom_fields.multi_enum_values.enabled,custom_fields.multi_enum_values.name,custom_fields.name,custom_fields.number_value,custom_fields.people_value,custom_fields.people_value.name,custom_fields.precision,custom_fields.resource_subtype,custom_fields.text_value,custom_fields.type,dependencies,dependents,due_at,due_on,external,external.data,followers,followers.name,hearted,hearts,hearts.user,hearts.user.name,html_notes,is_rendered_as_separator,liked,likes,likes.user,likes.user.name,memberships,memberships.project,memberships.project.name,memberships.section,memberships.section.name,modified_at,name,notes,num_hearts,num_likes,num_subtasks,offset,parent,parent.created_by,parent.name,parent.resource_subtype,path,permalink_url,projects,projects.name,resource_subtype,start_at,start_on,tags,tags.name,uri,workspace,workspace.name" // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 
 // GET - get multiple tasks
-tasksApiInstance.getTasks(opts, (error, data, response) => {
-    if (error) {
-        console.error(error);
-    } else {
-        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-    }
+tasksApiInstance.getTasks(opts).then((result) => {
+    console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+}, (error) => {
+    console.error(error.response.body);
 });
 ```
 
 #### POST - create a task
 ```javascript
-const {{{moduleName}}} = require('{{{projectName}}}');
-{{#apiInfo}}{{#apis}}{{#@first}}{{#operations}}{{#operation}}{{#@first}}{{#hasAuthMethods}}
-const defaultClient = {{{moduleName}}}.ApiClient.instance;
-{{#authMethods}}{{#isBasic}}
-// Configure HTTP basic authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.username = 'YOUR USERNAME'
-{{{name}}}.password = 'YOUR PASSWORD'{{/isBasic}}{{#isApiKey}}
-// Configure API key authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//{{{name}}}.apiKeyPrefix['{{{keyParamName}}}'] = "Token"{{/isApiKey}}{{#isOAuth}}
-// Configure OAuth2 access token for authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";{{/isOAuth}}
-{{/authMethods}}
-{{/hasAuthMethods}}{{/@first}}{{/operation}}{{/operations}}{{/@first}}{{/apis}}{{/apiInfo}}
+{{>code_sample_client}}
 
-let tasksApiInstance = new {{{moduleName}}}.TasksApi()
-let body = new {{{moduleName}}}.TasksBody.constructFromObject({
-    data: {
-        name: "New Task",
-        approval_status: "pending",
-        assignee_status: "upcoming",
-        completed: false,
-        external: {
-            gid: "1234",
-            data: "A blob of information.",
+let tasksApiInstance = new {{{moduleName}}}.TasksApi();
+let body = {
+    "data": {
+        "name": "New Task",
+        "approval_status": "pending",
+        "assignee_status": "upcoming",
+        "completed": false,
+        "external": {
+            "gid": "1234",
+            "data": "A blob of information.",
         },
-        html_notes: "<body>Mittens <em>really</em> likes the stuff from Humboldt.</body>",
-        is_rendered_as_separator: false,
-        liked: true,
-        assignee: "me",
-        projects: ["<YOUR_PROJECT_GID>"],
+        "html_notes": "<body>Mittens <em>really</em> likes the stuff from Humboldt.</body>",
+        "is_rendered_as_separator": false,
+        "liked": true,
+        "assignee": "me",
+        "projects": ["<YOUR_PROJECT_GID>"],
     },
-});
+};
 let opts = {};
 
 // POST - Create a task
-tasksApiInstance.createTask(body, opts, (error, data, response) => {
-    if (error) {
-        console.error(error);
-    } else {
-        console.log("API called successfully. Returned data: " + JSON.stringify(data, null, 2));
-    }
+tasksApiInstance.createTask(body, opts).then((result) => {
+    console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+}, (error) => {
+    console.error(error.response.body);
 });
 ```
 
 #### PUT - update a task
 ```javascript
-const {{{moduleName}}} = require('{{{projectName}}}');
-{{#apiInfo}}{{#apis}}{{#@first}}{{#operations}}{{#operation}}{{#@first}}{{#hasAuthMethods}}
-const defaultClient = {{{moduleName}}}.ApiClient.instance;
-{{#authMethods}}{{#isBasic}}
-// Configure HTTP basic authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.username = 'YOUR USERNAME'
-{{{name}}}.password = 'YOUR PASSWORD'{{/isBasic}}{{#isApiKey}}
-// Configure API key authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//{{{name}}}.apiKeyPrefix['{{{keyParamName}}}'] = "Token"{{/isApiKey}}{{#isOAuth}}
-// Configure OAuth2 access token for authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";{{/isOAuth}}
-{{/authMethods}}
-{{/hasAuthMethods}}{{/@first}}{{/operation}}{{/operations}}{{/@first}}{{/apis}}{{/apiInfo}}
+{{>code_sample_client}}
 
-let tasksApiInstance = new {{{moduleName}}}.TasksApi()
+let tasksApiInstance = new {{{moduleName}}}.TasksApi();
 let task_gid = "<YOUR_TASK_GID>";
-let body = new {{{moduleName}}}.TasksTaskGidBody.constructFromObject({
-    data: {
-        name: "Updated Task",
+let body = {
+    "data": {
+        "name": "Updated Task",
     },
-});
+};
 let opts = {};
 
 // PUT - Update a task
-tasksApiInstance.updateTask(body, task_gid, opts, (error, data, response) => {
-    if (error) {
-        console.error(error);
-    } else {
-        console.log("API called successfully. Returned data: " + JSON.stringify(data, null, 2));
-    }
+tasksApiInstance.updateTask(body, task_gid, opts).then((result) => {
+    console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+}, (error) => {
+    console.error(error.response.body);
 });
 ```
 
 #### DELETE - delete a task
 ```javascript
-const {{{moduleName}}} = require('{{{projectName}}}');
-{{#apiInfo}}{{#apis}}{{#@first}}{{#operations}}{{#operation}}{{#@first}}{{#hasAuthMethods}}
-const defaultClient = {{{moduleName}}}.ApiClient.instance;
-{{#authMethods}}{{#isBasic}}
-// Configure HTTP basic authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.username = 'YOUR USERNAME'
-{{{name}}}.password = 'YOUR PASSWORD'{{/isBasic}}{{#isApiKey}}
-// Configure API key authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//{{{name}}}.apiKeyPrefix['{{{keyParamName}}}'] = "Token"{{/isApiKey}}{{#isOAuth}}
-// Configure OAuth2 access token for authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";{{/isOAuth}}
-{{/authMethods}}
-{{/hasAuthMethods}}{{/@first}}{{/operation}}{{/operations}}{{/@first}}{{/apis}}{{/apiInfo}}
+{{>code_sample_client}}
 
-let tasksApiInstance = new {{{moduleName}}}.TasksApi()
+let tasksApiInstance = new {{{moduleName}}}.TasksApi();
 let task_gid = "<YOUR_TASK_GID>";
 
 // DELETE - Delete a task
-tasksApiInstance.deleteTask(task_gid, (error, data, response) => {
-    if (error) {
-        console.error(error);
-    } else {
-        console.log("API called successfully. Returned data: " + JSON.stringify(data, null, 2));
-    }
+tasksApiInstance.deleteTask(task_gid).then((result) => {
+    console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+}, (error) => {
+    console.error(error.response.body);
 });
 ```
 
@@ -286,30 +207,121 @@ Class | Method | HTTP request | Description
 {{#apiInfo}}{{#apis}}{{#operations}}{{#operation}}*{{moduleName}}.{{classname}}* | [**{{operationId}}**]({{apiDocPath}}{{classname}}.md#{{operationId}}) | **{{httpMethod}}** {{path}} | {{#summary}}{{summary}}{{/summary}}
 {{/operation}}{{/operations}}{{/apis}}{{/apiInfo}}
 
-## Documentation for Models
+## Pagination
 
-{{#models}}{{#model}} - [{{moduleName}}.{{classname}}]({{modelDocPath}}{{classname}}.md)
-{{/model}}{{/models}}
+By default, endpoints that return an array of results (EX: [Get multiple tasks](https://developers.asana.com/reference/gettasks), [Get multiple projects](https://developers.asana.com/reference/getprojects)), will return a [Collection](src/utils/collection.js) object.
+This collection object contains a `nextPage` method that can be used to fetch for the next page of results. **NOTE**: in order to use `nextPage` you must have provided a `limit` query parameter argument in the initial request.
 
-## Documentation for Authorization
+### Use case
 
-{{^authMethods}} All endpoints do not require authorization.
-{{/authMethods}}{{#authMethods}}{{#last}} Authentication schemes defined for the API:{{/last}}{{/authMethods}}
-{{#authMethods}}### {{name}}
+You may run into the following error when making a request to an endpoint that has >1000 results:
 
-{{#isApiKey}}- **Type**: API key
-- **API key parameter name**: {{keyParamName}}
-- **Location**: {{#isKeyInQuery}}URL query string{{/isKeyInQuery}}{{#isKeyInHeader}}HTTP header{{/isKeyInHeader}}
-{{/isApiKey}}
-{{#isBasic}}- **Type**: HTTP basic authentication
-{{/isBasic}}
-{{#isOAuth}}- **Type**: OAuth
-- **Flow**: {{flow}}
-- **Authorization URL**: {{authorizationUrl}}
-- **Scopes**: {{^scopes}}N/A{{/scopes}}
-{{#each scopes}}  - {{@key}}: {{this}}
-{{/each}}
-{{/isOAuth}}
+> "The result is too large. You should use pagination (may require specifying a workspace)!"
+
+In this scenario you will want to use pagaintion to gather your results. To do this, you will need to provide a `limit` query parameter argument in your request. This `limit` query parameter represents the number of results per page. NOTE: the `limit` can only be between 1 and 100.
+
+EX: Pagination gather all resources
+```javascript
+{{>code_sample_client}}
+
+let tasksApiInstance = new {{{moduleName}}}.TasksApi();
+let opts = {
+    "project": "<YOUR_PROJECT_GID>"
+    "limit": 100
+};
+
+async function getAllTasks(opts) {
+    let tasks = await tasksApiInstance.getTasks(opts).then(async (firstPage) => {
+        let res = []
+        res = res.concat(firstPage.data);
+        // Get the next page
+        let nextPage = await firstPage.nextPage();
+        // Keep fetching for the next page until there are no more results
+        while(nextPage.data) {
+            res = res.concat(nextPage.data);
+            nextPage = await nextPage.nextPage();
+        }
+        return res;
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    // Do something with the tasks. EX: print out results
+    console.log('Tasks: ' + JSON.stringify(tasks, null, 2));
+}
+
+getAllTasks(opts);
+```
+
+EX: Pagination do something per page
+```javascript
+{{>code_sample_client}}
+
+let tasksApiInstance = new {{{moduleName}}}.TasksApi();
+let opts = {
+    'project': "<YOUR_PROJECT_GID>",
+    'limit': 10
+};
+
+pageIndex = 1;
+
+tasksApiInstance.getTasks(opts).then(async (firstPage) => {
+    // Do something with the first <LIMIT> results. EX: print out results
+    console.log(`Page ${pageIndex}: ` + JSON.stringify(firstPage.data, null, 2));
+
+    // Get the next page
+    let nextPage = await firstPage.nextPage();
+    // Keep fetching for the next page until there are no more results
+    while(nextPage.data) {
+        // Do something with the next <LIMIT> results. EX: print out results
+        pageIndex += 1;
+        console.log(`Page ${pageIndex}: ` + JSON.stringify(nextPage.data, null, 2));
+        // Get the next page
+        nextPage = await nextPage.nextPage();
+    }
+}, (error) => {
+    console.error(error.response.body);
+});
+```
+
+### Turning off Pagination
+
+If you do not want a [Collection](src/utils/collection.js) object returned and want to implement your own pagination, you can disable pagination by setting `RETURN_COLLECTION` to `false`:
+
+EX: Turning off pagination
+```javascript
+{{>code_sample_client}}
+
+// Turn off pagination
+client.RETURN_COLLECTION = false;
+
+let tasksApiInstance = new {{{moduleName}}}.TasksApi();
+let opts = {
+    'project': "<YOUR_PROJECT_GID>",
+    'limit': 1
+};
+tasksApiInstance.getTasks(opts).then((result) => {
+    console.log('API called successfully. Returned data: ' + JSON.stringify(result, null, 2));
+})
+```
+
+Sample response:
+```
+API called successfully. Returned data: {
+  "data": [
+    {
+      "gid": "<TASK_GID>",
+      "name": "Task 1",
+      "resource_type": "task",
+      "resource_subtype": "default_task"
+    },
+  ],
+  "next_page": {
+    "offset": "gjJl2xAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJib3JkZXJfcmHilbI6IltcIlZ5IixcIjlaWlhVMkkzUUdOoXcEIsMTIwNDYxNTc0NTypNDI3MF0iLCJpYXQiOjE2OTc4MjgsSkjjQsImV4cCI6MTY5NzgyOTM2NH0.5VuMfKvqexoEsKfoPFtayWBNWiKvfR7_hN6MJaaIkx8",
+    "path": "/tasks?project=123456&limit=1&offset=gjJl2xAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJib3JkZXJfcmHilbI6IltcIlZ5IixcIjlaWlhVMkkzUUdOoXcEIsMTIwNDYxNTc0NTypNDI3MF0iLCJpYXQiOjE2OTc4MjgsSkjjQsImV4cCI6MTY5NzgyOTM2NH0.5VuMfKvqexoEsKfoPFtayWBNWiKvfR7_hN6MJaaIkx8",
+    "uri": "https://app.asana.com/api/1.0/tasks?project=123456&limit=1&offset=gjJl2xAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJib3JkZXJfcmHilbI6IltcIlZ5IixcIjlaWlhVMkkzUUdOoXcEIsMTIwNDYxNTc0NTypNDI3MF0iLCJpYXQiOjE2OTc4MjgsSkjjQsImV4cCI6MTY5NzgyOTM2NH0.5VuMfKvqexoEsKfoPFtayWBNWiKvfR7_hN6MJaaIkx8"
+  }
+}
+```
 
 ## Getting events
 
@@ -317,128 +329,103 @@ In order to get events you will need a sync token. This sync token can be acquir
 request to [getEvents](docs/EventsApi.md#getEvents).
 
 ```javascript
-const {{{moduleName}}} = require('{{{projectName}}}');
-{{#apiInfo}}{{#apis}}{{#@first}}{{#operations}}{{#operation}}{{#@first}}{{#hasAuthMethods}}
-const defaultClient = {{{moduleName}}}.ApiClient.instance;
-{{#authMethods}}{{#isBasic}}
-// Configure HTTP basic authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.username = 'YOUR USERNAME'
-{{{name}}}.password = 'YOUR PASSWORD'{{/isBasic}}{{#isApiKey}}
-// Configure API key authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//{{{name}}}.apiKeyPrefix['{{{keyParamName}}}'] = "Token"{{/isApiKey}}{{#isOAuth}}
-// Configure OAuth2 access token for authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";{{/isOAuth}}
-{{/authMethods}}
-{{/hasAuthMethods}}{{/@first}}{{/operation}}{{/operations}}{{/@first}}{{/apis}}{{/apiInfo}}
+{{>code_sample_client}}
 
 let eventsApiInstance = new {{{moduleName}}}.EventsApi();
-let resource = "12345"; // String | A resource ID to subscribe to. The resource can be a task or project.
+let resource = "<YOUR_TASK_OR_PROJECT_GID>"; // String | A resource ID to subscribe to. The resource can be a task or project.
 let opts = {
-    sync: ''
+    "sync": ""
 };
+const timeouts = 5000
 
-// Initial request to get the sync token
-eventsApiInstance.getEvents(resource, opts, (error, data, response) => {
-    // Set the sync token
-    opts['sync'] = JSON.parse(response.text)['sync']
-    // Follow up request to get events
-    eventsApiInstance.getEvents(resource, opts, (error, data, response) => {
-        if (error) {
-            console.error(error);
-        } else {
-            console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-        }
+const setSyncToken = async () => {
+    await eventsApiInstance.getEvents(resource, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        let syncToken = error.response.body.sync;
+        opts['sync'] = syncToken;
+        console.log(syncToken);
     });
-});
+}
+
+const getEvents = async () => {
+    console.log("Setting Sync Token");
+    await setSyncToken();
+    // Fetch for new events every 5 seconds -> NOTE: the sync token has expired or reached 100 events you will need to implement logic to get the next set of events
+    console.log(`Fetching events every ${timeouts/1000} second(s) since sync ${opts['sync']}:`);
+    while(true) {
+        await eventsApiInstance.getEvents(resource, opts).then((result) => {
+            console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+        }, (error) => {
+            if (error.status === 412) {
+                let syncToken = error.response.body.sync;
+                opts['sync'] = syncToken;
+                console.log(syncToken);
+            } else{
+                console.error(error.response.text);
+            }
+        });
+        await new Promise(resolve => setTimeout(resolve, timeouts));
+    }
+}
+
+getEvents();
 ```
 
 ## Accessing repsonse data
 
-By default, the client library returns a class object of the resource. You can use dot notation to access the response data.
-
-TIP: look at the "Return type" section of the documented endpoint to understand which properties are accessible. (EX: [get_task](docs/TasksApi.md#get_task))
-
 ```javascript
 .
 .
 .
-tasksApiInstance.getTask(task_gid, opts, (error, task, response) => {
-    if (error) {
-        console.error(error);
-    } else {
-        let taskName = task.data.name
-        let taskNotes = task.data.notes
-    }
+tasksApiInstance.getTask(task_gid, opts).then((task) => {
+    let taskName = task.data.name;
+    let taskNotes = task.data.notes;
+    console.log(`taskName: ${taskName}`);
+    console.log(`taskNotes: ${taskNotes}`);
+}, (error) => {
+    console.error(error.response.body);
 });
 ```
 
 ## Accessing response status code and headers
+Use the `<METHOD_NAME>WithHttpInfo` (EX: `getTaskWithHttpInfo`) method to make a request that returns a response with headers.
 
 ```javascript
-const {{{moduleName}}} = require('{{{projectName}}}');
-{{#apiInfo}}{{#apis}}{{#@first}}{{#operations}}{{#operation}}{{#@first}}{{#hasAuthMethods}}
-const defaultClient = {{{moduleName}}}.ApiClient.instance;
-{{#authMethods}}{{#isBasic}}
-// Configure HTTP basic authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.username = 'YOUR USERNAME'
-{{{name}}}.password = 'YOUR PASSWORD'{{/isBasic}}{{#isApiKey}}
-// Configure API key authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//{{{name}}}.apiKeyPrefix['{{{keyParamName}}}'] = "Token"{{/isApiKey}}{{#isOAuth}}
-// Configure OAuth2 access token for authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";{{/isOAuth}}
-{{/authMethods}}
-{{/hasAuthMethods}}{{/@first}}{{/operation}}{{/operations}}{{/@first}}{{/apis}}{{/apiInfo}}
+{{>code_sample_client}}
 
-let usersApiInstance = new {{{moduleName}}}.UsersApi()
-let user_gid = "me"; // String | A string identifying a user. This can either be the string \"me\", an email, or the gid of a user.
+let tasksApiInstance = new {{{moduleName}}}.TasksApi();
+let task_gid = "<YOUR_TASK_GID>";
 let opts = {};
 
-usersApiInstance.getUser(user_gid, opts, (error, data, response) => {
-    if (error) {
-        console.error(error);
-    } else {
-        // Response Status
-        console.log("Response Status:" + response.status)
-        // Response Headers
-        console.log("Response Headers": + JSON.stringify(response.headers))
-    }
+tasksApiInstance.getTaskWithHttpInfo(task_gid, opts).then((response_and_data) => {
+    let data = response_and_data.data;
+    let response = response_and_data.response;
+    let task = data.data;
+    let headers = response.headers;
+    console.log(task);
+    console.log(headers);
+}, (error) => {
+    console.error(error.response.body);
 });
 ```
 
-## Adding deprecation flag to your "asana-enable" header
+## Adding deprecation flag: "asana-enable" or "asana-disable" header
 
+EX: Asana-Enable header
 ```javascript
-const {{{moduleName}}} = require('{{{projectName}}}');
-{{#apiInfo}}{{#apis}}{{#@first}}{{#operations}}{{#operation}}{{#@first}}{{#hasAuthMethods}}
-const defaultClient = {{{moduleName}}}.ApiClient.instance;
-{{#authMethods}}{{#isBasic}}
-// Configure HTTP basic authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.username = 'YOUR USERNAME'
-{{{name}}}.password = 'YOUR PASSWORD'{{/isBasic}}{{#isApiKey}}
-// Configure API key authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//{{{name}}}.apiKeyPrefix['{{{keyParamName}}}'] = "Token"{{/isApiKey}}{{#isOAuth}}
-// Configure OAuth2 access token for authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";{{/isOAuth}}
-{{/authMethods}}
-{{/hasAuthMethods}}{{/@first}}{{/operation}}{{/operations}}{{/@first}}{{/apis}}{{/apiInfo}}
+{{>code_sample_client}}
 
 // Add asana-enable header for the client
-defaultClient.defaultHeaders['asana-enable'] = 'string_ids';
+client.defaultHeaders['asana-enable'] = 'new_goal_memberships';
+```
+
+EX: Asana-Disable header
+```javascript
+{{>code_sample_client}}
+
+// Add asana-disable header for the client
+client.defaultHeaders['asana-disable'] = 'new_goal_memberships';
 ```
 
 ## Documentation for Using the `callApi` method
@@ -449,219 +436,160 @@ Use this to make http calls when the endpoint does not exist in the current libr
 
 #### GET - get a task
 ```javascript
-const {{{moduleName}}} = require('{{{projectName}}}');
-{{#apiInfo}}{{#apis}}{{#@first}}{{#operations}}{{#operation}}{{#@first}}{{#hasAuthMethods}}
-const defaultClient = {{{moduleName}}}.ApiClient.instance;
-{{#authMethods}}{{#isBasic}}
-// Configure HTTP basic authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.username = 'YOUR USERNAME'
-{{{name}}}.password = 'YOUR PASSWORD'{{/isBasic}}{{#isApiKey}}
-// Configure API key authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//{{{name}}}.apiKeyPrefix['{{{keyParamName}}}'] = "Token"{{/isApiKey}}{{#isOAuth}}
-// Configure OAuth2 access token for authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";{{/isOAuth}}
-{{/authMethods}}
-{{/hasAuthMethods}}{{/@first}}{{/operation}}{{/operations}}{{/@first}}{{/apis}}{{/apiInfo}}
+{{>code_sample_client}}
 
 // GET - get a task
-defaultClient.callApi(
-    "/tasks/{task_gid}",
-    "GET",
-    (pathParams = { task_gid: "<YOUR_TASK_GID>" }),
-    (queryParams = {}),
-    (headerParams = {}),
-    (formParams = {}),
-    (bodyParam = null),
-    (authNames = ["oauth2"]),
-    (contentTypes = []),
-    (accepts = ["application/json; charset=UTF-8"]),
-    (returnType = "Blob"), // Can be one of: "Blob", "String"
-    (callback = (error, data, response) => {
-        if (error) {
-            console.error(error);
-        } else {
-            console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
-        }
-    })
-);
+client.callApi(
+    path='/tasks/{task_gid}',
+    httpMethod='GET',
+    pathParams={task_gid: "<YOUR_TASK_GID>"},
+    queryParams={},
+    headerParams={},
+    formParams={},
+    bodyParam=null,
+    authNames=['token'],
+    contentTypes=[],
+    accepts=['application/json; charset=UTF-8'],
+    returnType='Blob'
+).then((response_and_data) => {
+    let result = response_and_data.data;
+    let task = result.data;
+    console.log(task.name);
+}, (error) => {
+    console.error(error.response.body);
+});
 ```
 
 #### GET - get multiple tasks -> with opt_fields
 ```javascript
-defaultClient.callApi(
-    "/tasks",
-    "GET",
-    (pathParams = {}),
-    (queryParams = { opt_fields: "name,notes,projects" }),
-    (headerParams = {}),
-    (formParams = {}),
-    (bodyParam = null),
-    (authNames = ["oauth2"]),
-    (contentTypes = []),
-    (accepts = ["application/json; charset=UTF-8"]),
-    (returnType = "Blob"), // Can be one of: "Blob", "String"
-    (callback = (error, data, response) => {
-        if (error) {
-            console.error(error);
-        } else {
-            console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
-        }
-    })
-);
+{{>code_sample_client}}
+
+// GET - get multiple tasks -> with opt_fields
+client.callApi(
+    path='/tasks',
+    httpMethod='GET',
+    pathParams={},
+    queryParams={
+        limit: 50,
+        modified_since: '2012-02-22T02:06:58.158Z', // OR new Date("2012-02-22T02:06:58.158Z")
+        project: '<YOUR_PROJECT_GID>',
+        opt_fields: 'name,notes'
+    },
+    headerParams={},
+    formParams={},
+    bodyParam=null,
+    authNames=['token'],
+    contentTypes=[],
+    accepts=['application/json; charset=UTF-8'],
+    returnType='Blob'
+).then((response_and_data) => {
+    let result = response_and_data.data;
+    let tasks = result.data;
+    if (tasks.length > 0) {
+        console.log(`Task 1 Name: ${tasks[0].name}`);
+        console.log(`Task 1 Notes: ${tasks[0].notes}`);
+    }
+}, (error) => {
+    console.error(error.response.body);
+});
 ```
 
 #### POST - create a task
 ```javascript
-const {{{moduleName}}} = require('{{{projectName}}}');
-{{#apiInfo}}{{#apis}}{{#@first}}{{#operations}}{{#operation}}{{#@first}}{{#hasAuthMethods}}
-const defaultClient = {{{moduleName}}}.ApiClient.instance;
-{{#authMethods}}{{#isBasic}}
-// Configure HTTP basic authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.username = 'YOUR USERNAME'
-{{{name}}}.password = 'YOUR PASSWORD'{{/isBasic}}{{#isApiKey}}
-// Configure API key authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//{{{name}}}.apiKeyPrefix['{{{keyParamName}}}'] = "Token"{{/isApiKey}}{{#isOAuth}}
-// Configure OAuth2 access token for authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";{{/isOAuth}}
-{{/authMethods}}
-{{/hasAuthMethods}}{{/@first}}{{/operation}}{{/operations}}{{/@first}}{{/apis}}{{/apiInfo}}
+{{>code_sample_client}}
 
 // POST - create a task
-defaultClient.callApi(
-    "/tasks",
-    "POST",
-    (pathParams = {}),
-    (queryParams = {}),
-    (headerParams = {}),
-    (formParams = {}),
-    (bodyParam = {
+client.callApi(
+    path='/tasks',
+    httpMethod='POST',
+    pathParams={},
+    queryParams={},
+    headerParams={},
+    formParams={},
+    bodyParam={
         data: {
             name: "New Task",
+            approval_status: "pending",
+            assignee_status: "upcoming",
+            completed: false,
+            html_notes: "<body>Mittens <em>really</em> likes the stuff from Humboldt.</body>",
+            is_rendered_as_separator: false,
+            liked: true,
+            assignee: "me",
             projects: ["<YOUR_PROJECT_GID>"],
-        },
-    }),
-    (authNames = ["oauth2"]),
-    (contentTypes = ["application/json; charset=UTF-8"]),
-    (accepts = ["application/json; charset=UTF-8"]),
-    (returnType = "Blob"), // Can be one of: "Blob", "String"
-    (callback = (error, data, response) => {
-        if (error) {
-            console.error(error);
-        } else {
-            console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
         }
-    })
-);
+    },
+    authNames=['token'],
+    contentTypes=[],
+    accepts=['application/json; charset=UTF-8'],
+    returnType='Blob'
+).then((response_and_data) => {
+    let result = response_and_data.data;
+    let task = result.data;
+    console.log(task.name);
+}, (error) => {
+    console.error(error.response.body);
+});
 ```
 
 #### PUT - update a task
 ```javascript
-const {{{moduleName}}} = require('{{{projectName}}}');
-{{#apiInfo}}{{#apis}}{{#@first}}{{#operations}}{{#operation}}{{#@first}}{{#hasAuthMethods}}
-const defaultClient = {{{moduleName}}}.ApiClient.instance;
-{{#authMethods}}{{#isBasic}}
-// Configure HTTP basic authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.username = 'YOUR USERNAME'
-{{{name}}}.password = 'YOUR PASSWORD'{{/isBasic}}{{#isApiKey}}
-// Configure API key authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//{{{name}}}.apiKeyPrefix['{{{keyParamName}}}'] = "Token"{{/isApiKey}}{{#isOAuth}}
-// Configure OAuth2 access token for authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";{{/isOAuth}}
-{{/authMethods}}
-{{/hasAuthMethods}}{{/@first}}{{/operation}}{{/operations}}{{/@first}}{{/apis}}{{/apiInfo}}
+{{>code_sample_client}}
 
 // PUT - update a task
-defaultClient.callApi(
-    "/tasks/{task_gid}",
-    "PUT",
-    (pathParams = { task_gid: "<YOUR_TASK_GID>" }),
-    (queryParams = {}),
-    (headerParams = {}),
-    (formParams = {}),
-    (bodyParam = {
+client.callApi(
+    path='/tasks/{task_gid}',
+    httpMethod='PUT',
+    pathParams={task_gid: "<YOUR_TASK_GID>"},
+    queryParams={},
+    headerParams={},
+    formParams={},
+    bodyParam={
         data: {
             name: "Updated Task",
-        },
-    }),
-    (authNames = ["oauth2"]),
-    (contentTypes = ["application/json; charset=UTF-8"]),
-    (accepts = ["application/json; charset=UTF-8"]),
-    (returnType = "Blob"), // Can be one of: "Blob", "String"
-    (callback = (error, data, response) => {
-        if (error) {
-            console.error(error);
-        } else {
-            console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
+            html_notes: "<body>Updated task notes</body>",
+            due_at: "2025-01-20T02:06:58.147Z"
         }
-    })
-);
+    },
+    authNames=['token'],
+    contentTypes=[],
+    accepts=['application/json; charset=UTF-8'],
+    returnType='Blob'
+).then((response_and_data) => {
+    let result = response_and_data.data;
+    let task = result.data;
+    console.log(task.name);
+}, (error) => {
+    console.error(error.response.body);
+});
 ```
 
 #### DELETE - delete a task
 ```javascript
-const {{{moduleName}}} = require('{{{projectName}}}');
-{{#apiInfo}}{{#apis}}{{#@first}}{{#operations}}{{#operation}}{{#@first}}{{#hasAuthMethods}}
-const defaultClient = {{{moduleName}}}.ApiClient.instance;
-{{#authMethods}}{{#isBasic}}
-// Configure HTTP basic authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.username = 'YOUR USERNAME'
-{{{name}}}.password = 'YOUR PASSWORD'{{/isBasic}}{{#isApiKey}}
-// Configure API key authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//{{{name}}}.apiKeyPrefix['{{{keyParamName}}}'] = "Token"{{/isApiKey}}{{#isOAuth}}
-// Configure OAuth2 access token for authorization: {{{name}}}
-const {{{name}}} = defaultClient.authentications['{{{name}}}'];
-{{{name}}}.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";{{/isOAuth}}
-{{/authMethods}}
-{{/hasAuthMethods}}{{/@first}}{{/operation}}{{/operations}}{{/@first}}{{/apis}}{{/apiInfo}}
+{{>code_sample_client}}
 
 // DELETE - delete a task
-defaultClient.callApi(
-    "/tasks/{task_gid}",
-    "DELETE",
-    (pathParams = { task_gid: "<YOUR_TASK_GID>" }),
-    (queryParams = {}),
-    (headerParams = {}),
-    (formParams = {}),
-    (bodyParam = null),
-    (authNames = ["oauth2"]),
-    (contentTypes = []),
-    (accepts = ["application/json; charset=UTF-8"]),
-    (returnType = "Blob"), // Can be one of: "Blob", "String"
-    (callback = (error, data, response) => {
-        if (error) {
-            console.error(error);
-        } else {
-            console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
-        }
-    })
-);
+client.callApi(
+    path='/tasks/{task_gid}',
+    httpMethod='DELETE',
+    pathParams={task_gid: "<YOUR_TASK_GID>"},
+    queryParams={},
+    headerParams={},
+    formParams={},
+    bodyParam=null,
+    authNames=['token'],
+    contentTypes=[],
+    accepts=['application/json; charset=UTF-8'],
+    returnType='Blob'
+).then((response_and_data) => {
+    let result = response_and_data.data;
+    let result = result.data;
+    console.log(result);
+}, (error) => {
+    console.error(error.response.body);
+});
 ```
 
-{{/authMethods}}
-
 [release-image]: https://img.shields.io/github/release/asana/node-asana.svg
-
-[github-actions-image]: https://github.com/Asana/node-asana/workflows/Build/badge.svg
-[github-actions-url]: https://github.com/Asana/node-asana/actions
-
 [npm-image]: http://img.shields.io/npm/v/asana.svg?style=flat-square
 [npm-url]: https://www.npmjs.org/package/asana

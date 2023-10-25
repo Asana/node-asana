@@ -1,7 +1,6 @@
 {{>licenseInfo}}
 import {{braces "left"}}ApiClient{{braces "right"}} from "../ApiClient";
-{{#imports}}import {{braces "left"}}{{import}}{{braces "right"}} from '../{{#modelPackage}}{{&modelPackage}}/{{/modelPackage}}{{import}}';
-{{/imports}}
+var Collection = require('../utils/collection');
 
 {{#emitJSDoc}}/**
 * {{baseName}} service.
@@ -40,7 +39,7 @@ export class {{classname}} {
      * @param {{braces "left"}}{{&vendorExtensions.x-jsdoc-type}}{{braces "right"}} opts.{{paramName}} {{description}}{{#defaultValue}} (default to <.>){{/defaultValue}}{{/required}}{{/allParams}}{{/hasOptionalParams}}{{^usePromises}}
      * @param {{braces "left"}}module:{{#invokerPackage}}{{&invokerPackage}}/{{/invokerPackage}}{{#apiPackage}}{{&apiPackage}}/{{/apiPackage}}{{classname}}~{{operationId}}Callback{{braces "right"}} callback The callback function, accepting three arguments: error, data, response{{#returnType}}
      * data is of type: {{braces "left"}}@link <&vendorExtensions.x-jsdoc-type>{{braces "right"}}{{/returnType}}{{/usePromises}}{{#usePromises}}
-     * @return {{braces "left"}}Promise{{braces "right"}} a {{braces "left"}}@link https://www.promisejs.org/|Promise{{braces "right"}}{{#returnType}}, with an object containing data of type {{braces "left"}}@link {{&vendorExtensions.x-jsdoc-type}}{{braces "right"}} and HTTP response{{/returnType}}{{^returnType}}, with an object containing HTTP response{{/returnType}}{{/usePromises}}
+     * @return {{braces "left"}}Promise{{braces "right"}} a {{braces "left"}}@link https://www.promisejs.org/|Promise{{braces "right"}}{{#returnType}}, with an object containing data and HTTP response{{/returnType}}{{^returnType}}, with an object containing HTTP response{{/returnType}}{{/usePromises}}
      */
 {{/emitJSDoc}}    {{operationId}}{{#usePromises}}WithHttpInfo{{/usePromises}}({{vendorExtensions.x-codegen-arg-list}}{{^usePromises}}{{#hasParams}}, {{/hasParams}}callback{{/usePromises}}) {
         {{#hasOptionalParams}}opts = opts || {};{{/hasOptionalParams}}
@@ -55,9 +54,15 @@ export class {{classname}} {
         let pathParams = {
             {{#pathParams}}'{{baseName}}': {{#required}}{{paramName}}{{/required}}{{^required}}opts['{{paramName}}']{{/required}}{{#hasMore}},{{/hasMore}}{{/pathParams}}
         };
-        let queryParams = {
-            {{#queryParams}}'{{baseName}}': {{#collectionFormat}}this.apiClient.buildCollectionParam({{#required}}{{paramName}}{{/required}}{{^required}}opts['{{paramName}}']{{/required}}, '{{collectionFormat}}'){{/collectionFormat}}{{^collectionFormat}}{{#required}}{{paramName}}{{/required}}{{^required}}opts['{{paramName}}']{{/required}}{{/collectionFormat}}{{#hasMore}},{{/hasMore}}{{/queryParams}}
-        };
+        let queryParams = {};
+        {{#hasOptionalParams}}
+        opts = opts || {};
+        queryParams = opts;
+        {{/hasOptionalParams}}
+        {{#queryParams}}{{#required}}
+        queryParams['{{baseName}}'] = {{paramName}};
+        {{/required}}{{/queryParams}}
+
         {{#vendorExtensions.x-codegen-isSearchTasksForWorkspace}}
         // Checks if the user provided custom field query parameters and adds it to the request
         for (const [key, value] of Object.entries(opts)) {
@@ -84,13 +89,38 @@ export class {{classname}} {
         let authNames = [{{#authMethods}}'{{name}}'{{#hasMore}}, {{/hasMore}}{{/authMethods}}];
         let contentTypes = [{{#consumes}}'{{& mediaType}}'{{#hasMore}}, {{/hasMore}}{{/consumes}}];
         let accepts = [{{#produces}}'{{& mediaType}}'{{#hasMore}}, {{/hasMore}}{{/produces}}];
-        let returnType = {{#returnType}}{{&returnType}}{{/returnType}}{{^returnType}}null{{/returnType}};
+        let returnType = 'Blob';
 
-        return this.apiClient.callApi(
-            '{{&path}}', '{{httpMethod}}',
-            pathParams, queryParams, headerParams, formParams, postBody,
-            authNames, contentTypes, accepts, returnType{{^usePromises}}, callback{{/usePromises}}
-        );
+        // Check if RETURN_COLLECTION is set and return a collection object if it is
+        if (this.apiClient.RETURN_COLLECTION && {{vendorExtensions.x-codegen-isArrayResponse}}) {
+            return Collection.fromApiClient(
+                this.apiClient.callApi(
+                    '{{&path}}', '{{httpMethod}}',
+                    pathParams, queryParams, headerParams, formParams, postBody,
+                    authNames, contentTypes, accepts, returnType{{^usePromises}}, callback{{/usePromises}}
+                ),
+                this.apiClient,
+                {
+                    'path': '{{&path}}',
+                    'httpMethod': '{{httpMethod}}',
+                    'pathParams': pathParams,
+                    'queryParams': queryParams,
+                    'headerParams': headerParams,
+                    'formParams': formParams,
+                    'bodyParam': postBody,
+                    'authNames': authNames,
+                    'contentTypes': contentTypes,
+                    'accepts': accepts,
+                    'returnType': returnType
+                }
+            )
+        } else {
+            return this.apiClient.callApi(
+                '{{&path}}', '{{httpMethod}}',
+                pathParams, queryParams, headerParams, formParams, postBody,
+                authNames, contentTypes, accepts, returnType{{^usePromises}}, callback{{/usePromises}}
+            );
+        }
     }
 {{#usePromises}}
     {{#emitJSDoc}}
@@ -106,10 +136,16 @@ export class {{classname}} {
      * @return {{braces "left"}}Promise{{braces "right"}} a {{braces "left"}}@link https://www.promisejs.org/|Promise{{braces "right"}}{{#returnType}}, with data of type {{braces "left"}}@link {{&vendorExtensions.x-jsdoc-type}}{{braces "right"}}{{/returnType}}{{/usePromises}}
      */
 {{/emitJSDoc}}    {{operationId}}({{vendorExtensions.x-codegen-arg-list}}) {
-        return this.{{operationId}}WithHttpInfo({{vendorExtensions.x-codegen-arg-list}})
-            .then(function(response_and_data) {
-                return response_and_data.data;
-            });
+
+        // Check if RETURN_COLLECTION is set and return a collection object if it is
+        if (this.apiClient.RETURN_COLLECTION && {{vendorExtensions.x-codegen-isArrayResponse}}) {
+            return this.{{operationId}}WithHttpInfo({{vendorExtensions.x-codegen-arg-list}})
+        } else {
+            return this.{{operationId}}WithHttpInfo({{vendorExtensions.x-codegen-arg-list}})
+                .then(function(response_and_data) {
+                    return response_and_data.data;
+                });
+        }
     }
 {{/usePromises}}
 {{/operation}}{{/operations}}
