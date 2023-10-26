@@ -1,0 +1,41 @@
+TimePeriodsApi:
+  getTimePeriod: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let timePeriodsApiInstance = new Asana.TimePeriodsApi();
+    let time_period_gid = "917392"; // String | Globally unique identifier for the time period.
+    let opts = { 
+        'opt_fields': "display_name,end_on,parent,parent.display_name,parent.end_on,parent.period,parent.start_on,period,start_on"
+    };
+    timePeriodsApiInstance.getTimePeriod(time_period_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getTimePeriods: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let timePeriodsApiInstance = new Asana.TimePeriodsApi();
+    let workspace = "31326"; // String | Globally unique identifier for the workspace.
+    let opts = { 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'start_on': "2019-09-15", 
+        'end_on': "2019-09-15", 
+        'opt_fields': "display_name,end_on,offset,parent,parent.display_name,parent.end_on,parent.period,parent.start_on,path,period,start_on,uri"
+    };
+    timePeriodsApiInstance.getTimePeriods(workspace, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    

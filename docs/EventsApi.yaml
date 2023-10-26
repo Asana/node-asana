@@ -1,0 +1,20 @@
+EventsApi:
+  getEvents: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let eventsApiInstance = new Asana.EventsApi();
+    let resource = "12345"; // String | A resource ID to subscribe to. The resource can be a task or project.
+    let opts = { 
+        'sync': "de4774f6915eae04714ca93bb2f5ee81", 
+        'opt_fields': "action,change,change.action,change.added_value,change.field,change.new_value,change.removed_value,created_at,parent,parent.name,resource,resource.name,type,user,user.name"
+    };
+    eventsApiInstance.getEvents(resource, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    

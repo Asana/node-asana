@@ -1,0 +1,100 @@
+UsersApi:
+  getFavoritesForUser: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let usersApiInstance = new Asana.UsersApi();
+    let user_gid = "me"; // String | A string identifying a user. This can either be the string \"me\", an email, or the gid of a user.
+    let resource_type = "project"; // String | The resource type of favorites to be returned.
+    let workspace = "1234"; // String | The workspace in which to get favorites.
+    let opts = { 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'opt_fields': "name,offset,path,uri"
+    };
+    usersApiInstance.getFavoritesForUser(user_gid, resource_type, workspace, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getUser: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let usersApiInstance = new Asana.UsersApi();
+    let user_gid = "me"; // String | A string identifying a user. This can either be the string \"me\", an email, or the gid of a user.
+    let opts = { 
+        'opt_fields': "email,name,photo,photo.image_1024x1024,photo.image_128x128,photo.image_21x21,photo.image_27x27,photo.image_36x36,photo.image_60x60,workspaces,workspaces.name"
+    };
+    usersApiInstance.getUser(user_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getUsers: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let usersApiInstance = new Asana.UsersApi();
+    let opts = { 
+        'workspace': "1331", 
+        'team': "15627", 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'opt_fields': "email,name,offset,path,photo,photo.image_1024x1024,photo.image_128x128,photo.image_21x21,photo.image_27x27,photo.image_36x36,photo.image_60x60,uri,workspaces,workspaces.name"
+    };
+    usersApiInstance.getUsers(opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getUsersForTeam: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let usersApiInstance = new Asana.UsersApi();
+    let team_gid = "159874"; // String | Globally unique identifier for the team.
+    let opts = { 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'opt_fields': "email,name,photo,photo.image_1024x1024,photo.image_128x128,photo.image_21x21,photo.image_27x27,photo.image_36x36,photo.image_60x60,workspaces,workspaces.name"
+    };
+    usersApiInstance.getUsersForTeam(team_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getUsersForWorkspace: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let usersApiInstance = new Asana.UsersApi();
+    let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
+    let opts = { 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'opt_fields': "email,name,photo,photo.image_1024x1024,photo.image_128x128,photo.image_21x21,photo.image_27x27,photo.image_36x36,photo.image_60x60,workspaces,workspaces.name"
+    };
+    usersApiInstance.getUsersForWorkspace(workspace_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    

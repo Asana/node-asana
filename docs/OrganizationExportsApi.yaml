@@ -1,0 +1,37 @@
+OrganizationExportsApi:
+  createOrganizationExport: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let organizationExportsApiInstance = new Asana.OrganizationExportsApi();
+    let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The organization to export.
+    let opts = { 
+        'opt_fields': "created_at,download_url,organization,organization.name,state"
+    };
+    organizationExportsApiInstance.createOrganizationExport(body, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getOrganizationExport: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let organizationExportsApiInstance = new Asana.OrganizationExportsApi();
+    let organization_export_gid = "12345"; // String | Globally unique identifier for the organization export.
+    let opts = { 
+        'opt_fields': "created_at,download_url,organization,organization.name,state"
+    };
+    organizationExportsApiInstance.getOrganizationExport(organization_export_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    

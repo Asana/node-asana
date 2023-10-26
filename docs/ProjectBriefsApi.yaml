@@ -1,0 +1,73 @@
+ProjectBriefsApi:
+  createProjectBrief: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let projectBriefsApiInstance = new Asana.ProjectBriefsApi();
+    let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The project brief to create.
+    let project_gid = "1331"; // String | Globally unique identifier for the project.
+    let opts = { 
+        'opt_fields': "html_text,permalink_url,project,project.name,text,title"
+    };
+    projectBriefsApiInstance.createProjectBrief(body, project_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  deleteProjectBrief: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let projectBriefsApiInstance = new Asana.ProjectBriefsApi();
+    let project_brief_gid = "12345"; // String | Globally unique identifier for the project brief.
+
+    projectBriefsApiInstance.deleteProjectBrief(project_brief_gid).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getProjectBrief: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let projectBriefsApiInstance = new Asana.ProjectBriefsApi();
+    let project_brief_gid = "12345"; // String | Globally unique identifier for the project brief.
+    let opts = { 
+        'opt_fields': "html_text,permalink_url,project,project.name,text,title"
+    };
+    projectBriefsApiInstance.getProjectBrief(project_brief_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  updateProjectBrief: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let projectBriefsApiInstance = new Asana.ProjectBriefsApi();
+    let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The updated fields for the project brief.
+    let project_brief_gid = "12345"; // String | Globally unique identifier for the project brief.
+    let opts = { 
+        'opt_fields': "html_text,permalink_url,project,project.name,text,title"
+    };
+    projectBriefsApiInstance.updateProjectBrief(body, project_brief_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    

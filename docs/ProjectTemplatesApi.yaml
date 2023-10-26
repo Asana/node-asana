@@ -1,0 +1,95 @@
+ProjectTemplatesApi:
+  deleteProjectTemplate: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let projectTemplatesApiInstance = new Asana.ProjectTemplatesApi();
+    let project_template_gid = "1331"; // String | Globally unique identifier for the project template.
+
+    projectTemplatesApiInstance.deleteProjectTemplate(project_template_gid).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getProjectTemplate: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let projectTemplatesApiInstance = new Asana.ProjectTemplatesApi();
+    let project_template_gid = "1331"; // String | Globally unique identifier for the project template.
+    let opts = { 
+        'opt_fields': "color,description,html_description,name,owner,public,requested_dates,requested_dates.description,requested_dates.name,requested_roles,requested_roles.name,team,team.name"
+    };
+    projectTemplatesApiInstance.getProjectTemplate(project_template_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getProjectTemplates: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let projectTemplatesApiInstance = new Asana.ProjectTemplatesApi();
+    let opts = { 
+        'workspace': "12345", 
+        'team': "14916", 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'opt_fields': "color,description,html_description,name,offset,owner,path,public,requested_dates,requested_dates.description,requested_dates.name,requested_roles,requested_roles.name,team,team.name,uri"
+    };
+    projectTemplatesApiInstance.getProjectTemplates(opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getProjectTemplatesForTeam: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let projectTemplatesApiInstance = new Asana.ProjectTemplatesApi();
+    let team_gid = "159874"; // String | Globally unique identifier for the team.
+    let opts = { 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'opt_fields': "color,description,html_description,name,offset,owner,path,public,requested_dates,requested_dates.description,requested_dates.name,requested_roles,requested_roles.name,team,team.name,uri"
+    };
+    projectTemplatesApiInstance.getProjectTemplatesForTeam(team_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  instantiateProject: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let projectTemplatesApiInstance = new Asana.ProjectTemplatesApi();
+    let project_template_gid = "1331"; // String | Globally unique identifier for the project template.
+    let opts = { 
+        'body': {"data": {"param1": "value1", "param2": "value2",}}, 
+        'opt_fields': "new_project,new_project.name,new_project_template,new_project_template.name,new_task,new_task.created_by,new_task.name,new_task.resource_subtype,resource_subtype,status"
+    };
+    projectTemplatesApiInstance.instantiateProject(project_template_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    

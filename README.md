@@ -1,21 +1,27 @@
-# asana [![GitHub release][release-image]]() [![Build Status][github-actions-image]][github-actions-url] [![NPM Version][npm-image]][npm-url]
+# asana [![GitHub release][release-image]][release-url] [![NPM Version][npm-image]][npm-url]
 
-> **Warning**
-> v2.0.X is currently in BETA and subject to change. Please use v1.0.2 for stable / production environments `npm i asana` or `npm i asana@1.0.2`. If you have feedback on v2, please open a GitHub issue or [submit here](https://form.asana.com/?k=C4sELCq6hAUsoWEY0kJwAA&d=15793206719).
-
-JavaScript client library for Asana.
+> **Important**
+> Version 3.X.X is the newest release of our Node client library and currently in public beta. This means that while it has the latest Asana features, we're still putting on the final touches to ensure it's as stable and reliable as possible.
+>
+>🛠️ **Looking Ahead**
+>
+> This version will receive updates going forward, and it’s on track to reach full stability soon. Your input is invaluable in this process! If you spot any issues, have suggestions, or need help, don’t hesitate to reach out. You can open a GitHub issue or submit your feedback directly to us.
+> 
+>📖 **Get Started with Examples and Resources**
+>
+> For now, if you’re in search of a version that has stood the test of time and is proven to be stable, we recommend using version 1.0.2. You can easily install it using:  `npm install asana@1.0.2` and following v1 samples and documentation.
 
 - API version: 1.0
-- Package version: 2.0.6
+- Package version: 3.0.0
 
 ## Installation
 
 ### For [Node.js](https://nodejs.org/)
 
-#### npm install from [npm](https://www.npmjs.com/package/asana)
+#### npm install from [npmjs](https://www.npmjs.com/package/asana)
 
 ```shell
-npm install asana@2.0.6 --save
+npm install asana --save
 ```
 
 ### For browser
@@ -23,29 +29,25 @@ npm install asana@2.0.6 --save
 Include the latest release directly from GitHub:
 
 ```html
-<script src="https://github.com/Asana/node-asana/releases/download/v2.0.6/asana-min.js"></script>
+<script src="https://github.com/Asana/node-asana/releases/download/v3.0.0/asana-min.js"></script>
 ```
 
-Example usage:
+Example usage (**NOTE**: be careful not to expose your access token):
 
 ```html
 <script>
-    const defaultClient = Asana.ApiClient.instance;
-    const oauth2 = defaultClient.authentications["oauth2"];
-    oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
     let usersApiInstance = new Asana.UsersApi();
     let user_gid = "me";
     let opts = {};
 
-    usersApiInstance.getUser(user_gid, opts, (error, data, response) => {
-        if (error) {
-            console.error(error);
-        } else {
-            console.log(
-            "API called successfully. Returned data: " + JSON.stringify(data, null, 2)
-            );
-        }
+    usersApiInstance.getUser(user_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' +  JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
     });
 </script>
 ```
@@ -74,24 +76,21 @@ Please follow the [installation](#installation) instruction and execute the foll
 
 ```javascript
 const Asana = require('asana');
-const defaultClient = Asana.ApiClient.instance;
 
-// Configure OAuth2 access token for authorization: oauth2
-const oauth2 = defaultClient.authentications['oauth2'];
-oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
+let client = Asana.ApiClient.instance;
+let token = client.authentications['token'];
+token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let usersApiInstance = new Asana.UsersApi()
+let usersApiInstance = new Asana.UsersApi();
 let user_gid = "me"; // String | A string identifying a user. This can either be the string \"me\", an email, or the gid of a user.
 let opts = { 
-    'opt_fields': ["email","name","photo","photo.image_1024x1024","photo.image_128x128","photo.image_21x21","photo.image_27x27","photo.image_36x36","photo.image_60x60","workspaces","workspaces.name"] // [String] | Properties to include in the response. Set this query parameter to a comma-separated list of the properties you wish to include.
+    "opt_fields": "email,name,photo,photo.image_1024x1024,photo.image_128x128,photo.image_21x21,photo.image_27x27,photo.image_36x36,photo.image_60x60,workspaces,workspaces.name" // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 
-usersApiInstance.getUser(user_gid, opts, (error, data, response) => {
-    if (error) {
-        console.error(error);
-    } else {
-        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-    }
+usersApiInstance.getUser(user_gid, opts).then((result) => {
+    console.log('API called successfully. Returned data: ' +  JSON.stringify(result.data, null, 2));
+}, (error) => {
+    console.error(error.response.body);
 });
 ```
 
@@ -100,116 +99,104 @@ usersApiInstance.getUser(user_gid, opts, (error, data, response) => {
 #### GET - get multiple tasks
 ```javascript
 const Asana = require('asana');
-const defaultClient = Asana.ApiClient.instance;
 
-// Configure OAuth2 access token for authorization: oauth2
-const oauth2 = defaultClient.authentications['oauth2'];
-oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
+let client = Asana.ApiClient.instance;
+let token = client.authentications['token'];
+token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi()
+let tasksApiInstance = new Asana.TasksApi();
 let opts = { 
-    'limit': 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
-    'project': "<YOUR_PROJECT_GID>", // String | The project to filter tasks on.
-    'modified_since': new Date("2012-02-22T02:06:58.158Z"), // Date | Only return tasks that have been modified since the given time.  *Note: A task is considered “modified” if any of its properties change, or associations between it and other objects are modified (e.g.  a task being added to a project). A task is not considered modified just because another object it is associated with (e.g. a subtask) is modified. Actions that count as modifying the task include assigning, renaming, completing, and adding stories.*
-    'opt_fields': ["actual_time_minutes","approval_status","assignee","assignee.name","assignee_section","assignee_section.name","assignee_status","completed","completed_at","completed_by","completed_by.name","created_at","custom_fields","custom_fields.asana_created_field","custom_fields.created_by","custom_fields.created_by.name","custom_fields.currency_code","custom_fields.custom_label","custom_fields.custom_label_position","custom_fields.date_value","custom_fields.date_value.date","custom_fields.date_value.date_time","custom_fields.description","custom_fields.display_value","custom_fields.enabled","custom_fields.enum_options","custom_fields.enum_options.color","custom_fields.enum_options.enabled","custom_fields.enum_options.name","custom_fields.enum_value","custom_fields.enum_value.color","custom_fields.enum_value.enabled","custom_fields.enum_value.name","custom_fields.format","custom_fields.has_notifications_enabled","custom_fields.is_formula_field","custom_fields.is_global_to_workspace","custom_fields.is_value_read_only","custom_fields.multi_enum_values","custom_fields.multi_enum_values.color","custom_fields.multi_enum_values.enabled","custom_fields.multi_enum_values.name","custom_fields.name","custom_fields.number_value","custom_fields.people_value","custom_fields.people_value.name","custom_fields.precision","custom_fields.resource_subtype","custom_fields.text_value","custom_fields.type","dependencies","dependents","due_at","due_on","external","external.data","followers","followers.name","hearted","hearts","hearts.user","hearts.user.name","html_notes","is_rendered_as_separator","liked","likes","likes.user","likes.user.name","memberships","memberships.project","memberships.project.name","memberships.section","memberships.section.name","modified_at","name","notes","num_hearts","num_likes","num_subtasks","offset","parent","parent.name","parent.resource_subtype","path","permalink_url","projects","projects.name","resource_subtype","start_at","start_on","tags","tags.name","uri","workspace","workspace.name"] // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+    "limit": 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
+    "project": "<YOUR_PROJECT_GID>", // String | The project to filter tasks on.
+    "modified_since": "2012-02-22T02:06:58.158Z", // Date | Only return tasks that have been modified since the given time.  *Note: A task is considered “modified” if any of its properties change, or associations between it and other objects are modified (e.g.  a task being added to a project). A task is not considered modified just because another object it is associated with (e.g. a subtask) is modified. Actions that count as modifying the task include assigning, renaming, completing, and adding stories.*
+    "opt_fields": "actual_time_minutes,approval_status,assignee,assignee.name,assignee_section,assignee_section.name,assignee_status,completed,completed_at,completed_by,completed_by.name,created_at,created_by,custom_fields,custom_fields.asana_created_field,custom_fields.created_by,custom_fields.created_by.name,custom_fields.currency_code,custom_fields.custom_label,custom_fields.custom_label_position,custom_fields.date_value,custom_fields.date_value.date,custom_fields.date_value.date_time,custom_fields.description,custom_fields.display_value,custom_fields.enabled,custom_fields.enum_options,custom_fields.enum_options.color,custom_fields.enum_options.enabled,custom_fields.enum_options.name,custom_fields.enum_value,custom_fields.enum_value.color,custom_fields.enum_value.enabled,custom_fields.enum_value.name,custom_fields.format,custom_fields.has_notifications_enabled,custom_fields.is_formula_field,custom_fields.is_global_to_workspace,custom_fields.is_value_read_only,custom_fields.multi_enum_values,custom_fields.multi_enum_values.color,custom_fields.multi_enum_values.enabled,custom_fields.multi_enum_values.name,custom_fields.name,custom_fields.number_value,custom_fields.people_value,custom_fields.people_value.name,custom_fields.precision,custom_fields.resource_subtype,custom_fields.text_value,custom_fields.type,dependencies,dependents,due_at,due_on,external,external.data,followers,followers.name,hearted,hearts,hearts.user,hearts.user.name,html_notes,is_rendered_as_separator,liked,likes,likes.user,likes.user.name,memberships,memberships.project,memberships.project.name,memberships.section,memberships.section.name,modified_at,name,notes,num_hearts,num_likes,num_subtasks,offset,parent,parent.created_by,parent.name,parent.resource_subtype,path,permalink_url,projects,projects.name,resource_subtype,start_at,start_on,tags,tags.name,uri,workspace,workspace.name" // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
 };
 
 // GET - get multiple tasks
-tasksApiInstance.getTasks(opts, (error, data, response) => {
-    if (error) {
-        console.error(error);
-    } else {
-        console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-    }
+tasksApiInstance.getTasks(opts).then((result) => {
+    console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+}, (error) => {
+    console.error(error.response.body);
 });
 ```
 
 #### POST - create a task
 ```javascript
 const Asana = require('asana');
-const defaultClient = Asana.ApiClient.instance;
 
-// Configure OAuth2 access token for authorization: oauth2
-const oauth2 = defaultClient.authentications['oauth2'];
-oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
+let client = Asana.ApiClient.instance;
+let token = client.authentications['token'];
+token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi()
-let body = new Asana.TasksBody.constructFromObject({
-    data: {
-        name: "New Task",
-        approval_status: "pending",
-        assignee_status: "upcoming",
-        completed: false,
-        external: {
-            gid: "1234",
-            data: "A blob of information.",
+let tasksApiInstance = new Asana.TasksApi();
+let body = {
+    "data": {
+        "name": "New Task",
+        "approval_status": "pending",
+        "assignee_status": "upcoming",
+        "completed": false,
+        "external": {
+            "gid": "1234",
+            "data": "A blob of information.",
         },
-        html_notes: "<body>Mittens <em>really</em> likes the stuff from Humboldt.</body>",
-        is_rendered_as_separator: false,
-        liked: true,
-        assignee: "me",
-        projects: ["<YOUR_PROJECT_GID>"],
+        "html_notes": "<body>Mittens <em>really</em> likes the stuff from Humboldt.</body>",
+        "is_rendered_as_separator": false,
+        "liked": true,
+        "assignee": "me",
+        "projects": ["<YOUR_PROJECT_GID>"],
     },
-});
+};
 let opts = {};
 
 // POST - Create a task
-tasksApiInstance.createTask(body, opts, (error, data, response) => {
-    if (error) {
-        console.error(error);
-    } else {
-        console.log("API called successfully. Returned data: " + JSON.stringify(data, null, 2));
-    }
+tasksApiInstance.createTask(body, opts).then((result) => {
+    console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+}, (error) => {
+    console.error(error.response.body);
 });
 ```
 
 #### PUT - update a task
 ```javascript
 const Asana = require('asana');
-const defaultClient = Asana.ApiClient.instance;
 
-// Configure OAuth2 access token for authorization: oauth2
-const oauth2 = defaultClient.authentications['oauth2'];
-oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
+let client = Asana.ApiClient.instance;
+let token = client.authentications['token'];
+token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi()
+let tasksApiInstance = new Asana.TasksApi();
 let task_gid = "<YOUR_TASK_GID>";
-let body = new Asana.TasksTaskGidBody.constructFromObject({
-    data: {
-        name: "Updated Task",
+let body = {
+    "data": {
+        "name": "Updated Task",
     },
-});
+};
 let opts = {};
 
 // PUT - Update a task
-tasksApiInstance.updateTask(body, task_gid, opts, (error, data, response) => {
-    if (error) {
-        console.error(error);
-    } else {
-        console.log("API called successfully. Returned data: " + JSON.stringify(data, null, 2));
-    }
+tasksApiInstance.updateTask(body, task_gid, opts).then((result) => {
+    console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+}, (error) => {
+    console.error(error.response.body);
 });
 ```
 
 #### DELETE - delete a task
 ```javascript
 const Asana = require('asana');
-const defaultClient = Asana.ApiClient.instance;
 
-// Configure OAuth2 access token for authorization: oauth2
-const oauth2 = defaultClient.authentications['oauth2'];
-oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
+let client = Asana.ApiClient.instance;
+let token = client.authentications['token'];
+token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi()
+let tasksApiInstance = new Asana.TasksApi();
 let task_gid = "<YOUR_TASK_GID>";
 
 // DELETE - Delete a task
-tasksApiInstance.deleteTask(task_gid, (error, data, response) => {
-    if (error) {
-        console.error(error);
-    } else {
-        console.log("API called successfully. Returned data: " + JSON.stringify(data, null, 2));
-    }
+tasksApiInstance.deleteTask(task_gid).then((result) => {
+    console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+}, (error) => {
+    console.error(error.response.body);
 });
 ```
 
@@ -332,6 +319,9 @@ Class | Method | HTTP request | Description
 *Asana.TagsApi* | [**getTagsForTask**](docs/TagsApi.md#getTagsForTask) | **GET** /tasks/{task_gid}/tags | Get a task&#x27;s tags
 *Asana.TagsApi* | [**getTagsForWorkspace**](docs/TagsApi.md#getTagsForWorkspace) | **GET** /workspaces/{workspace_gid}/tags | Get tags in a workspace
 *Asana.TagsApi* | [**updateTag**](docs/TagsApi.md#updateTag) | **PUT** /tags/{tag_gid} | Update a tag
+*Asana.TaskTemplatesApi* | [**getTaskTemplate**](docs/TaskTemplatesApi.md#getTaskTemplate) | **GET** /task_templates/{task_template_gid} | Get a task template
+*Asana.TaskTemplatesApi* | [**getTaskTemplates**](docs/TaskTemplatesApi.md#getTaskTemplates) | **GET** /task_templates | Get multiple task templates
+*Asana.TaskTemplatesApi* | [**instantiateTask**](docs/TaskTemplatesApi.md#instantiateTask) | **POST** /task_templates/{task_template_gid}/instantiateTask | Instantiate a task from a task template
 *Asana.TasksApi* | [**addDependenciesForTask**](docs/TasksApi.md#addDependenciesForTask) | **POST** /tasks/{task_gid}/addDependencies | Set dependencies for a task
 *Asana.TasksApi* | [**addDependentsForTask**](docs/TasksApi.md#addDependentsForTask) | **POST** /tasks/{task_gid}/addDependents | Set dependents for a task
 *Asana.TasksApi* | [**addFollowersForTask**](docs/TasksApi.md#addFollowersForTask) | **POST** /tasks/{task_gid}/addFollowers | Add followers to a task
@@ -398,443 +388,319 @@ Class | Method | HTTP request | Description
 *Asana.WorkspacesApi* | [**removeUserForWorkspace**](docs/WorkspacesApi.md#removeUserForWorkspace) | **POST** /workspaces/{workspace_gid}/removeUser | Remove a user from a workspace or organization
 *Asana.WorkspacesApi* | [**updateWorkspace**](docs/WorkspacesApi.md#updateWorkspace) | **PUT** /workspaces/{workspace_gid} | Update a workspace
 
-## Documentation for Models
+## Optional fields
 
- - [Asana.AddCustomFieldSettingRequest](docs/AddCustomFieldSettingRequest.md)
- - [Asana.AddFollowersRequest](docs/AddFollowersRequest.md)
- - [Asana.AddMembersRequest](docs/AddMembersRequest.md)
- - [Asana.AllOfProjectResponseOwner](docs/AllOfProjectResponseOwner.md)
- - [Asana.AllOfProjectTemplateBaseOwner](docs/AllOfProjectTemplateBaseOwner.md)
- - [Asana.AllOfProjectTemplateResponseOwner](docs/AllOfProjectTemplateResponseOwner.md)
- - [Asana.AllOfStoryResponseNewDateValue](docs/AllOfStoryResponseNewDateValue.md)
- - [Asana.AllOfStoryResponseOldDateValue](docs/AllOfStoryResponseOldDateValue.md)
- - [Asana.AllOfUserTaskListBaseOwner](docs/AllOfUserTaskListBaseOwner.md)
- - [Asana.AllOfUserTaskListBaseWorkspace](docs/AllOfUserTaskListBaseWorkspace.md)
- - [Asana.AllOfUserTaskListCompactOwner](docs/AllOfUserTaskListCompactOwner.md)
- - [Asana.AllOfUserTaskListCompactWorkspace](docs/AllOfUserTaskListCompactWorkspace.md)
- - [Asana.AllOfUserTaskListRequestOwner](docs/AllOfUserTaskListRequestOwner.md)
- - [Asana.AllOfUserTaskListRequestWorkspace](docs/AllOfUserTaskListRequestWorkspace.md)
- - [Asana.AllOfUserTaskListResponseOwner](docs/AllOfUserTaskListResponseOwner.md)
- - [Asana.AllOfUserTaskListResponseWorkspace](docs/AllOfUserTaskListResponseWorkspace.md)
- - [Asana.AllOfWorkspaceMembershipResponseUserTaskListOwner](docs/AllOfWorkspaceMembershipResponseUserTaskListOwner.md)
- - [Asana.AllOfWorkspaceMembershipResponseUserTaskListWorkspace](docs/AllOfWorkspaceMembershipResponseUserTaskListWorkspace.md)
- - [Asana.AsanaNamedResource](docs/AsanaNamedResource.md)
- - [Asana.AsanaNamedResourceArray](docs/AsanaNamedResourceArray.md)
- - [Asana.AsanaResource](docs/AsanaResource.md)
- - [Asana.AttachmentBase](docs/AttachmentBase.md)
- - [Asana.AttachmentCompact](docs/AttachmentCompact.md)
- - [Asana.AttachmentRequest](docs/AttachmentRequest.md)
- - [Asana.AttachmentResponse](docs/AttachmentResponse.md)
- - [Asana.AttachmentResponseArray](docs/AttachmentResponseArray.md)
- - [Asana.AttachmentResponseData](docs/AttachmentResponseData.md)
- - [Asana.AttachmentResponseParent](docs/AttachmentResponseParent.md)
- - [Asana.AttachmentResponseParentCreatedBy](docs/AttachmentResponseParentCreatedBy.md)
- - [Asana.AuditLogEvent](docs/AuditLogEvent.md)
- - [Asana.AuditLogEventActor](docs/AuditLogEventActor.md)
- - [Asana.AuditLogEventArray](docs/AuditLogEventArray.md)
- - [Asana.AuditLogEventContext](docs/AuditLogEventContext.md)
- - [Asana.AuditLogEventDetails](docs/AuditLogEventDetails.md)
- - [Asana.AuditLogEventResource](docs/AuditLogEventResource.md)
- - [Asana.BatchBody](docs/BatchBody.md)
- - [Asana.BatchRequest](docs/BatchRequest.md)
- - [Asana.BatchRequestAction](docs/BatchRequestAction.md)
- - [Asana.BatchRequestActions](docs/BatchRequestActions.md)
- - [Asana.BatchRequestOptions](docs/BatchRequestOptions.md)
- - [Asana.BatchResponse](docs/BatchResponse.md)
- - [Asana.BatchResponseArray](docs/BatchResponseArray.md)
- - [Asana.CreateMembershipRequest](docs/CreateMembershipRequest.md)
- - [Asana.CreateTimeTrackingEntryRequest](docs/CreateTimeTrackingEntryRequest.md)
- - [Asana.CustomFieldBase](docs/CustomFieldBase.md)
- - [Asana.CustomFieldBaseDateValue](docs/CustomFieldBaseDateValue.md)
- - [Asana.CustomFieldBaseEnumOptions](docs/CustomFieldBaseEnumOptions.md)
- - [Asana.CustomFieldBaseEnumValue](docs/CustomFieldBaseEnumValue.md)
- - [Asana.CustomFieldCompact](docs/CustomFieldCompact.md)
- - [Asana.CustomFieldGidEnumOptionsBody](docs/CustomFieldGidEnumOptionsBody.md)
- - [Asana.CustomFieldRequest](docs/CustomFieldRequest.md)
- - [Asana.CustomFieldResponse](docs/CustomFieldResponse.md)
- - [Asana.CustomFieldResponseArray](docs/CustomFieldResponseArray.md)
- - [Asana.CustomFieldResponseCreatedBy](docs/CustomFieldResponseCreatedBy.md)
- - [Asana.CustomFieldResponseData](docs/CustomFieldResponseData.md)
- - [Asana.CustomFieldResponsePeopleValue](docs/CustomFieldResponsePeopleValue.md)
- - [Asana.CustomFieldSettingBase](docs/CustomFieldSettingBase.md)
- - [Asana.CustomFieldSettingCompact](docs/CustomFieldSettingCompact.md)
- - [Asana.CustomFieldSettingResponse](docs/CustomFieldSettingResponse.md)
- - [Asana.CustomFieldSettingResponseArray](docs/CustomFieldSettingResponseArray.md)
- - [Asana.CustomFieldSettingResponseCustomField](docs/CustomFieldSettingResponseCustomField.md)
- - [Asana.CustomFieldSettingResponseData](docs/CustomFieldSettingResponseData.md)
- - [Asana.CustomFieldSettingResponseParent](docs/CustomFieldSettingResponseParent.md)
- - [Asana.CustomFieldSettingResponseProject](docs/CustomFieldSettingResponseProject.md)
- - [Asana.CustomFieldsBody](docs/CustomFieldsBody.md)
- - [Asana.CustomFieldsCustomFieldGidBody](docs/CustomFieldsCustomFieldGidBody.md)
- - [Asana.DateVariableCompact](docs/DateVariableCompact.md)
- - [Asana.DateVariableRequest](docs/DateVariableRequest.md)
- - [Asana.EmptyResponse](docs/EmptyResponse.md)
- - [Asana.EmptyResponseData](docs/EmptyResponseData.md)
- - [Asana.EnumOption](docs/EnumOption.md)
- - [Asana.EnumOptionBase](docs/EnumOptionBase.md)
- - [Asana.EnumOptionData](docs/EnumOptionData.md)
- - [Asana.EnumOptionInsertRequest](docs/EnumOptionInsertRequest.md)
- - [Asana.EnumOptionRequest](docs/EnumOptionRequest.md)
- - [Asana.EnumOptionsEnumOptionGidBody](docs/EnumOptionsEnumOptionGidBody.md)
- - [Asana.EnumOptionsInsertBody](docs/EnumOptionsInsertBody.md)
- - [Asana.Error](docs/Error.md)
- - [Asana.ErrorResponse](docs/ErrorResponse.md)
- - [Asana.ErrorResponseErrors](docs/ErrorResponseErrors.md)
- - [Asana.EventResponse](docs/EventResponse.md)
- - [Asana.EventResponseArray](docs/EventResponseArray.md)
- - [Asana.EventResponseChange](docs/EventResponseChange.md)
- - [Asana.EventResponseParent](docs/EventResponseParent.md)
- - [Asana.EventResponseResource](docs/EventResponseResource.md)
- - [Asana.EventResponseUser](docs/EventResponseUser.md)
- - [Asana.GoalAddSubgoalRequest](docs/GoalAddSubgoalRequest.md)
- - [Asana.GoalAddSupportingRelationshipRequest](docs/GoalAddSupportingRelationshipRequest.md)
- - [Asana.GoalAddSupportingWorkRequest](docs/GoalAddSupportingWorkRequest.md)
- - [Asana.GoalBase](docs/GoalBase.md)
- - [Asana.GoalCompact](docs/GoalCompact.md)
- - [Asana.GoalGidAddFollowersBody](docs/GoalGidAddFollowersBody.md)
- - [Asana.GoalGidAddSupportingRelationshipBody](docs/GoalGidAddSupportingRelationshipBody.md)
- - [Asana.GoalGidRemoveFollowersBody](docs/GoalGidRemoveFollowersBody.md)
- - [Asana.GoalGidRemoveSupportingRelationshipBody](docs/GoalGidRemoveSupportingRelationshipBody.md)
- - [Asana.GoalGidSetMetricBody](docs/GoalGidSetMetricBody.md)
- - [Asana.GoalGidSetMetricCurrentValueBody](docs/GoalGidSetMetricCurrentValueBody.md)
- - [Asana.GoalMembershipBase](docs/GoalMembershipBase.md)
- - [Asana.GoalMembershipCompact](docs/GoalMembershipCompact.md)
- - [Asana.GoalMembershipResponse](docs/GoalMembershipResponse.md)
- - [Asana.GoalMembershipResponseUser](docs/GoalMembershipResponseUser.md)
- - [Asana.GoalMembershipResponseWorkspace](docs/GoalMembershipResponseWorkspace.md)
- - [Asana.GoalMetricBase](docs/GoalMetricBase.md)
- - [Asana.GoalMetricCurrentValueRequest](docs/GoalMetricCurrentValueRequest.md)
- - [Asana.GoalMetricRequest](docs/GoalMetricRequest.md)
- - [Asana.GoalRelationshipBase](docs/GoalRelationshipBase.md)
- - [Asana.GoalRelationshipBaseSupportedGoal](docs/GoalRelationshipBaseSupportedGoal.md)
- - [Asana.GoalRelationshipBaseSupportingResource](docs/GoalRelationshipBaseSupportingResource.md)
- - [Asana.GoalRelationshipCompact](docs/GoalRelationshipCompact.md)
- - [Asana.GoalRelationshipRequest](docs/GoalRelationshipRequest.md)
- - [Asana.GoalRelationshipResponse](docs/GoalRelationshipResponse.md)
- - [Asana.GoalRelationshipResponseArray](docs/GoalRelationshipResponseArray.md)
- - [Asana.GoalRelationshipResponseData](docs/GoalRelationshipResponseData.md)
- - [Asana.GoalRelationshipsGoalRelationshipGidBody](docs/GoalRelationshipsGoalRelationshipGidBody.md)
- - [Asana.GoalRemoveSubgoalRequest](docs/GoalRemoveSubgoalRequest.md)
- - [Asana.GoalRemoveSupportingRelationshipRequest](docs/GoalRemoveSupportingRelationshipRequest.md)
- - [Asana.GoalRequest](docs/GoalRequest.md)
- - [Asana.GoalRequestBase](docs/GoalRequestBase.md)
- - [Asana.GoalResponse](docs/GoalResponse.md)
- - [Asana.GoalResponseArray](docs/GoalResponseArray.md)
- - [Asana.GoalResponseCurrentStatusUpdate](docs/GoalResponseCurrentStatusUpdate.md)
- - [Asana.GoalResponseData](docs/GoalResponseData.md)
- - [Asana.GoalResponseLikes](docs/GoalResponseLikes.md)
- - [Asana.GoalResponseMetric](docs/GoalResponseMetric.md)
- - [Asana.GoalResponseTeam](docs/GoalResponseTeam.md)
- - [Asana.GoalResponseTimePeriod](docs/GoalResponseTimePeriod.md)
- - [Asana.GoalResponseWorkspace](docs/GoalResponseWorkspace.md)
- - [Asana.GoalUpdateRequest](docs/GoalUpdateRequest.md)
- - [Asana.GoalsBody](docs/GoalsBody.md)
- - [Asana.GoalsGoalGidBody](docs/GoalsGoalGidBody.md)
- - [Asana.InlineResponse412](docs/InlineResponse412.md)
- - [Asana.InlineResponse412Errors](docs/InlineResponse412Errors.md)
- - [Asana.JobBase](docs/JobBase.md)
- - [Asana.JobBaseNewProject](docs/JobBaseNewProject.md)
- - [Asana.JobBaseNewProjectTemplate](docs/JobBaseNewProjectTemplate.md)
- - [Asana.JobBaseNewTask](docs/JobBaseNewTask.md)
- - [Asana.JobCompact](docs/JobCompact.md)
- - [Asana.JobResponse](docs/JobResponse.md)
- - [Asana.JobResponseData](docs/JobResponseData.md)
- - [Asana.Like](docs/Like.md)
- - [Asana.MemberCompact](docs/MemberCompact.md)
- - [Asana.MembershipCompact](docs/MembershipCompact.md)
- - [Asana.MembershipCompactGoal](docs/MembershipCompactGoal.md)
- - [Asana.MembershipCompactMember](docs/MembershipCompactMember.md)
- - [Asana.MembershipCompactParent](docs/MembershipCompactParent.md)
- - [Asana.MembershipRequest](docs/MembershipRequest.md)
- - [Asana.MembershipResponse](docs/MembershipResponse.md)
- - [Asana.MembershipResponseArray](docs/MembershipResponseArray.md)
- - [Asana.MembershipResponseData](docs/MembershipResponseData.md)
- - [Asana.MembershipsBody](docs/MembershipsBody.md)
- - [Asana.ModifyDependenciesRequest](docs/ModifyDependenciesRequest.md)
- - [Asana.ModifyDependentsRequest](docs/ModifyDependentsRequest.md)
- - [Asana.NextPage](docs/NextPage.md)
- - [Asana.OrganizationExportBase](docs/OrganizationExportBase.md)
- - [Asana.OrganizationExportCompact](docs/OrganizationExportCompact.md)
- - [Asana.OrganizationExportRequest](docs/OrganizationExportRequest.md)
- - [Asana.OrganizationExportResponse](docs/OrganizationExportResponse.md)
- - [Asana.OrganizationExportResponseData](docs/OrganizationExportResponseData.md)
- - [Asana.OrganizationExportsBody](docs/OrganizationExportsBody.md)
- - [Asana.PortfolioAddItemRequest](docs/PortfolioAddItemRequest.md)
- - [Asana.PortfolioBase](docs/PortfolioBase.md)
- - [Asana.PortfolioCompact](docs/PortfolioCompact.md)
- - [Asana.PortfolioGidAddCustomFieldSettingBody](docs/PortfolioGidAddCustomFieldSettingBody.md)
- - [Asana.PortfolioGidAddItemBody](docs/PortfolioGidAddItemBody.md)
- - [Asana.PortfolioGidAddMembersBody](docs/PortfolioGidAddMembersBody.md)
- - [Asana.PortfolioGidRemoveCustomFieldSettingBody](docs/PortfolioGidRemoveCustomFieldSettingBody.md)
- - [Asana.PortfolioGidRemoveItemBody](docs/PortfolioGidRemoveItemBody.md)
- - [Asana.PortfolioGidRemoveMembersBody](docs/PortfolioGidRemoveMembersBody.md)
- - [Asana.PortfolioMembershipBase](docs/PortfolioMembershipBase.md)
- - [Asana.PortfolioMembershipBasePortfolio](docs/PortfolioMembershipBasePortfolio.md)
- - [Asana.PortfolioMembershipCompact](docs/PortfolioMembershipCompact.md)
- - [Asana.PortfolioMembershipResponse](docs/PortfolioMembershipResponse.md)
- - [Asana.PortfolioMembershipResponseArray](docs/PortfolioMembershipResponseArray.md)
- - [Asana.PortfolioMembershipResponseData](docs/PortfolioMembershipResponseData.md)
- - [Asana.PortfolioRemoveItemRequest](docs/PortfolioRemoveItemRequest.md)
- - [Asana.PortfolioRequest](docs/PortfolioRequest.md)
- - [Asana.PortfolioResponse](docs/PortfolioResponse.md)
- - [Asana.PortfolioResponseArray](docs/PortfolioResponseArray.md)
- - [Asana.PortfolioResponseCurrentStatusUpdate](docs/PortfolioResponseCurrentStatusUpdate.md)
- - [Asana.PortfolioResponseCustomFieldSettings](docs/PortfolioResponseCustomFieldSettings.md)
- - [Asana.PortfolioResponseCustomFields](docs/PortfolioResponseCustomFields.md)
- - [Asana.PortfolioResponseData](docs/PortfolioResponseData.md)
- - [Asana.PortfolioResponseWorkspace](docs/PortfolioResponseWorkspace.md)
- - [Asana.PortfoliosBody](docs/PortfoliosBody.md)
- - [Asana.PortfoliosPortfolioGidBody](docs/PortfoliosPortfolioGidBody.md)
- - [Asana.Preview](docs/Preview.md)
- - [Asana.ProjectBase](docs/ProjectBase.md)
- - [Asana.ProjectBaseCurrentStatus](docs/ProjectBaseCurrentStatus.md)
- - [Asana.ProjectBaseCurrentStatusUpdate](docs/ProjectBaseCurrentStatusUpdate.md)
- - [Asana.ProjectBriefBase](docs/ProjectBriefBase.md)
- - [Asana.ProjectBriefCompact](docs/ProjectBriefCompact.md)
- - [Asana.ProjectBriefRequest](docs/ProjectBriefRequest.md)
- - [Asana.ProjectBriefResponse](docs/ProjectBriefResponse.md)
- - [Asana.ProjectBriefResponseData](docs/ProjectBriefResponseData.md)
- - [Asana.ProjectBriefResponseProject](docs/ProjectBriefResponseProject.md)
- - [Asana.ProjectBriefsProjectBriefGidBody](docs/ProjectBriefsProjectBriefGidBody.md)
- - [Asana.ProjectCompact](docs/ProjectCompact.md)
- - [Asana.ProjectDuplicateRequest](docs/ProjectDuplicateRequest.md)
- - [Asana.ProjectDuplicateRequestScheduleDates](docs/ProjectDuplicateRequestScheduleDates.md)
- - [Asana.ProjectGidAddCustomFieldSettingBody](docs/ProjectGidAddCustomFieldSettingBody.md)
- - [Asana.ProjectGidAddFollowersBody](docs/ProjectGidAddFollowersBody.md)
- - [Asana.ProjectGidAddMembersBody](docs/ProjectGidAddMembersBody.md)
- - [Asana.ProjectGidDuplicateBody](docs/ProjectGidDuplicateBody.md)
- - [Asana.ProjectGidProjectBriefsBody](docs/ProjectGidProjectBriefsBody.md)
- - [Asana.ProjectGidProjectStatusesBody](docs/ProjectGidProjectStatusesBody.md)
- - [Asana.ProjectGidRemoveCustomFieldSettingBody](docs/ProjectGidRemoveCustomFieldSettingBody.md)
- - [Asana.ProjectGidRemoveFollowersBody](docs/ProjectGidRemoveFollowersBody.md)
- - [Asana.ProjectGidRemoveMembersBody](docs/ProjectGidRemoveMembersBody.md)
- - [Asana.ProjectGidSaveAsTemplateBody](docs/ProjectGidSaveAsTemplateBody.md)
- - [Asana.ProjectGidSectionsBody](docs/ProjectGidSectionsBody.md)
- - [Asana.ProjectMembershipBase](docs/ProjectMembershipBase.md)
- - [Asana.ProjectMembershipCompact](docs/ProjectMembershipCompact.md)
- - [Asana.ProjectMembershipCompactArray](docs/ProjectMembershipCompactArray.md)
- - [Asana.ProjectMembershipCompactResponse](docs/ProjectMembershipCompactResponse.md)
- - [Asana.ProjectMembershipCompactResponseData](docs/ProjectMembershipCompactResponseData.md)
- - [Asana.ProjectMembershipNormalResponse](docs/ProjectMembershipNormalResponse.md)
- - [Asana.ProjectMembershipNormalResponseData](docs/ProjectMembershipNormalResponseData.md)
- - [Asana.ProjectRequest](docs/ProjectRequest.md)
- - [Asana.ProjectResponse](docs/ProjectResponse.md)
- - [Asana.ProjectResponseArray](docs/ProjectResponseArray.md)
- - [Asana.ProjectResponseCompletedBy](docs/ProjectResponseCompletedBy.md)
- - [Asana.ProjectResponseCreatedFromTemplate](docs/ProjectResponseCreatedFromTemplate.md)
- - [Asana.ProjectResponseData](docs/ProjectResponseData.md)
- - [Asana.ProjectResponseProjectBrief](docs/ProjectResponseProjectBrief.md)
- - [Asana.ProjectResponseTeam](docs/ProjectResponseTeam.md)
- - [Asana.ProjectResponseWorkspace](docs/ProjectResponseWorkspace.md)
- - [Asana.ProjectSaveAsTemplateRequest](docs/ProjectSaveAsTemplateRequest.md)
- - [Asana.ProjectSectionInsertRequest](docs/ProjectSectionInsertRequest.md)
- - [Asana.ProjectStatusBase](docs/ProjectStatusBase.md)
- - [Asana.ProjectStatusCompact](docs/ProjectStatusCompact.md)
- - [Asana.ProjectStatusRequest](docs/ProjectStatusRequest.md)
- - [Asana.ProjectStatusResponse](docs/ProjectStatusResponse.md)
- - [Asana.ProjectStatusResponseArray](docs/ProjectStatusResponseArray.md)
- - [Asana.ProjectStatusResponseData](docs/ProjectStatusResponseData.md)
- - [Asana.ProjectTemplateBase](docs/ProjectTemplateBase.md)
- - [Asana.ProjectTemplateBaseRequestedDates](docs/ProjectTemplateBaseRequestedDates.md)
- - [Asana.ProjectTemplateBaseRequestedRoles](docs/ProjectTemplateBaseRequestedRoles.md)
- - [Asana.ProjectTemplateBaseTeam](docs/ProjectTemplateBaseTeam.md)
- - [Asana.ProjectTemplateCompact](docs/ProjectTemplateCompact.md)
- - [Asana.ProjectTemplateGidInstantiateProjectBody](docs/ProjectTemplateGidInstantiateProjectBody.md)
- - [Asana.ProjectTemplateInstantiateProjectRequest](docs/ProjectTemplateInstantiateProjectRequest.md)
- - [Asana.ProjectTemplateInstantiateProjectRequestRequestedDates](docs/ProjectTemplateInstantiateProjectRequestRequestedDates.md)
- - [Asana.ProjectTemplateInstantiateProjectRequestRequestedRoles](docs/ProjectTemplateInstantiateProjectRequestRequestedRoles.md)
- - [Asana.ProjectTemplateResponse](docs/ProjectTemplateResponse.md)
- - [Asana.ProjectTemplateResponseArray](docs/ProjectTemplateResponseArray.md)
- - [Asana.ProjectTemplateResponseData](docs/ProjectTemplateResponseData.md)
- - [Asana.ProjectUpdateRequest](docs/ProjectUpdateRequest.md)
- - [Asana.ProjectsBody](docs/ProjectsBody.md)
- - [Asana.ProjectsProjectGidBody](docs/ProjectsProjectGidBody.md)
- - [Asana.RemoveCustomFieldSettingRequest](docs/RemoveCustomFieldSettingRequest.md)
- - [Asana.RemoveFollowersRequest](docs/RemoveFollowersRequest.md)
- - [Asana.RemoveMembersRequest](docs/RemoveMembersRequest.md)
- - [Asana.RequestedRoleRequest](docs/RequestedRoleRequest.md)
- - [Asana.RuleTriggerGidRunBody](docs/RuleTriggerGidRunBody.md)
- - [Asana.RuleTriggerRequest](docs/RuleTriggerRequest.md)
- - [Asana.RuleTriggerResponse](docs/RuleTriggerResponse.md)
- - [Asana.RuleTriggerResponseData](docs/RuleTriggerResponseData.md)
- - [Asana.SectionBase](docs/SectionBase.md)
- - [Asana.SectionCompact](docs/SectionCompact.md)
- - [Asana.SectionGidAddTaskBody](docs/SectionGidAddTaskBody.md)
- - [Asana.SectionRequest](docs/SectionRequest.md)
- - [Asana.SectionResponse](docs/SectionResponse.md)
- - [Asana.SectionResponseArray](docs/SectionResponseArray.md)
- - [Asana.SectionResponseData](docs/SectionResponseData.md)
- - [Asana.SectionTaskInsertRequest](docs/SectionTaskInsertRequest.md)
- - [Asana.SectionsInsertBody](docs/SectionsInsertBody.md)
- - [Asana.SectionsSectionGidBody](docs/SectionsSectionGidBody.md)
- - [Asana.StatusUpdateBase](docs/StatusUpdateBase.md)
- - [Asana.StatusUpdateCompact](docs/StatusUpdateCompact.md)
- - [Asana.StatusUpdateRequest](docs/StatusUpdateRequest.md)
- - [Asana.StatusUpdateResponse](docs/StatusUpdateResponse.md)
- - [Asana.StatusUpdateResponseArray](docs/StatusUpdateResponseArray.md)
- - [Asana.StatusUpdateResponseData](docs/StatusUpdateResponseData.md)
- - [Asana.StatusUpdateResponseParent](docs/StatusUpdateResponseParent.md)
- - [Asana.StatusUpdatesBody](docs/StatusUpdatesBody.md)
- - [Asana.StoriesStoryGidBody](docs/StoriesStoryGidBody.md)
- - [Asana.StoryBase](docs/StoryBase.md)
- - [Asana.StoryCompact](docs/StoryCompact.md)
- - [Asana.StoryRequest](docs/StoryRequest.md)
- - [Asana.StoryResponse](docs/StoryResponse.md)
- - [Asana.StoryResponseArray](docs/StoryResponseArray.md)
- - [Asana.StoryResponseAssignee](docs/StoryResponseAssignee.md)
- - [Asana.StoryResponseCustomField](docs/StoryResponseCustomField.md)
- - [Asana.StoryResponseData](docs/StoryResponseData.md)
- - [Asana.StoryResponseDates](docs/StoryResponseDates.md)
- - [Asana.StoryResponseOldDates](docs/StoryResponseOldDates.md)
- - [Asana.StoryResponseOldEnumValue](docs/StoryResponseOldEnumValue.md)
- - [Asana.StoryResponseOldSection](docs/StoryResponseOldSection.md)
- - [Asana.StoryResponsePreviews](docs/StoryResponsePreviews.md)
- - [Asana.StoryResponseProject](docs/StoryResponseProject.md)
- - [Asana.StoryResponseStory](docs/StoryResponseStory.md)
- - [Asana.StoryResponseTag](docs/StoryResponseTag.md)
- - [Asana.StoryResponseTarget](docs/StoryResponseTarget.md)
- - [Asana.StoryResponseTask](docs/StoryResponseTask.md)
- - [Asana.TagBase](docs/TagBase.md)
- - [Asana.TagCompact](docs/TagCompact.md)
- - [Asana.TagRequest](docs/TagRequest.md)
- - [Asana.TagResponse](docs/TagResponse.md)
- - [Asana.TagResponseArray](docs/TagResponseArray.md)
- - [Asana.TagResponseData](docs/TagResponseData.md)
- - [Asana.TagsBody](docs/TagsBody.md)
- - [Asana.TaskAddFollowersRequest](docs/TaskAddFollowersRequest.md)
- - [Asana.TaskAddProjectRequest](docs/TaskAddProjectRequest.md)
- - [Asana.TaskAddTagRequest](docs/TaskAddTagRequest.md)
- - [Asana.TaskBase](docs/TaskBase.md)
- - [Asana.TaskBaseCompletedBy](docs/TaskBaseCompletedBy.md)
- - [Asana.TaskBaseDependencies](docs/TaskBaseDependencies.md)
- - [Asana.TaskBaseExternal](docs/TaskBaseExternal.md)
- - [Asana.TaskBaseMemberships](docs/TaskBaseMemberships.md)
- - [Asana.TaskBaseSection](docs/TaskBaseSection.md)
- - [Asana.TaskCompact](docs/TaskCompact.md)
- - [Asana.TaskCountResponse](docs/TaskCountResponse.md)
- - [Asana.TaskCountResponseData](docs/TaskCountResponseData.md)
- - [Asana.TaskDuplicateRequest](docs/TaskDuplicateRequest.md)
- - [Asana.TaskGidAddDependenciesBody](docs/TaskGidAddDependenciesBody.md)
- - [Asana.TaskGidAddDependentsBody](docs/TaskGidAddDependentsBody.md)
- - [Asana.TaskGidAddFollowersBody](docs/TaskGidAddFollowersBody.md)
- - [Asana.TaskGidAddProjectBody](docs/TaskGidAddProjectBody.md)
- - [Asana.TaskGidAddTagBody](docs/TaskGidAddTagBody.md)
- - [Asana.TaskGidDuplicateBody](docs/TaskGidDuplicateBody.md)
- - [Asana.TaskGidRemoveDependenciesBody](docs/TaskGidRemoveDependenciesBody.md)
- - [Asana.TaskGidRemoveDependentsBody](docs/TaskGidRemoveDependentsBody.md)
- - [Asana.TaskGidRemoveFollowersBody](docs/TaskGidRemoveFollowersBody.md)
- - [Asana.TaskGidRemoveProjectBody](docs/TaskGidRemoveProjectBody.md)
- - [Asana.TaskGidRemoveTagBody](docs/TaskGidRemoveTagBody.md)
- - [Asana.TaskGidSetParentBody](docs/TaskGidSetParentBody.md)
- - [Asana.TaskGidStoriesBody](docs/TaskGidStoriesBody.md)
- - [Asana.TaskGidSubtasksBody](docs/TaskGidSubtasksBody.md)
- - [Asana.TaskGidTimeTrackingEntriesBody](docs/TaskGidTimeTrackingEntriesBody.md)
- - [Asana.TaskRemoveFollowersRequest](docs/TaskRemoveFollowersRequest.md)
- - [Asana.TaskRemoveProjectRequest](docs/TaskRemoveProjectRequest.md)
- - [Asana.TaskRemoveTagRequest](docs/TaskRemoveTagRequest.md)
- - [Asana.TaskRequest](docs/TaskRequest.md)
- - [Asana.TaskResponse](docs/TaskResponse.md)
- - [Asana.TaskResponseArray](docs/TaskResponseArray.md)
- - [Asana.TaskResponseAssigneeSection](docs/TaskResponseAssigneeSection.md)
- - [Asana.TaskResponseCustomFields](docs/TaskResponseCustomFields.md)
- - [Asana.TaskResponseData](docs/TaskResponseData.md)
- - [Asana.TaskResponseParent](docs/TaskResponseParent.md)
- - [Asana.TaskResponseTags](docs/TaskResponseTags.md)
- - [Asana.TaskResponseWorkspace](docs/TaskResponseWorkspace.md)
- - [Asana.TaskSetParentRequest](docs/TaskSetParentRequest.md)
- - [Asana.TasksBody](docs/TasksBody.md)
- - [Asana.TasksTaskGidBody](docs/TasksTaskGidBody.md)
- - [Asana.TeamAddUserRequest](docs/TeamAddUserRequest.md)
- - [Asana.TeamBase](docs/TeamBase.md)
- - [Asana.TeamCompact](docs/TeamCompact.md)
- - [Asana.TeamGidAddUserBody](docs/TeamGidAddUserBody.md)
- - [Asana.TeamGidProjectsBody](docs/TeamGidProjectsBody.md)
- - [Asana.TeamGidRemoveUserBody](docs/TeamGidRemoveUserBody.md)
- - [Asana.TeamMembershipBase](docs/TeamMembershipBase.md)
- - [Asana.TeamMembershipCompact](docs/TeamMembershipCompact.md)
- - [Asana.TeamMembershipResponse](docs/TeamMembershipResponse.md)
- - [Asana.TeamMembershipResponseArray](docs/TeamMembershipResponseArray.md)
- - [Asana.TeamMembershipResponseData](docs/TeamMembershipResponseData.md)
- - [Asana.TeamRemoveUserRequest](docs/TeamRemoveUserRequest.md)
- - [Asana.TeamRequest](docs/TeamRequest.md)
- - [Asana.TeamResponse](docs/TeamResponse.md)
- - [Asana.TeamResponseArray](docs/TeamResponseArray.md)
- - [Asana.TeamResponseData](docs/TeamResponseData.md)
- - [Asana.TeamResponseOrganization](docs/TeamResponseOrganization.md)
- - [Asana.TeamsBody](docs/TeamsBody.md)
- - [Asana.TeamsTeamGidBody](docs/TeamsTeamGidBody.md)
- - [Asana.TemplateRole](docs/TemplateRole.md)
- - [Asana.TimePeriodBase](docs/TimePeriodBase.md)
- - [Asana.TimePeriodCompact](docs/TimePeriodCompact.md)
- - [Asana.TimePeriodResponse](docs/TimePeriodResponse.md)
- - [Asana.TimePeriodResponseArray](docs/TimePeriodResponseArray.md)
- - [Asana.TimePeriodResponseData](docs/TimePeriodResponseData.md)
- - [Asana.TimeTrackingEntriesTimeTrackingEntryGidBody](docs/TimeTrackingEntriesTimeTrackingEntryGidBody.md)
- - [Asana.TimeTrackingEntryBase](docs/TimeTrackingEntryBase.md)
- - [Asana.TimeTrackingEntryBaseData](docs/TimeTrackingEntryBaseData.md)
- - [Asana.TimeTrackingEntryCompact](docs/TimeTrackingEntryCompact.md)
- - [Asana.TimeTrackingEntryCompactArray](docs/TimeTrackingEntryCompactArray.md)
- - [Asana.UpdateTimeTrackingEntryRequest](docs/UpdateTimeTrackingEntryRequest.md)
- - [Asana.UserBase](docs/UserBase.md)
- - [Asana.UserBaseResponse](docs/UserBaseResponse.md)
- - [Asana.UserBaseResponseData](docs/UserBaseResponseData.md)
- - [Asana.UserBaseResponsePhoto](docs/UserBaseResponsePhoto.md)
- - [Asana.UserCompact](docs/UserCompact.md)
- - [Asana.UserRequest](docs/UserRequest.md)
- - [Asana.UserResponse](docs/UserResponse.md)
- - [Asana.UserResponseArray](docs/UserResponseArray.md)
- - [Asana.UserResponseData](docs/UserResponseData.md)
- - [Asana.UserTaskListBase](docs/UserTaskListBase.md)
- - [Asana.UserTaskListCompact](docs/UserTaskListCompact.md)
- - [Asana.UserTaskListRequest](docs/UserTaskListRequest.md)
- - [Asana.UserTaskListResponse](docs/UserTaskListResponse.md)
- - [Asana.UserTaskListResponseData](docs/UserTaskListResponseData.md)
- - [Asana.WebhookCompact](docs/WebhookCompact.md)
- - [Asana.WebhookCompactResource](docs/WebhookCompactResource.md)
- - [Asana.WebhookFilter](docs/WebhookFilter.md)
- - [Asana.WebhookRequest](docs/WebhookRequest.md)
- - [Asana.WebhookRequestFilters](docs/WebhookRequestFilters.md)
- - [Asana.WebhookResponse](docs/WebhookResponse.md)
- - [Asana.WebhookResponseArray](docs/WebhookResponseArray.md)
- - [Asana.WebhookResponseData](docs/WebhookResponseData.md)
- - [Asana.WebhookUpdateRequest](docs/WebhookUpdateRequest.md)
- - [Asana.WebhooksBody](docs/WebhooksBody.md)
- - [Asana.WebhooksWebhookGidBody](docs/WebhooksWebhookGidBody.md)
- - [Asana.WorkspaceAddUserRequest](docs/WorkspaceAddUserRequest.md)
- - [Asana.WorkspaceBase](docs/WorkspaceBase.md)
- - [Asana.WorkspaceCompact](docs/WorkspaceCompact.md)
- - [Asana.WorkspaceGidAddUserBody](docs/WorkspaceGidAddUserBody.md)
- - [Asana.WorkspaceGidProjectsBody](docs/WorkspaceGidProjectsBody.md)
- - [Asana.WorkspaceGidRemoveUserBody](docs/WorkspaceGidRemoveUserBody.md)
- - [Asana.WorkspaceGidTagsBody](docs/WorkspaceGidTagsBody.md)
- - [Asana.WorkspaceMembershipBase](docs/WorkspaceMembershipBase.md)
- - [Asana.WorkspaceMembershipCompact](docs/WorkspaceMembershipCompact.md)
- - [Asana.WorkspaceMembershipRequest](docs/WorkspaceMembershipRequest.md)
- - [Asana.WorkspaceMembershipResponse](docs/WorkspaceMembershipResponse.md)
- - [Asana.WorkspaceMembershipResponseArray](docs/WorkspaceMembershipResponseArray.md)
- - [Asana.WorkspaceMembershipResponseData](docs/WorkspaceMembershipResponseData.md)
- - [Asana.WorkspaceMembershipResponseUserTaskList](docs/WorkspaceMembershipResponseUserTaskList.md)
- - [Asana.WorkspaceMembershipResponseVacationDates](docs/WorkspaceMembershipResponseVacationDates.md)
- - [Asana.WorkspaceRemoveUserRequest](docs/WorkspaceRemoveUserRequest.md)
- - [Asana.WorkspaceRequest](docs/WorkspaceRequest.md)
- - [Asana.WorkspaceResponse](docs/WorkspaceResponse.md)
- - [Asana.WorkspaceResponseArray](docs/WorkspaceResponseArray.md)
- - [Asana.WorkspaceResponseData](docs/WorkspaceResponseData.md)
- - [Asana.WorkspacesWorkspaceGidBody](docs/WorkspacesWorkspaceGidBody.md)
+Our `opt_fields` feature allows you to request for properties of a resource that you want to be returned in the response (more information [here](https://developers.asana.com/docs/inputoutput-options)).
 
-## Documentation for Authorization
+**NOTE**: by default, endpoints that return an array of results (EX: [Get multiple tasks](https://developers.asana.com/reference/gettasks), [Get multiple projects](https://developers.asana.com/reference/getprojects)), will return a compact version of those results (EX: [Get multiple tasks](https://developers.asana.com/reference/gettasks) returns an array of [TaskCompact](https://developers.asana.com/reference/tasks#taskcompact) objects).
 
+### EX: [Get multiple tasks](https://developers.asana.com/reference/gettasks) / [**getTasks**](docs/TasksApi.md#getTasks) without `opt_fields`
 
-### oauth2
+#### Example Request
+```javascript
+const Asana = require('asana');
 
-- **Type**: OAuth
-- **Flow**: accessCode
-- **Authorization URL**: https://app.asana.com/-/oauth_authorize
-- **Scopes**: 
-  - default: Provides access to all endpoints documented in our API reference. If no scopes are requested, this scope is assumed by default.
-  - openid: Provides access to OpenID Connect ID tokens and the OpenID Connect user info endpoint.
-  - email: Provides access to the user’s email through the OpenID Connect user info endpoint.
-  - profile: Provides access to the user’s name and profile photo through the OpenID Connect user info endpoint.
+let client = Asana.ApiClient.instance;
+let token = client.authentications['token'];
+token.accessToken = '<YOUR_ACCESS_TOKEN>';
+
+let tasksApiInstance = new Asana.TasksApi();
+let opts = {
+    "limit": 2,
+    "project": "<YOUR_PROJECT_GID>"
+};
+
+// GET - get multiple tasks
+tasksApiInstance.getTasks(opts).then((result) => {
+    console.log(JSON.stringify(result.data, null, 2));
+}, (error) => {
+    console.error(error.response.body);
+});
+```
+
+#### Example Response
+```javascript
+[
+  {
+    "gid": "123",
+    "name": "Task 1",
+    "resource_type": "task",
+    "resource_subtype": "default_task"
+  },
+  {
+    "gid": "456",
+    "name": "Task 2",
+    "resource_type": "task",
+    "resource_subtype": "default_task"
+  }
+]
+```
+
+### EX: [Get multiple tasks](https://developers.asana.com/reference/gettasks) / [**getTasks**](docs/TasksApi.md#getTasks) with `opt_fields`
+
+#### Example Request
+```javascript
+const Asana = require('asana');
+
+let client = Asana.ApiClient.instance;
+let token = client.authentications['token'];
+token.accessToken = '<YOUR_ACCESS_TOKEN>';
+
+let tasksApiInstance = new Asana.TasksApi();
+let opts = { 
+    "limit": 1,
+    "project": "<YOUR_PROJECT_GID>",
+    "opt_fields": "actual_time_minutes,approval_status,assignee,assignee.name,assignee_section,assignee_section.name,assignee_status,completed,completed_at,completed_by,completed_by.name,created_at,created_by,custom_fields,custom_fields.asana_created_field,custom_fields.created_by,custom_fields.created_by.name,custom_fields.currency_code,custom_fields.custom_label,custom_fields.custom_label_position,custom_fields.date_value,custom_fields.date_value.date,custom_fields.date_value.date_time,custom_fields.description,custom_fields.display_value,custom_fields.enabled,custom_fields.enum_options,custom_fields.enum_options.color,custom_fields.enum_options.enabled,custom_fields.enum_options.name,custom_fields.enum_value,custom_fields.enum_value.color,custom_fields.enum_value.enabled,custom_fields.enum_value.name,custom_fields.format,custom_fields.has_notifications_enabled,custom_fields.is_formula_field,custom_fields.is_global_to_workspace,custom_fields.is_value_read_only,custom_fields.multi_enum_values,custom_fields.multi_enum_values.color,custom_fields.multi_enum_values.enabled,custom_fields.multi_enum_values.name,custom_fields.name,custom_fields.number_value,custom_fields.people_value,custom_fields.people_value.name,custom_fields.precision,custom_fields.resource_subtype,custom_fields.text_value,custom_fields.type,dependencies,dependents,due_at,due_on,external,external.data,followers,followers.name,hearted,hearts,hearts.user,hearts.user.name,html_notes,is_rendered_as_separator,liked,likes,likes.user,likes.user.name,memberships,memberships.project,memberships.project.name,memberships.section,memberships.section.name,modified_at,name,notes,num_hearts,num_likes,num_subtasks,offset,parent,parent.created_by,parent.name,parent.resource_subtype,path,permalink_url,projects,projects.name,resource_subtype,start_at,start_on,tags,tags.name,uri,workspace,workspace.name"
+};
+
+// GET - get multiple tasks
+tasksApiInstance.getTasks(opts).then((result) => {
+    console.log(JSON.stringify(result.data, null, 2));
+}, (error) => {
+    console.error(error.response.body);
+});
+```
+
+#### Example Response
+```javascript
+[
+  {
+    "gid": "129839839",
+    "actual_time_minutes": null,
+    "assignee": {
+      "gid": "120938293",
+      "name": "user@example.com"
+    },
+    "assignee_status": "upcoming",
+    "assignee_section": {
+      "gid": "1094838938",
+      "name": "Recently assigned"
+    },
+    "completed": false,
+    "completed_at": null,
+    "completed_by": null,
+    "created_at": "2023-01-01T20:31:21.717Z",
+    "created_by": {
+      "gid": "1201784467042440",
+      "resource_type": "user"
+    },
+    "custom_fields": [
+      {
+        "gid": "191859815",
+        "enabled": true,
+        "name": "Estimated time",
+        "description": "Asana-created. Estimate time to complete a task.",
+        "number_value": null,
+        "precision": 0,
+        "format": "duration",
+        "currency_code": null,
+        "custom_label": null,
+        "created_by": null,
+        "custom_label_position": null,
+        "display_value": null,
+        "resource_subtype": "number",
+        "is_formula_field": false,
+        "is_value_read_only": false,
+        "type": "number"
+      }
+    ],
+    "dependencies": [],
+    "dependents": [],
+    "due_at": "2025-01-20T02:06:58.000Z",
+    "due_on": "2025-01-19",
+    "followers": [
+      {
+        "gid": "120938293",
+        "name": "user@example.com"
+      }
+    ],
+    "hearted": true,
+    "hearts": [
+      {
+        "gid": "594849843",
+        "user": {
+          "gid": "120938293",
+          "name": "user@example.com"
+        }
+      }
+    ],
+    "html_notes": "<body>Example task notes</body>",
+    "is_rendered_as_separator": false,
+    "liked": true,
+    "likes": [
+      {
+        "gid": "58303939",
+        "user": {
+          "gid": "120938293",
+          "name": "user@example.com"
+        }
+      }
+    ],
+    "memberships": [
+      {
+        "project": {
+          "gid": "4567",
+          "name": "Example Project"
+        },
+        "section": {
+          "gid": "8900",
+          "name": "Untitled section"
+        }
+      }
+    ],
+    "modified_at": "2023-01-25T21:24:06.996Z",
+    "name": "Task 1",
+    "notes": "Example task notes",
+    "num_hearts": 1,
+    "num_likes": 1,
+    "num_subtasks": 0,
+    "parent": null,
+    "permalink_url": "https://app.asana.com/0/58303939/129839839",
+    "projects": [
+      {
+        "gid": "4567",
+        "name": "Example Project"
+      }
+    ],
+    "start_at": null,
+    "start_on": null,
+    "tags": [],
+    "resource_subtype": "default_task",
+    "workspace": {
+      "gid": "111111",
+      "name": "Example Workspace"
+    }
+  }
+]
+```
+
+## Pagination
+
+By default, endpoints that return an array of results (EX: [Get multiple tasks](https://developers.asana.com/reference/gettasks), [Get multiple projects](https://developers.asana.com/reference/getprojects)), will return a [Collection](src/utils/collection.js) object.
+This collection object contains a `nextPage` method that can be used to fetch for the next page of results. **NOTE**: in order to use `nextPage` you must have provided a `limit` query parameter argument in the initial request.
+
+### Use case
+
+You may run into the following error when making a request to an endpoint that has >1000 results:
+
+> "The result is too large. You should use pagination (may require specifying a workspace)!"
+
+In this scenario you will want to use pagaintion to gather your results. To do this, you will need to provide a `limit` query parameter argument in your request. This `limit` query parameter represents the number of results per page. NOTE: the `limit` can only be between 1 and 100.
+
+EX: Pagination gather all resources
+```javascript
+const Asana = require('asana');
+
+let client = Asana.ApiClient.instance;
+let token = client.authentications['token'];
+token.accessToken = '<YOUR_ACCESS_TOKEN>';
+
+let tasksApiInstance = new Asana.TasksApi();
+let opts = {
+    "project": "<YOUR_PROJECT_GID>"
+    "limit": 100
+};
+
+async function getAllTasks(opts) {
+    let tasks = await tasksApiInstance.getTasks(opts).then(async (firstPage) => {
+        let res = []
+        res = res.concat(firstPage.data);
+        // Get the next page
+        let nextPage = await firstPage.nextPage();
+        // Keep fetching for the next page until there are no more results
+        while(nextPage.data) {
+            res = res.concat(nextPage.data);
+            nextPage = await nextPage.nextPage();
+        }
+        return res;
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    // Do something with the tasks. EX: print out results
+    console.log('Tasks: ' + JSON.stringify(tasks, null, 2));
+}
+
+getAllTasks(opts);
+```
+
+EX: Pagination do something per page
+```javascript
+const Asana = require('asana');
+
+let client = Asana.ApiClient.instance;
+let token = client.authentications['token'];
+token.accessToken = '<YOUR_ACCESS_TOKEN>';
+
+let tasksApiInstance = new Asana.TasksApi();
+let opts = {
+    'project': "<YOUR_PROJECT_GID>",
+    'limit': 10
+};
+
+pageIndex = 1;
+
+tasksApiInstance.getTasks(opts).then(async (firstPage) => {
+    // Do something with the first <LIMIT> results. EX: print out results
+    console.log(`Page ${pageIndex}: ` + JSON.stringify(firstPage.data, null, 2));
+
+    // Get the next page
+    let nextPage = await firstPage.nextPage();
+    // Keep fetching for the next page until there are no more results
+    while(nextPage.data) {
+        // Do something with the next <LIMIT> results. EX: print out results
+        pageIndex += 1;
+        console.log(`Page ${pageIndex}: ` + JSON.stringify(nextPage.data, null, 2));
+        // Get the next page
+        nextPage = await nextPage.nextPage();
+    }
+}, (error) => {
+    console.error(error.response.body);
+});
+```
+
+### Turning off Pagination
+
+If you do not want a [Collection](src/utils/collection.js) object returned and want to implement your own pagination, you can disable pagination by setting `RETURN_COLLECTION` to `false`:
+
+EX: Turning off pagination
+```javascript
+const Asana = require('asana');
+
+let client = Asana.ApiClient.instance;
+let token = client.authentications['token'];
+token.accessToken = '<YOUR_ACCESS_TOKEN>';
+
+// Turn off pagination
+client.RETURN_COLLECTION = false;
+
+let tasksApiInstance = new Asana.TasksApi();
+let opts = {
+    'project': "<YOUR_PROJECT_GID>",
+    'limit': 1
+};
+tasksApiInstance.getTasks(opts).then((result) => {
+    console.log('API called successfully. Returned data: ' + JSON.stringify(result, null, 2));
+})
+```
+
+Sample response:
+```
+API called successfully. Returned data: {
+  "data": [
+    {
+      "gid": "<TASK_GID>",
+      "name": "Task 1",
+      "resource_type": "task",
+      "resource_subtype": "default_task"
+    },
+  ],
+  "next_page": {
+    "offset": "gjJl2xAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJib3JkZXJfcmHilbI6IltcIlZ5IixcIjlaWlhVMkkzUUdOoXcEIsMTIwNDYxNTc0NTypNDI3MF0iLCJpYXQiOjE2OTc4MjgsSkjjQsImV4cCI6MTY5NzgyOTM2NH0.5VuMfKvqexoEsKfoPFtayWBNWiKvfR7_hN6MJaaIkx8",
+    "path": "/tasks?project=123456&limit=1&offset=gjJl2xAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJib3JkZXJfcmHilbI6IltcIlZ5IixcIjlaWlhVMkkzUUdOoXcEIsMTIwNDYxNTc0NTypNDI3MF0iLCJpYXQiOjE2OTc4MjgsSkjjQsImV4cCI6MTY5NzgyOTM2NH0.5VuMfKvqexoEsKfoPFtayWBNWiKvfR7_hN6MJaaIkx8",
+    "uri": "https://app.asana.com/api/1.0/tasks?project=123456&limit=1&offset=gjJl2xAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJib3JkZXJfcmHilbI6IltcIlZ5IixcIjlaWlhVMkkzUUdOoXcEIsMTIwNDYxNTc0NTypNDI3MF0iLCJpYXQiOjE2OTc4MjgsSkjjQsImV4cCI6MTY5NzgyOTM2NH0.5VuMfKvqexoEsKfoPFtayWBNWiKvfR7_hN6MJaaIkx8"
+  }
+}
+```
 
 ## Getting events
 
@@ -843,265 +709,303 @@ request to [getEvents](docs/EventsApi.md#getEvents).
 
 ```javascript
 const Asana = require('asana');
-const defaultClient = Asana.ApiClient.instance;
 
-// Configure OAuth2 access token for authorization: oauth2
-const oauth2 = defaultClient.authentications['oauth2'];
-oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
+let client = Asana.ApiClient.instance;
+let token = client.authentications['token'];
+token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let eventsApiInstance = new Asana.EventsApi();
-let resource = "12345"; // String | A resource ID to subscribe to. The resource can be a task or project.
+let resource = "<YOUR_TASK_OR_PROJECT_GID>"; // String | A resource ID to subscribe to. The resource can be a task or project.
 let opts = {
-    sync: ''
+    "sync": ""
 };
+const timeouts = 5000
 
-// Initial request to get the sync token
-eventsApiInstance.getEvents(resource, opts, (error, data, response) => {
-    // Set the sync token
-    opts['sync'] = JSON.parse(response.text)['sync']
-    // Follow up request to get events
-    eventsApiInstance.getEvents(resource, opts, (error, data, response) => {
-        if (error) {
-            console.error(error);
-        } else {
-            console.log('API called successfully. Returned data: ' + JSON.stringify(data, null, 2));
-        }
+const setSyncToken = async () => {
+    await eventsApiInstance.getEvents(resource, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        let syncToken = error.response.body.sync;
+        opts['sync'] = syncToken;
+        console.log(syncToken);
     });
-});
+}
+
+const getEvents = async () => {
+    console.log("Setting Sync Token");
+    await setSyncToken();
+    // Fetch for new events every 5 seconds -> NOTE: the sync token has expired or reached 100 events you will need to implement logic to get the next set of events
+    console.log(`Fetching events every ${timeouts/1000} second(s) since sync ${opts['sync']}:`);
+    while(true) {
+        await eventsApiInstance.getEvents(resource, opts).then((result) => {
+            console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+        }, (error) => {
+            if (error.status === 412) {
+                let syncToken = error.response.body.sync;
+                opts['sync'] = syncToken;
+                console.log(syncToken);
+            } else{
+                console.error(error.response.text);
+            }
+        });
+        await new Promise(resolve => setTimeout(resolve, timeouts));
+    }
+}
+
+getEvents();
 ```
 
 ## Accessing repsonse data
 
-By default, the client library returns a class object of the resource. You can use dot notation to access the response data.
-
-TIP: look at the "Return type" section of the documented endpoint to understand which properties are accessible. (EX: [get_task](docs/TasksApi.md#get_task))
-
 ```javascript
 .
 .
 .
-tasksApiInstance.getTask(task_gid, opts, (error, task, response) => {
-    if (error) {
-        console.error(error);
-    } else {
-        let taskName = task.data.name
-        let taskNotes = task.data.notes
-    }
+tasksApiInstance.getTask(task_gid, opts).then((task) => {
+    let taskName = task.data.name;
+    let taskNotes = task.data.notes;
+    console.log(`taskName: ${taskName}`);
+    console.log(`taskNotes: ${taskNotes}`);
+}, (error) => {
+    console.error(error.response.body);
 });
 ```
 
 ## Accessing response status code and headers
+Use the `<METHOD_NAME>WithHttpInfo` (EX: `getTaskWithHttpInfo`) method to make a request that returns a response with headers.
 
 ```javascript
 const Asana = require('asana');
-const defaultClient = Asana.ApiClient.instance;
 
-// Configure OAuth2 access token for authorization: oauth2
-const oauth2 = defaultClient.authentications['oauth2'];
-oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
+let client = Asana.ApiClient.instance;
+let token = client.authentications['token'];
+token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let usersApiInstance = new Asana.UsersApi()
-let user_gid = "me"; // String | A string identifying a user. This can either be the string \"me\", an email, or the gid of a user.
+let tasksApiInstance = new Asana.TasksApi();
+let task_gid = "<YOUR_TASK_GID>";
 let opts = {};
 
-usersApiInstance.getUser(user_gid, opts, (error, data, response) => {
-    if (error) {
-        console.error(error);
-    } else {
-        // Response Status
-        console.log("Response Status:" + response.status)
-        // Response Headers
-        console.log("Response Headers": + JSON.stringify(response.headers))
-    }
+tasksApiInstance.getTaskWithHttpInfo(task_gid, opts).then((response_and_data) => {
+    let data = response_and_data.data;
+    let response = response_and_data.response;
+    let task = data.data;
+    let headers = response.headers;
+    console.log(task);
+    console.log(headers);
+}, (error) => {
+    console.error(error.response.body);
 });
 ```
 
-## Adding deprecation flag to your "asana-enable" header
+## Adding deprecation flag: "asana-enable" or "asana-disable" header
 
+EX: Asana-Enable header
 ```javascript
 const Asana = require('asana');
-const defaultClient = Asana.ApiClient.instance;
 
-// Configure OAuth2 access token for authorization: oauth2
-const oauth2 = defaultClient.authentications['oauth2'];
-oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
+let client = Asana.ApiClient.instance;
+let token = client.authentications['token'];
+token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 // Add asana-enable header for the client
-defaultClient.defaultHeaders['asana-enable'] = 'string_ids';
+client.defaultHeaders['asana-enable'] = 'new_goal_memberships';
 ```
 
-## Documentation for Using the `callApi` method
+EX: Asana-Disable header
+```javascript
+const Asana = require('asana');
 
-Use this to make http calls when the endpoint does not exist in the current library version or has bugs
+let client = Asana.ApiClient.instance;
+let token = client.authentications['token'];
+token.accessToken = '<YOUR_ACCESS_TOKEN>';
+
+// Add asana-disable header for the client
+client.defaultHeaders['asana-disable'] = 'new_goal_memberships';
+```
+
+## Using the `callApi` method
+
+Use the `callApi` method to make http calls when the endpoint does not exist in the current library version or has bugs
 
 ### Example: GET, POST, PUT, DELETE on tasks
 
 #### GET - get a task
 ```javascript
 const Asana = require('asana');
-const defaultClient = Asana.ApiClient.instance;
 
-// Configure OAuth2 access token for authorization: oauth2
-const oauth2 = defaultClient.authentications['oauth2'];
-oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
+let client = Asana.ApiClient.instance;
+let token = client.authentications['token'];
+token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 // GET - get a task
-defaultClient.callApi(
-    "/tasks/{task_gid}",
-    "GET",
-    (pathParams = { task_gid: "<YOUR_TASK_GID>" }),
-    (queryParams = {}),
-    (headerParams = {}),
-    (formParams = {}),
-    (bodyParam = null),
-    (authNames = ["oauth2"]),
-    (contentTypes = []),
-    (accepts = ["application/json; charset=UTF-8"]),
-    (returnType = "Blob"), // Can be one of: "Blob", "String"
-    (callback = (error, data, response) => {
-        if (error) {
-            console.error(error);
-        } else {
-            console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
-        }
-    })
-);
+client.callApi(
+    path='/tasks/{task_gid}',
+    httpMethod='GET',
+    pathParams={"task_gid": "<YOUR_TASK_GID>"},
+    queryParams={},
+    headerParams={},
+    formParams={},
+    bodyParam=null,
+    authNames=['token'],
+    contentTypes=[],
+    accepts=['application/json; charset=UTF-8'],
+    returnType='Blob'
+).then((response_and_data) => {
+    let result = response_and_data.data;
+    let task = result.data;
+    console.log(task.name);
+}, (error) => {
+    console.error(error.response.body);
+});
 ```
 
 #### GET - get multiple tasks -> with opt_fields
 ```javascript
-defaultClient.callApi(
-    "/tasks",
-    "GET",
-    (pathParams = {}),
-    (queryParams = { opt_fields: "name,notes,projects" }),
-    (headerParams = {}),
-    (formParams = {}),
-    (bodyParam = null),
-    (authNames = ["oauth2"]),
-    (contentTypes = []),
-    (accepts = ["application/json; charset=UTF-8"]),
-    (returnType = "Blob"), // Can be one of: "Blob", "String"
-    (callback = (error, data, response) => {
-        if (error) {
-            console.error(error);
-        } else {
-            console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
-        }
-    })
-);
+const Asana = require('asana');
+
+let client = Asana.ApiClient.instance;
+let token = client.authentications['token'];
+token.accessToken = '<YOUR_ACCESS_TOKEN>';
+
+// GET - get multiple tasks -> with opt_fields
+client.callApi(
+    path='/tasks',
+    httpMethod='GET',
+    pathParams={},
+    queryParams={
+        "limit": 50,
+        "modified_since": '2012-02-22T02:06:58.158Z', // OR new Date("2012-02-22T02:06:58.158Z")
+        "project": '<YOUR_PROJECT_GID>',
+        "opt_fields": 'name,notes'
+    },
+    headerParams={},
+    formParams={},
+    bodyParam=null,
+    authNames=['token'],
+    contentTypes=[],
+    accepts=['application/json; charset=UTF-8'],
+    returnType='Blob'
+).then((response_and_data) => {
+    let result = response_and_data.data;
+    let tasks = result.data;
+    if (tasks.length > 0) {
+        console.log(`Task 1 Name: ${tasks[0].name}`);
+        console.log(`Task 1 Notes: ${tasks[0].notes}`);
+    }
+}, (error) => {
+    console.error(error.response.body);
+});
 ```
 
 #### POST - create a task
 ```javascript
 const Asana = require('asana');
-const defaultClient = Asana.ApiClient.instance;
 
-// Configure OAuth2 access token for authorization: oauth2
-const oauth2 = defaultClient.authentications['oauth2'];
-oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
+let client = Asana.ApiClient.instance;
+let token = client.authentications['token'];
+token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 // POST - create a task
-defaultClient.callApi(
-    "/tasks",
-    "POST",
-    (pathParams = {}),
-    (queryParams = {}),
-    (headerParams = {}),
-    (formParams = {}),
-    (bodyParam = {
+client.callApi(
+    path='/tasks',
+    httpMethod='POST',
+    pathParams={},
+    queryParams={},
+    headerParams={},
+    formParams={},
+    bodyParam={
         data: {
-            name: "New Task",
-            projects: ["<YOUR_PROJECT_GID>"],
-        },
-    }),
-    (authNames = ["oauth2"]),
-    (contentTypes = ["application/json; charset=UTF-8"]),
-    (accepts = ["application/json; charset=UTF-8"]),
-    (returnType = "Blob"), // Can be one of: "Blob", "String"
-    (callback = (error, data, response) => {
-        if (error) {
-            console.error(error);
-        } else {
-            console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
+            "name": "New Task",
+            "approval_status": "pending",
+            "assignee_status": "upcoming",
+            "completed": false,
+            "html_notes": "<body>Mittens <em>really</em> likes the stuff from Humboldt.</body>",
+            "is_rendered_as_separator": false,
+            "liked": true,
+            "assignee": "me",
+            "projects": ["<YOUR_PROJECT_GID>"],
         }
-    })
-);
+    },
+    authNames=['token'],
+    contentTypes=[],
+    accepts=['application/json; charset=UTF-8'],
+    returnType='Blob'
+).then((response_and_data) => {
+    let result = response_and_data.data;
+    let task = result.data;
+    console.log(task.name);
+}, (error) => {
+    console.error(error.response.body);
+});
 ```
 
 #### PUT - update a task
 ```javascript
 const Asana = require('asana');
-const defaultClient = Asana.ApiClient.instance;
 
-// Configure OAuth2 access token for authorization: oauth2
-const oauth2 = defaultClient.authentications['oauth2'];
-oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
+let client = Asana.ApiClient.instance;
+let token = client.authentications['token'];
+token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 // PUT - update a task
-defaultClient.callApi(
-    "/tasks/{task_gid}",
-    "PUT",
-    (pathParams = { task_gid: "<YOUR_TASK_GID>" }),
-    (queryParams = {}),
-    (headerParams = {}),
-    (formParams = {}),
-    (bodyParam = {
-        data: {
-            name: "Updated Task",
-        },
-    }),
-    (authNames = ["oauth2"]),
-    (contentTypes = ["application/json; charset=UTF-8"]),
-    (accepts = ["application/json; charset=UTF-8"]),
-    (returnType = "Blob"), // Can be one of: "Blob", "String"
-    (callback = (error, data, response) => {
-        if (error) {
-            console.error(error);
-        } else {
-            console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
+client.callApi(
+    path='/tasks/{task_gid}',
+    httpMethod='PUT',
+    pathParams={task_gid: "<YOUR_TASK_GID>"},
+    queryParams={},
+    headerParams={},
+    formParams={},
+    bodyParam={
+        "data": {
+            "name": "Updated Task",
+            "html_notes": "<body>Updated task notes</body>",
+            "due_at": "2025-01-20T02:06:58.147Z"
         }
-    })
-);
+    },
+    authNames=['token'],
+    contentTypes=[],
+    accepts=['application/json; charset=UTF-8'],
+    returnType='Blob'
+).then((response_and_data) => {
+    let result = response_and_data.data;
+    let task = result.data;
+    console.log(task.name);
+}, (error) => {
+    console.error(error.response.body);
+});
 ```
 
 #### DELETE - delete a task
 ```javascript
 const Asana = require('asana');
-const defaultClient = Asana.ApiClient.instance;
 
-// Configure OAuth2 access token for authorization: oauth2
-const oauth2 = defaultClient.authentications['oauth2'];
-oauth2.accessToken = "<YOUR_PERSONAL_ACCESS_TOKEN>";
+let client = Asana.ApiClient.instance;
+let token = client.authentications['token'];
+token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 // DELETE - delete a task
-defaultClient.callApi(
-    "/tasks/{task_gid}",
-    "DELETE",
-    (pathParams = { task_gid: "<YOUR_TASK_GID>" }),
-    (queryParams = {}),
-    (headerParams = {}),
-    (formParams = {}),
-    (bodyParam = null),
-    (authNames = ["oauth2"]),
-    (contentTypes = []),
-    (accepts = ["application/json; charset=UTF-8"]),
-    (returnType = "Blob"), // Can be one of: "Blob", "String"
-    (callback = (error, data, response) => {
-        if (error) {
-            console.error(error);
-        } else {
-            console.log("API called successfully. Returned data: " + JSON.stringify(JSON.parse(data), null, 2));
-        }
-    })
-);
+client.callApi(
+    path='/tasks/{task_gid}',
+    httpMethod='DELETE',
+    pathParams={"task_gid": "<YOUR_TASK_GID>"},
+    queryParams={},
+    headerParams={},
+    formParams={},
+    bodyParam=null,
+    authNames=['token'],
+    contentTypes=[],
+    accepts=['application/json; charset=UTF-8'],
+    returnType='Blob'
+).then((response_and_data) => {
+    let result = response_and_data.data;
+    let result = result.data;
+    console.log(result);
+}, (error) => {
+    console.error(error.response.body);
+});
 ```
 
-
 [release-image]: https://img.shields.io/github/release/asana/node-asana.svg
-
-[github-actions-image]: https://github.com/Asana/node-asana/workflows/Build/badge.svg
-[github-actions-url]: https://github.com/Asana/node-asana/actions
-
+[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.0.0
 [npm-image]: http://img.shields.io/npm/v/asana.svg?style=flat-square
 [npm-url]: https://www.npmjs.org/package/asana

@@ -1,0 +1,149 @@
+CustomFieldsApi:
+  createCustomField: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let customFieldsApiInstance = new Asana.CustomFieldsApi();
+    let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The custom field object to create.
+    let opts = { 
+        'opt_fields': "asana_created_field,created_by,created_by.name,currency_code,custom_label,custom_label_position,date_value,date_value.date,date_value.date_time,description,display_value,enabled,enum_options,enum_options.color,enum_options.enabled,enum_options.name,enum_value,enum_value.color,enum_value.enabled,enum_value.name,format,has_notifications_enabled,is_formula_field,is_global_to_workspace,is_value_read_only,multi_enum_values,multi_enum_values.color,multi_enum_values.enabled,multi_enum_values.name,name,number_value,people_value,people_value.name,precision,resource_subtype,text_value,type"
+    };
+    customFieldsApiInstance.createCustomField(body, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  createEnumOptionForCustomField: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let customFieldsApiInstance = new Asana.CustomFieldsApi();
+    let custom_field_gid = "12345"; // String | Globally unique identifier for the custom field.
+    let opts = { 
+        'body': {"data": {"param1": "value1", "param2": "value2",}}, 
+        'opt_fields': "color,enabled,name"
+    };
+    customFieldsApiInstance.createEnumOptionForCustomField(custom_field_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  deleteCustomField: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let customFieldsApiInstance = new Asana.CustomFieldsApi();
+    let custom_field_gid = "12345"; // String | Globally unique identifier for the custom field.
+
+    customFieldsApiInstance.deleteCustomField(custom_field_gid).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getCustomField: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let customFieldsApiInstance = new Asana.CustomFieldsApi();
+    let custom_field_gid = "12345"; // String | Globally unique identifier for the custom field.
+    let opts = { 
+        'opt_fields': "asana_created_field,created_by,created_by.name,currency_code,custom_label,custom_label_position,date_value,date_value.date,date_value.date_time,description,display_value,enabled,enum_options,enum_options.color,enum_options.enabled,enum_options.name,enum_value,enum_value.color,enum_value.enabled,enum_value.name,format,has_notifications_enabled,is_formula_field,is_global_to_workspace,is_value_read_only,multi_enum_values,multi_enum_values.color,multi_enum_values.enabled,multi_enum_values.name,name,number_value,people_value,people_value.name,precision,resource_subtype,text_value,type"
+    };
+    customFieldsApiInstance.getCustomField(custom_field_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getCustomFieldsForWorkspace: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let customFieldsApiInstance = new Asana.CustomFieldsApi();
+    let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
+    let opts = { 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'opt_fields': "asana_created_field,created_by,created_by.name,currency_code,custom_label,custom_label_position,date_value,date_value.date,date_value.date_time,description,display_value,enabled,enum_options,enum_options.color,enum_options.enabled,enum_options.name,enum_value,enum_value.color,enum_value.enabled,enum_value.name,format,has_notifications_enabled,is_formula_field,is_global_to_workspace,is_value_read_only,multi_enum_values,multi_enum_values.color,multi_enum_values.enabled,multi_enum_values.name,name,number_value,offset,path,people_value,people_value.name,precision,resource_subtype,text_value,type,uri"
+    };
+    customFieldsApiInstance.getCustomFieldsForWorkspace(workspace_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  insertEnumOptionForCustomField: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let customFieldsApiInstance = new Asana.CustomFieldsApi();
+    let custom_field_gid = "12345"; // String | Globally unique identifier for the custom field.
+    let opts = { 
+        'body': {"data": {"param1": "value1", "param2": "value2",}}, 
+        'opt_fields': "color,enabled,name"
+    };
+    customFieldsApiInstance.insertEnumOptionForCustomField(custom_field_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  updateCustomField: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let customFieldsApiInstance = new Asana.CustomFieldsApi();
+    let custom_field_gid = "12345"; // String | Globally unique identifier for the custom field.
+    let opts = { 
+        'body': {"data": {"param1": "value1", "param2": "value2",}}, 
+        'opt_fields': "asana_created_field,created_by,created_by.name,currency_code,custom_label,custom_label_position,date_value,date_value.date,date_value.date_time,description,display_value,enabled,enum_options,enum_options.color,enum_options.enabled,enum_options.name,enum_value,enum_value.color,enum_value.enabled,enum_value.name,format,has_notifications_enabled,is_formula_field,is_global_to_workspace,is_value_read_only,multi_enum_values,multi_enum_values.color,multi_enum_values.enabled,multi_enum_values.name,name,number_value,people_value,people_value.name,precision,resource_subtype,text_value,type"
+    };
+    customFieldsApiInstance.updateCustomField(custom_field_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  updateEnumOption: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let customFieldsApiInstance = new Asana.CustomFieldsApi();
+    let enum_option_gid = "124578"; // String | Globally unique identifier for the enum option.
+    let opts = { 
+        'body': {"data": {"param1": "value1", "param2": "value2",}}, 
+        'opt_fields': "color,enabled,name"
+    };
+    customFieldsApiInstance.updateEnumOption(enum_option_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    

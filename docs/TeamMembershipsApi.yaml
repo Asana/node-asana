@@ -1,0 +1,82 @@
+TeamMembershipsApi:
+  getTeamMembership: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let teamMembershipsApiInstance = new Asana.TeamMembershipsApi();
+    let team_membership_gid = "724362"; // String | 
+    let opts = { 
+        'opt_fields': "is_admin,is_guest,is_limited_access,team,team.name,user,user.name"
+    };
+    teamMembershipsApiInstance.getTeamMembership(team_membership_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getTeamMemberships: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let teamMembershipsApiInstance = new Asana.TeamMembershipsApi();
+    let opts = { 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'team': "159874", 
+        'user': "512241", 
+        'workspace': "31326", 
+        'opt_fields': "is_admin,is_guest,is_limited_access,offset,path,team,team.name,uri,user,user.name"
+    };
+    teamMembershipsApiInstance.getTeamMemberships(opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getTeamMembershipsForTeam: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let teamMembershipsApiInstance = new Asana.TeamMembershipsApi();
+    let team_gid = "159874"; // String | Globally unique identifier for the team.
+    let opts = { 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'opt_fields': "is_admin,is_guest,is_limited_access,offset,path,team,team.name,uri,user,user.name"
+    };
+    teamMembershipsApiInstance.getTeamMembershipsForTeam(team_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getTeamMembershipsForUser: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let teamMembershipsApiInstance = new Asana.TeamMembershipsApi();
+    let user_gid = "me"; // String | A string identifying a user. This can either be the string \"me\", an email, or the gid of a user.
+    let workspace = "31326"; // String | Globally unique identifier for the workspace.
+    let opts = { 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'opt_fields': "is_admin,is_guest,is_limited_access,offset,path,team,team.name,uri,user,user.name"
+    };
+    teamMembershipsApiInstance.getTeamMembershipsForUser(user_gid, workspace, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    

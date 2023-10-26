@@ -1,0 +1,19 @@
+JobsApi:
+  getJob: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let jobsApiInstance = new Asana.JobsApi();
+    let job_gid = "12345"; // String | Globally unique identifier for the job.
+    let opts = { 
+        'opt_fields': "new_project,new_project.name,new_project_template,new_project_template.name,new_task,new_task.created_by,new_task.name,new_task.resource_subtype,resource_subtype,status"
+    };
+    jobsApiInstance.getJob(job_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    

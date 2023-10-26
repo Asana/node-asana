@@ -1,0 +1,79 @@
+AttachmentsApi:
+  createAttachmentForObject: |-
+    const Asana = require('asana');
+    const fs = require("fs");
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let attachmentsApiInstance = new Asana.AttachmentsApi();
+    let opts = { 
+        'resource_subtype': "external", 
+        'file': fs.createReadStream("file_example"), 
+        'parent': "parent_example", 
+        'url': "url_example", 
+        'name': "name_example", 
+        'connect_to_app': true, 
+        'opt_fields': "connected_to_app,created_at,download_url,host,name,parent,parent.created_by,parent.name,parent.resource_subtype,permanent_url,resource_subtype,size,view_url"
+    };
+    attachmentsApiInstance.createAttachmentForObject(opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  deleteAttachment: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let attachmentsApiInstance = new Asana.AttachmentsApi();
+    let attachment_gid = "12345"; // String | Globally unique identifier for the attachment.
+
+    attachmentsApiInstance.deleteAttachment(attachment_gid).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getAttachment: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let attachmentsApiInstance = new Asana.AttachmentsApi();
+    let attachment_gid = "12345"; // String | Globally unique identifier for the attachment.
+    let opts = { 
+        'opt_fields': "connected_to_app,created_at,download_url,host,name,parent,parent.created_by,parent.name,parent.resource_subtype,permanent_url,resource_subtype,size,view_url"
+    };
+    attachmentsApiInstance.getAttachment(attachment_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getAttachmentsForObject: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let attachmentsApiInstance = new Asana.AttachmentsApi();
+    let parent = "159874"; // String | Globally unique identifier for object to fetch statuses from. Must be a GID for a `project`, `project_brief`, or `task`.
+    let opts = { 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'opt_fields': "connected_to_app,created_at,download_url,host,name,offset,parent,parent.created_by,parent.name,parent.resource_subtype,path,permanent_url,resource_subtype,size,uri,view_url"
+    };
+    attachmentsApiInstance.getAttachmentsForObject(parent, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    

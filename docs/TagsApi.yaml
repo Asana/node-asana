@@ -1,0 +1,150 @@
+TagsApi:
+  createTag: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let tagsApiInstance = new Asana.TagsApi();
+    let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The tag to create.
+    let opts = { 
+        'opt_fields': "color,created_at,followers,followers.name,name,notes,permalink_url,workspace,workspace.name"
+    };
+    tagsApiInstance.createTag(body, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  createTagForWorkspace: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let tagsApiInstance = new Asana.TagsApi();
+    let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The tag to create.
+    let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
+    let opts = { 
+        'opt_fields': "color,created_at,followers,followers.name,name,notes,permalink_url,workspace,workspace.name"
+    };
+    tagsApiInstance.createTagForWorkspace(body, workspace_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  deleteTag: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let tagsApiInstance = new Asana.TagsApi();
+    let tag_gid = "11235"; // String | Globally unique identifier for the tag.
+
+    tagsApiInstance.deleteTag(tag_gid).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getTag: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let tagsApiInstance = new Asana.TagsApi();
+    let tag_gid = "11235"; // String | Globally unique identifier for the tag.
+    let opts = { 
+        'opt_fields': "color,created_at,followers,followers.name,name,notes,permalink_url,workspace,workspace.name"
+    };
+    tagsApiInstance.getTag(tag_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getTags: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let tagsApiInstance = new Asana.TagsApi();
+    let opts = { 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'workspace': "1331", 
+        'opt_fields': "color,created_at,followers,followers.name,name,notes,offset,path,permalink_url,uri,workspace,workspace.name"
+    };
+    tagsApiInstance.getTags(opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getTagsForTask: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let tagsApiInstance = new Asana.TagsApi();
+    let task_gid = "321654"; // String | The task to operate on.
+    let opts = { 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'opt_fields': "color,created_at,followers,followers.name,name,notes,offset,path,permalink_url,uri,workspace,workspace.name"
+    };
+    tagsApiInstance.getTagsForTask(task_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getTagsForWorkspace: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let tagsApiInstance = new Asana.TagsApi();
+    let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
+    let opts = { 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'opt_fields': "color,created_at,followers,followers.name,name,notes,offset,path,permalink_url,uri,workspace,workspace.name"
+    };
+    tagsApiInstance.getTagsForWorkspace(workspace_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  updateTag: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let tagsApiInstance = new Asana.TagsApi();
+    let tag_gid = "11235"; // String | Globally unique identifier for the tag.
+    let opts = { 
+        'opt_fields': "color,created_at,followers,followers.name,name,notes,permalink_url,workspace,workspace.name"
+    };
+    tagsApiInstance.updateTag(tag_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    

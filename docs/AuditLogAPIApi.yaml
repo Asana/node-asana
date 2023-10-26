@@ -1,0 +1,26 @@
+AuditLogAPIApi:
+  getAuditLogEvents: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let auditLogApiApiInstance = new Asana.AuditLogAPIApi();
+    let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
+    let opts = { 
+        'start_at': "2013-10-20T19:20:30+01:00", 
+        'end_at': "2013-10-20T19:20:30+01:00", 
+        'event_type': "event_type_example", 
+        'actor_type': "actor_type_example", 
+        'actor_gid': "actor_gid_example", 
+        'resource_gid': "resource_gid_example", 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9"
+    };
+    auditLogApiApiInstance.getAuditLogEvents(workspace_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    

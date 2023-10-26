@@ -1,0 +1,95 @@
+GoalRelationshipsApi:
+  addSupportingRelationship: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let goalRelationshipsApiInstance = new Asana.GoalRelationshipsApi();
+    let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The supporting resource to be added to the goal
+    let goal_gid = "12345"; // String | Globally unique identifier for the goal.
+    let opts = { 
+        'opt_fields': "contribution_weight,resource_subtype,supported_goal,supported_goal.name,supported_goal.owner,supported_goal.owner.name,supporting_resource,supporting_resource.name"
+    };
+    goalRelationshipsApiInstance.addSupportingRelationship(body, goal_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getGoalRelationship: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let goalRelationshipsApiInstance = new Asana.GoalRelationshipsApi();
+    let goal_relationship_gid = "12345"; // String | Globally unique identifier for the goal relationship.
+    let opts = { 
+        'opt_fields': "contribution_weight,resource_subtype,supported_goal,supported_goal.name,supported_goal.owner,supported_goal.owner.name,supporting_resource,supporting_resource.name"
+    };
+    goalRelationshipsApiInstance.getGoalRelationship(goal_relationship_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getGoalRelationships: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let goalRelationshipsApiInstance = new Asana.GoalRelationshipsApi();
+    let supported_goal = "12345"; // String | Globally unique identifier for the supported goal in the goal relationship.
+    let opts = { 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'resource_subtype': "subgoal", 
+        'opt_fields': "contribution_weight,offset,path,resource_subtype,supported_goal,supported_goal.name,supported_goal.owner,supported_goal.owner.name,supporting_resource,supporting_resource.name,uri"
+    };
+    goalRelationshipsApiInstance.getGoalRelationships(supported_goal, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  removeSupportingRelationship: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let goalRelationshipsApiInstance = new Asana.GoalRelationshipsApi();
+    let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The supporting resource to be removed from the goal
+    let goal_gid = "12345"; // String | Globally unique identifier for the goal.
+
+    goalRelationshipsApiInstance.removeSupportingRelationship(body, goal_gid).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  updateGoalRelationship: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let goalRelationshipsApiInstance = new Asana.GoalRelationshipsApi();
+    let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The updated fields for the goal relationship.
+    let goal_relationship_gid = "12345"; // String | Globally unique identifier for the goal relationship.
+    let opts = { 
+        'opt_fields': "contribution_weight,resource_subtype,supported_goal,supported_goal.name,supported_goal.owner,supported_goal.owner.name,supporting_resource,supporting_resource.name"
+    };
+    goalRelationshipsApiInstance.updateGoalRelationship(body, goal_relationship_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    

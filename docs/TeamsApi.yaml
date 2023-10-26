@@ -1,0 +1,133 @@
+TeamsApi:
+  addUserForTeam: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let teamsApiInstance = new Asana.TeamsApi();
+    let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The user to add to the team.
+    let team_gid = "159874"; // String | Globally unique identifier for the team.
+    let opts = { 
+        'opt_fields': "is_admin,is_guest,is_limited_access,team,team.name,user,user.name"
+    };
+    teamsApiInstance.addUserForTeam(body, team_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  createTeam: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let teamsApiInstance = new Asana.TeamsApi();
+    let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The team to create.
+    let opts = { 
+        'opt_fields': "description,edit_team_name_or_description_access_level,edit_team_visibility_or_trash_team_access_level,guest_invite_management_access_level,html_description,join_request_management_access_level,member_invite_management_access_level,name,organization,organization.name,permalink_url,team_member_removal_access_level,visibility"
+    };
+    teamsApiInstance.createTeam(body, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getTeam: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let teamsApiInstance = new Asana.TeamsApi();
+    let team_gid = "159874"; // String | Globally unique identifier for the team.
+    let opts = { 
+        'opt_fields': "description,edit_team_name_or_description_access_level,edit_team_visibility_or_trash_team_access_level,guest_invite_management_access_level,html_description,join_request_management_access_level,member_invite_management_access_level,name,organization,organization.name,permalink_url,team_member_removal_access_level,visibility"
+    };
+    teamsApiInstance.getTeam(team_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getTeamsForUser: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let teamsApiInstance = new Asana.TeamsApi();
+    let user_gid = "me"; // String | A string identifying a user. This can either be the string \"me\", an email, or the gid of a user.
+    let organization = "1331"; // String | The workspace or organization to filter teams on.
+    let opts = { 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'opt_fields': "description,edit_team_name_or_description_access_level,edit_team_visibility_or_trash_team_access_level,guest_invite_management_access_level,html_description,join_request_management_access_level,member_invite_management_access_level,name,offset,organization,organization.name,path,permalink_url,team_member_removal_access_level,uri,visibility"
+    };
+    teamsApiInstance.getTeamsForUser(user_gid, organization, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getTeamsForWorkspace: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let teamsApiInstance = new Asana.TeamsApi();
+    let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
+    let opts = { 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'opt_fields': "description,edit_team_name_or_description_access_level,edit_team_visibility_or_trash_team_access_level,guest_invite_management_access_level,html_description,join_request_management_access_level,member_invite_management_access_level,name,offset,organization,organization.name,path,permalink_url,team_member_removal_access_level,uri,visibility"
+    };
+    teamsApiInstance.getTeamsForWorkspace(workspace_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  removeUserForTeam: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let teamsApiInstance = new Asana.TeamsApi();
+    let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The user to remove from the team.
+    let team_gid = "159874"; // String | Globally unique identifier for the team.
+
+    teamsApiInstance.removeUserForTeam(body, team_gid).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  updateTeam: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let teamsApiInstance = new Asana.TeamsApi();
+    let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The team to update.
+    let team_gid = "159874"; // String | Globally unique identifier for the team.
+    let opts = { 
+        'opt_fields': "description,edit_team_name_or_description_access_level,edit_team_visibility_or_trash_team_access_level,guest_invite_management_access_level,html_description,join_request_management_access_level,member_invite_management_access_level,name,organization,organization.name,permalink_url,team_member_removal_access_level,visibility"
+    };
+    teamsApiInstance.updateTeam(body, team_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
