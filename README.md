@@ -721,29 +721,34 @@ let opts = {
 };
 const timeouts = 5000
 
+// Used to fetch for initial sync token
 const setSyncToken = async () => {
     await eventsApiInstance.getEvents(resource, opts).then((result) => {
-        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+        console.log(JSON.stringify(result.data, null, 2));
     }, (error) => {
         let syncToken = error.response.body.sync;
         opts['sync'] = syncToken;
-        console.log(syncToken);
     });
 }
 
 const getEvents = async () => {
-    console.log("Setting Sync Token");
+    console.log("Setting sync token");
     await setSyncToken();
-    // Fetch for new events every 5 seconds -> NOTE: the sync token has expired or reached 100 events you will need to implement logic to get the next set of events
-    console.log(`Fetching events every ${timeouts/1000} second(s) since sync ${opts['sync']}:`);
+    // Fetch for new events every 5 seconds
+    console.log(`Fetching events every ${timeouts/1000} second(s)`);
     while(true) {
         await eventsApiInstance.getEvents(resource, opts).then((result) => {
-            console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+            // Print response
+            console.log(`Fetching events since sync: ${opts['sync']}`);
+            console.log(JSON.stringify(result.data, null, 2));
+
+            // Update the sync token with the new sync token provided in the response
+            opts['sync'] = result._response.sync;
         }, (error) => {
             if (error.status === 412) {
                 let syncToken = error.response.body.sync;
                 opts['sync'] = syncToken;
-                console.log(syncToken);
+                console.log(`412 error new sync token: ${syncToken}`);
             } else{
                 console.error(error.response.text);
             }
