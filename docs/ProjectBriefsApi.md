@@ -27,7 +27,7 @@ let token = client.authentications['token'];
 token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let projectBriefsApiInstance = new Asana.ProjectBriefsApi();
-let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The project brief to create.
+let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The project brief to create.
 let project_gid = "1331"; // String | Globally unique identifier for the project.
 let opts = { 
     'opt_fields': "html_text,permalink_url,project,project.name,text,title"
@@ -164,7 +164,7 @@ let token = client.authentications['token'];
 token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let projectBriefsApiInstance = new Asana.ProjectBriefsApi();
-let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The updated fields for the project brief.
+let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The updated fields for the project brief.
 let project_brief_gid = "12345"; // String | Globally unique identifier for the project brief.
 let opts = { 
     'opt_fields': "html_text,permalink_url,project,project.name,text,title"

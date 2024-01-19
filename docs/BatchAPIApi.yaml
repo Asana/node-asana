@@ -7,7 +7,7 @@ BatchAPIApi:
     token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
     let batchApiApiInstance = new Asana.BatchAPIApi();
-    let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The requests to batch together via the Batch API.
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The requests to batch together via the Batch API.
     let opts = { 
         'opt_fields': "body,headers,status_code"
     };

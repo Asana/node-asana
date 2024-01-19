@@ -7,7 +7,7 @@ RulesApi:
     token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
     let rulesApiInstance = new Asana.RulesApi();
-    let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | A dictionary of variables accessible from within the rule.
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | A dictionary of variables accessible from within the rule.
     let rule_trigger_gid = "12345"; // String | The ID of the incoming web request trigger. This value is a path parameter that is automatically generated for the API endpoint.
 
     rulesApiInstance.triggerRule(body, rule_trigger_gid).then((result) => {

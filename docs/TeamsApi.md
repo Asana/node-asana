@@ -30,7 +30,7 @@ let token = client.authentications['token'];
 token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let teamsApiInstance = new Asana.TeamsApi();
-let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The user to add to the team.
+let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The user to add to the team.
 let team_gid = "159874"; // String | Globally unique identifier for the team.
 let opts = { 
     'opt_fields': "is_admin,is_guest,is_limited_access,team,team.name,user,user.name"
@@ -78,7 +78,7 @@ let token = client.authentications['token'];
 token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let teamsApiInstance = new Asana.TeamsApi();
-let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The team to create.
+let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The team to create.
 let opts = { 
     'opt_fields': "description,edit_team_name_or_description_access_level,edit_team_visibility_or_trash_team_access_level,guest_invite_management_access_level,html_description,join_request_management_access_level,member_invite_management_access_level,name,organization,organization.name,permalink_url,team_member_removal_access_level,visibility"
 };
@@ -272,7 +272,7 @@ let token = client.authentications['token'];
 token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let teamsApiInstance = new Asana.TeamsApi();
-let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The user to remove from the team.
+let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The user to remove from the team.
 let team_gid = "159874"; // String | Globally unique identifier for the team.
 
 teamsApiInstance.removeUserForTeam(body, team_gid).then((result) => {
@@ -317,7 +317,7 @@ let token = client.authentications['token'];
 token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let teamsApiInstance = new Asana.TeamsApi();
-let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The team to update.
+let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The team to update.
 let team_gid = "159874"; // String | Globally unique identifier for the team.
 let opts = { 
     'opt_fields': "description,edit_team_name_or_description_access_level,edit_team_visibility_or_trash_team_access_level,guest_invite_management_access_level,html_description,join_request_management_access_level,member_invite_management_access_level,name,organization,organization.name,permalink_url,team_member_removal_access_level,visibility"

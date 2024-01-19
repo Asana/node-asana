@@ -124,7 +124,7 @@ token.accessToken = '<YOUR_ACCESS_TOKEN>';
 let taskTemplatesApiInstance = new Asana.TaskTemplatesApi();
 let task_template_gid = "1331"; // String | Globally unique identifier for the task template.
 let opts = { 
-    'body': {"data": {"param1": "value1", "param2": "value2",}}, 
+    'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}, 
     'opt_fields': "new_project,new_project.name,new_project_template,new_project_template.name,new_task,new_task.created_by,new_task.name,new_task.resource_subtype,resource_subtype,status"
 };
 taskTemplatesApiInstance.instantiateTask(task_template_gid, opts).then((result) => {

@@ -28,7 +28,7 @@ token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let membershipsApiInstance = new Asana.MembershipsApi();
 let opts = { 
-    'body': {"data": {"param1": "value1", "param2": "value2",}}
+    'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}
 };
 membershipsApiInstance.createMembership(opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));

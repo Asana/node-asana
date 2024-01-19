@@ -27,7 +27,7 @@ let token = client.authentications['token'];
 token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let statusUpdatesApiInstance = new Asana.StatusUpdatesApi();
-let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The status update to create.
+let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The status update to create.
 let opts = { 
     'limit': 50, 
     'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 

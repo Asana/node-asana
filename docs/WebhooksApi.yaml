@@ -7,7 +7,7 @@ WebhooksApi:
     token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
     let webhooksApiInstance = new Asana.WebhooksApi();
-    let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The webhook workspace and target.
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The webhook workspace and target.
     let opts = { 
         'opt_fields': "active,created_at,filters,filters.action,filters.fields,filters.resource_subtype,last_failure_at,last_failure_content,last_success_at,resource,resource.name,target"
     };
@@ -80,7 +80,7 @@ WebhooksApi:
     token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
     let webhooksApiInstance = new Asana.WebhooksApi();
-    let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The updated filters for the webhook.
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The updated filters for the webhook.
     let webhook_gid = "12345"; // String | Globally unique identifier for the webhook.
     let opts = { 
         'opt_fields': "active,created_at,filters,filters.action,filters.fields,filters.resource_subtype,last_failure_at,last_failure_content,last_success_at,resource,resource.name,target"

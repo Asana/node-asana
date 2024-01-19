@@ -33,7 +33,7 @@ let token = client.authentications['token'];
 token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let goalsApiInstance = new Asana.GoalsApi();
-let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The followers to be added as collaborators
+let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The followers to be added as collaborators
 let goal_gid = "12345"; // String | Globally unique identifier for the goal.
 let opts = { 
     'opt_fields': "current_status_update,current_status_update.resource_subtype,current_status_update.title,due_on,followers,followers.name,html_notes,is_workspace_level,liked,likes,likes.user,likes.user.name,metric,metric.can_manage,metric.currency_code,metric.current_display_value,metric.current_number_value,metric.initial_number_value,metric.precision,metric.progress_source,metric.resource_subtype,metric.target_number_value,metric.unit,name,notes,num_likes,owner,owner.name,start_on,status,team,team.name,time_period,time_period.display_name,time_period.end_on,time_period.period,time_period.start_on,workspace,workspace.name"
@@ -81,7 +81,7 @@ let token = client.authentications['token'];
 token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let goalsApiInstance = new Asana.GoalsApi();
-let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The goal to create.
+let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The goal to create.
 let opts = { 
     'opt_fields': "current_status_update,current_status_update.resource_subtype,current_status_update.title,due_on,followers,followers.name,html_notes,is_workspace_level,liked,likes,likes.user,likes.user.name,metric,metric.can_manage,metric.currency_code,metric.current_display_value,metric.current_number_value,metric.initial_number_value,metric.precision,metric.progress_source,metric.resource_subtype,metric.target_number_value,metric.unit,name,notes,num_likes,owner,owner.name,start_on,status,team,team.name,time_period,time_period.display_name,time_period.end_on,time_period.period,time_period.start_on,workspace,workspace.name"
 };
@@ -127,7 +127,7 @@ let token = client.authentications['token'];
 token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let goalsApiInstance = new Asana.GoalsApi();
-let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The goal metric to create.
+let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The goal metric to create.
 let goal_gid = "12345"; // String | Globally unique identifier for the goal.
 let opts = { 
     'opt_fields': "current_status_update,current_status_update.resource_subtype,current_status_update.title,due_on,followers,followers.name,html_notes,is_workspace_level,liked,likes,likes.user,likes.user.name,metric,metric.can_manage,metric.currency_code,metric.current_display_value,metric.current_number_value,metric.initial_number_value,metric.precision,metric.progress_source,metric.resource_subtype,metric.target_number_value,metric.unit,name,notes,num_likes,owner,owner.name,start_on,status,team,team.name,time_period,time_period.display_name,time_period.end_on,time_period.period,time_period.start_on,workspace,workspace.name"
@@ -267,6 +267,7 @@ let goalsApiInstance = new Asana.GoalsApi();
 let opts = { 
     'portfolio': "159874", 
     'project': "512241", 
+    'task': "78424", 
     'is_workspace_level': false, 
     'team': "31326", 
     'workspace': "31326", 
@@ -289,6 +290,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **portfolio** | **String**| Globally unique identifier for supporting portfolio. | [optional] 
  **project** | **String**| Globally unique identifier for supporting project. | [optional] 
+ **task** | **String**| Globally unique identifier for supporting task. | [optional] 
  **is_workspace_level** | **Boolean**| Filter to goals with is_workspace_level set to query value. Must be used with the workspace parameter. | [optional] 
  **team** | **String**| Globally unique identifier for the team. | [optional] 
  **workspace** | **String**| Globally unique identifier for the workspace. | [optional] 
@@ -370,7 +372,7 @@ let token = client.authentications['token'];
 token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let goalsApiInstance = new Asana.GoalsApi();
-let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The followers to be removed as collaborators
+let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The followers to be removed as collaborators
 let goal_gid = "12345"; // String | Globally unique identifier for the goal.
 let opts = { 
     'opt_fields': "current_status_update,current_status_update.resource_subtype,current_status_update.title,due_on,followers,followers.name,html_notes,is_workspace_level,liked,likes,likes.user,likes.user.name,metric,metric.can_manage,metric.currency_code,metric.current_display_value,metric.current_number_value,metric.initial_number_value,metric.precision,metric.progress_source,metric.resource_subtype,metric.target_number_value,metric.unit,name,notes,num_likes,owner,owner.name,start_on,status,team,team.name,time_period,time_period.display_name,time_period.end_on,time_period.period,time_period.start_on,workspace,workspace.name"
@@ -418,7 +420,7 @@ let token = client.authentications['token'];
 token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let goalsApiInstance = new Asana.GoalsApi();
-let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The updated fields for the goal.
+let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The updated fields for the goal.
 let goal_gid = "12345"; // String | Globally unique identifier for the goal.
 let opts = { 
     'opt_fields': "current_status_update,current_status_update.resource_subtype,current_status_update.title,due_on,followers,followers.name,html_notes,is_workspace_level,liked,likes,likes.user,likes.user.name,metric,metric.can_manage,metric.currency_code,metric.current_display_value,metric.current_number_value,metric.initial_number_value,metric.precision,metric.progress_source,metric.resource_subtype,metric.target_number_value,metric.unit,name,notes,num_likes,owner,owner.name,start_on,status,team,team.name,time_period,time_period.display_name,time_period.end_on,time_period.period,time_period.start_on,workspace,workspace.name"
@@ -466,7 +468,7 @@ let token = client.authentications['token'];
 token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let goalsApiInstance = new Asana.GoalsApi();
-let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The updated fields for the goal metric.
+let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The updated fields for the goal metric.
 let goal_gid = "12345"; // String | Globally unique identifier for the goal.
 let opts = { 
     'opt_fields': "current_status_update,current_status_update.resource_subtype,current_status_update.title,due_on,followers,followers.name,html_notes,is_workspace_level,liked,likes,likes.user,likes.user.name,metric,metric.can_manage,metric.currency_code,metric.current_display_value,metric.current_number_value,metric.initial_number_value,metric.precision,metric.progress_source,metric.resource_subtype,metric.target_number_value,metric.unit,name,notes,num_likes,owner,owner.name,start_on,status,team,team.name,time_period,time_period.display_name,time_period.end_on,time_period.period,time_period.start_on,workspace,workspace.name"

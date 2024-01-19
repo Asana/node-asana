@@ -27,7 +27,7 @@ let token = client.authentications['token'];
 token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let projectStatusesApiInstance = new Asana.ProjectStatusesApi();
-let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The project status to create.
+let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The project status to create.
 let project_gid = "1331"; // String | Globally unique identifier for the project.
 let opts = { 
     'opt_fields': "author,author.name,color,created_at,created_by,created_by.name,html_text,modified_at,text,title"

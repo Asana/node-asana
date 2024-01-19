@@ -32,7 +32,7 @@ token.accessToken = '<YOUR_ACCESS_TOKEN>';
 let sectionsApiInstance = new Asana.SectionsApi();
 let section_gid = "321654"; // String | The globally unique identifier for the section.
 let opts = { 
-    'body': {"data": {"param1": "value1", "param2": "value2",}}
+    'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}
 };
 sectionsApiInstance.addTaskForSection(section_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -78,7 +78,7 @@ token.accessToken = '<YOUR_ACCESS_TOKEN>';
 let sectionsApiInstance = new Asana.SectionsApi();
 let project_gid = "1331"; // String | Globally unique identifier for the project.
 let opts = { 
-    'body': {"data": {"param1": "value1", "param2": "value2",}}, 
+    'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}, 
     'opt_fields': "created_at,name,project,project.name,projects,projects.name"
 };
 sectionsApiInstance.createSectionForProject(project_gid, opts).then((result) => {
@@ -265,7 +265,7 @@ token.accessToken = '<YOUR_ACCESS_TOKEN>';
 let sectionsApiInstance = new Asana.SectionsApi();
 let project_gid = "1331"; // String | Globally unique identifier for the project.
 let opts = { 
-    'body': {"data": {"param1": "value1", "param2": "value2",}}
+    'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}
 };
 sectionsApiInstance.insertSectionForProject(project_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -311,7 +311,7 @@ token.accessToken = '<YOUR_ACCESS_TOKEN>';
 let sectionsApiInstance = new Asana.SectionsApi();
 let section_gid = "321654"; // String | The globally unique identifier for the section.
 let opts = { 
-    'body': {"data": {"param1": "value1", "param2": "value2",}}, 
+    'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}, 
     'opt_fields': "created_at,name,project,project.name,projects,projects.name"
 };
 sectionsApiInstance.updateSection(section_gid, opts).then((result) => {

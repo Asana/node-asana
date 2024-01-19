@@ -7,7 +7,7 @@ WorkspacesApi:
     token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
     let workspacesApiInstance = new Asana.WorkspacesApi();
-    let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The user to add to the workspace.
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The user to add to the workspace.
     let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
     let opts = { 
         'opt_fields': "email,name,photo,photo.image_1024x1024,photo.image_128x128,photo.image_21x21,photo.image_27x27,photo.image_36x36,photo.image_60x60"
@@ -63,7 +63,7 @@ WorkspacesApi:
     token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
     let workspacesApiInstance = new Asana.WorkspacesApi();
-    let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The user to remove from the workspace.
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The user to remove from the workspace.
     let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
 
     workspacesApiInstance.removeUserForWorkspace(body, workspace_gid).then((result) => {
@@ -80,7 +80,7 @@ WorkspacesApi:
     token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
     let workspacesApiInstance = new Asana.WorkspacesApi();
-    let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The workspace object with all updated properties.
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The workspace object with all updated properties.
     let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
     let opts = { 
         'opt_fields': "email_domains,is_organization,name"

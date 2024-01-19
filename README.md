@@ -12,7 +12,7 @@
 > For now, if you’re in search of a version that has stood the test of time and is proven to be stable, we recommend using version 1.0.2. You can easily install it using:  `npm install asana@1.0.2` and following v1 samples and documentation.
 
 - API version: 1.0
-- Package version: 3.0.0
+- Package version: 3.0.1
 
 ## Installation
 
@@ -29,7 +29,7 @@ npm install asana --save
 Include the latest release directly from GitHub:
 
 ```html
-<script src="https://github.com/Asana/node-asana/releases/download/v3.0.0/asana-min.js"></script>
+<script src="https://github.com/Asana/node-asana/releases/download/v3.0.1/asana-min.js"></script>
 ```
 
 Example usage (**NOTE**: be careful not to expose your access token):
@@ -1011,6 +1011,6 @@ client.callApi(
 ```
 
 [release-image]: https://img.shields.io/github/release/asana/node-asana.svg
-[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.0.0
+[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.0.1
 [npm-image]: http://img.shields.io/npm/v/asana.svg?style=flat-square
 [npm-url]: https://www.npmjs.org/package/asana

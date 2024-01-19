@@ -31,7 +31,7 @@ let token = client.authentications['token'];
 token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let customFieldsApiInstance = new Asana.CustomFieldsApi();
-let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The custom field object to create.
+let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The custom field object to create.
 let opts = { 
     'opt_fields': "asana_created_field,created_by,created_by.name,currency_code,custom_label,custom_label_position,date_value,date_value.date,date_value.date_time,description,display_value,enabled,enum_options,enum_options.color,enum_options.enabled,enum_options.name,enum_value,enum_value.color,enum_value.enabled,enum_value.name,format,has_notifications_enabled,is_formula_field,is_global_to_workspace,is_value_read_only,multi_enum_values,multi_enum_values.color,multi_enum_values.enabled,multi_enum_values.name,name,number_value,people_value,people_value.name,precision,resource_subtype,text_value,type"
 };
@@ -79,7 +79,7 @@ token.accessToken = '<YOUR_ACCESS_TOKEN>';
 let customFieldsApiInstance = new Asana.CustomFieldsApi();
 let custom_field_gid = "12345"; // String | Globally unique identifier for the custom field.
 let opts = { 
-    'body': {"data": {"param1": "value1", "param2": "value2",}}, 
+    'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}, 
     'opt_fields': "color,enabled,name"
 };
 customFieldsApiInstance.createEnumOptionForCustomField(custom_field_gid, opts).then((result) => {
@@ -266,7 +266,7 @@ token.accessToken = '<YOUR_ACCESS_TOKEN>';
 let customFieldsApiInstance = new Asana.CustomFieldsApi();
 let custom_field_gid = "12345"; // String | Globally unique identifier for the custom field.
 let opts = { 
-    'body': {"data": {"param1": "value1", "param2": "value2",}}, 
+    'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}, 
     'opt_fields': "color,enabled,name"
 };
 customFieldsApiInstance.insertEnumOptionForCustomField(custom_field_gid, opts).then((result) => {
@@ -314,7 +314,7 @@ token.accessToken = '<YOUR_ACCESS_TOKEN>';
 let customFieldsApiInstance = new Asana.CustomFieldsApi();
 let custom_field_gid = "12345"; // String | Globally unique identifier for the custom field.
 let opts = { 
-    'body': {"data": {"param1": "value1", "param2": "value2",}}, 
+    'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}, 
     'opt_fields': "asana_created_field,created_by,created_by.name,currency_code,custom_label,custom_label_position,date_value,date_value.date,date_value.date_time,description,display_value,enabled,enum_options,enum_options.color,enum_options.enabled,enum_options.name,enum_value,enum_value.color,enum_value.enabled,enum_value.name,format,has_notifications_enabled,is_formula_field,is_global_to_workspace,is_value_read_only,multi_enum_values,multi_enum_values.color,multi_enum_values.enabled,multi_enum_values.name,name,number_value,people_value,people_value.name,precision,resource_subtype,text_value,type"
 };
 customFieldsApiInstance.updateCustomField(custom_field_gid, opts).then((result) => {
@@ -362,7 +362,7 @@ token.accessToken = '<YOUR_ACCESS_TOKEN>';
 let customFieldsApiInstance = new Asana.CustomFieldsApi();
 let enum_option_gid = "124578"; // String | Globally unique identifier for the enum option.
 let opts = { 
-    'body': {"data": {"param1": "value1", "param2": "value2",}}, 
+    'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}, 
     'opt_fields': "color,enabled,name"
 };
 customFieldsApiInstance.updateEnumOption(enum_option_gid, opts).then((result) => {

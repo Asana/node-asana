@@ -7,7 +7,7 @@ GoalRelationshipsApi:
     token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
     let goalRelationshipsApiInstance = new Asana.GoalRelationshipsApi();
-    let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The supporting resource to be added to the goal
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The supporting resource to be added to the goal
     let goal_gid = "12345"; // String | Globally unique identifier for the goal.
     let opts = { 
         'opt_fields': "contribution_weight,resource_subtype,supported_goal,supported_goal.name,supported_goal.owner,supported_goal.owner.name,supporting_resource,supporting_resource.name"
@@ -65,7 +65,7 @@ GoalRelationshipsApi:
     token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
     let goalRelationshipsApiInstance = new Asana.GoalRelationshipsApi();
-    let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The supporting resource to be removed from the goal
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The supporting resource to be removed from the goal
     let goal_gid = "12345"; // String | Globally unique identifier for the goal.
 
     goalRelationshipsApiInstance.removeSupportingRelationship(body, goal_gid).then((result) => {
@@ -82,7 +82,7 @@ GoalRelationshipsApi:
     token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
     let goalRelationshipsApiInstance = new Asana.GoalRelationshipsApi();
-    let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The updated fields for the goal relationship.
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The updated fields for the goal relationship.
     let goal_relationship_gid = "12345"; // String | Globally unique identifier for the goal relationship.
     let opts = { 
         'opt_fields': "contribution_weight,resource_subtype,supported_goal,supported_goal.name,supported_goal.owner,supported_goal.owner.name,supporting_resource,supporting_resource.name"

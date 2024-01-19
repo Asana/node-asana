@@ -7,7 +7,7 @@ TagsApi:
     token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
     let tagsApiInstance = new Asana.TagsApi();
-    let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The tag to create.
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The tag to create.
     let opts = { 
         'opt_fields': "color,created_at,followers,followers.name,name,notes,permalink_url,workspace,workspace.name"
     };
@@ -25,7 +25,7 @@ TagsApi:
     token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
     let tagsApiInstance = new Asana.TagsApi();
-    let body = {"data": {"param1": "value1", "param2": "value2",}}; // Object | The tag to create.
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The tag to create.
     let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
     let opts = { 
         'opt_fields': "color,created_at,followers,followers.name,name,notes,permalink_url,workspace,workspace.name"
