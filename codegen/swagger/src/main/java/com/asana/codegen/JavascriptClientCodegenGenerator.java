@@ -96,7 +96,7 @@ public class JavascriptClientCodegenGenerator extends JavaScriptClientCodegen {
         // Update example for requests that require body
         if (!languageSpecificPrimitives.contains(type)) {
             // type is a model class, e.g. User
-            p.example = "{\"data\": {\"param1\": \"value1\", \"param2\": \"value2\",}}";
+            p.example = "{\"data\": {\"<PARAM_1>\": \"<VALUE_1>\", \"<PARAM_2>\": \"<VALUE_2>\",}}";
             p.dataType = "Object";
         }
     }

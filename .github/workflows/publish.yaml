@@ -18,7 +18,7 @@ jobs:
           java-version: "17"
       - name: Setup environment variables
         run: |
-          echo "generator_version=3.0.46" >> "$GITHUB_ENV"
+          echo "generator_version=3.0.52" >> "$GITHUB_ENV"
           echo "generator_name=swagger-codegen-cli.jar" >> "$GITHUB_ENV"
           echo "jar_asana=codegen/swagger/target/AsanaClientCodegen-swagger-codegen-1.0.0.jar" >> "$GITHUB_ENV"
           echo "actual_lang=com.asana.codegen.JavascriptClientCodegenGenerator" >> "$GITHUB_ENV"

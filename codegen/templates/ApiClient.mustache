@@ -1,6 +1,5 @@
 {{>licenseInfo}}
 import superagent from "superagent";
-import querystring from "querystring";
 
 {{#emitJSDoc}}/**
 * @module {{#invokerPackage}}{{invokerPackage}}/{{/invokerPackage}}ApiClient
@@ -420,14 +419,23 @@ export class ApiClient {
         request.query(this.normalizeParams(queryParams));
 
         // set header parameters
-        headerParams['X-Asana-Client-Lib'] = querystring.stringify(
-            {
-                'version': "{{projectVersion}}",
-                'language': 'NodeJS',
-                'language_version': process.version,
-                'os': process.platform
-            }
-        );
+        if (typeof(navigator) === 'undefined' || typeof(window) === 'undefined') {
+            headerParams['X-Asana-Client-Lib'] = new URLSearchParams(
+                {
+                    'version': "{{projectVersion}}",
+                    'language': 'NodeJS',
+                    'language_version': process.version,
+                    'os': process.platform
+                }
+            ).toString();
+        } else {
+            headerParams['X-Asana-Client-Lib'] = new URLSearchParams(
+                {
+                    'version': "{{projectVersion}}",
+                    'language': 'BrowserJS'
+                }
+            ).toString();
+        }
         request.set(this.defaultHeaders).set(this.normalizeParams(headerParams));
 
         // set requestAgent if it is set by user
@@ -449,7 +457,7 @@ export class ApiClient {
         }
 
         if (contentType === 'application/x-www-form-urlencoded') {
-            request.send(querystring.stringify(this.normalizeParams(formParams)));
+            request.send(new URLSearchParams(this.normalizeParams(formParams)).toString());
         } else if (contentType == 'multipart/form-data') {
             var _formParams = this.normalizeParams(formParams);
             for (var key in _formParams) {
