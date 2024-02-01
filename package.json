@@ -9,7 +9,8 @@
     "type": "git"
   },
   "scripts": {
-    "test": "mocha --require @babel/register --recursive"
+    "test": "mocha --require @babel/register --recursive",
+    "testbuild": "mocha --timeout 20000 --require @babel/register --recursive 'build-tests/api/*.js'"
   },
   "browser": {
     "fs": false
