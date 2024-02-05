@@ -1,3 +1,5 @@
+// NOTE: Because these tests are making live API calls, we decided to write these tests in a particular order to optimize speed and reduce API calls.
+// The down side to this approach is that these tests are tightly coupled.
 (function (root, factory) {
     if (typeof define === "function" && define.amd) {
         // AMD.
@@ -21,13 +23,14 @@
     var tasks;
 
     before(async function () {
+        require('dotenv').config()
         TEXT_CUSTOM_FIELD_GID = process.env.TEXT_CUSTOM_FIELD_GID;
         USER_GID = process.env.USER_GID;
         WORKSPACE_GID = process.env.WORKSPACE_GID;
 
         let client = Asana.ApiClient.instance;
         let token = client.authentications["token"];
-        token.accessToken = process.env.ASANA_PERSONAL_ACCESS_TOKEN;
+        token.accessToken = process.env.PERSONAL_ACCESS_TOKEN;
         tasksApiInstance = new Asana.TasksApi();
     });
 
@@ -201,7 +204,7 @@
             });
         });
         describe("searchTasksForWorkspace with custom field parameter - MATCH", function () {
-            it("should return an array with one task that has matching custom field value from search", async function () {
+            it("should return an array with one task that has matching custom field value from search query", async function () {
                 let opts = {
                     limit: 1,
                     [`custom_fields.${TEXT_CUSTOM_FIELD_GID}.value`]:

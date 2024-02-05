@@ -12,6 +12,7 @@
 })(this, function (expect, Asana) {
     "use strict";
 
+    var TEAM_GID;
     var WORKSPACE_GID;
 
     var projectsApiInstance;
@@ -19,11 +20,13 @@
     var projects;
 
     before(async function () {
+        require('dotenv').config()
+        TEAM_GID = process.env.TEAM_GID;
         WORKSPACE_GID = process.env.WORKSPACE_GID;
 
         let client = Asana.ApiClient.instance;
         let token = client.authentications["token"];
-        token.accessToken = process.env.ASANA_PERSONAL_ACCESS_TOKEN;
+        token.accessToken = process.env.PERSONAL_ACCESS_TOKEN;
 
         projectsApiInstance = new Asana.ProjectsApi();
     });
@@ -35,7 +38,7 @@
                     data: {
                         name: "Project 1",
                         notes: "Some description",
-                        workspace: WORKSPACE_GID,
+                        team: TEAM_GID,
                     },
                 };
 
