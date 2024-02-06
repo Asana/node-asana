@@ -1,8 +1,10 @@
 # Test Build
 
-This directory contains tests that is to be ran manually. 
+This directory contains tests that are meant to be ran locally
 
-1: Setup Environment Variables. Create a `.env`` file within the root of the project directory with the following information
+1. Install dependencies: `npm i`
+
+2. Setup Environment Variables. Create a `.env` file within the root of the project directory with the following information
 
 ```
 PERSONAL_ACCESS_TOKEN=<YOUR_ASANA_PERSONAL_ACCESS_TOKEN>
@@ -12,8 +14,6 @@ USER_GID=<YOUR_USER_GID>
 WORKSPACE_GID=<YOUR_WORKSPACE_GID>
 ```
 
-2: Install dependencies: `npm i`
-
-3: Run tests: `npm run  testbuild`
+3. Run tests: `npm run testbuild`
 
 TIP: to debug, add `debugger;` to the location of the test code you want to debug and re-run `npm run testbuild`
