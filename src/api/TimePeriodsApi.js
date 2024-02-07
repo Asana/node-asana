@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * TimePeriods service.
 * @module api/TimePeriodsApi
-* @version 3.0.1
+* @version 3.0.2
 */
 export class TimePeriodsApi {
 
