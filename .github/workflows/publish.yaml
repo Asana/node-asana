@@ -32,7 +32,6 @@ jobs:
           aws-region: us-east-1
           role-to-assume: arn:aws:iam::403483446840:role/autogen_role_beta_github_actions_release_asana_client_libraries
       - name: Checkout composite action responsible for generating GitHub app token
-        # Checkout only the files needed to get the github app token:
         uses: actions/checkout@v4
         with:
           path: composite_action
