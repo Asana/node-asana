@@ -90,9 +90,9 @@ export class {{classname}} {
         let contentTypes = [{{#consumes}}'{{& mediaType}}'{{#hasMore}}, {{/hasMore}}{{/consumes}}];
         let accepts = [{{#produces}}'{{& mediaType}}'{{#hasMore}}, {{/hasMore}}{{/produces}}];
         let returnType = 'Blob';
-
+        {{#vendorExtensions.x-codegen-isArrayResponse}}
         // Check if RETURN_COLLECTION is set and return a collection object if it is
-        if (this.apiClient.RETURN_COLLECTION && {{vendorExtensions.x-codegen-isArrayResponse}}) {
+        if (this.apiClient.RETURN_COLLECTION) {
             return Collection.fromApiClient(
                 this.apiClient.callApi(
                     '{{&path}}', '{{httpMethod}}',
@@ -114,13 +114,14 @@ export class {{classname}} {
                     'returnType': returnType
                 }
             )
-        } else {
-            return this.apiClient.callApi(
-                '{{&path}}', '{{httpMethod}}',
-                pathParams, queryParams, headerParams, formParams, postBody,
-                authNames, contentTypes, accepts, returnType{{^usePromises}}, callback{{/usePromises}}
-            );
         }
+        {{/vendorExtensions.x-codegen-isArrayResponse}}
+
+        return this.apiClient.callApi(
+            '{{&path}}', '{{httpMethod}}',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType{{^usePromises}}, callback{{/usePromises}}
+        );
     }
 {{#usePromises}}
     {{#emitJSDoc}}
@@ -136,16 +137,17 @@ export class {{classname}} {
      * @return {{braces "left"}}Promise{{braces "right"}} a {{braces "left"}}@link https://www.promisejs.org/|Promise{{braces "right"}}{{#returnType}}, with data of type {{braces "left"}}@link {{&vendorExtensions.x-jsdoc-type}}{{braces "right"}}{{/returnType}}{{/usePromises}}
      */
 {{/emitJSDoc}}    {{operationId}}({{vendorExtensions.x-codegen-arg-list}}) {
-
+        {{#vendorExtensions.x-codegen-isArrayResponse}}
         // Check if RETURN_COLLECTION is set and return a collection object if it is
-        if (this.apiClient.RETURN_COLLECTION && {{vendorExtensions.x-codegen-isArrayResponse}}) {
+        if (this.apiClient.RETURN_COLLECTION) {
             return this.{{operationId}}WithHttpInfo({{vendorExtensions.x-codegen-arg-list}})
-        } else {
-            return this.{{operationId}}WithHttpInfo({{vendorExtensions.x-codegen-arg-list}})
-                .then(function(response_and_data) {
-                    return response_and_data.data;
-                });
         }
+        {{/vendorExtensions.x-codegen-isArrayResponse}}
+
+        return this.{{operationId}}WithHttpInfo({{vendorExtensions.x-codegen-arg-list}})
+            .then(function(response_and_data) {
+                return response_and_data.data;
+            });
     }
 {{/usePromises}}
 {{/operation}}{{/operations}}
