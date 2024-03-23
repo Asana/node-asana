@@ -393,22 +393,25 @@ EX: Pagination gather all resources
 
 let tasksApiInstance = new {{{moduleName}}}.TasksApi();
 let opts = {
-    "project": "<YOUR_PROJECT_GID>"
-    "limit": 100
+    "project": "<YOUR_PROJECT_GID>",
+    "limit": 100,
 };
 
 async function getAllTasks(opts) {
-    let tasks = await tasksApiInstance.getTasks(opts).then(async (firstPage) => {
-        let res = []
-        res = res.concat(firstPage.data);
-        // Get the next page
-        let nextPage = await firstPage.nextPage();
-        // Keep fetching for the next page until there are no more results
-        while(nextPage.data) {
-            res = res.concat(nextPage.data);
-            nextPage = await nextPage.nextPage();
+    let tasks = await tasksApiInstance.getTasks(opts).then(async (response) => {
+        let result = [];
+        let page = response;
+        while(true) {
+            // Add items on page to list of results
+            result = result.concat(page.data);
+            // Fetch the next page
+            page = await page.nextPage();
+            // If the there is no data in the next page break from the loop
+            if (!page.data) {
+                break;
+            }
         }
-        return res;
+        return result;
     }, (error) => {
         console.error(error.response.body);
     });
@@ -417,6 +420,79 @@ async function getAllTasks(opts) {
 }
 
 getAllTasks(opts);
+
+```
+
+Sample output:
+```bash
+Tasks: [
+    {
+      "gid": "123",
+      "name": "task 1",
+      "resource_type": "task",
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "456",
+      "name": "task 2",
+      "resource_type": "task",
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "789",
+      "name": "task 3",
+      "resource_type": "task",
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "101112",
+      "name": "task 4",
+      "resource_type": "task",
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "131415",
+      "name": "task 5",
+      "resource_type": "task",
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "161718",
+      "name": "task 6",
+      "resource_type": "task",
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "192021",
+      "name": "task 7",
+      "resource_type": "task",
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "222324",
+      "name": "task 8",
+      "resource_type": "task",
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "252627",
+      "name": "task 9",
+      "resource_type": "task",
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "282930",
+      "name": "task 10",
+      "resource_type": "task",
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "313233",
+      "name": "task 11",
+      "resource_type": "task",
+      "resource_subtype": "default_task"
+    },
+]
 ```
 
 EX: Pagination do something per page
@@ -426,28 +502,55 @@ EX: Pagination do something per page
 let tasksApiInstance = new {{{moduleName}}}.TasksApi();
 let opts = {
     'project': "<YOUR_PROJECT_GID>",
-    'limit': 10
+    "limit": 5,
 };
 
-pageIndex = 1;
+let pageIndex = 1;
 
-tasksApiInstance.getTasks(opts).then(async (firstPage) => {
-    // Do something with the first <LIMIT> results. EX: print out results
-    console.log(`Page ${pageIndex}: ` + JSON.stringify(firstPage.data, null, 2));
-
-    // Get the next page
-    let nextPage = await firstPage.nextPage();
-    // Keep fetching for the next page until there are no more results
-    while(nextPage.data) {
-        // Do something with the next <LIMIT> results. EX: print out results
+tasksApiInstance.getTasks(opts).then(async (response) => {
+    let page = response;
+    while(true) {
+        // Do something with the page results
+        // EX: print the name of the tasks on that page
+        console.log(`Page ${pageIndex}: `);
+        page.data.forEach(task => {
+            console.log(`    ${task.name}`);
+        });
         pageIndex += 1;
-        console.log(`Page ${pageIndex}: ` + JSON.stringify(nextPage.data, null, 2));
-        // Get the next page
-        nextPage = await nextPage.nextPage();
+
+        page = await page.nextPage();
+        // If the there is no data in the next page break from the loop
+        if (!page.data) {
+            break;
+        }
     }
 }, (error) => {
     console.error(error.response.body);
 });
+
+```
+
+Sample output:
+
+```bash
+Page 1:
+    task 1
+    task 2
+    task 3
+    task 4
+    task 5
+Page 2:
+    task 6
+    task 7
+    task 8
+    task 9
+    task 10
+Page 3:
+    task 11
+    task 12
+    task 13
+    task 14
+    task 15
 ```
 
 ### Turning off Pagination
