@@ -8,13 +8,14 @@ Method | HTTP request | Description
 [**deleteMembership**](MembershipsApi.md#deleteMembership) | **DELETE** /memberships/{membership_gid} | Delete a membership
 [**getMembership**](MembershipsApi.md#getMembership) | **GET** /memberships/{membership_gid} | Get a membership
 [**getMemberships**](MembershipsApi.md#getMemberships) | **GET** /memberships | Get multiple memberships
+[**updateMembership**](MembershipsApi.md#updateMembership) | **PUT** /memberships/{membership_gid} | Update a membership
 
 <a name="createMembership"></a>
 # **createMembership**
 
 Create a membership
 
-Creates a new membership in a `goal`. `Teams` or `users` can be a member of `goals`.  Returns the full record of the newly created membership.
+Creates a new membership in a `goal` or `project`. `Teams` or `users` can be a member of `goals` or `projects`.  Returns the full record of the newly created membership.
 
 ([more information](https://developers.asana.com/reference/createmembership))
 
@@ -58,7 +59,7 @@ object
 
 Delete a membership
 
-A specific, existing membership can be deleted by making a `DELETE` request on the URL for that membership.  Returns an empty data record.
+A specific, existing membership for a `goal` or `project` can be deleted by making a `DELETE` request on the URL for that membership.  Returns an empty data record.
 
 ([more information](https://developers.asana.com/reference/deletemembership))
 
@@ -192,5 +193,50 @@ object
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json; charset=UTF-8
+
+<a name="updateMembership"></a>
+# **updateMembership**
+
+Update a membership
+
+An existing membership can be updated by making a `PUT` request on the URL for that goal. Only the fields provided in the `data` block will be updated; any unspecified fields will remain unchanged. Memberships on `goals` and `projects` can be updated.  Returns the full record of the updated membership.
+
+([more information](https://developers.asana.com/reference/updatemembership))
+
+### Example
+```javascript
+const Asana = require('asana');
+
+let client = Asana.ApiClient.instance;
+let token = client.authentications['token'];
+token.accessToken = '<YOUR_ACCESS_TOKEN>';
+
+let membershipsApiInstance = new Asana.MembershipsApi();
+let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The membership to update.
+let membership_gid = "12345"; // String | Globally unique identifier for the membership.
+
+membershipsApiInstance.updateMembership(body, membership_gid).then((result) => {
+    console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+}, (error) => {
+    console.error(error.response.body);
+});
+
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | **Object**| The membership to update. | 
+ **membership_gid** | **String**| Globally unique identifier for the membership. | 
+
+### Return type
+
+object
+
+### HTTP request headers
+
+ - **Content-Type**: application/json; charset=UTF-8
  - **Accept**: application/json; charset=UTF-8
 

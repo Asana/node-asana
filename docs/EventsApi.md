@@ -24,7 +24,7 @@ let token = client.authentications['token'];
 token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let eventsApiInstance = new Asana.EventsApi();
-let resource = "12345"; // String | A resource ID to subscribe to. The resource can be a task or project.
+let resource = "12345"; // String | A resource ID to subscribe to. The resource can be a task, project, or goal.
 let opts = { 
     'sync': "de4774f6915eae04714ca93bb2f5ee81", 
     'opt_fields': "action,change,change.action,change.added_value,change.field,change.new_value,change.removed_value,created_at,parent,parent.name,resource,resource.name,type,user,user.name"
@@ -41,7 +41,7 @@ eventsApiInstance.getEvents(resource, opts).then((result) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resource** | **String**| A resource ID to subscribe to. The resource can be a task or project. | 
+ **resource** | **String**| A resource ID to subscribe to. The resource can be a task, project, or goal. | 
  **sync** | **String**| A sync token received from the last request, or none on first sync. Events will be returned from the point in time that the sync token was generated. *Note: On your first request, omit the sync token. The response will be the same as for an expired sync token, and will include a new valid sync token.If the sync token is too old (which may happen from time to time) the API will return a &#x60;412 Precondition Failed&#x60; error, and include a fresh sync token in the response.* | [optional] 
  **opt_fields** | **Object**| This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
 

@@ -7,7 +7,7 @@ EventsApi:
     token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
     let eventsApiInstance = new Asana.EventsApi();
-    let resource = "12345"; // String | A resource ID to subscribe to. The resource can be a task or project.
+    let resource = "12345"; // String | A resource ID to subscribe to. The resource can be a task, project, or goal.
     let opts = { 
         'sync': "de4774f6915eae04714ca93bb2f5ee81", 
         'opt_fields': "action,change,change.action,change.added_value,change.field,change.new_value,change.removed_value,created_at,parent,parent.name,resource,resource.name,type,user,user.name"

@@ -25,7 +25,7 @@ token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let typeaheadApiInstance = new Asana.TypeaheadApi();
 let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
-let resource_type = "user"; // String | The type of values the typeahead should return. You can choose from one of the following: `custom_field`, `project`, `project_template`, `portfolio`, `tag`, `task`, and `user`. Note that unlike in the names of endpoints, the types listed here are in singular form (e.g. `task`). Using multiple types is not yet supported.
+let resource_type = "user"; // String | The type of values the typeahead should return. You can choose from one of the following: `custom_field`, `goal`, `project`, `project_template`, `portfolio`, `tag`, `task`, `team`, and `user`. Note that unlike in the names of endpoints, the types listed here are in singular form (e.g. `task`). Using multiple types is not yet supported.
 let opts = { 
     'type': "user", 
     'query': "Greg", 
@@ -45,7 +45,7 @@ typeaheadApiInstance.typeaheadForWorkspace(workspace_gid, resource_type, opts).t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **workspace_gid** | **String**| Globally unique identifier for the workspace or organization. | 
- **resource_type** | **String**| The type of values the typeahead should return. You can choose from one of the following: &#x60;custom_field&#x60;, &#x60;project&#x60;, &#x60;project_template&#x60;, &#x60;portfolio&#x60;, &#x60;tag&#x60;, &#x60;task&#x60;, and &#x60;user&#x60;. Note that unlike in the names of endpoints, the types listed here are in singular form (e.g. &#x60;task&#x60;). Using multiple types is not yet supported. | [default to user]
+ **resource_type** | **String**| The type of values the typeahead should return. You can choose from one of the following: &#x60;custom_field&#x60;, &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;project_template&#x60;, &#x60;portfolio&#x60;, &#x60;tag&#x60;, &#x60;task&#x60;, &#x60;team&#x60;, and &#x60;user&#x60;. Note that unlike in the names of endpoints, the types listed here are in singular form (e.g. &#x60;task&#x60;). Using multiple types is not yet supported. | [default to user]
  **type** | **String**| *Deprecated: new integrations should prefer the resource_type field.* | [optional] [default to user]
  **query** | **String**| The string that will be used to search for relevant objects. If an empty string is passed in, the API will return results. | [optional] 
  **count** | **Number**| The number of results to return. The default is 20 if this parameter is omitted, with a minimum of 1 and a maximum of 100. If there are fewer results found than requested, all will be returned. | [optional] 

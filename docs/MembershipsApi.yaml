@@ -71,3 +71,20 @@ MembershipsApi:
         console.error(error.response.body);
     });
     
+  updateMembership: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let membershipsApiInstance = new Asana.MembershipsApi();
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The membership to update.
+    let membership_gid = "12345"; // String | Globally unique identifier for the membership.
+
+    membershipsApiInstance.updateMembership(body, membership_gid).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    

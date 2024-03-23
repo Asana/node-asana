@@ -1,4 +1,20 @@
 TaskTemplatesApi:
+  deleteTaskTemplate: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let taskTemplatesApiInstance = new Asana.TaskTemplatesApi();
+    let task_template_gid = "1331"; // String | Globally unique identifier for the task template.
+
+    taskTemplatesApiInstance.deleteTaskTemplate(task_template_gid).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
   getTaskTemplate: |-
     const Asana = require('asana');
     

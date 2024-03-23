@@ -1,7 +1,7 @@
 # asana [![GitHub release][release-image]][release-url] [![NPM Version][npm-image]][npm-url]
 
 - API version: 1.0
-- Package version: 3.0.2
+- Package version: 3.0.3
 
 ## Installation
 
@@ -18,7 +18,7 @@ npm install asana --save
 Include the latest release directly from GitHub:
 
 ```html
-<script src="https://github.com/Asana/node-asana/releases/download/v3.0.2/asana-min.js"></script>
+<script src="https://github.com/Asana/node-asana/releases/download/v3.0.3/asana-min.js"></script>
 ```
 
 Example usage (**NOTE**: be careful not to expose your access token):
@@ -232,6 +232,7 @@ Class | Method | HTTP request | Description
 *Asana.MembershipsApi* | [**deleteMembership**](docs/MembershipsApi.md#deleteMembership) | **DELETE** /memberships/{membership_gid} | Delete a membership
 *Asana.MembershipsApi* | [**getMembership**](docs/MembershipsApi.md#getMembership) | **GET** /memberships/{membership_gid} | Get a membership
 *Asana.MembershipsApi* | [**getMemberships**](docs/MembershipsApi.md#getMemberships) | **GET** /memberships | Get multiple memberships
+*Asana.MembershipsApi* | [**updateMembership**](docs/MembershipsApi.md#updateMembership) | **PUT** /memberships/{membership_gid} | Update a membership
 *Asana.OrganizationExportsApi* | [**createOrganizationExport**](docs/OrganizationExportsApi.md#createOrganizationExport) | **POST** /organization_exports | Create an organization export request
 *Asana.OrganizationExportsApi* | [**getOrganizationExport**](docs/OrganizationExportsApi.md#getOrganizationExport) | **GET** /organization_exports/{organization_export_gid} | Get details on an org export request
 *Asana.PortfolioMembershipsApi* | [**getPortfolioMembership**](docs/PortfolioMembershipsApi.md#getPortfolioMembership) | **GET** /portfolio_memberships/{portfolio_membership_gid} | Get a portfolio membership
@@ -308,6 +309,7 @@ Class | Method | HTTP request | Description
 *Asana.TagsApi* | [**getTagsForTask**](docs/TagsApi.md#getTagsForTask) | **GET** /tasks/{task_gid}/tags | Get a task&#x27;s tags
 *Asana.TagsApi* | [**getTagsForWorkspace**](docs/TagsApi.md#getTagsForWorkspace) | **GET** /workspaces/{workspace_gid}/tags | Get tags in a workspace
 *Asana.TagsApi* | [**updateTag**](docs/TagsApi.md#updateTag) | **PUT** /tags/{tag_gid} | Update a tag
+*Asana.TaskTemplatesApi* | [**deleteTaskTemplate**](docs/TaskTemplatesApi.md#deleteTaskTemplate) | **DELETE** /task_templates/{task_template_gid} | Delete a task template
 *Asana.TaskTemplatesApi* | [**getTaskTemplate**](docs/TaskTemplatesApi.md#getTaskTemplate) | **GET** /task_templates/{task_template_gid} | Get a task template
 *Asana.TaskTemplatesApi* | [**getTaskTemplates**](docs/TaskTemplatesApi.md#getTaskTemplates) | **GET** /task_templates | Get multiple task templates
 *Asana.TaskTemplatesApi* | [**instantiateTask**](docs/TaskTemplatesApi.md#instantiateTask) | **POST** /task_templates/{task_template_gid}/instantiateTask | Instantiate a task from a task template
@@ -324,6 +326,7 @@ Class | Method | HTTP request | Description
 *Asana.TasksApi* | [**getDependentsForTask**](docs/TasksApi.md#getDependentsForTask) | **GET** /tasks/{task_gid}/dependents | Get dependents from a task
 *Asana.TasksApi* | [**getSubtasksForTask**](docs/TasksApi.md#getSubtasksForTask) | **GET** /tasks/{task_gid}/subtasks | Get subtasks from a task
 *Asana.TasksApi* | [**getTask**](docs/TasksApi.md#getTask) | **GET** /tasks/{task_gid} | Get a task
+*Asana.TasksApi* | [**getTaskForCustomID**](docs/TasksApi.md#getTaskForCustomID) | **GET** /workspaces/{workspace_gid}/tasks/custom_id/{custom_id} | Get a task for a given custom ID
 *Asana.TasksApi* | [**getTasks**](docs/TasksApi.md#getTasks) | **GET** /tasks | Get multiple tasks
 *Asana.TasksApi* | [**getTasksForProject**](docs/TasksApi.md#getTasksForProject) | **GET** /projects/{project_gid}/tasks | Get tasks from a project
 *Asana.TasksApi* | [**getTasksForSection**](docs/TasksApi.md#getTasksForSection) | **GET** /sections/{section_gid}/tasks | Get tasks from a section
@@ -586,22 +589,25 @@ token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let tasksApiInstance = new Asana.TasksApi();
 let opts = {
-    "project": "<YOUR_PROJECT_GID>"
-    "limit": 100
+    "project": "<YOUR_PROJECT_GID>",
+    "limit": 100,
 };
 
 async function getAllTasks(opts) {
-    let tasks = await tasksApiInstance.getTasks(opts).then(async (firstPage) => {
-        let res = []
-        res = res.concat(firstPage.data);
-        // Get the next page
-        let nextPage = await firstPage.nextPage();
-        // Keep fetching for the next page until there are no more results
-        while(nextPage.data) {
-            res = res.concat(nextPage.data);
-            nextPage = await nextPage.nextPage();
+    let tasks = await tasksApiInstance.getTasks(opts).then(async (response) => {
+        let result = [];
+        let page = response;
+        while(true) {
+            // Add items on page to list of results
+            result = result.concat(page.data);
+            // Fetch the next page
+            page = await page.nextPage();
+            // If the there is no data in the next page break from the loop
+            if (!page.data) {
+                break;
+            }
         }
-        return res;
+        return result;
     }, (error) => {
         console.error(error.response.body);
     });
@@ -610,6 +616,79 @@ async function getAllTasks(opts) {
 }
 
 getAllTasks(opts);
+
+```
+
+Sample output:
+```bash
+Tasks: [
+    {
+      "gid": "123",
+      "name": "task 1",
+      "resource_type": "task",
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "456",
+      "name": "task 2",
+      "resource_type": "task",
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "789",
+      "name": "task 3",
+      "resource_type": "task",
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "101112",
+      "name": "task 4",
+      "resource_type": "task",
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "131415",
+      "name": "task 5",
+      "resource_type": "task",
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "161718",
+      "name": "task 6",
+      "resource_type": "task",
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "192021",
+      "name": "task 7",
+      "resource_type": "task",
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "222324",
+      "name": "task 8",
+      "resource_type": "task",
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "252627",
+      "name": "task 9",
+      "resource_type": "task",
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "282930",
+      "name": "task 10",
+      "resource_type": "task",
+      "resource_subtype": "default_task"
+    },
+    {
+      "gid": "313233",
+      "name": "task 11",
+      "resource_type": "task",
+      "resource_subtype": "default_task"
+    },
+]
 ```
 
 EX: Pagination do something per page
@@ -623,28 +702,55 @@ token.accessToken = '<YOUR_ACCESS_TOKEN>';
 let tasksApiInstance = new Asana.TasksApi();
 let opts = {
     'project': "<YOUR_PROJECT_GID>",
-    'limit': 10
+    "limit": 5,
 };
 
-pageIndex = 1;
+let pageIndex = 1;
 
-tasksApiInstance.getTasks(opts).then(async (firstPage) => {
-    // Do something with the first <LIMIT> results. EX: print out results
-    console.log(`Page ${pageIndex}: ` + JSON.stringify(firstPage.data, null, 2));
-
-    // Get the next page
-    let nextPage = await firstPage.nextPage();
-    // Keep fetching for the next page until there are no more results
-    while(nextPage.data) {
-        // Do something with the next <LIMIT> results. EX: print out results
+tasksApiInstance.getTasks(opts).then(async (response) => {
+    let page = response;
+    while(true) {
+        // Do something with the page results
+        // EX: print the name of the tasks on that page
+        console.log(`Page ${pageIndex}: `);
+        page.data.forEach(task => {
+            console.log(`    ${task.name}`);
+        });
         pageIndex += 1;
-        console.log(`Page ${pageIndex}: ` + JSON.stringify(nextPage.data, null, 2));
-        // Get the next page
-        nextPage = await nextPage.nextPage();
+
+        page = await page.nextPage();
+        // If the there is no data in the next page break from the loop
+        if (!page.data) {
+            break;
+        }
     }
 }, (error) => {
     console.error(error.response.body);
 });
+
+```
+
+Sample output:
+
+```bash
+Page 1:
+    task 1
+    task 2
+    task 3
+    task 4
+    task 5
+Page 2:
+    task 6
+    task 7
+    task 8
+    task 9
+    task 10
+Page 3:
+    task 11
+    task 12
+    task 13
+    task 14
+    task 15
 ```
 
 ### Turning off Pagination
@@ -1000,6 +1106,6 @@ client.callApi(
 ```
 
 [release-image]: https://img.shields.io/github/release/asana/node-asana.svg
-[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.0.2
+[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.0.3
 [npm-image]: http://img.shields.io/npm/v/asana.svg?style=flat-square
 [npm-url]: https://www.npmjs.org/package/asana

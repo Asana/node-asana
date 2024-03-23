@@ -4,9 +4,53 @@ All URIs are relative to *https://app.asana.com/api/1.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**deleteTaskTemplate**](TaskTemplatesApi.md#deleteTaskTemplate) | **DELETE** /task_templates/{task_template_gid} | Delete a task template
 [**getTaskTemplate**](TaskTemplatesApi.md#getTaskTemplate) | **GET** /task_templates/{task_template_gid} | Get a task template
 [**getTaskTemplates**](TaskTemplatesApi.md#getTaskTemplates) | **GET** /task_templates | Get multiple task templates
 [**instantiateTask**](TaskTemplatesApi.md#instantiateTask) | **POST** /task_templates/{task_template_gid}/instantiateTask | Instantiate a task from a task template
+
+<a name="deleteTaskTemplate"></a>
+# **deleteTaskTemplate**
+
+Delete a task template
+
+A specific, existing task template can be deleted by making a DELETE request on the URL for that task template. Returns an empty data record.
+
+([more information](https://developers.asana.com/reference/deletetasktemplate))
+
+### Example
+```javascript
+const Asana = require('asana');
+
+let client = Asana.ApiClient.instance;
+let token = client.authentications['token'];
+token.accessToken = '<YOUR_ACCESS_TOKEN>';
+
+let taskTemplatesApiInstance = new Asana.TaskTemplatesApi();
+let task_template_gid = "1331"; // String | Globally unique identifier for the task template.
+
+taskTemplatesApiInstance.deleteTaskTemplate(task_template_gid).then((result) => {
+    console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+}, (error) => {
+    console.error(error.response.body);
+});
+
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **task_template_gid** | **String**| Globally unique identifier for the task template. | 
+
+### Return type
+
+object
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json; charset=UTF-8
 
 <a name="getTaskTemplate"></a>
 # **getTaskTemplate**
