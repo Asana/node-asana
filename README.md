@@ -1,7 +1,7 @@
 # asana [![GitHub release][release-image]][release-url] [![NPM Version][npm-image]][npm-url]
 
 - API version: 1.0
-- Package version: 3.0.3
+- Package version: 3.0.4
 
 ## Installation
 
@@ -18,7 +18,7 @@ npm install asana --save
 Include the latest release directly from GitHub:
 
 ```html
-<script src="https://github.com/Asana/node-asana/releases/download/v3.0.3/asana-min.js"></script>
+<script src="https://github.com/Asana/node-asana/releases/download/v3.0.4/asana-min.js"></script>
 ```
 
 Example usage (**NOTE**: be careful not to expose your access token):
@@ -195,6 +195,11 @@ All URIs are relative to *https://app.asana.com/api/1.0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*Asana.AllocationsApi* | [**createAllocation**](docs/AllocationsApi.md#createAllocation) | **POST** /allocations | Create an allocation
+*Asana.AllocationsApi* | [**deleteAllocation**](docs/AllocationsApi.md#deleteAllocation) | **DELETE** /allocations/{allocation_gid} | Delete an allocation
+*Asana.AllocationsApi* | [**getAllocation**](docs/AllocationsApi.md#getAllocation) | **GET** /allocations/{allocation_gid} | Get an allocation
+*Asana.AllocationsApi* | [**getAllocations**](docs/AllocationsApi.md#getAllocations) | **GET** /allocations | Get multiple allocations
+*Asana.AllocationsApi* | [**updateAllocation**](docs/AllocationsApi.md#updateAllocation) | **PUT** /allocations/{allocation_gid} | Update an allocation
 *Asana.AttachmentsApi* | [**createAttachmentForObject**](docs/AttachmentsApi.md#createAttachmentForObject) | **POST** /attachments | Upload an attachment
 *Asana.AttachmentsApi* | [**deleteAttachment**](docs/AttachmentsApi.md#deleteAttachment) | **DELETE** /attachments/{attachment_gid} | Delete an attachment
 *Asana.AttachmentsApi* | [**getAttachment**](docs/AttachmentsApi.md#getAttachment) | **GET** /attachments/{attachment_gid} | Get an attachment
@@ -1106,6 +1111,6 @@ client.callApi(
 ```
 
 [release-image]: https://img.shields.io/github/release/asana/node-asana.svg
-[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.0.3
+[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.0.4
 [npm-image]: http://img.shields.io/npm/v/asana.svg?style=flat-square
 [npm-url]: https://www.npmjs.org/package/asana

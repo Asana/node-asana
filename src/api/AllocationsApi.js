@@ -16,15 +16,15 @@ import {ApiClient} from "../ApiClient";
 var Collection = require('../utils/collection');
 
 /**
-* Memberships service.
-* @module api/MembershipsApi
+* Allocations service.
+* @module api/AllocationsApi
 * @version 3.0.4
 */
-export class MembershipsApi {
+export class AllocationsApi {
 
     /**
-    * Constructs a new MembershipsApi. 
-    * @alias module:api/MembershipsApi
+    * Constructs a new AllocationsApi. 
+    * @alias module:api/AllocationsApi
     * @class
     * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
     * default to {@link module:ApiClient#instanc
@@ -37,15 +37,20 @@ export class MembershipsApi {
 
 
     /**
-     * Create a membership
-     * Creates a new membership in a &#x60;goal&#x60; or &#x60;project&#x60;. &#x60;Teams&#x60; or &#x60;users&#x60; can be a member of &#x60;goals&#x60; or &#x60;projects&#x60;.  Returns the full record of the newly created membership.
+     * Create an allocation
+     * Creates a new allocation.  Returns the full record of the newly created allocation.
+     * @param {module:model/Object} body The allocation to create.
      * @param {Object} opts Optional parameters
-     * @param {module:model/Object} opts.body The updated fields for the membership.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
-    createMembershipWithHttpInfo(opts) {
+    createAllocationWithHttpInfo(body, opts) {
         opts = opts || {};
-        let postBody = opts['body'];
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling createAllocation");
+        }
 
         let pathParams = {
             
@@ -67,22 +72,23 @@ export class MembershipsApi {
         let returnType = 'Blob';
 
         return this.apiClient.callApi(
-            '/memberships', 'POST',
+            '/allocations', 'POST',
             pathParams, queryParams, headerParams, formParams, postBody,
             authNames, contentTypes, accepts, returnType
         );
     }
 
     /**
-     * Create a membership
-     * Creates a new membership in a &#x60;goal&#x60; or &#x60;project&#x60;. &#x60;Teams&#x60; or &#x60;users&#x60; can be a member of &#x60;goals&#x60; or &#x60;projects&#x60;.  Returns the full record of the newly created membership.
+     * Create an allocation
+     * Creates a new allocation.  Returns the full record of the newly created allocation.
+     * @param {<&vendorExtensions.x-jsdoc-type>} body The allocation to create.
      * @param {Object} opts Optional parameters
-     * @param {module:model/Object} opts.body The updated fields for the membership.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MembershipResponseData}
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AllocationResponseData}
      */
-    createMembership(opts) {
+    createAllocation(body, opts) {
 
-        return this.createMembershipWithHttpInfo(opts)
+        return this.createAllocationWithHttpInfo(body, opts)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });
@@ -90,21 +96,21 @@ export class MembershipsApi {
 
 
     /**
-     * Delete a membership
-     * A specific, existing membership for a &#x60;goal&#x60; or &#x60;project&#x60; can be deleted by making a &#x60;DELETE&#x60; request on the URL for that membership.  Returns an empty data record.
-     * @param {String} membership_gid Globally unique identifier for the membership.
+     * Delete an allocation
+     * A specific, existing allocation can be deleted by making a DELETE request on the URL for that allocation.  Returns an empty data record.
+     * @param {String} allocation_gid Globally unique identifier for the allocation.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
-    deleteMembershipWithHttpInfo(membership_gid) {
+    deleteAllocationWithHttpInfo(allocation_gid) {
         
         let postBody = null;
-        // verify the required parameter 'membership_gid' is set
-        if (membership_gid === undefined || membership_gid === null) {
-            throw new Error("Missing the required parameter 'membership_gid' when calling deleteMembership");
+        // verify the required parameter 'allocation_gid' is set
+        if (allocation_gid === undefined || allocation_gid === null) {
+            throw new Error("Missing the required parameter 'allocation_gid' when calling deleteAllocation");
         }
 
         let pathParams = {
-            'membership_gid': membership_gid
+            'allocation_gid': allocation_gid
         };
         let queryParams = {};
 
@@ -121,21 +127,21 @@ export class MembershipsApi {
         let returnType = 'Blob';
 
         return this.apiClient.callApi(
-            '/memberships/{membership_gid}', 'DELETE',
+            '/allocations/{allocation_gid}', 'DELETE',
             pathParams, queryParams, headerParams, formParams, postBody,
             authNames, contentTypes, accepts, returnType
         );
     }
 
     /**
-     * Delete a membership
-     * A specific, existing membership for a &#x60;goal&#x60; or &#x60;project&#x60; can be deleted by making a &#x60;DELETE&#x60; request on the URL for that membership.  Returns an empty data record.
-     * @param {<&vendorExtensions.x-jsdoc-type>} membership_gid Globally unique identifier for the membership.
+     * Delete an allocation
+     * A specific, existing allocation can be deleted by making a DELETE request on the URL for that allocation.  Returns an empty data record.
+     * @param {<&vendorExtensions.x-jsdoc-type>} allocation_gid Globally unique identifier for the allocation.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EmptyResponseData}
      */
-    deleteMembership(membership_gid) {
+    deleteAllocation(allocation_gid) {
 
-        return this.deleteMembershipWithHttpInfo(membership_gid)
+        return this.deleteAllocationWithHttpInfo(allocation_gid)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });
@@ -143,23 +149,23 @@ export class MembershipsApi {
 
 
     /**
-     * Get a membership
-     * Returns compact &#x60;project_membership&#x60; record for a single membership. &#x60;GET&#x60; only supports project memberships currently
-     * @param {String} membership_gid Globally unique identifier for the membership.
+     * Get an allocation
+     * Returns the complete allocation record for a single allocation.
+     * @param {String} allocation_gid Globally unique identifier for the allocation.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
-    getMembershipWithHttpInfo(membership_gid, opts) {
+    getAllocationWithHttpInfo(allocation_gid, opts) {
         opts = opts || {};
         let postBody = null;
-        // verify the required parameter 'membership_gid' is set
-        if (membership_gid === undefined || membership_gid === null) {
-            throw new Error("Missing the required parameter 'membership_gid' when calling getMembership");
+        // verify the required parameter 'allocation_gid' is set
+        if (allocation_gid === undefined || allocation_gid === null) {
+            throw new Error("Missing the required parameter 'allocation_gid' when calling getAllocation");
         }
 
         let pathParams = {
-            'membership_gid': membership_gid
+            'allocation_gid': allocation_gid
         };
         let queryParams = {};
         opts = opts || {};
@@ -178,23 +184,23 @@ export class MembershipsApi {
         let returnType = 'Blob';
 
         return this.apiClient.callApi(
-            '/memberships/{membership_gid}', 'GET',
+            '/allocations/{allocation_gid}', 'GET',
             pathParams, queryParams, headerParams, formParams, postBody,
             authNames, contentTypes, accepts, returnType
         );
     }
 
     /**
-     * Get a membership
-     * Returns compact &#x60;project_membership&#x60; record for a single membership. &#x60;GET&#x60; only supports project memberships currently
-     * @param {<&vendorExtensions.x-jsdoc-type>} membership_gid Globally unique identifier for the membership.
+     * Get an allocation
+     * Returns the complete allocation record for a single allocation.
+     * @param {<&vendorExtensions.x-jsdoc-type>} allocation_gid Globally unique identifier for the allocation.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProjectMembershipCompactResponseData}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AllocationResponseData}
      */
-    getMembership(membership_gid, opts) {
+    getAllocation(allocation_gid, opts) {
 
-        return this.getMembershipWithHttpInfo(membership_gid, opts)
+        return this.getAllocationWithHttpInfo(allocation_gid, opts)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });
@@ -202,17 +208,18 @@ export class MembershipsApi {
 
 
     /**
-     * Get multiple memberships
-     * Returns compact &#x60;goal_membership&#x60; or &#x60;project_membership&#x60; records. The possible types for &#x60;parent&#x60; in this request are &#x60;goal&#x60; or &#x60;project&#x60;. An additional member (user GID or team GID) can be passed in to filter to a specific membership.
+     * Get multiple allocations
+     * Returns a list of allocations filtered to a specific project or user.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.parent Globally unique identifier for &#x60;goal&#x60; or &#x60;project&#x60;.
-     * @param {String} opts.member Globally unique identifier for &#x60;team&#x60; or &#x60;user&#x60;.
+     * @param {String} opts.parent Globally unique identifier for the project to filter allocations by.
+     * @param {String} opts.assignee Globally unique identifier for the user the allocation is assigned to.
+     * @param {String} opts.workspace Globally unique identifier for the workspace.
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. &#x27;Note: You can only pass in an offset that was returned to you via a previously paginated request.&#x27;
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
-    getMembershipsWithHttpInfo(opts) {
+    getAllocationsWithHttpInfo(opts) {
         opts = opts || {};
         let postBody = null;
 
@@ -238,13 +245,13 @@ export class MembershipsApi {
         if (this.apiClient.RETURN_COLLECTION) {
             return Collection.fromApiClient(
                 this.apiClient.callApi(
-                    '/memberships', 'GET',
+                    '/allocations', 'GET',
                     pathParams, queryParams, headerParams, formParams, postBody,
                     authNames, contentTypes, accepts, returnType
                 ),
                 this.apiClient,
                 {
-                    'path': '/memberships',
+                    'path': '/allocations',
                     'httpMethod': 'GET',
                     'pathParams': pathParams,
                     'queryParams': queryParams,
@@ -260,30 +267,31 @@ export class MembershipsApi {
         }
 
         return this.apiClient.callApi(
-            '/memberships', 'GET',
+            '/allocations', 'GET',
             pathParams, queryParams, headerParams, formParams, postBody,
             authNames, contentTypes, accepts, returnType
         );
     }
 
     /**
-     * Get multiple memberships
-     * Returns compact &#x60;goal_membership&#x60; or &#x60;project_membership&#x60; records. The possible types for &#x60;parent&#x60; in this request are &#x60;goal&#x60; or &#x60;project&#x60;. An additional member (user GID or team GID) can be passed in to filter to a specific membership.
+     * Get multiple allocations
+     * Returns a list of allocations filtered to a specific project or user.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.parent Globally unique identifier for &#x60;goal&#x60; or &#x60;project&#x60;.
-     * @param {String} opts.member Globally unique identifier for &#x60;team&#x60; or &#x60;user&#x60;.
+     * @param {String} opts.parent Globally unique identifier for the project to filter allocations by.
+     * @param {String} opts.assignee Globally unique identifier for the user the allocation is assigned to.
+     * @param {String} opts.workspace Globally unique identifier for the workspace.
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. &#x27;Note: You can only pass in an offset that was returned to you via a previously paginated request.&#x27;
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MembershipResponseArray}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AllocationResponseArray}
      */
-    getMemberships(opts) {
+    getAllocations(opts) {
         // Check if RETURN_COLLECTION is set and return a collection object if it is
         if (this.apiClient.RETURN_COLLECTION) {
-            return this.getMembershipsWithHttpInfo(opts)
+            return this.getAllocationsWithHttpInfo(opts)
         }
 
-        return this.getMembershipsWithHttpInfo(opts)
+        return this.getAllocationsWithHttpInfo(opts)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });
@@ -291,28 +299,32 @@ export class MembershipsApi {
 
 
     /**
-     * Update a membership
-     * An existing membership can be updated by making a &#x60;PUT&#x60; request on the URL for that goal. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged. Memberships on &#x60;goals&#x60; and &#x60;projects&#x60; can be updated.  Returns the full record of the updated membership.
-     * @param {module:model/Object} body The membership to update.
-     * @param {String} membership_gid Globally unique identifier for the membership.
+     * Update an allocation
+     * An existing allocation can be updated by making a PUT request on the URL for that allocation. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  Returns the complete updated allocation record.
+     * @param {module:model/Object} body The updated fields for the allocation.
+     * @param {String} allocation_gid Globally unique identifier for the allocation.
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
-    updateMembershipWithHttpInfo(body, membership_gid) {
-        
+    updateAllocationWithHttpInfo(body, allocation_gid, opts) {
+        opts = opts || {};
         let postBody = body;
         // verify the required parameter 'body' is set
         if (body === undefined || body === null) {
-            throw new Error("Missing the required parameter 'body' when calling updateMembership");
+            throw new Error("Missing the required parameter 'body' when calling updateAllocation");
         }
-        // verify the required parameter 'membership_gid' is set
-        if (membership_gid === undefined || membership_gid === null) {
-            throw new Error("Missing the required parameter 'membership_gid' when calling updateMembership");
+        // verify the required parameter 'allocation_gid' is set
+        if (allocation_gid === undefined || allocation_gid === null) {
+            throw new Error("Missing the required parameter 'allocation_gid' when calling updateAllocation");
         }
 
         let pathParams = {
-            'membership_gid': membership_gid
+            'allocation_gid': allocation_gid
         };
         let queryParams = {};
+        opts = opts || {};
+        queryParams = opts;
 
         let headerParams = {
             
@@ -327,22 +339,24 @@ export class MembershipsApi {
         let returnType = 'Blob';
 
         return this.apiClient.callApi(
-            '/memberships/{membership_gid}', 'PUT',
+            '/allocations/{allocation_gid}', 'PUT',
             pathParams, queryParams, headerParams, formParams, postBody,
             authNames, contentTypes, accepts, returnType
         );
     }
 
     /**
-     * Update a membership
-     * An existing membership can be updated by making a &#x60;PUT&#x60; request on the URL for that goal. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged. Memberships on &#x60;goals&#x60; and &#x60;projects&#x60; can be updated.  Returns the full record of the updated membership.
-     * @param {<&vendorExtensions.x-jsdoc-type>} body The membership to update.
-     * @param {<&vendorExtensions.x-jsdoc-type>} membership_gid Globally unique identifier for the membership.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MembershipResponseData}
+     * Update an allocation
+     * An existing allocation can be updated by making a PUT request on the URL for that allocation. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  Returns the complete updated allocation record.
+     * @param {<&vendorExtensions.x-jsdoc-type>} body The updated fields for the allocation.
+     * @param {<&vendorExtensions.x-jsdoc-type>} allocation_gid Globally unique identifier for the allocation.
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AllocationResponseData}
      */
-    updateMembership(body, membership_gid) {
+    updateAllocation(body, allocation_gid, opts) {
 
-        return this.updateMembershipWithHttpInfo(body, membership_gid)
+        return this.updateAllocationWithHttpInfo(body, allocation_gid, opts)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });

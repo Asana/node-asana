@@ -13,6 +13,7 @@
  *
  */
 import {ApiClient} from './ApiClient';
+import {AllocationsApi} from './api/AllocationsApi';
 import {AttachmentsApi} from './api/AttachmentsApi';
 import {AuditLogAPIApi} from './api/AuditLogAPIApi';
 import {BatchAPIApi} from './api/BatchAPIApi';
@@ -78,7 +79,7 @@ import {WorkspacesApi} from './api/WorkspacesApi';
 * </pre>
 * </p>
 * @module index
-* @version 3.0.3
+* @version 3.0.4
 */
 export {
     /**
@@ -88,6 +89,12 @@ export {
     ApiClient
 
     ,
+
+    /**
+    * The AllocationsApi service constructor.
+    * @property {module:api/AllocationsApi}
+    */
+    AllocationsApi,
 
     /**
     * The AttachmentsApi service constructor.
