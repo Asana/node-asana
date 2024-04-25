@@ -1,0 +1,12 @@
+rules: 
+    triggerRule: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.rules.triggerRule(ruleTriggerGid, {field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });

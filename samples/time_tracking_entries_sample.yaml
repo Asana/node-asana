@@ -1,56 +1,56 @@
-projecttemplates: 
-    deleteProjectTemplate: >-
+timetrackingentries: 
+    createTimeTrackingEntry: >-
         const asana = require('asana');
 
 
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.projecttemplates.deleteProjectTemplate(projectTemplateGid)
+        client.timetrackingentries.createTimeTrackingEntry(taskGid, {field: "value", field: "value", pretty: true})
             .then((result) => {
                 console.log(result);
             });
-    getProjectTemplate: >-
+    deleteTimeTrackingEntry: >-
         const asana = require('asana');
 
 
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.projecttemplates.getProjectTemplate(projectTemplateGid, {param: "value", param: "value", opt_pretty: true})
+        client.timetrackingentries.deleteTimeTrackingEntry(timeTrackingEntryGid)
             .then((result) => {
                 console.log(result);
             });
-    getProjectTemplates: >-
+    getTimeTrackingEntriesForTask: >-
         const asana = require('asana');
 
 
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.projecttemplates.getProjectTemplates({param: "value", param: "value", opt_pretty: true})
+        client.timetrackingentries.getTimeTrackingEntriesForTask(taskGid, {param: "value", param: "value", opt_pretty: true})
             .then((result) => {
                 console.log(result);
             });
-    getProjectTemplatesForTeam: >-
+    getTimeTrackingEntry: >-
         const asana = require('asana');
 
 
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.projecttemplates.getProjectTemplatesForTeam(teamGid, {param: "value", param: "value", opt_pretty: true})
+        client.timetrackingentries.getTimeTrackingEntry(timeTrackingEntryGid, {param: "value", param: "value", opt_pretty: true})
             .then((result) => {
                 console.log(result);
             });
-    instantiateProject: >-
+    updateTimeTrackingEntry: >-
         const asana = require('asana');
 
 
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.projecttemplates.instantiateProject(projectTemplateGid, {field: "value", field: "value", pretty: true})
+        client.timetrackingentries.updateTimeTrackingEntry(timeTrackingEntryGid, {field: "value", field: "value", pretty: true})
             .then((result) => {
                 console.log(result);
             });

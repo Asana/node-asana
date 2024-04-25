@@ -1,56 +1,56 @@
-projecttemplates: 
-    deleteProjectTemplate: >-
+goalrelationships: 
+    addSupportingRelationship: >-
         const asana = require('asana');
 
 
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.projecttemplates.deleteProjectTemplate(projectTemplateGid)
+        client.goalrelationships.addSupportingRelationship(goalGid, {field: "value", field: "value", pretty: true})
             .then((result) => {
                 console.log(result);
             });
-    getProjectTemplate: >-
+    getGoalRelationship: >-
         const asana = require('asana');
 
 
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.projecttemplates.getProjectTemplate(projectTemplateGid, {param: "value", param: "value", opt_pretty: true})
+        client.goalrelationships.getGoalRelationship(goalRelationshipGid, {param: "value", param: "value", opt_pretty: true})
             .then((result) => {
                 console.log(result);
             });
-    getProjectTemplates: >-
+    getGoalRelationships: >-
         const asana = require('asana');
 
 
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.projecttemplates.getProjectTemplates({param: "value", param: "value", opt_pretty: true})
+        client.goalrelationships.getGoalRelationships({param: "value", param: "value", opt_pretty: true})
             .then((result) => {
                 console.log(result);
             });
-    getProjectTemplatesForTeam: >-
+    removeSupportingRelationship: >-
         const asana = require('asana');
 
 
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.projecttemplates.getProjectTemplatesForTeam(teamGid, {param: "value", param: "value", opt_pretty: true})
+        client.goalrelationships.removeSupportingRelationship(goalGid, {field: "value", field: "value", pretty: true})
             .then((result) => {
                 console.log(result);
             });
-    instantiateProject: >-
+    updateGoalRelationship: >-
         const asana = require('asana');
 
 
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.projecttemplates.instantiateProject(projectTemplateGid, {field: "value", field: "value", pretty: true})
+        client.goalrelationships.updateGoalRelationship(goalRelationshipGid, {field: "value", field: "value", pretty: true})
             .then((result) => {
                 console.log(result);
             });

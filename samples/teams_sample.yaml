@@ -65,3 +65,14 @@ teams:
             .then((result) => {
                 console.log(result);
             });
+    updateTeam: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.teams.updateTeam(teamGid, {field: "value", field: "value", pretty: true})
+            .then((result) => {
+                console.log(result);
+            });

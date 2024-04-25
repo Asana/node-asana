@@ -1,45 +1,45 @@
-statusupdates: 
-    createStatusForObject: >-
+tasktemplates: 
+    deleteTaskTemplate: >-
         const asana = require('asana');
 
 
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.statusupdates.createStatusForObject({field: "value", field: "value", pretty: true})
+        client.tasktemplates.deleteTaskTemplate(taskTemplateGid)
             .then((result) => {
                 console.log(result);
             });
-    deleteStatus: >-
+    getTaskTemplate: >-
         const asana = require('asana');
 
 
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.statusupdates.deleteStatus(statusUpdateGid)
+        client.tasktemplates.getTaskTemplate(taskTemplateGid, {param: "value", param: "value", opt_pretty: true})
             .then((result) => {
                 console.log(result);
             });
-    getStatus: >-
+    getTaskTemplates: >-
         const asana = require('asana');
 
 
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.statusupdates.getStatus(statusUpdateGid, {param: "value", param: "value", opt_pretty: true})
+        client.tasktemplates.getTaskTemplates({param: "value", param: "value", opt_pretty: true})
             .then((result) => {
                 console.log(result);
             });
-    getStatusesForObject: >-
+    instantiateTask: >-
         const asana = require('asana');
 
 
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.statusupdates.getStatusesForObject({param: "value", param: "value", opt_pretty: true})
+        client.tasktemplates.instantiateTask(taskTemplateGid, {field: "value", field: "value", pretty: true})
             .then((result) => {
                 console.log(result);
             });

@@ -1,4 +1,8 @@
-# Asana [![GitHub release][release-image]]() [![Build Status][github-actions-image]][github-actions-url] [![NPM Version][npm-image]][npm-url]
+# Asana
+> **Important:**
+> Versions 1.X.X and earlier of this package are no longer supported. For new features and support, please upgrade to [the latest version](https://www.npmjs.com/package/asana).
+>
+>To view sample code for version 1, select the `node-sdk-v1` tab on a specific endpoint's page in the [Asana API reference](https://developers.asana.com/reference/rest-api-reference), or check the [v1 samples](https://github.com/Asana/node-asana/tree/v1.0.3/samples) directory on GitHub.
 
 A JavaScript client (for both Node and browser) for the Asana API v1.0.
 
@@ -9,20 +13,20 @@ A JavaScript client (for both Node and browser) for the Asana API v1.0.
 Install with npm:
 
 ```sh
-npm install asana --save
+npm install asana@1.0.3 --save
 ```
 
 ### Browser
 
-Include the latest release directly from GitHub.
+Include the v1.0.3 release directly from GitHub.
 
 ```html
-<script src="https://github.com/Asana/node-asana/releases/download/<LATEST_RELEASE>/asana-min.js"></script>
+<script src="https://github.com/Asana/node-asana/releases/download/v1.03/asana-min.js"></script>
 ```
 
 **OR:**
 
-1. Download the latest distribution in [releases](https://github.com/Asana/node-asana/releases).
+1. Download the v1.0.3 distribution in [releases](https://github.com/Asana/node-asana/releases).
 2. Make sure to serve it from your webserver.
 3. Include it on the client from a `<script>` tag.
 
@@ -337,14 +341,6 @@ See our [openapi spec][https://github.com/Asana/developer-docs/blob/master/defs/
 GitHub Actions will automatically build and deploy the tagged release.
 
 :reminder_ribbon: Make sure to edit the [new release](https://github.com/Asana/node-asana/releases) description on GitHub after it has been deployed. Please use bullet points to indicate notable changes since the last version.
-
-[release-image]: https://img.shields.io/github/release/asana/node-asana.svg
-
-[github-actions-url]: https://github.com/Asana/node-asana/actions
-[github-actions-image]: https://github.com/Asana/node-asana/workflows/Build/badge.svg
-
-[npm-url]: https://www.npmjs.org/package/asana
-[npm-image]: http://img.shields.io/npm/v/asana.svg?style=flat-square
 
 [bluebird]: https://github.com/petkaantonov/bluebird
 [co]: https://github.com/visionmedia/co

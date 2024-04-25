@@ -1,45 +1,56 @@
-statusupdates: 
-    createStatusForObject: >-
+allocations: 
+    createAllocation: >-
         const asana = require('asana');
 
 
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.statusupdates.createStatusForObject({field: "value", field: "value", pretty: true})
+        client.allocations.createAllocation({field: "value", field: "value", pretty: true})
             .then((result) => {
                 console.log(result);
             });
-    deleteStatus: >-
+    deleteAllocation: >-
         const asana = require('asana');
 
 
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.statusupdates.deleteStatus(statusUpdateGid)
+        client.allocations.deleteAllocation(allocationGid)
             .then((result) => {
                 console.log(result);
             });
-    getStatus: >-
+    getAllocation: >-
         const asana = require('asana');
 
 
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.statusupdates.getStatus(statusUpdateGid, {param: "value", param: "value", opt_pretty: true})
+        client.allocations.getAllocation(allocationGid, {param: "value", param: "value", opt_pretty: true})
             .then((result) => {
                 console.log(result);
             });
-    getStatusesForObject: >-
+    getAllocations: >-
         const asana = require('asana');
 
 
         const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
 
 
-        client.statusupdates.getStatusesForObject({param: "value", param: "value", opt_pretty: true})
+        client.allocations.getAllocations({param: "value", param: "value", opt_pretty: true})
+            .then((result) => {
+                console.log(result);
+            });
+    updateAllocation: >-
+        const asana = require('asana');
+
+
+        const client = asana.Client.create().useAccessToken('PERSONAL_ACCESS_TOKEN');
+
+
+        client.allocations.updateAllocation(allocationGid, {field: "value", field: "value", pretty: true})
             .then((result) => {
                 console.log(result);
             });
