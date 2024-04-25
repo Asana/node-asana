@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * AuditLogAPI service.
 * @module api/AuditLogAPIApi
-* @version 3.0.4
+* @version 3.0.5
 */
 export class AuditLogAPIApi {
 
@@ -48,7 +48,7 @@ export class AuditLogAPIApi {
      * @param {String} opts.actor_gid Filter to events triggered by the actor with this ID.
      * @param {String} opts.resource_gid Filter to events with this resource ID.
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
-     * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. &#x27;Note: You can only pass in an offset that was returned to you via a previously paginated request.&#x27;
+     * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getAuditLogEventsWithHttpInfo(workspace_gid, opts) {
@@ -121,7 +121,7 @@ export class AuditLogAPIApi {
      * @param {String} opts.actor_gid Filter to events triggered by the actor with this ID.
      * @param {String} opts.resource_gid Filter to events with this resource ID.
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
-     * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. &#x27;Note: You can only pass in an offset that was returned to you via a previously paginated request.&#x27;
+     * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AuditLogEventArray}
      */
     getAuditLogEvents(workspace_gid, opts) {

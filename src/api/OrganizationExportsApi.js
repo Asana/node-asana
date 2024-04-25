@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * OrganizationExports service.
 * @module api/OrganizationExportsApi
-* @version 3.0.4
+* @version 3.0.5
 */
 export class OrganizationExportsApi {
 
