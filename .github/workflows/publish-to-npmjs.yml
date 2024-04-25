@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '8.x'
           registry-url: 'https://registry.npmjs.com'
-      - run: npm i
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # - run: npm i
+      # - run: npm publish
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

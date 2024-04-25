@@ -2,7 +2,7 @@
 > **Important:**
 > Versions 1.X.X and earlier of this package are no longer supported. For new features and support, please upgrade to [the latest version](https://www.npmjs.com/package/asana).
 >
->To view sample code for version 1, select the `node-sdk-v1` tab on a specific endpoint's page in the [Asana API reference](https://developers.asana.com/reference/rest-api-reference), or check the [v1 samples](https://github.com/Asana/node-asana/tree/v1.0.4/samples) directory on GitHub.
+>To view sample code for version 1, select the `node-sdk-v1` tab on a specific endpoint's page in the [Asana API reference](https://developers.asana.com/reference/rest-api-reference), or check the [v1 samples](https://github.com/Asana/node-asana/tree/v1.0.5/samples) directory on GitHub.
 
 A JavaScript client (for both Node and browser) for the Asana API v1.0.
 
@@ -13,12 +13,12 @@ A JavaScript client (for both Node and browser) for the Asana API v1.0.
 Install with npm:
 
 ```sh
-npm install asana@1.0.4 --save
+npm install asana@1.0.5 --save
 ```
 
 ### Browser
 
-Include the v1.0.4 release directly from GitHub.
+Include the v1.0.5 release directly from GitHub.
 
 ```html
 <script src="https://github.com/Asana/node-asana/releases/download/v1.03/asana-min.js"></script>
@@ -26,7 +26,7 @@ Include the v1.0.4 release directly from GitHub.
 
 **OR:**
 
-1. Download the v1.0.4 distribution in [releases](https://github.com/Asana/node-asana/releases).
+1. Download the v1.0.5 distribution in [releases](https://github.com/Asana/node-asana/releases).
 2. Make sure to serve it from your webserver.
 3. Include it on the client from a `<script>` tag.
 
