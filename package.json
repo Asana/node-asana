@@ -1,6 +1,6 @@
 {
   "name": "asana",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "This_is_the_interface_for_interacting_with_the__Asana_Platform_httpsdevelopers_asana_com__Our_API_reference_is_generated_from_our__OpenAPI_spec__httpsraw_githubusercontent_comAsanaopenapimasterdefsasana_oas_yaml_",
   "license": "Apache 2.0",
   "main": "src/index.js",
