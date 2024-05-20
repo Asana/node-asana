@@ -36,7 +36,7 @@ let goalsApiInstance = new Asana.GoalsApi();
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The followers to be added as collaborators
 let goal_gid = "12345"; // String | Globally unique identifier for the goal.
 let opts = { 
-    'opt_fields': "current_status_update,current_status_update.resource_subtype,current_status_update.title,due_on,followers,followers.name,html_notes,is_workspace_level,liked,likes,likes.user,likes.user.name,metric,metric.can_manage,metric.currency_code,metric.current_display_value,metric.current_number_value,metric.initial_number_value,metric.precision,metric.progress_source,metric.resource_subtype,metric.target_number_value,metric.unit,name,notes,num_likes,owner,owner.name,start_on,status,team,team.name,time_period,time_period.display_name,time_period.end_on,time_period.period,time_period.start_on,workspace,workspace.name"
+    'opt_fields': "current_status_update,current_status_update.resource_subtype,current_status_update.title,due_on,followers,followers.name,html_notes,is_workspace_level,liked,likes,likes.user,likes.user.name,metric,metric.can_manage,metric.currency_code,metric.current_display_value,metric.current_number_value,metric.initial_number_value,metric.is_custom_weight,metric.precision,metric.progress_source,metric.resource_subtype,metric.target_number_value,metric.unit,name,notes,num_likes,owner,owner.name,start_on,status,team,team.name,time_period,time_period.display_name,time_period.end_on,time_period.period,time_period.start_on,workspace,workspace.name"
 };
 goalsApiInstance.addFollowers(body, goal_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -83,7 +83,7 @@ token.accessToken = '<YOUR_ACCESS_TOKEN>';
 let goalsApiInstance = new Asana.GoalsApi();
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The goal to create.
 let opts = { 
-    'opt_fields': "current_status_update,current_status_update.resource_subtype,current_status_update.title,due_on,followers,followers.name,html_notes,is_workspace_level,liked,likes,likes.user,likes.user.name,metric,metric.can_manage,metric.currency_code,metric.current_display_value,metric.current_number_value,metric.initial_number_value,metric.precision,metric.progress_source,metric.resource_subtype,metric.target_number_value,metric.unit,name,notes,num_likes,owner,owner.name,start_on,status,team,team.name,time_period,time_period.display_name,time_period.end_on,time_period.period,time_period.start_on,workspace,workspace.name"
+    'opt_fields': "current_status_update,current_status_update.resource_subtype,current_status_update.title,due_on,followers,followers.name,html_notes,is_workspace_level,liked,likes,likes.user,likes.user.name,metric,metric.can_manage,metric.currency_code,metric.current_display_value,metric.current_number_value,metric.initial_number_value,metric.is_custom_weight,metric.precision,metric.progress_source,metric.resource_subtype,metric.target_number_value,metric.unit,name,notes,num_likes,owner,owner.name,start_on,status,team,team.name,time_period,time_period.display_name,time_period.end_on,time_period.period,time_period.start_on,workspace,workspace.name"
 };
 goalsApiInstance.createGoal(body, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -130,7 +130,7 @@ let goalsApiInstance = new Asana.GoalsApi();
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The goal metric to create.
 let goal_gid = "12345"; // String | Globally unique identifier for the goal.
 let opts = { 
-    'opt_fields': "current_status_update,current_status_update.resource_subtype,current_status_update.title,due_on,followers,followers.name,html_notes,is_workspace_level,liked,likes,likes.user,likes.user.name,metric,metric.can_manage,metric.currency_code,metric.current_display_value,metric.current_number_value,metric.initial_number_value,metric.precision,metric.progress_source,metric.resource_subtype,metric.target_number_value,metric.unit,name,notes,num_likes,owner,owner.name,start_on,status,team,team.name,time_period,time_period.display_name,time_period.end_on,time_period.period,time_period.start_on,workspace,workspace.name"
+    'opt_fields': "current_status_update,current_status_update.resource_subtype,current_status_update.title,due_on,followers,followers.name,html_notes,is_workspace_level,liked,likes,likes.user,likes.user.name,metric,metric.can_manage,metric.currency_code,metric.current_display_value,metric.current_number_value,metric.initial_number_value,metric.is_custom_weight,metric.precision,metric.progress_source,metric.resource_subtype,metric.target_number_value,metric.unit,name,notes,num_likes,owner,owner.name,start_on,status,team,team.name,time_period,time_period.display_name,time_period.end_on,time_period.period,time_period.start_on,workspace,workspace.name"
 };
 goalsApiInstance.createGoalMetric(body, goal_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -220,7 +220,7 @@ token.accessToken = '<YOUR_ACCESS_TOKEN>';
 let goalsApiInstance = new Asana.GoalsApi();
 let goal_gid = "12345"; // String | Globally unique identifier for the goal.
 let opts = { 
-    'opt_fields': "current_status_update,current_status_update.resource_subtype,current_status_update.title,due_on,followers,followers.name,html_notes,is_workspace_level,liked,likes,likes.user,likes.user.name,metric,metric.can_manage,metric.currency_code,metric.current_display_value,metric.current_number_value,metric.initial_number_value,metric.precision,metric.progress_source,metric.resource_subtype,metric.target_number_value,metric.unit,name,notes,num_likes,owner,owner.name,start_on,status,team,team.name,time_period,time_period.display_name,time_period.end_on,time_period.period,time_period.start_on,workspace,workspace.name"
+    'opt_fields': "current_status_update,current_status_update.resource_subtype,current_status_update.title,due_on,followers,followers.name,html_notes,is_workspace_level,liked,likes,likes.user,likes.user.name,metric,metric.can_manage,metric.currency_code,metric.current_display_value,metric.current_number_value,metric.initial_number_value,metric.is_custom_weight,metric.precision,metric.progress_source,metric.resource_subtype,metric.target_number_value,metric.unit,name,notes,num_likes,owner,owner.name,start_on,status,team,team.name,time_period,time_period.display_name,time_period.end_on,time_period.period,time_period.start_on,workspace,workspace.name"
 };
 goalsApiInstance.getGoal(goal_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -274,7 +274,7 @@ let opts = {
     'time_periods': "221693,506165", 
     'limit': 50, 
     'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
-    'opt_fields': "current_status_update,current_status_update.resource_subtype,current_status_update.title,due_on,followers,followers.name,html_notes,is_workspace_level,liked,likes,likes.user,likes.user.name,metric,metric.can_manage,metric.currency_code,metric.current_display_value,metric.current_number_value,metric.initial_number_value,metric.precision,metric.progress_source,metric.resource_subtype,metric.target_number_value,metric.unit,name,notes,num_likes,offset,owner,owner.name,path,start_on,status,team,team.name,time_period,time_period.display_name,time_period.end_on,time_period.period,time_period.start_on,uri,workspace,workspace.name"
+    'opt_fields': "current_status_update,current_status_update.resource_subtype,current_status_update.title,due_on,followers,followers.name,html_notes,is_workspace_level,liked,likes,likes.user,likes.user.name,metric,metric.can_manage,metric.currency_code,metric.current_display_value,metric.current_number_value,metric.initial_number_value,metric.is_custom_weight,metric.precision,metric.progress_source,metric.resource_subtype,metric.target_number_value,metric.unit,name,notes,num_likes,offset,owner,owner.name,path,start_on,status,team,team.name,time_period,time_period.display_name,time_period.end_on,time_period.period,time_period.start_on,uri,workspace,workspace.name"
 };
 goalsApiInstance.getGoals(opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -328,7 +328,7 @@ token.accessToken = '<YOUR_ACCESS_TOKEN>';
 let goalsApiInstance = new Asana.GoalsApi();
 let goal_gid = "12345"; // String | Globally unique identifier for the goal.
 let opts = { 
-    'opt_fields': "current_status_update,current_status_update.resource_subtype,current_status_update.title,due_on,followers,followers.name,html_notes,is_workspace_level,liked,likes,likes.user,likes.user.name,metric,metric.can_manage,metric.currency_code,metric.current_display_value,metric.current_number_value,metric.initial_number_value,metric.precision,metric.progress_source,metric.resource_subtype,metric.target_number_value,metric.unit,name,notes,num_likes,owner,owner.name,start_on,status,team,team.name,time_period,time_period.display_name,time_period.end_on,time_period.period,time_period.start_on,workspace,workspace.name"
+    'opt_fields': "current_status_update,current_status_update.resource_subtype,current_status_update.title,due_on,followers,followers.name,html_notes,is_workspace_level,liked,likes,likes.user,likes.user.name,metric,metric.can_manage,metric.currency_code,metric.current_display_value,metric.current_number_value,metric.initial_number_value,metric.is_custom_weight,metric.precision,metric.progress_source,metric.resource_subtype,metric.target_number_value,metric.unit,name,notes,num_likes,owner,owner.name,start_on,status,team,team.name,time_period,time_period.display_name,time_period.end_on,time_period.period,time_period.start_on,workspace,workspace.name"
 };
 goalsApiInstance.getParentGoalsForGoal(goal_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -375,7 +375,7 @@ let goalsApiInstance = new Asana.GoalsApi();
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The followers to be removed as collaborators
 let goal_gid = "12345"; // String | Globally unique identifier for the goal.
 let opts = { 
-    'opt_fields': "current_status_update,current_status_update.resource_subtype,current_status_update.title,due_on,followers,followers.name,html_notes,is_workspace_level,liked,likes,likes.user,likes.user.name,metric,metric.can_manage,metric.currency_code,metric.current_display_value,metric.current_number_value,metric.initial_number_value,metric.precision,metric.progress_source,metric.resource_subtype,metric.target_number_value,metric.unit,name,notes,num_likes,owner,owner.name,start_on,status,team,team.name,time_period,time_period.display_name,time_period.end_on,time_period.period,time_period.start_on,workspace,workspace.name"
+    'opt_fields': "current_status_update,current_status_update.resource_subtype,current_status_update.title,due_on,followers,followers.name,html_notes,is_workspace_level,liked,likes,likes.user,likes.user.name,metric,metric.can_manage,metric.currency_code,metric.current_display_value,metric.current_number_value,metric.initial_number_value,metric.is_custom_weight,metric.precision,metric.progress_source,metric.resource_subtype,metric.target_number_value,metric.unit,name,notes,num_likes,owner,owner.name,start_on,status,team,team.name,time_period,time_period.display_name,time_period.end_on,time_period.period,time_period.start_on,workspace,workspace.name"
 };
 goalsApiInstance.removeFollowers(body, goal_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -423,7 +423,7 @@ let goalsApiInstance = new Asana.GoalsApi();
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The updated fields for the goal.
 let goal_gid = "12345"; // String | Globally unique identifier for the goal.
 let opts = { 
-    'opt_fields': "current_status_update,current_status_update.resource_subtype,current_status_update.title,due_on,followers,followers.name,html_notes,is_workspace_level,liked,likes,likes.user,likes.user.name,metric,metric.can_manage,metric.currency_code,metric.current_display_value,metric.current_number_value,metric.initial_number_value,metric.precision,metric.progress_source,metric.resource_subtype,metric.target_number_value,metric.unit,name,notes,num_likes,owner,owner.name,start_on,status,team,team.name,time_period,time_period.display_name,time_period.end_on,time_period.period,time_period.start_on,workspace,workspace.name"
+    'opt_fields': "current_status_update,current_status_update.resource_subtype,current_status_update.title,due_on,followers,followers.name,html_notes,is_workspace_level,liked,likes,likes.user,likes.user.name,metric,metric.can_manage,metric.currency_code,metric.current_display_value,metric.current_number_value,metric.initial_number_value,metric.is_custom_weight,metric.precision,metric.progress_source,metric.resource_subtype,metric.target_number_value,metric.unit,name,notes,num_likes,owner,owner.name,start_on,status,team,team.name,time_period,time_period.display_name,time_period.end_on,time_period.period,time_period.start_on,workspace,workspace.name"
 };
 goalsApiInstance.updateGoal(body, goal_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -471,7 +471,7 @@ let goalsApiInstance = new Asana.GoalsApi();
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The updated fields for the goal metric.
 let goal_gid = "12345"; // String | Globally unique identifier for the goal.
 let opts = { 
-    'opt_fields': "current_status_update,current_status_update.resource_subtype,current_status_update.title,due_on,followers,followers.name,html_notes,is_workspace_level,liked,likes,likes.user,likes.user.name,metric,metric.can_manage,metric.currency_code,metric.current_display_value,metric.current_number_value,metric.initial_number_value,metric.precision,metric.progress_source,metric.resource_subtype,metric.target_number_value,metric.unit,name,notes,num_likes,owner,owner.name,start_on,status,team,team.name,time_period,time_period.display_name,time_period.end_on,time_period.period,time_period.start_on,workspace,workspace.name"
+    'opt_fields': "current_status_update,current_status_update.resource_subtype,current_status_update.title,due_on,followers,followers.name,html_notes,is_workspace_level,liked,likes,likes.user,likes.user.name,metric,metric.can_manage,metric.currency_code,metric.current_display_value,metric.current_number_value,metric.initial_number_value,metric.is_custom_weight,metric.precision,metric.progress_source,metric.resource_subtype,metric.target_number_value,metric.unit,name,notes,num_likes,owner,owner.name,start_on,status,team,team.name,time_period,time_period.display_name,time_period.end_on,time_period.period,time_period.start_on,workspace,workspace.name"
 };
 goalsApiInstance.updateGoalMetric(body, goal_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));

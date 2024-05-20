@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Sections service.
 * @module api/SectionsApi
-* @version 3.0.6
+* @version 3.0.7
 */
 export class SectionsApi {
 

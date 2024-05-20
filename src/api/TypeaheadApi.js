@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Typeahead service.
 * @module api/TypeaheadApi
-* @version 3.0.6
+* @version 3.0.7
 */
 export class TypeaheadApi {
 
