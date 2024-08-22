@@ -9,7 +9,7 @@ WebhooksApi:
     let webhooksApiInstance = new Asana.WebhooksApi();
     let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The webhook workspace and target.
     let opts = { 
-        'opt_fields': "active,created_at,filters,filters.action,filters.fields,filters.resource_subtype,last_failure_at,last_failure_content,last_success_at,resource,resource.name,target"
+        'opt_fields': "active,created_at,delivery_retry_count,failure_deletion_timestamp,filters,filters.action,filters.fields,filters.resource_subtype,last_failure_at,last_failure_content,last_success_at,next_attempt_after,resource,resource.name,target"
     };
     webhooksApiInstance.createWebhook(body, opts).then((result) => {
         console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -43,7 +43,7 @@ WebhooksApi:
     let webhooksApiInstance = new Asana.WebhooksApi();
     let webhook_gid = "12345"; // String | Globally unique identifier for the webhook.
     let opts = { 
-        'opt_fields': "active,created_at,filters,filters.action,filters.fields,filters.resource_subtype,last_failure_at,last_failure_content,last_success_at,resource,resource.name,target"
+        'opt_fields': "active,created_at,delivery_retry_count,failure_deletion_timestamp,filters,filters.action,filters.fields,filters.resource_subtype,last_failure_at,last_failure_content,last_success_at,next_attempt_after,resource,resource.name,target"
     };
     webhooksApiInstance.getWebhook(webhook_gid, opts).then((result) => {
         console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -64,7 +64,7 @@ WebhooksApi:
         'limit': 50, 
         'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
         'resource': "51648", 
-        'opt_fields': "active,created_at,filters,filters.action,filters.fields,filters.resource_subtype,last_failure_at,last_failure_content,last_success_at,offset,path,resource,resource.name,target,uri"
+        'opt_fields': "active,created_at,delivery_retry_count,failure_deletion_timestamp,filters,filters.action,filters.fields,filters.resource_subtype,last_failure_at,last_failure_content,last_success_at,next_attempt_after,offset,path,resource,resource.name,target,uri"
     };
     webhooksApiInstance.getWebhooks(workspace, opts).then((result) => {
         console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -83,7 +83,7 @@ WebhooksApi:
     let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The updated filters for the webhook.
     let webhook_gid = "12345"; // String | Globally unique identifier for the webhook.
     let opts = { 
-        'opt_fields': "active,created_at,filters,filters.action,filters.fields,filters.resource_subtype,last_failure_at,last_failure_content,last_success_at,resource,resource.name,target"
+        'opt_fields': "active,created_at,delivery_retry_count,failure_deletion_timestamp,filters,filters.action,filters.fields,filters.resource_subtype,last_failure_at,last_failure_content,last_success_at,next_attempt_after,resource,resource.name,target"
     };
     webhooksApiInstance.updateWebhook(body, webhook_gid, opts).then((result) => {
         console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
