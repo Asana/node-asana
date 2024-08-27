@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * ProjectBriefs service.
 * @module api/ProjectBriefsApi
-* @version 3.0.9
+* @version 3.0.10
 */
 export class ProjectBriefsApi {
 
