@@ -364,11 +364,12 @@ let token = client.authentications['token'];
 token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let tagsApiInstance = new Asana.TagsApi();
+let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The tag to update.
 let tag_gid = "11235"; // String | Globally unique identifier for the tag.
 let opts = { 
     'opt_fields': "color,created_at,followers,followers.name,name,notes,permalink_url,workspace,workspace.name"
 };
-tagsApiInstance.updateTag(tag_gid, opts).then((result) => {
+tagsApiInstance.updateTag(body, tag_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
 }, (error) => {
     console.error(error.response.body);
@@ -380,6 +381,7 @@ tagsApiInstance.updateTag(tag_gid, opts).then((result) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **body** | **Object**| The tag to update. | 
  **tag_gid** | **String**| Globally unique identifier for the tag. | 
  **opt_fields** | **Object**| This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
 
@@ -389,6 +391,6 @@ object
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json; charset=UTF-8
  - **Accept**: application/json; charset=UTF-8
 

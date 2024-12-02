@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Webhooks service.
 * @module api/WebhooksApi
-* @version 3.0.11
+* @version 3.0.12
 */
 export class WebhooksApi {
 

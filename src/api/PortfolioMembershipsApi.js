@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * PortfolioMemberships service.
 * @module api/PortfolioMembershipsApi
-* @version 3.0.11
+* @version 3.0.12
 */
 export class PortfolioMembershipsApi {
 
@@ -84,7 +84,7 @@ export class PortfolioMembershipsApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} portfolio_membership_gid 
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/PortfolioMembershipResponseData}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/DeprecatedPortfolioMembershipResponseData}
      */
     getPortfolioMembership(portfolio_membership_gid, opts) {
 
@@ -171,7 +171,7 @@ export class PortfolioMembershipsApi {
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/PortfolioMembershipResponseArray}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/DeprecatedPortfolioMembershipResponseArray}
      */
     getPortfolioMemberships(opts) {
         // Check if RETURN_COLLECTION is set and return a collection object if it is
@@ -264,7 +264,7 @@ export class PortfolioMembershipsApi {
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/PortfolioMembershipResponseArray}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/DeprecatedPortfolioMembershipResponseArray}
      */
     getPortfolioMembershipsForPortfolio(portfolio_gid, opts) {
         // Check if RETURN_COLLECTION is set and return a collection object if it is

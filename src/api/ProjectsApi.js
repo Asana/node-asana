@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Projects service.
 * @module api/ProjectsApi
-* @version 3.0.11
+* @version 3.0.12
 */
 export class ProjectsApi {
 
@@ -1022,7 +1022,7 @@ export class ProjectsApi {
 
     /**
      * Create a project template from a project
-     * Creates and returns a job that will asynchronously handle the project template creation. Note that while the resulting project template can be accessed with the API, it won&#x27;t be visible in the Asana UI until Project Templates 2.0 is launched in the app. See more in [this forum post](https://forum.asana.com/t/a-new-api-for-project-templates/156432).
+     * Creates and returns a job that will asynchronously handle the project template creation.
      * @param {module:model/Object} body Describes the inputs used for creating a project template, such as the resulting project template&#x27;s name, which team it should be created in.
      * @param {String} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
@@ -1069,7 +1069,7 @@ export class ProjectsApi {
 
     /**
      * Create a project template from a project
-     * Creates and returns a job that will asynchronously handle the project template creation. Note that while the resulting project template can be accessed with the API, it won&#x27;t be visible in the Asana UI until Project Templates 2.0 is launched in the app. See more in [this forum post](https://forum.asana.com/t/a-new-api-for-project-templates/156432).
+     * Creates and returns a job that will asynchronously handle the project template creation.
      * @param {<&vendorExtensions.x-jsdoc-type>} body Describes the inputs used for creating a project template, such as the resulting project template&#x27;s name, which team it should be created in.
      * @param {<&vendorExtensions.x-jsdoc-type>} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters

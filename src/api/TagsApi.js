@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Tags service.
 * @module api/TagsApi
-* @version 3.0.11
+* @version 3.0.12
 */
 export class TagsApi {
 
@@ -544,14 +544,19 @@ export class TagsApi {
     /**
      * Update a tag
      * Updates the properties of a tag. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the tag.  Returns the complete updated tag record.
+     * @param {module:model/Object} body The tag to update.
      * @param {String} tag_gid Globally unique identifier for the tag.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
-    updateTagWithHttpInfo(tag_gid, opts) {
+    updateTagWithHttpInfo(body, tag_gid, opts) {
         opts = opts || {};
-        let postBody = null;
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling updateTag");
+        }
         // verify the required parameter 'tag_gid' is set
         if (tag_gid === undefined || tag_gid === null) {
             throw new Error("Missing the required parameter 'tag_gid' when calling updateTag");
@@ -572,7 +577,7 @@ export class TagsApi {
         };
 
         let authNames = ['personalAccessToken'];
-        let contentTypes = [];
+        let contentTypes = ['application/json; charset=UTF-8'];
         let accepts = ['application/json; charset=UTF-8'];
         let returnType = 'Blob';
 
@@ -586,14 +591,15 @@ export class TagsApi {
     /**
      * Update a tag
      * Updates the properties of a tag. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the tag.  Returns the complete updated tag record.
+     * @param {<&vendorExtensions.x-jsdoc-type>} body The tag to update.
      * @param {<&vendorExtensions.x-jsdoc-type>} tag_gid Globally unique identifier for the tag.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TagResponseData}
      */
-    updateTag(tag_gid, opts) {
+    updateTag(body, tag_gid, opts) {
 
-        return this.updateTagWithHttpInfo(tag_gid, opts)
+        return this.updateTagWithHttpInfo(body, tag_gid, opts)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });

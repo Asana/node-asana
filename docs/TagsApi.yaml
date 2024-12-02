@@ -138,11 +138,12 @@ TagsApi:
     token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
     let tagsApiInstance = new Asana.TagsApi();
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The tag to update.
     let tag_gid = "11235"; // String | Globally unique identifier for the tag.
     let opts = { 
         'opt_fields': "color,created_at,followers,followers.name,name,notes,permalink_url,workspace,workspace.name"
     };
-    tagsApiInstance.updateTag(tag_gid, opts).then((result) => {
+    tagsApiInstance.updateTag(body, tag_gid, opts).then((result) => {
         console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
     }, (error) => {
         console.error(error.response.body);

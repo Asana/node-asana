@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * AuditLogAPI service.
 * @module api/AuditLogAPIApi
-* @version 3.0.11
+* @version 3.0.12
 */
 export class AuditLogAPIApi {
 

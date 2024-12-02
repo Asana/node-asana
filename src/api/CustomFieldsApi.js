@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * CustomFields service.
 * @module api/CustomFieldsApi
-* @version 3.0.11
+* @version 3.0.12
 */
 export class CustomFieldsApi {
 

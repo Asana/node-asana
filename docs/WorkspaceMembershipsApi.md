@@ -28,7 +28,7 @@ token.accessToken = '<YOUR_ACCESS_TOKEN>';
 let workspaceMembershipsApiInstance = new Asana.WorkspaceMembershipsApi();
 let workspace_membership_gid = "12345"; // String | 
 let opts = { 
-    'opt_fields': "created_at,is_active,is_admin,is_guest,user,user.name,user_task_list,user_task_list.name,user_task_list.owner,user_task_list.workspace,vacation_dates,vacation_dates.end_on,vacation_dates.start_on,workspace,workspace.name"
+    'opt_fields': "created_at,is_active,is_admin,is_guest,is_view_only,user,user.name,user_task_list,user_task_list.name,user_task_list.owner,user_task_list.workspace,vacation_dates,vacation_dates.end_on,vacation_dates.start_on,workspace,workspace.name"
 };
 workspaceMembershipsApiInstance.getWorkspaceMembership(workspace_membership_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -76,7 +76,7 @@ let user_gid = "me"; // String | A string identifying a user. This can either be
 let opts = { 
     'limit': 50, 
     'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
-    'opt_fields': "created_at,is_active,is_admin,is_guest,offset,path,uri,user,user.name,user_task_list,user_task_list.name,user_task_list.owner,user_task_list.workspace,vacation_dates,vacation_dates.end_on,vacation_dates.start_on,workspace,workspace.name"
+    'opt_fields': "created_at,is_active,is_admin,is_guest,is_view_only,offset,path,uri,user,user.name,user_task_list,user_task_list.name,user_task_list.owner,user_task_list.workspace,vacation_dates,vacation_dates.end_on,vacation_dates.start_on,workspace,workspace.name"
 };
 workspaceMembershipsApiInstance.getWorkspaceMembershipsForUser(user_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -127,7 +127,7 @@ let opts = {
     'user': "me", 
     'limit': 50, 
     'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
-    'opt_fields': "created_at,is_active,is_admin,is_guest,offset,path,uri,user,user.name,user_task_list,user_task_list.name,user_task_list.owner,user_task_list.workspace,vacation_dates,vacation_dates.end_on,vacation_dates.start_on,workspace,workspace.name"
+    'opt_fields': "created_at,is_active,is_admin,is_guest,is_view_only,offset,path,uri,user,user.name,user_task_list,user_task_list.name,user_task_list.owner,user_task_list.workspace,vacation_dates,vacation_dates.end_on,vacation_dates.start_on,workspace,workspace.name"
 };
 workspaceMembershipsApiInstance.getWorkspaceMembershipsForWorkspace(workspace_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));

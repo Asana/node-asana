@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Memberships service.
 * @module api/MembershipsApi
-* @version 3.0.11
+* @version 3.0.12
 */
 export class MembershipsApi {
 
@@ -38,7 +38,7 @@ export class MembershipsApi {
 
     /**
      * Create a membership
-     * Creates a new membership in a &#x60;goal&#x60; or &#x60;project&#x60;. &#x60;Teams&#x60; or &#x60;users&#x60; can be a member of &#x60;goals&#x60; or &#x60;projects&#x60;.  Returns the full record of the newly created membership.
+     * Creates a new membership in a &#x60;goal&#x60;, &#x60;project&#x60;, or &#x60;portfolio&#x60;. Teams or users can be members of &#x60;goals&#x60; or &#x60;projects&#x60;. Portfolios only support &#x60;users&#x60; as members.  Returns the full record of the newly created membership.
      * @param {Object} opts Optional parameters
      * @param {module:model/Object} opts.body The updated fields for the membership.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
@@ -75,7 +75,7 @@ export class MembershipsApi {
 
     /**
      * Create a membership
-     * Creates a new membership in a &#x60;goal&#x60; or &#x60;project&#x60;. &#x60;Teams&#x60; or &#x60;users&#x60; can be a member of &#x60;goals&#x60; or &#x60;projects&#x60;.  Returns the full record of the newly created membership.
+     * Creates a new membership in a &#x60;goal&#x60;, &#x60;project&#x60;, or &#x60;portfolio&#x60;. Teams or users can be members of &#x60;goals&#x60; or &#x60;projects&#x60;. Portfolios only support &#x60;users&#x60; as members.  Returns the full record of the newly created membership.
      * @param {Object} opts Optional parameters
      * @param {module:model/Object} opts.body The updated fields for the membership.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MembershipResponseData}
@@ -91,7 +91,7 @@ export class MembershipsApi {
 
     /**
      * Delete a membership
-     * A specific, existing membership for a &#x60;goal&#x60; or &#x60;project&#x60; can be deleted by making a &#x60;DELETE&#x60; request on the URL for that membership.  Returns an empty data record.
+     * A specific, existing membership for a &#x60;goal&#x60;, &#x60;project&#x60; and &#x60;portfolio&#x60; can be deleted by making a &#x60;DELETE&#x60; request on the URL for that membership.  Returns an empty data record.
      * @param {String} membership_gid Globally unique identifier for the membership.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
@@ -129,7 +129,7 @@ export class MembershipsApi {
 
     /**
      * Delete a membership
-     * A specific, existing membership for a &#x60;goal&#x60; or &#x60;project&#x60; can be deleted by making a &#x60;DELETE&#x60; request on the URL for that membership.  Returns an empty data record.
+     * A specific, existing membership for a &#x60;goal&#x60;, &#x60;project&#x60; and &#x60;portfolio&#x60; can be deleted by making a &#x60;DELETE&#x60; request on the URL for that membership.  Returns an empty data record.
      * @param {<&vendorExtensions.x-jsdoc-type>} membership_gid Globally unique identifier for the membership.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EmptyResponseData}
      */
@@ -292,7 +292,7 @@ export class MembershipsApi {
 
     /**
      * Update a membership
-     * An existing membership can be updated by making a &#x60;PUT&#x60; request on the URL for that goal. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged. Memberships on &#x60;goals&#x60; and &#x60;projects&#x60; can be updated.  Returns the full record of the updated membership.
+     * An existing membership can be updated by making a &#x60;PUT&#x60; request on the membership. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged. Memberships on &#x60;goals&#x60;, &#x60;projects&#x60; and &#x60;portfolios&#x60; can be updated.  Returns the full record of the updated membership.
      * @param {module:model/Object} body The membership to update.
      * @param {String} membership_gid Globally unique identifier for the membership.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
@@ -335,7 +335,7 @@ export class MembershipsApi {
 
     /**
      * Update a membership
-     * An existing membership can be updated by making a &#x60;PUT&#x60; request on the URL for that goal. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged. Memberships on &#x60;goals&#x60; and &#x60;projects&#x60; can be updated.  Returns the full record of the updated membership.
+     * An existing membership can be updated by making a &#x60;PUT&#x60; request on the membership. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged. Memberships on &#x60;goals&#x60;, &#x60;projects&#x60; and &#x60;portfolios&#x60; can be updated.  Returns the full record of the updated membership.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The membership to update.
      * @param {<&vendorExtensions.x-jsdoc-type>} membership_gid Globally unique identifier for the membership.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MembershipResponseData}
