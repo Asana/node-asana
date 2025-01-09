@@ -87,7 +87,7 @@ jobs:
       - name: Load secrets
         uses: aws-actions/aws-secretsmanager-get-secrets@v1
         with:
-          secret-ids: NPM_API,prod/github_actions_release_asana_client_libraries/npm_api_key
+          secret-ids: NPM_API,npm_api_key
           # npm_api_key secret is stored as {key:"***..."}.
           # GitHub Actions environment variable name is NPM_API so to access "key" from the json we can use NPM_API_KEY
           parse-json-secrets: true
