@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Jobs service.
 * @module api/JobsApi
-* @version 3.0.12
+* @version v3.0.13
 */
 export class JobsApi {
 

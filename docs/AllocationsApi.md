@@ -150,7 +150,7 @@ object
 
 Get multiple allocations
 
-Returns a list of allocations filtered to a specific project or user.
+Returns a list of allocations filtered to a specific project, user or placeholder.
 
 ([more information](https://developers.asana.com/reference/getallocations))
 
@@ -184,7 +184,7 @@ allocationsApiInstance.getAllocations(opts).then((result) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **parent** | **String**| Globally unique identifier for the project to filter allocations by. | [optional] 
- **assignee** | **String**| Globally unique identifier for the user the allocation is assigned to. | [optional] 
+ **assignee** | **String**| Globally unique identifier for the user or placeholder the allocation is assigned to. | [optional] 
  **workspace** | **String**| Globally unique identifier for the workspace. | [optional] 
  **limit** | **Number**| Results per page. The number of objects to return per page. The value must be between 1 and 100. | [optional] 
  **offset** | **String**| Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.* | [optional] 

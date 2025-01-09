@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Allocations service.
 * @module api/AllocationsApi
-* @version 3.0.12
+* @version v3.0.13
 */
 export class AllocationsApi {
 
@@ -209,10 +209,10 @@ export class AllocationsApi {
 
     /**
      * Get multiple allocations
-     * Returns a list of allocations filtered to a specific project or user.
+     * Returns a list of allocations filtered to a specific project, user or placeholder.
      * @param {Object} opts Optional parameters
      * @param {String} opts.parent Globally unique identifier for the project to filter allocations by.
-     * @param {String} opts.assignee Globally unique identifier for the user the allocation is assigned to.
+     * @param {String} opts.assignee Globally unique identifier for the user or placeholder the allocation is assigned to.
      * @param {String} opts.workspace Globally unique identifier for the workspace.
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
@@ -275,10 +275,10 @@ export class AllocationsApi {
 
     /**
      * Get multiple allocations
-     * Returns a list of allocations filtered to a specific project or user.
+     * Returns a list of allocations filtered to a specific project, user or placeholder.
      * @param {Object} opts Optional parameters
      * @param {String} opts.parent Globally unique identifier for the project to filter allocations by.
-     * @param {String} opts.assignee Globally unique identifier for the user the allocation is assigned to.
+     * @param {String} opts.assignee Globally unique identifier for the user or placeholder the allocation is assigned to.
      * @param {String} opts.workspace Globally unique identifier for the workspace.
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*

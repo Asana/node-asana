@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Users service.
 * @module api/UsersApi
-* @version 3.0.12
+* @version v3.0.13
 */
 export class UsersApi {
 
@@ -38,7 +38,7 @@ export class UsersApi {
 
     /**
      * Get a user&#x27;s favorites
-     * Returns all of a user&#x27;s favorites in the given workspace, of the given type. Results are given in order (The same order as Asana&#x27;s sidebar).
+     * Returns all of a user&#x27;s favorites within a specified workspace and of a given type. The results are ordered exactly as they appear in the user&#x27;s Asana sidebar in the web application. Note that this endpoint currently only returns favorites for the current user (i.e., the user associated with the authentication token).
      * @param {String} user_gid A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
      * @param {module:model/String} resource_type The resource type of favorites to be returned.
      * @param {String} workspace The workspace in which to get favorites.
@@ -118,7 +118,7 @@ export class UsersApi {
 
     /**
      * Get a user&#x27;s favorites
-     * Returns all of a user&#x27;s favorites in the given workspace, of the given type. Results are given in order (The same order as Asana&#x27;s sidebar).
+     * Returns all of a user&#x27;s favorites within a specified workspace and of a given type. The results are ordered exactly as they appear in the user&#x27;s Asana sidebar in the web application. Note that this endpoint currently only returns favorites for the current user (i.e., the user associated with the authentication token).
      * @param {<&vendorExtensions.x-jsdoc-type>} user_gid A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
      * @param {<&vendorExtensions.x-jsdoc-type>} resource_type The resource type of favorites to be returned.
      * @param {<&vendorExtensions.x-jsdoc-type>} workspace The workspace in which to get favorites.

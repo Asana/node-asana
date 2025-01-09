@@ -1,7 +1,7 @@
 # asana [![GitHub release][release-image]][release-url] [![NPM Version][npm-image]][npm-url]
 
 - API version: 1.0
-- Package version: 3.0.12
+- Package version: v3.0.13
 
 ## Installation
 
@@ -18,7 +18,7 @@ npm install asana --save
 Include the latest release directly from GitHub:
 
 ```html
-<script src="https://github.com/Asana/node-asana/releases/download/v3.0.12/asana-min.js"></script>
+<script src="https://github.com/Asana/node-asana/releases/download/vv3.0.13/asana-min.js"></script>
 ```
 
 Example usage (**NOTE**: be careful not to expose your access token):
@@ -1111,6 +1111,6 @@ client.callApi(
 ```
 
 [release-image]: https://img.shields.io/github/release/asana/node-asana.svg
-[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.0.12
+[release-url]: https://github.com/Asana/node-asana/releases/tag/vv3.0.13
 [npm-image]: http://img.shields.io/npm/v/asana.svg?style=flat-square
 [npm-url]: https://www.npmjs.org/package/asana
