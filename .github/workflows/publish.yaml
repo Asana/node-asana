@@ -30,7 +30,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: us-east-1
-          role-to-assume: arn:aws:iam::403483446840:role/autogen_role_beta_github_actions_release_asana_client_libraries
+          role-to-assume: arn:aws:iam::403483446840:role/autogen_github_actions_beta_release_asana_node_client_library
       - name: Get GitHub app token
         uses: asana/get-github-app-token@v1
         id: get-token
@@ -83,11 +83,11 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: us-east-1
-          role-to-assume: arn:aws:iam::403483446840:role/autogen_role_beta_github_actions_release_asana_client_libraries
+          role-to-assume: arn:aws:iam::403483446840:role/autogen_github_actions_beta_release_asana_node_client_library
       - name: Load secrets
         uses: aws-actions/aws-secretsmanager-get-secrets@v1
         with:
-          secret-ids: NPM_API,prod/github_actions_release_asana_client_libraries/npm_api_key
+          secret-ids: NPM_API,npm_api_key
           # npm_api_key secret is stored as {key:"***..."}.
           # GitHub Actions environment variable name is NPM_API so to access "key" from the json we can use NPM_API_KEY
           parse-json-secrets: true
@@ -117,7 +117,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: us-east-1
-          role-to-assume: arn:aws:iam::403483446840:role/autogen_role_beta_github_actions_release_asana_client_libraries
+          role-to-assume: arn:aws:iam::403483446840:role/autogen_github_actions_beta_release_asana_node_client_library
       - name: Get GitHub app token
         uses: asana/get-github-app-token@v1
         id: get-token
