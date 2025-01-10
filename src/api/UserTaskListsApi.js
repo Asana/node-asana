@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * UserTaskLists service.
 * @module api/UserTaskListsApi
-* @version v3.0.13
+* @version v3.0.14
 */
 export class UserTaskListsApi {
 
