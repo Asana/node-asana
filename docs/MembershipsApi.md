@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 Create a membership
 
-Creates a new membership in a `goal`, `project`, or `portfolio`. Teams or users can be members of `goals` or `projects`. Portfolios only support `users` as members.  Returns the full record of the newly created membership.
+Creates a new membership in a `goal`, `project`, `portfolio`, or `custom_field`. Teams or Users can be members of `goals` or `projects`. Portfolios and custom fields only support `users` as members.  Returns the full record of the newly created membership.
 
 ([more information](https://developers.asana.com/reference/createmembership))
 
@@ -59,7 +59,7 @@ object
 
 Delete a membership
 
-A specific, existing membership for a `goal`, `project` and `portfolio` can be deleted by making a `DELETE` request on the URL for that membership.  Returns an empty data record.
+A specific, existing membership for a `goal`, `project`, `portfolio` or `custom_field` can be deleted by making a `DELETE` request on the URL for that membership.  Returns an empty data record.
 
 ([more information](https://developers.asana.com/reference/deletemembership))
 
@@ -102,7 +102,7 @@ object
 
 Get a membership
 
-Returns compact `project_membership` record for a single membership. `GET` only supports project memberships currently
+Returns a `project_membership`, `goal_membership`, `portfolio_membership`, or `custom_field_membership` record for a membership id.
 
 ([more information](https://developers.asana.com/reference/getmembership))
 
@@ -116,10 +116,8 @@ token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let membershipsApiInstance = new Asana.MembershipsApi();
 let membership_gid = "12345"; // String | Globally unique identifier for the membership.
-let opts = { 
-    'opt_fields': "access_level,member,member.name,parent,parent.name,resource_subtype"
-};
-membershipsApiInstance.getMembership(membership_gid, opts).then((result) => {
+
+membershipsApiInstance.getMembership(membership_gid).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
 }, (error) => {
     console.error(error.response.body);
@@ -132,7 +130,6 @@ membershipsApiInstance.getMembership(membership_gid, opts).then((result) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **membership_gid** | **String**| Globally unique identifier for the membership. | 
- **opt_fields** | **Object**| This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
 
 ### Return type
 
@@ -148,7 +145,7 @@ object
 
 Get multiple memberships
 
-Returns compact `goal_membership`, `project_membership`, or `portfolio_membership` records. The possible types for `parent` in this request are `goal`, `project`, or `portfolio`. An additional member (user GID or team GID) can be passed in to filter to a specific membership. Teams are not supported for portfolios yet.
+Returns compact `goal_membership`, `project_membership`, `portfolio_membership`, or `custom_field_membership` records. The possible types for `parent` in this request are `goal`, `project`, `portfolio`, or `custom_field`. An additional member (user GID or team GID) can be passed in to filter to a specific membership. Team as members are not supported for portfolios or custom fields yet.
 
 ([more information](https://developers.asana.com/reference/getmemberships))
 
@@ -180,7 +177,7 @@ membershipsApiInstance.getMemberships(opts).then((result) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parent** | **String**| Globally unique identifier for &#x60;goal&#x60;, &#x60;project&#x60;, or &#x60;portfolio&#x60;. | [optional] 
+ **parent** | **String**| Globally unique identifier for &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, or &#x60;custom_field&#x60;. | [optional] 
  **member** | **String**| Globally unique identifier for &#x60;team&#x60; or &#x60;user&#x60;. | [optional] 
  **limit** | **Number**| Results per page. The number of objects to return per page. The value must be between 1 and 100. | [optional] 
  **offset** | **String**| Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.* | [optional] 
@@ -200,7 +197,7 @@ object
 
 Update a membership
 
-An existing membership can be updated by making a `PUT` request on the membership. Only the fields provided in the `data` block will be updated; any unspecified fields will remain unchanged. Memberships on `goals`, `projects` and `portfolios` can be updated.  Returns the full record of the updated membership.
+An existing membership can be updated by making a `PUT` request on the membership. Only the fields provided in the `data` block will be updated; any unspecified fields will remain unchanged. Memberships on `goals`, `projects`, `portfolios`, and `custom_fields` can be updated.  Returns the full record of the updated membership.
 
 ([more information](https://developers.asana.com/reference/updatemembership))
 

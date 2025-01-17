@@ -41,10 +41,8 @@ MembershipsApi:
     
     let membershipsApiInstance = new Asana.MembershipsApi();
     let membership_gid = "12345"; // String | Globally unique identifier for the membership.
-    let opts = { 
-        'opt_fields': "access_level,member,member.name,parent,parent.name,resource_subtype"
-    };
-    membershipsApiInstance.getMembership(membership_gid, opts).then((result) => {
+
+    membershipsApiInstance.getMembership(membership_gid).then((result) => {
         console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
     }, (error) => {
         console.error(error.response.body);

@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Tags service.
 * @module api/TagsApi
-* @version v3.0.14
+* @version 3.0.15
 */
 export class TagsApi {
 

@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Tasks service.
 * @module api/TasksApi
-* @version v3.0.14
+* @version 3.0.15
 */
 export class TasksApi {
 
@@ -1758,6 +1758,7 @@ export class TasksApi {
      * @param {String} opts.tags.not Comma-separated list of tag IDs
      * @param {String} opts.tags.all Comma-separated list of tag IDs
      * @param {String} opts.teams.any Comma-separated list of team IDs
+     * @param {String} opts.followers.any Comma-separated list of user identifiers
      * @param {String} opts.followers.not Comma-separated list of user identifiers
      * @param {String} opts.created_by.any Comma-separated list of user identifiers
      * @param {String} opts.created_by.not Comma-separated list of user identifiers
@@ -1890,6 +1891,7 @@ export class TasksApi {
      * @param {String} opts.tags.not Comma-separated list of tag IDs
      * @param {String} opts.tags.all Comma-separated list of tag IDs
      * @param {String} opts.teams.any Comma-separated list of team IDs
+     * @param {String} opts.followers.any Comma-separated list of user identifiers
      * @param {String} opts.followers.not Comma-separated list of user identifiers
      * @param {String} opts.created_by.any Comma-separated list of user identifiers
      * @param {String} opts.created_by.not Comma-separated list of user identifiers

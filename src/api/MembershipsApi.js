@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Memberships service.
 * @module api/MembershipsApi
-* @version v3.0.14
+* @version 3.0.15
 */
 export class MembershipsApi {
 
@@ -38,7 +38,7 @@ export class MembershipsApi {
 
     /**
      * Create a membership
-     * Creates a new membership in a &#x60;goal&#x60;, &#x60;project&#x60;, or &#x60;portfolio&#x60;. Teams or users can be members of &#x60;goals&#x60; or &#x60;projects&#x60;. Portfolios only support &#x60;users&#x60; as members.  Returns the full record of the newly created membership.
+     * Creates a new membership in a &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, or &#x60;custom_field&#x60;. Teams or Users can be members of &#x60;goals&#x60; or &#x60;projects&#x60;. Portfolios and custom fields only support &#x60;users&#x60; as members.  Returns the full record of the newly created membership.
      * @param {Object} opts Optional parameters
      * @param {module:model/Object} opts.body The updated fields for the membership.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
@@ -75,7 +75,7 @@ export class MembershipsApi {
 
     /**
      * Create a membership
-     * Creates a new membership in a &#x60;goal&#x60;, &#x60;project&#x60;, or &#x60;portfolio&#x60;. Teams or users can be members of &#x60;goals&#x60; or &#x60;projects&#x60;. Portfolios only support &#x60;users&#x60; as members.  Returns the full record of the newly created membership.
+     * Creates a new membership in a &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, or &#x60;custom_field&#x60;. Teams or Users can be members of &#x60;goals&#x60; or &#x60;projects&#x60;. Portfolios and custom fields only support &#x60;users&#x60; as members.  Returns the full record of the newly created membership.
      * @param {Object} opts Optional parameters
      * @param {module:model/Object} opts.body The updated fields for the membership.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MembershipResponseData}
@@ -91,7 +91,7 @@ export class MembershipsApi {
 
     /**
      * Delete a membership
-     * A specific, existing membership for a &#x60;goal&#x60;, &#x60;project&#x60; and &#x60;portfolio&#x60; can be deleted by making a &#x60;DELETE&#x60; request on the URL for that membership.  Returns an empty data record.
+     * A specific, existing membership for a &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60; or &#x60;custom_field&#x60; can be deleted by making a &#x60;DELETE&#x60; request on the URL for that membership.  Returns an empty data record.
      * @param {String} membership_gid Globally unique identifier for the membership.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
@@ -129,7 +129,7 @@ export class MembershipsApi {
 
     /**
      * Delete a membership
-     * A specific, existing membership for a &#x60;goal&#x60;, &#x60;project&#x60; and &#x60;portfolio&#x60; can be deleted by making a &#x60;DELETE&#x60; request on the URL for that membership.  Returns an empty data record.
+     * A specific, existing membership for a &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60; or &#x60;custom_field&#x60; can be deleted by making a &#x60;DELETE&#x60; request on the URL for that membership.  Returns an empty data record.
      * @param {<&vendorExtensions.x-jsdoc-type>} membership_gid Globally unique identifier for the membership.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EmptyResponseData}
      */
@@ -144,14 +144,12 @@ export class MembershipsApi {
 
     /**
      * Get a membership
-     * Returns compact &#x60;project_membership&#x60; record for a single membership. &#x60;GET&#x60; only supports project memberships currently
+     * Returns a &#x60;project_membership&#x60;, &#x60;goal_membership&#x60;, &#x60;portfolio_membership&#x60;, or &#x60;custom_field_membership&#x60; record for a membership id.
      * @param {String} membership_gid Globally unique identifier for the membership.
-     * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
-    getMembershipWithHttpInfo(membership_gid, opts) {
-        opts = opts || {};
+    getMembershipWithHttpInfo(membership_gid) {
+        
         let postBody = null;
         // verify the required parameter 'membership_gid' is set
         if (membership_gid === undefined || membership_gid === null) {
@@ -162,8 +160,6 @@ export class MembershipsApi {
             'membership_gid': membership_gid
         };
         let queryParams = {};
-        opts = opts || {};
-        queryParams = opts;
 
         let headerParams = {
             
@@ -186,15 +182,13 @@ export class MembershipsApi {
 
     /**
      * Get a membership
-     * Returns compact &#x60;project_membership&#x60; record for a single membership. &#x60;GET&#x60; only supports project memberships currently
+     * Returns a &#x60;project_membership&#x60;, &#x60;goal_membership&#x60;, &#x60;portfolio_membership&#x60;, or &#x60;custom_field_membership&#x60; record for a membership id.
      * @param {<&vendorExtensions.x-jsdoc-type>} membership_gid Globally unique identifier for the membership.
-     * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProjectMembershipCompactResponseData}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MembershipResponseData}
      */
-    getMembership(membership_gid, opts) {
+    getMembership(membership_gid) {
 
-        return this.getMembershipWithHttpInfo(membership_gid, opts)
+        return this.getMembershipWithHttpInfo(membership_gid)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });
@@ -203,9 +197,9 @@ export class MembershipsApi {
 
     /**
      * Get multiple memberships
-     * Returns compact &#x60;goal_membership&#x60;, &#x60;project_membership&#x60;, or &#x60;portfolio_membership&#x60; records. The possible types for &#x60;parent&#x60; in this request are &#x60;goal&#x60;, &#x60;project&#x60;, or &#x60;portfolio&#x60;. An additional member (user GID or team GID) can be passed in to filter to a specific membership. Teams are not supported for portfolios yet.
+     * Returns compact &#x60;goal_membership&#x60;, &#x60;project_membership&#x60;, &#x60;portfolio_membership&#x60;, or &#x60;custom_field_membership&#x60; records. The possible types for &#x60;parent&#x60; in this request are &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, or &#x60;custom_field&#x60;. An additional member (user GID or team GID) can be passed in to filter to a specific membership. Team as members are not supported for portfolios or custom fields yet.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.parent Globally unique identifier for &#x60;goal&#x60;, &#x60;project&#x60;, or &#x60;portfolio&#x60;.
+     * @param {String} opts.parent Globally unique identifier for &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, or &#x60;custom_field&#x60;.
      * @param {String} opts.member Globally unique identifier for &#x60;team&#x60; or &#x60;user&#x60;.
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
@@ -268,9 +262,9 @@ export class MembershipsApi {
 
     /**
      * Get multiple memberships
-     * Returns compact &#x60;goal_membership&#x60;, &#x60;project_membership&#x60;, or &#x60;portfolio_membership&#x60; records. The possible types for &#x60;parent&#x60; in this request are &#x60;goal&#x60;, &#x60;project&#x60;, or &#x60;portfolio&#x60;. An additional member (user GID or team GID) can be passed in to filter to a specific membership. Teams are not supported for portfolios yet.
+     * Returns compact &#x60;goal_membership&#x60;, &#x60;project_membership&#x60;, &#x60;portfolio_membership&#x60;, or &#x60;custom_field_membership&#x60; records. The possible types for &#x60;parent&#x60; in this request are &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, or &#x60;custom_field&#x60;. An additional member (user GID or team GID) can be passed in to filter to a specific membership. Team as members are not supported for portfolios or custom fields yet.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.parent Globally unique identifier for &#x60;goal&#x60;, &#x60;project&#x60;, or &#x60;portfolio&#x60;.
+     * @param {String} opts.parent Globally unique identifier for &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, or &#x60;custom_field&#x60;.
      * @param {String} opts.member Globally unique identifier for &#x60;team&#x60; or &#x60;user&#x60;.
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
@@ -292,7 +286,7 @@ export class MembershipsApi {
 
     /**
      * Update a membership
-     * An existing membership can be updated by making a &#x60;PUT&#x60; request on the membership. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged. Memberships on &#x60;goals&#x60;, &#x60;projects&#x60; and &#x60;portfolios&#x60; can be updated.  Returns the full record of the updated membership.
+     * An existing membership can be updated by making a &#x60;PUT&#x60; request on the membership. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged. Memberships on &#x60;goals&#x60;, &#x60;projects&#x60;, &#x60;portfolios&#x60;, and &#x60;custom_fields&#x60; can be updated.  Returns the full record of the updated membership.
      * @param {module:model/Object} body The membership to update.
      * @param {String} membership_gid Globally unique identifier for the membership.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
@@ -335,7 +329,7 @@ export class MembershipsApi {
 
     /**
      * Update a membership
-     * An existing membership can be updated by making a &#x60;PUT&#x60; request on the membership. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged. Memberships on &#x60;goals&#x60;, &#x60;projects&#x60; and &#x60;portfolios&#x60; can be updated.  Returns the full record of the updated membership.
+     * An existing membership can be updated by making a &#x60;PUT&#x60; request on the membership. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged. Memberships on &#x60;goals&#x60;, &#x60;projects&#x60;, &#x60;portfolios&#x60;, and &#x60;custom_fields&#x60; can be updated.  Returns the full record of the updated membership.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The membership to update.
      * @param {<&vendorExtensions.x-jsdoc-type>} membership_gid Globally unique identifier for the membership.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MembershipResponseData}

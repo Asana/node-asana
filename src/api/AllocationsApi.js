@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Allocations service.
 * @module api/AllocationsApi
-* @version v3.0.14
+* @version 3.0.15
 */
 export class AllocationsApi {
 

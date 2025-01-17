@@ -1215,6 +1215,7 @@ let opts = {
     'tags.not': "12345,23456,34567", 
     'tags.all': "12345,23456,34567", 
     'teams.any': "12345,23456,34567", 
+    'followers.any': "12345,23456,34567", 
     'followers.not': "12345,23456,34567", 
     'created_by.any': "12345,23456,34567", 
     'created_by.not': "12345,23456,34567", 
@@ -1290,6 +1291,7 @@ Name | Type | Description  | Notes
  **tags.not** | **String**| Comma-separated list of tag IDs | [optional] 
  **tags.all** | **String**| Comma-separated list of tag IDs | [optional] 
  **teams.any** | **String**| Comma-separated list of team IDs | [optional] 
+ **followers.any** | **String**| Comma-separated list of user identifiers | [optional] 
  **followers.not** | **String**| Comma-separated list of user identifiers | [optional] 
  **created_by.any** | **String**| Comma-separated list of user identifiers | [optional] 
  **created_by.not** | **String**| Comma-separated list of user identifiers | [optional] 
