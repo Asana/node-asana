@@ -31,7 +31,7 @@ let timeTrackingEntriesApiInstance = new Asana.TimeTrackingEntriesApi();
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | Information about the time tracking entry.
 let task_gid = "321654"; // String | The task to operate on.
 let opts = { 
-    'opt_fields': "created_at,created_by,created_by.name,duration_minutes,entered_on,task,task.created_by,task.name,task.resource_subtype"
+    'opt_fields': "attributable_to,attributable_to.name,created_at,created_by,created_by.name,duration_minutes,entered_on,task,task.created_by,task.name,task.resource_subtype"
 };
 timeTrackingEntriesApiInstance.createTimeTrackingEntry(body, task_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -47,7 +47,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **Object**| Information about the time tracking entry. | 
  **task_gid** | **String**| The task to operate on. | 
- **opt_fields** | **Object**| This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
 
 ### Return type
 
@@ -123,7 +123,7 @@ let task_gid = "321654"; // String | The task to operate on.
 let opts = { 
     'limit': 50, 
     'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
-    'opt_fields': "created_by,created_by.name,duration_minutes,entered_on,offset,path,uri"
+    'opt_fields': "attributable_to,attributable_to.name,created_by,created_by.name,duration_minutes,entered_on,offset,path,uri"
 };
 timeTrackingEntriesApiInstance.getTimeTrackingEntriesForTask(task_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
  **task_gid** | **String**| The task to operate on. | 
  **limit** | **Number**| Results per page. The number of objects to return per page. The value must be between 1 and 100. | [optional] 
  **offset** | **String**| Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.* | [optional] 
- **opt_fields** | **Object**| This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
 
 ### Return type
 
@@ -171,7 +171,7 @@ token.accessToken = '<YOUR_ACCESS_TOKEN>';
 let timeTrackingEntriesApiInstance = new Asana.TimeTrackingEntriesApi();
 let time_tracking_entry_gid = "917392"; // String | Globally unique identifier for the time tracking entry.
 let opts = { 
-    'opt_fields': "created_at,created_by,created_by.name,duration_minutes,entered_on,task,task.created_by,task.name,task.resource_subtype"
+    'opt_fields': "attributable_to,attributable_to.name,created_at,created_by,created_by.name,duration_minutes,entered_on,task,task.created_by,task.name,task.resource_subtype"
 };
 timeTrackingEntriesApiInstance.getTimeTrackingEntry(time_tracking_entry_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -186,7 +186,7 @@ timeTrackingEntriesApiInstance.getTimeTrackingEntry(time_tracking_entry_gid, opt
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **time_tracking_entry_gid** | **String**| Globally unique identifier for the time tracking entry. | 
- **opt_fields** | **Object**| This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
 
 ### Return type
 
@@ -218,7 +218,7 @@ let timeTrackingEntriesApiInstance = new Asana.TimeTrackingEntriesApi();
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The updated fields for the time tracking entry.
 let time_tracking_entry_gid = "917392"; // String | Globally unique identifier for the time tracking entry.
 let opts = { 
-    'opt_fields': "created_at,created_by,created_by.name,duration_minutes,entered_on,task,task.created_by,task.name,task.resource_subtype"
+    'opt_fields': "attributable_to,attributable_to.name,created_at,created_by,created_by.name,duration_minutes,entered_on,task,task.created_by,task.name,task.resource_subtype"
 };
 timeTrackingEntriesApiInstance.updateTimeTrackingEntry(body, time_tracking_entry_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -234,7 +234,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **Object**| The updated fields for the time tracking entry. | 
  **time_tracking_entry_gid** | **String**| Globally unique identifier for the time tracking entry. | 
- **opt_fields** | **Object**| This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
 
 ### Return type
 

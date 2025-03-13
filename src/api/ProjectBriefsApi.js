@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * ProjectBriefs service.
 * @module api/ProjectBriefsApi
-* @version 3.0.15
+* @version 3.0.16
 */
 export class ProjectBriefsApi {
 
@@ -42,7 +42,7 @@ export class ProjectBriefsApi {
      * @param {module:model/Object} body The project brief to create.
      * @param {String} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     createProjectBriefWithHttpInfo(body, project_gid, opts) {
@@ -89,7 +89,7 @@ export class ProjectBriefsApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body The project brief to create.
      * @param {<&vendorExtensions.x-jsdoc-type>} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProjectBriefResponseData}
      */
     createProjectBrief(body, project_gid, opts) {
@@ -159,7 +159,7 @@ export class ProjectBriefsApi {
      * Get the full record for a project brief.
      * @param {String} project_brief_gid Globally unique identifier for the project brief.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getProjectBriefWithHttpInfo(project_brief_gid, opts) {
@@ -201,7 +201,7 @@ export class ProjectBriefsApi {
      * Get the full record for a project brief.
      * @param {<&vendorExtensions.x-jsdoc-type>} project_brief_gid Globally unique identifier for the project brief.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProjectBriefResponseData}
      */
     getProjectBrief(project_brief_gid, opts) {
@@ -219,7 +219,7 @@ export class ProjectBriefsApi {
      * @param {module:model/Object} body The updated fields for the project brief.
      * @param {String} project_brief_gid Globally unique identifier for the project brief.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     updateProjectBriefWithHttpInfo(body, project_brief_gid, opts) {
@@ -266,7 +266,7 @@ export class ProjectBriefsApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body The updated fields for the project brief.
      * @param {<&vendorExtensions.x-jsdoc-type>} project_brief_gid Globally unique identifier for the project brief.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProjectBriefResponseData}
      */
     updateProjectBrief(body, project_brief_gid, opts) {

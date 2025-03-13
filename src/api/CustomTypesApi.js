@@ -16,15 +16,15 @@ import {ApiClient} from "../ApiClient";
 var Collection = require('../utils/collection');
 
 /**
-* BatchAPI service.
-* @module api/BatchAPIApi
+* CustomTypes service.
+* @module api/CustomTypesApi
 * @version 3.0.16
 */
-export class BatchAPIApi {
+export class CustomTypesApi {
 
     /**
-    * Constructs a new BatchAPIApi. 
-    * @alias module:api/BatchAPIApi
+    * Constructs a new CustomTypesApi. 
+    * @alias module:api/CustomTypesApi
     * @class
     * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
     * default to {@link module:ApiClient#instanc
@@ -37,19 +37,21 @@ export class BatchAPIApi {
 
 
     /**
-     * Submit parallel requests
-     * Make multiple requests in parallel to Asana&#x27;s API.
-     * @param {module:model/Object} body The requests to batch together via the Batch API.
+     * Get all custom types associated with an object
+     * Returns a list of all of the custom types associated with an object. Currently, only projects are supported. Note that, as in all queries to collections which return compact representation, &#x60;opt_fields&#x60; can be used to include more data than is returned in the compact representation. See the [documentation for input/output options](https://developers.asana.com/docs/inputoutput-options) for more information.
+     * @param {String} project Globally unique identifier for the project, which is used as a filter when retrieving all custom types.
      * @param {Object} opts Optional parameters
+     * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
+     * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
-    createBatchRequestWithHttpInfo(body, opts) {
+    getCustomTypesWithHttpInfo(project, opts) {
         opts = opts || {};
-        let postBody = body;
-        // verify the required parameter 'body' is set
-        if (body === undefined || body === null) {
-            throw new Error("Missing the required parameter 'body' when calling createBatchRequest");
+        let postBody = null;
+        // verify the required parameter 'project' is set
+        if (project === undefined || project === null) {
+            throw new Error("Missing the required parameter 'project' when calling getCustomTypes");
         }
 
         let pathParams = {
@@ -58,6 +60,7 @@ export class BatchAPIApi {
         let queryParams = {};
         opts = opts || {};
         queryParams = opts;
+        queryParams['project'] = project;
 
         let headerParams = {
             
@@ -67,21 +70,21 @@ export class BatchAPIApi {
         };
 
         let authNames = ['personalAccessToken'];
-        let contentTypes = ['application/json; charset=UTF-8'];
+        let contentTypes = [];
         let accepts = ['application/json; charset=UTF-8'];
         let returnType = 'Blob';
         // Check if RETURN_COLLECTION is set and return a collection object if it is
         if (this.apiClient.RETURN_COLLECTION) {
             return Collection.fromApiClient(
                 this.apiClient.callApi(
-                    '/batch', 'POST',
+                    '/custom_types', 'GET',
                     pathParams, queryParams, headerParams, formParams, postBody,
                     authNames, contentTypes, accepts, returnType
                 ),
                 this.apiClient,
                 {
-                    'path': '/batch',
-                    'httpMethod': 'POST',
+                    'path': '/custom_types',
+                    'httpMethod': 'GET',
                     'pathParams': pathParams,
                     'queryParams': queryParams,
                     'headerParams': headerParams,
@@ -96,27 +99,29 @@ export class BatchAPIApi {
         }
 
         return this.apiClient.callApi(
-            '/batch', 'POST',
+            '/custom_types', 'GET',
             pathParams, queryParams, headerParams, formParams, postBody,
             authNames, contentTypes, accepts, returnType
         );
     }
 
     /**
-     * Submit parallel requests
-     * Make multiple requests in parallel to Asana&#x27;s API.
-     * @param {<&vendorExtensions.x-jsdoc-type>} body The requests to batch together via the Batch API.
+     * Get all custom types associated with an object
+     * Returns a list of all of the custom types associated with an object. Currently, only projects are supported. Note that, as in all queries to collections which return compact representation, &#x60;opt_fields&#x60; can be used to include more data than is returned in the compact representation. See the [documentation for input/output options](https://developers.asana.com/docs/inputoutput-options) for more information.
+     * @param {<&vendorExtensions.x-jsdoc-type>} project Globally unique identifier for the project, which is used as a filter when retrieving all custom types.
      * @param {Object} opts Optional parameters
+     * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
+     * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/BatchResponseArray}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CustomTypeResponseArray}
      */
-    createBatchRequest(body, opts) {
+    getCustomTypes(project, opts) {
         // Check if RETURN_COLLECTION is set and return a collection object if it is
         if (this.apiClient.RETURN_COLLECTION) {
-            return this.createBatchRequestWithHttpInfo(body, opts)
+            return this.getCustomTypesWithHttpInfo(project, opts)
         }
 
-        return this.createBatchRequestWithHttpInfo(body, opts)
+        return this.getCustomTypesWithHttpInfo(project, opts)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });

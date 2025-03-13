@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * GoalRelationships service.
 * @module api/GoalRelationshipsApi
-* @version 3.0.15
+* @version 3.0.16
 */
 export class GoalRelationshipsApi {
 
@@ -42,7 +42,7 @@ export class GoalRelationshipsApi {
      * @param {module:model/Object} body The supporting resource to be added to the goal
      * @param {String} goal_gid Globally unique identifier for the goal.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     addSupportingRelationshipWithHttpInfo(body, goal_gid, opts) {
@@ -89,7 +89,7 @@ export class GoalRelationshipsApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body The supporting resource to be added to the goal
      * @param {<&vendorExtensions.x-jsdoc-type>} goal_gid Globally unique identifier for the goal.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GoalRelationshipResponseData}
      */
     addSupportingRelationship(body, goal_gid, opts) {
@@ -106,7 +106,7 @@ export class GoalRelationshipsApi {
      * Returns the complete updated goal relationship record for a single goal relationship.
      * @param {String} goal_relationship_gid Globally unique identifier for the goal relationship.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getGoalRelationshipWithHttpInfo(goal_relationship_gid, opts) {
@@ -148,7 +148,7 @@ export class GoalRelationshipsApi {
      * Returns the complete updated goal relationship record for a single goal relationship.
      * @param {<&vendorExtensions.x-jsdoc-type>} goal_relationship_gid Globally unique identifier for the goal relationship.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GoalRelationshipResponseData}
      */
     getGoalRelationship(goal_relationship_gid, opts) {
@@ -168,7 +168,7 @@ export class GoalRelationshipsApi {
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param {String} opts.resource_subtype If provided, filter to goal relationships with a given resource_subtype.
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getGoalRelationshipsWithHttpInfo(supported_goal, opts) {
@@ -238,7 +238,7 @@ export class GoalRelationshipsApi {
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param {String} opts.resource_subtype If provided, filter to goal relationships with a given resource_subtype.
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GoalRelationshipResponseArray}
      */
     getGoalRelationships(supported_goal, opts) {
@@ -319,7 +319,7 @@ export class GoalRelationshipsApi {
      * @param {module:model/Object} body The updated fields for the goal relationship.
      * @param {String} goal_relationship_gid Globally unique identifier for the goal relationship.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     updateGoalRelationshipWithHttpInfo(body, goal_relationship_gid, opts) {
@@ -366,7 +366,7 @@ export class GoalRelationshipsApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body The updated fields for the goal relationship.
      * @param {<&vendorExtensions.x-jsdoc-type>} goal_relationship_gid Globally unique identifier for the goal relationship.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GoalRelationshipResponseData}
      */
     updateGoalRelationship(body, goal_relationship_gid, opts) {

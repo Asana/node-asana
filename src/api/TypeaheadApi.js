@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Typeahead service.
 * @module api/TypeaheadApi
-* @version 3.0.15
+* @version 3.0.16
 */
 export class TypeaheadApi {
 
@@ -45,7 +45,7 @@ export class TypeaheadApi {
      * @param {module:model/String} opts.type *Deprecated: new integrations should prefer the resource_type field.* (default to <.>)
      * @param {String} opts.query The string that will be used to search for relevant objects. If an empty string is passed in, the API will return results.
      * @param {Number} opts.count The number of results to return. The default is 20 if this parameter is omitted, with a minimum of 1 and a maximum of 100. If there are fewer results found than requested, all will be returned.
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     typeaheadForWorkspaceWithHttpInfo(workspace_gid, resource_type, opts) {
@@ -120,7 +120,7 @@ export class TypeaheadApi {
      * @param {module:model/String} opts.type *Deprecated: new integrations should prefer the resource_type field.* (default to <.>)
      * @param {String} opts.query The string that will be used to search for relevant objects. If an empty string is passed in, the API will return results.
      * @param {Number} opts.count The number of results to return. The default is 20 if this parameter is omitted, with a minimum of 1 and a maximum of 100. If there are fewer results found than requested, all will be returned.
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AsanaNamedResourceArray}
      */
     typeaheadForWorkspace(workspace_gid, resource_type, opts) {

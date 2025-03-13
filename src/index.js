@@ -19,6 +19,7 @@ import {AuditLogAPIApi} from './api/AuditLogAPIApi';
 import {BatchAPIApi} from './api/BatchAPIApi';
 import {CustomFieldSettingsApi} from './api/CustomFieldSettingsApi';
 import {CustomFieldsApi} from './api/CustomFieldsApi';
+import {CustomTypesApi} from './api/CustomTypesApi';
 import {EventsApi} from './api/EventsApi';
 import {GoalRelationshipsApi} from './api/GoalRelationshipsApi';
 import {GoalsApi} from './api/GoalsApi';
@@ -79,7 +80,7 @@ import {WorkspacesApi} from './api/WorkspacesApi';
 * </pre>
 * </p>
 * @module index
-* @version 3.0.15
+* @version 3.0.16
 */
 export {
     /**
@@ -125,6 +126,12 @@ export {
     * @property {module:api/CustomFieldsApi}
     */
     CustomFieldsApi,
+
+    /**
+    * The CustomTypesApi service constructor.
+    * @property {module:api/CustomTypesApi}
+    */
+    CustomTypesApi,
 
     /**
     * The EventsApi service constructor.

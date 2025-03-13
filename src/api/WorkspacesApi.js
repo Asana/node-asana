@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Workspaces service.
 * @module api/WorkspacesApi
-* @version 3.0.15
+* @version 3.0.16
 */
 export class WorkspacesApi {
 
@@ -42,7 +42,7 @@ export class WorkspacesApi {
      * @param {module:model/Object} body The user to add to the workspace.
      * @param {String} workspace_gid Globally unique identifier for the workspace or organization.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     addUserForWorkspaceWithHttpInfo(body, workspace_gid, opts) {
@@ -89,7 +89,7 @@ export class WorkspacesApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body The user to add to the workspace.
      * @param {<&vendorExtensions.x-jsdoc-type>} workspace_gid Globally unique identifier for the workspace or organization.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/UserBaseResponseData}
      */
     addUserForWorkspace(body, workspace_gid, opts) {
@@ -106,7 +106,7 @@ export class WorkspacesApi {
      * Returns the full workspace record for a single workspace.
      * @param {String} workspace_gid Globally unique identifier for the workspace or organization.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getWorkspaceWithHttpInfo(workspace_gid, opts) {
@@ -148,7 +148,7 @@ export class WorkspacesApi {
      * Returns the full workspace record for a single workspace.
      * @param {<&vendorExtensions.x-jsdoc-type>} workspace_gid Globally unique identifier for the workspace or organization.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/WorkspaceResponseData}
      */
     getWorkspace(workspace_gid, opts) {
@@ -161,12 +161,99 @@ export class WorkspacesApi {
 
 
     /**
+     * Get workspace events
+     * Returns the full record for all events that have occurred since the sync token was created. The response is a list of events and the schema of each event is as described [here](/reference/events). Asana limits a single sync token to 1000 events. If more than 1000 events exist for a given domain, &#x60;has_more: true&#x60; will be returned in the response, indicating that there are more events to pull.
+     * @param {String} workspace_gid Globally unique identifier for the workspace or organization.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.sync A sync token received from the last request, or none on first sync. Events will be returned from the point in time that the sync token was generated. *Note: On your first request, omit the sync token. The response will be the same as for an expired sync token, and will include a new valid sync token. If the sync token is too old (which may happen from time to time) the API will return a &#x60;412 Precondition Failed&#x60; error, and include a fresh sync token in the response.*
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
+     */
+    getWorkspaceEventsWithHttpInfo(workspace_gid, opts) {
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'workspace_gid' is set
+        if (workspace_gid === undefined || workspace_gid === null) {
+            throw new Error("Missing the required parameter 'workspace_gid' when calling getWorkspaceEvents");
+        }
+
+        let pathParams = {
+            'workspace_gid': workspace_gid
+        };
+        let queryParams = {};
+        opts = opts || {};
+        queryParams = opts;
+
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
+
+        let authNames = ['personalAccessToken'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = 'Blob';
+        // Check if RETURN_COLLECTION is set and return a collection object if it is
+        if (this.apiClient.RETURN_COLLECTION) {
+            return Collection.fromApiClient(
+                this.apiClient.callApi(
+                    '/workspaces/{workspace_gid}/events', 'GET',
+                    pathParams, queryParams, headerParams, formParams, postBody,
+                    authNames, contentTypes, accepts, returnType
+                ),
+                this.apiClient,
+                {
+                    'path': '/workspaces/{workspace_gid}/events',
+                    'httpMethod': 'GET',
+                    'pathParams': pathParams,
+                    'queryParams': queryParams,
+                    'headerParams': headerParams,
+                    'formParams': formParams,
+                    'bodyParam': postBody,
+                    'authNames': authNames,
+                    'contentTypes': contentTypes,
+                    'accepts': accepts,
+                    'returnType': returnType
+                }
+            )
+        }
+
+        return this.apiClient.callApi(
+            '/workspaces/{workspace_gid}/events', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType
+        );
+    }
+
+    /**
+     * Get workspace events
+     * Returns the full record for all events that have occurred since the sync token was created. The response is a list of events and the schema of each event is as described [here](/reference/events). Asana limits a single sync token to 1000 events. If more than 1000 events exist for a given domain, &#x60;has_more: true&#x60; will be returned in the response, indicating that there are more events to pull.
+     * @param {<&vendorExtensions.x-jsdoc-type>} workspace_gid Globally unique identifier for the workspace or organization.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.sync A sync token received from the last request, or none on first sync. Events will be returned from the point in time that the sync token was generated. *Note: On your first request, omit the sync token. The response will be the same as for an expired sync token, and will include a new valid sync token. If the sync token is too old (which may happen from time to time) the API will return a &#x60;412 Precondition Failed&#x60; error, and include a fresh sync token in the response.*
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EventResponseArray}
+     */
+    getWorkspaceEvents(workspace_gid, opts) {
+        // Check if RETURN_COLLECTION is set and return a collection object if it is
+        if (this.apiClient.RETURN_COLLECTION) {
+            return this.getWorkspaceEventsWithHttpInfo(workspace_gid, opts)
+        }
+
+        return this.getWorkspaceEventsWithHttpInfo(workspace_gid, opts)
+            .then(function(response_and_data) {
+                return response_and_data.data;
+            });
+    }
+
+
+    /**
      * Get multiple workspaces
      * Returns the compact records for all workspaces visible to the authorized user.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getWorkspacesWithHttpInfo(opts) {
@@ -229,7 +316,7 @@ export class WorkspacesApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/WorkspaceResponseArray}
      */
     getWorkspaces(opts) {
@@ -310,7 +397,7 @@ export class WorkspacesApi {
      * @param {module:model/Object} body The workspace object with all updated properties.
      * @param {String} workspace_gid Globally unique identifier for the workspace or organization.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     updateWorkspaceWithHttpInfo(body, workspace_gid, opts) {
@@ -357,7 +444,7 @@ export class WorkspacesApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body The workspace object with all updated properties.
      * @param {<&vendorExtensions.x-jsdoc-type>} workspace_gid Globally unique identifier for the workspace or organization.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/WorkspaceResponseData}
      */
     updateWorkspace(body, workspace_gid, opts) {

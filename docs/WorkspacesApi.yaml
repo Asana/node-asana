@@ -36,6 +36,24 @@ WorkspacesApi:
         console.error(error.response.body);
     });
     
+  getWorkspaceEvents: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let workspacesApiInstance = new Asana.WorkspacesApi();
+    let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
+    let opts = { 
+        'sync': "de4774f6915eae04714ca93bb2f5ee81"
+    };
+    workspacesApiInstance.getWorkspaceEvents(workspace_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
   getWorkspaces: |-
     const Asana = require('asana');
     

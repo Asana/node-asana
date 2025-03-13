@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Goals service.
 * @module api/GoalsApi
-* @version 3.0.15
+* @version 3.0.16
 */
 export class GoalsApi {
 
@@ -42,7 +42,7 @@ export class GoalsApi {
      * @param {module:model/Object} body The followers to be added as collaborators
      * @param {String} goal_gid Globally unique identifier for the goal.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     addFollowersWithHttpInfo(body, goal_gid, opts) {
@@ -89,7 +89,7 @@ export class GoalsApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body The followers to be added as collaborators
      * @param {<&vendorExtensions.x-jsdoc-type>} goal_gid Globally unique identifier for the goal.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GoalResponseData}
      */
     addFollowers(body, goal_gid, opts) {
@@ -106,7 +106,7 @@ export class GoalsApi {
      * Creates a new goal in a workspace or team.  Returns the full record of the newly created goal.
      * @param {module:model/Object} body The goal to create.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     createGoalWithHttpInfo(body, opts) {
@@ -148,7 +148,7 @@ export class GoalsApi {
      * Creates a new goal in a workspace or team.  Returns the full record of the newly created goal.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The goal to create.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GoalResponseData}
      */
     createGoal(body, opts) {
@@ -166,7 +166,7 @@ export class GoalsApi {
      * @param {module:model/Object} body The goal metric to create.
      * @param {String} goal_gid Globally unique identifier for the goal.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     createGoalMetricWithHttpInfo(body, goal_gid, opts) {
@@ -213,7 +213,7 @@ export class GoalsApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body The goal metric to create.
      * @param {<&vendorExtensions.x-jsdoc-type>} goal_gid Globally unique identifier for the goal.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GoalResponseData}
      */
     createGoalMetric(body, goal_gid, opts) {
@@ -283,7 +283,7 @@ export class GoalsApi {
      * Returns the complete goal record for a single goal.
      * @param {String} goal_gid Globally unique identifier for the goal.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getGoalWithHttpInfo(goal_gid, opts) {
@@ -325,7 +325,7 @@ export class GoalsApi {
      * Returns the complete goal record for a single goal.
      * @param {<&vendorExtensions.x-jsdoc-type>} goal_gid Globally unique identifier for the goal.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GoalResponseData}
      */
     getGoal(goal_gid, opts) {
@@ -350,7 +350,7 @@ export class GoalsApi {
      * @param {Array.<String>} opts.time_periods Globally unique identifiers for the time periods.
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getGoalsWithHttpInfo(opts) {
@@ -420,7 +420,7 @@ export class GoalsApi {
      * @param {Array.<String>} opts.time_periods Globally unique identifiers for the time periods.
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GoalResponseArray}
      */
     getGoals(opts) {
@@ -441,7 +441,7 @@ export class GoalsApi {
      * Returns a compact representation of all of the parent goals of a goal.
      * @param {String} goal_gid Globally unique identifier for the goal.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getParentGoalsForGoalWithHttpInfo(goal_gid, opts) {
@@ -507,7 +507,7 @@ export class GoalsApi {
      * Returns a compact representation of all of the parent goals of a goal.
      * @param {<&vendorExtensions.x-jsdoc-type>} goal_gid Globally unique identifier for the goal.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GoalResponseArray}
      */
     getParentGoalsForGoal(goal_gid, opts) {
@@ -529,7 +529,7 @@ export class GoalsApi {
      * @param {module:model/Object} body The followers to be removed as collaborators
      * @param {String} goal_gid Globally unique identifier for the goal.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     removeFollowersWithHttpInfo(body, goal_gid, opts) {
@@ -576,7 +576,7 @@ export class GoalsApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body The followers to be removed as collaborators
      * @param {<&vendorExtensions.x-jsdoc-type>} goal_gid Globally unique identifier for the goal.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GoalResponseData}
      */
     removeFollowers(body, goal_gid, opts) {
@@ -594,7 +594,7 @@ export class GoalsApi {
      * @param {module:model/Object} body The updated fields for the goal.
      * @param {String} goal_gid Globally unique identifier for the goal.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     updateGoalWithHttpInfo(body, goal_gid, opts) {
@@ -641,7 +641,7 @@ export class GoalsApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body The updated fields for the goal.
      * @param {<&vendorExtensions.x-jsdoc-type>} goal_gid Globally unique identifier for the goal.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GoalResponseData}
      */
     updateGoal(body, goal_gid, opts) {
@@ -659,7 +659,7 @@ export class GoalsApi {
      * @param {module:model/Object} body The updated fields for the goal metric.
      * @param {String} goal_gid Globally unique identifier for the goal.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     updateGoalMetricWithHttpInfo(body, goal_gid, opts) {
@@ -706,7 +706,7 @@ export class GoalsApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body The updated fields for the goal metric.
      * @param {<&vendorExtensions.x-jsdoc-type>} goal_gid Globally unique identifier for the goal.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GoalResponseData}
      */
     updateGoalMetric(body, goal_gid, opts) {

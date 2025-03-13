@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * OrganizationExports service.
 * @module api/OrganizationExportsApi
-* @version 3.0.15
+* @version 3.0.16
 */
 export class OrganizationExportsApi {
 
@@ -41,7 +41,7 @@ export class OrganizationExportsApi {
      * This method creates a request to export an Organization. Asana will complete the export at some point after you create the request.
      * @param {module:model/Object} body The organization to export.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     createOrganizationExportWithHttpInfo(body, opts) {
@@ -83,7 +83,7 @@ export class OrganizationExportsApi {
      * This method creates a request to export an Organization. Asana will complete the export at some point after you create the request.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The organization to export.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/OrganizationExportResponseData}
      */
     createOrganizationExport(body, opts) {
@@ -100,7 +100,7 @@ export class OrganizationExportsApi {
      * Returns details of a previously-requested Organization export.
      * @param {String} organization_export_gid Globally unique identifier for the organization export.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getOrganizationExportWithHttpInfo(organization_export_gid, opts) {
@@ -142,7 +142,7 @@ export class OrganizationExportsApi {
      * Returns details of a previously-requested Organization export.
      * @param {<&vendorExtensions.x-jsdoc-type>} organization_export_gid Globally unique identifier for the organization export.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/OrganizationExportResponseData}
      */
     getOrganizationExport(organization_export_gid, opts) {

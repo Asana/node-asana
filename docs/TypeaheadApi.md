@@ -49,7 +49,7 @@ Name | Type | Description  | Notes
  **type** | **String**| *Deprecated: new integrations should prefer the resource_type field.* | [optional] [default to user]
  **query** | **String**| The string that will be used to search for relevant objects. If an empty string is passed in, the API will return results. | [optional] 
  **count** | **Number**| The number of results to return. The default is 20 if this parameter is omitted, with a minimum of 1 and a maximum of 100. If there are fewer results found than requested, all will be returned. | [optional] 
- **opt_fields** | **Object**| This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
 
 ### Return type
 

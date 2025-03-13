@@ -1,7 +1,7 @@
 # asana [![GitHub release][release-image]][release-url] [![NPM Version][npm-image]][npm-url]
 
 - API version: 1.0
-- Package version: 3.0.15
+- Package version: 3.0.16
 
 ## Installation
 
@@ -18,7 +18,7 @@ npm install asana --save
 Include the latest release directly from GitHub:
 
 ```html
-<script src="https://github.com/Asana/node-asana/releases/download/v3.0.15/asana-min.js"></script>
+<script src="https://github.com/Asana/node-asana/releases/download/v3.0.16/asana-min.js"></script>
 ```
 
 Example usage (**NOTE**: be careful not to expose your access token):
@@ -216,6 +216,7 @@ Class | Method | HTTP request | Description
 *Asana.CustomFieldsApi* | [**insertEnumOptionForCustomField**](docs/CustomFieldsApi.md#insertEnumOptionForCustomField) | **POST** /custom_fields/{custom_field_gid}/enum_options/insert | Reorder a custom field&#x27;s enum
 *Asana.CustomFieldsApi* | [**updateCustomField**](docs/CustomFieldsApi.md#updateCustomField) | **PUT** /custom_fields/{custom_field_gid} | Update a custom field
 *Asana.CustomFieldsApi* | [**updateEnumOption**](docs/CustomFieldsApi.md#updateEnumOption) | **PUT** /enum_options/{enum_option_gid} | Update an enum option
+*Asana.CustomTypesApi* | [**getCustomTypes**](docs/CustomTypesApi.md#getCustomTypes) | **GET** /custom_types | Get all custom types associated with an object
 *Asana.EventsApi* | [**getEvents**](docs/EventsApi.md#getEvents) | **GET** /events | Get events on a resource
 *Asana.GoalRelationshipsApi* | [**addSupportingRelationship**](docs/GoalRelationshipsApi.md#addSupportingRelationship) | **POST** /goals/{goal_gid}/addSupportingRelationship | Add a supporting goal relationship
 *Asana.GoalRelationshipsApi* | [**getGoalRelationship**](docs/GoalRelationshipsApi.md#getGoalRelationship) | **GET** /goal_relationships/{goal_relationship_gid} | Get a goal relationship
@@ -381,6 +382,7 @@ Class | Method | HTTP request | Description
 *Asana.WorkspaceMembershipsApi* | [**getWorkspaceMembershipsForWorkspace**](docs/WorkspaceMembershipsApi.md#getWorkspaceMembershipsForWorkspace) | **GET** /workspaces/{workspace_gid}/workspace_memberships | Get the workspace memberships for a workspace
 *Asana.WorkspacesApi* | [**addUserForWorkspace**](docs/WorkspacesApi.md#addUserForWorkspace) | **POST** /workspaces/{workspace_gid}/addUser | Add a user to a workspace or organization
 *Asana.WorkspacesApi* | [**getWorkspace**](docs/WorkspacesApi.md#getWorkspace) | **GET** /workspaces/{workspace_gid} | Get a workspace
+*Asana.WorkspacesApi* | [**getWorkspaceEvents**](docs/WorkspacesApi.md#getWorkspaceEvents) | **GET** /workspaces/{workspace_gid}/events | Get workspace events
 *Asana.WorkspacesApi* | [**getWorkspaces**](docs/WorkspacesApi.md#getWorkspaces) | **GET** /workspaces | Get multiple workspaces
 *Asana.WorkspacesApi* | [**removeUserForWorkspace**](docs/WorkspacesApi.md#removeUserForWorkspace) | **POST** /workspaces/{workspace_gid}/removeUser | Remove a user from a workspace or organization
 *Asana.WorkspacesApi* | [**updateWorkspace**](docs/WorkspacesApi.md#updateWorkspace) | **PUT** /workspaces/{workspace_gid} | Update a workspace
@@ -1111,6 +1113,6 @@ client.callApi(
 ```
 
 [release-image]: https://img.shields.io/github/release/asana/node-asana.svg
-[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.0.15
+[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.0.16
 [npm-image]: http://img.shields.io/npm/v/asana.svg?style=flat-square
 [npm-url]: https://www.npmjs.org/package/asana
