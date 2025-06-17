@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Stories service.
 * @module api/StoriesApi
-* @version 3.0.16
+* @version 3.1.0
 */
 export class StoriesApi {
 
@@ -156,7 +156,7 @@ export class StoriesApi {
 
     /**
      * Get stories from a task
-     * Returns the compact records for all stories on the task.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:read&lt;/code&gt;  Returns the compact records for all stories on the task.
      * @param {String} task_gid The task to operate on.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -224,7 +224,7 @@ export class StoriesApi {
 
     /**
      * Get stories from a task
-     * Returns the compact records for all stories on the task.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:read&lt;/code&gt;  Returns the compact records for all stories on the task.
      * @param {<&vendorExtensions.x-jsdoc-type>} task_gid The task to operate on.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -247,7 +247,7 @@ export class StoriesApi {
 
     /**
      * Get a story
-     * Returns the full record for a single story.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:read&lt;/code&gt;  Returns the full record for a single story.
      * @param {String} story_gid Globally unique identifier for the story.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -289,7 +289,7 @@ export class StoriesApi {
 
     /**
      * Get a story
-     * Returns the full record for a single story.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:read&lt;/code&gt;  Returns the full record for a single story.
      * @param {<&vendorExtensions.x-jsdoc-type>} story_gid Globally unique identifier for the story.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.

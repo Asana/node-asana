@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Goals service.
 * @module api/GoalsApi
-* @version 3.0.16
+* @version 3.1.0
 */
 export class GoalsApi {
 
@@ -280,7 +280,7 @@ export class GoalsApi {
 
     /**
      * Get a goal
-     * Returns the complete goal record for a single goal.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;goals:read&lt;/code&gt;  Returns the complete goal record for a single goal.
      * @param {String} goal_gid Globally unique identifier for the goal.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -322,7 +322,7 @@ export class GoalsApi {
 
     /**
      * Get a goal
-     * Returns the complete goal record for a single goal.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;goals:read&lt;/code&gt;  Returns the complete goal record for a single goal.
      * @param {<&vendorExtensions.x-jsdoc-type>} goal_gid Globally unique identifier for the goal.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -339,7 +339,7 @@ export class GoalsApi {
 
     /**
      * Get goals
-     * Returns compact goal records.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;goals:read&lt;/code&gt;  Returns compact goal records.
      * @param {Object} opts Optional parameters
      * @param {String} opts.portfolio Globally unique identifier for supporting portfolio.
      * @param {String} opts.project Globally unique identifier for supporting project.
@@ -409,7 +409,7 @@ export class GoalsApi {
 
     /**
      * Get goals
-     * Returns compact goal records.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;goals:read&lt;/code&gt;  Returns compact goal records.
      * @param {Object} opts Optional parameters
      * @param {String} opts.portfolio Globally unique identifier for supporting portfolio.
      * @param {String} opts.project Globally unique identifier for supporting project.
@@ -438,7 +438,7 @@ export class GoalsApi {
 
     /**
      * Get parent goals from a goal
-     * Returns a compact representation of all of the parent goals of a goal.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;goals:read&lt;/code&gt;  Returns a compact representation of all of the parent goals of a goal.
      * @param {String} goal_gid Globally unique identifier for the goal.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -504,7 +504,7 @@ export class GoalsApi {
 
     /**
      * Get parent goals from a goal
-     * Returns a compact representation of all of the parent goals of a goal.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;goals:read&lt;/code&gt;  Returns a compact representation of all of the parent goals of a goal.
      * @param {<&vendorExtensions.x-jsdoc-type>} goal_gid Globally unique identifier for the goal.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.

@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * ProjectTemplates service.
 * @module api/ProjectTemplatesApi
-* @version 3.0.16
+* @version 3.1.0
 */
 export class ProjectTemplatesApi {
 
@@ -91,7 +91,7 @@ export class ProjectTemplatesApi {
 
     /**
      * Get a project template
-     * Returns the complete project template record for a single project template.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;project_templates:read&lt;/code&gt;  Returns the complete project template record for a single project template.
      * @param {String} project_template_gid Globally unique identifier for the project template.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -133,7 +133,7 @@ export class ProjectTemplatesApi {
 
     /**
      * Get a project template
-     * Returns the complete project template record for a single project template.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;project_templates:read&lt;/code&gt;  Returns the complete project template record for a single project template.
      * @param {<&vendorExtensions.x-jsdoc-type>} project_template_gid Globally unique identifier for the project template.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -150,7 +150,7 @@ export class ProjectTemplatesApi {
 
     /**
      * Get multiple project templates
-     * Returns the compact project template records for all project templates in the given team or workspace.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;project_templates:read&lt;/code&gt;  Returns the compact project template records for all project templates in the given team or workspace.
      * @param {Object} opts Optional parameters
      * @param {String} opts.workspace The workspace to filter results on.
      * @param {String} opts.team The team to filter projects on.
@@ -215,7 +215,7 @@ export class ProjectTemplatesApi {
 
     /**
      * Get multiple project templates
-     * Returns the compact project template records for all project templates in the given team or workspace.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;project_templates:read&lt;/code&gt;  Returns the compact project template records for all project templates in the given team or workspace.
      * @param {Object} opts Optional parameters
      * @param {String} opts.workspace The workspace to filter results on.
      * @param {String} opts.team The team to filter projects on.
@@ -239,7 +239,7 @@ export class ProjectTemplatesApi {
 
     /**
      * Get a team&#x27;s project templates
-     * Returns the compact project template records for all project templates in the team.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;project_templates:read&lt;/code&gt;  Returns the compact project template records for all project templates in the team.
      * @param {String} team_gid Globally unique identifier for the team.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -307,7 +307,7 @@ export class ProjectTemplatesApi {
 
     /**
      * Get a team&#x27;s project templates
-     * Returns the compact project template records for all project templates in the team.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;project_templates:read&lt;/code&gt;  Returns the compact project template records for all project templates in the team.
      * @param {<&vendorExtensions.x-jsdoc-type>} team_gid Globally unique identifier for the team.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -330,7 +330,7 @@ export class ProjectTemplatesApi {
 
     /**
      * Instantiate a project from a project template
-     * Creates and returns a job that will asynchronously handle the project instantiation.  To form this request, it is recommended to first make a request to [get a project template](/reference/getprojecttemplate). Then, from the response, copy the &#x60;gid&#x60; from the object in the &#x60;requested_dates&#x60; array. This &#x60;gid&#x60; should be used in &#x60;requested_dates&#x60; to instantiate a project.  _Note: The body of this request will differ if your workspace is an organization. To determine if your workspace is an organization, use the [is_organization](/reference/workspaces) parameter._
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  Creates and returns a job that will asynchronously handle the project instantiation.  To form this request, it is recommended to first make a request to [get a project template](/reference/getprojecttemplate). Then, from the response, copy the &#x60;gid&#x60; from the object in the &#x60;requested_dates&#x60; array. This &#x60;gid&#x60; should be used in &#x60;requested_dates&#x60; to instantiate a project.  _Note: The body of this request will differ if your workspace is an organization. To determine if your workspace is an organization, use the [is_organization](/reference/workspaces) parameter._
      * @param {String} project_template_gid Globally unique identifier for the project template.
      * @param {Object} opts Optional parameters
      * @param {module:model/Object} opts.body Describes the inputs used for instantiating a project, such as the resulting project&#x27;s name, which team it should be created in, and values for date variables.
@@ -373,7 +373,7 @@ export class ProjectTemplatesApi {
 
     /**
      * Instantiate a project from a project template
-     * Creates and returns a job that will asynchronously handle the project instantiation.  To form this request, it is recommended to first make a request to [get a project template](/reference/getprojecttemplate). Then, from the response, copy the &#x60;gid&#x60; from the object in the &#x60;requested_dates&#x60; array. This &#x60;gid&#x60; should be used in &#x60;requested_dates&#x60; to instantiate a project.  _Note: The body of this request will differ if your workspace is an organization. To determine if your workspace is an organization, use the [is_organization](/reference/workspaces) parameter._
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  Creates and returns a job that will asynchronously handle the project instantiation.  To form this request, it is recommended to first make a request to [get a project template](/reference/getprojecttemplate). Then, from the response, copy the &#x60;gid&#x60; from the object in the &#x60;requested_dates&#x60; array. This &#x60;gid&#x60; should be used in &#x60;requested_dates&#x60; to instantiate a project.  _Note: The body of this request will differ if your workspace is an organization. To determine if your workspace is an organization, use the [is_organization](/reference/workspaces) parameter._
      * @param {<&vendorExtensions.x-jsdoc-type>} project_template_gid Globally unique identifier for the project template.
      * @param {Object} opts Optional parameters
      * @param {module:model/Object} opts.body Describes the inputs used for instantiating a project, such as the resulting project&#x27;s name, which team it should be created in, and values for date variables.

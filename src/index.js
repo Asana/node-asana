@@ -21,6 +21,7 @@ import {CustomFieldSettingsApi} from './api/CustomFieldSettingsApi';
 import {CustomFieldsApi} from './api/CustomFieldsApi';
 import {CustomTypesApi} from './api/CustomTypesApi';
 import {EventsApi} from './api/EventsApi';
+import {ExportsApi} from './api/ExportsApi';
 import {GoalRelationshipsApi} from './api/GoalRelationshipsApi';
 import {GoalsApi} from './api/GoalsApi';
 import {JobsApi} from './api/JobsApi';
@@ -80,7 +81,7 @@ import {WorkspacesApi} from './api/WorkspacesApi';
 * </pre>
 * </p>
 * @module index
-* @version 3.0.16
+* @version 3.1.0
 */
 export {
     /**
@@ -138,6 +139,12 @@ export {
     * @property {module:api/EventsApi}
     */
     EventsApi,
+
+    /**
+    * The ExportsApi service constructor.
+    * @property {module:api/ExportsApi}
+    */
+    ExportsApi,
 
     /**
     * The GoalRelationshipsApi service constructor.

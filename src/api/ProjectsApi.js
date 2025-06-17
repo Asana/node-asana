@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Projects service.
 * @module api/ProjectsApi
-* @version 3.0.16
+* @version 3.1.0
 */
 export class ProjectsApi {
 
@@ -38,7 +38,7 @@ export class ProjectsApi {
 
     /**
      * Add a custom field to a project
-     * Custom fields are associated with projects by way of custom field settings.  This method creates a setting for the project.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  Custom fields are associated with projects by way of custom field settings.  This method creates a setting for the project.
      * @param {module:model/Object} body Information about the custom field setting.
      * @param {String} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
@@ -85,7 +85,7 @@ export class ProjectsApi {
 
     /**
      * Add a custom field to a project
-     * Custom fields are associated with projects by way of custom field settings.  This method creates a setting for the project.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  Custom fields are associated with projects by way of custom field settings.  This method creates a setting for the project.
      * @param {<&vendorExtensions.x-jsdoc-type>} body Information about the custom field setting.
      * @param {<&vendorExtensions.x-jsdoc-type>} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
@@ -233,7 +233,7 @@ export class ProjectsApi {
 
     /**
      * Create a project
-     * Create a new project in a workspace or team.  Every project is required to be created in a specific workspace or organization, and this cannot be changed once set. Note that you can use the &#x60;workspace&#x60; parameter regardless of whether or not it is an organization.  If the workspace for your project is an organization, you must also supply a &#x60;team&#x60; to share the project with.  Returns the full record of the newly created project.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  Create a new project in a workspace or team.  Every project is required to be created in a specific workspace or organization, and this cannot be changed once set. Note that you can use the &#x60;workspace&#x60; parameter regardless of whether or not it is an organization.  If the workspace for your project is an organization, you must also supply a &#x60;team&#x60; to share the project with.  Returns the full record of the newly created project.
      * @param {module:model/Object} body The project to create.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -275,7 +275,7 @@ export class ProjectsApi {
 
     /**
      * Create a project
-     * Create a new project in a workspace or team.  Every project is required to be created in a specific workspace or organization, and this cannot be changed once set. Note that you can use the &#x60;workspace&#x60; parameter regardless of whether or not it is an organization.  If the workspace for your project is an organization, you must also supply a &#x60;team&#x60; to share the project with.  Returns the full record of the newly created project.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  Create a new project in a workspace or team.  Every project is required to be created in a specific workspace or organization, and this cannot be changed once set. Note that you can use the &#x60;workspace&#x60; parameter regardless of whether or not it is an organization.  If the workspace for your project is an organization, you must also supply a &#x60;team&#x60; to share the project with.  Returns the full record of the newly created project.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The project to create.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -292,7 +292,7 @@ export class ProjectsApi {
 
     /**
      * Create a project in a team
-     * Creates a project shared with the given team.  Returns the full record of the newly created project.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  Creates a project shared with the given team.  Returns the full record of the newly created project.
      * @param {module:model/Object} body The new project to create.
      * @param {String} team_gid Globally unique identifier for the team.
      * @param {Object} opts Optional parameters
@@ -339,7 +339,7 @@ export class ProjectsApi {
 
     /**
      * Create a project in a team
-     * Creates a project shared with the given team.  Returns the full record of the newly created project.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  Creates a project shared with the given team.  Returns the full record of the newly created project.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The new project to create.
      * @param {<&vendorExtensions.x-jsdoc-type>} team_gid Globally unique identifier for the team.
      * @param {Object} opts Optional parameters
@@ -357,7 +357,7 @@ export class ProjectsApi {
 
     /**
      * Create a project in a workspace
-     * Creates a project in the workspace.  If the workspace for your project is an organization, you must also supply a team to share the project with.  Returns the full record of the newly created project.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  Creates a project in the workspace.  If the workspace for your project is an organization, you must also supply a team to share the project with.  Returns the full record of the newly created project.
      * @param {module:model/Object} body The new project to create.
      * @param {String} workspace_gid Globally unique identifier for the workspace or organization.
      * @param {Object} opts Optional parameters
@@ -404,7 +404,7 @@ export class ProjectsApi {
 
     /**
      * Create a project in a workspace
-     * Creates a project in the workspace.  If the workspace for your project is an organization, you must also supply a team to share the project with.  Returns the full record of the newly created project.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  Creates a project in the workspace.  If the workspace for your project is an organization, you must also supply a team to share the project with.  Returns the full record of the newly created project.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The new project to create.
      * @param {<&vendorExtensions.x-jsdoc-type>} workspace_gid Globally unique identifier for the workspace or organization.
      * @param {Object} opts Optional parameters
@@ -422,7 +422,7 @@ export class ProjectsApi {
 
     /**
      * Delete a project
-     * A specific, existing project can be deleted by making a DELETE request on the URL for that project.  Returns an empty data record.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:delete&lt;/code&gt;  A specific, existing project can be deleted by making a DELETE request on the URL for that project.  Returns an empty data record.
      * @param {String} project_gid Globally unique identifier for the project.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
@@ -460,7 +460,7 @@ export class ProjectsApi {
 
     /**
      * Delete a project
-     * A specific, existing project can be deleted by making a DELETE request on the URL for that project.  Returns an empty data record.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:delete&lt;/code&gt;  A specific, existing project can be deleted by making a DELETE request on the URL for that project.  Returns an empty data record.
      * @param {<&vendorExtensions.x-jsdoc-type>} project_gid Globally unique identifier for the project.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EmptyResponseData}
      */
@@ -475,7 +475,7 @@ export class ProjectsApi {
 
     /**
      * Duplicate a project
-     * Creates and returns a job that will asynchronously handle the duplication.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  Creates and returns a job that will asynchronously handle the duplication.
      * @param {String} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
      * @param {module:model/Object} opts.body Describes the duplicate&#x27;s name and the elements that will be duplicated.
@@ -518,7 +518,7 @@ export class ProjectsApi {
 
     /**
      * Duplicate a project
-     * Creates and returns a job that will asynchronously handle the duplication.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  Creates and returns a job that will asynchronously handle the duplication.
      * @param {<&vendorExtensions.x-jsdoc-type>} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
      * @param {module:model/Object} opts.body Describes the duplicate&#x27;s name and the elements that will be duplicated.
@@ -536,7 +536,7 @@ export class ProjectsApi {
 
     /**
      * Get a project
-     * Returns the complete project record for a single project.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the complete project record for a single project.
      * @param {String} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -578,7 +578,7 @@ export class ProjectsApi {
 
     /**
      * Get a project
-     * Returns the complete project record for a single project.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the complete project record for a single project.
      * @param {<&vendorExtensions.x-jsdoc-type>} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -595,7 +595,7 @@ export class ProjectsApi {
 
     /**
      * Get multiple projects
-     * Returns the compact project records for some filtered set of projects. Use one or more of the parameters provided to filter the projects returned. *Note: This endpoint may timeout for large domains. Try filtering by team!*
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the compact project records for some filtered set of projects. Use one or more of the parameters provided to filter the projects returned. *Note: This endpoint may timeout for large domains. Try filtering by team!*
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
@@ -661,7 +661,7 @@ export class ProjectsApi {
 
     /**
      * Get multiple projects
-     * Returns the compact project records for some filtered set of projects. Use one or more of the parameters provided to filter the projects returned. *Note: This endpoint may timeout for large domains. Try filtering by team!*
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the compact project records for some filtered set of projects. Use one or more of the parameters provided to filter the projects returned. *Note: This endpoint may timeout for large domains. Try filtering by team!*
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
@@ -686,7 +686,7 @@ export class ProjectsApi {
 
     /**
      * Get projects a task is in
-     * Returns a compact representation of all of the projects the task is in.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns a compact representation of all of the projects the task is in.
      * @param {String} task_gid The task to operate on.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -754,7 +754,7 @@ export class ProjectsApi {
 
     /**
      * Get projects a task is in
-     * Returns a compact representation of all of the projects the task is in.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns a compact representation of all of the projects the task is in.
      * @param {<&vendorExtensions.x-jsdoc-type>} task_gid The task to operate on.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -777,7 +777,7 @@ export class ProjectsApi {
 
     /**
      * Get a team&#x27;s projects
-     * Returns the compact project records for all projects in the team.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the compact project records for all projects in the team.
      * @param {String} team_gid Globally unique identifier for the team.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -846,7 +846,7 @@ export class ProjectsApi {
 
     /**
      * Get a team&#x27;s projects
-     * Returns the compact project records for all projects in the team.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the compact project records for all projects in the team.
      * @param {<&vendorExtensions.x-jsdoc-type>} team_gid Globally unique identifier for the team.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -870,7 +870,7 @@ export class ProjectsApi {
 
     /**
      * Get all projects in a workspace
-     * Returns the compact project records for all projects in the workspace. *Note: This endpoint may timeout for large domains. Prefer the &#x60;/teams/{team_gid}/projects&#x60; endpoint.*
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the compact project records for all projects in the workspace. *Note: This endpoint may timeout for large domains. Prefer the &#x60;/teams/{team_gid}/projects&#x60; endpoint.*
      * @param {String} workspace_gid Globally unique identifier for the workspace or organization.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -939,7 +939,7 @@ export class ProjectsApi {
 
     /**
      * Get all projects in a workspace
-     * Returns the compact project records for all projects in the workspace. *Note: This endpoint may timeout for large domains. Prefer the &#x60;/teams/{team_gid}/projects&#x60; endpoint.*
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the compact project records for all projects in the workspace. *Note: This endpoint may timeout for large domains. Prefer the &#x60;/teams/{team_gid}/projects&#x60; endpoint.*
      * @param {<&vendorExtensions.x-jsdoc-type>} workspace_gid Globally unique identifier for the workspace or organization.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -963,7 +963,7 @@ export class ProjectsApi {
 
     /**
      * Get task count of a project
-     * Get an object that holds task count fields. **All fields are excluded by default**. You must [opt in](/docs/inputoutput-options) using &#x60;opt_fields&#x60; to get any information from this endpoint.  This endpoint has an additional [rate limit](/docs/rate-limits) and each field counts especially high against our [cost limits](/docs/rate-limits#cost-limits).  Milestones are just tasks, so they are included in the &#x60;num_tasks&#x60;, &#x60;num_incomplete_tasks&#x60;, and &#x60;num_completed_tasks&#x60; counts.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Get an object that holds task count fields. **All fields are excluded by default**. You must [opt in](/docs/inputoutput-options) using &#x60;opt_fields&#x60; to get any information from this endpoint.  This endpoint has an additional [rate limit](/docs/rate-limits) and each field counts especially high against our [cost limits](/docs/rate-limits#cost-limits).  Milestones are just tasks, so they are included in the &#x60;num_tasks&#x60;, &#x60;num_incomplete_tasks&#x60;, and &#x60;num_completed_tasks&#x60; counts.
      * @param {String} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -1005,7 +1005,7 @@ export class ProjectsApi {
 
     /**
      * Get task count of a project
-     * Get an object that holds task count fields. **All fields are excluded by default**. You must [opt in](/docs/inputoutput-options) using &#x60;opt_fields&#x60; to get any information from this endpoint.  This endpoint has an additional [rate limit](/docs/rate-limits) and each field counts especially high against our [cost limits](/docs/rate-limits#cost-limits).  Milestones are just tasks, so they are included in the &#x60;num_tasks&#x60;, &#x60;num_incomplete_tasks&#x60;, and &#x60;num_completed_tasks&#x60; counts.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Get an object that holds task count fields. **All fields are excluded by default**. You must [opt in](/docs/inputoutput-options) using &#x60;opt_fields&#x60; to get any information from this endpoint.  This endpoint has an additional [rate limit](/docs/rate-limits) and each field counts especially high against our [cost limits](/docs/rate-limits#cost-limits).  Milestones are just tasks, so they are included in the &#x60;num_tasks&#x60;, &#x60;num_incomplete_tasks&#x60;, and &#x60;num_completed_tasks&#x60; counts.
      * @param {<&vendorExtensions.x-jsdoc-type>} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -1087,7 +1087,7 @@ export class ProjectsApi {
 
     /**
      * Remove a custom field from a project
-     * Removes a custom field setting from a project.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  Removes a custom field setting from a project.
      * @param {module:model/Object} body Information about the custom field setting being removed.
      * @param {String} project_gid Globally unique identifier for the project.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
@@ -1130,7 +1130,7 @@ export class ProjectsApi {
 
     /**
      * Remove a custom field from a project
-     * Removes a custom field setting from a project.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  Removes a custom field setting from a project.
      * @param {<&vendorExtensions.x-jsdoc-type>} body Information about the custom field setting being removed.
      * @param {<&vendorExtensions.x-jsdoc-type>} project_gid Globally unique identifier for the project.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EmptyResponseData}
@@ -1276,7 +1276,7 @@ export class ProjectsApi {
 
     /**
      * Update a project
-     * A specific, existing project can be updated by making a PUT request on the URL for that project. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the task.  Returns the complete updated project record.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  A specific, existing project can be updated by making a PUT request on the URL for that project. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the task.  Returns the complete updated project record.
      * @param {module:model/Object} body The updated fields for the project.
      * @param {String} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
@@ -1323,7 +1323,7 @@ export class ProjectsApi {
 
     /**
      * Update a project
-     * A specific, existing project can be updated by making a PUT request on the URL for that project. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the task.  Returns the complete updated project record.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  A specific, existing project can be updated by making a PUT request on the URL for that project. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the task.  Returns the complete updated project record.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The updated fields for the project.
      * @param {<&vendorExtensions.x-jsdoc-type>} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters

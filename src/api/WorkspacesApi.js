@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Workspaces service.
 * @module api/WorkspacesApi
-* @version 3.0.16
+* @version 3.1.0
 */
 export class WorkspacesApi {
 
@@ -103,7 +103,7 @@ export class WorkspacesApi {
 
     /**
      * Get a workspace
-     * Returns the full workspace record for a single workspace.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;workspaces:read&lt;/code&gt;  Returns the full workspace record for a single workspace.
      * @param {String} workspace_gid Globally unique identifier for the workspace or organization.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -145,7 +145,7 @@ export class WorkspacesApi {
 
     /**
      * Get a workspace
-     * Returns the full workspace record for a single workspace.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;workspaces:read&lt;/code&gt;  Returns the full workspace record for a single workspace.
      * @param {<&vendorExtensions.x-jsdoc-type>} workspace_gid Globally unique identifier for the workspace or organization.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -249,7 +249,7 @@ export class WorkspacesApi {
 
     /**
      * Get multiple workspaces
-     * Returns the compact records for all workspaces visible to the authorized user.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;workspaces:read&lt;/code&gt;  Returns the compact records for all workspaces visible to the authorized user.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
@@ -312,7 +312,7 @@ export class WorkspacesApi {
 
     /**
      * Get multiple workspaces
-     * Returns the compact records for all workspaces visible to the authorized user.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;workspaces:read&lt;/code&gt;  Returns the compact records for all workspaces visible to the authorized user.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*

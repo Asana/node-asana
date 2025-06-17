@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Portfolios service.
 * @module api/PortfoliosApi
-* @version 3.0.16
+* @version 3.1.0
 */
 export class PortfoliosApi {
 
@@ -333,7 +333,7 @@ export class PortfoliosApi {
 
     /**
      * Get portfolio items
-     * Get a list of the items in compact form in a portfolio.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:read&lt;/code&gt;  Get a list of the items in compact form in a portfolio.
      * @param {String} portfolio_gid Globally unique identifier for the portfolio.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -401,7 +401,7 @@ export class PortfoliosApi {
 
     /**
      * Get portfolio items
-     * Get a list of the items in compact form in a portfolio.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:read&lt;/code&gt;  Get a list of the items in compact form in a portfolio.
      * @param {<&vendorExtensions.x-jsdoc-type>} portfolio_gid Globally unique identifier for the portfolio.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -424,7 +424,7 @@ export class PortfoliosApi {
 
     /**
      * Get a portfolio
-     * Returns the complete portfolio record for a single portfolio.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:read&lt;/code&gt;  Returns the complete portfolio record for a single portfolio.
      * @param {String} portfolio_gid Globally unique identifier for the portfolio.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -466,7 +466,7 @@ export class PortfoliosApi {
 
     /**
      * Get a portfolio
-     * Returns the complete portfolio record for a single portfolio.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:read&lt;/code&gt;  Returns the complete portfolio record for a single portfolio.
      * @param {<&vendorExtensions.x-jsdoc-type>} portfolio_gid Globally unique identifier for the portfolio.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -483,7 +483,7 @@ export class PortfoliosApi {
 
     /**
      * Get multiple portfolios
-     * Returns a list of the portfolios in compact representation that are owned by the current API user.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:read&lt;/code&gt;  Returns a list of the portfolios in compact representation that are owned by the current API user.
      * @param {String} workspace The workspace or organization to filter portfolios on.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -553,7 +553,7 @@ export class PortfoliosApi {
 
     /**
      * Get multiple portfolios
-     * Returns a list of the portfolios in compact representation that are owned by the current API user.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:read&lt;/code&gt;  Returns a list of the portfolios in compact representation that are owned by the current API user.
      * @param {<&vendorExtensions.x-jsdoc-type>} workspace The workspace or organization to filter portfolios on.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.

@@ -16,15 +16,15 @@ import {ApiClient} from "../ApiClient";
 var Collection = require('../utils/collection');
 
 /**
-* Rules service.
-* @module api/RulesApi
+* Exports service.
+* @module api/ExportsApi
 * @version 3.1.0
 */
-export class RulesApi {
+export class ExportsApi {
 
     /**
-    * Constructs a new RulesApi. 
-    * @alias module:api/RulesApi
+    * Constructs a new ExportsApi. 
+    * @alias module:api/ExportsApi
     * @class
     * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
     * default to {@link module:ApiClient#instanc
@@ -37,26 +37,21 @@ export class RulesApi {
 
 
     /**
-     * Trigger a rule
-     * Trigger a rule which uses an [\&quot;incoming web request\&quot;](/docs/incoming-web-requests) trigger.
-     * @param {module:model/Object} body A dictionary of variables accessible from within the rule.
-     * @param {String} rule_trigger_gid The ID of the incoming web request trigger. This value is a path parameter that is automatically generated for the API endpoint.
+     * Initiate graph export
+     * Initiates a graph export job for a given parent object (team, portfolio, or project). The export will be processed asynchronously. Once initiated, use the [jobs](/reference/getjob) endpoint to monitor progress.  **Export Caching:** When exporting more than 1,000 tasks, the results are cached for 4 hours. Any new export requests made within this 4-hour window will return the same cached results rather than generating a fresh export.
+     * @param {module:model/Object} body A JSON payload specifying the parent object to export.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
-    triggerRuleWithHttpInfo(body, rule_trigger_gid) {
+    createGraphExportWithHttpInfo(body) {
         
         let postBody = body;
         // verify the required parameter 'body' is set
         if (body === undefined || body === null) {
-            throw new Error("Missing the required parameter 'body' when calling triggerRule");
-        }
-        // verify the required parameter 'rule_trigger_gid' is set
-        if (rule_trigger_gid === undefined || rule_trigger_gid === null) {
-            throw new Error("Missing the required parameter 'rule_trigger_gid' when calling triggerRule");
+            throw new Error("Missing the required parameter 'body' when calling createGraphExport");
         }
 
         let pathParams = {
-            'rule_trigger_gid': rule_trigger_gid
+            
         };
         let queryParams = {};
 
@@ -73,22 +68,21 @@ export class RulesApi {
         let returnType = 'Blob';
 
         return this.apiClient.callApi(
-            '/rule_triggers/{rule_trigger_gid}/run', 'POST',
+            '/exports/graph', 'POST',
             pathParams, queryParams, headerParams, formParams, postBody,
             authNames, contentTypes, accepts, returnType
         );
     }
 
     /**
-     * Trigger a rule
-     * Trigger a rule which uses an [\&quot;incoming web request\&quot;](/docs/incoming-web-requests) trigger.
-     * @param {<&vendorExtensions.x-jsdoc-type>} body A dictionary of variables accessible from within the rule.
-     * @param {<&vendorExtensions.x-jsdoc-type>} rule_trigger_gid The ID of the incoming web request trigger. This value is a path parameter that is automatically generated for the API endpoint.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/RuleTriggerResponseData}
+     * Initiate graph export
+     * Initiates a graph export job for a given parent object (team, portfolio, or project). The export will be processed asynchronously. Once initiated, use the [jobs](/reference/getjob) endpoint to monitor progress.  **Export Caching:** When exporting more than 1,000 tasks, the results are cached for 4 hours. Any new export requests made within this 4-hour window will return the same cached results rather than generating a fresh export.
+     * @param {<&vendorExtensions.x-jsdoc-type>} body A JSON payload specifying the parent object to export.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GraphExportResponseData}
      */
-    triggerRule(body, rule_trigger_gid) {
+    createGraphExport(body) {
 
-        return this.triggerRuleWithHttpInfo(body, rule_trigger_gid)
+        return this.createGraphExportWithHttpInfo(body)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });

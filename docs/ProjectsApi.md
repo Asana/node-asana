@@ -29,7 +29,7 @@ Method | HTTP request | Description
 
 Add a custom field to a project
 
-Custom fields are associated with projects by way of custom field settings.  This method creates a setting for the project.
+<b>Required scope: </b><code>projects:write</code>  Custom fields are associated with projects by way of custom field settings.  This method creates a setting for the project.
 
 ([more information](https://developers.asana.com/reference/addcustomfieldsettingforproject))
 
@@ -173,7 +173,7 @@ object
 
 Create a project
 
-Create a new project in a workspace or team.  Every project is required to be created in a specific workspace or organization, and this cannot be changed once set. Note that you can use the `workspace` parameter regardless of whether or not it is an organization.  If the workspace for your project is an organization, you must also supply a `team` to share the project with.  Returns the full record of the newly created project.
+<b>Required scope: </b><code>projects:write</code>  Create a new project in a workspace or team.  Every project is required to be created in a specific workspace or organization, and this cannot be changed once set. Note that you can use the `workspace` parameter regardless of whether or not it is an organization.  If the workspace for your project is an organization, you must also supply a `team` to share the project with.  Returns the full record of the newly created project.
 
 ([more information](https://developers.asana.com/reference/createproject))
 
@@ -219,7 +219,7 @@ object
 
 Create a project in a team
 
-Creates a project shared with the given team.  Returns the full record of the newly created project.
+<b>Required scope: </b><code>projects:write</code>  Creates a project shared with the given team.  Returns the full record of the newly created project.
 
 ([more information](https://developers.asana.com/reference/createprojectforteam))
 
@@ -267,7 +267,7 @@ object
 
 Create a project in a workspace
 
-Creates a project in the workspace.  If the workspace for your project is an organization, you must also supply a team to share the project with.  Returns the full record of the newly created project.
+<b>Required scope: </b><code>projects:write</code>  Creates a project in the workspace.  If the workspace for your project is an organization, you must also supply a team to share the project with.  Returns the full record of the newly created project.
 
 ([more information](https://developers.asana.com/reference/createprojectforworkspace))
 
@@ -315,7 +315,7 @@ object
 
 Delete a project
 
-A specific, existing project can be deleted by making a DELETE request on the URL for that project.  Returns an empty data record.
+<b>Required scope: </b><code>projects:delete</code>  A specific, existing project can be deleted by making a DELETE request on the URL for that project.  Returns an empty data record.
 
 ([more information](https://developers.asana.com/reference/deleteproject))
 
@@ -358,7 +358,7 @@ object
 
 Duplicate a project
 
-Creates and returns a job that will asynchronously handle the duplication.
+<b>Required scope: </b><code>projects:write</code>  Creates and returns a job that will asynchronously handle the duplication.
 
 ([more information](https://developers.asana.com/reference/duplicateproject))
 
@@ -374,7 +374,7 @@ let projectsApiInstance = new Asana.ProjectsApi();
 let project_gid = "1331"; // String | Globally unique identifier for the project.
 let opts = { 
     'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}, 
-    'opt_fields': "new_project,new_project.name,new_project_template,new_project_template.name,new_task,new_task.created_by,new_task.name,new_task.resource_subtype,resource_subtype,status"
+    'opt_fields': "new_graph_export,new_graph_export.completed_at,new_graph_export.created_at,new_graph_export.download_url,new_project,new_project.name,new_project_template,new_project_template.name,new_task,new_task.created_by,new_task.name,new_task.resource_subtype,resource_subtype,status"
 };
 projectsApiInstance.duplicateProject(project_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -406,7 +406,7 @@ object
 
 Get a project
 
-Returns the complete project record for a single project.
+<b>Required scope: </b><code>projects:read</code>  Returns the complete project record for a single project.
 
 ([more information](https://developers.asana.com/reference/getproject))
 
@@ -452,7 +452,7 @@ object
 
 Get multiple projects
 
-Returns the compact project records for some filtered set of projects. Use one or more of the parameters provided to filter the projects returned. *Note: This endpoint may timeout for large domains. Try filtering by team!*
+<b>Required scope: </b><code>projects:read</code>  Returns the compact project records for some filtered set of projects. Use one or more of the parameters provided to filter the projects returned. *Note: This endpoint may timeout for large domains. Try filtering by team!*
 
 ([more information](https://developers.asana.com/reference/getprojects))
 
@@ -506,7 +506,7 @@ object
 
 Get projects a task is in
 
-Returns a compact representation of all of the projects the task is in.
+<b>Required scope: </b><code>projects:read</code>  Returns a compact representation of all of the projects the task is in.
 
 ([more information](https://developers.asana.com/reference/getprojectsfortask))
 
@@ -556,7 +556,7 @@ object
 
 Get a team&#x27;s projects
 
-Returns the compact project records for all projects in the team.
+<b>Required scope: </b><code>projects:read</code>  Returns the compact project records for all projects in the team.
 
 ([more information](https://developers.asana.com/reference/getprojectsforteam))
 
@@ -608,7 +608,7 @@ object
 
 Get all projects in a workspace
 
-Returns the compact project records for all projects in the workspace. *Note: This endpoint may timeout for large domains. Prefer the `/teams/{team_gid}/projects` endpoint.*
+<b>Required scope: </b><code>projects:read</code>  Returns the compact project records for all projects in the workspace. *Note: This endpoint may timeout for large domains. Prefer the `/teams/{team_gid}/projects` endpoint.*
 
 ([more information](https://developers.asana.com/reference/getprojectsforworkspace))
 
@@ -660,7 +660,7 @@ object
 
 Get task count of a project
 
-Get an object that holds task count fields. **All fields are excluded by default**. You must [opt in](/docs/inputoutput-options) using `opt_fields` to get any information from this endpoint.  This endpoint has an additional [rate limit](/docs/rate-limits) and each field counts especially high against our [cost limits](/docs/rate-limits#cost-limits).  Milestones are just tasks, so they are included in the `num_tasks`, `num_incomplete_tasks`, and `num_completed_tasks` counts.
+<b>Required scope: </b><code>projects:read</code>  Get an object that holds task count fields. **All fields are excluded by default**. You must [opt in](/docs/inputoutput-options) using `opt_fields` to get any information from this endpoint.  This endpoint has an additional [rate limit](/docs/rate-limits) and each field counts especially high against our [cost limits](/docs/rate-limits#cost-limits).  Milestones are just tasks, so they are included in the `num_tasks`, `num_incomplete_tasks`, and `num_completed_tasks` counts.
 
 ([more information](https://developers.asana.com/reference/gettaskcountsforproject))
 
@@ -722,7 +722,7 @@ let projectsApiInstance = new Asana.ProjectsApi();
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | Describes the inputs used for creating a project template, such as the resulting project template's name, which team it should be created in.
 let project_gid = "1331"; // String | Globally unique identifier for the project.
 let opts = { 
-    'opt_fields': "new_project,new_project.name,new_project_template,new_project_template.name,new_task,new_task.created_by,new_task.name,new_task.resource_subtype,resource_subtype,status"
+    'opt_fields': "new_graph_export,new_graph_export.completed_at,new_graph_export.created_at,new_graph_export.download_url,new_project,new_project.name,new_project_template,new_project_template.name,new_task,new_task.created_by,new_task.name,new_task.resource_subtype,resource_subtype,status"
 };
 projectsApiInstance.projectSaveAsTemplate(body, project_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -754,7 +754,7 @@ object
 
 Remove a custom field from a project
 
-Removes a custom field setting from a project.
+<b>Required scope: </b><code>projects:write</code>  Removes a custom field setting from a project.
 
 ([more information](https://developers.asana.com/reference/removecustomfieldsettingforproject))
 
@@ -895,7 +895,7 @@ object
 
 Update a project
 
-A specific, existing project can be updated by making a PUT request on the URL for that project. Only the fields provided in the `data` block will be updated; any unspecified fields will remain unchanged.  When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the task.  Returns the complete updated project record.
+<b>Required scope: </b><code>projects:write</code>  A specific, existing project can be updated by making a PUT request on the URL for that project. Only the fields provided in the `data` block will be updated; any unspecified fields will remain unchanged.  When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the task.  Returns the complete updated project record.
 
 ([more information](https://developers.asana.com/reference/updateproject))
 

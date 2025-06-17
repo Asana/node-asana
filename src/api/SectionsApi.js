@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Sections service.
 * @module api/SectionsApi
-* @version 3.0.16
+* @version 3.1.0
 */
 export class SectionsApi {
 
@@ -38,7 +38,7 @@ export class SectionsApi {
 
     /**
      * Add task to section
-     * Add a task to a specific, existing section. This will remove the task from other sections of the project.  The task will be inserted at the top of a section unless an insert_before or insert_after parameter is declared.  This does not work for separators (tasks with the resource_subtype of section).
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tasks:write&lt;/code&gt;  Add a task to a specific, existing section. This will remove the task from other sections of the project.  The task will be inserted at the top of a section unless an insert_before or insert_after parameter is declared.  This does not work for separators (tasks with the resource_subtype of section).
      * @param {String} section_gid The globally unique identifier for the section.
      * @param {Object} opts Optional parameters
      * @param {module:model/Object} opts.body The task and optionally the insert location.
@@ -80,7 +80,7 @@ export class SectionsApi {
 
     /**
      * Add task to section
-     * Add a task to a specific, existing section. This will remove the task from other sections of the project.  The task will be inserted at the top of a section unless an insert_before or insert_after parameter is declared.  This does not work for separators (tasks with the resource_subtype of section).
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tasks:write&lt;/code&gt;  Add a task to a specific, existing section. This will remove the task from other sections of the project.  The task will be inserted at the top of a section unless an insert_before or insert_after parameter is declared.  This does not work for separators (tasks with the resource_subtype of section).
      * @param {<&vendorExtensions.x-jsdoc-type>} section_gid The globally unique identifier for the section.
      * @param {Object} opts Optional parameters
      * @param {module:model/Object} opts.body The task and optionally the insert location.

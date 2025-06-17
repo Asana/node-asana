@@ -111,7 +111,7 @@ object
 
 Get a team
 
-Returns the full record for a single team.
+<b>Required scope: </b><code>teams:read</code>  Returns the full record for a single team.
 
 ([more information](https://developers.asana.com/reference/getteam))
 
@@ -157,7 +157,7 @@ object
 
 Get teams for a user
 
-Returns the compact records for all teams to which the given user is assigned.
+<b>Required scope: </b><code>teams:read</code>  Returns the compact records for all teams to which the given user is assigned.
 
 ([more information](https://developers.asana.com/reference/getteamsforuser))
 
@@ -209,7 +209,7 @@ object
 
 Get teams in a workspace
 
-Returns the compact records for all teams in the workspace visible to the authorized user.
+<b>Required scope: </b><code>teams:read</code>  Returns the compact records for all teams in the workspace visible to the authorized user.
 
 ([more information](https://developers.asana.com/reference/getteamsforworkspace))
 

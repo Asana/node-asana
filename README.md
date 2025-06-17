@@ -1,7 +1,7 @@
 # asana [![GitHub release][release-image]][release-url] [![NPM Version][npm-image]][npm-url]
 
 - API version: 1.0
-- Package version: 3.0.16
+- Package version: 3.1.0
 
 ## Installation
 
@@ -18,7 +18,7 @@ npm install asana --save
 Include the latest release directly from GitHub:
 
 ```html
-<script src="https://github.com/Asana/node-asana/releases/download/v3.0.16/asana-min.js"></script>
+<script src="https://github.com/Asana/node-asana/releases/download/v3.1.0/asana-min.js"></script>
 ```
 
 Example usage (**NOTE**: be careful not to expose your access token):
@@ -218,6 +218,7 @@ Class | Method | HTTP request | Description
 *Asana.CustomFieldsApi* | [**updateEnumOption**](docs/CustomFieldsApi.md#updateEnumOption) | **PUT** /enum_options/{enum_option_gid} | Update an enum option
 *Asana.CustomTypesApi* | [**getCustomTypes**](docs/CustomTypesApi.md#getCustomTypes) | **GET** /custom_types | Get all custom types associated with an object
 *Asana.EventsApi* | [**getEvents**](docs/EventsApi.md#getEvents) | **GET** /events | Get events on a resource
+*Asana.ExportsApi* | [**createGraphExport**](docs/ExportsApi.md#createGraphExport) | **POST** /exports/graph | Initiate graph export
 *Asana.GoalRelationshipsApi* | [**addSupportingRelationship**](docs/GoalRelationshipsApi.md#addSupportingRelationship) | **POST** /goals/{goal_gid}/addSupportingRelationship | Add a supporting goal relationship
 *Asana.GoalRelationshipsApi* | [**getGoalRelationship**](docs/GoalRelationshipsApi.md#getGoalRelationship) | **GET** /goal_relationships/{goal_relationship_gid} | Get a goal relationship
 *Asana.GoalRelationshipsApi* | [**getGoalRelationships**](docs/GoalRelationshipsApi.md#getGoalRelationships) | **GET** /goal_relationships | Get goal relationships
@@ -1113,6 +1114,6 @@ client.callApi(
 ```
 
 [release-image]: https://img.shields.io/github/release/asana/node-asana.svg
-[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.0.16
+[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.1.0
 [npm-image]: http://img.shields.io/npm/v/asana.svg?style=flat-square
 [npm-url]: https://www.npmjs.org/package/asana

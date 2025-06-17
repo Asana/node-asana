@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * UserTaskLists service.
 * @module api/UserTaskListsApi
-* @version 3.0.16
+* @version 3.1.0
 */
 export class UserTaskListsApi {
 
@@ -38,7 +38,7 @@ export class UserTaskListsApi {
 
     /**
      * Get a user task list
-     * Returns the full record for a user task list.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tasks:read&lt;/code&gt;  Returns the full record for a user task list.
      * @param {String} user_task_list_gid Globally unique identifier for the user task list.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -80,7 +80,7 @@ export class UserTaskListsApi {
 
     /**
      * Get a user task list
-     * Returns the full record for a user task list.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tasks:read&lt;/code&gt;  Returns the full record for a user task list.
      * @param {<&vendorExtensions.x-jsdoc-type>} user_task_list_gid Globally unique identifier for the user task list.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -97,7 +97,7 @@ export class UserTaskListsApi {
 
     /**
      * Get a user&#x27;s task list
-     * Returns the full record for a user&#x27;s task list.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tasks:read&lt;/code&gt;  Returns the full record for a user&#x27;s task list.
      * @param {String} user_gid A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
      * @param {String} workspace The workspace in which to get the user task list.
      * @param {Object} opts Optional parameters
@@ -145,7 +145,7 @@ export class UserTaskListsApi {
 
     /**
      * Get a user&#x27;s task list
-     * Returns the full record for a user&#x27;s task list.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tasks:read&lt;/code&gt;  Returns the full record for a user&#x27;s task list.
      * @param {<&vendorExtensions.x-jsdoc-type>} user_gid A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
      * @param {<&vendorExtensions.x-jsdoc-type>} workspace The workspace in which to get the user task list.
      * @param {Object} opts Optional parameters

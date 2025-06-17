@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Teams service.
 * @module api/TeamsApi
-* @version 3.0.16
+* @version 3.1.0
 */
 export class TeamsApi {
 
@@ -162,7 +162,7 @@ export class TeamsApi {
 
     /**
      * Get a team
-     * Returns the full record for a single team.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;teams:read&lt;/code&gt;  Returns the full record for a single team.
      * @param {String} team_gid Globally unique identifier for the team.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -204,7 +204,7 @@ export class TeamsApi {
 
     /**
      * Get a team
-     * Returns the full record for a single team.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;teams:read&lt;/code&gt;  Returns the full record for a single team.
      * @param {<&vendorExtensions.x-jsdoc-type>} team_gid Globally unique identifier for the team.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -221,7 +221,7 @@ export class TeamsApi {
 
     /**
      * Get teams for a user
-     * Returns the compact records for all teams to which the given user is assigned.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;teams:read&lt;/code&gt;  Returns the compact records for all teams to which the given user is assigned.
      * @param {String} user_gid A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
      * @param {String} organization The workspace or organization to filter teams on.
      * @param {Object} opts Optional parameters
@@ -295,7 +295,7 @@ export class TeamsApi {
 
     /**
      * Get teams for a user
-     * Returns the compact records for all teams to which the given user is assigned.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;teams:read&lt;/code&gt;  Returns the compact records for all teams to which the given user is assigned.
      * @param {<&vendorExtensions.x-jsdoc-type>} user_gid A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
      * @param {<&vendorExtensions.x-jsdoc-type>} organization The workspace or organization to filter teams on.
      * @param {Object} opts Optional parameters
@@ -319,7 +319,7 @@ export class TeamsApi {
 
     /**
      * Get teams in a workspace
-     * Returns the compact records for all teams in the workspace visible to the authorized user.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;teams:read&lt;/code&gt;  Returns the compact records for all teams in the workspace visible to the authorized user.
      * @param {String} workspace_gid Globally unique identifier for the workspace or organization.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -387,7 +387,7 @@ export class TeamsApi {
 
     /**
      * Get teams in a workspace
-     * Returns the compact records for all teams in the workspace visible to the authorized user.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;teams:read&lt;/code&gt;  Returns the compact records for all teams in the workspace visible to the authorized user.
      * @param {<&vendorExtensions.x-jsdoc-type>} workspace_gid Globally unique identifier for the workspace or organization.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
