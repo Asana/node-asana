@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 Add a custom field to a portfolio
 
-Custom fields are associated with portfolios by way of custom field settings.  This method creates a setting for the portfolio.
+<b>Required scope: </b><code>portfolios:write</code>  Custom fields are associated with portfolios by way of custom field settings.  This method creates a setting for the portfolio.
 
 ([more information](https://developers.asana.com/reference/addcustomfieldsettingforportfolio))
 
@@ -67,7 +67,7 @@ object
 
 Add a portfolio item
 
-Add an item to a portfolio. Returns an empty data block.
+<b>Required scope: </b><code>portfolios:write</code>  Add an item to a portfolio. Returns an empty data block.
 
 ([more information](https://developers.asana.com/reference/additemforportfolio))
 
@@ -160,7 +160,7 @@ object
 
 Create a portfolio
 
-Creates a new portfolio in the given workspace with the supplied name.  Note that portfolios created in the Asana UI may have some state (like the “Priority” custom field) which is automatically added to the portfolio when it is created. Portfolios created via our API will *not* be created with the same initial state to allow integrations to create their own starting state on a portfolio.
+<b>Required scope: </b><code>portfolios:write</code>  Creates a new portfolio in the given workspace with the supplied name.  Note that portfolios created in the Asana UI may have some state (like the “Priority” custom field) which is automatically added to the portfolio when it is created. Portfolios created via our API will *not* be created with the same initial state to allow integrations to create their own starting state on a portfolio.
 
 ([more information](https://developers.asana.com/reference/createportfolio))
 
@@ -397,7 +397,7 @@ object
 
 Remove a custom field from a portfolio
 
-Removes a custom field setting from a portfolio.
+<b>Required scope: </b><code>portfolios:write</code>  Removes a custom field setting from a portfolio.
 
 ([more information](https://developers.asana.com/reference/removecustomfieldsettingforportfolio))
 
@@ -442,7 +442,7 @@ object
 
 Remove a portfolio item
 
-Remove an item from a portfolio. Returns an empty data block.
+<b>Required scope: </b><code>portfolios:write</code>  Remove an item from a portfolio. Returns an empty data block.
 
 ([more information](https://developers.asana.com/reference/removeitemforportfolio))
 
@@ -535,7 +535,7 @@ object
 
 Update a portfolio
 
-An existing portfolio can be updated by making a PUT request on the URL for that portfolio. Only the fields provided in the `data` block will be updated; any unspecified fields will remain unchanged.  Returns the complete updated portfolio record.
+<b>Required scope: </b><code>portfolios:write</code>  An existing portfolio can be updated by making a PUT request on the URL for that portfolio. Only the fields provided in the `data` block will be updated; any unspecified fields will remain unchanged.  Returns the complete updated portfolio record.
 
 ([more information](https://developers.asana.com/reference/updateportfolio))
 

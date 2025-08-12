@@ -222,7 +222,7 @@ let projectTemplatesApiInstance = new Asana.ProjectTemplatesApi();
 let project_template_gid = "1331"; // String | Globally unique identifier for the project template.
 let opts = { 
     'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}, 
-    'opt_fields': "new_graph_export,new_graph_export.completed_at,new_graph_export.created_at,new_graph_export.download_url,new_project,new_project.name,new_project_template,new_project_template.name,new_task,new_task.created_by,new_task.name,new_task.resource_subtype,resource_subtype,status"
+    'opt_fields': "new_graph_export,new_graph_export.completed_at,new_graph_export.created_at,new_graph_export.download_url,new_project,new_project.name,new_project_template,new_project_template.name,new_resource_export,new_resource_export.completed_at,new_resource_export.created_at,new_resource_export.download_url,new_task,new_task.created_by,new_task.name,new_task.resource_subtype,resource_subtype,status"
 };
 projectTemplatesApiInstance.instantiateProject(project_template_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));

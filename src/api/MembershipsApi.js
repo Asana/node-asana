@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Memberships service.
 * @module api/MembershipsApi
-* @version 3.1.0
+* @version 3.1.1
 */
 export class MembershipsApi {
 
@@ -38,7 +38,7 @@ export class MembershipsApi {
 
     /**
      * Create a membership
-     * Creates a new membership in a &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, or &#x60;custom_field&#x60;. Teams or Users can be members of &#x60;goals&#x60; or &#x60;projects&#x60;. Portfolios and custom fields only support &#x60;users&#x60; as members.  Returns the full record of the newly created membership.
+     * Creates a new membership in a &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, or &#x60;custom_field&#x60;, where members can be Teams or Users.  Returns the full record of the newly created membership.
      * @param {Object} opts Optional parameters
      * @param {module:model/Object} opts.body The updated fields for the membership.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
@@ -75,7 +75,7 @@ export class MembershipsApi {
 
     /**
      * Create a membership
-     * Creates a new membership in a &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, or &#x60;custom_field&#x60;. Teams or Users can be members of &#x60;goals&#x60; or &#x60;projects&#x60;. Portfolios and custom fields only support &#x60;users&#x60; as members.  Returns the full record of the newly created membership.
+     * Creates a new membership in a &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, or &#x60;custom_field&#x60;, where members can be Teams or Users.  Returns the full record of the newly created membership.
      * @param {Object} opts Optional parameters
      * @param {module:model/Object} opts.body The updated fields for the membership.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MembershipResponseData}
@@ -197,7 +197,7 @@ export class MembershipsApi {
 
     /**
      * Get multiple memberships
-     * Returns compact &#x60;goal_membership&#x60;, &#x60;project_membership&#x60;, &#x60;portfolio_membership&#x60;, or &#x60;custom_field_membership&#x60; records. The possible types for &#x60;parent&#x60; in this request are &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, or &#x60;custom_field&#x60;. An additional member (user GID or team GID) can be passed in to filter to a specific membership. Team as members are not supported for portfolios or custom fields yet.
+     * Returns compact &#x60;goal_membership&#x60;, &#x60;project_membership&#x60;, &#x60;portfolio_membership&#x60;, or &#x60;custom_field_membership&#x60; records. The possible types for &#x60;parent&#x60; in this request are &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, or &#x60;custom_field&#x60;. An additional member (user GID or team GID) can be passed in to filter to a specific membership.
      * @param {Object} opts Optional parameters
      * @param {String} opts.parent Globally unique identifier for &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, or &#x60;custom_field&#x60;.
      * @param {String} opts.member Globally unique identifier for &#x60;team&#x60; or &#x60;user&#x60;.
@@ -262,7 +262,7 @@ export class MembershipsApi {
 
     /**
      * Get multiple memberships
-     * Returns compact &#x60;goal_membership&#x60;, &#x60;project_membership&#x60;, &#x60;portfolio_membership&#x60;, or &#x60;custom_field_membership&#x60; records. The possible types for &#x60;parent&#x60; in this request are &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, or &#x60;custom_field&#x60;. An additional member (user GID or team GID) can be passed in to filter to a specific membership. Team as members are not supported for portfolios or custom fields yet.
+     * Returns compact &#x60;goal_membership&#x60;, &#x60;project_membership&#x60;, &#x60;portfolio_membership&#x60;, or &#x60;custom_field_membership&#x60; records. The possible types for &#x60;parent&#x60; in this request are &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, or &#x60;custom_field&#x60;. An additional member (user GID or team GID) can be passed in to filter to a specific membership.
      * @param {Object} opts Optional parameters
      * @param {String} opts.parent Globally unique identifier for &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, or &#x60;custom_field&#x60;.
      * @param {String} opts.member Globally unique identifier for &#x60;team&#x60; or &#x60;user&#x60;.

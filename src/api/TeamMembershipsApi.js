@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * TeamMemberships service.
 * @module api/TeamMembershipsApi
-* @version 3.1.0
+* @version 3.1.1
 */
 export class TeamMembershipsApi {
 

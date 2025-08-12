@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Stories service.
 * @module api/StoriesApi
-* @version 3.1.0
+* @version 3.1.1
 */
 export class StoriesApi {
 
@@ -38,7 +38,7 @@ export class StoriesApi {
 
     /**
      * Create a story on a task
-     * Adds a story to a task. This endpoint currently only allows for comment stories to be created. The comment will be authored by the currently authenticated user, and timestamped when the server receives the request.  Returns the full record for the new story added to the task.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:write&lt;/code&gt;  Adds a story to a task. This endpoint currently only allows for comment stories to be created. The comment will be authored by the currently authenticated user, and timestamped when the server receives the request.  Returns the full record for the new story added to the task.
      * @param {module:model/Object} body The story to create.
      * @param {String} task_gid The task to operate on.
      * @param {Object} opts Optional parameters
@@ -85,7 +85,7 @@ export class StoriesApi {
 
     /**
      * Create a story on a task
-     * Adds a story to a task. This endpoint currently only allows for comment stories to be created. The comment will be authored by the currently authenticated user, and timestamped when the server receives the request.  Returns the full record for the new story added to the task.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:write&lt;/code&gt;  Adds a story to a task. This endpoint currently only allows for comment stories to be created. The comment will be authored by the currently authenticated user, and timestamped when the server receives the request.  Returns the full record for the new story added to the task.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The story to create.
      * @param {<&vendorExtensions.x-jsdoc-type>} task_gid The task to operate on.
      * @param {Object} opts Optional parameters
@@ -306,7 +306,7 @@ export class StoriesApi {
 
     /**
      * Update a story
-     * Updates the story and returns the full record for the updated story. Only comment stories can have their text updated, and only comment stories and attachment stories can be pinned. Only one of &#x60;text&#x60; and &#x60;html_text&#x60; can be specified.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:write&lt;/code&gt;  Updates the story and returns the full record for the updated story. Only comment stories can have their text updated, and only comment stories and attachment stories can be pinned. Only one of &#x60;text&#x60; and &#x60;html_text&#x60; can be specified.
      * @param {module:model/Object} body The comment story to update.
      * @param {String} story_gid Globally unique identifier for the story.
      * @param {Object} opts Optional parameters
@@ -353,7 +353,7 @@ export class StoriesApi {
 
     /**
      * Update a story
-     * Updates the story and returns the full record for the updated story. Only comment stories can have their text updated, and only comment stories and attachment stories can be pinned. Only one of &#x60;text&#x60; and &#x60;html_text&#x60; can be specified.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:write&lt;/code&gt;  Updates the story and returns the full record for the updated story. Only comment stories can have their text updated, and only comment stories and attachment stories can be pinned. Only one of &#x60;text&#x60; and &#x60;html_text&#x60; can be specified.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The comment story to update.
      * @param {<&vendorExtensions.x-jsdoc-type>} story_gid Globally unique identifier for the story.
      * @param {Object} opts Optional parameters

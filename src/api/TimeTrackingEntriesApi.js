@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * TimeTrackingEntries service.
 * @module api/TimeTrackingEntriesApi
-* @version 3.1.0
+* @version 3.1.1
 */
 export class TimeTrackingEntriesApi {
 
@@ -148,6 +148,101 @@ export class TimeTrackingEntriesApi {
     deleteTimeTrackingEntry(time_tracking_entry_gid) {
 
         return this.deleteTimeTrackingEntryWithHttpInfo(time_tracking_entry_gid)
+            .then(function(response_and_data) {
+                return response_and_data.data;
+            });
+    }
+
+
+    /**
+     * Get multiple time tracking entries
+     * Returns a list of time tracking entries filtered to a task, attributed project, portfolio or user.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.task Globally unique identifier for the task to filter time tracking entries by.
+     * @param {String} opts.attributable_to Globally unique identifier for the project the time tracking entries are attributed to.
+     * @param {String} opts.portfolio Globally unique identifier for the portfolio to filter time tracking entries by.
+     * @param {String} opts.user Globally unique identifier for the user to filter time tracking entries by.
+     * @param {String} opts.workspace Globally unique identifier for the workspace.
+     * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
+     * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
+     */
+    getTimeTrackingEntriesWithHttpInfo(opts) {
+        opts = opts || {};
+        let postBody = null;
+
+        let pathParams = {
+            
+        };
+        let queryParams = {};
+        opts = opts || {};
+        queryParams = opts;
+
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
+
+        let authNames = ['personalAccessToken'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = 'Blob';
+        // Check if RETURN_COLLECTION is set and return a collection object if it is
+        if (this.apiClient.RETURN_COLLECTION) {
+            return Collection.fromApiClient(
+                this.apiClient.callApi(
+                    '/time_tracking_entries', 'GET',
+                    pathParams, queryParams, headerParams, formParams, postBody,
+                    authNames, contentTypes, accepts, returnType
+                ),
+                this.apiClient,
+                {
+                    'path': '/time_tracking_entries',
+                    'httpMethod': 'GET',
+                    'pathParams': pathParams,
+                    'queryParams': queryParams,
+                    'headerParams': headerParams,
+                    'formParams': formParams,
+                    'bodyParam': postBody,
+                    'authNames': authNames,
+                    'contentTypes': contentTypes,
+                    'accepts': accepts,
+                    'returnType': returnType
+                }
+            )
+        }
+
+        return this.apiClient.callApi(
+            '/time_tracking_entries', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType
+        );
+    }
+
+    /**
+     * Get multiple time tracking entries
+     * Returns a list of time tracking entries filtered to a task, attributed project, portfolio or user.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.task Globally unique identifier for the task to filter time tracking entries by.
+     * @param {String} opts.attributable_to Globally unique identifier for the project the time tracking entries are attributed to.
+     * @param {String} opts.portfolio Globally unique identifier for the portfolio to filter time tracking entries by.
+     * @param {String} opts.user Globally unique identifier for the user to filter time tracking entries by.
+     * @param {String} opts.workspace Globally unique identifier for the workspace.
+     * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
+     * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TimeTrackingEntryCompactArray}
+     */
+    getTimeTrackingEntries(opts) {
+        // Check if RETURN_COLLECTION is set and return a collection object if it is
+        if (this.apiClient.RETURN_COLLECTION) {
+            return this.getTimeTrackingEntriesWithHttpInfo(opts)
+        }
+
+        return this.getTimeTrackingEntriesWithHttpInfo(opts)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });

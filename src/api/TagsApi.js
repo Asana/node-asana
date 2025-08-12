@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Tags service.
 * @module api/TagsApi
-* @version 3.1.0
+* @version 3.1.1
 */
 export class TagsApi {
 
@@ -38,7 +38,7 @@ export class TagsApi {
 
     /**
      * Create a tag
-     * Creates a new tag in a workspace or organization.  Every tag is required to be created in a specific workspace or organization, and this cannot be changed once set. Note that you can use the workspace parameter regardless of whether or not it is an organization.  Returns the full record of the newly created tag.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tags:write&lt;/code&gt;  Creates a new tag in a workspace or organization.  Every tag is required to be created in a specific workspace or organization, and this cannot be changed once set. Note that you can use the workspace parameter regardless of whether or not it is an organization.  Returns the full record of the newly created tag.
      * @param {module:model/Object} body The tag to create.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -80,7 +80,7 @@ export class TagsApi {
 
     /**
      * Create a tag
-     * Creates a new tag in a workspace or organization.  Every tag is required to be created in a specific workspace or organization, and this cannot be changed once set. Note that you can use the workspace parameter regardless of whether or not it is an organization.  Returns the full record of the newly created tag.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tags:write&lt;/code&gt;  Creates a new tag in a workspace or organization.  Every tag is required to be created in a specific workspace or organization, and this cannot be changed once set. Note that you can use the workspace parameter regardless of whether or not it is an organization.  Returns the full record of the newly created tag.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The tag to create.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -97,7 +97,7 @@ export class TagsApi {
 
     /**
      * Create a tag in a workspace
-     * Creates a new tag in a workspace or organization.  Every tag is required to be created in a specific workspace or organization, and this cannot be changed once set. Note that you can use the workspace parameter regardless of whether or not it is an organization.  Returns the full record of the newly created tag.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tags:write&lt;/code&gt;  Creates a new tag in a workspace or organization.  Every tag is required to be created in a specific workspace or organization, and this cannot be changed once set. Note that you can use the workspace parameter regardless of whether or not it is an organization.  Returns the full record of the newly created tag.
      * @param {module:model/Object} body The tag to create.
      * @param {String} workspace_gid Globally unique identifier for the workspace or organization.
      * @param {Object} opts Optional parameters
@@ -144,7 +144,7 @@ export class TagsApi {
 
     /**
      * Create a tag in a workspace
-     * Creates a new tag in a workspace or organization.  Every tag is required to be created in a specific workspace or organization, and this cannot be changed once set. Note that you can use the workspace parameter regardless of whether or not it is an organization.  Returns the full record of the newly created tag.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tags:write&lt;/code&gt;  Creates a new tag in a workspace or organization.  Every tag is required to be created in a specific workspace or organization, and this cannot be changed once set. Note that you can use the workspace parameter regardless of whether or not it is an organization.  Returns the full record of the newly created tag.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The tag to create.
      * @param {<&vendorExtensions.x-jsdoc-type>} workspace_gid Globally unique identifier for the workspace or organization.
      * @param {Object} opts Optional parameters
@@ -215,7 +215,7 @@ export class TagsApi {
 
     /**
      * Get a tag
-     * Returns the complete tag record for a single tag.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tags:read&lt;/code&gt;  Returns the complete tag record for a single tag.
      * @param {String} tag_gid Globally unique identifier for the tag.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -257,7 +257,7 @@ export class TagsApi {
 
     /**
      * Get a tag
-     * Returns the complete tag record for a single tag.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tags:read&lt;/code&gt;  Returns the complete tag record for a single tag.
      * @param {<&vendorExtensions.x-jsdoc-type>} tag_gid Globally unique identifier for the tag.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -274,7 +274,7 @@ export class TagsApi {
 
     /**
      * Get multiple tags
-     * Returns the compact tag records for some filtered set of tags. Use one or more of the parameters provided to filter the tags returned.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tags:read&lt;/code&gt;  Returns the compact tag records for some filtered set of tags. Use one or more of the parameters provided to filter the tags returned.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
@@ -338,7 +338,7 @@ export class TagsApi {
 
     /**
      * Get multiple tags
-     * Returns the compact tag records for some filtered set of tags. Use one or more of the parameters provided to filter the tags returned.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tags:read&lt;/code&gt;  Returns the compact tag records for some filtered set of tags. Use one or more of the parameters provided to filter the tags returned.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
@@ -361,7 +361,7 @@ export class TagsApi {
 
     /**
      * Get a task&#x27;s tags
-     * Get a compact representation of all of the tags the task has.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tags:read&lt;/code&gt;  Get a compact representation of all of the tags the task has.
      * @param {String} task_gid The task to operate on.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -429,7 +429,7 @@ export class TagsApi {
 
     /**
      * Get a task&#x27;s tags
-     * Get a compact representation of all of the tags the task has.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tags:read&lt;/code&gt;  Get a compact representation of all of the tags the task has.
      * @param {<&vendorExtensions.x-jsdoc-type>} task_gid The task to operate on.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -452,7 +452,7 @@ export class TagsApi {
 
     /**
      * Get tags in a workspace
-     * Returns the compact tag records for some filtered set of tags. Use one or more of the parameters provided to filter the tags returned.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tags:read&lt;/code&gt;  Returns the compact tag records for some filtered set of tags. Use one or more of the parameters provided to filter the tags returned.
      * @param {String} workspace_gid Globally unique identifier for the workspace or organization.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -520,7 +520,7 @@ export class TagsApi {
 
     /**
      * Get tags in a workspace
-     * Returns the compact tag records for some filtered set of tags. Use one or more of the parameters provided to filter the tags returned.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tags:read&lt;/code&gt;  Returns the compact tag records for some filtered set of tags. Use one or more of the parameters provided to filter the tags returned.
      * @param {<&vendorExtensions.x-jsdoc-type>} workspace_gid Globally unique identifier for the workspace or organization.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -543,7 +543,7 @@ export class TagsApi {
 
     /**
      * Update a tag
-     * Updates the properties of a tag. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the tag.  Returns the complete updated tag record.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tags:write&lt;/code&gt;  Updates the properties of a tag. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the tag.  Returns the complete updated tag record.
      * @param {module:model/Object} body The tag to update.
      * @param {String} tag_gid Globally unique identifier for the tag.
      * @param {Object} opts Optional parameters
@@ -590,7 +590,7 @@ export class TagsApi {
 
     /**
      * Update a tag
-     * Updates the properties of a tag. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the tag.  Returns the complete updated tag record.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tags:write&lt;/code&gt;  Updates the properties of a tag. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the tag.  Returns the complete updated tag record.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The tag to update.
      * @param {<&vendorExtensions.x-jsdoc-type>} tag_gid Globally unique identifier for the tag.
      * @param {Object} opts Optional parameters

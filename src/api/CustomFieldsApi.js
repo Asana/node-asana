@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * CustomFields service.
 * @module api/CustomFieldsApi
-* @version 3.1.0
+* @version 3.1.1
 */
 export class CustomFieldsApi {
 
@@ -38,7 +38,7 @@ export class CustomFieldsApi {
 
     /**
      * Create a custom field
-     * Creates a new custom field in a workspace. Every custom field is required to be created in a specific workspace, and this workspace cannot be changed once set.  A custom field’s name must be unique within a workspace and not conflict with names of existing task properties such as &#x60;Due Date&#x60; or &#x60;Assignee&#x60;. A custom field’s type must be one of &#x60;text&#x60;, &#x60;enum&#x60;, &#x60;multi_enum&#x60;, &#x60;number&#x60;, &#x60;date&#x60;, or &#x60;people&#x60;.  Returns the full record of the newly created custom field.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;custom_fields:write&lt;/code&gt;  Creates a new custom field in a workspace. Every custom field is required to be created in a specific workspace, and this workspace cannot be changed once set.  A custom field’s name must be unique within a workspace and not conflict with names of existing task properties such as &#x60;Due Date&#x60; or &#x60;Assignee&#x60;. A custom field’s type must be one of &#x60;text&#x60;, &#x60;enum&#x60;, &#x60;multi_enum&#x60;, &#x60;number&#x60;, &#x60;date&#x60;, or &#x60;people&#x60;.  Returns the full record of the newly created custom field.
      * @param {module:model/Object} body The custom field object to create.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -80,7 +80,7 @@ export class CustomFieldsApi {
 
     /**
      * Create a custom field
-     * Creates a new custom field in a workspace. Every custom field is required to be created in a specific workspace, and this workspace cannot be changed once set.  A custom field’s name must be unique within a workspace and not conflict with names of existing task properties such as &#x60;Due Date&#x60; or &#x60;Assignee&#x60;. A custom field’s type must be one of &#x60;text&#x60;, &#x60;enum&#x60;, &#x60;multi_enum&#x60;, &#x60;number&#x60;, &#x60;date&#x60;, or &#x60;people&#x60;.  Returns the full record of the newly created custom field.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;custom_fields:write&lt;/code&gt;  Creates a new custom field in a workspace. Every custom field is required to be created in a specific workspace, and this workspace cannot be changed once set.  A custom field’s name must be unique within a workspace and not conflict with names of existing task properties such as &#x60;Due Date&#x60; or &#x60;Assignee&#x60;. A custom field’s type must be one of &#x60;text&#x60;, &#x60;enum&#x60;, &#x60;multi_enum&#x60;, &#x60;number&#x60;, &#x60;date&#x60;, or &#x60;people&#x60;.  Returns the full record of the newly created custom field.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The custom field object to create.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -97,7 +97,7 @@ export class CustomFieldsApi {
 
     /**
      * Create an enum option
-     * Creates an enum option and adds it to this custom field’s list of enum options. A custom field can have at most 500 enum options (including disabled options). By default new enum options are inserted at the end of a custom field’s list. Locked custom fields can only have enum options added by the user who locked the field. Returns the full record of the newly created enum option.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;custom_fields:write&lt;/code&gt;  Creates an enum option and adds it to this custom field’s list of enum options. A custom field can have at most 500 enum options (including disabled options). By default new enum options are inserted at the end of a custom field’s list. Locked custom fields can only have enum options added by the user who locked the field. Returns the full record of the newly created enum option.
      * @param {String} custom_field_gid Globally unique identifier for the custom field.
      * @param {Object} opts Optional parameters
      * @param {module:model/Object} opts.body The enum option object to create.
@@ -140,7 +140,7 @@ export class CustomFieldsApi {
 
     /**
      * Create an enum option
-     * Creates an enum option and adds it to this custom field’s list of enum options. A custom field can have at most 500 enum options (including disabled options). By default new enum options are inserted at the end of a custom field’s list. Locked custom fields can only have enum options added by the user who locked the field. Returns the full record of the newly created enum option.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;custom_fields:write&lt;/code&gt;  Creates an enum option and adds it to this custom field’s list of enum options. A custom field can have at most 500 enum options (including disabled options). By default new enum options are inserted at the end of a custom field’s list. Locked custom fields can only have enum options added by the user who locked the field. Returns the full record of the newly created enum option.
      * @param {<&vendorExtensions.x-jsdoc-type>} custom_field_gid Globally unique identifier for the custom field.
      * @param {Object} opts Optional parameters
      * @param {module:model/Object} opts.body The enum option object to create.
@@ -211,7 +211,7 @@ export class CustomFieldsApi {
 
     /**
      * Get a custom field
-     * Get the complete definition of a custom field’s metadata.  Since custom fields can be defined for one of a number of types, and these types have different data and behaviors, there are fields that are relevant to a particular type. For instance, as noted above, enum_options is only relevant for the enum type and defines the set of choices that the enum could represent. The examples below show some of these type-specific custom field definitions.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;custom_fields:read&lt;/code&gt;  Get the complete definition of a custom field’s metadata.  Since custom fields can be defined for one of a number of types, and these types have different data and behaviors, there are fields that are relevant to a particular type. For instance, as noted above, enum_options is only relevant for the enum type and defines the set of choices that the enum could represent. The examples below show some of these type-specific custom field definitions.
      * @param {String} custom_field_gid Globally unique identifier for the custom field.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -253,7 +253,7 @@ export class CustomFieldsApi {
 
     /**
      * Get a custom field
-     * Get the complete definition of a custom field’s metadata.  Since custom fields can be defined for one of a number of types, and these types have different data and behaviors, there are fields that are relevant to a particular type. For instance, as noted above, enum_options is only relevant for the enum type and defines the set of choices that the enum could represent. The examples below show some of these type-specific custom field definitions.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;custom_fields:read&lt;/code&gt;  Get the complete definition of a custom field’s metadata.  Since custom fields can be defined for one of a number of types, and these types have different data and behaviors, there are fields that are relevant to a particular type. For instance, as noted above, enum_options is only relevant for the enum type and defines the set of choices that the enum could represent. The examples below show some of these type-specific custom field definitions.
      * @param {<&vendorExtensions.x-jsdoc-type>} custom_field_gid Globally unique identifier for the custom field.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -270,7 +270,7 @@ export class CustomFieldsApi {
 
     /**
      * Get a workspace&#x27;s custom fields
-     * Returns a list of the compact representation of all of the custom fields in a workspace.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;custom_fields:read&lt;/code&gt;  Returns a list of the compact representation of all of the custom fields in a workspace.
      * @param {String} workspace_gid Globally unique identifier for the workspace or organization.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -338,7 +338,7 @@ export class CustomFieldsApi {
 
     /**
      * Get a workspace&#x27;s custom fields
-     * Returns a list of the compact representation of all of the custom fields in a workspace.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;custom_fields:read&lt;/code&gt;  Returns a list of the compact representation of all of the custom fields in a workspace.
      * @param {<&vendorExtensions.x-jsdoc-type>} workspace_gid Globally unique identifier for the workspace or organization.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -361,7 +361,7 @@ export class CustomFieldsApi {
 
     /**
      * Reorder a custom field&#x27;s enum
-     * Moves a particular enum option to be either before or after another specified enum option in the custom field. Locked custom fields can only be reordered by the user who locked the field.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;custom_fields:write&lt;/code&gt;  Moves a particular enum option to be either before or after another specified enum option in the custom field. Locked custom fields can only be reordered by the user who locked the field.
      * @param {String} custom_field_gid Globally unique identifier for the custom field.
      * @param {Object} opts Optional parameters
      * @param {module:model/Object} opts.body The enum option object to create.
@@ -404,7 +404,7 @@ export class CustomFieldsApi {
 
     /**
      * Reorder a custom field&#x27;s enum
-     * Moves a particular enum option to be either before or after another specified enum option in the custom field. Locked custom fields can only be reordered by the user who locked the field.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;custom_fields:write&lt;/code&gt;  Moves a particular enum option to be either before or after another specified enum option in the custom field. Locked custom fields can only be reordered by the user who locked the field.
      * @param {<&vendorExtensions.x-jsdoc-type>} custom_field_gid Globally unique identifier for the custom field.
      * @param {Object} opts Optional parameters
      * @param {module:model/Object} opts.body The enum option object to create.
@@ -422,7 +422,7 @@ export class CustomFieldsApi {
 
     /**
      * Update a custom field
-     * A specific, existing custom field can be updated by making a PUT request on the URL for that custom field. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the custom field. A custom field’s &#x60;type&#x60; cannot be updated. An enum custom field’s &#x60;enum_options&#x60; cannot be updated with this endpoint. Instead see “Work With Enum Options” for information on how to update &#x60;enum_options&#x60;. Locked custom fields can only be updated by the user who locked the field. Returns the complete updated custom field record.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;custom_fields:write&lt;/code&gt;  A specific, existing custom field can be updated by making a PUT request on the URL for that custom field. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the custom field. A custom field’s &#x60;type&#x60; cannot be updated. An enum custom field’s &#x60;enum_options&#x60; cannot be updated with this endpoint. Instead see “Work With Enum Options” for information on how to update &#x60;enum_options&#x60;. Locked custom fields can only be updated by the user who locked the field. Returns the complete updated custom field record.
      * @param {String} custom_field_gid Globally unique identifier for the custom field.
      * @param {Object} opts Optional parameters
      * @param {module:model/Object} opts.body The custom field object with all updated properties.
@@ -465,7 +465,7 @@ export class CustomFieldsApi {
 
     /**
      * Update a custom field
-     * A specific, existing custom field can be updated by making a PUT request on the URL for that custom field. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the custom field. A custom field’s &#x60;type&#x60; cannot be updated. An enum custom field’s &#x60;enum_options&#x60; cannot be updated with this endpoint. Instead see “Work With Enum Options” for information on how to update &#x60;enum_options&#x60;. Locked custom fields can only be updated by the user who locked the field. Returns the complete updated custom field record.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;custom_fields:write&lt;/code&gt;  A specific, existing custom field can be updated by making a PUT request on the URL for that custom field. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the custom field. A custom field’s &#x60;type&#x60; cannot be updated. An enum custom field’s &#x60;enum_options&#x60; cannot be updated with this endpoint. Instead see “Work With Enum Options” for information on how to update &#x60;enum_options&#x60;. Locked custom fields can only be updated by the user who locked the field. Returns the complete updated custom field record.
      * @param {<&vendorExtensions.x-jsdoc-type>} custom_field_gid Globally unique identifier for the custom field.
      * @param {Object} opts Optional parameters
      * @param {module:model/Object} opts.body The custom field object with all updated properties.
@@ -483,7 +483,7 @@ export class CustomFieldsApi {
 
     /**
      * Update an enum option
-     * Updates an existing enum option. Enum custom fields require at least one enabled enum option. Locked custom fields can only be updated by the user who locked the field. Returns the full record of the updated enum option.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;custom_fields:write&lt;/code&gt;  Updates an existing enum option. Enum custom fields require at least one enabled enum option. Locked custom fields can only be updated by the user who locked the field. Returns the full record of the updated enum option.
      * @param {String} enum_option_gid Globally unique identifier for the enum option.
      * @param {Object} opts Optional parameters
      * @param {module:model/Object} opts.body The enum option object to update
@@ -526,7 +526,7 @@ export class CustomFieldsApi {
 
     /**
      * Update an enum option
-     * Updates an existing enum option. Enum custom fields require at least one enabled enum option. Locked custom fields can only be updated by the user who locked the field. Returns the full record of the updated enum option.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;custom_fields:write&lt;/code&gt;  Updates an existing enum option. Enum custom fields require at least one enabled enum option. Locked custom fields can only be updated by the user who locked the field. Returns the full record of the updated enum option.
      * @param {<&vendorExtensions.x-jsdoc-type>} enum_option_gid Globally unique identifier for the enum option.
      * @param {Object} opts Optional parameters
      * @param {module:model/Object} opts.body The enum option object to update

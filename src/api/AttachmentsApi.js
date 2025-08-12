@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Attachments service.
 * @module api/AttachmentsApi
-* @version 3.1.0
+* @version 3.1.1
 */
 export class AttachmentsApi {
 
@@ -103,7 +103,7 @@ export class AttachmentsApi {
 
     /**
      * Delete an attachment
-     * Deletes a specific, existing attachment.  Returns an empty data record.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;attachments:delete&lt;/code&gt;  Deletes a specific, existing attachment.  Returns an empty data record.
      * @param {String} attachment_gid Globally unique identifier for the attachment.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
@@ -141,7 +141,7 @@ export class AttachmentsApi {
 
     /**
      * Delete an attachment
-     * Deletes a specific, existing attachment.  Returns an empty data record.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;attachments:delete&lt;/code&gt;  Deletes a specific, existing attachment.  Returns an empty data record.
      * @param {<&vendorExtensions.x-jsdoc-type>} attachment_gid Globally unique identifier for the attachment.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EmptyResponseData}
      */

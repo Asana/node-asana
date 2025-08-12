@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createTimeTrackingEntry**](TimeTrackingEntriesApi.md#createTimeTrackingEntry) | **POST** /tasks/{task_gid}/time_tracking_entries | Create a time tracking entry
 [**deleteTimeTrackingEntry**](TimeTrackingEntriesApi.md#deleteTimeTrackingEntry) | **DELETE** /time_tracking_entries/{time_tracking_entry_gid} | Delete a time tracking entry
+[**getTimeTrackingEntries**](TimeTrackingEntriesApi.md#getTimeTrackingEntries) | **GET** /time_tracking_entries | Get multiple time tracking entries
 [**getTimeTrackingEntriesForTask**](TimeTrackingEntriesApi.md#getTimeTrackingEntriesForTask) | **GET** /tasks/{task_gid}/time_tracking_entries | Get time tracking entries for a task
 [**getTimeTrackingEntry**](TimeTrackingEntriesApi.md#getTimeTrackingEntry) | **GET** /time_tracking_entries/{time_tracking_entry_gid} | Get a time tracking entry
 [**updateTimeTrackingEntry**](TimeTrackingEntriesApi.md#updateTimeTrackingEntry) | **PUT** /time_tracking_entries/{time_tracking_entry_gid} | Update a time tracking entry
@@ -31,7 +32,7 @@ let timeTrackingEntriesApiInstance = new Asana.TimeTrackingEntriesApi();
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | Information about the time tracking entry.
 let task_gid = "321654"; // String | The task to operate on.
 let opts = { 
-    'opt_fields': "attributable_to,attributable_to.name,created_at,created_by,created_by.name,duration_minutes,entered_on,task,task.created_by,task.name,task.resource_subtype"
+    'opt_fields': "approval_status,attributable_to,attributable_to.name,billable_status,created_at,created_by,created_by.name,description,duration_minutes,entered_on,task,task.created_by,task.name,task.resource_subtype"
 };
 timeTrackingEntriesApiInstance.createTimeTrackingEntry(body, task_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -91,6 +92,64 @@ timeTrackingEntriesApiInstance.deleteTimeTrackingEntry(time_tracking_entry_gid).
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **time_tracking_entry_gid** | **String**| Globally unique identifier for the time tracking entry. | 
+
+### Return type
+
+object
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json; charset=UTF-8
+
+<a name="getTimeTrackingEntries"></a>
+# **getTimeTrackingEntries**
+
+Get multiple time tracking entries
+
+Returns a list of time tracking entries filtered to a task, attributed project, portfolio or user.
+
+([more information](https://developers.asana.com/reference/gettimetrackingentries))
+
+### Example
+```javascript
+const Asana = require('asana');
+
+let client = Asana.ApiClient.instance;
+let token = client.authentications['token'];
+token.accessToken = '<YOUR_ACCESS_TOKEN>';
+
+let timeTrackingEntriesApiInstance = new Asana.TimeTrackingEntriesApi();
+let opts = { 
+    'task': "12345", 
+    'attributable_to': "12345", 
+    'portfolio': "12345", 
+    'user': "12345", 
+    'workspace': "98765", 
+    'limit': 50, 
+    'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+    'opt_fields': "attributable_to,attributable_to.name,created_by,created_by.name,duration_minutes,entered_on,offset,path,uri"
+};
+timeTrackingEntriesApiInstance.getTimeTrackingEntries(opts).then((result) => {
+    console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+}, (error) => {
+    console.error(error.response.body);
+});
+
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **task** | **String**| Globally unique identifier for the task to filter time tracking entries by. | [optional] 
+ **attributable_to** | **String**| Globally unique identifier for the project the time tracking entries are attributed to. | [optional] 
+ **portfolio** | **String**| Globally unique identifier for the portfolio to filter time tracking entries by. | [optional] 
+ **user** | **String**| Globally unique identifier for the user to filter time tracking entries by. | [optional] 
+ **workspace** | **String**| Globally unique identifier for the workspace. | [optional] 
+ **limit** | **Number**| Results per page. The number of objects to return per page. The value must be between 1 and 100. | [optional] 
+ **offset** | **String**| Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.* | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
 
 ### Return type
 
@@ -171,7 +230,7 @@ token.accessToken = '<YOUR_ACCESS_TOKEN>';
 let timeTrackingEntriesApiInstance = new Asana.TimeTrackingEntriesApi();
 let time_tracking_entry_gid = "917392"; // String | Globally unique identifier for the time tracking entry.
 let opts = { 
-    'opt_fields': "attributable_to,attributable_to.name,created_at,created_by,created_by.name,duration_minutes,entered_on,task,task.created_by,task.name,task.resource_subtype"
+    'opt_fields': "approval_status,attributable_to,attributable_to.name,billable_status,created_at,created_by,created_by.name,description,duration_minutes,entered_on,task,task.created_by,task.name,task.resource_subtype"
 };
 timeTrackingEntriesApiInstance.getTimeTrackingEntry(time_tracking_entry_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -218,7 +277,7 @@ let timeTrackingEntriesApiInstance = new Asana.TimeTrackingEntriesApi();
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The updated fields for the time tracking entry.
 let time_tracking_entry_gid = "917392"; // String | Globally unique identifier for the time tracking entry.
 let opts = { 
-    'opt_fields': "attributable_to,attributable_to.name,created_at,created_by,created_by.name,duration_minutes,entered_on,task,task.created_by,task.name,task.resource_subtype"
+    'opt_fields': "approval_status,attributable_to,attributable_to.name,billable_status,created_at,created_by,created_by.name,description,duration_minutes,entered_on,task,task.created_by,task.name,task.resource_subtype"
 };
 timeTrackingEntriesApiInstance.updateTimeTrackingEntry(body, time_tracking_entry_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));

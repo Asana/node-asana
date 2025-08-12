@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * CustomTypes service.
 * @module api/CustomTypesApi
-* @version 3.1.0
+* @version 3.1.1
 */
 export class CustomTypesApi {
 
@@ -34,6 +34,65 @@ export class CustomTypesApi {
         this.apiClient = apiClient || ApiClient.instance;
     }
 
+
+
+    /**
+     * Get a custom type
+     * Returns the complete custom type record for a single custom type.
+     * @param {String} custom_type_gid Globally unique identifier for the custom type.
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
+     */
+    getCustomTypeWithHttpInfo(custom_type_gid, opts) {
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'custom_type_gid' is set
+        if (custom_type_gid === undefined || custom_type_gid === null) {
+            throw new Error("Missing the required parameter 'custom_type_gid' when calling getCustomType");
+        }
+
+        let pathParams = {
+            'custom_type_gid': custom_type_gid
+        };
+        let queryParams = {};
+        opts = opts || {};
+        queryParams = opts;
+
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
+
+        let authNames = ['personalAccessToken'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = 'Blob';
+
+        return this.apiClient.callApi(
+            '/custom_types/{custom_type_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType
+        );
+    }
+
+    /**
+     * Get a custom type
+     * Returns the complete custom type record for a single custom type.
+     * @param {<&vendorExtensions.x-jsdoc-type>} custom_type_gid Globally unique identifier for the custom type.
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CustomTypeResponseData}
+     */
+    getCustomType(custom_type_gid, opts) {
+
+        return this.getCustomTypeWithHttpInfo(custom_type_gid, opts)
+            .then(function(response_and_data) {
+                return response_and_data.data;
+            });
+    }
 
 
     /**

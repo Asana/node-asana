@@ -1,4 +1,22 @@
 CustomTypesApi:
+  getCustomType: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let customTypesApiInstance = new Asana.CustomTypesApi();
+    let custom_type_gid = "12345"; // String | Globally unique identifier for the custom type.
+    let opts = { 
+        'opt_fields': "name,status_options,status_options.color,status_options.completion_state,status_options.enabled,status_options.name"
+    };
+    customTypesApiInstance.getCustomType(custom_type_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
   getCustomTypes: |-
     const Asana = require('asana');
     

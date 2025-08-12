@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Portfolios service.
 * @module api/PortfoliosApi
-* @version 3.1.0
+* @version 3.1.1
 */
 export class PortfoliosApi {
 
@@ -38,7 +38,7 @@ export class PortfoliosApi {
 
     /**
      * Add a custom field to a portfolio
-     * Custom fields are associated with portfolios by way of custom field settings.  This method creates a setting for the portfolio.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:write&lt;/code&gt;  Custom fields are associated with portfolios by way of custom field settings.  This method creates a setting for the portfolio.
      * @param {module:model/Object} body Information about the custom field setting.
      * @param {String} portfolio_gid Globally unique identifier for the portfolio.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
@@ -81,7 +81,7 @@ export class PortfoliosApi {
 
     /**
      * Add a custom field to a portfolio
-     * Custom fields are associated with portfolios by way of custom field settings.  This method creates a setting for the portfolio.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:write&lt;/code&gt;  Custom fields are associated with portfolios by way of custom field settings.  This method creates a setting for the portfolio.
      * @param {<&vendorExtensions.x-jsdoc-type>} body Information about the custom field setting.
      * @param {<&vendorExtensions.x-jsdoc-type>} portfolio_gid Globally unique identifier for the portfolio.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CustomFieldSettingResponseData}
@@ -97,7 +97,7 @@ export class PortfoliosApi {
 
     /**
      * Add a portfolio item
-     * Add an item to a portfolio. Returns an empty data block.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:write&lt;/code&gt;  Add an item to a portfolio. Returns an empty data block.
      * @param {module:model/Object} body Information about the item being inserted.
      * @param {String} portfolio_gid Globally unique identifier for the portfolio.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
@@ -140,7 +140,7 @@ export class PortfoliosApi {
 
     /**
      * Add a portfolio item
-     * Add an item to a portfolio. Returns an empty data block.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:write&lt;/code&gt;  Add an item to a portfolio. Returns an empty data block.
      * @param {<&vendorExtensions.x-jsdoc-type>} body Information about the item being inserted.
      * @param {<&vendorExtensions.x-jsdoc-type>} portfolio_gid Globally unique identifier for the portfolio.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EmptyResponseData}
@@ -221,7 +221,7 @@ export class PortfoliosApi {
 
     /**
      * Create a portfolio
-     * Creates a new portfolio in the given workspace with the supplied name.  Note that portfolios created in the Asana UI may have some state (like the “Priority” custom field) which is automatically added to the portfolio when it is created. Portfolios created via our API will *not* be created with the same initial state to allow integrations to create their own starting state on a portfolio.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:write&lt;/code&gt;  Creates a new portfolio in the given workspace with the supplied name.  Note that portfolios created in the Asana UI may have some state (like the “Priority” custom field) which is automatically added to the portfolio when it is created. Portfolios created via our API will *not* be created with the same initial state to allow integrations to create their own starting state on a portfolio.
      * @param {module:model/Object} body The portfolio to create.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -263,7 +263,7 @@ export class PortfoliosApi {
 
     /**
      * Create a portfolio
-     * Creates a new portfolio in the given workspace with the supplied name.  Note that portfolios created in the Asana UI may have some state (like the “Priority” custom field) which is automatically added to the portfolio when it is created. Portfolios created via our API will *not* be created with the same initial state to allow integrations to create their own starting state on a portfolio.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:write&lt;/code&gt;  Creates a new portfolio in the given workspace with the supplied name.  Note that portfolios created in the Asana UI may have some state (like the “Priority” custom field) which is automatically added to the portfolio when it is created. Portfolios created via our API will *not* be created with the same initial state to allow integrations to create their own starting state on a portfolio.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The portfolio to create.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -577,7 +577,7 @@ export class PortfoliosApi {
 
     /**
      * Remove a custom field from a portfolio
-     * Removes a custom field setting from a portfolio.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:write&lt;/code&gt;  Removes a custom field setting from a portfolio.
      * @param {module:model/Object} body Information about the custom field setting being removed.
      * @param {String} portfolio_gid Globally unique identifier for the portfolio.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
@@ -620,7 +620,7 @@ export class PortfoliosApi {
 
     /**
      * Remove a custom field from a portfolio
-     * Removes a custom field setting from a portfolio.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:write&lt;/code&gt;  Removes a custom field setting from a portfolio.
      * @param {<&vendorExtensions.x-jsdoc-type>} body Information about the custom field setting being removed.
      * @param {<&vendorExtensions.x-jsdoc-type>} portfolio_gid Globally unique identifier for the portfolio.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EmptyResponseData}
@@ -636,7 +636,7 @@ export class PortfoliosApi {
 
     /**
      * Remove a portfolio item
-     * Remove an item from a portfolio. Returns an empty data block.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:write&lt;/code&gt;  Remove an item from a portfolio. Returns an empty data block.
      * @param {module:model/Object} body Information about the item being removed.
      * @param {String} portfolio_gid Globally unique identifier for the portfolio.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
@@ -679,7 +679,7 @@ export class PortfoliosApi {
 
     /**
      * Remove a portfolio item
-     * Remove an item from a portfolio. Returns an empty data block.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:write&lt;/code&gt;  Remove an item from a portfolio. Returns an empty data block.
      * @param {<&vendorExtensions.x-jsdoc-type>} body Information about the item being removed.
      * @param {<&vendorExtensions.x-jsdoc-type>} portfolio_gid Globally unique identifier for the portfolio.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EmptyResponseData}
@@ -760,7 +760,7 @@ export class PortfoliosApi {
 
     /**
      * Update a portfolio
-     * An existing portfolio can be updated by making a PUT request on the URL for that portfolio. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  Returns the complete updated portfolio record.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:write&lt;/code&gt;  An existing portfolio can be updated by making a PUT request on the URL for that portfolio. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  Returns the complete updated portfolio record.
      * @param {module:model/Object} body The updated fields for the portfolio.
      * @param {String} portfolio_gid Globally unique identifier for the portfolio.
      * @param {Object} opts Optional parameters
@@ -807,7 +807,7 @@ export class PortfoliosApi {
 
     /**
      * Update a portfolio
-     * An existing portfolio can be updated by making a PUT request on the URL for that portfolio. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  Returns the complete updated portfolio record.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:write&lt;/code&gt;  An existing portfolio can be updated by making a PUT request on the URL for that portfolio. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  Returns the complete updated portfolio record.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The updated fields for the portfolio.
      * @param {<&vendorExtensions.x-jsdoc-type>} portfolio_gid Globally unique identifier for the portfolio.
      * @param {Object} opts Optional parameters
