@@ -10,7 +10,7 @@
 
 ### For [Node.js](https://nodejs.org/)
 
-#### npm install from [npmjs](https://www.npmjs.com/package/asana)
+#### npm install from [npm registry](https://www.npmjs.com/package/asana)
 
 ```shell
 npm install {{{projectName}}} --save
@@ -385,7 +385,7 @@ You may run into the following error when making a request to an endpoint that h
 
 > "The result is too large. You should use pagination (may require specifying a workspace)!"
 
-In this scenario you will want to use pagaintion to gather your results. To do this, you will need to provide a `limit` query parameter argument in your request. This `limit` query parameter represents the number of results per page. NOTE: the `limit` can only be between 1 and 100.
+In this scenario you will want to use pagination to gather your results. To do this, you will need to provide a `limit` query parameter argument in your request. This `limit` query parameter represents the number of results per page. NOTE: the `limit` can only be between 1 and 100.
 
 EX: Pagination gather all resources
 ```javascript
@@ -647,7 +647,7 @@ const getEvents = async () => {
 getEvents();
 ```
 
-## Accessing repsonse data
+## Accessing response data
 
 ```javascript
 .
