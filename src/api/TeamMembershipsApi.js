@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * TeamMemberships service.
 * @module api/TeamMembershipsApi
-* @version 3.1.1
+* @version 3.1.2
 */
 export class TeamMembershipsApi {
 
@@ -38,7 +38,7 @@ export class TeamMembershipsApi {
 
     /**
      * Get a team membership
-     * Returns the complete team membership record for a single team membership.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;team_memberships:read&lt;/code&gt;  Returns the complete team membership record for a single team membership.
      * @param {String} team_membership_gid 
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -80,7 +80,7 @@ export class TeamMembershipsApi {
 
     /**
      * Get a team membership
-     * Returns the complete team membership record for a single team membership.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;team_memberships:read&lt;/code&gt;  Returns the complete team membership record for a single team membership.
      * @param {<&vendorExtensions.x-jsdoc-type>} team_membership_gid 
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -97,7 +97,7 @@ export class TeamMembershipsApi {
 
     /**
      * Get team memberships
-     * Returns compact team membership records.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;team_memberships:read&lt;/code&gt;  Returns compact team membership records.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
@@ -163,7 +163,7 @@ export class TeamMembershipsApi {
 
     /**
      * Get team memberships
-     * Returns compact team membership records.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;team_memberships:read&lt;/code&gt;  Returns compact team membership records.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
@@ -188,7 +188,7 @@ export class TeamMembershipsApi {
 
     /**
      * Get memberships from a team
-     * Returns the compact team memberships for the team.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;team_memberships:read&lt;/code&gt;  Returns the compact team memberships for the team.
      * @param {String} team_gid Globally unique identifier for the team.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -256,7 +256,7 @@ export class TeamMembershipsApi {
 
     /**
      * Get memberships from a team
-     * Returns the compact team memberships for the team.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;team_memberships:read&lt;/code&gt;  Returns the compact team memberships for the team.
      * @param {<&vendorExtensions.x-jsdoc-type>} team_gid Globally unique identifier for the team.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -279,7 +279,7 @@ export class TeamMembershipsApi {
 
     /**
      * Get memberships from a user
-     * Returns the compact team membership records for the user.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;team_memberships:read&lt;/code&gt;  Returns the compact team membership records for the user.
      * @param {String} user_gid A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
      * @param {String} workspace Globally unique identifier for the workspace.
      * @param {Object} opts Optional parameters
@@ -353,7 +353,7 @@ export class TeamMembershipsApi {
 
     /**
      * Get memberships from a user
-     * Returns the compact team membership records for the user.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;team_memberships:read&lt;/code&gt;  Returns the compact team membership records for the user.
      * @param {<&vendorExtensions.x-jsdoc-type>} user_gid A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
      * @param {<&vendorExtensions.x-jsdoc-type>} workspace Globally unique identifier for the workspace.
      * @param {Object} opts Optional parameters

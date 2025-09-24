@@ -16,7 +16,7 @@ import superagent from "superagent";
 
 /**
 * @module ApiClient
-* @version 3.1.1
+* @version 3.1.2
 */
 
 /**
@@ -178,6 +178,11 @@ export class ApiClient {
             if (fs && fs.ReadStream && param instanceof fs.ReadStream) {
                 return true;
             }
+        }
+
+        // For ES modules, check for ReadStream using duck typing
+        if (param && typeof param.pipe === 'function' && typeof param.read === 'function' && param.readable === true) {
+            return true;
         }
 
         // Buffer in Node.js
@@ -412,7 +417,7 @@ export class ApiClient {
         if (typeof(navigator) === 'undefined' || typeof(window) === 'undefined') {
             headerParams['X-Asana-Client-Lib'] = new URLSearchParams(
                 {
-                    'version': "3.1.1",
+                    'version': "3.1.2",
                     'language': 'NodeJS',
                     'language_version': process.version,
                     'os': process.platform
@@ -421,7 +426,7 @@ export class ApiClient {
         } else {
             headerParams['X-Asana-Client-Lib'] = new URLSearchParams(
                 {
-                    'version': "3.1.1",
+                    'version': "3.1.2",
                     'language': 'BrowserJS'
                 }
             ).toString();

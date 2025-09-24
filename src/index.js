@@ -13,6 +13,7 @@
  *
  */
 import {ApiClient} from './ApiClient';
+import {AccessRequestsApi} from './api/AccessRequestsApi';
 import {AllocationsApi} from './api/AllocationsApi';
 import {AttachmentsApi} from './api/AttachmentsApi';
 import {AuditLogAPIApi} from './api/AuditLogAPIApi';
@@ -34,6 +35,7 @@ import {ProjectMembershipsApi} from './api/ProjectMembershipsApi';
 import {ProjectStatusesApi} from './api/ProjectStatusesApi';
 import {ProjectTemplatesApi} from './api/ProjectTemplatesApi';
 import {ProjectsApi} from './api/ProjectsApi';
+import {ReactionsApi} from './api/ReactionsApi';
 import {RulesApi} from './api/RulesApi';
 import {SectionsApi} from './api/SectionsApi';
 import {StatusUpdatesApi} from './api/StatusUpdatesApi';
@@ -81,7 +83,7 @@ import {WorkspacesApi} from './api/WorkspacesApi';
 * </pre>
 * </p>
 * @module index
-* @version 3.1.1
+* @version 3.1.2
 */
 export {
     /**
@@ -91,6 +93,12 @@ export {
     ApiClient
 
     ,
+
+    /**
+    * The AccessRequestsApi service constructor.
+    * @property {module:api/AccessRequestsApi}
+    */
+    AccessRequestsApi,
 
     /**
     * The AllocationsApi service constructor.
@@ -217,6 +225,12 @@ export {
     * @property {module:api/ProjectsApi}
     */
     ProjectsApi,
+
+    /**
+    * The ReactionsApi service constructor.
+    * @property {module:api/ReactionsApi}
+    */
+    ReactionsApi,
 
     /**
     * The RulesApi service constructor.

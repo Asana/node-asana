@@ -31,7 +31,7 @@ let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // O
 let opts = { 
     'limit': 50, 
     'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
-    'opt_fields': "author,author.name,created_at,created_by,created_by.name,hearted,hearts,hearts.user,hearts.user.name,html_text,liked,likes,likes.user,likes.user.name,modified_at,num_hearts,num_likes,parent,parent.name,resource_subtype,status_type,text,title"
+    'opt_fields': "author,author.name,created_at,created_by,created_by.name,hearted,hearts,hearts.user,hearts.user.name,html_text,liked,likes,likes.user,likes.user.name,modified_at,num_hearts,num_likes,parent,parent.name,reaction_summary,reaction_summary.count,reaction_summary.emoji_base,reaction_summary.reacted,reaction_summary.variant,resource_subtype,status_type,text,title"
 };
 statusUpdatesApiInstance.createStatusForObject(body, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -122,7 +122,7 @@ token.accessToken = '<YOUR_ACCESS_TOKEN>';
 let statusUpdatesApiInstance = new Asana.StatusUpdatesApi();
 let status_update_gid = "321654"; // String | The status update to get.
 let opts = { 
-    'opt_fields': "author,author.name,created_at,created_by,created_by.name,hearted,hearts,hearts.user,hearts.user.name,html_text,liked,likes,likes.user,likes.user.name,modified_at,num_hearts,num_likes,parent,parent.name,resource_subtype,status_type,text,title"
+    'opt_fields': "author,author.name,created_at,created_by,created_by.name,hearted,hearts,hearts.user,hearts.user.name,html_text,liked,likes,likes.user,likes.user.name,modified_at,num_hearts,num_likes,parent,parent.name,reaction_summary,reaction_summary.count,reaction_summary.emoji_base,reaction_summary.reacted,reaction_summary.variant,resource_subtype,status_type,text,title"
 };
 statusUpdatesApiInstance.getStatus(status_update_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -171,7 +171,7 @@ let opts = {
     'limit': 50, 
     'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
     'created_since': "2012-02-22T02:06:58.158Z", 
-    'opt_fields': "author,author.name,created_at,created_by,created_by.name,hearted,hearts,hearts.user,hearts.user.name,html_text,liked,likes,likes.user,likes.user.name,modified_at,num_hearts,num_likes,offset,parent,parent.name,path,resource_subtype,status_type,text,title,uri"
+    'opt_fields': "author,author.name,created_at,created_by,created_by.name,hearted,hearts,hearts.user,hearts.user.name,html_text,liked,likes,likes.user,likes.user.name,modified_at,num_hearts,num_likes,offset,parent,parent.name,path,reaction_summary,reaction_summary.count,reaction_summary.emoji_base,reaction_summary.reacted,reaction_summary.variant,resource_subtype,status_type,text,title,uri"
 };
 statusUpdatesApiInstance.getStatusesForObject(parent, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));

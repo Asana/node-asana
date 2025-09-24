@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Get a team membership
 
-Returns the complete team membership record for a single team membership.
+<b>Required scope: </b><code>team_memberships:read</code>  Returns the complete team membership record for a single team membership.
 
 ([more information](https://developers.asana.com/reference/getteammembership))
 
@@ -60,7 +60,7 @@ object
 
 Get team memberships
 
-Returns compact team membership records.
+<b>Required scope: </b><code>team_memberships:read</code>  Returns compact team membership records.
 
 ([more information](https://developers.asana.com/reference/getteammemberships))
 
@@ -114,7 +114,7 @@ object
 
 Get memberships from a team
 
-Returns the compact team memberships for the team.
+<b>Required scope: </b><code>team_memberships:read</code>  Returns the compact team memberships for the team.
 
 ([more information](https://developers.asana.com/reference/getteammembershipsforteam))
 
@@ -164,7 +164,7 @@ object
 
 Get memberships from a user
 
-Returns the compact team membership records for the user.
+<b>Required scope: </b><code>team_memberships:read</code>  Returns the compact team membership records for the user.
 
 ([more information](https://developers.asana.com/reference/getteammembershipsforuser))
 

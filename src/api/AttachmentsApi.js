@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Attachments service.
 * @module api/AttachmentsApi
-* @version 3.1.1
+* @version 3.1.2
 */
 export class AttachmentsApi {
 
@@ -58,7 +58,9 @@ export class AttachmentsApi {
         };
         let queryParams = {};
         opts = opts || {};
-        queryParams = opts;
+        if (opts['opt_fields']) {
+            queryParams['opt_fields'] = opts['opt_fields'];
+        }
 
         let headerParams = {
             

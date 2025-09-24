@@ -1,13 +1,13 @@
 # asana [![GitHub release][release-image]][release-url] [![NPM Version][npm-image]][npm-url]
 
 - API version: 1.0
-- Package version: 3.1.1
+- Package version: 3.1.2
 
 ## Installation
 
 ### For [Node.js](https://nodejs.org/)
 
-#### npm install from [npmjs](https://www.npmjs.com/package/asana)
+#### npm install from [npm registry](https://www.npmjs.com/package/asana)
 
 ```shell
 npm install asana --save
@@ -18,7 +18,7 @@ npm install asana --save
 Include the latest release directly from GitHub:
 
 ```html
-<script src="https://github.com/Asana/node-asana/releases/download/v3.1.1/asana-min.js"></script>
+<script src="https://github.com/Asana/node-asana/releases/download/v3.1.2/asana-min.js"></script>
 ```
 
 Example usage (**NOTE**: be careful not to expose your access token):
@@ -195,6 +195,10 @@ All URIs are relative to *https://app.asana.com/api/1.0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*Asana.AccessRequestsApi* | [**approveAccessRequest**](docs/AccessRequestsApi.md#approveAccessRequest) | **POST** /access_requests/{access_request_gid}/approve | Approve an access request
+*Asana.AccessRequestsApi* | [**createAccessRequest**](docs/AccessRequestsApi.md#createAccessRequest) | **POST** /access_requests | Create an access request
+*Asana.AccessRequestsApi* | [**getAccessRequests**](docs/AccessRequestsApi.md#getAccessRequests) | **GET** /access_requests | Get access requests
+*Asana.AccessRequestsApi* | [**rejectAccessRequest**](docs/AccessRequestsApi.md#rejectAccessRequest) | **POST** /access_requests/{access_request_gid}/reject | Reject an access request
 *Asana.AllocationsApi* | [**createAllocation**](docs/AllocationsApi.md#createAllocation) | **POST** /allocations | Create an allocation
 *Asana.AllocationsApi* | [**deleteAllocation**](docs/AllocationsApi.md#deleteAllocation) | **DELETE** /allocations/{allocation_gid} | Delete an allocation
 *Asana.AllocationsApi* | [**getAllocation**](docs/AllocationsApi.md#getAllocation) | **GET** /allocations/{allocation_gid} | Get an allocation
@@ -293,6 +297,7 @@ Class | Method | HTTP request | Description
 *Asana.ProjectsApi* | [**removeFollowersForProject**](docs/ProjectsApi.md#removeFollowersForProject) | **POST** /projects/{project_gid}/removeFollowers | Remove followers from a project
 *Asana.ProjectsApi* | [**removeMembersForProject**](docs/ProjectsApi.md#removeMembersForProject) | **POST** /projects/{project_gid}/removeMembers | Remove users from a project
 *Asana.ProjectsApi* | [**updateProject**](docs/ProjectsApi.md#updateProject) | **PUT** /projects/{project_gid} | Update a project
+*Asana.ReactionsApi* | [**getReactionsOnObject**](docs/ReactionsApi.md#getReactionsOnObject) | **GET** /reactions | Get reactions with an emoji base on an object.
 *Asana.RulesApi* | [**triggerRule**](docs/RulesApi.md#triggerRule) | **POST** /rule_triggers/{rule_trigger_gid}/run | Trigger a rule
 *Asana.SectionsApi* | [**addTaskForSection**](docs/SectionsApi.md#addTaskForSection) | **POST** /sections/{section_gid}/addTask | Add task to section
 *Asana.SectionsApi* | [**createSectionForProject**](docs/SectionsApi.md#createSectionForProject) | **POST** /projects/{project_gid}/sections | Create a section in a project
@@ -588,7 +593,7 @@ You may run into the following error when making a request to an endpoint that h
 
 > "The result is too large. You should use pagination (may require specifying a workspace)!"
 
-In this scenario you will want to use pagaintion to gather your results. To do this, you will need to provide a `limit` query parameter argument in your request. This `limit` query parameter represents the number of results per page. NOTE: the `limit` can only be between 1 and 100.
+In this scenario you will want to use pagination to gather your results. To do this, you will need to provide a `limit` query parameter argument in your request. This `limit` query parameter represents the number of results per page. NOTE: the `limit` can only be between 1 and 100.
 
 EX: Pagination gather all resources
 ```javascript
@@ -866,7 +871,7 @@ const getEvents = async () => {
 getEvents();
 ```
 
-## Accessing repsonse data
+## Accessing response data
 
 ```javascript
 .
@@ -1117,6 +1122,6 @@ client.callApi(
 ```
 
 [release-image]: https://img.shields.io/github/release/asana/node-asana.svg
-[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.1.1
+[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.1.2
 [npm-image]: http://img.shields.io/npm/v/asana.svg?style=flat-square
 [npm-url]: https://www.npmjs.org/package/asana

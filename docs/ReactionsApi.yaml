@@ -1,0 +1,21 @@
+ReactionsApi:
+  getReactionsOnObject: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let reactionsApiInstance = new Asana.ReactionsApi();
+    let target = "159874"; // String | Globally unique identifier for object to fetch reactions from. Must be a GID for a status update or story.
+    let emoji_base = "👍"; // String | Only return reactions with this emoji base character.
+    let opts = { 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9"
+    };
+    reactionsApiInstance.getReactionsOnObject(target, emoji_base, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    

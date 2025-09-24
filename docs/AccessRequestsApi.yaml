@@ -1,0 +1,68 @@
+AccessRequestsApi:
+  approveAccessRequest: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let accessRequestsApiInstance = new Asana.AccessRequestsApi();
+    let access_request_gid = "12345"; // String | Globally unique identifier for the access request.
+
+    accessRequestsApiInstance.approveAccessRequest(access_request_gid).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  createAccessRequest: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let accessRequestsApiInstance = new Asana.AccessRequestsApi();
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | 
+
+    accessRequestsApiInstance.createAccessRequest(body).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getAccessRequests: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let accessRequestsApiInstance = new Asana.AccessRequestsApi();
+    let target = "1331"; // String | Globally unique identifier for the target object.
+    let opts = { 
+        'user': "me", 
+        'opt_fields': "approval_status,message,requester,requester.name,target"
+    };
+    accessRequestsApiInstance.getAccessRequests(target, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  rejectAccessRequest: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let accessRequestsApiInstance = new Asana.AccessRequestsApi();
+    let access_request_gid = "12345"; // String | Globally unique identifier for the access request.
+
+    accessRequestsApiInstance.rejectAccessRequest(access_request_gid).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
