@@ -181,6 +181,11 @@ export class ApiClient {
             }
         }
 
+        // For ES modules, check for ReadStream using duck typing
+        if (param && typeof param.pipe === 'function' && typeof param.read === 'function' && param.readable === true) {
+            return true;
+        }
+
         // Buffer in Node.js
         if (typeof Buffer === 'function' && param instanceof Buffer) {
             return true;
