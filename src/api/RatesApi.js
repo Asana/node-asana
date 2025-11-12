@@ -16,15 +16,15 @@ import {ApiClient} from "../ApiClient";
 var Collection = require('../utils/collection');
 
 /**
-* TaskTemplates service.
-* @module api/TaskTemplatesApi
+* Rates service.
+* @module api/RatesApi
 * @version 3.1.3
 */
-export class TaskTemplatesApi {
+export class RatesApi {
 
     /**
-    * Constructs a new TaskTemplatesApi. 
-    * @alias module:api/TaskTemplatesApi
+    * Constructs a new RatesApi. 
+    * @alias module:api/RatesApi
     * @class
     * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
     * default to {@link module:ApiClient#instanc
@@ -37,21 +37,80 @@ export class TaskTemplatesApi {
 
 
     /**
-     * Delete a task template
-     * A specific, existing task template can be deleted by making a DELETE request on the URL for that task template. Returns an empty data record.
-     * @param {String} task_template_gid Globally unique identifier for the task template.
+     * Create a rate
+     * Creates a new rate for a &#x60;parent&#x60; + &#x60;resource&#x60; combination.
+     * @param {module:model/Object} body The rate to create.
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
-    deleteTaskTemplateWithHttpInfo(task_template_gid) {
-        
-        let postBody = null;
-        // verify the required parameter 'task_template_gid' is set
-        if (task_template_gid === undefined || task_template_gid === null) {
-            throw new Error("Missing the required parameter 'task_template_gid' when calling deleteTaskTemplate");
+    createRateWithHttpInfo(body, opts) {
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling createRate");
         }
 
         let pathParams = {
-            'task_template_gid': task_template_gid
+            
+        };
+        let queryParams = {};
+        opts = opts || {};
+        queryParams = opts;
+
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
+
+        let authNames = ['personalAccessToken'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = 'Blob';
+
+        return this.apiClient.callApi(
+            '/rates', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType
+        );
+    }
+
+    /**
+     * Create a rate
+     * Creates a new rate for a &#x60;parent&#x60; + &#x60;resource&#x60; combination.
+     * @param {<&vendorExtensions.x-jsdoc-type>} body The rate to create.
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/RateResponseData}
+     */
+    createRate(body, opts) {
+
+        return this.createRateWithHttpInfo(body, opts)
+            .then(function(response_and_data) {
+                return response_and_data.data;
+            });
+    }
+
+
+    /**
+     * Delete a rate
+     * Deletes a rate.
+     * @param {String} rate_gid Globally unique identifier for the rate.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
+     */
+    deleteRateWithHttpInfo(rate_gid) {
+        
+        let postBody = null;
+        // verify the required parameter 'rate_gid' is set
+        if (rate_gid === undefined || rate_gid === null) {
+            throw new Error("Missing the required parameter 'rate_gid' when calling deleteRate");
+        }
+
+        let pathParams = {
+            'rate_gid': rate_gid
         };
         let queryParams = {};
 
@@ -68,21 +127,21 @@ export class TaskTemplatesApi {
         let returnType = 'Blob';
 
         return this.apiClient.callApi(
-            '/task_templates/{task_template_gid}', 'DELETE',
+            '/rates/{rate_gid}', 'DELETE',
             pathParams, queryParams, headerParams, formParams, postBody,
             authNames, contentTypes, accepts, returnType
         );
     }
 
     /**
-     * Delete a task template
-     * A specific, existing task template can be deleted by making a DELETE request on the URL for that task template. Returns an empty data record.
-     * @param {<&vendorExtensions.x-jsdoc-type>} task_template_gid Globally unique identifier for the task template.
+     * Delete a rate
+     * Deletes a rate.
+     * @param {<&vendorExtensions.x-jsdoc-type>} rate_gid Globally unique identifier for the rate.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EmptyResponseData}
      */
-    deleteTaskTemplate(task_template_gid) {
+    deleteRate(rate_gid) {
 
-        return this.deleteTaskTemplateWithHttpInfo(task_template_gid)
+        return this.deleteRateWithHttpInfo(rate_gid)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });
@@ -90,23 +149,23 @@ export class TaskTemplatesApi {
 
 
     /**
-     * Get a task template
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;task_templates:read&lt;/code&gt;  Returns the complete task template record for a single task template.
-     * @param {String} task_template_gid Globally unique identifier for the task template.
+     * Get a rate
+     * Returns the complete rate record for a single rate.
+     * @param {String} rate_gid Globally unique identifier for the rate.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
-    getTaskTemplateWithHttpInfo(task_template_gid, opts) {
+    getRateWithHttpInfo(rate_gid, opts) {
         opts = opts || {};
         let postBody = null;
-        // verify the required parameter 'task_template_gid' is set
-        if (task_template_gid === undefined || task_template_gid === null) {
-            throw new Error("Missing the required parameter 'task_template_gid' when calling getTaskTemplate");
+        // verify the required parameter 'rate_gid' is set
+        if (rate_gid === undefined || rate_gid === null) {
+            throw new Error("Missing the required parameter 'rate_gid' when calling getRate");
         }
 
         let pathParams = {
-            'task_template_gid': task_template_gid
+            'rate_gid': rate_gid
         };
         let queryParams = {};
         opts = opts || {};
@@ -125,23 +184,23 @@ export class TaskTemplatesApi {
         let returnType = 'Blob';
 
         return this.apiClient.callApi(
-            '/task_templates/{task_template_gid}', 'GET',
+            '/rates/{rate_gid}', 'GET',
             pathParams, queryParams, headerParams, formParams, postBody,
             authNames, contentTypes, accepts, returnType
         );
     }
 
     /**
-     * Get a task template
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;task_templates:read&lt;/code&gt;  Returns the complete task template record for a single task template.
-     * @param {<&vendorExtensions.x-jsdoc-type>} task_template_gid Globally unique identifier for the task template.
+     * Get a rate
+     * Returns the complete rate record for a single rate.
+     * @param {<&vendorExtensions.x-jsdoc-type>} rate_gid Globally unique identifier for the rate.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TaskTemplateResponseData}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/RateResponseData}
      */
-    getTaskTemplate(task_template_gid, opts) {
+    getRate(rate_gid, opts) {
 
-        return this.getTaskTemplateWithHttpInfo(task_template_gid, opts)
+        return this.getRateWithHttpInfo(rate_gid, opts)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });
@@ -149,16 +208,17 @@ export class TaskTemplatesApi {
 
 
     /**
-     * Get multiple task templates
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;task_templates:read&lt;/code&gt;  Returns the compact task template records for some filtered set of task templates. You must specify a &#x60;project&#x60;
+     * Get multiple rates
+     * Returns a list of &#x60;rate&#x60; records. The possible types for &#x60;parent&#x60; in this request are &#x60;project&#x60;. An additional &#x60;resource&#x60; (&#x60;user&#x60; GID or &#x60;placeholder&#x60; GID) can be passed in to filter to a specific rate.  Modifying placeholder rates is only available for Enterprise and Enterprise+ users.
      * @param {Object} opts Optional parameters
+     * @param {String} opts.parent Globally unique identifier for &#x60;project&#x60;.
+     * @param {String} opts.resource Globally unique identifier for &#x60;user&#x60; or &#x60;placeholder&#x60;.
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param {String} opts.project The project to filter task templates on.
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
-    getTaskTemplatesWithHttpInfo(opts) {
+    getRatesWithHttpInfo(opts) {
         opts = opts || {};
         let postBody = null;
 
@@ -184,13 +244,13 @@ export class TaskTemplatesApi {
         if (this.apiClient.RETURN_COLLECTION) {
             return Collection.fromApiClient(
                 this.apiClient.callApi(
-                    '/task_templates', 'GET',
+                    '/rates', 'GET',
                     pathParams, queryParams, headerParams, formParams, postBody,
                     authNames, contentTypes, accepts, returnType
                 ),
                 this.apiClient,
                 {
-                    'path': '/task_templates',
+                    'path': '/rates',
                     'httpMethod': 'GET',
                     'pathParams': pathParams,
                     'queryParams': queryParams,
@@ -206,29 +266,30 @@ export class TaskTemplatesApi {
         }
 
         return this.apiClient.callApi(
-            '/task_templates', 'GET',
+            '/rates', 'GET',
             pathParams, queryParams, headerParams, formParams, postBody,
             authNames, contentTypes, accepts, returnType
         );
     }
 
     /**
-     * Get multiple task templates
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;task_templates:read&lt;/code&gt;  Returns the compact task template records for some filtered set of task templates. You must specify a &#x60;project&#x60;
+     * Get multiple rates
+     * Returns a list of &#x60;rate&#x60; records. The possible types for &#x60;parent&#x60; in this request are &#x60;project&#x60;. An additional &#x60;resource&#x60; (&#x60;user&#x60; GID or &#x60;placeholder&#x60; GID) can be passed in to filter to a specific rate.  Modifying placeholder rates is only available for Enterprise and Enterprise+ users.
      * @param {Object} opts Optional parameters
+     * @param {String} opts.parent Globally unique identifier for &#x60;project&#x60;.
+     * @param {String} opts.resource Globally unique identifier for &#x60;user&#x60; or &#x60;placeholder&#x60;.
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param {String} opts.project The project to filter task templates on.
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TaskTemplateResponseArray}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/RateOrPlaceholderCompactArray}
      */
-    getTaskTemplates(opts) {
+    getRates(opts) {
         // Check if RETURN_COLLECTION is set and return a collection object if it is
         if (this.apiClient.RETURN_COLLECTION) {
-            return this.getTaskTemplatesWithHttpInfo(opts)
+            return this.getRatesWithHttpInfo(opts)
         }
 
-        return this.getTaskTemplatesWithHttpInfo(opts)
+        return this.getRatesWithHttpInfo(opts)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });
@@ -236,24 +297,28 @@ export class TaskTemplatesApi {
 
 
     /**
-     * Instantiate a task from a task template
-     * Creates and returns a job that will asynchronously handle the task instantiation.
-     * @param {String} task_template_gid Globally unique identifier for the task template.
+     * Update a rate
+     * An existing rate can be updated by making a PUT request on the URL for that rate. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged. (note that at this time, the only field that can be updated is the &#x60;rate&#x60; field.)  Returns the complete updated rate record.
+     * @param {module:model/Object} body The updated fields for the rate.
+     * @param {String} rate_gid Globally unique identifier for the rate.
      * @param {Object} opts Optional parameters
-     * @param {module:model/Object} opts.body Describes the inputs used for instantiating a task - the task&#x27;s name.
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
-    instantiateTaskWithHttpInfo(task_template_gid, opts) {
+    updateRateWithHttpInfo(body, rate_gid, opts) {
         opts = opts || {};
-        let postBody = opts['body'];
-        // verify the required parameter 'task_template_gid' is set
-        if (task_template_gid === undefined || task_template_gid === null) {
-            throw new Error("Missing the required parameter 'task_template_gid' when calling instantiateTask");
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling updateRate");
+        }
+        // verify the required parameter 'rate_gid' is set
+        if (rate_gid === undefined || rate_gid === null) {
+            throw new Error("Missing the required parameter 'rate_gid' when calling updateRate");
         }
 
         let pathParams = {
-            'task_template_gid': task_template_gid
+            'rate_gid': rate_gid
         };
         let queryParams = {};
         opts = opts || {};
@@ -272,24 +337,24 @@ export class TaskTemplatesApi {
         let returnType = 'Blob';
 
         return this.apiClient.callApi(
-            '/task_templates/{task_template_gid}/instantiateTask', 'POST',
+            '/rates/{rate_gid}', 'PUT',
             pathParams, queryParams, headerParams, formParams, postBody,
             authNames, contentTypes, accepts, returnType
         );
     }
 
     /**
-     * Instantiate a task from a task template
-     * Creates and returns a job that will asynchronously handle the task instantiation.
-     * @param {<&vendorExtensions.x-jsdoc-type>} task_template_gid Globally unique identifier for the task template.
+     * Update a rate
+     * An existing rate can be updated by making a PUT request on the URL for that rate. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged. (note that at this time, the only field that can be updated is the &#x60;rate&#x60; field.)  Returns the complete updated rate record.
+     * @param {<&vendorExtensions.x-jsdoc-type>} body The updated fields for the rate.
+     * @param {<&vendorExtensions.x-jsdoc-type>} rate_gid Globally unique identifier for the rate.
      * @param {Object} opts Optional parameters
-     * @param {module:model/Object} opts.body Describes the inputs used for instantiating a task - the task&#x27;s name.
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/JobResponseData}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/RateResponseData}
      */
-    instantiateTask(task_template_gid, opts) {
+    updateRate(body, rate_gid, opts) {
 
-        return this.instantiateTaskWithHttpInfo(task_template_gid, opts)
+        return this.updateRateWithHttpInfo(body, rate_gid, opts)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });

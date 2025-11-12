@@ -1,0 +1,93 @@
+RatesApi:
+  createRate: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let ratesApiInstance = new Asana.RatesApi();
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The rate to create.
+    let opts = { 
+        'opt_fields': "created_by,created_by.name,currency_code,parent,parent.name,rate,resource,resource.name"
+    };
+    ratesApiInstance.createRate(body, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  deleteRate: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let ratesApiInstance = new Asana.RatesApi();
+    let rate_gid = "12345"; // String | Globally unique identifier for the rate.
+
+    ratesApiInstance.deleteRate(rate_gid).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getRate: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let ratesApiInstance = new Asana.RatesApi();
+    let rate_gid = "12345"; // String | Globally unique identifier for the rate.
+    let opts = { 
+        'opt_fields': "created_by,created_by.name,currency_code,parent,parent.name,rate,resource,resource.name"
+    };
+    ratesApiInstance.getRate(rate_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getRates: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let ratesApiInstance = new Asana.RatesApi();
+    let opts = { 
+        'parent': "159874", 
+        'resource': "1061493", 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'opt_fields': "offset,path,uri"
+    };
+    ratesApiInstance.getRates(opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  updateRate: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let ratesApiInstance = new Asana.RatesApi();
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The updated fields for the rate.
+    let rate_gid = "12345"; // String | Globally unique identifier for the rate.
+    let opts = { 
+        'opt_fields': "created_by,created_by.name,currency_code,parent,parent.name,rate,resource,resource.name"
+    };
+    ratesApiInstance.updateRate(body, rate_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    

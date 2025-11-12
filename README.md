@@ -1,7 +1,7 @@
 # asana [![GitHub release][release-image]][release-url] [![NPM Version][npm-image]][npm-url]
 
 - API version: 1.0
-- Package version: 3.1.2
+- Package version: 3.1.3
 
 ## Installation
 
@@ -18,7 +18,7 @@ npm install asana --save
 Include the latest release directly from GitHub:
 
 ```html
-<script src="https://github.com/Asana/node-asana/releases/download/v3.1.2/asana-min.js"></script>
+<script src="https://github.com/Asana/node-asana/releases/download/v3.1.3/asana-min.js"></script>
 ```
 
 Example usage (**NOTE**: be careful not to expose your access token):
@@ -210,6 +210,11 @@ Class | Method | HTTP request | Description
 *Asana.AttachmentsApi* | [**getAttachmentsForObject**](docs/AttachmentsApi.md#getAttachmentsForObject) | **GET** /attachments | Get attachments from an object
 *Asana.AuditLogAPIApi* | [**getAuditLogEvents**](docs/AuditLogAPIApi.md#getAuditLogEvents) | **GET** /workspaces/{workspace_gid}/audit_log_events | Get audit log events
 *Asana.BatchAPIApi* | [**createBatchRequest**](docs/BatchAPIApi.md#createBatchRequest) | **POST** /batch | Submit parallel requests
+*Asana.BudgetsApi* | [**createBudget**](docs/BudgetsApi.md#createBudget) | **POST** /budgets | Create a budget
+*Asana.BudgetsApi* | [**deleteBudget**](docs/BudgetsApi.md#deleteBudget) | **DELETE** /budgets/{budget_gid} | Delete a budget
+*Asana.BudgetsApi* | [**getBudget**](docs/BudgetsApi.md#getBudget) | **GET** /budgets/{budget_gid} | Get a budget
+*Asana.BudgetsApi* | [**getBudgets**](docs/BudgetsApi.md#getBudgets) | **GET** /budgets | Get all budgets
+*Asana.BudgetsApi* | [**updateBudget**](docs/BudgetsApi.md#updateBudget) | **PUT** /budgets/{budget_gid} | Update a budget
 *Asana.CustomFieldSettingsApi* | [**getCustomFieldSettingsForPortfolio**](docs/CustomFieldSettingsApi.md#getCustomFieldSettingsForPortfolio) | **GET** /portfolios/{portfolio_gid}/custom_field_settings | Get a portfolio&#x27;s custom fields
 *Asana.CustomFieldSettingsApi* | [**getCustomFieldSettingsForProject**](docs/CustomFieldSettingsApi.md#getCustomFieldSettingsForProject) | **GET** /projects/{project_gid}/custom_field_settings | Get a project&#x27;s custom fields
 *Asana.CustomFieldsApi* | [**createCustomField**](docs/CustomFieldsApi.md#createCustomField) | **POST** /custom_fields | Create a custom field
@@ -297,6 +302,11 @@ Class | Method | HTTP request | Description
 *Asana.ProjectsApi* | [**removeFollowersForProject**](docs/ProjectsApi.md#removeFollowersForProject) | **POST** /projects/{project_gid}/removeFollowers | Remove followers from a project
 *Asana.ProjectsApi* | [**removeMembersForProject**](docs/ProjectsApi.md#removeMembersForProject) | **POST** /projects/{project_gid}/removeMembers | Remove users from a project
 *Asana.ProjectsApi* | [**updateProject**](docs/ProjectsApi.md#updateProject) | **PUT** /projects/{project_gid} | Update a project
+*Asana.RatesApi* | [**createRate**](docs/RatesApi.md#createRate) | **POST** /rates | Create a rate
+*Asana.RatesApi* | [**deleteRate**](docs/RatesApi.md#deleteRate) | **DELETE** /rates/{rate_gid} | Delete a rate
+*Asana.RatesApi* | [**getRate**](docs/RatesApi.md#getRate) | **GET** /rates/{rate_gid} | Get a rate
+*Asana.RatesApi* | [**getRates**](docs/RatesApi.md#getRates) | **GET** /rates | Get multiple rates
+*Asana.RatesApi* | [**updateRate**](docs/RatesApi.md#updateRate) | **PUT** /rates/{rate_gid} | Update a rate
 *Asana.ReactionsApi* | [**getReactionsOnObject**](docs/ReactionsApi.md#getReactionsOnObject) | **GET** /reactions | Get reactions with an emoji base on an object.
 *Asana.RulesApi* | [**triggerRule**](docs/RulesApi.md#triggerRule) | **POST** /rule_triggers/{rule_trigger_gid}/run | Trigger a rule
 *Asana.SectionsApi* | [**addTaskForSection**](docs/SectionsApi.md#addTaskForSection) | **POST** /sections/{section_gid}/addTask | Add task to section
@@ -1122,6 +1132,6 @@ client.callApi(
 ```
 
 [release-image]: https://img.shields.io/github/release/asana/node-asana.svg
-[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.1.2
+[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.1.3
 [npm-image]: http://img.shields.io/npm/v/asana.svg?style=flat-square
 [npm-url]: https://www.npmjs.org/package/asana

@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Teams service.
 * @module api/TeamsApi
-* @version 3.1.2
+* @version 3.1.3
 */
 export class TeamsApi {
 

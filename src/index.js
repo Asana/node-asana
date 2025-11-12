@@ -18,6 +18,7 @@ import {AllocationsApi} from './api/AllocationsApi';
 import {AttachmentsApi} from './api/AttachmentsApi';
 import {AuditLogAPIApi} from './api/AuditLogAPIApi';
 import {BatchAPIApi} from './api/BatchAPIApi';
+import {BudgetsApi} from './api/BudgetsApi';
 import {CustomFieldSettingsApi} from './api/CustomFieldSettingsApi';
 import {CustomFieldsApi} from './api/CustomFieldsApi';
 import {CustomTypesApi} from './api/CustomTypesApi';
@@ -35,6 +36,7 @@ import {ProjectMembershipsApi} from './api/ProjectMembershipsApi';
 import {ProjectStatusesApi} from './api/ProjectStatusesApi';
 import {ProjectTemplatesApi} from './api/ProjectTemplatesApi';
 import {ProjectsApi} from './api/ProjectsApi';
+import {RatesApi} from './api/RatesApi';
 import {ReactionsApi} from './api/ReactionsApi';
 import {RulesApi} from './api/RulesApi';
 import {SectionsApi} from './api/SectionsApi';
@@ -83,7 +85,7 @@ import {WorkspacesApi} from './api/WorkspacesApi';
 * </pre>
 * </p>
 * @module index
-* @version 3.1.2
+* @version 3.1.3
 */
 export {
     /**
@@ -123,6 +125,12 @@ export {
     * @property {module:api/BatchAPIApi}
     */
     BatchAPIApi,
+
+    /**
+    * The BudgetsApi service constructor.
+    * @property {module:api/BudgetsApi}
+    */
+    BudgetsApi,
 
     /**
     * The CustomFieldSettingsApi service constructor.
@@ -225,6 +233,12 @@ export {
     * @property {module:api/ProjectsApi}
     */
     ProjectsApi,
+
+    /**
+    * The RatesApi service constructor.
+    * @property {module:api/RatesApi}
+    */
+    RatesApi,
 
     /**
     * The ReactionsApi service constructor.

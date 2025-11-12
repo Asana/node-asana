@@ -16,15 +16,15 @@ import {ApiClient} from "../ApiClient";
 var Collection = require('../utils/collection');
 
 /**
-* TaskTemplates service.
-* @module api/TaskTemplatesApi
+* Budgets service.
+* @module api/BudgetsApi
 * @version 3.1.3
 */
-export class TaskTemplatesApi {
+export class BudgetsApi {
 
     /**
-    * Constructs a new TaskTemplatesApi. 
-    * @alias module:api/TaskTemplatesApi
+    * Constructs a new BudgetsApi. 
+    * @alias module:api/BudgetsApi
     * @class
     * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
     * default to {@link module:ApiClient#instanc
@@ -37,21 +37,74 @@ export class TaskTemplatesApi {
 
 
     /**
-     * Delete a task template
-     * A specific, existing task template can be deleted by making a DELETE request on the URL for that task template. Returns an empty data record.
-     * @param {String} task_template_gid Globally unique identifier for the task template.
+     * Create a budget
+     * Creates a new budget.
+     * @param {module:model/Object} body The budget to create.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
-    deleteTaskTemplateWithHttpInfo(task_template_gid) {
+    createBudgetWithHttpInfo(body) {
+        
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling createBudget");
+        }
+
+        let pathParams = {
+            
+        };
+        let queryParams = {};
+
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
+
+        let authNames = ['personalAccessToken'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = 'Blob';
+
+        return this.apiClient.callApi(
+            '/budgets', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType
+        );
+    }
+
+    /**
+     * Create a budget
+     * Creates a new budget.
+     * @param {<&vendorExtensions.x-jsdoc-type>} body The budget to create.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/BudgetResponseData}
+     */
+    createBudget(body) {
+
+        return this.createBudgetWithHttpInfo(body)
+            .then(function(response_and_data) {
+                return response_and_data.data;
+            });
+    }
+
+
+    /**
+     * Delete a budget
+     * A specific, existing budget can be deleted by making a DELETE request on the URL for that budget.  Returns an empty data record.
+     * @param {String} budget_gid Globally unique identifier for the budget.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
+     */
+    deleteBudgetWithHttpInfo(budget_gid) {
         
         let postBody = null;
-        // verify the required parameter 'task_template_gid' is set
-        if (task_template_gid === undefined || task_template_gid === null) {
-            throw new Error("Missing the required parameter 'task_template_gid' when calling deleteTaskTemplate");
+        // verify the required parameter 'budget_gid' is set
+        if (budget_gid === undefined || budget_gid === null) {
+            throw new Error("Missing the required parameter 'budget_gid' when calling deleteBudget");
         }
 
         let pathParams = {
-            'task_template_gid': task_template_gid
+            'budget_gid': budget_gid
         };
         let queryParams = {};
 
@@ -68,21 +121,21 @@ export class TaskTemplatesApi {
         let returnType = 'Blob';
 
         return this.apiClient.callApi(
-            '/task_templates/{task_template_gid}', 'DELETE',
+            '/budgets/{budget_gid}', 'DELETE',
             pathParams, queryParams, headerParams, formParams, postBody,
             authNames, contentTypes, accepts, returnType
         );
     }
 
     /**
-     * Delete a task template
-     * A specific, existing task template can be deleted by making a DELETE request on the URL for that task template. Returns an empty data record.
-     * @param {<&vendorExtensions.x-jsdoc-type>} task_template_gid Globally unique identifier for the task template.
+     * Delete a budget
+     * A specific, existing budget can be deleted by making a DELETE request on the URL for that budget.  Returns an empty data record.
+     * @param {<&vendorExtensions.x-jsdoc-type>} budget_gid Globally unique identifier for the budget.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EmptyResponseData}
      */
-    deleteTaskTemplate(task_template_gid) {
+    deleteBudget(budget_gid) {
 
-        return this.deleteTaskTemplateWithHttpInfo(task_template_gid)
+        return this.deleteBudgetWithHttpInfo(budget_gid)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });
@@ -90,23 +143,23 @@ export class TaskTemplatesApi {
 
 
     /**
-     * Get a task template
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;task_templates:read&lt;/code&gt;  Returns the complete task template record for a single task template.
-     * @param {String} task_template_gid Globally unique identifier for the task template.
+     * Get a budget
+     * Returns the complete budget record for a single budget.
+     * @param {String} budget_gid Globally unique identifier for the budget.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
-    getTaskTemplateWithHttpInfo(task_template_gid, opts) {
+    getBudgetWithHttpInfo(budget_gid, opts) {
         opts = opts || {};
         let postBody = null;
-        // verify the required parameter 'task_template_gid' is set
-        if (task_template_gid === undefined || task_template_gid === null) {
-            throw new Error("Missing the required parameter 'task_template_gid' when calling getTaskTemplate");
+        // verify the required parameter 'budget_gid' is set
+        if (budget_gid === undefined || budget_gid === null) {
+            throw new Error("Missing the required parameter 'budget_gid' when calling getBudget");
         }
 
         let pathParams = {
-            'task_template_gid': task_template_gid
+            'budget_gid': budget_gid
         };
         let queryParams = {};
         opts = opts || {};
@@ -125,23 +178,23 @@ export class TaskTemplatesApi {
         let returnType = 'Blob';
 
         return this.apiClient.callApi(
-            '/task_templates/{task_template_gid}', 'GET',
+            '/budgets/{budget_gid}', 'GET',
             pathParams, queryParams, headerParams, formParams, postBody,
             authNames, contentTypes, accepts, returnType
         );
     }
 
     /**
-     * Get a task template
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;task_templates:read&lt;/code&gt;  Returns the complete task template record for a single task template.
-     * @param {<&vendorExtensions.x-jsdoc-type>} task_template_gid Globally unique identifier for the task template.
+     * Get a budget
+     * Returns the complete budget record for a single budget.
+     * @param {<&vendorExtensions.x-jsdoc-type>} budget_gid Globally unique identifier for the budget.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TaskTemplateResponseData}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/BudgetResponseData}
      */
-    getTaskTemplate(task_template_gid, opts) {
+    getBudget(budget_gid, opts) {
 
-        return this.getTaskTemplateWithHttpInfo(task_template_gid, opts)
+        return this.getBudgetWithHttpInfo(budget_gid, opts)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });
@@ -149,25 +202,24 @@ export class TaskTemplatesApi {
 
 
     /**
-     * Get multiple task templates
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;task_templates:read&lt;/code&gt;  Returns the compact task template records for some filtered set of task templates. You must specify a &#x60;project&#x60;
-     * @param {Object} opts Optional parameters
-     * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
-     * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param {String} opts.project The project to filter task templates on.
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * Get all budgets
+     * Gets all budgets for a given *parent*. This will at most return a list of size 1 for a given *parent*.
+     * @param {String} parent Globally unique identifier for the budget&#x27;s parent object. This currently can only be a &#x60;project&#x60;.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
-    getTaskTemplatesWithHttpInfo(opts) {
-        opts = opts || {};
+    getBudgetsWithHttpInfo(parent) {
+        
         let postBody = null;
+        // verify the required parameter 'parent' is set
+        if (parent === undefined || parent === null) {
+            throw new Error("Missing the required parameter 'parent' when calling getBudgets");
+        }
 
         let pathParams = {
             
         };
         let queryParams = {};
-        opts = opts || {};
-        queryParams = opts;
+        queryParams['parent'] = parent;
 
         let headerParams = {
             
@@ -184,13 +236,13 @@ export class TaskTemplatesApi {
         if (this.apiClient.RETURN_COLLECTION) {
             return Collection.fromApiClient(
                 this.apiClient.callApi(
-                    '/task_templates', 'GET',
+                    '/budgets', 'GET',
                     pathParams, queryParams, headerParams, formParams, postBody,
                     authNames, contentTypes, accepts, returnType
                 ),
                 this.apiClient,
                 {
-                    'path': '/task_templates',
+                    'path': '/budgets',
                     'httpMethod': 'GET',
                     'pathParams': pathParams,
                     'queryParams': queryParams,
@@ -206,29 +258,25 @@ export class TaskTemplatesApi {
         }
 
         return this.apiClient.callApi(
-            '/task_templates', 'GET',
+            '/budgets', 'GET',
             pathParams, queryParams, headerParams, formParams, postBody,
             authNames, contentTypes, accepts, returnType
         );
     }
 
     /**
-     * Get multiple task templates
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;task_templates:read&lt;/code&gt;  Returns the compact task template records for some filtered set of task templates. You must specify a &#x60;project&#x60;
-     * @param {Object} opts Optional parameters
-     * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
-     * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param {String} opts.project The project to filter task templates on.
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TaskTemplateResponseArray}
+     * Get all budgets
+     * Gets all budgets for a given *parent*. This will at most return a list of size 1 for a given *parent*.
+     * @param {<&vendorExtensions.x-jsdoc-type>} parent Globally unique identifier for the budget&#x27;s parent object. This currently can only be a &#x60;project&#x60;.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/BudgetResponseArray}
      */
-    getTaskTemplates(opts) {
+    getBudgets(parent) {
         // Check if RETURN_COLLECTION is set and return a collection object if it is
         if (this.apiClient.RETURN_COLLECTION) {
-            return this.getTaskTemplatesWithHttpInfo(opts)
+            return this.getBudgetsWithHttpInfo(parent)
         }
 
-        return this.getTaskTemplatesWithHttpInfo(opts)
+        return this.getBudgetsWithHttpInfo(parent)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });
@@ -236,24 +284,28 @@ export class TaskTemplatesApi {
 
 
     /**
-     * Instantiate a task from a task template
-     * Creates and returns a job that will asynchronously handle the task instantiation.
-     * @param {String} task_template_gid Globally unique identifier for the task template.
+     * Update a budget
+     * An existing budget can be updated by making a PUT request on the URL for that budget. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.
+     * @param {module:model/Object} body The budget to update.
+     * @param {String} budget_gid Globally unique identifier for the budget.
      * @param {Object} opts Optional parameters
-     * @param {module:model/Object} opts.body Describes the inputs used for instantiating a task - the task&#x27;s name.
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
-    instantiateTaskWithHttpInfo(task_template_gid, opts) {
+    updateBudgetWithHttpInfo(body, budget_gid, opts) {
         opts = opts || {};
-        let postBody = opts['body'];
-        // verify the required parameter 'task_template_gid' is set
-        if (task_template_gid === undefined || task_template_gid === null) {
-            throw new Error("Missing the required parameter 'task_template_gid' when calling instantiateTask");
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling updateBudget");
+        }
+        // verify the required parameter 'budget_gid' is set
+        if (budget_gid === undefined || budget_gid === null) {
+            throw new Error("Missing the required parameter 'budget_gid' when calling updateBudget");
         }
 
         let pathParams = {
-            'task_template_gid': task_template_gid
+            'budget_gid': budget_gid
         };
         let queryParams = {};
         opts = opts || {};
@@ -272,24 +324,24 @@ export class TaskTemplatesApi {
         let returnType = 'Blob';
 
         return this.apiClient.callApi(
-            '/task_templates/{task_template_gid}/instantiateTask', 'POST',
+            '/budgets/{budget_gid}', 'PUT',
             pathParams, queryParams, headerParams, formParams, postBody,
             authNames, contentTypes, accepts, returnType
         );
     }
 
     /**
-     * Instantiate a task from a task template
-     * Creates and returns a job that will asynchronously handle the task instantiation.
-     * @param {<&vendorExtensions.x-jsdoc-type>} task_template_gid Globally unique identifier for the task template.
+     * Update a budget
+     * An existing budget can be updated by making a PUT request on the URL for that budget. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.
+     * @param {<&vendorExtensions.x-jsdoc-type>} body The budget to update.
+     * @param {<&vendorExtensions.x-jsdoc-type>} budget_gid Globally unique identifier for the budget.
      * @param {Object} opts Optional parameters
-     * @param {module:model/Object} opts.body Describes the inputs used for instantiating a task - the task&#x27;s name.
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/JobResponseData}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/BudgetResponseData}
      */
-    instantiateTask(task_template_gid, opts) {
+    updateBudget(body, budget_gid, opts) {
 
-        return this.instantiateTaskWithHttpInfo(task_template_gid, opts)
+        return this.updateBudgetWithHttpInfo(body, budget_gid, opts)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });

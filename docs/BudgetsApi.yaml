@@ -1,0 +1,86 @@
+BudgetsApi:
+  createBudget: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let budgetsApiInstance = new Asana.BudgetsApi();
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The budget to create.
+
+    budgetsApiInstance.createBudget(body).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  deleteBudget: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let budgetsApiInstance = new Asana.BudgetsApi();
+    let budget_gid = "12345"; // String | Globally unique identifier for the budget.
+
+    budgetsApiInstance.deleteBudget(budget_gid).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getBudget: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let budgetsApiInstance = new Asana.BudgetsApi();
+    let budget_gid = "12345"; // String | Globally unique identifier for the budget.
+    let opts = { 
+        'opt_fields': "actual,actual.billable_status_filter,actual.units,actual.value,budget_type,estimate,estimate.billable_status_filter,estimate.enabled,estimate.source,estimate.units,estimate.value,parent,parent.name,total,total.enabled,total.units,total.value"
+    };
+    budgetsApiInstance.getBudget(budget_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getBudgets: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let budgetsApiInstance = new Asana.BudgetsApi();
+    let parent = "1331"; // String | Globally unique identifier for the budget's parent object. This currently can only be a `project`.
+
+    budgetsApiInstance.getBudgets(parent).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  updateBudget: |-
+    const Asana = require('asana');
+    
+    let client = Asana.ApiClient.instance;
+    let token = client.authentications['token'];
+    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let budgetsApiInstance = new Asana.BudgetsApi();
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The budget to update.
+    let budget_gid = "12345"; // String | Globally unique identifier for the budget.
+    let opts = { 
+        'opt_fields': "actual,actual.billable_status_filter,actual.units,actual.value,budget_type,estimate,estimate.billable_status_filter,estimate.enabled,estimate.source,estimate.units,estimate.value,parent,parent.name,total,total.enabled,total.units,total.value"
+    };
+    budgetsApiInstance.updateBudget(body, budget_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    

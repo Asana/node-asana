@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Attachments service.
 * @module api/AttachmentsApi
-* @version 3.1.2
+* @version 3.1.3
 */
 export class AttachmentsApi {
 

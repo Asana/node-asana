@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * TimeTrackingEntries service.
 * @module api/TimeTrackingEntriesApi
-* @version 3.1.2
+* @version 3.1.3
 */
 export class TimeTrackingEntriesApi {
 
@@ -156,7 +156,7 @@ export class TimeTrackingEntriesApi {
 
     /**
      * Get multiple time tracking entries
-     * Returns a list of time tracking entries filtered to a task, attributed project, portfolio or user.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;time_tracking_entries:read&lt;/code&gt;  Returns a list of time tracking entries filtered to a task, attributed project, portfolio or user.
      * @param {Object} opts Optional parameters
      * @param {String} opts.task Globally unique identifier for the task to filter time tracking entries by.
      * @param {String} opts.attributable_to Globally unique identifier for the project the time tracking entries are attributed to.
@@ -224,7 +224,7 @@ export class TimeTrackingEntriesApi {
 
     /**
      * Get multiple time tracking entries
-     * Returns a list of time tracking entries filtered to a task, attributed project, portfolio or user.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;time_tracking_entries:read&lt;/code&gt;  Returns a list of time tracking entries filtered to a task, attributed project, portfolio or user.
      * @param {Object} opts Optional parameters
      * @param {String} opts.task Globally unique identifier for the task to filter time tracking entries by.
      * @param {String} opts.attributable_to Globally unique identifier for the project the time tracking entries are attributed to.
@@ -251,7 +251,7 @@ export class TimeTrackingEntriesApi {
 
     /**
      * Get time tracking entries for a task
-     * Returns time tracking entries for a given task.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;time_tracking_entries:read&lt;/code&gt;  Returns time tracking entries for a given task.
      * @param {String} task_gid The task to operate on.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -319,7 +319,7 @@ export class TimeTrackingEntriesApi {
 
     /**
      * Get time tracking entries for a task
-     * Returns time tracking entries for a given task.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;time_tracking_entries:read&lt;/code&gt;  Returns time tracking entries for a given task.
      * @param {<&vendorExtensions.x-jsdoc-type>} task_gid The task to operate on.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -342,7 +342,7 @@ export class TimeTrackingEntriesApi {
 
     /**
      * Get a time tracking entry
-     * Returns the complete time tracking entry record for a single time tracking entry.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;time_tracking_entries:read&lt;/code&gt;  Returns the complete time tracking entry record for a single time tracking entry.
      * @param {String} time_tracking_entry_gid Globally unique identifier for the time tracking entry.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -384,7 +384,7 @@ export class TimeTrackingEntriesApi {
 
     /**
      * Get a time tracking entry
-     * Returns the complete time tracking entry record for a single time tracking entry.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;time_tracking_entries:read&lt;/code&gt;  Returns the complete time tracking entry record for a single time tracking entry.
      * @param {<&vendorExtensions.x-jsdoc-type>} time_tracking_entry_gid Globally unique identifier for the time tracking entry.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.

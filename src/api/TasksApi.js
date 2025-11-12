@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Tasks service.
 * @module api/TasksApi
-* @version 3.1.2
+* @version 3.1.3
 */
 export class TasksApi {
 
@@ -1947,7 +1947,7 @@ export class TasksApi {
 
     /**
      * Set the parent of a task
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tasks:write&lt;/code&gt;  parent, or no parent task at all. Returns an empty data block. When using &#x60;insert_before&#x60; and &#x60;insert_after&#x60;, at most one of those two options can be specified, and they must already be subtasks of the parent.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tasks:write&lt;/code&gt;  Updates the parent of a given task. This endpoint can be used to make a task a subtask of another task, or to remove its existing parent. When using &#x60;insert_before&#x60; and &#x60;insert_after&#x60;, at most one of those two options can be specified, and they must already be subtasks of the parent. Returns the complete, updated record of the affected [task](/reference/tasks#/task).
      * @param {module:model/Object} body The new parent of the subtask.
      * @param {String} task_gid The task to operate on.
      * @param {Object} opts Optional parameters
@@ -1994,7 +1994,7 @@ export class TasksApi {
 
     /**
      * Set the parent of a task
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tasks:write&lt;/code&gt;  parent, or no parent task at all. Returns an empty data block. When using &#x60;insert_before&#x60; and &#x60;insert_after&#x60;, at most one of those two options can be specified, and they must already be subtasks of the parent.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tasks:write&lt;/code&gt;  Updates the parent of a given task. This endpoint can be used to make a task a subtask of another task, or to remove its existing parent. When using &#x60;insert_before&#x60; and &#x60;insert_after&#x60;, at most one of those two options can be specified, and they must already be subtasks of the parent. Returns the complete, updated record of the affected [task](/reference/tasks#/task).
      * @param {<&vendorExtensions.x-jsdoc-type>} body The new parent of the subtask.
      * @param {<&vendorExtensions.x-jsdoc-type>} task_gid The task to operate on.
      * @param {Object} opts Optional parameters

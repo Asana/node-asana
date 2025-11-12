@@ -107,7 +107,7 @@ object
 
 Get multiple time tracking entries
 
-Returns a list of time tracking entries filtered to a task, attributed project, portfolio or user.
+<b>Required scope: </b><code>time_tracking_entries:read</code>  Returns a list of time tracking entries filtered to a task, attributed project, portfolio or user.
 
 ([more information](https://developers.asana.com/reference/gettimetrackingentries))
 
@@ -165,7 +165,7 @@ object
 
 Get time tracking entries for a task
 
-Returns time tracking entries for a given task.
+<b>Required scope: </b><code>time_tracking_entries:read</code>  Returns time tracking entries for a given task.
 
 ([more information](https://developers.asana.com/reference/gettimetrackingentriesfortask))
 
@@ -215,7 +215,7 @@ object
 
 Get a time tracking entry
 
-Returns the complete time tracking entry record for a single time tracking entry.
+<b>Required scope: </b><code>time_tracking_entries:read</code>  Returns the complete time tracking entry record for a single time tracking entry.
 
 ([more information](https://developers.asana.com/reference/gettimetrackingentry))
 

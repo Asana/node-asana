@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * BatchAPI service.
 * @module api/BatchAPIApi
-* @version 3.1.2
+* @version 3.1.3
 */
 export class BatchAPIApi {
 
