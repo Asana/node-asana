@@ -1,0 +1,9 @@
+{{>licenseInfo}}
+import { ApiClient } from './ApiClient';
+{{#apiInfo}}{{#apis}}import { {{importPath}} } from './{{#apiPackage}}{{apiPackage}}/{{/apiPackage}}{{importPath}}';
+{{/apis}}{{/apiInfo}}
+
+export {
+    ApiClient{{#apiInfo}}{{#apis}},
+    {{importPath}}{{/apis}}{{/apiInfo}}
+};

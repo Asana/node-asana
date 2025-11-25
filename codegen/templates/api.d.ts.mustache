@@ -1,0 +1,42 @@
+{{>licenseInfo}}
+import { ApiClient } from "../ApiClient";
+
+/**
+* {{baseName}} service.
+* @module {{#invokerPackage}}{{&invokerPackage}}/{{/invokerPackage}}{{#apiPackage}}{{&apiPackage}}/{{/apiPackage}}{{classname}}
+* @version {{projectVersion}}
+*/
+export class {{classname}} {
+    /**
+    * Constructs a new {{&classname}}.{{#description}}
+    * {{description}}{{/description}}
+    * @alias module:{{#invokerPackage}}{{&invokerPackage}}/{{/invokerPackage}}{{#apiPackage}}{{apiPackage}}/{{/apiPackage}}{{classname}}
+    * @class
+    * @param apiClient Optional API client implementation to use, default to ApiClient.instance if unspecified.
+    */
+    constructor(apiClient?: ApiClient);
+
+    apiClient: ApiClient;
+
+{{#operations}}{{#operation}}    /**{{#summary}}
+     * {{summary}}{{/summary}}{{#notes}}
+     * {{notes}}{{/notes}}{{#allParams}}{{#required}}
+     * @param {{paramName}} {{description}}{{/required}}{{/allParams}}{{#hasOptionalParams}}
+     * @param opts Optional parameters{{#allParams}}{{^required}}
+     * @param opts.{{paramName}} {{description}}{{#defaultValue}} (default to {{defaultValue}}){{/defaultValue}}{{/required}}{{/allParams}}{{/hasOptionalParams}}
+     * @returns A Promise, with an object containing data and HTTP response
+     */
+    {{operationId}}WithHttpInfo({{#allParams}}{{#required}}{{paramName}}: {{#isString}}string{{/isString}}{{#isNumber}}number{{/isNumber}}{{#isBoolean}}boolean{{/isBoolean}}{{^isString}}{{^isNumber}}{{^isBoolean}}any{{/isBoolean}}{{/isNumber}}{{/isString}}, {{/required}}{{/allParams}}{{#hasOptionalParams}}opts?: { {{#allParams}}{{^required}}{{paramName}}?: {{#isString}}string{{/isString}}{{#isNumber}}number{{/isNumber}}{{#isBoolean}}boolean{{/isBoolean}}{{#isArray}}any[]{{/isArray}}{{^isString}}{{^isNumber}}{{^isBoolean}}{{^isArray}}any{{/isArray}}{{/isBoolean}}{{/isNumber}}{{/isString}}; {{/required}}{{/allParams}} }{{/hasOptionalParams}}): Promise<{ response: any; data: any }>;
+
+    /**{{#summary}}
+     * {{summary}}{{/summary}}{{#notes}}
+     * {{notes}}{{/notes}}{{#allParams}}{{#required}}
+     * @param {{paramName}} {{description}}{{/required}}{{/allParams}}{{#hasOptionalParams}}
+     * @param opts Optional parameters{{#allParams}}{{^required}}
+     * @param opts.{{paramName}} {{description}}{{#defaultValue}} (default to {{defaultValue}}){{/defaultValue}}{{/required}}{{/allParams}}{{/hasOptionalParams}}
+     * @returns A Promise, with data of type any
+     */
+    {{operationId}}({{#allParams}}{{#required}}{{paramName}}: {{#isString}}string{{/isString}}{{#isNumber}}number{{/isNumber}}{{#isBoolean}}boolean{{/isBoolean}}{{^isString}}{{^isNumber}}{{^isBoolean}}any{{/isBoolean}}{{/isNumber}}{{/isString}}, {{/required}}{{/allParams}}{{#hasOptionalParams}}opts?: { {{#allParams}}{{^required}}{{paramName}}?: {{#isString}}string{{/isString}}{{#isNumber}}number{{/isNumber}}{{#isBoolean}}boolean{{/isBoolean}}{{#isArray}}any[]{{/isArray}}{{^isString}}{{^isNumber}}{{^isBoolean}}{{^isArray}}any{{/isArray}}{{/isBoolean}}{{/isNumber}}{{/isString}}; {{/required}}{{/allParams}} }{{/hasOptionalParams}}): Promise<any>;
+
+{{/operation}}{{/operations}}
+}

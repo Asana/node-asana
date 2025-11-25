@@ -1,0 +1,188 @@
+{{>licenseInfo}}
+export interface Authentication {
+    type: string;
+    accessToken?: string;
+    username?: string;
+    password?: string;
+    apiKey?: string;
+    apiKeyPrefix?: string;
+    name?: string;
+    in?: string;
+}
+
+export interface Authentications {
+    [key: string]: Authentication;
+}
+
+export class ApiClient {
+    /**
+     * The base URL against which to resolve every API call's (relative) path.
+     */
+    basePath: string;
+
+    /**
+     * If set to false, endpoints that return arrays will return plain objects instead of Collection objects.
+     */
+    RETURN_COLLECTION: boolean;
+
+    /**
+     * The authentication methods to be included for all API calls.
+     */
+    authentications: Authentications;
+
+    /**
+     * The default HTTP headers to be included for all API calls.
+     */
+    defaultHeaders: { [key: string]: string };
+
+    /**
+     * The default HTTP timeout for all API calls.
+     */
+    timeout: number;
+
+    /**
+     * If set to false an additional timestamp parameter is added to all API GET calls to
+     * prevent browser caching.
+     */
+    cache: boolean;
+
+    /**
+     * If set to true, the client will save the cookies from each server
+     * response, and return them in the next request.
+     */
+    enableCookies: boolean;
+
+    /**
+     * Used to save and return cookies in a node.js (non-browser) setting,
+     * if this.enableCookies is set to true.
+     */
+    agent?: any;
+
+    /**
+     * Allow user to override superagent agent.
+     */
+    requestAgent: any;
+
+    /**
+     * The singleton instance of the ApiClient.
+     */
+    static instance: ApiClient;
+
+    /**
+     * Returns a string representation for an actual parameter.
+     * @param param The actual parameter.
+     * @returns The string representation of param.
+     */
+    paramToString(param: any): string;
+
+    /**
+     * Builds full URL by appending the given path to the base URL and replacing path parameter place-holders with parameter values.
+     * NOTE: query parameters are not handled here.
+     * @param path The path to append to the base URL.
+     * @param pathParams The parameter values to append.
+     * @returns The encoded path with parameter values substituted.
+     */
+    buildUrl(path: string, pathParams: { [key: string]: any }): string;
+
+    /**
+     * Checks whether the given content type represents JSON.
+     * @param contentType The MIME content type to check.
+     * @returns true if contentType represents JSON, otherwise false.
+     */
+    isJsonMime(contentType: string): boolean;
+
+    /**
+     * Chooses a content type from the given array, with JSON preferred.
+     * @param contentTypes An array of content types.
+     * @returns The chosen content type, or application/json if none specified.
+     */
+    jsonPreferredMime(contentTypes: string[]): string;
+
+    /**
+     * Checks whether the given parameter value represents file-like content.
+     * @param param The parameter to check.
+     * @returns true if param represents a file.
+     */
+    isFileParam(param: any): boolean;
+
+    /**
+     * Normalizes parameter values.
+     * @param params The parameters to normalize.
+     * @returns The normalized parameters.
+     */
+    normalizeParams(params: { [key: string]: any }): { [key: string]: any };
+
+    /**
+     * Builds a string representation of an array-type actual parameter, according to the given collection format.
+     * @param param An array parameter.
+     * @param collectionFormat The array element separator strategy.
+     * @returns A string representation of the supplied collection, using the specified delimiter.
+     */
+    buildCollectionParam(param: any[], collectionFormat: string): string | any[];
+
+    /**
+     * Applies authentication headers to the request.
+     * @param request The request object created by a superagent() call.
+     * @param authNames An array of authentication method names.
+     */
+    applyAuthToRequest(request: any, authNames: string[]): void;
+
+    /**
+     * Deserializes an HTTP response body into a value of the specified type.
+     * @param response A SuperAgent response object.
+     * @param returnType The type to return.
+     * @returns A value of the specified type.
+     */
+    deserialize(response: any, returnType: any): any;
+
+    /**
+     * Invokes the REST service using the supplied settings and parameters.
+     * @param path The base URL to invoke.
+     * @param httpMethod The HTTP method to use.
+     * @param pathParams A map of path parameters and their values.
+     * @param queryParams A map of query parameters and their values.
+     * @param headerParams A map of header parameters and their values.
+     * @param formParams A map of form parameters and their values.
+     * @param bodyParam The value to pass as the request body.
+     * @param authNames An array of authentication type names.
+     * @param contentTypes An array of request MIME types.
+     * @param accepts An array of acceptable response MIME types.
+     * @param returnType The required type to return.
+     * @returns A Promise object.
+     */
+    callApi(
+        path: string,
+        httpMethod: string,
+        pathParams: { [key: string]: string },
+        queryParams: { [key: string]: any },
+        headerParams: { [key: string]: any },
+        formParams: { [key: string]: any },
+        bodyParam: any,
+        authNames: string[],
+        contentTypes: string[],
+        accepts: string[],
+        returnType: any
+    ): Promise<{ response: any; data: any }>;
+
+    /**
+     * Parses an ISO-8601 string representation of a date value.
+     * @param str The date value as a string.
+     * @returns The parsed date object.
+     */
+    static parseDate(str: string): Date;
+
+    /**
+     * Converts a value to the specified type.
+     * @param data The data to convert.
+     * @param type The type to return.
+     * @returns An instance of the specified type populated with the data.
+     */
+    static convertToType(data: any, type: any): any;
+
+    /**
+     * Constructs a new map or array model from REST data.
+     * @param data The REST data.
+     * @param obj The target object or array.
+     */
+    static constructFromObject(data: any, obj: any, itemType: any): void;
+}
