@@ -1,6 +1,6 @@
 {{>code_sample_client}}
 
-let {{{vendorExtensions.x-codegen-resourceInstanceName}}} = new {{{moduleName}}}.{{{classname}}}();{{#hasParams}}
+let {{{vendorExtensions.x-codegen-resourceInstanceName}}} = new {{{moduleName}}}.{{{classname}}}(client);{{#hasParams}}
 {{#vendorExtensions.x-codegen-hasRequiredParams}}{{#parameters}}{{#required}}
 let {{{paramName}}} = {{{example}}}; // {{{dataType}}} | {{{description}}}
 {{/required}}{{/parameters}}{{/vendorExtensions.x-codegen-hasRequiredParams}}{{#hasOptionalParams}}
