@@ -6,7 +6,7 @@ const fs = require("fs");
 {{/hasParams}}
 
 {{#hasAuthMethods}}
-let client = {{{moduleName}}}.ApiClient.instance;{{#authMethods}}{{#isBasic}}
+let client = new {{{moduleName}}}.ApiClient();{{#authMethods}}{{#isBasic}}
 // Configure HTTP basic authorization: {{{name}}}
 let {{{name}}} = client.authentications['{{{name}}}'];
 {{{name}}}.username = 'YOUR USERNAME';
@@ -19,7 +19,6 @@ let {{{name}}} = client.authentications['{{{name}}}'];
 // Configure OAuth2 access token for authorization: {{{name}}}
 let {{{name}}} = client.authentications['{{{name}}}'];
 {{{name}}}.accessToken = '<YOUR_ACCESS_TOKEN>';{{/isOAuth}}{{#isBearer}}
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';{{/isBearer}}
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';{{/isBearer}}
 {{/authMethods}}
 {{/hasAuthMethods}}
