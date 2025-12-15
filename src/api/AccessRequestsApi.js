@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * AccessRequests service.
 * @module api/AccessRequestsApi
-* @version 3.1.4
+* @version 3.1.5
 */
 export class AccessRequestsApi {
 

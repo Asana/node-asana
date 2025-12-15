@@ -1,7 +1,7 @@
 # asana [![GitHub release][release-image]][release-url] [![NPM Version][npm-image]][npm-url]
 
 - API version: 1.0
-- Package version: 3.1.4
+- Package version: 3.1.5
 
 ## Installation
 
@@ -18,18 +18,17 @@ npm install asana --save
 Include the latest release directly from GitHub:
 
 ```html
-<script src="https://github.com/Asana/node-asana/releases/download/v3.1.4/asana-min.js"></script>
+<script src="https://github.com/Asana/node-asana/releases/download/v3.1.5/asana-min.js"></script>
 ```
 
 Example usage (**NOTE**: be careful not to expose your access token):
 
 ```html
 <script>
-    let client = Asana.ApiClient.instance;
-    let token = client.authentications['token'];
-    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-    let usersApiInstance = new Asana.UsersApi();
+    let usersApiInstance = new Asana.UsersApi(client);
     let user_gid = "me";
     let opts = {};
 
@@ -69,7 +68,7 @@ const Asana = require('asana');
 let client = new Asana.ApiClient();
 client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let usersApiInstance = new Asana.UsersApi();
+let usersApiInstance = new Asana.UsersApi(client);
 let user_gid = "me"; // String | A string identifying a user. This can either be the string \"me\", an email, or the gid of a user.
 let opts = { 
     "opt_fields": "email,name,photo,photo.image_1024x1024,photo.image_128x128,photo.image_21x21,photo.image_27x27,photo.image_36x36,photo.image_60x60,workspaces,workspaces.name" // [String] | This endpoint returns a compact resource, which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -91,7 +90,7 @@ const Asana = require('asana');
 let client = new Asana.ApiClient();
 client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let opts = { 
     "limit": 50, // Number | Results per page. The number of objects to return per page. The value must be between 1 and 100.
     "project": "<YOUR_PROJECT_GID>", // String | The project to filter tasks on.
@@ -114,7 +113,7 @@ const Asana = require('asana');
 let client = new Asana.ApiClient();
 client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let body = {
     "data": {
         "name": "New Task",
@@ -149,7 +148,7 @@ const Asana = require('asana');
 let client = new Asana.ApiClient();
 client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let task_gid = "<YOUR_TASK_GID>";
 let body = {
     "data": {
@@ -173,7 +172,7 @@ const Asana = require('asana');
 let client = new Asana.ApiClient();
 client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let task_gid = "<YOUR_TASK_GID>";
 
 // DELETE - Delete a task
@@ -423,7 +422,7 @@ const Asana = require('asana');
 let client = new Asana.ApiClient();
 client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let opts = {
     "limit": 2,
     "project": "<YOUR_PROJECT_GID>"
@@ -464,7 +463,7 @@ const Asana = require('asana');
 let client = new Asana.ApiClient();
 client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let opts = { 
     "limit": 1,
     "project": "<YOUR_PROJECT_GID>",
@@ -612,7 +611,7 @@ const Asana = require('asana');
 let client = new Asana.ApiClient();
 client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let opts = {
     "project": "<YOUR_PROJECT_GID>",
     "limit": 100,
@@ -723,7 +722,7 @@ const Asana = require('asana');
 let client = new Asana.ApiClient();
 client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let opts = {
     'project': "<YOUR_PROJECT_GID>",
     "limit": 5,
@@ -791,7 +790,7 @@ client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 // Turn off pagination
 client.RETURN_COLLECTION = false;
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let opts = {
     'project': "<YOUR_PROJECT_GID>",
     'limit': 1
@@ -831,7 +830,7 @@ const Asana = require('asana');
 let client = new Asana.ApiClient();
 client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let eventsApiInstance = new Asana.EventsApi();
+let eventsApiInstance = new Asana.EventsApi(client);
 let resource = "<YOUR_TASK_OR_PROJECT_GID>"; // String | A resource ID to subscribe to. The resource can be a task or project.
 let opts = {
     "sync": ""
@@ -902,7 +901,7 @@ const Asana = require('asana');
 let client = new Asana.ApiClient();
 client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let task_gid = "<YOUR_TASK_GID>";
 let opts = {};
 
@@ -1120,6 +1119,6 @@ client.callApi(
 ```
 
 [release-image]: https://img.shields.io/github/release/asana/node-asana.svg
-[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.1.4
+[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.1.5
 [npm-image]: http://img.shields.io/npm/v/asana.svg?style=flat-square
 [npm-url]: https://www.npmjs.org/package/asana
