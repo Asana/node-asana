@@ -45,11 +45,10 @@ Set dependencies for a task
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The list of tasks to set as dependencies.
 let task_gid = "321654"; // String | The task to operate on.
 
@@ -90,11 +89,10 @@ Set dependents for a task
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The list of tasks to add as dependents.
 let task_gid = "321654"; // String | The task to operate on.
 
@@ -135,11 +133,10 @@ Add followers to a task
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The followers to add to the task.
 let task_gid = "321654"; // String | The task to operate on.
 let opts = { 
@@ -183,11 +180,10 @@ Add a project to a task
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The project to add the task to.
 let task_gid = "321654"; // String | The task to operate on.
 
@@ -228,11 +224,10 @@ Add a tag to a task
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The tag to add to the task.
 let task_gid = "321654"; // String | The task to operate on.
 
@@ -273,11 +268,10 @@ Create a subtask
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The new subtask to create.
 let task_gid = "321654"; // String | The task to operate on.
 let opts = { 
@@ -321,11 +315,10 @@ Create a task
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The task to create.
 let opts = { 
     'opt_fields': "actual_time_minutes,approval_status,assignee,assignee.name,assignee_section,assignee_section.name,assignee_status,completed,completed_at,completed_by,completed_by.name,created_at,created_by,custom_fields,custom_fields.asana_created_field,custom_fields.created_by,custom_fields.created_by.name,custom_fields.currency_code,custom_fields.custom_label,custom_fields.custom_label_position,custom_fields.date_value,custom_fields.date_value.date,custom_fields.date_value.date_time,custom_fields.default_access_level,custom_fields.description,custom_fields.display_value,custom_fields.enabled,custom_fields.enum_options,custom_fields.enum_options.color,custom_fields.enum_options.enabled,custom_fields.enum_options.name,custom_fields.enum_value,custom_fields.enum_value.color,custom_fields.enum_value.enabled,custom_fields.enum_value.name,custom_fields.format,custom_fields.has_notifications_enabled,custom_fields.id_prefix,custom_fields.input_restrictions,custom_fields.is_formula_field,custom_fields.is_global_to_workspace,custom_fields.is_value_read_only,custom_fields.multi_enum_values,custom_fields.multi_enum_values.color,custom_fields.multi_enum_values.enabled,custom_fields.multi_enum_values.name,custom_fields.name,custom_fields.number_value,custom_fields.people_value,custom_fields.people_value.name,custom_fields.precision,custom_fields.privacy_setting,custom_fields.reference_value,custom_fields.reference_value.name,custom_fields.representation_type,custom_fields.resource_subtype,custom_fields.text_value,custom_fields.type,custom_type,custom_type.name,custom_type_status_option,custom_type_status_option.name,dependencies,dependents,due_at,due_on,external,external.data,followers,followers.name,hearted,hearts,hearts.user,hearts.user.name,html_notes,is_rendered_as_separator,liked,likes,likes.user,likes.user.name,memberships,memberships.project,memberships.project.name,memberships.section,memberships.section.name,modified_at,name,notes,num_hearts,num_likes,num_subtasks,parent,parent.created_by,parent.name,parent.resource_subtype,permalink_url,projects,projects.name,resource_subtype,start_at,start_on,tags,tags.name,workspace,workspace.name"
@@ -367,11 +360,10 @@ Delete a task
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let task_gid = "321654"; // String | The task to operate on.
 
 tasksApiInstance.deleteTask(task_gid).then((result) => {
@@ -410,11 +402,10 @@ Duplicate a task
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | Describes the duplicate's name and the fields that will be duplicated.
 let task_gid = "321654"; // String | The task to operate on.
 let opts = { 
@@ -458,11 +449,10 @@ Get dependencies from a task
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let task_gid = "321654"; // String | The task to operate on.
 let opts = { 
     'limit': 50, 
@@ -508,11 +498,10 @@ Get dependents from a task
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let task_gid = "321654"; // String | The task to operate on.
 let opts = { 
     'limit': 50, 
@@ -558,11 +547,10 @@ Get subtasks from a task
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let task_gid = "321654"; // String | The task to operate on.
 let opts = { 
     'limit': 50, 
@@ -608,11 +596,10 @@ Get a task
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let task_gid = "321654"; // String | The task to operate on.
 let opts = { 
     'opt_fields': "actual_time_minutes,approval_status,assignee,assignee.name,assignee_section,assignee_section.name,assignee_status,completed,completed_at,completed_by,completed_by.name,created_at,created_by,custom_fields,custom_fields.asana_created_field,custom_fields.created_by,custom_fields.created_by.name,custom_fields.currency_code,custom_fields.custom_label,custom_fields.custom_label_position,custom_fields.date_value,custom_fields.date_value.date,custom_fields.date_value.date_time,custom_fields.default_access_level,custom_fields.description,custom_fields.display_value,custom_fields.enabled,custom_fields.enum_options,custom_fields.enum_options.color,custom_fields.enum_options.enabled,custom_fields.enum_options.name,custom_fields.enum_value,custom_fields.enum_value.color,custom_fields.enum_value.enabled,custom_fields.enum_value.name,custom_fields.format,custom_fields.has_notifications_enabled,custom_fields.id_prefix,custom_fields.input_restrictions,custom_fields.is_formula_field,custom_fields.is_global_to_workspace,custom_fields.is_value_read_only,custom_fields.multi_enum_values,custom_fields.multi_enum_values.color,custom_fields.multi_enum_values.enabled,custom_fields.multi_enum_values.name,custom_fields.name,custom_fields.number_value,custom_fields.people_value,custom_fields.people_value.name,custom_fields.precision,custom_fields.privacy_setting,custom_fields.reference_value,custom_fields.reference_value.name,custom_fields.representation_type,custom_fields.resource_subtype,custom_fields.text_value,custom_fields.type,custom_type,custom_type.name,custom_type_status_option,custom_type_status_option.name,dependencies,dependents,due_at,due_on,external,external.data,followers,followers.name,hearted,hearts,hearts.user,hearts.user.name,html_notes,is_rendered_as_separator,liked,likes,likes.user,likes.user.name,memberships,memberships.project,memberships.project.name,memberships.section,memberships.section.name,modified_at,name,notes,num_hearts,num_likes,num_subtasks,parent,parent.created_by,parent.name,parent.resource_subtype,permalink_url,projects,projects.name,resource_subtype,start_at,start_on,tags,tags.name,workspace,workspace.name"
@@ -654,11 +641,10 @@ Get a task for a given custom ID
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
 let custom_id = "EX-1"; // String | Generated custom ID for a task.
 
@@ -699,11 +685,10 @@ Get multiple tasks
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let opts = { 
     'limit': 50, 
     'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
@@ -759,11 +744,10 @@ Get tasks from a project
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let project_gid = "1331"; // String | Globally unique identifier for the project.
 let opts = { 
     'completed_since': "2012-02-22T02:06:58.158Z", 
@@ -811,11 +795,10 @@ Get tasks from a section
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let section_gid = "321654"; // String | The globally unique identifier for the section.
 let opts = { 
     'limit': 50, 
@@ -863,11 +846,10 @@ Get tasks from a tag
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let tag_gid = "11235"; // String | Globally unique identifier for the tag.
 let opts = { 
     'limit': 50, 
@@ -913,11 +895,10 @@ Get tasks from a user task list
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let user_task_list_gid = "12345"; // String | Globally unique identifier for the user task list.
 let opts = { 
     'completed_since': "2012-02-22T02:06:58.158Z", 
@@ -965,11 +946,10 @@ Unlink dependencies from a task
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The list of tasks to unlink as dependencies.
 let task_gid = "321654"; // String | The task to operate on.
 
@@ -1010,11 +990,10 @@ Unlink dependents from a task
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The list of tasks to remove as dependents.
 let task_gid = "321654"; // String | The task to operate on.
 
@@ -1055,11 +1034,10 @@ Remove followers from a task
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The followers to remove from the task.
 let task_gid = "321654"; // String | The task to operate on.
 let opts = { 
@@ -1103,11 +1081,10 @@ Remove a project from a task
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The project to remove the task from.
 let task_gid = "321654"; // String | The task to operate on.
 
@@ -1148,11 +1125,10 @@ Remove a tag from a task
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The tag to remove from the task.
 let task_gid = "321654"; // String | The task to operate on.
 
@@ -1193,11 +1169,10 @@ Search tasks in a workspace
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
 let opts = { 
     'text': "Bug", 
@@ -1353,11 +1328,10 @@ Set the parent of a task
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The new parent of the subtask.
 let task_gid = "321654"; // String | The task to operate on.
 let opts = { 
@@ -1401,11 +1375,10 @@ Update a task
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tasksApiInstance = new Asana.TasksApi();
+let tasksApiInstance = new Asana.TasksApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The task to update.
 let task_gid = "321654"; // String | The task to operate on.
 let opts = { 

@@ -20,11 +20,10 @@ Returns the full record for a single time period.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let timePeriodsApiInstance = new Asana.TimePeriodsApi();
+let timePeriodsApiInstance = new Asana.TimePeriodsApi(client);
 let time_period_gid = "917392"; // String | Globally unique identifier for the time period.
 let opts = { 
     'opt_fields': "display_name,end_on,parent,parent.display_name,parent.end_on,parent.period,parent.start_on,period,start_on"
@@ -66,11 +65,10 @@ Returns compact time period records.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let timePeriodsApiInstance = new Asana.TimePeriodsApi();
+let timePeriodsApiInstance = new Asana.TimePeriodsApi(client);
 let workspace = "31326"; // String | Globally unique identifier for the workspace.
 let opts = { 
     'limit': 50, 

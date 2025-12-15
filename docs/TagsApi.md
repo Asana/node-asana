@@ -26,11 +26,10 @@ Create a tag
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tagsApiInstance = new Asana.TagsApi();
+let tagsApiInstance = new Asana.TagsApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The tag to create.
 let opts = { 
     'opt_fields': "color,created_at,followers,followers.name,name,notes,permalink_url,workspace,workspace.name"
@@ -72,11 +71,10 @@ Create a tag in a workspace
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tagsApiInstance = new Asana.TagsApi();
+let tagsApiInstance = new Asana.TagsApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The tag to create.
 let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
 let opts = { 
@@ -120,11 +118,10 @@ A specific, existing tag can be deleted by making a DELETE request on the URL fo
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tagsApiInstance = new Asana.TagsApi();
+let tagsApiInstance = new Asana.TagsApi(client);
 let tag_gid = "11235"; // String | Globally unique identifier for the tag.
 
 tagsApiInstance.deleteTag(tag_gid).then((result) => {
@@ -163,11 +160,10 @@ Get a tag
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tagsApiInstance = new Asana.TagsApi();
+let tagsApiInstance = new Asana.TagsApi(client);
 let tag_gid = "11235"; // String | Globally unique identifier for the tag.
 let opts = { 
     'opt_fields': "color,created_at,followers,followers.name,name,notes,permalink_url,workspace,workspace.name"
@@ -209,11 +205,10 @@ Get multiple tags
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tagsApiInstance = new Asana.TagsApi();
+let tagsApiInstance = new Asana.TagsApi(client);
 let opts = { 
     'limit': 50, 
     'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
@@ -259,11 +254,10 @@ Get a task&#x27;s tags
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tagsApiInstance = new Asana.TagsApi();
+let tagsApiInstance = new Asana.TagsApi(client);
 let task_gid = "321654"; // String | The task to operate on.
 let opts = { 
     'limit': 50, 
@@ -309,11 +303,10 @@ Get tags in a workspace
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tagsApiInstance = new Asana.TagsApi();
+let tagsApiInstance = new Asana.TagsApi(client);
 let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
 let opts = { 
     'limit': 50, 
@@ -359,11 +352,10 @@ Update a tag
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let tagsApiInstance = new Asana.TagsApi();
+let tagsApiInstance = new Asana.TagsApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The tag to update.
 let tag_gid = "11235"; // String | Globally unique identifier for the tag.
 let opts = { 

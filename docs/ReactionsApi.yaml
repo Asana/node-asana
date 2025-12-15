@@ -2,11 +2,10 @@ ReactionsApi:
   getReactionsOnObject: |-
     const Asana = require('asana');
     
-    let client = Asana.ApiClient.instance;
-    let token = client.authentications['token'];
-    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
-    let reactionsApiInstance = new Asana.ReactionsApi();
+    let reactionsApiInstance = new Asana.ReactionsApi(client);
     let target = "159874"; // String | Globally unique identifier for object to fetch reactions from. Must be a GID for a status update or story.
     let emoji_base = "👍"; // String | Only return reactions with this emoji base character.
     let opts = { 

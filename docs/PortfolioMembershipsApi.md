@@ -21,11 +21,10 @@ Returns the complete portfolio record for a single portfolio membership.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let portfolioMembershipsApiInstance = new Asana.PortfolioMembershipsApi();
+let portfolioMembershipsApiInstance = new Asana.PortfolioMembershipsApi(client);
 let portfolio_membership_gid = "1331"; // String | 
 let opts = { 
     'opt_fields': "access_level,portfolio,portfolio.name,user,user.name"
@@ -67,11 +66,10 @@ Returns a list of portfolio memberships in compact representation. You must spec
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let portfolioMembershipsApiInstance = new Asana.PortfolioMembershipsApi();
+let portfolioMembershipsApiInstance = new Asana.PortfolioMembershipsApi(client);
 let opts = { 
     'portfolio': "12345", 
     'workspace': "12345", 
@@ -121,11 +119,10 @@ Returns the compact portfolio membership records for the portfolio.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let portfolioMembershipsApiInstance = new Asana.PortfolioMembershipsApi();
+let portfolioMembershipsApiInstance = new Asana.PortfolioMembershipsApi(client);
 let portfolio_gid = "12345"; // String | Globally unique identifier for the portfolio.
 let opts = { 
     'user': "me", 

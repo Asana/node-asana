@@ -23,11 +23,10 @@ Creates a new membership in a `goal`, `project`, `portfolio`, or `custom_field`,
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let membershipsApiInstance = new Asana.MembershipsApi();
+let membershipsApiInstance = new Asana.MembershipsApi(client);
 let opts = { 
     'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}
 };
@@ -67,11 +66,10 @@ A specific, existing membership for a `goal`, `project`, `portfolio` or `custom_
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let membershipsApiInstance = new Asana.MembershipsApi();
+let membershipsApiInstance = new Asana.MembershipsApi(client);
 let membership_gid = "12345"; // String | Globally unique identifier for the membership.
 
 membershipsApiInstance.deleteMembership(membership_gid).then((result) => {
@@ -110,11 +108,10 @@ Returns a `project_membership`, `goal_membership`, `portfolio_membership`, or `c
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let membershipsApiInstance = new Asana.MembershipsApi();
+let membershipsApiInstance = new Asana.MembershipsApi(client);
 let membership_gid = "12345"; // String | Globally unique identifier for the membership.
 
 membershipsApiInstance.getMembership(membership_gid).then((result) => {
@@ -153,11 +150,10 @@ Returns compact `goal_membership`, `project_membership`, `portfolio_membership`,
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let membershipsApiInstance = new Asana.MembershipsApi();
+let membershipsApiInstance = new Asana.MembershipsApi(client);
 let opts = { 
     'parent': "159874", 
     'member': "1061493", 
@@ -205,11 +201,10 @@ An existing membership can be updated by making a `PUT` request on the membershi
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let membershipsApiInstance = new Asana.MembershipsApi();
+let membershipsApiInstance = new Asana.MembershipsApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The membership to update.
 let membership_gid = "12345"; // String | Globally unique identifier for the membership.
 

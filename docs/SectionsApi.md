@@ -25,11 +25,10 @@ Add task to section
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let sectionsApiInstance = new Asana.SectionsApi();
+let sectionsApiInstance = new Asana.SectionsApi(client);
 let section_gid = "321654"; // String | The globally unique identifier for the section.
 let opts = { 
     'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}
@@ -71,11 +70,10 @@ Creates a new section in a project. Returns the full record of the newly created
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let sectionsApiInstance = new Asana.SectionsApi();
+let sectionsApiInstance = new Asana.SectionsApi(client);
 let project_gid = "1331"; // String | Globally unique identifier for the project.
 let opts = { 
     'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}, 
@@ -119,11 +117,10 @@ A specific, existing section can be deleted by making a DELETE request on the UR
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let sectionsApiInstance = new Asana.SectionsApi();
+let sectionsApiInstance = new Asana.SectionsApi(client);
 let section_gid = "321654"; // String | The globally unique identifier for the section.
 
 sectionsApiInstance.deleteSection(section_gid).then((result) => {
@@ -162,11 +159,10 @@ Returns the complete record for a single section.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let sectionsApiInstance = new Asana.SectionsApi();
+let sectionsApiInstance = new Asana.SectionsApi(client);
 let section_gid = "321654"; // String | The globally unique identifier for the section.
 let opts = { 
     'opt_fields': "created_at,name,project,project.name,projects,projects.name"
@@ -208,11 +204,10 @@ Returns the compact records for all sections in the specified project.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let sectionsApiInstance = new Asana.SectionsApi();
+let sectionsApiInstance = new Asana.SectionsApi(client);
 let project_gid = "1331"; // String | Globally unique identifier for the project.
 let opts = { 
     'limit': 50, 
@@ -258,11 +253,10 @@ Move sections relative to each other. One of `before_section` or `after_section`
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let sectionsApiInstance = new Asana.SectionsApi();
+let sectionsApiInstance = new Asana.SectionsApi(client);
 let project_gid = "1331"; // String | Globally unique identifier for the project.
 let opts = { 
     'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}
@@ -304,11 +298,10 @@ A specific, existing section can be updated by making a PUT request on the URL f
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let sectionsApiInstance = new Asana.SectionsApi();
+let sectionsApiInstance = new Asana.SectionsApi(client);
 let section_gid = "321654"; // String | The globally unique identifier for the section.
 let opts = { 
     'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}, 

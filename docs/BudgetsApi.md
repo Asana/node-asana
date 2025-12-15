@@ -23,11 +23,10 @@ Creates a new budget.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let budgetsApiInstance = new Asana.BudgetsApi();
+let budgetsApiInstance = new Asana.BudgetsApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The budget to create.
 
 budgetsApiInstance.createBudget(body).then((result) => {
@@ -66,11 +65,10 @@ A specific, existing budget can be deleted by making a DELETE request on the URL
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let budgetsApiInstance = new Asana.BudgetsApi();
+let budgetsApiInstance = new Asana.BudgetsApi(client);
 let budget_gid = "12345"; // String | Globally unique identifier for the budget.
 
 budgetsApiInstance.deleteBudget(budget_gid).then((result) => {
@@ -109,11 +107,10 @@ Returns the complete budget record for a single budget.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let budgetsApiInstance = new Asana.BudgetsApi();
+let budgetsApiInstance = new Asana.BudgetsApi(client);
 let budget_gid = "12345"; // String | Globally unique identifier for the budget.
 let opts = { 
     'opt_fields': "actual,actual.billable_status_filter,actual.units,actual.value,budget_type,estimate,estimate.billable_status_filter,estimate.enabled,estimate.source,estimate.units,estimate.value,parent,parent.name,total,total.enabled,total.units,total.value"
@@ -155,11 +152,10 @@ Gets all budgets for a given *parent*. This will at most return a list of size 1
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let budgetsApiInstance = new Asana.BudgetsApi();
+let budgetsApiInstance = new Asana.BudgetsApi(client);
 let parent = "1331"; // String | Globally unique identifier for the budget's parent object. This currently can only be a `project`.
 
 budgetsApiInstance.getBudgets(parent).then((result) => {
@@ -198,11 +194,10 @@ An existing budget can be updated by making a PUT request on the URL for that bu
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let budgetsApiInstance = new Asana.BudgetsApi();
+let budgetsApiInstance = new Asana.BudgetsApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The budget to update.
 let budget_gid = "12345"; // String | Globally unique identifier for the budget.
 let opts = { 

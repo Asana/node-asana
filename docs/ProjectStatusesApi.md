@@ -22,11 +22,10 @@ Create a project status
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let projectStatusesApiInstance = new Asana.ProjectStatusesApi();
+let projectStatusesApiInstance = new Asana.ProjectStatusesApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The project status to create.
 let project_gid = "1331"; // String | Globally unique identifier for the project.
 let opts = { 
@@ -70,11 +69,10 @@ Delete a project status
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let projectStatusesApiInstance = new Asana.ProjectStatusesApi();
+let projectStatusesApiInstance = new Asana.ProjectStatusesApi(client);
 let project_status_gid = "321654"; // String | The project status update to get.
 
 projectStatusesApiInstance.deleteProjectStatus(project_status_gid).then((result) => {
@@ -113,11 +111,10 @@ Get a project status
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let projectStatusesApiInstance = new Asana.ProjectStatusesApi();
+let projectStatusesApiInstance = new Asana.ProjectStatusesApi(client);
 let project_status_gid = "321654"; // String | The project status update to get.
 let opts = { 
     'opt_fields': "author,author.name,color,created_at,created_by,created_by.name,html_text,modified_at,text,title"
@@ -159,11 +156,10 @@ Get statuses from a project
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let projectStatusesApiInstance = new Asana.ProjectStatusesApi();
+let projectStatusesApiInstance = new Asana.ProjectStatusesApi(client);
 let project_gid = "1331"; // String | Globally unique identifier for the project.
 let opts = { 
     'limit': 50, 

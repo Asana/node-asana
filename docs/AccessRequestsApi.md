@@ -22,11 +22,10 @@ Approves an access request for a target object.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let accessRequestsApiInstance = new Asana.AccessRequestsApi();
+let accessRequestsApiInstance = new Asana.AccessRequestsApi(client);
 let access_request_gid = "12345"; // String | Globally unique identifier for the access request.
 
 accessRequestsApiInstance.approveAccessRequest(access_request_gid).then((result) => {
@@ -65,11 +64,10 @@ Submits a new access request for a private object. Currently supports projects a
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let accessRequestsApiInstance = new Asana.AccessRequestsApi();
+let accessRequestsApiInstance = new Asana.AccessRequestsApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | 
 
 accessRequestsApiInstance.createAccessRequest(body).then((result) => {
@@ -108,11 +106,10 @@ Returns the pending access requests for a target object or a target object filte
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let accessRequestsApiInstance = new Asana.AccessRequestsApi();
+let accessRequestsApiInstance = new Asana.AccessRequestsApi(client);
 let target = "1331"; // String | Globally unique identifier for the target object.
 let opts = { 
     'user': "me", 
@@ -156,11 +153,10 @@ Rejects an access request for a target object.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let accessRequestsApiInstance = new Asana.AccessRequestsApi();
+let accessRequestsApiInstance = new Asana.AccessRequestsApi(client);
 let access_request_gid = "12345"; // String | Globally unique identifier for the access request.
 
 accessRequestsApiInstance.rejectAccessRequest(access_request_gid).then((result) => {

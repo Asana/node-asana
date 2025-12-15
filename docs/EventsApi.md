@@ -19,11 +19,10 @@ Returns the full record for all events that have occurred since the sync token w
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let eventsApiInstance = new Asana.EventsApi();
+let eventsApiInstance = new Asana.EventsApi(client);
 let resource = "12345"; // String | A resource ID to subscribe to. The resource can be a task, project, or goal.
 let opts = { 
     'sync': "de4774f6915eae04714ca93bb2f5ee81", 

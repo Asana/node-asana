@@ -20,11 +20,10 @@ This method creates a request to export an Organization. Asana will complete the
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let organizationExportsApiInstance = new Asana.OrganizationExportsApi();
+let organizationExportsApiInstance = new Asana.OrganizationExportsApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The organization to export.
 let opts = { 
     'opt_fields': "created_at,download_url,organization,organization.name,state"
@@ -66,11 +65,10 @@ Returns details of a previously-requested Organization export.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let organizationExportsApiInstance = new Asana.OrganizationExportsApi();
+let organizationExportsApiInstance = new Asana.OrganizationExportsApi(client);
 let organization_export_gid = "12345"; // String | Globally unique identifier for the organization export.
 let opts = { 
     'opt_fields': "created_at,download_url,organization,organization.name,state"

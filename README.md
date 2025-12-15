@@ -1,7 +1,7 @@
 # asana [![GitHub release][release-image]][release-url] [![NPM Version][npm-image]][npm-url]
 
 - API version: 1.0
-- Package version: 3.1.3
+- Package version: 3.1.4
 
 ## Installation
 
@@ -18,7 +18,7 @@ npm install asana --save
 Include the latest release directly from GitHub:
 
 ```html
-<script src="https://github.com/Asana/node-asana/releases/download/v3.1.3/asana-min.js"></script>
+<script src="https://github.com/Asana/node-asana/releases/download/v3.1.4/asana-min.js"></script>
 ```
 
 Example usage (**NOTE**: be careful not to expose your access token):
@@ -66,9 +66,8 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let usersApiInstance = new Asana.UsersApi();
 let user_gid = "me"; // String | A string identifying a user. This can either be the string \"me\", an email, or the gid of a user.
@@ -89,9 +88,8 @@ usersApiInstance.getUser(user_gid, opts).then((result) => {
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let tasksApiInstance = new Asana.TasksApi();
 let opts = { 
@@ -113,9 +111,8 @@ tasksApiInstance.getTasks(opts).then((result) => {
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let tasksApiInstance = new Asana.TasksApi();
 let body = {
@@ -149,9 +146,8 @@ tasksApiInstance.createTask(body, opts).then((result) => {
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let tasksApiInstance = new Asana.TasksApi();
 let task_gid = "<YOUR_TASK_GID>";
@@ -174,9 +170,8 @@ tasksApiInstance.updateTask(body, task_gid, opts).then((result) => {
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let tasksApiInstance = new Asana.TasksApi();
 let task_gid = "<YOUR_TASK_GID>";
@@ -215,8 +210,10 @@ Class | Method | HTTP request | Description
 *Asana.BudgetsApi* | [**getBudget**](docs/BudgetsApi.md#getBudget) | **GET** /budgets/{budget_gid} | Get a budget
 *Asana.BudgetsApi* | [**getBudgets**](docs/BudgetsApi.md#getBudgets) | **GET** /budgets | Get all budgets
 *Asana.BudgetsApi* | [**updateBudget**](docs/BudgetsApi.md#updateBudget) | **PUT** /budgets/{budget_gid} | Update a budget
+*Asana.CustomFieldSettingsApi* | [**getCustomFieldSettingsForGoal**](docs/CustomFieldSettingsApi.md#getCustomFieldSettingsForGoal) | **GET** /goals/{goal_gid}/custom_field_settings | Get a goal&#x27;s custom fields
 *Asana.CustomFieldSettingsApi* | [**getCustomFieldSettingsForPortfolio**](docs/CustomFieldSettingsApi.md#getCustomFieldSettingsForPortfolio) | **GET** /portfolios/{portfolio_gid}/custom_field_settings | Get a portfolio&#x27;s custom fields
 *Asana.CustomFieldSettingsApi* | [**getCustomFieldSettingsForProject**](docs/CustomFieldSettingsApi.md#getCustomFieldSettingsForProject) | **GET** /projects/{project_gid}/custom_field_settings | Get a project&#x27;s custom fields
+*Asana.CustomFieldSettingsApi* | [**getCustomFieldSettingsForTeam**](docs/CustomFieldSettingsApi.md#getCustomFieldSettingsForTeam) | **GET** /teams/{team_gid}/custom_field_settings | Get a team&#x27;s custom fields
 *Asana.CustomFieldsApi* | [**createCustomField**](docs/CustomFieldsApi.md#createCustomField) | **POST** /custom_fields | Create a custom field
 *Asana.CustomFieldsApi* | [**createEnumOptionForCustomField**](docs/CustomFieldsApi.md#createEnumOptionForCustomField) | **POST** /custom_fields/{custom_field_gid}/enum_options | Create an enum option
 *Asana.CustomFieldsApi* | [**deleteCustomField**](docs/CustomFieldsApi.md#deleteCustomField) | **DELETE** /custom_fields/{custom_field_gid} | Delete a custom field
@@ -235,6 +232,7 @@ Class | Method | HTTP request | Description
 *Asana.GoalRelationshipsApi* | [**getGoalRelationships**](docs/GoalRelationshipsApi.md#getGoalRelationships) | **GET** /goal_relationships | Get goal relationships
 *Asana.GoalRelationshipsApi* | [**removeSupportingRelationship**](docs/GoalRelationshipsApi.md#removeSupportingRelationship) | **POST** /goals/{goal_gid}/removeSupportingRelationship | Removes a supporting goal relationship
 *Asana.GoalRelationshipsApi* | [**updateGoalRelationship**](docs/GoalRelationshipsApi.md#updateGoalRelationship) | **PUT** /goal_relationships/{goal_relationship_gid} | Update a goal relationship
+*Asana.GoalsApi* | [**addCustomFieldSettingForGoal**](docs/GoalsApi.md#addCustomFieldSettingForGoal) | **POST** /goals/{goal_gid}/addCustomFieldSetting | Add a custom field to a goal
 *Asana.GoalsApi* | [**addFollowers**](docs/GoalsApi.md#addFollowers) | **POST** /goals/{goal_gid}/addFollowers | Add a collaborator to a goal
 *Asana.GoalsApi* | [**createGoal**](docs/GoalsApi.md#createGoal) | **POST** /goals | Create a goal
 *Asana.GoalsApi* | [**createGoalMetric**](docs/GoalsApi.md#createGoalMetric) | **POST** /goals/{goal_gid}/setMetric | Create a goal metric
@@ -242,6 +240,7 @@ Class | Method | HTTP request | Description
 *Asana.GoalsApi* | [**getGoal**](docs/GoalsApi.md#getGoal) | **GET** /goals/{goal_gid} | Get a goal
 *Asana.GoalsApi* | [**getGoals**](docs/GoalsApi.md#getGoals) | **GET** /goals | Get goals
 *Asana.GoalsApi* | [**getParentGoalsForGoal**](docs/GoalsApi.md#getParentGoalsForGoal) | **GET** /goals/{goal_gid}/parentGoals | Get parent goals from a goal
+*Asana.GoalsApi* | [**removeCustomFieldSettingForGoal**](docs/GoalsApi.md#removeCustomFieldSettingForGoal) | **POST** /goals/{goal_gid}/removeCustomFieldSetting | Remove a custom field from a goal
 *Asana.GoalsApi* | [**removeFollowers**](docs/GoalsApi.md#removeFollowers) | **POST** /goals/{goal_gid}/removeFollowers | Remove a collaborator from a goal
 *Asana.GoalsApi* | [**updateGoal**](docs/GoalsApi.md#updateGoal) | **PUT** /goals/{goal_gid} | Update a goal
 *Asana.GoalsApi* | [**updateGoalMetric**](docs/GoalsApi.md#updateGoalMetric) | **POST** /goals/{goal_gid}/setMetricCurrentValue | Update a goal metric
@@ -388,9 +387,12 @@ Class | Method | HTTP request | Description
 *Asana.UserTaskListsApi* | [**getUserTaskListForUser**](docs/UserTaskListsApi.md#getUserTaskListForUser) | **GET** /users/{user_gid}/user_task_list | Get a user&#x27;s task list
 *Asana.UsersApi* | [**getFavoritesForUser**](docs/UsersApi.md#getFavoritesForUser) | **GET** /users/{user_gid}/favorites | Get a user&#x27;s favorites
 *Asana.UsersApi* | [**getUser**](docs/UsersApi.md#getUser) | **GET** /users/{user_gid} | Get a user
+*Asana.UsersApi* | [**getUserForWorkspace**](docs/UsersApi.md#getUserForWorkspace) | **GET** /workspaces/{workspace_gid}/users/{user_gid} | Get a user in a workspace or organization
 *Asana.UsersApi* | [**getUsers**](docs/UsersApi.md#getUsers) | **GET** /users | Get multiple users
 *Asana.UsersApi* | [**getUsersForTeam**](docs/UsersApi.md#getUsersForTeam) | **GET** /teams/{team_gid}/users | Get users in a team
 *Asana.UsersApi* | [**getUsersForWorkspace**](docs/UsersApi.md#getUsersForWorkspace) | **GET** /workspaces/{workspace_gid}/users | Get users in a workspace or organization
+*Asana.UsersApi* | [**updateUser**](docs/UsersApi.md#updateUser) | **PUT** /users/{user_gid} | Update a user
+*Asana.UsersApi* | [**updateUserForWorkspace**](docs/UsersApi.md#updateUserForWorkspace) | **PUT** /workspaces/{workspace_gid}/users/{user_gid} | Update a user in a workspace or organization
 *Asana.WebhooksApi* | [**createWebhook**](docs/WebhooksApi.md#createWebhook) | **POST** /webhooks | Establish a webhook
 *Asana.WebhooksApi* | [**deleteWebhook**](docs/WebhooksApi.md#deleteWebhook) | **DELETE** /webhooks/{webhook_gid} | Delete a webhook
 *Asana.WebhooksApi* | [**getWebhook**](docs/WebhooksApi.md#getWebhook) | **GET** /webhooks/{webhook_gid} | Get a webhook
@@ -418,9 +420,8 @@ Our `opt_fields` feature allows you to request for properties of a resource that
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let tasksApiInstance = new Asana.TasksApi();
 let opts = {
@@ -460,9 +461,8 @@ tasksApiInstance.getTasks(opts).then((result) => {
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let tasksApiInstance = new Asana.TasksApi();
 let opts = { 
@@ -609,9 +609,8 @@ EX: Pagination gather all resources
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let tasksApiInstance = new Asana.TasksApi();
 let opts = {
@@ -721,9 +720,8 @@ EX: Pagination do something per page
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let tasksApiInstance = new Asana.TasksApi();
 let opts = {
@@ -787,9 +785,8 @@ EX: Turning off pagination
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 // Turn off pagination
 client.RETURN_COLLECTION = false;
@@ -831,9 +828,8 @@ request to [getEvents](docs/EventsApi.md#getEvents).
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let eventsApiInstance = new Asana.EventsApi();
 let resource = "<YOUR_TASK_OR_PROJECT_GID>"; // String | A resource ID to subscribe to. The resource can be a task or project.
@@ -903,9 +899,8 @@ Use the `<METHOD_NAME>WithHttpInfo` (EX: `getTaskWithHttpInfo`) method to make a
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let tasksApiInstance = new Asana.TasksApi();
 let task_gid = "<YOUR_TASK_GID>";
@@ -929,9 +924,8 @@ EX: Asana-Enable header
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 // Add asana-enable header for the client
 client.defaultHeaders['asana-enable'] = 'new_goal_memberships';
@@ -941,9 +935,8 @@ EX: Asana-Disable header
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 // Add asana-disable header for the client
 client.defaultHeaders['asana-disable'] = 'new_goal_memberships';
@@ -959,9 +952,8 @@ Use the `callApi` method to make http calls when the endpoint does not exist in 
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 // GET - get a task
 client.callApi(
@@ -989,9 +981,8 @@ client.callApi(
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 // GET - get multiple tasks -> with opt_fields
 client.callApi(
@@ -1027,9 +1018,8 @@ client.callApi(
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 // POST - create a task
 client.callApi(
@@ -1069,9 +1059,8 @@ client.callApi(
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 // PUT - update a task
 client.callApi(
@@ -1105,9 +1094,8 @@ client.callApi(
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 // DELETE - delete a task
 client.callApi(
@@ -1132,6 +1120,6 @@ client.callApi(
 ```
 
 [release-image]: https://img.shields.io/github/release/asana/node-asana.svg
-[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.1.3
+[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.1.4
 [npm-image]: http://img.shields.io/npm/v/asana.svg?style=flat-square
 [npm-url]: https://www.npmjs.org/package/asana

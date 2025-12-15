@@ -20,11 +20,10 @@ Get a user task list
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let userTaskListsApiInstance = new Asana.UserTaskListsApi();
+let userTaskListsApiInstance = new Asana.UserTaskListsApi(client);
 let user_task_list_gid = "12345"; // String | Globally unique identifier for the user task list.
 let opts = { 
     'opt_fields': "name,owner,workspace"
@@ -66,11 +65,10 @@ Get a user&#x27;s task list
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let userTaskListsApiInstance = new Asana.UserTaskListsApi();
+let userTaskListsApiInstance = new Asana.UserTaskListsApi(client);
 let user_gid = "me"; // String | A string identifying a user. This can either be the string \"me\", an email, or the gid of a user.
 let workspace = "1234"; // String | The workspace in which to get the user task list.
 let opts = { 

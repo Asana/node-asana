@@ -2,11 +2,10 @@ CustomTypesApi:
   getCustomType: |-
     const Asana = require('asana');
     
-    let client = Asana.ApiClient.instance;
-    let token = client.authentications['token'];
-    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
-    let customTypesApiInstance = new Asana.CustomTypesApi();
+    let customTypesApiInstance = new Asana.CustomTypesApi(client);
     let custom_type_gid = "12345"; // String | Globally unique identifier for the custom type.
     let opts = { 
         'opt_fields': "name,status_options,status_options.color,status_options.completion_state,status_options.enabled,status_options.name"
@@ -20,11 +19,10 @@ CustomTypesApi:
   getCustomTypes: |-
     const Asana = require('asana');
     
-    let client = Asana.ApiClient.instance;
-    let token = client.authentications['token'];
-    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
-    let customTypesApiInstance = new Asana.CustomTypesApi();
+    let customTypesApiInstance = new Asana.CustomTypesApi(client);
     let project = "1331"; // String | Globally unique identifier for the project, which is used as a filter when retrieving all custom types.
     let opts = { 
         'limit': 50, 

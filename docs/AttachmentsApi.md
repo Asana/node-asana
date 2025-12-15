@@ -23,11 +23,10 @@ Upload an attachment
 const Asana = require('asana');
 const fs = require("fs");
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let attachmentsApiInstance = new Asana.AttachmentsApi();
+let attachmentsApiInstance = new Asana.AttachmentsApi(client);
 let opts = { 
     'resource_subtype': "external", 
     'file': fs.createReadStream("file_example"), 
@@ -79,11 +78,10 @@ Delete an attachment
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let attachmentsApiInstance = new Asana.AttachmentsApi();
+let attachmentsApiInstance = new Asana.AttachmentsApi(client);
 let attachment_gid = "12345"; // String | Globally unique identifier for the attachment.
 
 attachmentsApiInstance.deleteAttachment(attachment_gid).then((result) => {
@@ -122,11 +120,10 @@ Get an attachment
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let attachmentsApiInstance = new Asana.AttachmentsApi();
+let attachmentsApiInstance = new Asana.AttachmentsApi(client);
 let attachment_gid = "12345"; // String | Globally unique identifier for the attachment.
 let opts = { 
     'opt_fields': "connected_to_app,created_at,download_url,host,name,parent,parent.created_by,parent.name,parent.resource_subtype,permanent_url,resource_subtype,size,view_url"
@@ -168,11 +165,10 @@ Get attachments from an object
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let attachmentsApiInstance = new Asana.AttachmentsApi();
+let attachmentsApiInstance = new Asana.AttachmentsApi(client);
 let parent = "159874"; // String | Globally unique identifier for object to fetch statuses from. Must be a GID for a `project`, `project_brief`, or `task`.
 let opts = { 
     'limit': 50, 

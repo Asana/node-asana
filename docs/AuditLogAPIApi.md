@@ -19,11 +19,10 @@ Retrieve the audit log events that have been captured in your domain.  This endp
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let auditLogApiApiInstance = new Asana.AuditLogAPIApi();
+let auditLogApiApiInstance = new Asana.AuditLogAPIApi(client);
 let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
 let opts = { 
     'start_at': "2013-10-20T19:20:30+01:00", 

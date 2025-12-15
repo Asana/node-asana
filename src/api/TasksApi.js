@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Tasks service.
 * @module api/TasksApi
-* @version 3.1.3
+* @version 3.1.4
 */
 export class TasksApi {
 

@@ -23,11 +23,10 @@ Creates a goal relationship by adding a supporting resource to a given goal.  Re
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let goalRelationshipsApiInstance = new Asana.GoalRelationshipsApi();
+let goalRelationshipsApiInstance = new Asana.GoalRelationshipsApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The supporting resource to be added to the goal
 let goal_gid = "12345"; // String | Globally unique identifier for the goal.
 let opts = { 
@@ -71,11 +70,10 @@ Returns the complete updated goal relationship record for a single goal relation
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let goalRelationshipsApiInstance = new Asana.GoalRelationshipsApi();
+let goalRelationshipsApiInstance = new Asana.GoalRelationshipsApi(client);
 let goal_relationship_gid = "12345"; // String | Globally unique identifier for the goal relationship.
 let opts = { 
     'opt_fields': "contribution_weight,resource_subtype,supported_goal,supported_goal.name,supported_goal.owner,supported_goal.owner.name,supporting_resource,supporting_resource.name"
@@ -117,11 +115,10 @@ Returns compact goal relationship records.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let goalRelationshipsApiInstance = new Asana.GoalRelationshipsApi();
+let goalRelationshipsApiInstance = new Asana.GoalRelationshipsApi(client);
 let supported_goal = "12345"; // String | Globally unique identifier for the supported goal in the goal relationship.
 let opts = { 
     'limit': 50, 
@@ -169,11 +166,10 @@ Removes a goal relationship for a given parent goal.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let goalRelationshipsApiInstance = new Asana.GoalRelationshipsApi();
+let goalRelationshipsApiInstance = new Asana.GoalRelationshipsApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The supporting resource to be removed from the goal
 let goal_gid = "12345"; // String | Globally unique identifier for the goal.
 
@@ -214,11 +210,10 @@ An existing goal relationship can be updated by making a PUT request on the URL 
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let goalRelationshipsApiInstance = new Asana.GoalRelationshipsApi();
+let goalRelationshipsApiInstance = new Asana.GoalRelationshipsApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The updated fields for the goal relationship.
 let goal_relationship_gid = "12345"; // String | Globally unique identifier for the goal relationship.
 let opts = { 

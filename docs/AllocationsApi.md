@@ -23,11 +23,10 @@ Creates a new allocation.  Returns the full record of the newly created allocati
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let allocationsApiInstance = new Asana.AllocationsApi();
+let allocationsApiInstance = new Asana.AllocationsApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The allocation to create.
 let opts = { 
     'opt_fields': "assignee,assignee.name,created_by,created_by.name,effort,effort.type,effort.value,end_date,parent,parent.name,resource_subtype,start_date"
@@ -69,11 +68,10 @@ A specific, existing allocation can be deleted by making a DELETE request on the
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let allocationsApiInstance = new Asana.AllocationsApi();
+let allocationsApiInstance = new Asana.AllocationsApi(client);
 let allocation_gid = "77688"; // String | Globally unique identifier for the allocation.
 
 allocationsApiInstance.deleteAllocation(allocation_gid).then((result) => {
@@ -112,11 +110,10 @@ Returns the complete allocation record for a single allocation.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let allocationsApiInstance = new Asana.AllocationsApi();
+let allocationsApiInstance = new Asana.AllocationsApi(client);
 let allocation_gid = "77688"; // String | Globally unique identifier for the allocation.
 let opts = { 
     'opt_fields': "assignee,assignee.name,created_by,created_by.name,effort,effort.type,effort.value,end_date,parent,parent.name,resource_subtype,start_date"
@@ -158,11 +155,10 @@ Returns a list of allocations filtered to a specific project, user or placeholde
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let allocationsApiInstance = new Asana.AllocationsApi();
+let allocationsApiInstance = new Asana.AllocationsApi(client);
 let opts = { 
     'parent': "77688", 
     'assignee': "12345", 
@@ -212,11 +208,10 @@ An existing allocation can be updated by making a PUT request on the URL for tha
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let allocationsApiInstance = new Asana.AllocationsApi();
+let allocationsApiInstance = new Asana.AllocationsApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The updated fields for the allocation.
 let allocation_gid = "77688"; // String | Globally unique identifier for the allocation.
 let opts = { 

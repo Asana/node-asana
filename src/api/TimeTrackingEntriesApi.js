@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * TimeTrackingEntries service.
 * @module api/TimeTrackingEntriesApi
-* @version 3.1.3
+* @version 3.1.4
 */
 export class TimeTrackingEntriesApi {
 
@@ -162,7 +162,9 @@ export class TimeTrackingEntriesApi {
      * @param {String} opts.attributable_to Globally unique identifier for the project the time tracking entries are attributed to.
      * @param {String} opts.portfolio Globally unique identifier for the portfolio to filter time tracking entries by.
      * @param {String} opts.user Globally unique identifier for the user to filter time tracking entries by.
-     * @param {String} opts.workspace Globally unique identifier for the workspace.
+     * @param {String} opts.workspace Globally unique identifier for the workspace. At least one of &#x60;entered_on_start_date&#x60; or &#x60;entered_on_end_date&#x60; must be provided when filtering by workspace.
+     * @param {Date} opts.entered_on_start_date The start date for filtering time tracking entries by when they were entered.
+     * @param {Date} opts.entered_on_end_date The end date for filtering time tracking entries by when they were entered.
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -230,7 +232,9 @@ export class TimeTrackingEntriesApi {
      * @param {String} opts.attributable_to Globally unique identifier for the project the time tracking entries are attributed to.
      * @param {String} opts.portfolio Globally unique identifier for the portfolio to filter time tracking entries by.
      * @param {String} opts.user Globally unique identifier for the user to filter time tracking entries by.
-     * @param {String} opts.workspace Globally unique identifier for the workspace.
+     * @param {String} opts.workspace Globally unique identifier for the workspace. At least one of &#x60;entered_on_start_date&#x60; or &#x60;entered_on_end_date&#x60; must be provided when filtering by workspace.
+     * @param {Date} opts.entered_on_start_date The start date for filtering time tracking entries by when they were entered.
+     * @param {Date} opts.entered_on_end_date The end date for filtering time tracking entries by when they were entered.
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.

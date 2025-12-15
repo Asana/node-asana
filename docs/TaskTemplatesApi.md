@@ -22,11 +22,10 @@ A specific, existing task template can be deleted by making a DELETE request on 
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let taskTemplatesApiInstance = new Asana.TaskTemplatesApi();
+let taskTemplatesApiInstance = new Asana.TaskTemplatesApi(client);
 let task_template_gid = "1331"; // String | Globally unique identifier for the task template.
 
 taskTemplatesApiInstance.deleteTaskTemplate(task_template_gid).then((result) => {
@@ -65,11 +64,10 @@ Get a task template
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let taskTemplatesApiInstance = new Asana.TaskTemplatesApi();
+let taskTemplatesApiInstance = new Asana.TaskTemplatesApi(client);
 let task_template_gid = "1331"; // String | Globally unique identifier for the task template.
 let opts = { 
     'opt_fields': "created_at,created_by,name,project,template"
@@ -111,11 +109,10 @@ Get multiple task templates
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let taskTemplatesApiInstance = new Asana.TaskTemplatesApi();
+let taskTemplatesApiInstance = new Asana.TaskTemplatesApi(client);
 let opts = { 
     'limit': 50, 
     'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
@@ -161,11 +158,10 @@ Creates and returns a job that will asynchronously handle the task instantiation
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let taskTemplatesApiInstance = new Asana.TaskTemplatesApi();
+let taskTemplatesApiInstance = new Asana.TaskTemplatesApi(client);
 let task_template_gid = "1331"; // String | Globally unique identifier for the task template.
 let opts = { 
     'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}, 

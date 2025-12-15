@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * CustomFieldSettings service.
 * @module api/CustomFieldSettingsApi
-* @version 3.1.3
+* @version 3.1.4
 */
 export class CustomFieldSettingsApi {
 
@@ -34,6 +34,97 @@ export class CustomFieldSettingsApi {
         this.apiClient = apiClient || ApiClient.instance;
     }
 
+
+
+    /**
+     * Get a goal&#x27;s custom fields
+     * Returns a list of all of the custom fields settings on a goal, in compact form. Note that, as in all queries to collections which return compact representation, &#x60;opt_fields&#x60; can be used to include more data than is returned in the compact representation. See the [documentation for input/output options](https://developers.asana.com/docs/inputoutput-options) for more information.
+     * @param {String} goal_gid Globally unique identifier for the goal.
+     * @param {Object} opts Optional parameters
+     * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
+     * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
+     */
+    getCustomFieldSettingsForGoalWithHttpInfo(goal_gid, opts) {
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'goal_gid' is set
+        if (goal_gid === undefined || goal_gid === null) {
+            throw new Error("Missing the required parameter 'goal_gid' when calling getCustomFieldSettingsForGoal");
+        }
+
+        let pathParams = {
+            'goal_gid': goal_gid
+        };
+        let queryParams = {};
+        opts = opts || {};
+        queryParams = opts;
+
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
+
+        let authNames = ['personalAccessToken'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = 'Blob';
+        // Check if RETURN_COLLECTION is set and return a collection object if it is
+        if (this.apiClient.RETURN_COLLECTION) {
+            return Collection.fromApiClient(
+                this.apiClient.callApi(
+                    '/goals/{goal_gid}/custom_field_settings', 'GET',
+                    pathParams, queryParams, headerParams, formParams, postBody,
+                    authNames, contentTypes, accepts, returnType
+                ),
+                this.apiClient,
+                {
+                    'path': '/goals/{goal_gid}/custom_field_settings',
+                    'httpMethod': 'GET',
+                    'pathParams': pathParams,
+                    'queryParams': queryParams,
+                    'headerParams': headerParams,
+                    'formParams': formParams,
+                    'bodyParam': postBody,
+                    'authNames': authNames,
+                    'contentTypes': contentTypes,
+                    'accepts': accepts,
+                    'returnType': returnType
+                }
+            )
+        }
+
+        return this.apiClient.callApi(
+            '/goals/{goal_gid}/custom_field_settings', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType
+        );
+    }
+
+    /**
+     * Get a goal&#x27;s custom fields
+     * Returns a list of all of the custom fields settings on a goal, in compact form. Note that, as in all queries to collections which return compact representation, &#x60;opt_fields&#x60; can be used to include more data than is returned in the compact representation. See the [documentation for input/output options](https://developers.asana.com/docs/inputoutput-options) for more information.
+     * @param {<&vendorExtensions.x-jsdoc-type>} goal_gid Globally unique identifier for the goal.
+     * @param {Object} opts Optional parameters
+     * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
+     * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CustomFieldSettingResponseArray}
+     */
+    getCustomFieldSettingsForGoal(goal_gid, opts) {
+        // Check if RETURN_COLLECTION is set and return a collection object if it is
+        if (this.apiClient.RETURN_COLLECTION) {
+            return this.getCustomFieldSettingsForGoalWithHttpInfo(goal_gid, opts)
+        }
+
+        return this.getCustomFieldSettingsForGoalWithHttpInfo(goal_gid, opts)
+            .then(function(response_and_data) {
+                return response_and_data.data;
+            });
+    }
 
 
     /**
@@ -212,6 +303,93 @@ export class CustomFieldSettingsApi {
         }
 
         return this.getCustomFieldSettingsForProjectWithHttpInfo(project_gid, opts)
+            .then(function(response_and_data) {
+                return response_and_data.data;
+            });
+    }
+
+
+    /**
+     * Get a team&#x27;s custom fields
+     * Returns a list of all of the custom fields settings on a team, in compact form. Note that, as in all queries to collections which return compact representation, &#x60;opt_fields&#x60; can be used to include more data than is returned in the compact representation. See the [documentation for input/output options](https://developers.asana.com/docs/inputoutput-options) for more information.
+     * @param {String} team_gid Globally unique identifier for the team.
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
+     */
+    getCustomFieldSettingsForTeamWithHttpInfo(team_gid, opts) {
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'team_gid' is set
+        if (team_gid === undefined || team_gid === null) {
+            throw new Error("Missing the required parameter 'team_gid' when calling getCustomFieldSettingsForTeam");
+        }
+
+        let pathParams = {
+            'team_gid': team_gid
+        };
+        let queryParams = {};
+        opts = opts || {};
+        queryParams = opts;
+
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
+
+        let authNames = ['personalAccessToken'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = 'Blob';
+        // Check if RETURN_COLLECTION is set and return a collection object if it is
+        if (this.apiClient.RETURN_COLLECTION) {
+            return Collection.fromApiClient(
+                this.apiClient.callApi(
+                    '/teams/{team_gid}/custom_field_settings', 'GET',
+                    pathParams, queryParams, headerParams, formParams, postBody,
+                    authNames, contentTypes, accepts, returnType
+                ),
+                this.apiClient,
+                {
+                    'path': '/teams/{team_gid}/custom_field_settings',
+                    'httpMethod': 'GET',
+                    'pathParams': pathParams,
+                    'queryParams': queryParams,
+                    'headerParams': headerParams,
+                    'formParams': formParams,
+                    'bodyParam': postBody,
+                    'authNames': authNames,
+                    'contentTypes': contentTypes,
+                    'accepts': accepts,
+                    'returnType': returnType
+                }
+            )
+        }
+
+        return this.apiClient.callApi(
+            '/teams/{team_gid}/custom_field_settings', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType
+        );
+    }
+
+    /**
+     * Get a team&#x27;s custom fields
+     * Returns a list of all of the custom fields settings on a team, in compact form. Note that, as in all queries to collections which return compact representation, &#x60;opt_fields&#x60; can be used to include more data than is returned in the compact representation. See the [documentation for input/output options](https://developers.asana.com/docs/inputoutput-options) for more information.
+     * @param {<&vendorExtensions.x-jsdoc-type>} team_gid Globally unique identifier for the team.
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CustomFieldSettingResponseArray}
+     */
+    getCustomFieldSettingsForTeam(team_gid, opts) {
+        // Check if RETURN_COLLECTION is set and return a collection object if it is
+        if (this.apiClient.RETURN_COLLECTION) {
+            return this.getCustomFieldSettingsForTeamWithHttpInfo(team_gid, opts)
+        }
+
+        return this.getCustomFieldSettingsForTeamWithHttpInfo(team_gid, opts)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });

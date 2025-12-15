@@ -23,11 +23,10 @@ Creates a new rate for a `parent` + `resource` combination.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let ratesApiInstance = new Asana.RatesApi();
+let ratesApiInstance = new Asana.RatesApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The rate to create.
 let opts = { 
     'opt_fields': "created_by,created_by.name,currency_code,parent,parent.name,rate,resource,resource.name"
@@ -69,11 +68,10 @@ Deletes a rate.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let ratesApiInstance = new Asana.RatesApi();
+let ratesApiInstance = new Asana.RatesApi(client);
 let rate_gid = "12345"; // String | Globally unique identifier for the rate.
 
 ratesApiInstance.deleteRate(rate_gid).then((result) => {
@@ -112,11 +110,10 @@ Returns the complete rate record for a single rate.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let ratesApiInstance = new Asana.RatesApi();
+let ratesApiInstance = new Asana.RatesApi(client);
 let rate_gid = "12345"; // String | Globally unique identifier for the rate.
 let opts = { 
     'opt_fields': "created_by,created_by.name,currency_code,parent,parent.name,rate,resource,resource.name"
@@ -158,11 +155,10 @@ Returns a list of `rate` records. The possible types for `parent` in this reques
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let ratesApiInstance = new Asana.RatesApi();
+let ratesApiInstance = new Asana.RatesApi(client);
 let opts = { 
     'parent': "159874", 
     'resource': "1061493", 
@@ -210,11 +206,10 @@ An existing rate can be updated by making a PUT request on the URL for that rate
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let ratesApiInstance = new Asana.RatesApi();
+let ratesApiInstance = new Asana.RatesApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The updated fields for the rate.
 let rate_gid = "12345"; // String | Globally unique identifier for the rate.
 let opts = { 

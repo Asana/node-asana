@@ -2,11 +2,10 @@ MembershipsApi:
   createMembership: |-
     const Asana = require('asana');
     
-    let client = Asana.ApiClient.instance;
-    let token = client.authentications['token'];
-    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
-    let membershipsApiInstance = new Asana.MembershipsApi();
+    let membershipsApiInstance = new Asana.MembershipsApi(client);
     let opts = { 
         'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}
     };
@@ -19,11 +18,10 @@ MembershipsApi:
   deleteMembership: |-
     const Asana = require('asana');
     
-    let client = Asana.ApiClient.instance;
-    let token = client.authentications['token'];
-    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
-    let membershipsApiInstance = new Asana.MembershipsApi();
+    let membershipsApiInstance = new Asana.MembershipsApi(client);
     let membership_gid = "12345"; // String | Globally unique identifier for the membership.
 
     membershipsApiInstance.deleteMembership(membership_gid).then((result) => {
@@ -35,11 +33,10 @@ MembershipsApi:
   getMembership: |-
     const Asana = require('asana');
     
-    let client = Asana.ApiClient.instance;
-    let token = client.authentications['token'];
-    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
-    let membershipsApiInstance = new Asana.MembershipsApi();
+    let membershipsApiInstance = new Asana.MembershipsApi(client);
     let membership_gid = "12345"; // String | Globally unique identifier for the membership.
 
     membershipsApiInstance.getMembership(membership_gid).then((result) => {
@@ -51,11 +48,10 @@ MembershipsApi:
   getMemberships: |-
     const Asana = require('asana');
     
-    let client = Asana.ApiClient.instance;
-    let token = client.authentications['token'];
-    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
-    let membershipsApiInstance = new Asana.MembershipsApi();
+    let membershipsApiInstance = new Asana.MembershipsApi(client);
     let opts = { 
         'parent': "159874", 
         'member': "1061493", 
@@ -72,11 +68,10 @@ MembershipsApi:
   updateMembership: |-
     const Asana = require('asana');
     
-    let client = Asana.ApiClient.instance;
-    let token = client.authentications['token'];
-    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
-    let membershipsApiInstance = new Asana.MembershipsApi();
+    let membershipsApiInstance = new Asana.MembershipsApi(client);
     let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The membership to update.
     let membership_gid = "12345"; // String | Globally unique identifier for the membership.
 

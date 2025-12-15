@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Goals service.
 * @module api/GoalsApi
-* @version 3.1.3
+* @version 3.1.4
 */
 export class GoalsApi {
 
@@ -34,6 +34,65 @@ export class GoalsApi {
         this.apiClient = apiClient || ApiClient.instance;
     }
 
+
+
+    /**
+     * Add a custom field to a goal
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;goals:write&lt;/code&gt;  Custom fields are associated with goals by way of custom field settings.  This method creates a setting for the goal.
+     * @param {module:model/Object} body Information about the custom field setting.
+     * @param {String} goal_gid Globally unique identifier for the goal.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
+     */
+    addCustomFieldSettingForGoalWithHttpInfo(body, goal_gid) {
+        
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling addCustomFieldSettingForGoal");
+        }
+        // verify the required parameter 'goal_gid' is set
+        if (goal_gid === undefined || goal_gid === null) {
+            throw new Error("Missing the required parameter 'goal_gid' when calling addCustomFieldSettingForGoal");
+        }
+
+        let pathParams = {
+            'goal_gid': goal_gid
+        };
+        let queryParams = {};
+
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
+
+        let authNames = ['personalAccessToken'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = 'Blob';
+
+        return this.apiClient.callApi(
+            '/goals/{goal_gid}/addCustomFieldSetting', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType
+        );
+    }
+
+    /**
+     * Add a custom field to a goal
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;goals:write&lt;/code&gt;  Custom fields are associated with goals by way of custom field settings.  This method creates a setting for the goal.
+     * @param {<&vendorExtensions.x-jsdoc-type>} body Information about the custom field setting.
+     * @param {<&vendorExtensions.x-jsdoc-type>} goal_gid Globally unique identifier for the goal.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CustomFieldSettingResponseData}
+     */
+    addCustomFieldSettingForGoal(body, goal_gid) {
+
+        return this.addCustomFieldSettingForGoalWithHttpInfo(body, goal_gid)
+            .then(function(response_and_data) {
+                return response_and_data.data;
+            });
+    }
 
 
     /**
@@ -517,6 +576,65 @@ export class GoalsApi {
         }
 
         return this.getParentGoalsForGoalWithHttpInfo(goal_gid, opts)
+            .then(function(response_and_data) {
+                return response_and_data.data;
+            });
+    }
+
+
+    /**
+     * Remove a custom field from a goal
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;goals:write&lt;/code&gt;  Removes a custom field setting from a goal.
+     * @param {module:model/Object} body Information about the custom field setting being removed.
+     * @param {String} goal_gid Globally unique identifier for the goal.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
+     */
+    removeCustomFieldSettingForGoalWithHttpInfo(body, goal_gid) {
+        
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling removeCustomFieldSettingForGoal");
+        }
+        // verify the required parameter 'goal_gid' is set
+        if (goal_gid === undefined || goal_gid === null) {
+            throw new Error("Missing the required parameter 'goal_gid' when calling removeCustomFieldSettingForGoal");
+        }
+
+        let pathParams = {
+            'goal_gid': goal_gid
+        };
+        let queryParams = {};
+
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
+
+        let authNames = ['personalAccessToken'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = 'Blob';
+
+        return this.apiClient.callApi(
+            '/goals/{goal_gid}/removeCustomFieldSetting', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType
+        );
+    }
+
+    /**
+     * Remove a custom field from a goal
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;goals:write&lt;/code&gt;  Removes a custom field setting from a goal.
+     * @param {<&vendorExtensions.x-jsdoc-type>} body Information about the custom field setting being removed.
+     * @param {<&vendorExtensions.x-jsdoc-type>} goal_gid Globally unique identifier for the goal.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EmptyResponseData}
+     */
+    removeCustomFieldSettingForGoal(body, goal_gid) {
+
+        return this.removeCustomFieldSettingForGoalWithHttpInfo(body, goal_gid)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });

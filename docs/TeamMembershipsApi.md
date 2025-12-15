@@ -22,11 +22,10 @@ Get a team membership
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let teamMembershipsApiInstance = new Asana.TeamMembershipsApi();
+let teamMembershipsApiInstance = new Asana.TeamMembershipsApi(client);
 let team_membership_gid = "724362"; // String | 
 let opts = { 
     'opt_fields': "is_admin,is_guest,is_limited_access,team,team.name,user,user.name"
@@ -68,11 +67,10 @@ Get team memberships
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let teamMembershipsApiInstance = new Asana.TeamMembershipsApi();
+let teamMembershipsApiInstance = new Asana.TeamMembershipsApi(client);
 let opts = { 
     'limit': 50, 
     'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
@@ -122,11 +120,10 @@ Get memberships from a team
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let teamMembershipsApiInstance = new Asana.TeamMembershipsApi();
+let teamMembershipsApiInstance = new Asana.TeamMembershipsApi(client);
 let team_gid = "159874"; // String | Globally unique identifier for the team.
 let opts = { 
     'limit': 50, 
@@ -172,11 +169,10 @@ Get memberships from a user
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let teamMembershipsApiInstance = new Asana.TeamMembershipsApi();
+let teamMembershipsApiInstance = new Asana.TeamMembershipsApi(client);
 let user_gid = "me"; // String | A string identifying a user. This can either be the string \"me\", an email, or the gid of a user.
 let workspace = "31326"; // String | Globally unique identifier for the workspace.
 let opts = { 

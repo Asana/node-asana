@@ -23,11 +23,10 @@ A specific, existing project template can be deleted by making a DELETE request 
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let projectTemplatesApiInstance = new Asana.ProjectTemplatesApi();
+let projectTemplatesApiInstance = new Asana.ProjectTemplatesApi(client);
 let project_template_gid = "1331"; // String | Globally unique identifier for the project template.
 
 projectTemplatesApiInstance.deleteProjectTemplate(project_template_gid).then((result) => {
@@ -66,11 +65,10 @@ Get a project template
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let projectTemplatesApiInstance = new Asana.ProjectTemplatesApi();
+let projectTemplatesApiInstance = new Asana.ProjectTemplatesApi(client);
 let project_template_gid = "1331"; // String | Globally unique identifier for the project template.
 let opts = { 
     'opt_fields': "color,description,html_description,name,owner,public,requested_dates,requested_dates.description,requested_dates.name,requested_roles,requested_roles.name,team,team.name"
@@ -112,11 +110,10 @@ Get multiple project templates
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let projectTemplatesApiInstance = new Asana.ProjectTemplatesApi();
+let projectTemplatesApiInstance = new Asana.ProjectTemplatesApi(client);
 let opts = { 
     'workspace': "12345", 
     'team': "14916", 
@@ -164,11 +161,10 @@ Get a team&#x27;s project templates
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let projectTemplatesApiInstance = new Asana.ProjectTemplatesApi();
+let projectTemplatesApiInstance = new Asana.ProjectTemplatesApi(client);
 let team_gid = "159874"; // String | Globally unique identifier for the team.
 let opts = { 
     'limit': 50, 
@@ -214,11 +210,10 @@ Instantiate a project from a project template
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let projectTemplatesApiInstance = new Asana.ProjectTemplatesApi();
+let projectTemplatesApiInstance = new Asana.ProjectTemplatesApi(client);
 let project_template_gid = "1331"; // String | Globally unique identifier for the project template.
 let opts = { 
     'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}, 

@@ -20,11 +20,10 @@ Initiates a graph export job for a given parent object (goal, team, portfolio, o
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let exportsApiInstance = new Asana.ExportsApi();
+let exportsApiInstance = new Asana.ExportsApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | A JSON payload specifying the parent object to export.
 
 exportsApiInstance.createGraphExport(body).then((result) => {
@@ -63,11 +62,10 @@ Initiates a bulk export of resources for a workspace. The export will be process
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let exportsApiInstance = new Asana.ExportsApi();
+let exportsApiInstance = new Asana.ExportsApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | A JSON payload specifying the resources to export, including filters to apply and fields to be exported.
 
 exportsApiInstance.createResourceExport(body).then((result) => {

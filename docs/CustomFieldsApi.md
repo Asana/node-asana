@@ -26,11 +26,10 @@ Create a custom field
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let customFieldsApiInstance = new Asana.CustomFieldsApi();
+let customFieldsApiInstance = new Asana.CustomFieldsApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The custom field object to create.
 let opts = { 
     'opt_fields': "asana_created_field,created_by,created_by.name,currency_code,custom_label,custom_label_position,date_value,date_value.date,date_value.date_time,default_access_level,description,display_value,enabled,enum_options,enum_options.color,enum_options.enabled,enum_options.name,enum_value,enum_value.color,enum_value.enabled,enum_value.name,format,has_notifications_enabled,id_prefix,input_restrictions,is_formula_field,is_global_to_workspace,is_value_read_only,multi_enum_values,multi_enum_values.color,multi_enum_values.enabled,multi_enum_values.name,name,number_value,people_value,people_value.name,precision,privacy_setting,reference_value,reference_value.name,representation_type,resource_subtype,text_value,type"
@@ -72,11 +71,10 @@ Create an enum option
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let customFieldsApiInstance = new Asana.CustomFieldsApi();
+let customFieldsApiInstance = new Asana.CustomFieldsApi(client);
 let custom_field_gid = "12345"; // String | Globally unique identifier for the custom field.
 let opts = { 
     'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}, 
@@ -120,11 +118,10 @@ A specific, existing custom field can be deleted by making a DELETE request on t
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let customFieldsApiInstance = new Asana.CustomFieldsApi();
+let customFieldsApiInstance = new Asana.CustomFieldsApi(client);
 let custom_field_gid = "12345"; // String | Globally unique identifier for the custom field.
 
 customFieldsApiInstance.deleteCustomField(custom_field_gid).then((result) => {
@@ -163,11 +160,10 @@ Get a custom field
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let customFieldsApiInstance = new Asana.CustomFieldsApi();
+let customFieldsApiInstance = new Asana.CustomFieldsApi(client);
 let custom_field_gid = "12345"; // String | Globally unique identifier for the custom field.
 let opts = { 
     'opt_fields': "asana_created_field,created_by,created_by.name,currency_code,custom_label,custom_label_position,date_value,date_value.date,date_value.date_time,default_access_level,description,display_value,enabled,enum_options,enum_options.color,enum_options.enabled,enum_options.name,enum_value,enum_value.color,enum_value.enabled,enum_value.name,format,has_notifications_enabled,id_prefix,input_restrictions,is_formula_field,is_global_to_workspace,is_value_read_only,multi_enum_values,multi_enum_values.color,multi_enum_values.enabled,multi_enum_values.name,name,number_value,people_value,people_value.name,precision,privacy_setting,reference_value,reference_value.name,representation_type,resource_subtype,text_value,type"
@@ -209,11 +205,10 @@ Get a workspace&#x27;s custom fields
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let customFieldsApiInstance = new Asana.CustomFieldsApi();
+let customFieldsApiInstance = new Asana.CustomFieldsApi(client);
 let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
 let opts = { 
     'limit': 50, 
@@ -259,11 +254,10 @@ Reorder a custom field&#x27;s enum
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let customFieldsApiInstance = new Asana.CustomFieldsApi();
+let customFieldsApiInstance = new Asana.CustomFieldsApi(client);
 let custom_field_gid = "12345"; // String | Globally unique identifier for the custom field.
 let opts = { 
     'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}, 
@@ -307,11 +301,10 @@ Update a custom field
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let customFieldsApiInstance = new Asana.CustomFieldsApi();
+let customFieldsApiInstance = new Asana.CustomFieldsApi(client);
 let custom_field_gid = "12345"; // String | Globally unique identifier for the custom field.
 let opts = { 
     'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}, 
@@ -355,11 +348,10 @@ Update an enum option
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let customFieldsApiInstance = new Asana.CustomFieldsApi();
+let customFieldsApiInstance = new Asana.CustomFieldsApi(client);
 let enum_option_gid = "124578"; // String | Globally unique identifier for the enum option.
 let opts = { 
     'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}, 

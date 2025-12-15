@@ -23,11 +23,10 @@ Establish a webhook
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let webhooksApiInstance = new Asana.WebhooksApi();
+let webhooksApiInstance = new Asana.WebhooksApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The webhook workspace and target.
 let opts = { 
     'opt_fields': "active,created_at,delivery_retry_count,failure_deletion_timestamp,filters,filters.action,filters.fields,filters.resource_subtype,last_failure_at,last_failure_content,last_success_at,next_attempt_after,resource,resource.name,target"
@@ -69,11 +68,10 @@ Delete a webhook
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let webhooksApiInstance = new Asana.WebhooksApi();
+let webhooksApiInstance = new Asana.WebhooksApi(client);
 let webhook_gid = "12345"; // String | Globally unique identifier for the webhook.
 
 webhooksApiInstance.deleteWebhook(webhook_gid).then((result) => {
@@ -112,11 +110,10 @@ Get a webhook
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let webhooksApiInstance = new Asana.WebhooksApi();
+let webhooksApiInstance = new Asana.WebhooksApi(client);
 let webhook_gid = "12345"; // String | Globally unique identifier for the webhook.
 let opts = { 
     'opt_fields': "active,created_at,delivery_retry_count,failure_deletion_timestamp,filters,filters.action,filters.fields,filters.resource_subtype,last_failure_at,last_failure_content,last_success_at,next_attempt_after,resource,resource.name,target"
@@ -158,11 +155,10 @@ Get multiple webhooks
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let webhooksApiInstance = new Asana.WebhooksApi();
+let webhooksApiInstance = new Asana.WebhooksApi(client);
 let workspace = "1331"; // String | The workspace to query for webhooks in.
 let opts = { 
     'limit': 50, 
@@ -210,11 +206,10 @@ Update a webhook
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let webhooksApiInstance = new Asana.WebhooksApi();
+let webhooksApiInstance = new Asana.WebhooksApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The updated filters for the webhook.
 let webhook_gid = "12345"; // String | Globally unique identifier for the webhook.
 let opts = { 

@@ -2,11 +2,10 @@ TimeTrackingEntriesApi:
   createTimeTrackingEntry: |-
     const Asana = require('asana');
     
-    let client = Asana.ApiClient.instance;
-    let token = client.authentications['token'];
-    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
-    let timeTrackingEntriesApiInstance = new Asana.TimeTrackingEntriesApi();
+    let timeTrackingEntriesApiInstance = new Asana.TimeTrackingEntriesApi(client);
     let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | Information about the time tracking entry.
     let task_gid = "321654"; // String | The task to operate on.
     let opts = { 
@@ -21,11 +20,10 @@ TimeTrackingEntriesApi:
   deleteTimeTrackingEntry: |-
     const Asana = require('asana');
     
-    let client = Asana.ApiClient.instance;
-    let token = client.authentications['token'];
-    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
-    let timeTrackingEntriesApiInstance = new Asana.TimeTrackingEntriesApi();
+    let timeTrackingEntriesApiInstance = new Asana.TimeTrackingEntriesApi(client);
     let time_tracking_entry_gid = "917392"; // String | Globally unique identifier for the time tracking entry.
 
     timeTrackingEntriesApiInstance.deleteTimeTrackingEntry(time_tracking_entry_gid).then((result) => {
@@ -37,17 +35,18 @@ TimeTrackingEntriesApi:
   getTimeTrackingEntries: |-
     const Asana = require('asana');
     
-    let client = Asana.ApiClient.instance;
-    let token = client.authentications['token'];
-    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
-    let timeTrackingEntriesApiInstance = new Asana.TimeTrackingEntriesApi();
+    let timeTrackingEntriesApiInstance = new Asana.TimeTrackingEntriesApi(client);
     let opts = { 
         'task': "12345", 
         'attributable_to': "12345", 
         'portfolio': "12345", 
         'user': "12345", 
         'workspace': "98765", 
+        'entered_on_start_date': "2025-01-01", 
+        'entered_on_end_date': "2025-12-31", 
         'limit': 50, 
         'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
         'opt_fields': "attributable_to,attributable_to.name,created_by,created_by.name,duration_minutes,entered_on,offset,path,uri"
@@ -61,11 +60,10 @@ TimeTrackingEntriesApi:
   getTimeTrackingEntriesForTask: |-
     const Asana = require('asana');
     
-    let client = Asana.ApiClient.instance;
-    let token = client.authentications['token'];
-    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
-    let timeTrackingEntriesApiInstance = new Asana.TimeTrackingEntriesApi();
+    let timeTrackingEntriesApiInstance = new Asana.TimeTrackingEntriesApi(client);
     let task_gid = "321654"; // String | The task to operate on.
     let opts = { 
         'limit': 50, 
@@ -81,11 +79,10 @@ TimeTrackingEntriesApi:
   getTimeTrackingEntry: |-
     const Asana = require('asana');
     
-    let client = Asana.ApiClient.instance;
-    let token = client.authentications['token'];
-    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
-    let timeTrackingEntriesApiInstance = new Asana.TimeTrackingEntriesApi();
+    let timeTrackingEntriesApiInstance = new Asana.TimeTrackingEntriesApi(client);
     let time_tracking_entry_gid = "917392"; // String | Globally unique identifier for the time tracking entry.
     let opts = { 
         'opt_fields': "approval_status,attributable_to,attributable_to.name,billable_status,created_at,created_by,created_by.name,description,duration_minutes,entered_on,task,task.created_by,task.name,task.resource_subtype"
@@ -99,11 +96,10 @@ TimeTrackingEntriesApi:
   updateTimeTrackingEntry: |-
     const Asana = require('asana');
     
-    let client = Asana.ApiClient.instance;
-    let token = client.authentications['token'];
-    token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
-    let timeTrackingEntriesApiInstance = new Asana.TimeTrackingEntriesApi();
+    let timeTrackingEntriesApiInstance = new Asana.TimeTrackingEntriesApi(client);
     let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The updated fields for the time tracking entry.
     let time_tracking_entry_gid = "917392"; // String | Globally unique identifier for the time tracking entry.
     let opts = { 

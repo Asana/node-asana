@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Users service.
 * @module api/UsersApi
-* @version 3.1.3
+* @version 3.1.4
 */
 export class UsersApi {
 
@@ -146,6 +146,7 @@ export class UsersApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;users:read&lt;/code&gt;  Returns the full user record for the single user with the provided ID.
      * @param {String} user_gid A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
      * @param {Object} opts Optional parameters
+     * @param {String} opts.workspace The workspace to filter results on.
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
@@ -188,12 +189,78 @@ export class UsersApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;users:read&lt;/code&gt;  Returns the full user record for the single user with the provided ID.
      * @param {<&vendorExtensions.x-jsdoc-type>} user_gid A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
      * @param {Object} opts Optional parameters
+     * @param {String} opts.workspace The workspace to filter results on.
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/UserResponseData}
      */
     getUser(user_gid, opts) {
 
         return this.getUserWithHttpInfo(user_gid, opts)
+            .then(function(response_and_data) {
+                return response_and_data.data;
+            });
+    }
+
+
+    /**
+     * Get a user in a workspace or organization
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;users:read&lt;/code&gt;  Returns the full user record for the single user with the provided ID in the specified workspace or organization.
+     * @param {String} workspace_gid Globally unique identifier for the workspace or organization.
+     * @param {String} user_gid A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
+     */
+    getUserForWorkspaceWithHttpInfo(workspace_gid, user_gid, opts) {
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'workspace_gid' is set
+        if (workspace_gid === undefined || workspace_gid === null) {
+            throw new Error("Missing the required parameter 'workspace_gid' when calling getUserForWorkspace");
+        }
+        // verify the required parameter 'user_gid' is set
+        if (user_gid === undefined || user_gid === null) {
+            throw new Error("Missing the required parameter 'user_gid' when calling getUserForWorkspace");
+        }
+
+        let pathParams = {
+            'workspace_gid': workspace_gid,'user_gid': user_gid
+        };
+        let queryParams = {};
+        opts = opts || {};
+        queryParams = opts;
+
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
+
+        let authNames = ['personalAccessToken'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = 'Blob';
+
+        return this.apiClient.callApi(
+            '/workspaces/{workspace_gid}/users/{user_gid}', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType
+        );
+    }
+
+    /**
+     * Get a user in a workspace or organization
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;users:read&lt;/code&gt;  Returns the full user record for the single user with the provided ID in the specified workspace or organization.
+     * @param {<&vendorExtensions.x-jsdoc-type>} workspace_gid Globally unique identifier for the workspace or organization.
+     * @param {<&vendorExtensions.x-jsdoc-type>} user_gid A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/UserResponseData}
+     */
+    getUserForWorkspace(workspace_gid, user_gid, opts) {
+
+        return this.getUserForWorkspaceWithHttpInfo(workspace_gid, user_gid, opts)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });
@@ -461,6 +528,144 @@ export class UsersApi {
         }
 
         return this.getUsersForWorkspaceWithHttpInfo(workspace_gid, opts)
+            .then(function(response_and_data) {
+                return response_and_data.data;
+            });
+    }
+
+
+    /**
+     * Update a user
+     * A specific, existing user can be updated by making a PUT request on the URL for that user. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  Returns the complete updated user record.
+     * @param {module:model/Object} body The user to update.
+     * @param {String} user_gid A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.workspace The workspace to filter results on.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
+     */
+    updateUserWithHttpInfo(body, user_gid, opts) {
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling updateUser");
+        }
+        // verify the required parameter 'user_gid' is set
+        if (user_gid === undefined || user_gid === null) {
+            throw new Error("Missing the required parameter 'user_gid' when calling updateUser");
+        }
+
+        let pathParams = {
+            'user_gid': user_gid
+        };
+        let queryParams = {};
+        opts = opts || {};
+        queryParams = opts;
+
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
+
+        let authNames = ['personalAccessToken'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = 'Blob';
+
+        return this.apiClient.callApi(
+            '/users/{user_gid}', 'PUT',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType
+        );
+    }
+
+    /**
+     * Update a user
+     * A specific, existing user can be updated by making a PUT request on the URL for that user. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  Returns the complete updated user record.
+     * @param {<&vendorExtensions.x-jsdoc-type>} body The user to update.
+     * @param {<&vendorExtensions.x-jsdoc-type>} user_gid A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.workspace The workspace to filter results on.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/UserResponseData}
+     */
+    updateUser(body, user_gid, opts) {
+
+        return this.updateUserWithHttpInfo(body, user_gid, opts)
+            .then(function(response_and_data) {
+                return response_and_data.data;
+            });
+    }
+
+
+    /**
+     * Update a user in a workspace or organization
+     * An existing user can be updated by making a PUT request on the URL for that user in the specified workspace or organization. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.
+     * @param {module:model/Object} body The user to update.
+     * @param {String} workspace_gid Globally unique identifier for the workspace or organization.
+     * @param {String} user_gid A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
+     */
+    updateUserForWorkspaceWithHttpInfo(body, workspace_gid, user_gid, opts) {
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling updateUserForWorkspace");
+        }
+        // verify the required parameter 'workspace_gid' is set
+        if (workspace_gid === undefined || workspace_gid === null) {
+            throw new Error("Missing the required parameter 'workspace_gid' when calling updateUserForWorkspace");
+        }
+        // verify the required parameter 'user_gid' is set
+        if (user_gid === undefined || user_gid === null) {
+            throw new Error("Missing the required parameter 'user_gid' when calling updateUserForWorkspace");
+        }
+
+        let pathParams = {
+            'workspace_gid': workspace_gid,'user_gid': user_gid
+        };
+        let queryParams = {};
+        opts = opts || {};
+        queryParams = opts;
+
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
+
+        let authNames = ['personalAccessToken'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = 'Blob';
+
+        return this.apiClient.callApi(
+            '/workspaces/{workspace_gid}/users/{user_gid}', 'PUT',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType
+        );
+    }
+
+    /**
+     * Update a user in a workspace or organization
+     * An existing user can be updated by making a PUT request on the URL for that user in the specified workspace or organization. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.
+     * @param {<&vendorExtensions.x-jsdoc-type>} body The user to update.
+     * @param {<&vendorExtensions.x-jsdoc-type>} workspace_gid Globally unique identifier for the workspace or organization.
+     * @param {<&vendorExtensions.x-jsdoc-type>} user_gid A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/UserResponseData}
+     */
+    updateUserForWorkspace(body, workspace_gid, user_gid, opts) {
+
+        return this.updateUserForWorkspaceWithHttpInfo(body, workspace_gid, user_gid, opts)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });

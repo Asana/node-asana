@@ -24,11 +24,10 @@ Add a user to a workspace or organization. The user can be referenced by their g
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let workspacesApiInstance = new Asana.WorkspacesApi();
+let workspacesApiInstance = new Asana.WorkspacesApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The user to add to the workspace.
 let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
 let opts = { 
@@ -72,11 +71,10 @@ Get a workspace
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let workspacesApiInstance = new Asana.WorkspacesApi();
+let workspacesApiInstance = new Asana.WorkspacesApi(client);
 let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
 let opts = { 
     'opt_fields': "email_domains,is_organization,name"
@@ -118,11 +116,10 @@ Returns the full record for all events that have occurred since the sync token w
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let workspacesApiInstance = new Asana.WorkspacesApi();
+let workspacesApiInstance = new Asana.WorkspacesApi(client);
 let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
 let opts = { 
     'sync': "de4774f6915eae04714ca93bb2f5ee81"
@@ -164,11 +161,10 @@ Get multiple workspaces
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let workspacesApiInstance = new Asana.WorkspacesApi();
+let workspacesApiInstance = new Asana.WorkspacesApi(client);
 let opts = { 
     'limit': 50, 
     'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
@@ -212,11 +208,10 @@ Remove a user from a workspace or organization.  The user making this call must 
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let workspacesApiInstance = new Asana.WorkspacesApi();
+let workspacesApiInstance = new Asana.WorkspacesApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The user to remove from the workspace.
 let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
 
@@ -257,11 +252,10 @@ A specific, existing workspace can be updated by making a PUT request on the URL
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let workspacesApiInstance = new Asana.WorkspacesApi();
+let workspacesApiInstance = new Asana.WorkspacesApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The workspace object with all updated properties.
 let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
 let opts = { 

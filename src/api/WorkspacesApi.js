@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Workspaces service.
 * @module api/WorkspacesApi
-* @version 3.1.3
+* @version 3.1.4
 */
 export class WorkspacesApi {
 

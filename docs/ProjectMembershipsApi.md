@@ -20,11 +20,10 @@ Returns the complete project record for a single project membership.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let projectMembershipsApiInstance = new Asana.ProjectMembershipsApi();
+let projectMembershipsApiInstance = new Asana.ProjectMembershipsApi(client);
 let project_membership_gid = "1331"; // String | 
 let opts = { 
     'opt_fields': "access_level,member,member.name,parent,parent.name,project,project.name,user,user.name,write_access"
@@ -66,11 +65,10 @@ Returns the compact project membership records for the project.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let projectMembershipsApiInstance = new Asana.ProjectMembershipsApi();
+let projectMembershipsApiInstance = new Asana.ProjectMembershipsApi(client);
 let project_gid = "1331"; // String | Globally unique identifier for the project.
 let opts = { 
     'user': "me", 

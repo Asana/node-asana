@@ -21,11 +21,10 @@ Returns the complete workspace record for a single workspace membership.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let workspaceMembershipsApiInstance = new Asana.WorkspaceMembershipsApi();
+let workspaceMembershipsApiInstance = new Asana.WorkspaceMembershipsApi(client);
 let workspace_membership_gid = "12345"; // String | 
 let opts = { 
     'opt_fields': "created_at,is_active,is_admin,is_guest,is_view_only,user,user.name,user_task_list,user_task_list.name,user_task_list.owner,user_task_list.workspace,vacation_dates,vacation_dates.end_on,vacation_dates.start_on,workspace,workspace.name"
@@ -67,11 +66,10 @@ Returns the compact workspace membership records for the user.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let workspaceMembershipsApiInstance = new Asana.WorkspaceMembershipsApi();
+let workspaceMembershipsApiInstance = new Asana.WorkspaceMembershipsApi(client);
 let user_gid = "me"; // String | A string identifying a user. This can either be the string \"me\", an email, or the gid of a user.
 let opts = { 
     'limit': 50, 
@@ -117,11 +115,10 @@ Returns the compact workspace membership records for the workspace.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let workspaceMembershipsApiInstance = new Asana.WorkspaceMembershipsApi();
+let workspaceMembershipsApiInstance = new Asana.WorkspaceMembershipsApi(client);
 let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
 let opts = { 
     'user': "me", 

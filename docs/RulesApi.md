@@ -19,11 +19,10 @@ Trigger a rule which uses an [\"incoming web request\"](/docs/incoming-web-reque
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let rulesApiInstance = new Asana.RulesApi();
+let rulesApiInstance = new Asana.RulesApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | A dictionary of variables accessible from within the rule.
 let rule_trigger_gid = "12345"; // String | The ID of the incoming web request trigger. This value is a path parameter that is automatically generated for the API endpoint.
 

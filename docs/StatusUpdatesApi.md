@@ -22,11 +22,10 @@ Creates a new status update on an object. Returns the full record of the newly c
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let statusUpdatesApiInstance = new Asana.StatusUpdatesApi();
+let statusUpdatesApiInstance = new Asana.StatusUpdatesApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The status update to create.
 let opts = { 
     'limit': 50, 
@@ -72,11 +71,10 @@ Deletes a specific, existing status update.  Returns an empty data record.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let statusUpdatesApiInstance = new Asana.StatusUpdatesApi();
+let statusUpdatesApiInstance = new Asana.StatusUpdatesApi(client);
 let status_update_gid = "321654"; // String | The status update to get.
 
 statusUpdatesApiInstance.deleteStatus(status_update_gid).then((result) => {
@@ -115,11 +113,10 @@ Returns the complete record for a single status update.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let statusUpdatesApiInstance = new Asana.StatusUpdatesApi();
+let statusUpdatesApiInstance = new Asana.StatusUpdatesApi(client);
 let status_update_gid = "321654"; // String | The status update to get.
 let opts = { 
     'opt_fields': "author,author.name,created_at,created_by,created_by.name,hearted,hearts,hearts.user,hearts.user.name,html_text,liked,likes,likes.user,likes.user.name,modified_at,num_hearts,num_likes,parent,parent.name,reaction_summary,reaction_summary.count,reaction_summary.emoji_base,reaction_summary.reacted,reaction_summary.variant,resource_subtype,status_type,text,title"
@@ -161,11 +158,10 @@ Returns the compact status update records for all updates on the object.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let statusUpdatesApiInstance = new Asana.StatusUpdatesApi();
+let statusUpdatesApiInstance = new Asana.StatusUpdatesApi(client);
 let parent = "159874"; // String | Globally unique identifier for object to fetch statuses from. Must be a GID for a project, portfolio, or goal.
 let opts = { 
     'limit': 50, 

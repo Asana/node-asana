@@ -22,11 +22,10 @@ Creates a new project brief.  Returns the full record of the newly created proje
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let projectBriefsApiInstance = new Asana.ProjectBriefsApi();
+let projectBriefsApiInstance = new Asana.ProjectBriefsApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The project brief to create.
 let project_gid = "1331"; // String | Globally unique identifier for the project.
 let opts = { 
@@ -70,11 +69,10 @@ Deletes a specific, existing project brief.  Returns an empty data record.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let projectBriefsApiInstance = new Asana.ProjectBriefsApi();
+let projectBriefsApiInstance = new Asana.ProjectBriefsApi(client);
 let project_brief_gid = "12345"; // String | Globally unique identifier for the project brief.
 
 projectBriefsApiInstance.deleteProjectBrief(project_brief_gid).then((result) => {
@@ -113,11 +111,10 @@ Get the full record for a project brief.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let projectBriefsApiInstance = new Asana.ProjectBriefsApi();
+let projectBriefsApiInstance = new Asana.ProjectBriefsApi(client);
 let project_brief_gid = "12345"; // String | Globally unique identifier for the project brief.
 let opts = { 
     'opt_fields': "html_text,permalink_url,project,project.name,text,title"
@@ -159,11 +156,10 @@ An existing project brief can be updated by making a PUT request on the URL for 
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let projectBriefsApiInstance = new Asana.ProjectBriefsApi();
+let projectBriefsApiInstance = new Asana.ProjectBriefsApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The updated fields for the project brief.
 let project_brief_gid = "12345"; // String | Globally unique identifier for the project brief.
 let opts = { 

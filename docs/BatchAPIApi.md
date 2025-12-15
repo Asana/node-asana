@@ -19,11 +19,10 @@ Make multiple requests in parallel to Asana's API.
 ```javascript
 const Asana = require('asana');
 
-let client = Asana.ApiClient.instance;
-let token = client.authentications['token'];
-token.accessToken = '<YOUR_ACCESS_TOKEN>';
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
-let batchApiApiInstance = new Asana.BatchAPIApi();
+let batchApiApiInstance = new Asana.BatchAPIApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The requests to batch together via the Batch API.
 let opts = { 
     'opt_fields': "body,headers,status_code"
