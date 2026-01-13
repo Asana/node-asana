@@ -42,7 +42,7 @@ Collection.isCollectionResponse = function(responseData) {
         typeof(responseData.length) === 'number';
 };
 
-module.exports = Collection;
+export default Collection;
 
 /**
  * Get the next page of results in a collection.

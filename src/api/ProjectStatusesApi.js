@@ -13,7 +13,7 @@
  *
  */
 import {ApiClient} from "../ApiClient";
-var Collection = require('../utils/collection');
+import Collection from '../utils/collection.js';
 
 /**
 * ProjectStatuses service.

@@ -16,15 +16,15 @@ import {ApiClient} from "../ApiClient";
 import Collection from '../utils/collection.js';
 
 /**
-* Allocations service.
-* @module api/AllocationsApi
+* Roles service.
+* @module api/RolesApi
 * @version 3.1.9
 */
-export class AllocationsApi {
+export class RolesApi {
 
     /**
-    * Constructs a new AllocationsApi. 
-    * @alias module:api/AllocationsApi
+    * Constructs a new RolesApi. 
+    * @alias module:api/RolesApi
     * @class
     * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
     * default to {@link module:ApiClient#instanc
@@ -37,19 +37,19 @@ export class AllocationsApi {
 
 
     /**
-     * Create an allocation
-     * Creates a new allocation.  Returns the full record of the newly created allocation.
-     * @param {module:model/Object} body The allocation to create.
+     * Create a role
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;roles:write&lt;/code&gt;  Creates a new RBAC role in the workspace.
+     * @param {module:model/Object} body The role to create.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
-    createAllocationWithHttpInfo(body, opts) {
+    createRoleWithHttpInfo(body, opts) {
         opts = opts || {};
         let postBody = body;
         // verify the required parameter 'body' is set
         if (body === undefined || body === null) {
-            throw new Error("Missing the required parameter 'body' when calling createAllocation");
+            throw new Error("Missing the required parameter 'body' when calling createRole");
         }
 
         let pathParams = {
@@ -72,23 +72,23 @@ export class AllocationsApi {
         let returnType = 'Blob';
 
         return this.apiClient.callApi(
-            '/allocations', 'POST',
+            '/roles', 'POST',
             pathParams, queryParams, headerParams, formParams, postBody,
             authNames, contentTypes, accepts, returnType
         );
     }
 
     /**
-     * Create an allocation
-     * Creates a new allocation.  Returns the full record of the newly created allocation.
-     * @param {<&vendorExtensions.x-jsdoc-type>} body The allocation to create.
+     * Create a role
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;roles:write&lt;/code&gt;  Creates a new RBAC role in the workspace.
+     * @param {<&vendorExtensions.x-jsdoc-type>} body The role to create.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AllocationResponseData}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/RbacRoleResponseData}
      */
-    createAllocation(body, opts) {
+    createRole(body, opts) {
 
-        return this.createAllocationWithHttpInfo(body, opts)
+        return this.createRoleWithHttpInfo(body, opts)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });
@@ -96,21 +96,21 @@ export class AllocationsApi {
 
 
     /**
-     * Delete an allocation
-     * A specific, existing allocation can be deleted by making a DELETE request on the URL for that allocation.  Returns an empty data record.
-     * @param {String} allocation_gid Globally unique identifier for the allocation.
+     * Delete a role
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;roles:delete&lt;/code&gt;  Deletes a role from a workspace.
+     * @param {String} role_gid Globally unique identifier for the role.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
-    deleteAllocationWithHttpInfo(allocation_gid) {
+    deleteRoleWithHttpInfo(role_gid) {
         
         let postBody = null;
-        // verify the required parameter 'allocation_gid' is set
-        if (allocation_gid === undefined || allocation_gid === null) {
-            throw new Error("Missing the required parameter 'allocation_gid' when calling deleteAllocation");
+        // verify the required parameter 'role_gid' is set
+        if (role_gid === undefined || role_gid === null) {
+            throw new Error("Missing the required parameter 'role_gid' when calling deleteRole");
         }
 
         let pathParams = {
-            'allocation_gid': allocation_gid
+            'role_gid': role_gid
         };
         let queryParams = {};
 
@@ -127,21 +127,21 @@ export class AllocationsApi {
         let returnType = 'Blob';
 
         return this.apiClient.callApi(
-            '/allocations/{allocation_gid}', 'DELETE',
+            '/roles/{role_gid}', 'DELETE',
             pathParams, queryParams, headerParams, formParams, postBody,
             authNames, contentTypes, accepts, returnType
         );
     }
 
     /**
-     * Delete an allocation
-     * A specific, existing allocation can be deleted by making a DELETE request on the URL for that allocation.  Returns an empty data record.
-     * @param {<&vendorExtensions.x-jsdoc-type>} allocation_gid Globally unique identifier for the allocation.
+     * Delete a role
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;roles:delete&lt;/code&gt;  Deletes a role from a workspace.
+     * @param {<&vendorExtensions.x-jsdoc-type>} role_gid Globally unique identifier for the role.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EmptyResponseData}
      */
-    deleteAllocation(allocation_gid) {
+    deleteRole(role_gid) {
 
-        return this.deleteAllocationWithHttpInfo(allocation_gid)
+        return this.deleteRoleWithHttpInfo(role_gid)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });
@@ -149,23 +149,23 @@ export class AllocationsApi {
 
 
     /**
-     * Get an allocation
-     * Returns the complete allocation record for a single allocation.
-     * @param {String} allocation_gid Globally unique identifier for the allocation.
+     * Get a role
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;roles:read&lt;/code&gt;  Returns the complete role record for a single role.
+     * @param {String} role_gid Globally unique identifier for the role.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
-    getAllocationWithHttpInfo(allocation_gid, opts) {
+    getRoleWithHttpInfo(role_gid, opts) {
         opts = opts || {};
         let postBody = null;
-        // verify the required parameter 'allocation_gid' is set
-        if (allocation_gid === undefined || allocation_gid === null) {
-            throw new Error("Missing the required parameter 'allocation_gid' when calling getAllocation");
+        // verify the required parameter 'role_gid' is set
+        if (role_gid === undefined || role_gid === null) {
+            throw new Error("Missing the required parameter 'role_gid' when calling getRole");
         }
 
         let pathParams = {
-            'allocation_gid': allocation_gid
+            'role_gid': role_gid
         };
         let queryParams = {};
         opts = opts || {};
@@ -184,23 +184,23 @@ export class AllocationsApi {
         let returnType = 'Blob';
 
         return this.apiClient.callApi(
-            '/allocations/{allocation_gid}', 'GET',
+            '/roles/{role_gid}', 'GET',
             pathParams, queryParams, headerParams, formParams, postBody,
             authNames, contentTypes, accepts, returnType
         );
     }
 
     /**
-     * Get an allocation
-     * Returns the complete allocation record for a single allocation.
-     * @param {<&vendorExtensions.x-jsdoc-type>} allocation_gid Globally unique identifier for the allocation.
+     * Get a role
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;roles:read&lt;/code&gt;  Returns the complete role record for a single role.
+     * @param {<&vendorExtensions.x-jsdoc-type>} role_gid Globally unique identifier for the role.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AllocationResponseData}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/RbacRoleResponseData}
      */
-    getAllocation(allocation_gid, opts) {
+    getRole(role_gid, opts) {
 
-        return this.getAllocationWithHttpInfo(allocation_gid, opts)
+        return this.getRoleWithHttpInfo(role_gid, opts)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });
@@ -208,18 +208,17 @@ export class AllocationsApi {
 
 
     /**
-     * Get multiple allocations
-     * Returns a list of allocations filtered to a specific project, user or placeholder.
+     * Get multiple roles
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;roles:read&lt;/code&gt;  Returns all RBAC roles for a workspace.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.parent Globally unique identifier for the project to filter allocations by.
-     * @param {String} opts.assignee Globally unique identifier for the user or placeholder the allocation is assigned to.
-     * @param {String} opts.workspace Globally unique identifier for the workspace.
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
+     * @param {String} opts.workspace The workspace or organization to filter roles on.
+     * @param {Boolean} opts.archived Only return projects whose &#x60;archived&#x60; field takes on the value of this parameter.
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
-    getAllocationsWithHttpInfo(opts) {
+    getRolesWithHttpInfo(opts) {
         opts = opts || {};
         let postBody = null;
 
@@ -245,13 +244,13 @@ export class AllocationsApi {
         if (this.apiClient.RETURN_COLLECTION) {
             return Collection.fromApiClient(
                 this.apiClient.callApi(
-                    '/allocations', 'GET',
+                    '/roles', 'GET',
                     pathParams, queryParams, headerParams, formParams, postBody,
                     authNames, contentTypes, accepts, returnType
                 ),
                 this.apiClient,
                 {
-                    'path': '/allocations',
+                    'path': '/roles',
                     'httpMethod': 'GET',
                     'pathParams': pathParams,
                     'queryParams': queryParams,
@@ -267,31 +266,30 @@ export class AllocationsApi {
         }
 
         return this.apiClient.callApi(
-            '/allocations', 'GET',
+            '/roles', 'GET',
             pathParams, queryParams, headerParams, formParams, postBody,
             authNames, contentTypes, accepts, returnType
         );
     }
 
     /**
-     * Get multiple allocations
-     * Returns a list of allocations filtered to a specific project, user or placeholder.
+     * Get multiple roles
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;roles:read&lt;/code&gt;  Returns all RBAC roles for a workspace.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.parent Globally unique identifier for the project to filter allocations by.
-     * @param {String} opts.assignee Globally unique identifier for the user or placeholder the allocation is assigned to.
-     * @param {String} opts.workspace Globally unique identifier for the workspace.
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
+     * @param {String} opts.workspace The workspace or organization to filter roles on.
+     * @param {Boolean} opts.archived Only return projects whose &#x60;archived&#x60; field takes on the value of this parameter.
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AllocationResponseArray}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/RbacRoleResponseArray}
      */
-    getAllocations(opts) {
+    getRoles(opts) {
         // Check if RETURN_COLLECTION is set and return a collection object if it is
         if (this.apiClient.RETURN_COLLECTION) {
-            return this.getAllocationsWithHttpInfo(opts)
+            return this.getRolesWithHttpInfo(opts)
         }
 
-        return this.getAllocationsWithHttpInfo(opts)
+        return this.getRolesWithHttpInfo(opts)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });
@@ -299,28 +297,28 @@ export class AllocationsApi {
 
 
     /**
-     * Update an allocation
-     * An existing allocation can be updated by making a PUT request on the URL for that allocation. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  Returns the complete updated allocation record.
-     * @param {module:model/Object} body The updated fields for the allocation.
-     * @param {String} allocation_gid Globally unique identifier for the allocation.
+     * Update a role
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;roles:write&lt;/code&gt;  Updates a role in a workspace.
+     * @param {module:model/Object} body The updated fields for the role.
+     * @param {String} role_gid Globally unique identifier for the role.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
-    updateAllocationWithHttpInfo(body, allocation_gid, opts) {
+    updateRoleWithHttpInfo(body, role_gid, opts) {
         opts = opts || {};
         let postBody = body;
         // verify the required parameter 'body' is set
         if (body === undefined || body === null) {
-            throw new Error("Missing the required parameter 'body' when calling updateAllocation");
+            throw new Error("Missing the required parameter 'body' when calling updateRole");
         }
-        // verify the required parameter 'allocation_gid' is set
-        if (allocation_gid === undefined || allocation_gid === null) {
-            throw new Error("Missing the required parameter 'allocation_gid' when calling updateAllocation");
+        // verify the required parameter 'role_gid' is set
+        if (role_gid === undefined || role_gid === null) {
+            throw new Error("Missing the required parameter 'role_gid' when calling updateRole");
         }
 
         let pathParams = {
-            'allocation_gid': allocation_gid
+            'role_gid': role_gid
         };
         let queryParams = {};
         opts = opts || {};
@@ -339,24 +337,24 @@ export class AllocationsApi {
         let returnType = 'Blob';
 
         return this.apiClient.callApi(
-            '/allocations/{allocation_gid}', 'PUT',
+            '/roles/{role_gid}', 'PUT',
             pathParams, queryParams, headerParams, formParams, postBody,
             authNames, contentTypes, accepts, returnType
         );
     }
 
     /**
-     * Update an allocation
-     * An existing allocation can be updated by making a PUT request on the URL for that allocation. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  Returns the complete updated allocation record.
-     * @param {<&vendorExtensions.x-jsdoc-type>} body The updated fields for the allocation.
-     * @param {<&vendorExtensions.x-jsdoc-type>} allocation_gid Globally unique identifier for the allocation.
+     * Update a role
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;roles:write&lt;/code&gt;  Updates a role in a workspace.
+     * @param {<&vendorExtensions.x-jsdoc-type>} body The updated fields for the role.
+     * @param {<&vendorExtensions.x-jsdoc-type>} role_gid Globally unique identifier for the role.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AllocationResponseData}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/RbacRoleResponseData}
      */
-    updateAllocation(body, allocation_gid, opts) {
+    updateRole(body, role_gid, opts) {
 
-        return this.updateAllocationWithHttpInfo(body, allocation_gid, opts)
+        return this.updateRoleWithHttpInfo(body, role_gid, opts)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });

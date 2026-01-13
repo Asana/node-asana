@@ -38,6 +38,7 @@ import {ProjectTemplatesApi} from './api/ProjectTemplatesApi';
 import {ProjectsApi} from './api/ProjectsApi';
 import {RatesApi} from './api/RatesApi';
 import {ReactionsApi} from './api/ReactionsApi';
+import {RolesApi} from './api/RolesApi';
 import {RulesApi} from './api/RulesApi';
 import {SectionsApi} from './api/SectionsApi';
 import {StatusUpdatesApi} from './api/StatusUpdatesApi';
@@ -245,6 +246,12 @@ export {
     * @property {module:api/ReactionsApi}
     */
     ReactionsApi,
+
+    /**
+    * The RolesApi service constructor.
+    * @property {module:api/RolesApi}
+    */
+    RolesApi,
 
     /**
     * The RulesApi service constructor.

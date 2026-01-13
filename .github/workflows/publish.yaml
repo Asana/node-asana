@@ -90,7 +90,10 @@ jobs:
       - name: Build distribution
         run: |
           npm pkg set 'main'='dist/index.js'
-          npm pkg set 'scripts.build'='babel src -d dist'
+          npm pkg set 'types'='dist/index.d.ts'
+          npm pkg set 'exports["."].types'='./dist/index.d.ts'
+          npm pkg set 'exports["."].default'='./dist/index.js'
+          npm pkg set 'scripts.build'='babel src -d dist && cp types/*.d.ts dist/ && echo "{\"type\":\"commonjs\"}" > dist/package.json'
           npm pkg set 'scripts.prepare'='npm run build'
           npm install
           npm publish
@@ -120,7 +123,10 @@ jobs:
       - name: Build distribution
         run: |
           npm pkg set 'main'='dist/index.js'
-          npm pkg set 'scripts.build'='babel src -d dist'
+          npm pkg set 'types'='dist/index.d.ts'
+          npm pkg set 'exports["."].types'='./dist/index.d.ts'
+          npm pkg set 'exports["."].default'='./dist/index.js'
+          npm pkg set 'scripts.build'='babel src -d dist && cp types/*.d.ts dist/ && echo "{\"type\":\"commonjs\"}" > dist/package.json'
           npm pkg set 'scripts.prepare'='npm run build'
           npm install
       - name: Bundle code for browser

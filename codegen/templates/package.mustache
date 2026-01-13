@@ -3,14 +3,24 @@
   "version": "{{{projectVersion}}}",
   "description": "{{{projectDescription}}}",
   "license": "{{licenseName}}",
+  "type": "module",
   "main": "{{sourceFolder}}{{#invokerPackage}}/{{invokerPackage}}{{/invokerPackage}}/index.js",
+  "types": "types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "default": "./{{sourceFolder}}{{#invokerPackage}}/{{invokerPackage}}{{/invokerPackage}}/index.js"
+    }
+  },
   "repository": {
     "url": "https://github.com/Asana/node-{{{projectName}}}",
     "type": "git"
   },
   "scripts": {
     "test": "mocha --require @babel/register --recursive",
-    "testbuild": "mocha --timeout 20000 --require @babel/register --recursive 'build-tests/api/*.js'"
+    "testbuild": "mocha --timeout 20000 --require @babel/register --recursive 'build-tests/api/*.js'",
+    "generate-types": "tsx scripts/generate-types.mts",
+    "typecheck-examples": "tsc --project examples/tsconfig.json"
   },
   "browser": {
     "fs": false
@@ -39,9 +49,13 @@
     "@babel/plugin-syntax-import-meta": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/register": "^7.0.0",
+    "@types/node": "^24.0.0",
     "dotenv": "^16.4.1",
     "expect.js": "^0.3.1",
     "mocha": "^8.0.1",
-    "sinon": "^7.2.0"
+    "openapi-typescript": "^7.0.0",
+    "sinon": "^7.2.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.9.3"
   }
 }

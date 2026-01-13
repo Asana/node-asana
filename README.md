@@ -306,6 +306,11 @@ Class | Method | HTTP request | Description
 *Asana.RatesApi* | [**getRates**](docs/RatesApi.md#getRates) | **GET** /rates | Get multiple rates
 *Asana.RatesApi* | [**updateRate**](docs/RatesApi.md#updateRate) | **PUT** /rates/{rate_gid} | Update a rate
 *Asana.ReactionsApi* | [**getReactionsOnObject**](docs/ReactionsApi.md#getReactionsOnObject) | **GET** /reactions | Get reactions with an emoji base on an object.
+*Asana.RolesApi* | [**createRole**](docs/RolesApi.md#createRole) | **POST** /roles | Create a role
+*Asana.RolesApi* | [**deleteRole**](docs/RolesApi.md#deleteRole) | **DELETE** /roles/{role_gid} | Delete a role
+*Asana.RolesApi* | [**getRole**](docs/RolesApi.md#getRole) | **GET** /roles/{role_gid} | Get a role
+*Asana.RolesApi* | [**getRoles**](docs/RolesApi.md#getRoles) | **GET** /roles | Get multiple roles
+*Asana.RolesApi* | [**updateRole**](docs/RolesApi.md#updateRole) | **PUT** /roles/{role_gid} | Update a role
 *Asana.RulesApi* | [**triggerRule**](docs/RulesApi.md#triggerRule) | **POST** /rule_triggers/{rule_trigger_gid}/run | Trigger a rule
 *Asana.SectionsApi* | [**addTaskForSection**](docs/SectionsApi.md#addTaskForSection) | **POST** /sections/{section_gid}/addTask | Add task to section
 *Asana.SectionsApi* | [**createSectionForProject**](docs/SectionsApi.md#createSectionForProject) | **POST** /projects/{project_gid}/sections | Create a section in a project
