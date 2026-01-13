@@ -4,13 +4,15 @@
   "description": "This_is_the_interface_for_interacting_with_the__Asana_Platform_httpsdevelopers_asana_com__Our_API_reference_is_generated_from_our__OpenAPI_spec__httpsraw_githubusercontent_comAsanaopenapimasterdefsasana_oas_yaml_",
   "license": "Apache 2.0",
   "main": "src/index.js",
+  "types": "types/index.d.ts",
   "repository": {
     "url": "https://github.com/Asana/node-asana",
     "type": "git"
   },
   "scripts": {
     "test": "mocha --require @babel/register --recursive",
-    "testbuild": "mocha --timeout 20000 --require @babel/register --recursive 'build-tests/api/*.js'"
+    "testbuild": "mocha --timeout 20000 --require @babel/register --recursive 'build-tests/api/*.js'",
+    "generate-types": "tsx scripts/generate-types.mts"
   },
   "browser": {
     "fs": false
@@ -39,9 +41,13 @@
     "@babel/plugin-syntax-import-meta": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/register": "^7.0.0",
+    "@types/node": "^20.0.0",
     "dotenv": "^16.4.1",
     "expect.js": "^0.3.1",
     "mocha": "^8.0.1",
-    "sinon": "^7.2.0"
+    "openapi-typescript": "^7.0.0",
+    "sinon": "^7.2.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.0"
   }
 }

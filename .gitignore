@@ -1,2 +1,7 @@
+
 .env
 node_modules/
+.cursor/
+
+# Ignore Local History files
+.history/
