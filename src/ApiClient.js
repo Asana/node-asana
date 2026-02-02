@@ -13,6 +13,7 @@
  *
  */
 import superagent from "superagent";
+var retryUtil = require('./utils/retry');
 
 /**
 * @module ApiClient
@@ -87,6 +88,29 @@ export class ApiClient {
          * Allow user to override superagent agent
          */
          this.requestAgent = null;
+
+        /**
+         * Retry configuration for handling rate limits and transient errors.
+         * Set to null to disable retry logic, or configure with retry options.
+         * @type {Object|null}
+         * @default null (disabled)
+         * 
+         * @example
+         * // Enable retry with defaults (3 retries, exponential backoff)
+         * client.retryConfig = {};
+         * 
+         * @example
+         * // Custom retry configuration
+         * client.retryConfig = {
+         *     maxRetries: 5,
+         *     baseDelay: 2000,
+         *     maxDelay: 60000,
+         *     onRetry: (attempt, error, delay) => {
+         *         console.log(`Retry ${attempt} after ${delay}ms`);
+         *     }
+         * };
+         */
+        this.retryConfig = null;
 
     }
 
@@ -400,117 +424,131 @@ export class ApiClient {
         queryParams, headerParams, formParams, bodyParam, authNames, contentTypes, accepts,
         returnType) {
 
-        var url = this.buildUrl(path, pathParams);
-        var request = superagent(httpMethod, url);
-
-        // apply authentications
-        this.applyAuthToRequest(request, authNames);
-
-        // set query parameters
-        if (httpMethod.toUpperCase() === 'GET' && this.cache === false) {
-            queryParams['_'] = new Date().getTime();
-        }
-
-        request.query(this.normalizeParams(queryParams));
-
-        // set header parameters
-        if (typeof(navigator) === 'undefined' || typeof(window) === 'undefined') {
-            headerParams['X-Asana-Client-Lib'] = new URLSearchParams(
-                {
-                    'version': "3.1.5",
-                    'language': 'NodeJS',
-                    'language_version': process.version,
-                    'os': process.platform
-                }
-            ).toString();
-        } else {
-            headerParams['X-Asana-Client-Lib'] = new URLSearchParams(
-                {
-                    'version': "3.1.5",
-                    'language': 'BrowserJS'
-                }
-            ).toString();
-        }
-        request.set(this.defaultHeaders).set(this.normalizeParams(headerParams));
-
-        // set requestAgent if it is set by user
-        if (this.requestAgent) {
-          request.agent(this.requestAgent);
-        }
-
-        // set request timeout
-        request.timeout(this.timeout);
-
-        var contentType = this.jsonPreferredMime(contentTypes);
-        if (contentType) {
-            // Issue with superagent and multipart/form-data (https://github.com/visionmedia/superagent/issues/746)
-            if(contentType != 'multipart/form-data') {
-                request.type(contentType);
-            }
-        } else if (!request.header['Content-Type']) {
-            request.type('application/json');
-        }
-
-        if (contentType === 'application/x-www-form-urlencoded') {
-            request.send(new URLSearchParams(this.normalizeParams(formParams)).toString());
-        } else if (contentType == 'multipart/form-data') {
-            var _formParams = this.normalizeParams(formParams);
-            for (var key in _formParams) {
-                if (_formParams.hasOwnProperty(key)) {
-                    if (this.isFileParam(_formParams[key])) {
-                        // file field
-                        request.attach(key, _formParams[key]);
-                    } else {
-                        request.field(key, _formParams[key]);
-                    }
-                }
-            }
-        } else if (bodyParam) {
-            // Some Asana resources (EX: Projects, ProjectTemplates) contain a "public" property which is a JavaScript reserved word.
-            // Because of this, the generator adds a "_" prefix to properties that is in the reserved words list: https://github.com/swagger-api/swagger-codegen-generators/blob/v1.0.42/src/main/java/io/swagger/codegen/v3/generators/javascript/JavaScriptClientCodegen.java#L134-L153
-            // We need to remove this "_prefix" before sending the request to the Asana API because it will not throw an error for "_public" property in the request body.
-            if (bodyParam.data.hasOwnProperty("_public")) {
-                bodyParam.data['public'] = bodyParam.data['_public'];
-                delete bodyParam.data['_public'];
-            }
-            request.send(bodyParam);
-        }
-
-        var accept = this.jsonPreferredMime(accepts);
-        if (accept) {
-            request.accept(accept);
-        }
-
-        // Attach previously saved cookies, if enabled
-        if (this.enableCookies){
-            if (typeof window === 'undefined') {
-                this.agent.attachCookies(request);
-            }
-            else {
-                request.withCredentials();
-            }
-        }
-
-        return new Promise((resolve, reject) => {
-            request.end((error, response) => {
-                if (error) {
-                    reject(error);
-                } else {
-                    try {
-                        var data = this.deserialize(response, returnType);
-                        if (this.enableCookies && typeof window === 'undefined'){
-                            this.agent.saveCookies(response);
-                        }
-
-                        resolve({data, response});
-                    } catch (err) {
-                        reject(err);
-                    }
-                }
-            });
-        });
-
+        var me = this;
         
+        // Build and execute request - extracted to function for retry support
+        var performRequest = () => {
+            var url = me.buildUrl(path, pathParams);
+            var request = superagent(httpMethod, url);
+
+            // apply authentications
+            me.applyAuthToRequest(request, authNames);
+
+            // set query parameters
+            if (httpMethod.toUpperCase() === 'GET' && me.cache === false) {
+                queryParams['_'] = new Date().getTime();
+            }
+
+            request.query(me.normalizeParams(queryParams));
+
+            // set header parameters
+            if (typeof(navigator) === 'undefined' || typeof(window) === 'undefined') {
+                headerParams['X-Asana-Client-Lib'] = new URLSearchParams(
+                    {
+                        'version': "3.1.5",
+                        'language': 'NodeJS',
+                        'language_version': process.version,
+                        'os': process.platform
+                    }
+                ).toString();
+            } else {
+                headerParams['X-Asana-Client-Lib'] = new URLSearchParams(
+                    {
+                        'version': "3.1.5",
+                        'language': 'BrowserJS'
+                    }
+                ).toString();
+            }
+            request.set(me.defaultHeaders).set(me.normalizeParams(headerParams));
+
+            // set requestAgent if it is set by user
+            if (me.requestAgent) {
+              request.agent(me.requestAgent);
+            }
+
+            // set request timeout
+            request.timeout(me.timeout);
+
+            var contentType = me.jsonPreferredMime(contentTypes);
+            if (contentType) {
+                // Issue with superagent and multipart/form-data (https://github.com/visionmedia/superagent/issues/746)
+                if(contentType != 'multipart/form-data') {
+                    request.type(contentType);
+                }
+            } else if (!request.header['Content-Type']) {
+                request.type('application/json');
+            }
+
+            if (contentType === 'application/x-www-form-urlencoded') {
+                request.send(new URLSearchParams(me.normalizeParams(formParams)).toString());
+            } else if (contentType == 'multipart/form-data') {
+                var _formParams = me.normalizeParams(formParams);
+                for (var key in _formParams) {
+                    if (_formParams.hasOwnProperty(key)) {
+                        if (me.isFileParam(_formParams[key])) {
+                            // file field
+                            request.attach(key, _formParams[key]);
+                        } else {
+                            request.field(key, _formParams[key]);
+                        }
+                    }
+                }
+            } else if (bodyParam) {
+                // Some Asana resources (EX: Projects, ProjectTemplates) contain a "public" property which is a JavaScript reserved word.
+                // Because of this, the generator adds a "_" prefix to properties that is in the reserved words list: https://github.com/swagger-api/swagger-codegen-generators/blob/v1.0.42/src/main/java/io/swagger/codegen/v3/generators/javascript/JavaScriptClientCodegen.java#L134-L153
+                // We need to remove this "_prefix" before sending the request to the Asana API because it will not throw an error for "_public" property in the request body.
+                if (bodyParam.data && bodyParam.data.hasOwnProperty("_public")) {
+                    bodyParam.data['public'] = bodyParam.data['_public'];
+                    delete bodyParam.data['_public'];
+                }
+                request.send(bodyParam);
+            }
+
+            var accept = me.jsonPreferredMime(accepts);
+            if (accept) {
+                request.accept(accept);
+            }
+
+            // Attach previously saved cookies, if enabled
+            if (me.enableCookies){
+                if (typeof window === 'undefined') {
+                    me.agent.attachCookies(request);
+                }
+                else {
+                    request.withCredentials();
+                }
+            }
+
+            return new Promise((resolve, reject) => {
+                request.end((error, response) => {
+                    if (error) {
+                        // Attach response to error for retry logic
+                        if (response) {
+                            error.response = response;
+                        }
+                        reject(error);
+                    } else {
+                        try {
+                            var data = me.deserialize(response, returnType);
+                            if (me.enableCookies && typeof window === 'undefined'){
+                                me.agent.saveCookies(response);
+                            }
+
+                            resolve({data, response});
+                        } catch (err) {
+                            reject(err);
+                        }
+                    }
+                });
+            });
+        };
+
+        // Apply retry logic if configured
+        if (this.retryConfig !== null) {
+            return retryUtil.retry(performRequest, this.retryConfig);
+        }
+
+        return performRequest();
     }
 
     /**
