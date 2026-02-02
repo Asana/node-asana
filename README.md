@@ -941,6 +941,100 @@ client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 client.defaultHeaders['asana-disable'] = 'new_goal_memberships';
 ```
 
+## Retry Logic and Rate Limit Handling
+
+The SDK includes built-in retry logic with exponential backoff to handle rate limits (429) and transient server errors (5xx). This feature is disabled by default but can be easily enabled.
+
+### Enabling Retry Logic
+
+```javascript
+const Asana = require('asana');
+
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+
+// Enable retry with default settings (3 retries, exponential backoff)
+client.retryConfig = {};
+
+// Or configure custom retry behavior
+client.retryConfig = {
+    maxRetries: 5,              // Maximum number of retry attempts
+    baseDelay: 2000,            // Base delay in milliseconds (default: 1000)
+    maxDelay: 60000,             // Maximum delay in milliseconds (default: 30000)
+    jitter: true,                // Add random jitter to prevent thundering herd (default: true)
+    onRetry: (attempt, error, delay) => {
+        console.log(`Retry attempt ${attempt} after ${delay}ms`);
+        console.log(`Error: ${error.message}`);
+    }
+};
+```
+
+### How It Works
+
+- **Rate Limit Errors (429)**: Automatically respects `Retry-After` headers from Asana's API
+- **Server Errors (5xx)**: Uses exponential backoff (1s, 2s, 4s, 8s...)
+- **Network Errors**: Retries on connection resets, timeouts, and DNS failures
+- **Custom Predicates**: Define your own retry logic with `shouldRetry` function
+
+### Example: Handling Rate Limits
+
+```javascript
+const Asana = require('asana');
+
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+
+// Enable retry for rate limits
+client.retryConfig = {
+    maxRetries: 5,
+    onRetry: (attempt, error) => {
+        if (error.status === 429) {
+            console.log(`Rate limited! Retry attempt ${attempt}`);
+        }
+    }
+};
+
+let tasksApiInstance = new Asana.TasksApi(client);
+
+// This will automatically retry if rate limited
+tasksApiInstance.getTasks({ limit: 100 }).then((result) => {
+    console.log('Tasks:', result.data);
+}, (error) => {
+    console.error('Failed after retries:', error);
+});
+```
+
+### Advanced: Custom Retry Logic
+
+```javascript
+// Only retry on specific errors
+client.retryConfig = {
+    maxRetries: 3,
+    shouldRetry: (error) => {
+        // Only retry on 429 or 503
+        return error.status === 429 || error.status === 503;
+    }
+};
+
+// Disable retry for specific operations
+client.retryConfig = null; // Disables retry logic
+```
+
+### Manual Retry Utility
+
+You can also use the retry utility directly for custom operations:
+
+```javascript
+const retryUtil = require('asana/src/utils/retry');
+
+const result = await retryUtil.retry(async () => {
+    return await someCustomOperation();
+}, {
+    maxRetries: 3,
+    baseDelay: 1000
+});
+```
+
 ## Using the `callApi` method
 
 Use the `callApi` method to make http calls when the endpoint does not exist in the current library version or has bugs
