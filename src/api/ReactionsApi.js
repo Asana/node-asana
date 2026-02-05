@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Reactions service.
 * @module api/ReactionsApi
-* @version 3.1.6
+* @version 3.1.7
 */
 export class ReactionsApi {
 
