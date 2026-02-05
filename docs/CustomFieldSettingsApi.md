@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Get a goal&#x27;s custom fields
 
-Returns a list of all of the custom fields settings on a goal, in compact form. Note that, as in all queries to collections which return compact representation, `opt_fields` can be used to include more data than is returned in the compact representation. See the [documentation for input/output options](https://developers.asana.com/docs/inputoutput-options) for more information.
+<b>Required scope: </b><code>goals:read</code>  Returns a list of all of the custom fields settings on a goal, in compact form. Note that, as in all queries to collections which return compact representation, `opt_fields` can be used to include more data than is returned in the compact representation. See the [documentation for input/output options](https://developers.asana.com/docs/inputoutput-options) for more information.
 
 ([more information](https://developers.asana.com/reference/getcustomfieldsettingsforgoal))
 
@@ -63,7 +63,7 @@ object
 
 Get a portfolio&#x27;s custom fields
 
-Returns a list of all of the custom fields settings on a portfolio, in compact form.
+<b>Required scope: </b><code>portfolios:read</code>  Returns a list of all of the custom fields settings on a portfolio, in compact form.
 
 ([more information](https://developers.asana.com/reference/getcustomfieldsettingsforportfolio))
 
@@ -112,7 +112,7 @@ object
 
 Get a project&#x27;s custom fields
 
-Returns a list of all of the custom fields settings on a project, in compact form. Note that, as in all queries to collections which return compact representation, `opt_fields` can be used to include more data than is returned in the compact representation. See the [documentation for input/output options](https://developers.asana.com/docs/inputoutput-options) for more information.
+<b>Required scope: </b><code>projects:read</code>  Returns a list of all of the custom fields settings on a project, in compact form. Note that, as in all queries to collections which return compact representation, `opt_fields` can be used to include more data than is returned in the compact representation. See the [documentation for input/output options](https://developers.asana.com/docs/inputoutput-options) for more information.
 
 ([more information](https://developers.asana.com/reference/getcustomfieldsettingsforproject))
 
@@ -161,7 +161,7 @@ object
 
 Get a team&#x27;s custom fields
 
-Returns a list of all of the custom fields settings on a team, in compact form. Note that, as in all queries to collections which return compact representation, `opt_fields` can be used to include more data than is returned in the compact representation. See the [documentation for input/output options](https://developers.asana.com/docs/inputoutput-options) for more information.
+<b>Required scope: </b><code>teams:read</code>  Returns a list of all of the custom fields settings on a team, in compact form. Note that, as in all queries to collections which return compact representation, `opt_fields` can be used to include more data than is returned in the compact representation. See the [documentation for input/output options](https://developers.asana.com/docs/inputoutput-options) for more information.
 
 ([more information](https://developers.asana.com/reference/getcustomfieldsettingsforteam))
 

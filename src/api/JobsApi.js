@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Jobs service.
 * @module api/JobsApi
-* @version 3.1.5
+* @version 3.1.6
 */
 export class JobsApi {
 
@@ -38,7 +38,7 @@ export class JobsApi {
 
     /**
      * Get a job by id
-     * Returns the full record for a job.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;jobs:read&lt;/code&gt;  Returns the full record for a job.
      * @param {String} job_gid Globally unique identifier for the job.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -80,7 +80,7 @@ export class JobsApi {
 
     /**
      * Get a job by id
-     * Returns the full record for a job.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;jobs:read&lt;/code&gt;  Returns the full record for a job.
      * @param {<&vendorExtensions.x-jsdoc-type>} job_gid Globally unique identifier for the job.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.

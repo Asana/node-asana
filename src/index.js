@@ -85,7 +85,7 @@ import {WorkspacesApi} from './api/WorkspacesApi';
 * </pre>
 * </p>
 * @module index
-* @version 3.1.5
+* @version 3.1.6
 */
 export {
     /**

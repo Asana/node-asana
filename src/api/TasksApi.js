@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Tasks service.
 * @module api/TasksApi
-* @version 3.1.5
+* @version 3.1.6
 */
 export class TasksApi {
 
@@ -221,7 +221,7 @@ export class TasksApi {
 
     /**
      * Add a project to a task
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tasks:write&lt;/code&gt;  Adds the task to the specified project, in the optional location specified. If no location arguments are given, the task will be added to the end of the project.  &#x60;addProject&#x60; can also be used to reorder a task within a project or section that already contains it.  At most one of &#x60;insert_before&#x60;, &#x60;insert_after&#x60;, or &#x60;section&#x60; should be specified. Inserting into a section in an non-order-dependent way can be done by specifying section, otherwise, to insert within a section in a particular place, specify &#x60;insert_before&#x60; or &#x60;insert_after&#x60; and a task within the section to anchor the position of this task.  A task can have at most 20 projects multi-homed to it.  Returns an empty data block.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tasks:write&lt;/code&gt;  Adds the task to the specified project, in the optional location specified. If no location arguments are given, the task will be added to the end of the project.  &#x60;addProject&#x60; can also be used to reorder a task within a project or section that already contains it.  **Positioning the task:** - Use &#x60;insert_before&#x60; or &#x60;insert_after&#x60; with a task ID to position relative to another task - Use &#x60;section&#x60; alone to add the task to the end of a section - Use &#x60;section&#x60; with &#x60;insert_after: null&#x60; to add to the **beginning** of a section - Use &#x60;section&#x60; with &#x60;insert_before: null&#x60; to add to the **end** of a section - Use &#x60;section&#x60; with &#x60;insert_before&#x60; or &#x60;insert_after&#x60; (non-null) to position relative to a task within that section. The anchor task must be in the specified section.  At most one of &#x60;insert_before&#x60; or &#x60;insert_after&#x60; should be specified (both cannot be used together).  A task can have at most 20 projects multi-homed to it.  Returns an empty data block.
      * @param {module:model/Object} body The project to add the task to.
      * @param {String} task_gid The task to operate on.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
@@ -264,7 +264,7 @@ export class TasksApi {
 
     /**
      * Add a project to a task
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tasks:write&lt;/code&gt;  Adds the task to the specified project, in the optional location specified. If no location arguments are given, the task will be added to the end of the project.  &#x60;addProject&#x60; can also be used to reorder a task within a project or section that already contains it.  At most one of &#x60;insert_before&#x60;, &#x60;insert_after&#x60;, or &#x60;section&#x60; should be specified. Inserting into a section in an non-order-dependent way can be done by specifying section, otherwise, to insert within a section in a particular place, specify &#x60;insert_before&#x60; or &#x60;insert_after&#x60; and a task within the section to anchor the position of this task.  A task can have at most 20 projects multi-homed to it.  Returns an empty data block.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tasks:write&lt;/code&gt;  Adds the task to the specified project, in the optional location specified. If no location arguments are given, the task will be added to the end of the project.  &#x60;addProject&#x60; can also be used to reorder a task within a project or section that already contains it.  **Positioning the task:** - Use &#x60;insert_before&#x60; or &#x60;insert_after&#x60; with a task ID to position relative to another task - Use &#x60;section&#x60; alone to add the task to the end of a section - Use &#x60;section&#x60; with &#x60;insert_after: null&#x60; to add to the **beginning** of a section - Use &#x60;section&#x60; with &#x60;insert_before: null&#x60; to add to the **end** of a section - Use &#x60;section&#x60; with &#x60;insert_before&#x60; or &#x60;insert_after&#x60; (non-null) to position relative to a task within that section. The anchor task must be in the specified section.  At most one of &#x60;insert_before&#x60; or &#x60;insert_after&#x60; should be specified (both cannot be used together).  A task can have at most 20 projects multi-homed to it.  Returns an empty data block.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The project to add the task to.
      * @param {<&vendorExtensions.x-jsdoc-type>} task_gid The task to operate on.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EmptyResponseData}

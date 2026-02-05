@@ -47,6 +47,7 @@ TimeTrackingEntriesApi:
         'workspace': "98765", 
         'entered_on_start_date': "2025-01-01", 
         'entered_on_end_date': "2025-12-31", 
+        'timesheet_approval_status': "12345", 
         'limit': 50, 
         'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
         'opt_fields': "attributable_to,attributable_to.name,created_by,created_by.name,duration_minutes,entered_on,offset,path,uri"

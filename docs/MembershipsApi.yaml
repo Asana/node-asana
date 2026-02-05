@@ -55,6 +55,7 @@ MembershipsApi:
     let opts = { 
         'parent': "159874", 
         'member': "1061493", 
+        'resource_subtype': "project_membership", 
         'limit': 50, 
         'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
         'opt_fields': "offset,path,uri"

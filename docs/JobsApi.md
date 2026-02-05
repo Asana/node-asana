@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 Get a job by id
 
-Returns the full record for a job.
+<b>Required scope: </b><code>jobs:read</code>  Returns the full record for a job.
 
 ([more information](https://developers.asana.com/reference/getjob))
 

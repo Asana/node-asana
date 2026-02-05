@@ -170,7 +170,7 @@ object
 
 Create a project
 
-<b>Required scope: </b><code>projects:write</code>  Create a new project in a workspace or team.  Every project is required to be created in a specific workspace or organization, and this cannot be changed once set. Note that you can use the `workspace` parameter regardless of whether or not it is an organization.  If the workspace for your project is an organization, you must also supply a `team` to share the project with.  Returns the full record of the newly created project.
+<b>Required scope: </b><code>projects:write</code>  Create a new project in a workspace or team.  Every project is required to be created in a specific workspace or organization, and this cannot be changed once set. Note that you can use the `workspace` parameter regardless of whether or not it is an organization.  If the workspace for your project is an organization, you must also supply a `team` to share the project with.  Returns the full record of the newly created project.  **Deprecation notice:** The `team` parameter and the `private_to_team` value for `privacy_setting` are deprecated. When either is included in the request, the `Asana-Change` response header will indicate an affected deprecation. Clients should switch to using `POST /memberships` with `{ parent: project, member: team }` to share a project with a team after creation.
 
 ([more information](https://developers.asana.com/reference/createproject))
 
@@ -443,7 +443,7 @@ object
 
 Get multiple projects
 
-<b>Required scope: </b><code>projects:read</code>  Returns the compact project records for some filtered set of projects. Use one or more of the parameters provided to filter the projects returned. *Note: This endpoint may timeout for large domains. Try filtering by team!*
+<b>Required scope: </b><code>projects:read</code>  Returns the compact project records for some filtered set of projects. Use one or more of the parameters provided to filter the projects returned. *Note: This endpoint may timeout for large domains. Try filtering by team!* **The `team` filter is deprecated.** Please use `GET /memberships` with `{ member: team, resource_subtype: project_membership }` to find projects shared with a team.
 
 ([more information](https://developers.asana.com/reference/getprojects))
 
@@ -478,7 +478,7 @@ Name | Type | Description  | Notes
  **limit** | **Number**| Results per page. The number of objects to return per page. The value must be between 1 and 100. | [optional] 
  **offset** | **String**| Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.* | [optional] 
  **workspace** | **String**| The workspace or organization to filter projects on. | [optional] 
- **team** | **String**| The team to filter projects on. | [optional] 
+ **team** | **String**| **Deprecated.** The team to filter projects on. Please use &#x60;GET /memberships&#x60; with &#x60;{ member: team, resource_subtype: project_membership }&#x60; instead. | [optional] 
  **archived** | **Boolean**| Only return projects whose &#x60;archived&#x60; field takes on the value of this parameter. | [optional] 
  **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
 
@@ -545,7 +545,7 @@ object
 
 Get a team&#x27;s projects
 
-<b>Required scope: </b><code>projects:read</code>  Returns the compact project records for all projects in the team.
+<b>Required scope: </b><code>projects:read</code>  Returns the compact project records for all projects in the team. *Deprecated: This endpoint is deprecated. Use `GET /memberships` with `member` set to the team GID and `resource_subtype` set to `project_membership` to fetch projects shared with a team.*
 
 ([more information](https://developers.asana.com/reference/getprojectsforteam))
 
@@ -596,7 +596,7 @@ object
 
 Get all projects in a workspace
 
-<b>Required scope: </b><code>projects:read</code>  Returns the compact project records for all projects in the workspace. *Note: This endpoint may timeout for large domains. Prefer the `/teams/{team_gid}/projects` endpoint.*
+<b>Required scope: </b><code>projects:read</code>  Returns the compact project records for all projects in the workspace. *Note: This endpoint may timeout for large domains. To fetch projects shared with a specific team, use `GET /memberships` with `member` set to the team GID and `resource_subtype` set to `project_membership`.*
 
 ([more information](https://developers.asana.com/reference/getprojectsforworkspace))
 
@@ -877,7 +877,7 @@ object
 
 Update a project
 
-<b>Required scope: </b><code>projects:write</code>  A specific, existing project can be updated by making a PUT request on the URL for that project. Only the fields provided in the `data` block will be updated; any unspecified fields will remain unchanged.  When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the task.  Returns the complete updated project record.
+<b>Required scope: </b><code>projects:write</code>  A specific, existing project can be updated by making a PUT request on the URL for that project. Only the fields provided in the `data` block will be updated; any unspecified fields will remain unchanged.  When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the task.  Returns the complete updated project record.  **Deprecation notice:** Updating the `team` field is deprecated. When this field is included in the request, the `Asana-Change` response header will indicate an affected deprecation. Clients should switch to using `POST /memberships` with `{ parent: project, member: team }` to share a project with a team.
 
 ([more information](https://developers.asana.com/reference/updateproject))
 

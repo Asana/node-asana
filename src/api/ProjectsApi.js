@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Projects service.
 * @module api/ProjectsApi
-* @version 3.1.5
+* @version 3.1.6
 */
 export class ProjectsApi {
 
@@ -233,7 +233,7 @@ export class ProjectsApi {
 
     /**
      * Create a project
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  Create a new project in a workspace or team.  Every project is required to be created in a specific workspace or organization, and this cannot be changed once set. Note that you can use the &#x60;workspace&#x60; parameter regardless of whether or not it is an organization.  If the workspace for your project is an organization, you must also supply a &#x60;team&#x60; to share the project with.  Returns the full record of the newly created project.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  Create a new project in a workspace or team.  Every project is required to be created in a specific workspace or organization, and this cannot be changed once set. Note that you can use the &#x60;workspace&#x60; parameter regardless of whether or not it is an organization.  If the workspace for your project is an organization, you must also supply a &#x60;team&#x60; to share the project with.  Returns the full record of the newly created project.  **Deprecation notice:** The &#x60;team&#x60; parameter and the &#x60;private_to_team&#x60; value for &#x60;privacy_setting&#x60; are deprecated. When either is included in the request, the &#x60;Asana-Change&#x60; response header will indicate an affected deprecation. Clients should switch to using &#x60;POST /memberships&#x60; with &#x60;{ parent: project, member: team }&#x60; to share a project with a team after creation.
      * @param {module:model/Object} body The project to create.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -275,7 +275,7 @@ export class ProjectsApi {
 
     /**
      * Create a project
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  Create a new project in a workspace or team.  Every project is required to be created in a specific workspace or organization, and this cannot be changed once set. Note that you can use the &#x60;workspace&#x60; parameter regardless of whether or not it is an organization.  If the workspace for your project is an organization, you must also supply a &#x60;team&#x60; to share the project with.  Returns the full record of the newly created project.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  Create a new project in a workspace or team.  Every project is required to be created in a specific workspace or organization, and this cannot be changed once set. Note that you can use the &#x60;workspace&#x60; parameter regardless of whether or not it is an organization.  If the workspace for your project is an organization, you must also supply a &#x60;team&#x60; to share the project with.  Returns the full record of the newly created project.  **Deprecation notice:** The &#x60;team&#x60; parameter and the &#x60;private_to_team&#x60; value for &#x60;privacy_setting&#x60; are deprecated. When either is included in the request, the &#x60;Asana-Change&#x60; response header will indicate an affected deprecation. Clients should switch to using &#x60;POST /memberships&#x60; with &#x60;{ parent: project, member: team }&#x60; to share a project with a team after creation.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The project to create.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -595,12 +595,12 @@ export class ProjectsApi {
 
     /**
      * Get multiple projects
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the compact project records for some filtered set of projects. Use one or more of the parameters provided to filter the projects returned. *Note: This endpoint may timeout for large domains. Try filtering by team!*
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the compact project records for some filtered set of projects. Use one or more of the parameters provided to filter the projects returned. *Note: This endpoint may timeout for large domains. Try filtering by team!* **The &#x60;team&#x60; filter is deprecated.** Please use &#x60;GET /memberships&#x60; with &#x60;{ member: team, resource_subtype: project_membership }&#x60; to find projects shared with a team.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param {String} opts.workspace The workspace or organization to filter projects on.
-     * @param {String} opts.team The team to filter projects on.
+     * @param {String} opts.team **Deprecated.** The team to filter projects on. Please use &#x60;GET /memberships&#x60; with &#x60;{ member: team, resource_subtype: project_membership }&#x60; instead.
      * @param {Boolean} opts.archived Only return projects whose &#x60;archived&#x60; field takes on the value of this parameter.
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
@@ -661,12 +661,12 @@ export class ProjectsApi {
 
     /**
      * Get multiple projects
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the compact project records for some filtered set of projects. Use one or more of the parameters provided to filter the projects returned. *Note: This endpoint may timeout for large domains. Try filtering by team!*
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the compact project records for some filtered set of projects. Use one or more of the parameters provided to filter the projects returned. *Note: This endpoint may timeout for large domains. Try filtering by team!* **The &#x60;team&#x60; filter is deprecated.** Please use &#x60;GET /memberships&#x60; with &#x60;{ member: team, resource_subtype: project_membership }&#x60; to find projects shared with a team.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param {String} opts.workspace The workspace or organization to filter projects on.
-     * @param {String} opts.team The team to filter projects on.
+     * @param {String} opts.team **Deprecated.** The team to filter projects on. Please use &#x60;GET /memberships&#x60; with &#x60;{ member: team, resource_subtype: project_membership }&#x60; instead.
      * @param {Boolean} opts.archived Only return projects whose &#x60;archived&#x60; field takes on the value of this parameter.
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProjectResponseArray}
@@ -777,7 +777,7 @@ export class ProjectsApi {
 
     /**
      * Get a team&#x27;s projects
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the compact project records for all projects in the team.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the compact project records for all projects in the team. *Deprecated: This endpoint is deprecated. Use &#x60;GET /memberships&#x60; with &#x60;member&#x60; set to the team GID and &#x60;resource_subtype&#x60; set to &#x60;project_membership&#x60; to fetch projects shared with a team.*
      * @param {String} team_gid Globally unique identifier for the team.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -846,7 +846,7 @@ export class ProjectsApi {
 
     /**
      * Get a team&#x27;s projects
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the compact project records for all projects in the team.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the compact project records for all projects in the team. *Deprecated: This endpoint is deprecated. Use &#x60;GET /memberships&#x60; with &#x60;member&#x60; set to the team GID and &#x60;resource_subtype&#x60; set to &#x60;project_membership&#x60; to fetch projects shared with a team.*
      * @param {<&vendorExtensions.x-jsdoc-type>} team_gid Globally unique identifier for the team.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -870,7 +870,7 @@ export class ProjectsApi {
 
     /**
      * Get all projects in a workspace
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the compact project records for all projects in the workspace. *Note: This endpoint may timeout for large domains. Prefer the &#x60;/teams/{team_gid}/projects&#x60; endpoint.*
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the compact project records for all projects in the workspace. *Note: This endpoint may timeout for large domains. To fetch projects shared with a specific team, use &#x60;GET /memberships&#x60; with &#x60;member&#x60; set to the team GID and &#x60;resource_subtype&#x60; set to &#x60;project_membership&#x60;.*
      * @param {String} workspace_gid Globally unique identifier for the workspace or organization.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -939,7 +939,7 @@ export class ProjectsApi {
 
     /**
      * Get all projects in a workspace
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the compact project records for all projects in the workspace. *Note: This endpoint may timeout for large domains. Prefer the &#x60;/teams/{team_gid}/projects&#x60; endpoint.*
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the compact project records for all projects in the workspace. *Note: This endpoint may timeout for large domains. To fetch projects shared with a specific team, use &#x60;GET /memberships&#x60; with &#x60;member&#x60; set to the team GID and &#x60;resource_subtype&#x60; set to &#x60;project_membership&#x60;.*
      * @param {<&vendorExtensions.x-jsdoc-type>} workspace_gid Globally unique identifier for the workspace or organization.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -1276,7 +1276,7 @@ export class ProjectsApi {
 
     /**
      * Update a project
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  A specific, existing project can be updated by making a PUT request on the URL for that project. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the task.  Returns the complete updated project record.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  A specific, existing project can be updated by making a PUT request on the URL for that project. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the task.  Returns the complete updated project record.  **Deprecation notice:** Updating the &#x60;team&#x60; field is deprecated. When this field is included in the request, the &#x60;Asana-Change&#x60; response header will indicate an affected deprecation. Clients should switch to using &#x60;POST /memberships&#x60; with &#x60;{ parent: project, member: team }&#x60; to share a project with a team.
      * @param {module:model/Object} body The updated fields for the project.
      * @param {String} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
@@ -1323,7 +1323,7 @@ export class ProjectsApi {
 
     /**
      * Update a project
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  A specific, existing project can be updated by making a PUT request on the URL for that project. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the task.  Returns the complete updated project record.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  A specific, existing project can be updated by making a PUT request on the URL for that project. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the task.  Returns the complete updated project record.  **Deprecation notice:** Updating the &#x60;team&#x60; field is deprecated. When this field is included in the request, the &#x60;Asana-Change&#x60; response header will indicate an affected deprecation. Clients should switch to using &#x60;POST /memberships&#x60; with &#x60;{ parent: project, member: team }&#x60; to share a project with a team.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The updated fields for the project.
      * @param {<&vendorExtensions.x-jsdoc-type>} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
