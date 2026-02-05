@@ -84,13 +84,6 @@ jobs:
         with:
           aws-region: us-east-1
           role-to-assume: arn:aws:iam::403483446840:role/autogen_github_actions_beta_release_asana_node_client_library
-      - name: Load secrets
-        uses: aws-actions/aws-secretsmanager-get-secrets@v1
-        with:
-          secret-ids: NPM_API,npm_api_key
-          # npm_api_key secret is stored as {key:"***..."}.
-          # GitHub Actions environment variable name is NPM_API so to access "key" from the json we can use NPM_API_KEY
-          parse-json-secrets: true
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -98,7 +91,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "18.x"
-          registry-url: "https://registry.npmjs.com"
+          registry-url: "https://registry.npmjs.org"
       - name: Build distribution
         run: |
           npm pkg set 'main'='dist/index.js'
@@ -106,8 +99,6 @@ jobs:
           npm pkg set 'scripts.prepare'='npm run build'
           npm install
           npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ env.NPM_API_KEY }}
   publish-to-github-releases:
     needs: publish-to-npmjs
     name: Build and publish to GitHub Releases
