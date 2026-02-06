@@ -85,7 +85,7 @@ jobs:
           ref: master
       - uses: actions/setup-node@v4
         with:
-          node-version: "18.x"
+          node-version: "24.x"
           registry-url: "https://registry.npmjs.org"
       - name: Build distribution
         run: |
@@ -115,8 +115,8 @@ jobs:
           ref: master
       - uses: actions/setup-node@v4
         with:
-          node-version: "18.x"
-          registry-url: "https://registry.npmjs.com"
+          node-version: "24.x"
+          registry-url: "https://registry.npmjs.org"
       - name: Build distribution
         run: |
           npm pkg set 'main'='dist/index.js'
