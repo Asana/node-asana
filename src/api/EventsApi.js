@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Events service.
 * @module api/EventsApi
-* @version 3.1.8
+* @version 3.1.9
 */
 export class EventsApi {
 
