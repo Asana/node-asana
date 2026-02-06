@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Stories service.
 * @module api/StoriesApi
-* @version 3.1.7
+* @version 3.1.8
 */
 export class StoriesApi {
 

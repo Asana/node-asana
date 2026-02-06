@@ -16,7 +16,7 @@ import superagent from "superagent";
 
 /**
 * @module ApiClient
-* @version 3.1.7
+* @version 3.1.8
 */
 
 /**
@@ -417,7 +417,7 @@ export class ApiClient {
         if (typeof(navigator) === 'undefined' || typeof(window) === 'undefined') {
             headerParams['X-Asana-Client-Lib'] = new URLSearchParams(
                 {
-                    'version': "3.1.7",
+                    'version': "3.1.8",
                     'language': 'NodeJS',
                     'language_version': process.version,
                     'os': process.platform
@@ -426,7 +426,7 @@ export class ApiClient {
         } else {
             headerParams['X-Asana-Client-Lib'] = new URLSearchParams(
                 {
-                    'version': "3.1.7",
+                    'version': "3.1.8",
                     'language': 'BrowserJS'
                 }
             ).toString();
