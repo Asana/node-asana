@@ -79,11 +79,6 @@ jobs:
     name: Build and publish 📦 to npmjs
     runs-on: ubuntu-latest
     steps:
-      - name: Authenticate to AWS
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-region: us-east-1
-          role-to-assume: arn:aws:iam::403483446840:role/autogen_github_actions_beta_release_asana_node_client_library
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
