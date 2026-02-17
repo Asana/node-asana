@@ -20,16 +20,39 @@ declare class Collection {
     _apiClient: ApiClient;
     _apiRequestData: ApiRequestData;
 
+    /**
+     * Create a Collection object from a response containing a list of resources.
+     * @param response_and_data The response and data from the API call.
+     * @param apiClient The API client instance.
+     * @param apiRequestData The request data used.
+     */
     constructor(response_and_data: { response: any; data: any }, apiClient: ApiClient, apiRequestData: ApiRequestData);
 
+    /**
+     * Transforms a Promise of a raw response into a Promise for a Collection.
+     * @param promise The promise to transform.
+     * @param apiClient The API client instance.
+     * @param apiRequestData The request data.
+     * @returns A Promise that resolves to a Collection.
+     */
     static fromApiClient(
         promise: Promise<{ response: any; data: any }>,
         apiClient: ApiClient,
         apiRequestData: ApiRequestData
     ): Promise<Collection>;
 
+    /**
+     * Check if a response is a collection response.
+     * @param responseData The response data to check.
+     * @returns True if the response is a collection.
+     */
     static isCollectionResponse(responseData: any): boolean;
 
+    /**
+     * Get the next page of results in a collection.
+     * @returns A Promise that resolves to either a collection representing
+     *     the next page of results, or an object with data: null if no more pages.
+     */
     nextPage(): Promise<Collection | { data: null }>;
 }
 

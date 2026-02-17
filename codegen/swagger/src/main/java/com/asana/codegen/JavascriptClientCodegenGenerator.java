@@ -23,6 +23,7 @@ public class JavascriptClientCodegenGenerator extends JavaScriptClientCodegen {
         // Create a definition for collection to be used in pagination
         supportingFiles.add(new SupportingFile("collection.mustache", "src/utils", "collection.js"));
 
+        // Add TypeScript definition files
         apiTemplateFiles.put("api.d.ts.mustache", ".d.ts");
         supportingFiles.add(new SupportingFile("index.d.ts.mustache", "src", "index.d.ts"));
         supportingFiles.add(new SupportingFile("ApiClient.d.ts.mustache", "src", "ApiClient.d.ts"));
