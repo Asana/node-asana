@@ -90,7 +90,8 @@ jobs:
       - name: Build distribution
         run: |
           npm pkg set 'main'='dist/index.js'
-          npm pkg set 'scripts.build'='babel src -d dist'
+          npm pkg set 'types'='dist/index.d.ts'
+          npm pkg set 'scripts.build'='babel src -d dist && rsync -a --include="*/" --include="*.d.ts" --exclude="*" src/ dist/'
           npm pkg set 'scripts.prepare'='npm run build'
           npm install
           npm publish
@@ -120,7 +121,8 @@ jobs:
       - name: Build distribution
         run: |
           npm pkg set 'main'='dist/index.js'
-          npm pkg set 'scripts.build'='babel src -d dist'
+          npm pkg set 'types'='dist/index.d.ts'
+          npm pkg set 'scripts.build'='babel src -d dist && rsync -a --include="*/" --include="*.d.ts" --exclude="*" src/ dist/'
           npm pkg set 'scripts.prepare'='npm run build'
           npm install
       - name: Bundle code for browser
