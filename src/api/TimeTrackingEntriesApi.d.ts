@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * TimeTrackingEntries service.
 * @module api/TimeTrackingEntriesApi
-* @version 3.1.9
+* @version 3.1.10
 */
 export class TimeTrackingEntriesApi {
     /**

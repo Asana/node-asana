@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**addMembersForPortfolio**](PortfoliosApi.md#addMembersForPortfolio) | **POST** /portfolios/{portfolio_gid}/addMembers | Add users to a portfolio
 [**createPortfolio**](PortfoliosApi.md#createPortfolio) | **POST** /portfolios | Create a portfolio
 [**deletePortfolio**](PortfoliosApi.md#deletePortfolio) | **DELETE** /portfolios/{portfolio_gid} | Delete a portfolio
+[**duplicatePortfolio**](PortfoliosApi.md#duplicatePortfolio) | **POST** /portfolios/{portfolio_gid}/duplicate | Duplicate a portfolio
 [**getItemsForPortfolio**](PortfoliosApi.md#getItemsForPortfolio) | **GET** /portfolios/{portfolio_gid}/items | Get portfolio items
 [**getPortfolio**](PortfoliosApi.md#getPortfolio) | **GET** /portfolios/{portfolio_gid} | Get a portfolio
 [**getPortfolios**](PortfoliosApi.md#getPortfolios) | **GET** /portfolios | Get multiple portfolios
@@ -237,6 +238,53 @@ object
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json; charset=UTF-8
+
+<a name="duplicatePortfolio"></a>
+# **duplicatePortfolio**
+
+Duplicate a portfolio
+
+<b>Required scope: </b><code>portfolios:write</code>  Creates and returns a job that will asynchronously handle the duplication.
+
+([more information](https://developers.asana.com/reference/duplicateportfolio))
+
+### Example
+```javascript
+const Asana = require('asana');
+
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+
+let portfoliosApiInstance = new Asana.PortfoliosApi(client);
+let portfolio_gid = "12345"; // String | Globally unique identifier for the portfolio.
+let opts = { 
+    'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}, 
+    'opt_fields': "new_graph_export,new_graph_export.completed_at,new_graph_export.created_at,new_graph_export.download_url,new_portfolio,new_portfolio.name,new_project,new_project.name,new_project_template,new_project_template.name,new_resource_export,new_resource_export.completed_at,new_resource_export.created_at,new_resource_export.download_url,new_task,new_task.created_by,new_task.name,new_task.resource_subtype,resource_subtype,status"
+};
+portfoliosApiInstance.duplicatePortfolio(portfolio_gid, opts).then((result) => {
+    console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+}, (error) => {
+    console.error(error.response.body);
+});
+
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **portfolio_gid** | **String**| Globally unique identifier for the portfolio. | 
+ **body** | **Object**| Describes the duplicate&#x27;s name and the elements that will be duplicated. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+
+### Return type
+
+object
+
+### HTTP request headers
+
+ - **Content-Type**: application/json; charset=UTF-8
  - **Accept**: application/json; charset=UTF-8
 
 <a name="getItemsForPortfolio"></a>

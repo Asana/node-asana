@@ -1,7 +1,7 @@
 # asana [![GitHub release][release-image]][release-url] [![NPM Version][npm-image]][npm-url]
 
 - API version: 1.0
-- Package version: 3.1.9
+- Package version: 3.1.10
 
 ## Installation
 
@@ -18,7 +18,7 @@ npm install asana --save
 Include the latest release directly from GitHub:
 
 ```html
-<script src="https://github.com/Asana/node-asana/releases/download/v3.1.9/asana-min.js"></script>
+<script src="https://github.com/Asana/node-asana/releases/download/v3.1.10/asana-min.js"></script>
 ```
 
 Example usage (**NOTE**: be careful not to expose your access token):
@@ -259,6 +259,7 @@ Class | Method | HTTP request | Description
 *Asana.PortfoliosApi* | [**addMembersForPortfolio**](docs/PortfoliosApi.md#addMembersForPortfolio) | **POST** /portfolios/{portfolio_gid}/addMembers | Add users to a portfolio
 *Asana.PortfoliosApi* | [**createPortfolio**](docs/PortfoliosApi.md#createPortfolio) | **POST** /portfolios | Create a portfolio
 *Asana.PortfoliosApi* | [**deletePortfolio**](docs/PortfoliosApi.md#deletePortfolio) | **DELETE** /portfolios/{portfolio_gid} | Delete a portfolio
+*Asana.PortfoliosApi* | [**duplicatePortfolio**](docs/PortfoliosApi.md#duplicatePortfolio) | **POST** /portfolios/{portfolio_gid}/duplicate | Duplicate a portfolio
 *Asana.PortfoliosApi* | [**getItemsForPortfolio**](docs/PortfoliosApi.md#getItemsForPortfolio) | **GET** /portfolios/{portfolio_gid}/items | Get portfolio items
 *Asana.PortfoliosApi* | [**getPortfolio**](docs/PortfoliosApi.md#getPortfolio) | **GET** /portfolios/{portfolio_gid} | Get a portfolio
 *Asana.PortfoliosApi* | [**getPortfolios**](docs/PortfoliosApi.md#getPortfolios) | **GET** /portfolios | Get multiple portfolios
@@ -272,6 +273,10 @@ Class | Method | HTTP request | Description
 *Asana.ProjectBriefsApi* | [**updateProjectBrief**](docs/ProjectBriefsApi.md#updateProjectBrief) | **PUT** /project_briefs/{project_brief_gid} | Update a project brief
 *Asana.ProjectMembershipsApi* | [**getProjectMembership**](docs/ProjectMembershipsApi.md#getProjectMembership) | **GET** /project_memberships/{project_membership_gid} | Get a project membership
 *Asana.ProjectMembershipsApi* | [**getProjectMembershipsForProject**](docs/ProjectMembershipsApi.md#getProjectMembershipsForProject) | **GET** /projects/{project_gid}/project_memberships | Get memberships from a project
+*Asana.ProjectPortfolioSettingsApi* | [**getProjectPortfolioSetting**](docs/ProjectPortfolioSettingsApi.md#getProjectPortfolioSetting) | **GET** /project_portfolio_settings/{project_portfolio_setting_gid} | Get a project portfolio setting
+*Asana.ProjectPortfolioSettingsApi* | [**getProjectPortfolioSettingsForPortfolio**](docs/ProjectPortfolioSettingsApi.md#getProjectPortfolioSettingsForPortfolio) | **GET** /portfolios/{portfolio_gid}/project_portfolio_settings | Get project portfolio settings for a portfolio
+*Asana.ProjectPortfolioSettingsApi* | [**getProjectPortfolioSettingsForProject**](docs/ProjectPortfolioSettingsApi.md#getProjectPortfolioSettingsForProject) | **GET** /projects/{project_gid}/project_portfolio_settings | Get project portfolio settings for a project
+*Asana.ProjectPortfolioSettingsApi* | [**updateProjectPortfolioSetting**](docs/ProjectPortfolioSettingsApi.md#updateProjectPortfolioSetting) | **PUT** /project_portfolio_settings/{project_portfolio_setting_gid} | Update a project portfolio setting
 *Asana.ProjectStatusesApi* | [**createProjectStatusForProject**](docs/ProjectStatusesApi.md#createProjectStatusForProject) | **POST** /projects/{project_gid}/project_statuses | Create a project status
 *Asana.ProjectStatusesApi* | [**deleteProjectStatus**](docs/ProjectStatusesApi.md#deleteProjectStatus) | **DELETE** /project_statuses/{project_status_gid} | Delete a project status
 *Asana.ProjectStatusesApi* | [**getProjectStatus**](docs/ProjectStatusesApi.md#getProjectStatus) | **GET** /project_statuses/{project_status_gid} | Get a project status
@@ -306,6 +311,11 @@ Class | Method | HTTP request | Description
 *Asana.RatesApi* | [**getRates**](docs/RatesApi.md#getRates) | **GET** /rates | Get multiple rates
 *Asana.RatesApi* | [**updateRate**](docs/RatesApi.md#updateRate) | **PUT** /rates/{rate_gid} | Update a rate
 *Asana.ReactionsApi* | [**getReactionsOnObject**](docs/ReactionsApi.md#getReactionsOnObject) | **GET** /reactions | Get reactions with an emoji base on an object.
+*Asana.RolesApi* | [**createRole**](docs/RolesApi.md#createRole) | **POST** /roles | Create a role
+*Asana.RolesApi* | [**deleteRole**](docs/RolesApi.md#deleteRole) | **DELETE** /roles/{role_gid} | Delete a role
+*Asana.RolesApi* | [**getRole**](docs/RolesApi.md#getRole) | **GET** /roles/{role_gid} | Get a role
+*Asana.RolesApi* | [**getRoles**](docs/RolesApi.md#getRoles) | **GET** /roles | Get multiple roles
+*Asana.RolesApi* | [**updateRole**](docs/RolesApi.md#updateRole) | **PUT** /roles/{role_gid} | Update a role
 *Asana.RulesApi* | [**triggerRule**](docs/RulesApi.md#triggerRule) | **POST** /rule_triggers/{rule_trigger_gid}/run | Trigger a rule
 *Asana.SectionsApi* | [**addTaskForSection**](docs/SectionsApi.md#addTaskForSection) | **POST** /sections/{section_gid}/addTask | Add task to section
 *Asana.SectionsApi* | [**createSectionForProject**](docs/SectionsApi.md#createSectionForProject) | **POST** /projects/{project_gid}/sections | Create a section in a project
@@ -1119,6 +1129,6 @@ client.callApi(
 ```
 
 [release-image]: https://img.shields.io/github/release/asana/node-asana.svg
-[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.1.9
+[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.1.10
 [npm-image]: http://img.shields.io/npm/v/asana.svg?style=flat-square
 [npm-url]: https://www.npmjs.org/package/asana

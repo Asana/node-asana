@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * Tags service.
 * @module api/TagsApi
-* @version 3.1.9
+* @version 3.1.10
 */
 export class TagsApi {
     /**

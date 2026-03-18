@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * Users service.
 * @module api/UsersApi
-* @version 3.1.9
+* @version 3.1.10
 */
 export class UsersApi {
     /**

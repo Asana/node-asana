@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * CustomTypes service.
 * @module api/CustomTypesApi
-* @version 3.1.9
+* @version 3.1.10
 */
 export class CustomTypesApi {
 

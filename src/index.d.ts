@@ -33,11 +33,13 @@ import { PortfolioMembershipsApi } from './api/PortfolioMembershipsApi';
 import { PortfoliosApi } from './api/PortfoliosApi';
 import { ProjectBriefsApi } from './api/ProjectBriefsApi';
 import { ProjectMembershipsApi } from './api/ProjectMembershipsApi';
+import { ProjectPortfolioSettingsApi } from './api/ProjectPortfolioSettingsApi';
 import { ProjectStatusesApi } from './api/ProjectStatusesApi';
 import { ProjectTemplatesApi } from './api/ProjectTemplatesApi';
 import { ProjectsApi } from './api/ProjectsApi';
 import { RatesApi } from './api/RatesApi';
 import { ReactionsApi } from './api/ReactionsApi';
+import { RolesApi } from './api/RolesApi';
 import { RulesApi } from './api/RulesApi';
 import { SectionsApi } from './api/SectionsApi';
 import { StatusUpdatesApi } from './api/StatusUpdatesApi';
@@ -78,11 +80,13 @@ export {
     PortfoliosApi,
     ProjectBriefsApi,
     ProjectMembershipsApi,
+    ProjectPortfolioSettingsApi,
     ProjectStatusesApi,
     ProjectTemplatesApi,
     ProjectsApi,
     RatesApi,
     ReactionsApi,
+    RolesApi,
     RulesApi,
     SectionsApi,
     StatusUpdatesApi,

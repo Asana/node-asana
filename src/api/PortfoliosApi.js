@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Portfolios service.
 * @module api/PortfoliosApi
-* @version 3.1.9
+* @version 3.1.10
 */
 export class PortfoliosApi {
 
@@ -325,6 +325,67 @@ export class PortfoliosApi {
     deletePortfolio(portfolio_gid) {
 
         return this.deletePortfolioWithHttpInfo(portfolio_gid)
+            .then(function(response_and_data) {
+                return response_and_data.data;
+            });
+    }
+
+
+    /**
+     * Duplicate a portfolio
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:write&lt;/code&gt;  Creates and returns a job that will asynchronously handle the duplication.
+     * @param {String} portfolio_gid Globally unique identifier for the portfolio.
+     * @param {Object} opts Optional parameters
+     * @param {module:model/Object} opts.body Describes the duplicate&#x27;s name and the elements that will be duplicated.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
+     */
+    duplicatePortfolioWithHttpInfo(portfolio_gid, opts) {
+        opts = opts || {};
+        let postBody = opts['body'];
+        // verify the required parameter 'portfolio_gid' is set
+        if (portfolio_gid === undefined || portfolio_gid === null) {
+            throw new Error("Missing the required parameter 'portfolio_gid' when calling duplicatePortfolio");
+        }
+
+        let pathParams = {
+            'portfolio_gid': portfolio_gid
+        };
+        let queryParams = {};
+        opts = opts || {};
+        queryParams = opts;
+
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
+
+        let authNames = ['personalAccessToken'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = 'Blob';
+
+        return this.apiClient.callApi(
+            '/portfolios/{portfolio_gid}/duplicate', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType
+        );
+    }
+
+    /**
+     * Duplicate a portfolio
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:write&lt;/code&gt;  Creates and returns a job that will asynchronously handle the duplication.
+     * @param {<&vendorExtensions.x-jsdoc-type>} portfolio_gid Globally unique identifier for the portfolio.
+     * @param {Object} opts Optional parameters
+     * @param {module:model/Object} opts.body Describes the duplicate&#x27;s name and the elements that will be duplicated.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/JobResponseData}
+     */
+    duplicatePortfolio(portfolio_gid, opts) {
+
+        return this.duplicatePortfolioWithHttpInfo(portfolio_gid, opts)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });

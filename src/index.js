@@ -33,11 +33,13 @@ import {PortfolioMembershipsApi} from './api/PortfolioMembershipsApi';
 import {PortfoliosApi} from './api/PortfoliosApi';
 import {ProjectBriefsApi} from './api/ProjectBriefsApi';
 import {ProjectMembershipsApi} from './api/ProjectMembershipsApi';
+import {ProjectPortfolioSettingsApi} from './api/ProjectPortfolioSettingsApi';
 import {ProjectStatusesApi} from './api/ProjectStatusesApi';
 import {ProjectTemplatesApi} from './api/ProjectTemplatesApi';
 import {ProjectsApi} from './api/ProjectsApi';
 import {RatesApi} from './api/RatesApi';
 import {ReactionsApi} from './api/ReactionsApi';
+import {RolesApi} from './api/RolesApi';
 import {RulesApi} from './api/RulesApi';
 import {SectionsApi} from './api/SectionsApi';
 import {StatusUpdatesApi} from './api/StatusUpdatesApi';
@@ -85,7 +87,7 @@ import {WorkspacesApi} from './api/WorkspacesApi';
 * </pre>
 * </p>
 * @module index
-* @version 3.1.9
+* @version 3.1.10
 */
 export {
     /**
@@ -217,6 +219,12 @@ export {
     ProjectMembershipsApi,
 
     /**
+    * The ProjectPortfolioSettingsApi service constructor.
+    * @property {module:api/ProjectPortfolioSettingsApi}
+    */
+    ProjectPortfolioSettingsApi,
+
+    /**
     * The ProjectStatusesApi service constructor.
     * @property {module:api/ProjectStatusesApi}
     */
@@ -245,6 +253,12 @@ export {
     * @property {module:api/ReactionsApi}
     */
     ReactionsApi,
+
+    /**
+    * The RolesApi service constructor.
+    * @property {module:api/RolesApi}
+    */
+    RolesApi,
 
     /**
     * The RulesApi service constructor.

@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * Portfolios service.
 * @module api/PortfoliosApi
-* @version 3.1.9
+* @version 3.1.10
 */
 export class PortfoliosApi {
     /**
@@ -124,6 +124,28 @@ export class PortfoliosApi {
      * @returns A Promise
      */
     deletePortfolio(portfolio_gid: string): Promise<any>;
+
+    /**
+     * Duplicate a portfolio
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:write&lt;/code&gt;  Creates and returns a job that will asynchronously handle the duplication.
+     * @param portfolio_gid Globally unique identifier for the portfolio.
+     * @param opts Optional parameters
+     * @param opts.body Describes the duplicate&#x27;s name and the elements that will be duplicated.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @returns A Promise, with an object containing data and HTTP response
+     */
+    duplicatePortfolioWithHttpInfo(portfolio_gid: string, opts?: { 'body'?: any; 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
+
+    /**
+     * Duplicate a portfolio
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:write&lt;/code&gt;  Creates and returns a job that will asynchronously handle the duplication.
+     * @param portfolio_gid Globally unique identifier for the portfolio.
+     * @param opts Optional parameters
+     * @param opts.body Describes the duplicate&#x27;s name and the elements that will be duplicated.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @returns A Promise
+     */
+    duplicatePortfolio(portfolio_gid: string, opts?: { 'body'?: any; 'opt_fields'?: any;  }): Promise<any>;
 
     /**
      * Get portfolio items

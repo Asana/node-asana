@@ -1,0 +1,74 @@
+ProjectPortfolioSettingsApi:
+  getProjectPortfolioSetting: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let projectPortfolioSettingsApiInstance = new Asana.ProjectPortfolioSettingsApi(client);
+    let project_portfolio_setting_gid = "1331"; // String | Globally unique identifier for the project portfolio setting.
+    let opts = { 
+        'opt_fields': "created_at,is_access_control_inherited,portfolio,project"
+    };
+    projectPortfolioSettingsApiInstance.getProjectPortfolioSetting(project_portfolio_setting_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getProjectPortfolioSettingsForPortfolio: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let projectPortfolioSettingsApiInstance = new Asana.ProjectPortfolioSettingsApi(client);
+    let portfolio_gid = "12345"; // String | Globally unique identifier for the portfolio.
+    let opts = { 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'opt_fields': "created_at,is_access_control_inherited,offset,path,portfolio,project,uri"
+    };
+    projectPortfolioSettingsApiInstance.getProjectPortfolioSettingsForPortfolio(portfolio_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getProjectPortfolioSettingsForProject: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let projectPortfolioSettingsApiInstance = new Asana.ProjectPortfolioSettingsApi(client);
+    let project_gid = "1331"; // String | Globally unique identifier for the project.
+    let opts = { 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'opt_fields': "created_at,is_access_control_inherited,offset,path,portfolio,project,uri"
+    };
+    projectPortfolioSettingsApiInstance.getProjectPortfolioSettingsForProject(project_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  updateProjectPortfolioSetting: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let projectPortfolioSettingsApiInstance = new Asana.ProjectPortfolioSettingsApi(client);
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The updated fields for the project portfolio setting.
+    let project_portfolio_setting_gid = "1331"; // String | Globally unique identifier for the project portfolio setting.
+    let opts = { 
+        'opt_fields': "created_at,is_access_control_inherited,portfolio,project"
+    };
+    projectPortfolioSettingsApiInstance.updateProjectPortfolioSetting(body, project_portfolio_setting_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
