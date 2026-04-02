@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * Rules service.
 * @module api/RulesApi
-* @version 3.1.10
+* @version 3.1.11
 */
 export class RulesApi {
     /**

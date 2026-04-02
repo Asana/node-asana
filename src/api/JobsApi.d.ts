@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * Jobs service.
 * @module api/JobsApi
-* @version 3.1.10
+* @version 3.1.11
 */
 export class JobsApi {
     /**

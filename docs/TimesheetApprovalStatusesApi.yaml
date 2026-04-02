@@ -1,0 +1,76 @@
+TimesheetApprovalStatusesApi:
+  createTimesheetApprovalStatus: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let timesheetApprovalStatusesApiInstance = new Asana.TimesheetApprovalStatusesApi(client);
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The timesheet approval status to create.
+    let opts = { 
+        'opt_fields': "approval_status,created_at,end_date,start_date,user,user.name,workspace,workspace.name"
+    };
+    timesheetApprovalStatusesApiInstance.createTimesheetApprovalStatus(body, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getTimesheetApprovalStatus: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let timesheetApprovalStatusesApiInstance = new Asana.TimesheetApprovalStatusesApi(client);
+    let timesheet_approval_status_gid = "917392"; // String | Globally unique identifier for the timesheet approval status.
+    let opts = { 
+        'opt_fields': "approval_status,created_at,end_date,start_date,user,user.name,workspace,workspace.name"
+    };
+    timesheetApprovalStatusesApiInstance.getTimesheetApprovalStatus(timesheet_approval_status_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getTimesheetApprovalStatuses: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let timesheetApprovalStatusesApiInstance = new Asana.TimesheetApprovalStatusesApi(client);
+    let workspace = "12345"; // String | Globally unique identifier for the workspace.
+    let opts = { 
+        'user': "67890", 
+        'from_date': "2025-11-01", 
+        'to_date': "2025-11-30", 
+        'approval_statuses': "draft", 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'opt_fields': "approval_status,created_at,end_date,offset,path,start_date,uri,user,user.name,workspace,workspace.name"
+    };
+    timesheetApprovalStatusesApiInstance.getTimesheetApprovalStatuses(workspace, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  updateTimesheetApprovalStatus: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let timesheetApprovalStatusesApiInstance = new Asana.TimesheetApprovalStatusesApi(client);
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The fields to update on the timesheet approval status.
+    let timesheet_approval_status_gid = "917392"; // String | Globally unique identifier for the timesheet approval status.
+    let opts = { 
+        'opt_fields': "approval_status,created_at,end_date,start_date,user,user.name,workspace,workspace.name"
+    };
+    timesheetApprovalStatusesApiInstance.updateTimesheetApprovalStatus(body, timesheet_approval_status_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    

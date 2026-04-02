@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * Projects service.
 * @module api/ProjectsApi
-* @version 3.1.10
+* @version 3.1.11
 */
 export class ProjectsApi {
     /**
@@ -426,6 +426,80 @@ export class ProjectsApi {
      * @returns A Promise
      */
     removeMembersForProject(body: any, project_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
+
+    /**
+     * Search projects in a workspace
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  To mirror the functionality of the Asana web app&#x27;s advanced search feature, the Asana API has a project search endpoint that allows you to build complex filters to find and retrieve the exact data you need. #### Premium access Like the Asana web product&#x27;s advance search feature, this search endpoint will only be available to premium Asana users. A user is premium if any of the following is true:  - The workspace in which the search is being performed is a premium workspace - The user is a member of a premium team inside the workspace  Even if a user is only a member of a premium team inside a non-premium workspace, search will allow them to find data anywhere in the workspace, not just inside the premium team. Making a search request using credentials of a non-premium user will result in a &#x60;402 Payment Required&#x60; error. #### Pagination Search results are not stable; repeating the same query multiple times may return the data in a different order, even if the data do not change. Because of this, the traditional [pagination](/docs/pagination) available elsewhere in the Asana API is not available here. However, you can paginate manually by sorting the search results by their creation time and then modifying each subsequent query to exclude data you have already seen. Page sizes are limited to a maximum of 100 items, and can be specified by the &#x60;limit&#x60; query parameter. #### Eventual consistency Changes in Asana (regardless of whether they’re made though the web product or the API) are forwarded to our search infrastructure to be indexed. This process can take between 10 and 60 seconds to complete under normal operation, and longer during some production incidents. Making a change to a project that would alter its presence in a particular search query will not be reflected immediately. This is also true of the advanced search feature in the web product. Because of this delay, the search endpoint is not suited for use cases that require immediate consistency after writes. If you need read-your-write behavior or strongly consistent results, we recommend using [Get multiple projects](/reference/getprojects) instead. #### Rate limits You may receive a &#x60;429 Too Many Requests&#x60; response if you hit any of our [rate limits](/docs/rate-limits). #### Custom field parameters | Parameter name | Custom field type | Accepted type | |---|---|---| | custom_fields.{gid}.is_set | All | Boolean | | custom_fields.{gid}.value | Text | String | | custom_fields.{gid}.value | Number | Number | | custom_fields.{gid}.value | Enum | Enum option ID | | custom_fields.{gid}.starts_with | Text only | String | | custom_fields.{gid}.ends_with | Text only | String | | custom_fields.{gid}.contains | Text only | String | | custom_fields.{gid}.less_than | Number only | Number | | custom_fields.{gid}.greater_than | Number only | Number |   For example, if the gid of the custom field is 12345, the query parameter to find projects where it is set would be &#x60;custom_fields.12345.is_set&#x3D;true&#x60;. To match an exact value for an enum custom field, use the gid of the desired enum option and not the name of the enum option: &#x60;custom_fields.12345.value&#x3D;67890&#x60;.  **Not Supported**: searching for multiple exact matches of a custom field, searching for multi-enum custom field
+     * @param workspace_gid Globally unique identifier for the workspace or organization.
+     * @param opts Optional parameters
+     * @param opts.text Performs full-text search on the project name.
+     * @param opts.sort_by One of &#x60;due_date&#x60;, &#x60;created_at&#x60;, &#x60;completed_at&#x60;, or &#x60;modified_at&#x60;, defaults to &#x60;modified_at&#x60;. (default to modified_at)
+     * @param opts.sort_ascending Default &#x60;false&#x60;. (default to false)
+     * @param opts.completed Filter on project completion status.
+     * @param opts.teams.any Comma-separated list of team IDs.
+     * @param opts.owner.any Comma-separated list of user identifiers to filter on as project owners. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
+     * @param opts.members.any Comma-separated list of user identifiers to filter on as members. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
+     * @param opts.members.not Comma-separated list of user identifiers to exclude as members. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
+     * @param opts.portfolios.any Comma-separated list of portfolio IDs to filter on.
+     * @param opts.completed_on ISO 8601 date string or &#x60;null&#x60;.
+     * @param opts.completed_on.before ISO 8601 date string.
+     * @param opts.completed_on.after ISO 8601 date string.
+     * @param opts.completed_at.before ISO 8601 datetime string.
+     * @param opts.completed_at.after ISO 8601 datetime string.
+     * @param opts.created_on ISO 8601 date string or &#x60;null&#x60;.
+     * @param opts.created_on.before ISO 8601 date string.
+     * @param opts.created_on.after ISO 8601 date string.
+     * @param opts.created_at.before ISO 8601 datetime string.
+     * @param opts.created_at.after ISO 8601 datetime string.
+     * @param opts.due_on ISO 8601 date string or &#x60;null&#x60;.
+     * @param opts.due_on.before ISO 8601 date string.
+     * @param opts.due_on.after ISO 8601 date string.
+     * @param opts.due_at.before ISO 8601 datetime string.
+     * @param opts.due_at.after ISO 8601 datetime string.
+     * @param opts.start_on ISO 8601 date string or &#x60;null&#x60;.
+     * @param opts.start_on.before ISO 8601 date string.
+     * @param opts.start_on.after ISO 8601 date string.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @returns A Promise, with an object containing data and HTTP response
+     */
+    searchProjectsForWorkspaceWithHttpInfo(workspace_gid: string, opts?: { 'text'?: string; 'sort_by'?: string; 'sort_ascending'?: boolean; 'completed'?: boolean; 'teams.any'?: string; 'owner.any'?: string; 'members.any'?: string; 'members.not'?: string; 'portfolios.any'?: string; 'completed_on'?: any; 'completed_on.before'?: any; 'completed_on.after'?: any; 'completed_at.before'?: any; 'completed_at.after'?: any; 'created_on'?: any; 'created_on.before'?: any; 'created_on.after'?: any; 'created_at.before'?: any; 'created_at.after'?: any; 'due_on'?: any; 'due_on.before'?: any; 'due_on.after'?: any; 'due_at.before'?: any; 'due_at.after'?: any; 'start_on'?: any; 'start_on.before'?: any; 'start_on.after'?: any; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
+
+    /**
+     * Search projects in a workspace
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  To mirror the functionality of the Asana web app&#x27;s advanced search feature, the Asana API has a project search endpoint that allows you to build complex filters to find and retrieve the exact data you need. #### Premium access Like the Asana web product&#x27;s advance search feature, this search endpoint will only be available to premium Asana users. A user is premium if any of the following is true:  - The workspace in which the search is being performed is a premium workspace - The user is a member of a premium team inside the workspace  Even if a user is only a member of a premium team inside a non-premium workspace, search will allow them to find data anywhere in the workspace, not just inside the premium team. Making a search request using credentials of a non-premium user will result in a &#x60;402 Payment Required&#x60; error. #### Pagination Search results are not stable; repeating the same query multiple times may return the data in a different order, even if the data do not change. Because of this, the traditional [pagination](/docs/pagination) available elsewhere in the Asana API is not available here. However, you can paginate manually by sorting the search results by their creation time and then modifying each subsequent query to exclude data you have already seen. Page sizes are limited to a maximum of 100 items, and can be specified by the &#x60;limit&#x60; query parameter. #### Eventual consistency Changes in Asana (regardless of whether they’re made though the web product or the API) are forwarded to our search infrastructure to be indexed. This process can take between 10 and 60 seconds to complete under normal operation, and longer during some production incidents. Making a change to a project that would alter its presence in a particular search query will not be reflected immediately. This is also true of the advanced search feature in the web product. Because of this delay, the search endpoint is not suited for use cases that require immediate consistency after writes. If you need read-your-write behavior or strongly consistent results, we recommend using [Get multiple projects](/reference/getprojects) instead. #### Rate limits You may receive a &#x60;429 Too Many Requests&#x60; response if you hit any of our [rate limits](/docs/rate-limits). #### Custom field parameters | Parameter name | Custom field type | Accepted type | |---|---|---| | custom_fields.{gid}.is_set | All | Boolean | | custom_fields.{gid}.value | Text | String | | custom_fields.{gid}.value | Number | Number | | custom_fields.{gid}.value | Enum | Enum option ID | | custom_fields.{gid}.starts_with | Text only | String | | custom_fields.{gid}.ends_with | Text only | String | | custom_fields.{gid}.contains | Text only | String | | custom_fields.{gid}.less_than | Number only | Number | | custom_fields.{gid}.greater_than | Number only | Number |   For example, if the gid of the custom field is 12345, the query parameter to find projects where it is set would be &#x60;custom_fields.12345.is_set&#x3D;true&#x60;. To match an exact value for an enum custom field, use the gid of the desired enum option and not the name of the enum option: &#x60;custom_fields.12345.value&#x3D;67890&#x60;.  **Not Supported**: searching for multiple exact matches of a custom field, searching for multi-enum custom field
+     * @param workspace_gid Globally unique identifier for the workspace or organization.
+     * @param opts Optional parameters
+     * @param opts.text Performs full-text search on the project name.
+     * @param opts.sort_by One of &#x60;due_date&#x60;, &#x60;created_at&#x60;, &#x60;completed_at&#x60;, or &#x60;modified_at&#x60;, defaults to &#x60;modified_at&#x60;. (default to modified_at)
+     * @param opts.sort_ascending Default &#x60;false&#x60;. (default to false)
+     * @param opts.completed Filter on project completion status.
+     * @param opts.teams.any Comma-separated list of team IDs.
+     * @param opts.owner.any Comma-separated list of user identifiers to filter on as project owners. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
+     * @param opts.members.any Comma-separated list of user identifiers to filter on as members. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
+     * @param opts.members.not Comma-separated list of user identifiers to exclude as members. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
+     * @param opts.portfolios.any Comma-separated list of portfolio IDs to filter on.
+     * @param opts.completed_on ISO 8601 date string or &#x60;null&#x60;.
+     * @param opts.completed_on.before ISO 8601 date string.
+     * @param opts.completed_on.after ISO 8601 date string.
+     * @param opts.completed_at.before ISO 8601 datetime string.
+     * @param opts.completed_at.after ISO 8601 datetime string.
+     * @param opts.created_on ISO 8601 date string or &#x60;null&#x60;.
+     * @param opts.created_on.before ISO 8601 date string.
+     * @param opts.created_on.after ISO 8601 date string.
+     * @param opts.created_at.before ISO 8601 datetime string.
+     * @param opts.created_at.after ISO 8601 datetime string.
+     * @param opts.due_on ISO 8601 date string or &#x60;null&#x60;.
+     * @param opts.due_on.before ISO 8601 date string.
+     * @param opts.due_on.after ISO 8601 date string.
+     * @param opts.due_at.before ISO 8601 datetime string.
+     * @param opts.due_at.after ISO 8601 datetime string.
+     * @param opts.start_on ISO 8601 date string or &#x60;null&#x60;.
+     * @param opts.start_on.before ISO 8601 date string.
+     * @param opts.start_on.after ISO 8601 date string.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @returns A Promise
+     */
+    searchProjectsForWorkspace(workspace_gid: string, opts?: { 'text'?: string; 'sort_by'?: string; 'sort_ascending'?: boolean; 'completed'?: boolean; 'teams.any'?: string; 'owner.any'?: string; 'members.any'?: string; 'members.not'?: string; 'portfolios.any'?: string; 'completed_on'?: any; 'completed_on.before'?: any; 'completed_on.after'?: any; 'completed_at.before'?: any; 'completed_at.after'?: any; 'created_on'?: any; 'created_on.before'?: any; 'created_on.after'?: any; 'created_at.before'?: any; 'created_at.after'?: any; 'due_on'?: any; 'due_on.before'?: any; 'due_on.after'?: any; 'due_at.before'?: any; 'due_at.after'?: any; 'start_on'?: any; 'start_on.before'?: any; 'start_on.after'?: any; 'opt_fields'?: any;  }): Promise<Collection | any>;
 
     /**
      * Update a project

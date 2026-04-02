@@ -50,7 +50,9 @@ import { TasksApi } from './api/TasksApi';
 import { TeamMembershipsApi } from './api/TeamMembershipsApi';
 import { TeamsApi } from './api/TeamsApi';
 import { TimePeriodsApi } from './api/TimePeriodsApi';
+import { TimeTrackingCategoriesApi } from './api/TimeTrackingCategoriesApi';
 import { TimeTrackingEntriesApi } from './api/TimeTrackingEntriesApi';
+import { TimesheetApprovalStatusesApi } from './api/TimesheetApprovalStatusesApi';
 import { TypeaheadApi } from './api/TypeaheadApi';
 import { UserTaskListsApi } from './api/UserTaskListsApi';
 import { UsersApi } from './api/UsersApi';
@@ -97,7 +99,9 @@ export {
     TeamMembershipsApi,
     TeamsApi,
     TimePeriodsApi,
+    TimeTrackingCategoriesApi,
     TimeTrackingEntriesApi,
+    TimesheetApprovalStatusesApi,
     TypeaheadApi,
     UserTaskListsApi,
     UsersApi,

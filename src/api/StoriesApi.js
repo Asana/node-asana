@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Stories service.
 * @module api/StoriesApi
-* @version 3.1.10
+* @version 3.1.11
 */
 export class StoriesApi {
 
@@ -34,6 +34,71 @@ export class StoriesApi {
         this.apiClient = apiClient || ApiClient.instance;
     }
 
+
+
+    /**
+     * Create a story on a goal
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:write&lt;/code&gt;  Adds a story to a goal. This endpoint currently only allows for comment stories to be created. The comment will be authored by the currently authenticated user, and timestamped when the server receives the request.  Returns the full record for the new story added to the goal.
+     * @param {module:model/Object} body The story to create.
+     * @param {String} goal_gid Globally unique identifier for the goal.
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
+     */
+    createStoryForGoalWithHttpInfo(body, goal_gid, opts) {
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling createStoryForGoal");
+        }
+        // verify the required parameter 'goal_gid' is set
+        if (goal_gid === undefined || goal_gid === null) {
+            throw new Error("Missing the required parameter 'goal_gid' when calling createStoryForGoal");
+        }
+
+        let pathParams = {
+            'goal_gid': goal_gid
+        };
+        let queryParams = {};
+        opts = opts || {};
+        queryParams = opts;
+
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
+
+        let authNames = ['personalAccessToken'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = 'Blob';
+
+        return this.apiClient.callApi(
+            '/goals/{goal_gid}/stories', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType
+        );
+    }
+
+    /**
+     * Create a story on a goal
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:write&lt;/code&gt;  Adds a story to a goal. This endpoint currently only allows for comment stories to be created. The comment will be authored by the currently authenticated user, and timestamped when the server receives the request.  Returns the full record for the new story added to the goal.
+     * @param {<&vendorExtensions.x-jsdoc-type>} body The story to create.
+     * @param {<&vendorExtensions.x-jsdoc-type>} goal_gid Globally unique identifier for the goal.
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/StoryResponseData}
+     */
+    createStoryForGoal(body, goal_gid, opts) {
+
+        return this.createStoryForGoalWithHttpInfo(body, goal_gid, opts)
+            .then(function(response_and_data) {
+                return response_and_data.data;
+            });
+    }
 
 
     /**
@@ -103,7 +168,7 @@ export class StoriesApi {
 
     /**
      * Delete a story
-     * Deletes a story. A user can only delete stories they have created.  Returns an empty data record.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:delete&lt;/code&gt;  Deletes a story. A user can only delete stories they have created.  Returns an empty data record.
      * @param {String} story_gid Globally unique identifier for the story.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
@@ -141,13 +206,104 @@ export class StoriesApi {
 
     /**
      * Delete a story
-     * Deletes a story. A user can only delete stories they have created.  Returns an empty data record.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:delete&lt;/code&gt;  Deletes a story. A user can only delete stories they have created.  Returns an empty data record.
      * @param {<&vendorExtensions.x-jsdoc-type>} story_gid Globally unique identifier for the story.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EmptyResponseData}
      */
     deleteStory(story_gid) {
 
         return this.deleteStoryWithHttpInfo(story_gid)
+            .then(function(response_and_data) {
+                return response_and_data.data;
+            });
+    }
+
+
+    /**
+     * Get stories from a goal
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:read&lt;/code&gt;  Returns the compact records for all stories on the goal.
+     * @param {String} goal_gid Globally unique identifier for the goal.
+     * @param {Object} opts Optional parameters
+     * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
+     * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
+     */
+    getStoriesForGoalWithHttpInfo(goal_gid, opts) {
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'goal_gid' is set
+        if (goal_gid === undefined || goal_gid === null) {
+            throw new Error("Missing the required parameter 'goal_gid' when calling getStoriesForGoal");
+        }
+
+        let pathParams = {
+            'goal_gid': goal_gid
+        };
+        let queryParams = {};
+        opts = opts || {};
+        queryParams = opts;
+
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
+
+        let authNames = ['personalAccessToken'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = 'Blob';
+        // Check if RETURN_COLLECTION is set and return a collection object if it is
+        if (this.apiClient.RETURN_COLLECTION) {
+            return Collection.fromApiClient(
+                this.apiClient.callApi(
+                    '/goals/{goal_gid}/stories', 'GET',
+                    pathParams, queryParams, headerParams, formParams, postBody,
+                    authNames, contentTypes, accepts, returnType
+                ),
+                this.apiClient,
+                {
+                    'path': '/goals/{goal_gid}/stories',
+                    'httpMethod': 'GET',
+                    'pathParams': pathParams,
+                    'queryParams': queryParams,
+                    'headerParams': headerParams,
+                    'formParams': formParams,
+                    'bodyParam': postBody,
+                    'authNames': authNames,
+                    'contentTypes': contentTypes,
+                    'accepts': accepts,
+                    'returnType': returnType
+                }
+            )
+        }
+
+        return this.apiClient.callApi(
+            '/goals/{goal_gid}/stories', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType
+        );
+    }
+
+    /**
+     * Get stories from a goal
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:read&lt;/code&gt;  Returns the compact records for all stories on the goal.
+     * @param {<&vendorExtensions.x-jsdoc-type>} goal_gid Globally unique identifier for the goal.
+     * @param {Object} opts Optional parameters
+     * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
+     * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/StoryResponseArray}
+     */
+    getStoriesForGoal(goal_gid, opts) {
+        // Check if RETURN_COLLECTION is set and return a collection object if it is
+        if (this.apiClient.RETURN_COLLECTION) {
+            return this.getStoriesForGoalWithHttpInfo(goal_gid, opts)
+        }
+
+        return this.getStoriesForGoalWithHttpInfo(goal_gid, opts)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });

@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * StatusUpdates service.
 * @module api/StatusUpdatesApi
-* @version 3.1.10
+* @version 3.1.11
 */
 export class StatusUpdatesApi {
 

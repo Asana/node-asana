@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * Roles service.
 * @module api/RolesApi
-* @version 3.1.10
+* @version 3.1.11
 */
 export class RolesApi {
     /**

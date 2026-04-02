@@ -50,7 +50,9 @@ import {TasksApi} from './api/TasksApi';
 import {TeamMembershipsApi} from './api/TeamMembershipsApi';
 import {TeamsApi} from './api/TeamsApi';
 import {TimePeriodsApi} from './api/TimePeriodsApi';
+import {TimeTrackingCategoriesApi} from './api/TimeTrackingCategoriesApi';
 import {TimeTrackingEntriesApi} from './api/TimeTrackingEntriesApi';
+import {TimesheetApprovalStatusesApi} from './api/TimesheetApprovalStatusesApi';
 import {TypeaheadApi} from './api/TypeaheadApi';
 import {UserTaskListsApi} from './api/UserTaskListsApi';
 import {UsersApi} from './api/UsersApi';
@@ -87,7 +89,7 @@ import {WorkspacesApi} from './api/WorkspacesApi';
 * </pre>
 * </p>
 * @module index
-* @version 3.1.10
+* @version 3.1.11
 */
 export {
     /**
@@ -321,10 +323,22 @@ export {
     TimePeriodsApi,
 
     /**
+    * The TimeTrackingCategoriesApi service constructor.
+    * @property {module:api/TimeTrackingCategoriesApi}
+    */
+    TimeTrackingCategoriesApi,
+
+    /**
     * The TimeTrackingEntriesApi service constructor.
     * @property {module:api/TimeTrackingEntriesApi}
     */
     TimeTrackingEntriesApi,
+
+    /**
+    * The TimesheetApprovalStatusesApi service constructor.
+    * @property {module:api/TimesheetApprovalStatusesApi}
+    */
+    TimesheetApprovalStatusesApi,
 
     /**
     * The TypeaheadApi service constructor.

@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * Stories service.
 * @module api/StoriesApi
-* @version 3.1.10
+* @version 3.1.11
 */
 export class StoriesApi {
     /**
@@ -30,6 +30,28 @@ export class StoriesApi {
     constructor(apiClient?: ApiClient);
 
     apiClient: ApiClient;
+
+    /**
+     * Create a story on a goal
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:write&lt;/code&gt;  Adds a story to a goal. This endpoint currently only allows for comment stories to be created. The comment will be authored by the currently authenticated user, and timestamped when the server receives the request.  Returns the full record for the new story added to the goal.
+     * @param body The story to create.
+     * @param goal_gid Globally unique identifier for the goal.
+     * @param opts Optional parameters
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @returns A Promise, with an object containing data and HTTP response
+     */
+    createStoryForGoalWithHttpInfo(body: any, goal_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
+
+    /**
+     * Create a story on a goal
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:write&lt;/code&gt;  Adds a story to a goal. This endpoint currently only allows for comment stories to be created. The comment will be authored by the currently authenticated user, and timestamped when the server receives the request.  Returns the full record for the new story added to the goal.
+     * @param body The story to create.
+     * @param goal_gid Globally unique identifier for the goal.
+     * @param opts Optional parameters
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @returns A Promise
+     */
+    createStoryForGoal(body: any, goal_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
 
     /**
      * Create a story on a task
@@ -55,7 +77,7 @@ export class StoriesApi {
 
     /**
      * Delete a story
-     * Deletes a story. A user can only delete stories they have created.  Returns an empty data record.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:delete&lt;/code&gt;  Deletes a story. A user can only delete stories they have created.  Returns an empty data record.
      * @param story_gid Globally unique identifier for the story.
      * @returns A Promise, with an object containing data and HTTP response
      */
@@ -63,11 +85,35 @@ export class StoriesApi {
 
     /**
      * Delete a story
-     * Deletes a story. A user can only delete stories they have created.  Returns an empty data record.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:delete&lt;/code&gt;  Deletes a story. A user can only delete stories they have created.  Returns an empty data record.
      * @param story_gid Globally unique identifier for the story.
      * @returns A Promise
      */
     deleteStory(story_gid: string): Promise<any>;
+
+    /**
+     * Get stories from a goal
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:read&lt;/code&gt;  Returns the compact records for all stories on the goal.
+     * @param goal_gid Globally unique identifier for the goal.
+     * @param opts Optional parameters
+     * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
+     * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @returns A Promise, with an object containing data and HTTP response
+     */
+    getStoriesForGoalWithHttpInfo(goal_gid: string, opts?: { 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
+
+    /**
+     * Get stories from a goal
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:read&lt;/code&gt;  Returns the compact records for all stories on the goal.
+     * @param goal_gid Globally unique identifier for the goal.
+     * @param opts Optional parameters
+     * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
+     * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @returns A Promise
+     */
+    getStoriesForGoal(goal_gid: string, opts?: { 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | any>;
 
     /**
      * Get stories from a task

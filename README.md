@@ -1,7 +1,7 @@
 # asana [![GitHub release][release-image]][release-url] [![NPM Version][npm-image]][npm-url]
 
 - API version: 1.0
-- Package version: 3.1.10
+- Package version: 3.1.11
 
 ## Installation
 
@@ -18,7 +18,7 @@ npm install asana --save
 Include the latest release directly from GitHub:
 
 ```html
-<script src="https://github.com/Asana/node-asana/releases/download/v3.1.10/asana-min.js"></script>
+<script src="https://github.com/Asana/node-asana/releases/download/v3.1.11/asana-min.js"></script>
 ```
 
 Example usage (**NOTE**: be careful not to expose your access token):
@@ -304,6 +304,7 @@ Class | Method | HTTP request | Description
 *Asana.ProjectsApi* | [**removeCustomFieldSettingForProject**](docs/ProjectsApi.md#removeCustomFieldSettingForProject) | **POST** /projects/{project_gid}/removeCustomFieldSetting | Remove a custom field from a project
 *Asana.ProjectsApi* | [**removeFollowersForProject**](docs/ProjectsApi.md#removeFollowersForProject) | **POST** /projects/{project_gid}/removeFollowers | Remove followers from a project
 *Asana.ProjectsApi* | [**removeMembersForProject**](docs/ProjectsApi.md#removeMembersForProject) | **POST** /projects/{project_gid}/removeMembers | Remove users from a project
+*Asana.ProjectsApi* | [**searchProjectsForWorkspace**](docs/ProjectsApi.md#searchProjectsForWorkspace) | **GET** /workspaces/{workspace_gid}/projects/search | Search projects in a workspace
 *Asana.ProjectsApi* | [**updateProject**](docs/ProjectsApi.md#updateProject) | **PUT** /projects/{project_gid} | Update a project
 *Asana.RatesApi* | [**createRate**](docs/RatesApi.md#createRate) | **POST** /rates | Create a rate
 *Asana.RatesApi* | [**deleteRate**](docs/RatesApi.md#deleteRate) | **DELETE** /rates/{rate_gid} | Delete a rate
@@ -328,8 +329,10 @@ Class | Method | HTTP request | Description
 *Asana.StatusUpdatesApi* | [**deleteStatus**](docs/StatusUpdatesApi.md#deleteStatus) | **DELETE** /status_updates/{status_update_gid} | Delete a status update
 *Asana.StatusUpdatesApi* | [**getStatus**](docs/StatusUpdatesApi.md#getStatus) | **GET** /status_updates/{status_update_gid} | Get a status update
 *Asana.StatusUpdatesApi* | [**getStatusesForObject**](docs/StatusUpdatesApi.md#getStatusesForObject) | **GET** /status_updates | Get status updates from an object
+*Asana.StoriesApi* | [**createStoryForGoal**](docs/StoriesApi.md#createStoryForGoal) | **POST** /goals/{goal_gid}/stories | Create a story on a goal
 *Asana.StoriesApi* | [**createStoryForTask**](docs/StoriesApi.md#createStoryForTask) | **POST** /tasks/{task_gid}/stories | Create a story on a task
 *Asana.StoriesApi* | [**deleteStory**](docs/StoriesApi.md#deleteStory) | **DELETE** /stories/{story_gid} | Delete a story
+*Asana.StoriesApi* | [**getStoriesForGoal**](docs/StoriesApi.md#getStoriesForGoal) | **GET** /goals/{goal_gid}/stories | Get stories from a goal
 *Asana.StoriesApi* | [**getStoriesForTask**](docs/StoriesApi.md#getStoriesForTask) | **GET** /tasks/{task_gid}/stories | Get stories from a task
 *Asana.StoriesApi* | [**getStory**](docs/StoriesApi.md#getStory) | **GET** /stories/{story_gid} | Get a story
 *Asana.StoriesApi* | [**updateStory**](docs/StoriesApi.md#updateStory) | **PUT** /stories/{story_gid} | Update a story
@@ -385,12 +388,22 @@ Class | Method | HTTP request | Description
 *Asana.TeamsApi* | [**updateTeam**](docs/TeamsApi.md#updateTeam) | **PUT** /teams/{team_gid} | Update a team
 *Asana.TimePeriodsApi* | [**getTimePeriod**](docs/TimePeriodsApi.md#getTimePeriod) | **GET** /time_periods/{time_period_gid} | Get a time period
 *Asana.TimePeriodsApi* | [**getTimePeriods**](docs/TimePeriodsApi.md#getTimePeriods) | **GET** /time_periods | Get time periods
+*Asana.TimeTrackingCategoriesApi* | [**createTimeTrackingCategory**](docs/TimeTrackingCategoriesApi.md#createTimeTrackingCategory) | **POST** /time_tracking_categories | Create a time tracking category
+*Asana.TimeTrackingCategoriesApi* | [**deleteTimeTrackingCategory**](docs/TimeTrackingCategoriesApi.md#deleteTimeTrackingCategory) | **DELETE** /time_tracking_categories/{time_tracking_category_gid} | Delete a time tracking category
+*Asana.TimeTrackingCategoriesApi* | [**getTimeTrackingCategories**](docs/TimeTrackingCategoriesApi.md#getTimeTrackingCategories) | **GET** /time_tracking_categories | Get time tracking categories for a workspace
+*Asana.TimeTrackingCategoriesApi* | [**getTimeTrackingCategory**](docs/TimeTrackingCategoriesApi.md#getTimeTrackingCategory) | **GET** /time_tracking_categories/{time_tracking_category_gid} | Get a time tracking category
+*Asana.TimeTrackingCategoriesApi* | [**getTimeTrackingEntriesForTimeTrackingCategory**](docs/TimeTrackingCategoriesApi.md#getTimeTrackingEntriesForTimeTrackingCategory) | **GET** /time_tracking_categories/{time_tracking_category_gid}/time_tracking_entries | Get time tracking entries for a time tracking category
+*Asana.TimeTrackingCategoriesApi* | [**updateTimeTrackingCategory**](docs/TimeTrackingCategoriesApi.md#updateTimeTrackingCategory) | **PUT** /time_tracking_categories/{time_tracking_category_gid} | Update a time tracking category
 *Asana.TimeTrackingEntriesApi* | [**createTimeTrackingEntry**](docs/TimeTrackingEntriesApi.md#createTimeTrackingEntry) | **POST** /tasks/{task_gid}/time_tracking_entries | Create a time tracking entry
 *Asana.TimeTrackingEntriesApi* | [**deleteTimeTrackingEntry**](docs/TimeTrackingEntriesApi.md#deleteTimeTrackingEntry) | **DELETE** /time_tracking_entries/{time_tracking_entry_gid} | Delete a time tracking entry
 *Asana.TimeTrackingEntriesApi* | [**getTimeTrackingEntries**](docs/TimeTrackingEntriesApi.md#getTimeTrackingEntries) | **GET** /time_tracking_entries | Get multiple time tracking entries
 *Asana.TimeTrackingEntriesApi* | [**getTimeTrackingEntriesForTask**](docs/TimeTrackingEntriesApi.md#getTimeTrackingEntriesForTask) | **GET** /tasks/{task_gid}/time_tracking_entries | Get time tracking entries for a task
 *Asana.TimeTrackingEntriesApi* | [**getTimeTrackingEntry**](docs/TimeTrackingEntriesApi.md#getTimeTrackingEntry) | **GET** /time_tracking_entries/{time_tracking_entry_gid} | Get a time tracking entry
 *Asana.TimeTrackingEntriesApi* | [**updateTimeTrackingEntry**](docs/TimeTrackingEntriesApi.md#updateTimeTrackingEntry) | **PUT** /time_tracking_entries/{time_tracking_entry_gid} | Update a time tracking entry
+*Asana.TimesheetApprovalStatusesApi* | [**createTimesheetApprovalStatus**](docs/TimesheetApprovalStatusesApi.md#createTimesheetApprovalStatus) | **POST** /timesheet_approval_statuses | Create a timesheet approval status
+*Asana.TimesheetApprovalStatusesApi* | [**getTimesheetApprovalStatus**](docs/TimesheetApprovalStatusesApi.md#getTimesheetApprovalStatus) | **GET** /timesheet_approval_statuses/{timesheet_approval_status_gid} | Get a timesheet approval status
+*Asana.TimesheetApprovalStatusesApi* | [**getTimesheetApprovalStatuses**](docs/TimesheetApprovalStatusesApi.md#getTimesheetApprovalStatuses) | **GET** /timesheet_approval_statuses | Get multiple timesheet approval statuses
+*Asana.TimesheetApprovalStatusesApi* | [**updateTimesheetApprovalStatus**](docs/TimesheetApprovalStatusesApi.md#updateTimesheetApprovalStatus) | **PUT** /timesheet_approval_statuses/{timesheet_approval_status_gid} | Update a timesheet approval status
 *Asana.TypeaheadApi* | [**typeaheadForWorkspace**](docs/TypeaheadApi.md#typeaheadForWorkspace) | **GET** /workspaces/{workspace_gid}/typeahead | Get objects via typeahead
 *Asana.UserTaskListsApi* | [**getUserTaskList**](docs/UserTaskListsApi.md#getUserTaskList) | **GET** /user_task_lists/{user_task_list_gid} | Get a user task list
 *Asana.UserTaskListsApi* | [**getUserTaskListForUser**](docs/UserTaskListsApi.md#getUserTaskListForUser) | **GET** /users/{user_gid}/user_task_list | Get a user&#x27;s task list
@@ -1129,6 +1142,6 @@ client.callApi(
 ```
 
 [release-image]: https://img.shields.io/github/release/asana/node-asana.svg
-[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.1.10
+[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.1.11
 [npm-image]: http://img.shields.io/npm/v/asana.svg?style=flat-square
 [npm-url]: https://www.npmjs.org/package/asana

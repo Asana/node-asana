@@ -1,0 +1,109 @@
+TimeTrackingCategoriesApi:
+  createTimeTrackingCategory: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let timeTrackingCategoriesApiInstance = new Asana.TimeTrackingCategoriesApi(client);
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | Information about the time tracking category.
+    let opts = { 
+        'opt_fields': "color,is_archived,name"
+    };
+    timeTrackingCategoriesApiInstance.createTimeTrackingCategory(body, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  deleteTimeTrackingCategory: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let timeTrackingCategoriesApiInstance = new Asana.TimeTrackingCategoriesApi(client);
+    let time_tracking_category_gid = "917392"; // String | Globally unique identifier for the time tracking category.
+
+    timeTrackingCategoriesApiInstance.deleteTimeTrackingCategory(time_tracking_category_gid).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getTimeTrackingCategories: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let timeTrackingCategoriesApiInstance = new Asana.TimeTrackingCategoriesApi(client);
+    let workspace = "12345"; // String | Globally unique identifier for the workspace.
+    let opts = { 
+        'is_archived': false, 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'opt_fields': "color,is_archived,name,offset,path,uri"
+    };
+    timeTrackingCategoriesApiInstance.getTimeTrackingCategories(workspace, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getTimeTrackingCategory: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let timeTrackingCategoriesApiInstance = new Asana.TimeTrackingCategoriesApi(client);
+    let time_tracking_category_gid = "917392"; // String | Globally unique identifier for the time tracking category.
+    let opts = { 
+        'opt_fields': "color,is_archived,name"
+    };
+    timeTrackingCategoriesApiInstance.getTimeTrackingCategory(time_tracking_category_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getTimeTrackingEntriesForTimeTrackingCategory: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let timeTrackingCategoriesApiInstance = new Asana.TimeTrackingCategoriesApi(client);
+    let time_tracking_category_gid = "917392"; // String | Globally unique identifier for the time tracking category.
+    let opts = { 
+        'start_date': "2025-01-01", 
+        'end_date': "2025-12-31", 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'opt_fields': "attributable_to,attributable_to.name,categories,categories.color,categories.name,created_by,created_by.name,duration_minutes,entered_on,offset,path,uri"
+    };
+    timeTrackingCategoriesApiInstance.getTimeTrackingEntriesForTimeTrackingCategory(time_tracking_category_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  updateTimeTrackingCategory: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let timeTrackingCategoriesApiInstance = new Asana.TimeTrackingCategoriesApi(client);
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The updated fields for the time tracking category.
+    let time_tracking_category_gid = "917392"; // String | Globally unique identifier for the time tracking category.
+    let opts = { 
+        'opt_fields': "color,is_archived,name"
+    };
+    timeTrackingCategoriesApiInstance.updateTimeTrackingCategory(body, time_tracking_category_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
