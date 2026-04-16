@@ -14,91 +14,108 @@
  */
 import { ApiClient } from "../ApiClient";
 import Collection = require("../utils/collection");
-
+import { ApiResponse } from "../types/objects";
+import { AccessRequest } from "../types/AccessRequests";
 /**
-* AccessRequests service.
-* @module api/AccessRequestsApi
-* @version 3.1.11
-*/
+ * AccessRequests service.
+ * @module api/AccessRequestsApi
+ * @version 3.1.11
+ */
 export class AccessRequestsApi {
-    /**
-    * Constructs a new AccessRequestsApi.
-    * @alias module:api/AccessRequestsApi
-    * @class
-    * @param apiClient Optional API client implementation to use, default to ApiClient.instance if unspecified.
-    */
-    constructor(apiClient?: ApiClient);
+  /**
+   * Constructs a new AccessRequestsApi.
+   * @alias module:api/AccessRequestsApi
+   * @class
+   * @param apiClient Optional API client implementation to use, default to ApiClient.instance if unspecified.
+   */
+  constructor(apiClient?: ApiClient);
 
-    apiClient: ApiClient;
+  apiClient: ApiClient;
 
-    /**
-     * Approve an access request
-     * Approves an access request for a target object.
-     * @param access_request_gid Globally unique identifier for the access request.
-     * @returns A Promise, with an object containing data and HTTP response
-     */
-    approveAccessRequestWithHttpInfo(access_request_gid: string): Promise<{ response: any; data: any }>;
+  /**
+   * Approve an access request
+   * Approves an access request for a target object.
+   * @param access_request_gid Globally unique identifier for the access request.
+   * @returns A Promise, with an object containing data and HTTP response
+   */
+  approveAccessRequestWithHttpInfo(
+    access_request_gid: string,
+  ): Promise<{ response: any; data: ApiResponse<{}> }>;
 
-    /**
-     * Approve an access request
-     * Approves an access request for a target object.
-     * @param access_request_gid Globally unique identifier for the access request.
-     * @returns A Promise
-     */
-    approveAccessRequest(access_request_gid: string): Promise<any>;
+  /**
+   * Approve an access request
+   * Approves an access request for a target object.
+   * @param access_request_gid Globally unique identifier for the access request.
+   * @returns A Promise
+   */
+  approveAccessRequest(access_request_gid: string): Promise<ApiResponse<{}>>;
 
-    /**
-     * Create an access request
-     * Submits a new access request for a private object. Currently supports projects and portfolios.
-     * @param body 
-     * @returns A Promise, with an object containing data and HTTP response
-     */
-    createAccessRequestWithHttpInfo(body: any): Promise<{ response: any; data: any }>;
+  /**
+   * Create an access request
+   * Submits a new access request for a private object. Currently supports projects and portfolios.
+   * @param body
+   * @returns A Promise, with an object containing data and HTTP response
+   */
+  createAccessRequestWithHttpInfo(
+    body: any,
+  ): Promise<{ response: any; data: ApiResponse<AccessRequest> }>;
 
-    /**
-     * Create an access request
-     * Submits a new access request for a private object. Currently supports projects and portfolios.
-     * @param body 
-     * @returns A Promise
-     */
-    createAccessRequest(body: any): Promise<any>;
+  /**
+   * Create an access request
+   * Submits a new access request for a private object. Currently supports projects and portfolios.
+   * @param body
+   * @returns A Promise with the Access request
+   */
+  createAccessRequest(body: {
+    target: string;
+    message: string | null;
+  }): Promise<ApiResponse<AccessRequest>>;
 
-    /**
-     * Get access requests
-     * Returns the pending access requests for a target object or a target object filtered by user.
-     * @param target Globally unique identifier for the target object.
-     * @param opts Optional parameters
-     * @param opts.user A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
-     * @returns A Promise, with an object containing data and HTTP response
-     */
-    getAccessRequestsWithHttpInfo(target: string, opts?: { 'user'?: string; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
+  /**
+   * Get access requests
+   * Returns the pending access requests for a target object or a target object filtered by user.
+   * @param target Globally unique identifier for the target object.
+   * @param opts Optional parameters
+   * @param opts.user A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
+   * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+   * @returns A Promise, with an object containing data and HTTP response
+   */
+  getAccessRequestsWithHttpInfo(
+    target: string,
+    opts?: { user?: string; opt_fields?: any },
+  ): Promise<
+    Collection | { response: any; data: ApiResponse<AccessRequest[]> }
+  >;
 
-    /**
-     * Get access requests
-     * Returns the pending access requests for a target object or a target object filtered by user.
-     * @param target Globally unique identifier for the target object.
-     * @param opts Optional parameters
-     * @param opts.user A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
-     * @returns A Promise
-     */
-    getAccessRequests(target: string, opts?: { 'user'?: string; 'opt_fields'?: any;  }): Promise<Collection | any>;
+  /**
+   * Get access requests
+   * Returns the pending access requests for a target object or a target object filtered by user.
+   * @param target Globally unique identifier for the target object.
+   * @param opts Optional parameters
+   * @param opts.user A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
+   * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+   * @returns A Promise
+   */
+  getAccessRequests(
+    target: string,
+    opts?: { user?: string; opt_fields?: any },
+  ): Promise<ApiResponse<AccessRequest[]>>;
 
-    /**
-     * Reject an access request
-     * Rejects an access request for a target object.
-     * @param access_request_gid Globally unique identifier for the access request.
-     * @returns A Promise, with an object containing data and HTTP response
-     */
-    rejectAccessRequestWithHttpInfo(access_request_gid: string): Promise<{ response: any; data: any }>;
+  /**
+   * Reject an access request
+   * Rejects an access request for a target object.
+   * @param access_request_gid Globally unique identifier for the access request.
+   * @returns A Promise, with an object containing data and HTTP response
+   */
+  rejectAccessRequestWithHttpInfo(
+    access_request_gid: string,
+  ): Promise<{ response: any; data: ApiResponse<{}> }>;
 
-    /**
-     * Reject an access request
-     * Rejects an access request for a target object.
-     * @param access_request_gid Globally unique identifier for the access request.
-     * @returns A Promise
-     */
-    rejectAccessRequest(access_request_gid: string): Promise<any>;
-
+  /**
+   * Reject an access request
+   * Rejects an access request for a target object.
+   * @param access_request_gid Globally unique identifier for the access request.
+   * @returns A Promise
+   */
+  rejectAccessRequest(access_request_gid: string): Promise<ApiResponse<{}>>;
 }

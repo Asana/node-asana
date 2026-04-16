@@ -3,13 +3,14 @@
   "version": "3.1.11",
   "description": "This_is_the_interface_for_interacting_with_the__Asana_Platform_httpsdevelopers_asana_com__Our_API_reference_is_generated_from_our__OpenAPI_spec__httpsraw_githubusercontent_comAsanaopenapimasterdefsasana_oas_yaml_",
   "license": "Apache 2.0",
-  "main": "src/index.js",
-  "types": "src/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": {
     "url": "https://github.com/Asana/node-asana",
     "type": "git"
   },
   "scripts": {
+    "build": "babel src --out-dir dist --copy-files",
     "test": "mocha --require @babel/register --recursive",
     "testbuild": "mocha --timeout 20000 --require @babel/register --recursive 'build-tests/api/*.js'"
   },
@@ -43,6 +44,7 @@
     "dotenv": "^16.4.1",
     "expect.js": "^0.3.1",
     "mocha": "^8.0.1",
+    "prettier": "^3.8.2",
     "sinon": "^7.2.0"
   }
 }
