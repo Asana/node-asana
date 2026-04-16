@@ -12,17 +12,19 @@
  * Do not edit the class manually.
  *
  */
-import {ApiClient} from "../ApiClient";
-var Collection = require('../utils/collection');
+import { ApiClient } from "../ApiClient";
+/**
+ * @typedef {import('../types/AccessRequests').AccessRequest} AccessRequest
+ * @typedef {import('../types/objects').ApiRequestResponse} ApiRequestResponse
+ */
 
 /**
-* AccessRequests service.
-* @module api/AccessRequestsApi
-* @version 3.1.11
-*/
+ * AccessRequests service.
+ * @module api/AccessRequestsApi
+ * @version 3.1.11
+ */
 export class AccessRequestsApi {
-
-    /**
+  /**
     * Constructs a new AccessRequestsApi. 
     * @alias module:api/AccessRequestsApi
     * @class
@@ -30,258 +32,278 @@ export class AccessRequestsApi {
     * default to {@link module:ApiClient#instanc
     e} if unspecified.
     */
-    constructor(apiClient) {
-        this.apiClient = apiClient || ApiClient.instance;
+  constructor(apiClient) {
+    this.apiClient = apiClient || ApiClient.instance;
+  }
+
+  /**
+   * Approve an access request
+   * Approves an access request for a target object.
+   * @param {String} access_request_gid Globally unique identifier for the access request.
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
+   */
+  approveAccessRequestWithHttpInfo(access_request_gid) {
+    let postBody = null;
+    // verify the required parameter 'access_request_gid' is set
+    if (access_request_gid === undefined || access_request_gid === null) {
+      throw new Error(
+        "Missing the required parameter 'access_request_gid' when calling approveAccessRequest",
+      );
     }
 
+    let pathParams = {
+      access_request_gid: access_request_gid,
+    };
+    let queryParams = {};
 
+    let headerParams = {};
+    let formParams = {};
 
-    /**
-     * Approve an access request
-     * Approves an access request for a target object.
-     * @param {String} access_request_gid Globally unique identifier for the access request.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
-     */
-    approveAccessRequestWithHttpInfo(access_request_gid) {
-        
-        let postBody = null;
-        // verify the required parameter 'access_request_gid' is set
-        if (access_request_gid === undefined || access_request_gid === null) {
-            throw new Error("Missing the required parameter 'access_request_gid' when calling approveAccessRequest");
-        }
+    let authNames = ["personalAccessToken"];
+    let contentTypes = [];
+    let accepts = ["application/json; charset=UTF-8"];
+    let returnType = "Blob";
 
-        let pathParams = {
-            'access_request_gid': access_request_gid
-        };
-        let queryParams = {};
+    return this.apiClient.callApi(
+      "/access_requests/{access_request_gid}/approve",
+      "POST",
+      pathParams,
+      queryParams,
+      headerParams,
+      formParams,
+      postBody,
+      authNames,
+      contentTypes,
+      accepts,
+      returnType,
+    );
+  }
 
-        let headerParams = {
-            
-        };
-        let formParams = {
-            
-        };
+  /**
+   * Approve an access request
+   * Approves an access request for a target object.
+   * @param {String} access_request_gid Globally unique identifier for the access request.
+   * @return {Promise<ApiRequestResponse<AccessRequest>>} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:api/AccessRequestsApi}
+   */
+  approveAccessRequest(access_request_gid) {
+    return this.approveAccessRequestWithHttpInfo(access_request_gid).then(
+      function (response_and_data) {
+        return response_and_data.data;
+      },
+    );
+  }
 
-        let authNames = ['personalAccessToken'];
-        let contentTypes = [];
-        let accepts = ['application/json; charset=UTF-8'];
-        let returnType = 'Blob';
-
-        return this.apiClient.callApi(
-            '/access_requests/{access_request_gid}/approve', 'POST',
-            pathParams, queryParams, headerParams, formParams, postBody,
-            authNames, contentTypes, accepts, returnType
-        );
+  /**
+   * Create an access request
+   * Submits a new access request for a private object. Currently supports projects and portfolios.
+   * @param {module:model/Object} body
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
+   */
+  createAccessRequestWithHttpInfo(body) {
+    let postBody = body;
+    // verify the required parameter 'body' is set
+    if (body === undefined || body === null) {
+      throw new Error(
+        "Missing the required parameter 'body' when calling createAccessRequest",
+      );
     }
 
-    /**
-     * Approve an access request
-     * Approves an access request for a target object.
-     * @param {<&vendorExtensions.x-jsdoc-type>} access_request_gid Globally unique identifier for the access request.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EmptyResponseData}
-     */
-    approveAccessRequest(access_request_gid) {
+    let pathParams = {};
+    let queryParams = {};
 
-        return this.approveAccessRequestWithHttpInfo(access_request_gid)
-            .then(function(response_and_data) {
-                return response_and_data.data;
-            });
+    let headerParams = {};
+    let formParams = {};
+
+    let authNames = ["personalAccessToken"];
+    let contentTypes = ["application/json; charset=UTF-8"];
+    let accepts = ["application/json; charset=UTF-8"];
+    let returnType = "Blob";
+
+    return this.apiClient.callApi(
+      "/access_requests",
+      "POST",
+      pathParams,
+      queryParams,
+      headerParams,
+      formParams,
+      postBody,
+      authNames,
+      contentTypes,
+      accepts,
+      returnType,
+    );
+  }
+
+  /**
+   * Create an access request
+   * Submits a new access request for a private object. Currently supports projects and portfolios.
+   * @param {<&vendorExtensions.x-jsdoc-type>} body
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AccessRequestResponseData}
+   */
+  createAccessRequest(body) {
+    return this.createAccessRequestWithHttpInfo(body).then(
+      function (response_and_data) {
+        return response_and_data.data;
+      },
+    );
+  }
+
+  /**
+   * Get access requests
+   * Returns the pending access requests for a target object or a target object filtered by user.
+   * @param {String} target Globally unique identifier for the target object.
+   * @param {Object} opts Optional parameters
+   * @param {String} opts.user A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
+   * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
+   */
+  getAccessRequestsWithHttpInfo(target, opts) {
+    opts = opts || {};
+    let postBody = null;
+    // verify the required parameter 'target' is set
+    if (target === undefined || target === null) {
+      throw new Error(
+        "Missing the required parameter 'target' when calling getAccessRequests",
+      );
     }
 
+    let pathParams = {};
+    let queryParams = {};
+    opts = opts || {};
+    queryParams = opts;
+    queryParams["target"] = target;
 
-    /**
-     * Create an access request
-     * Submits a new access request for a private object. Currently supports projects and portfolios.
-     * @param {module:model/Object} body 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
-     */
-    createAccessRequestWithHttpInfo(body) {
-        
-        let postBody = body;
-        // verify the required parameter 'body' is set
-        if (body === undefined || body === null) {
-            throw new Error("Missing the required parameter 'body' when calling createAccessRequest");
-        }
+    let headerParams = {};
+    let formParams = {};
 
-        let pathParams = {
-            
-        };
-        let queryParams = {};
-
-        let headerParams = {
-            
-        };
-        let formParams = {
-            
-        };
-
-        let authNames = ['personalAccessToken'];
-        let contentTypes = ['application/json; charset=UTF-8'];
-        let accepts = ['application/json; charset=UTF-8'];
-        let returnType = 'Blob';
-
-        return this.apiClient.callApi(
-            '/access_requests', 'POST',
-            pathParams, queryParams, headerParams, formParams, postBody,
-            authNames, contentTypes, accepts, returnType
-        );
+    let authNames = ["personalAccessToken"];
+    let contentTypes = [];
+    let accepts = ["application/json; charset=UTF-8"];
+    let returnType = "Blob";
+    // Check if RETURN_COLLECTION is set and return a collection object if it is
+    if (this.apiClient.RETURN_COLLECTION) {
+      return Collection.fromApiClient(
+        this.apiClient.callApi(
+          "/access_requests",
+          "GET",
+          pathParams,
+          queryParams,
+          headerParams,
+          formParams,
+          postBody,
+          authNames,
+          contentTypes,
+          accepts,
+          returnType,
+        ),
+        this.apiClient,
+        {
+          path: "/access_requests",
+          httpMethod: "GET",
+          pathParams: pathParams,
+          queryParams: queryParams,
+          headerParams: headerParams,
+          formParams: formParams,
+          bodyParam: postBody,
+          authNames: authNames,
+          contentTypes: contentTypes,
+          accepts: accepts,
+          returnType: returnType,
+        },
+      );
     }
 
-    /**
-     * Create an access request
-     * Submits a new access request for a private object. Currently supports projects and portfolios.
-     * @param {<&vendorExtensions.x-jsdoc-type>} body 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AccessRequestResponseData}
-     */
-    createAccessRequest(body) {
+    return this.apiClient.callApi(
+      "/access_requests",
+      "GET",
+      pathParams,
+      queryParams,
+      headerParams,
+      formParams,
+      postBody,
+      authNames,
+      contentTypes,
+      accepts,
+      returnType,
+    );
+  }
 
-        return this.createAccessRequestWithHttpInfo(body)
-            .then(function(response_and_data) {
-                return response_and_data.data;
-            });
+  /**
+   * Get access requests
+   * Returns the pending access requests for a target object or a target object filtered by user.
+   * @param {<&vendorExtensions.x-jsdoc-type>} target Globally unique identifier for the target object.
+   * @param {Object} opts Optional parameters
+   * @param {String} opts.user A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
+   * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AccessRequestResponseArray}
+   */
+  getAccessRequests(target, opts) {
+    // Check if RETURN_COLLECTION is set and return a collection object if it is
+    if (this.apiClient.RETURN_COLLECTION) {
+      return this.getAccessRequestsWithHttpInfo(target, opts);
     }
 
+    return this.getAccessRequestsWithHttpInfo(target, opts).then(
+      function (response_and_data) {
+        return response_and_data.data;
+      },
+    );
+  }
 
-    /**
-     * Get access requests
-     * Returns the pending access requests for a target object or a target object filtered by user.
-     * @param {String} target Globally unique identifier for the target object.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.user A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
-     */
-    getAccessRequestsWithHttpInfo(target, opts) {
-        opts = opts || {};
-        let postBody = null;
-        // verify the required parameter 'target' is set
-        if (target === undefined || target === null) {
-            throw new Error("Missing the required parameter 'target' when calling getAccessRequests");
-        }
-
-        let pathParams = {
-            
-        };
-        let queryParams = {};
-        opts = opts || {};
-        queryParams = opts;
-        queryParams['target'] = target;
-
-        let headerParams = {
-            
-        };
-        let formParams = {
-            
-        };
-
-        let authNames = ['personalAccessToken'];
-        let contentTypes = [];
-        let accepts = ['application/json; charset=UTF-8'];
-        let returnType = 'Blob';
-        // Check if RETURN_COLLECTION is set and return a collection object if it is
-        if (this.apiClient.RETURN_COLLECTION) {
-            return Collection.fromApiClient(
-                this.apiClient.callApi(
-                    '/access_requests', 'GET',
-                    pathParams, queryParams, headerParams, formParams, postBody,
-                    authNames, contentTypes, accepts, returnType
-                ),
-                this.apiClient,
-                {
-                    'path': '/access_requests',
-                    'httpMethod': 'GET',
-                    'pathParams': pathParams,
-                    'queryParams': queryParams,
-                    'headerParams': headerParams,
-                    'formParams': formParams,
-                    'bodyParam': postBody,
-                    'authNames': authNames,
-                    'contentTypes': contentTypes,
-                    'accepts': accepts,
-                    'returnType': returnType
-                }
-            )
-        }
-
-        return this.apiClient.callApi(
-            '/access_requests', 'GET',
-            pathParams, queryParams, headerParams, formParams, postBody,
-            authNames, contentTypes, accepts, returnType
-        );
+  /**
+   * Reject an access request
+   * Rejects an access request for a target object.
+   * @param {String} access_request_gid Globally unique identifier for the access request.
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
+   */
+  rejectAccessRequestWithHttpInfo(access_request_gid) {
+    let postBody = null;
+    // verify the required parameter 'access_request_gid' is set
+    if (access_request_gid === undefined || access_request_gid === null) {
+      throw new Error(
+        "Missing the required parameter 'access_request_gid' when calling rejectAccessRequest",
+      );
     }
 
-    /**
-     * Get access requests
-     * Returns the pending access requests for a target object or a target object filtered by user.
-     * @param {<&vendorExtensions.x-jsdoc-type>} target Globally unique identifier for the target object.
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.user A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AccessRequestResponseArray}
-     */
-    getAccessRequests(target, opts) {
-        // Check if RETURN_COLLECTION is set and return a collection object if it is
-        if (this.apiClient.RETURN_COLLECTION) {
-            return this.getAccessRequestsWithHttpInfo(target, opts)
-        }
+    let pathParams = {
+      access_request_gid: access_request_gid,
+    };
+    let queryParams = {};
 
-        return this.getAccessRequestsWithHttpInfo(target, opts)
-            .then(function(response_and_data) {
-                return response_and_data.data;
-            });
-    }
+    let headerParams = {};
+    let formParams = {};
 
+    let authNames = ["personalAccessToken"];
+    let contentTypes = [];
+    let accepts = ["application/json; charset=UTF-8"];
+    let returnType = "Blob";
 
-    /**
-     * Reject an access request
-     * Rejects an access request for a target object.
-     * @param {String} access_request_gid Globally unique identifier for the access request.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
-     */
-    rejectAccessRequestWithHttpInfo(access_request_gid) {
-        
-        let postBody = null;
-        // verify the required parameter 'access_request_gid' is set
-        if (access_request_gid === undefined || access_request_gid === null) {
-            throw new Error("Missing the required parameter 'access_request_gid' when calling rejectAccessRequest");
-        }
+    return this.apiClient.callApi(
+      "/access_requests/{access_request_gid}/reject",
+      "POST",
+      pathParams,
+      queryParams,
+      headerParams,
+      formParams,
+      postBody,
+      authNames,
+      contentTypes,
+      accepts,
+      returnType,
+    );
+  }
 
-        let pathParams = {
-            'access_request_gid': access_request_gid
-        };
-        let queryParams = {};
-
-        let headerParams = {
-            
-        };
-        let formParams = {
-            
-        };
-
-        let authNames = ['personalAccessToken'];
-        let contentTypes = [];
-        let accepts = ['application/json; charset=UTF-8'];
-        let returnType = 'Blob';
-
-        return this.apiClient.callApi(
-            '/access_requests/{access_request_gid}/reject', 'POST',
-            pathParams, queryParams, headerParams, formParams, postBody,
-            authNames, contentTypes, accepts, returnType
-        );
-    }
-
-    /**
-     * Reject an access request
-     * Rejects an access request for a target object.
-     * @param {<&vendorExtensions.x-jsdoc-type>} access_request_gid Globally unique identifier for the access request.
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EmptyResponseData}
-     */
-    rejectAccessRequest(access_request_gid) {
-
-        return this.rejectAccessRequestWithHttpInfo(access_request_gid)
-            .then(function(response_and_data) {
-                return response_and_data.data;
-            });
-    }
-
+  /**
+   * Reject an access request
+   * Rejects an access request for a target object.
+   * @param {<&vendorExtensions.x-jsdoc-type>} access_request_gid Globally unique identifier for the access request.
+   * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EmptyResponseData}
+   */
+  rejectAccessRequest(access_request_gid) {
+    return this.rejectAccessRequestWithHttpInfo(access_request_gid).then(
+      function (response_and_data) {
+        return response_and_data.data;
+      },
+    );
+  }
 }

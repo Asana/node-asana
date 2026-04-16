@@ -516,7 +516,7 @@ export class TasksApi {
      * @param task_gid The task to operate on.
      * @returns A Promise, with an object containing data and HTTP response
      */
-    removeProjectForTaskWithHttpInfo(body: any, task_gid: string): Promise<{ response: any; data: any }>;
+    removeProjectForTaskWithHttpInfo(body: {type: string}, task_gid: string): Promise<{ response: any; data: any }>;
 
     /**
      * Remove a project from a task
