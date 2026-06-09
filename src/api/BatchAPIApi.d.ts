@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * BatchAPI service.
 * @module api/BatchAPIApi
-* @version 3.1.11
+* @version 3.1.12
 */
 export class BatchAPIApi {
     /**

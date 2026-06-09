@@ -1,0 +1,90 @@
+OooEntriesApi:
+  createOooEntry: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let oooEntriesApiInstance = new Asana.OooEntriesApi(client);
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The OOO entry to create.
+    let opts = { 
+        'opt_fields': "created_by,created_by.name,end_date,start_date,user,user.name"
+    };
+    oooEntriesApiInstance.createOooEntry(body, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  deleteOooEntry: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let oooEntriesApiInstance = new Asana.OooEntriesApi(client);
+    let ooo_entry_gid = "12345"; // String | Globally unique identifier for the OOO entry.
+
+    oooEntriesApiInstance.deleteOooEntry(ooo_entry_gid).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getOooEntries: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let oooEntriesApiInstance = new Asana.OooEntriesApi(client);
+    let user = "12345"; // String | Globally unique identifier for the user to filter OOO entries by.
+    let workspace = "98765"; // String | Globally unique identifier for the workspace.
+    let opts = { 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'start_date': "2025-01-01", 
+        'end_date': "2025-12-31", 
+        'opt_fields': "created_by,created_by.name,end_date,offset,path,start_date,uri,user,user.name"
+    };
+    oooEntriesApiInstance.getOooEntries(user, workspace, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getOooEntry: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let oooEntriesApiInstance = new Asana.OooEntriesApi(client);
+    let ooo_entry_gid = "12345"; // String | Globally unique identifier for the OOO entry.
+    let opts = { 
+        'opt_fields': "created_by,created_by.name,end_date,start_date,user,user.name"
+    };
+    oooEntriesApiInstance.getOooEntry(ooo_entry_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  updateOooEntry: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let oooEntriesApiInstance = new Asana.OooEntriesApi(client);
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The updated fields for the OOO entry.
+    let ooo_entry_gid = "12345"; // String | Globally unique identifier for the OOO entry.
+    let opts = { 
+        'opt_fields': "created_by,created_by.name,end_date,start_date,user,user.name"
+    };
+    oooEntriesApiInstance.updateOooEntry(body, ooo_entry_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    

@@ -1,7 +1,7 @@
 # asana [![GitHub release][release-image]][release-url] [![NPM Version][npm-image]][npm-url]
 
 - API version: 1.0
-- Package version: 3.1.11
+- Package version: 3.1.12
 
 ## Installation
 
@@ -18,7 +18,7 @@ npm install asana --save
 Include the latest release directly from GitHub:
 
 ```html
-<script src="https://github.com/Asana/node-asana/releases/download/v3.1.11/asana-min.js"></script>
+<script src="https://github.com/Asana/node-asana/releases/download/v3.1.12/asana-min.js"></script>
 ```
 
 Example usage (**NOTE**: be careful not to expose your access token):
@@ -193,6 +193,8 @@ Class | Method | HTTP request | Description
 *Asana.AccessRequestsApi* | [**createAccessRequest**](docs/AccessRequestsApi.md#createAccessRequest) | **POST** /access_requests | Create an access request
 *Asana.AccessRequestsApi* | [**getAccessRequests**](docs/AccessRequestsApi.md#getAccessRequests) | **GET** /access_requests | Get access requests
 *Asana.AccessRequestsApi* | [**rejectAccessRequest**](docs/AccessRequestsApi.md#rejectAccessRequest) | **POST** /access_requests/{access_request_gid}/reject | Reject an access request
+*Asana.AgentsApi* | [**getAgent**](docs/AgentsApi.md#getAgent) | **GET** /agents/{agent_gid} | Get an agent
+*Asana.AgentsApi* | [**getAgentsForWorkspace**](docs/AgentsApi.md#getAgentsForWorkspace) | **GET** /workspaces/{workspace_gid}/agents | Get a list of agents in a workspace
 *Asana.AllocationsApi* | [**createAllocation**](docs/AllocationsApi.md#createAllocation) | **POST** /allocations | Create an allocation
 *Asana.AllocationsApi* | [**deleteAllocation**](docs/AllocationsApi.md#deleteAllocation) | **DELETE** /allocations/{allocation_gid} | Delete an allocation
 *Asana.AllocationsApi* | [**getAllocation**](docs/AllocationsApi.md#getAllocation) | **GET** /allocations/{allocation_gid} | Get an allocation
@@ -249,6 +251,11 @@ Class | Method | HTTP request | Description
 *Asana.MembershipsApi* | [**getMembership**](docs/MembershipsApi.md#getMembership) | **GET** /memberships/{membership_gid} | Get a membership
 *Asana.MembershipsApi* | [**getMemberships**](docs/MembershipsApi.md#getMemberships) | **GET** /memberships | Get multiple memberships
 *Asana.MembershipsApi* | [**updateMembership**](docs/MembershipsApi.md#updateMembership) | **PUT** /memberships/{membership_gid} | Update a membership
+*Asana.OooEntriesApi* | [**createOooEntry**](docs/OooEntriesApi.md#createOooEntry) | **POST** /ooo_entries | Create an OOO entry
+*Asana.OooEntriesApi* | [**deleteOooEntry**](docs/OooEntriesApi.md#deleteOooEntry) | **DELETE** /ooo_entries/{ooo_entry_gid} | Delete an OOO entry
+*Asana.OooEntriesApi* | [**getOooEntries**](docs/OooEntriesApi.md#getOooEntries) | **GET** /ooo_entries | Get OOO entries for a user
+*Asana.OooEntriesApi* | [**getOooEntry**](docs/OooEntriesApi.md#getOooEntry) | **GET** /ooo_entries/{ooo_entry_gid} | Get an OOO entry
+*Asana.OooEntriesApi* | [**updateOooEntry**](docs/OooEntriesApi.md#updateOooEntry) | **PUT** /ooo_entries/{ooo_entry_gid} | Update an OOO entry
 *Asana.OrganizationExportsApi* | [**createOrganizationExport**](docs/OrganizationExportsApi.md#createOrganizationExport) | **POST** /organization_exports | Create an organization export request
 *Asana.OrganizationExportsApi* | [**getOrganizationExport**](docs/OrganizationExportsApi.md#getOrganizationExport) | **GET** /organization_exports/{organization_export_gid} | Get details on an org export request
 *Asana.PortfolioMembershipsApi* | [**getPortfolioMembership**](docs/PortfolioMembershipsApi.md#getPortfolioMembership) | **GET** /portfolio_memberships/{portfolio_membership_gid} | Get a portfolio membership
@@ -1142,6 +1149,6 @@ client.callApi(
 ```
 
 [release-image]: https://img.shields.io/github/release/asana/node-asana.svg
-[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.1.11
+[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.1.12
 [npm-image]: http://img.shields.io/npm/v/asana.svg?style=flat-square
 [npm-url]: https://www.npmjs.org/package/asana

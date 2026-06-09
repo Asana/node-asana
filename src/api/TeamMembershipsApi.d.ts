@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * TeamMemberships service.
 * @module api/TeamMembershipsApi
-* @version 3.1.11
+* @version 3.1.12
 */
 export class TeamMembershipsApi {
     /**

@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * CustomFieldSettings service.
 * @module api/CustomFieldSettingsApi
-* @version 3.1.11
+* @version 3.1.12
 */
 export class CustomFieldSettingsApi {
     /**

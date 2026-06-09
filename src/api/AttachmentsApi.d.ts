@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * Attachments service.
 * @module api/AttachmentsApi
-* @version 3.1.11
+* @version 3.1.12
 */
 export class AttachmentsApi {
     /**

@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * Projects service.
 * @module api/ProjectsApi
-* @version 3.1.11
+* @version 3.1.12
 */
 export class ProjectsApi {
     /**
@@ -273,7 +273,7 @@ export class ProjectsApi {
 
     /**
      * Get a team&#x27;s projects
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the compact project records for all projects in the team. *Deprecated: This endpoint is deprecated. Use &#x60;GET /memberships&#x60; with &#x60;member&#x60; set to the team GID and &#x60;resource_subtype&#x60; set to &#x60;project_membership&#x60; to fetch projects shared with a team.*
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the compact project records for all projects in the team.
      * @param team_gid Globally unique identifier for the team.
      * @param opts Optional parameters
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -286,7 +286,7 @@ export class ProjectsApi {
 
     /**
      * Get a team&#x27;s projects
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the compact project records for all projects in the team. *Deprecated: This endpoint is deprecated. Use &#x60;GET /memberships&#x60; with &#x60;member&#x60; set to the team GID and &#x60;resource_subtype&#x60; set to &#x60;project_membership&#x60; to fetch projects shared with a team.*
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the compact project records for all projects in the team.
      * @param team_gid Globally unique identifier for the team.
      * @param opts Optional parameters
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -433,7 +433,7 @@ export class ProjectsApi {
      * @param workspace_gid Globally unique identifier for the workspace or organization.
      * @param opts Optional parameters
      * @param opts.text Performs full-text search on the project name.
-     * @param opts.sort_by One of &#x60;due_date&#x60;, &#x60;created_at&#x60;, &#x60;completed_at&#x60;, or &#x60;modified_at&#x60;, defaults to &#x60;modified_at&#x60;. (default to modified_at)
+     * @param opts.sort_by One of &#x60;due_date&#x60;, &#x60;created_at&#x60;, &#x60;completed_at&#x60;, &#x60;relevance&#x60;, or &#x60;modified_at&#x60;, defaults to &#x60;modified_at&#x60;. (default to modified_at)
      * @param opts.sort_ascending Default &#x60;false&#x60;. (default to false)
      * @param opts.completed Filter on project completion status.
      * @param opts.teams.any Comma-separated list of team IDs.
@@ -470,7 +470,7 @@ export class ProjectsApi {
      * @param workspace_gid Globally unique identifier for the workspace or organization.
      * @param opts Optional parameters
      * @param opts.text Performs full-text search on the project name.
-     * @param opts.sort_by One of &#x60;due_date&#x60;, &#x60;created_at&#x60;, &#x60;completed_at&#x60;, or &#x60;modified_at&#x60;, defaults to &#x60;modified_at&#x60;. (default to modified_at)
+     * @param opts.sort_by One of &#x60;due_date&#x60;, &#x60;created_at&#x60;, &#x60;completed_at&#x60;, &#x60;relevance&#x60;, or &#x60;modified_at&#x60;, defaults to &#x60;modified_at&#x60;. (default to modified_at)
      * @param opts.sort_ascending Default &#x60;false&#x60;. (default to false)
      * @param opts.completed Filter on project completion status.
      * @param opts.teams.any Comma-separated list of team IDs.

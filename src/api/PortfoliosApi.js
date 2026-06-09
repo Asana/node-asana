@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Portfolios service.
 * @module api/PortfoliosApi
-* @version 3.1.11
+* @version 3.1.12
 */
 export class PortfoliosApi {
 
@@ -544,7 +544,7 @@ export class PortfoliosApi {
 
     /**
      * Get multiple portfolios
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:read&lt;/code&gt;  Returns a list of the portfolios in compact representation that are owned by the current API user.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:read&lt;/code&gt;  Returns a list of the portfolios in compact representation. The portfolios are filtered based on the following criteria: - If the request is made from a regular API user (PAT or OAuth), then only portfolios owned by the current API user are returned. - If the request is made from a Service Account without the &#x60;owner&#x60; parameter, then all portfolios across the workspace are returned. - If the request is made from a Service Account with the &#x60;owner&#x60; parameter, then only portfolios owned by the specified user are returned.
      * @param {String} workspace The workspace or organization to filter portfolios on.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -614,7 +614,7 @@ export class PortfoliosApi {
 
     /**
      * Get multiple portfolios
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:read&lt;/code&gt;  Returns a list of the portfolios in compact representation that are owned by the current API user.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:read&lt;/code&gt;  Returns a list of the portfolios in compact representation. The portfolios are filtered based on the following criteria: - If the request is made from a regular API user (PAT or OAuth), then only portfolios owned by the current API user are returned. - If the request is made from a Service Account without the &#x60;owner&#x60; parameter, then all portfolios across the workspace are returned. - If the request is made from a Service Account with the &#x60;owner&#x60; parameter, then only portfolios owned by the specified user are returned.
      * @param {<&vendorExtensions.x-jsdoc-type>} workspace The workspace or organization to filter portfolios on.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.

@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * Goals service.
 * @module api/GoalsApi
-* @version 3.1.11
+* @version 3.1.12
 */
 export class GoalsApi {
     /**

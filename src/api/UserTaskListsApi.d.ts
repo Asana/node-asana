@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * UserTaskLists service.
 * @module api/UserTaskListsApi
-* @version 3.1.11
+* @version 3.1.12
 */
 export class UserTaskListsApi {
     /**

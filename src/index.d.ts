@@ -14,6 +14,7 @@
  */
 import { ApiClient } from './ApiClient';
 import { AccessRequestsApi } from './api/AccessRequestsApi';
+import { AgentsApi } from './api/AgentsApi';
 import { AllocationsApi } from './api/AllocationsApi';
 import { AttachmentsApi } from './api/AttachmentsApi';
 import { AuditLogAPIApi } from './api/AuditLogAPIApi';
@@ -28,6 +29,7 @@ import { GoalRelationshipsApi } from './api/GoalRelationshipsApi';
 import { GoalsApi } from './api/GoalsApi';
 import { JobsApi } from './api/JobsApi';
 import { MembershipsApi } from './api/MembershipsApi';
+import { OooEntriesApi } from './api/OooEntriesApi';
 import { OrganizationExportsApi } from './api/OrganizationExportsApi';
 import { PortfolioMembershipsApi } from './api/PortfolioMembershipsApi';
 import { PortfoliosApi } from './api/PortfoliosApi';
@@ -63,6 +65,7 @@ import { WorkspacesApi } from './api/WorkspacesApi';
 export {
     ApiClient,
     AccessRequestsApi,
+    AgentsApi,
     AllocationsApi,
     AttachmentsApi,
     AuditLogAPIApi,
@@ -77,6 +80,7 @@ export {
     GoalsApi,
     JobsApi,
     MembershipsApi,
+    OooEntriesApi,
     OrganizationExportsApi,
     PortfolioMembershipsApi,
     PortfoliosApi,

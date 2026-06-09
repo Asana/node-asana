@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * Memberships service.
 * @module api/MembershipsApi
-* @version 3.1.11
+* @version 3.1.12
 */
 export class MembershipsApi {
     /**
@@ -85,8 +85,8 @@ export class MembershipsApi {
      * Get multiple memberships
      * Returns compact &#x60;goal_membership&#x60;, &#x60;project_membership&#x60;, &#x60;portfolio_membership&#x60;, &#x60;custom_type_membership&#x60;, or &#x60;custom_field_membership&#x60; records. The possible types for &#x60;parent&#x60; in this request are &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, &#x60;custom_type&#x60;, or &#x60;custom_field&#x60;. An additional member (user GID or team GID) can be passed in to filter to a specific membership.  Alternatively, when &#x60;parent&#x60; is absent, you can use the &#x60;member&#x60; and &#x60;resource_subtype&#x60; parameters together to fetch all memberships of a specific type for a given member. For example, passing &#x60;member&#x60; as a team GID and &#x60;resource_subtype&#x60; as &#x60;project_membership&#x60; will return all project memberships for that team.
      * @param opts Optional parameters
-     * @param opts.parent Globally unique identifier for &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, &#x60;custom_type&#x60;, or &#x60;custom_field&#x60;. This parameter is optional when &#x60;resource_subtype&#x60; is provided along with &#x60;member&#x60;.
-     * @param opts.member Globally unique identifier for &#x60;team&#x60; or &#x60;user&#x60;. When used with &#x60;resource_subtype&#x60; and without &#x60;parent&#x60;, returns all memberships of the specified subtype for this member.
+     * @param opts.parent Globally unique identifier for &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, &#x60;custom_type&#x60;, or &#x60;custom_field&#x60;. This parameter is optional when &#x60;resource_subtype&#x60; is provided along with &#x60;member&#x60; of type &#x60;team&#x60;.
+     * @param opts.member Globally unique identifier for &#x60;team&#x60; or &#x60;user&#x60;. When used with &#x60;resource_subtype&#x60; and without &#x60;parent&#x60;, &#x60;member&#x60; must be of type &#x60;team&#x60;. For user-type memberships &#x60;parent&#x60; parameter is required to disambiguate the workspace from which memberships should be retrieved.
      * @param opts.resource_subtype The type of membership to return. Required when &#x60;parent&#x60; is absent. Currently supported value is &#x60;project_membership&#x60; (when &#x60;member&#x60; is a team GID, returns all project memberships for that team).
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
@@ -99,8 +99,8 @@ export class MembershipsApi {
      * Get multiple memberships
      * Returns compact &#x60;goal_membership&#x60;, &#x60;project_membership&#x60;, &#x60;portfolio_membership&#x60;, &#x60;custom_type_membership&#x60;, or &#x60;custom_field_membership&#x60; records. The possible types for &#x60;parent&#x60; in this request are &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, &#x60;custom_type&#x60;, or &#x60;custom_field&#x60;. An additional member (user GID or team GID) can be passed in to filter to a specific membership.  Alternatively, when &#x60;parent&#x60; is absent, you can use the &#x60;member&#x60; and &#x60;resource_subtype&#x60; parameters together to fetch all memberships of a specific type for a given member. For example, passing &#x60;member&#x60; as a team GID and &#x60;resource_subtype&#x60; as &#x60;project_membership&#x60; will return all project memberships for that team.
      * @param opts Optional parameters
-     * @param opts.parent Globally unique identifier for &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, &#x60;custom_type&#x60;, or &#x60;custom_field&#x60;. This parameter is optional when &#x60;resource_subtype&#x60; is provided along with &#x60;member&#x60;.
-     * @param opts.member Globally unique identifier for &#x60;team&#x60; or &#x60;user&#x60;. When used with &#x60;resource_subtype&#x60; and without &#x60;parent&#x60;, returns all memberships of the specified subtype for this member.
+     * @param opts.parent Globally unique identifier for &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, &#x60;custom_type&#x60;, or &#x60;custom_field&#x60;. This parameter is optional when &#x60;resource_subtype&#x60; is provided along with &#x60;member&#x60; of type &#x60;team&#x60;.
+     * @param opts.member Globally unique identifier for &#x60;team&#x60; or &#x60;user&#x60;. When used with &#x60;resource_subtype&#x60; and without &#x60;parent&#x60;, &#x60;member&#x60; must be of type &#x60;team&#x60;. For user-type memberships &#x60;parent&#x60; parameter is required to disambiguate the workspace from which memberships should be retrieved.
      * @param opts.resource_subtype The type of membership to return. Required when &#x60;parent&#x60; is absent. Currently supported value is &#x60;project_membership&#x60; (when &#x60;member&#x60; is a team GID, returns all project memberships for that team).
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
