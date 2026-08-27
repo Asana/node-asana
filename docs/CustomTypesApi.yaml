@@ -8,7 +8,7 @@ CustomTypesApi:
     let customTypesApiInstance = new Asana.CustomTypesApi(client);
     let custom_type_gid = "12345"; // String | Globally unique identifier for the custom type.
     let opts = { 
-        'opt_fields': "name,status_options,status_options.color,status_options.completion_state,status_options.enabled,status_options.name"
+        'opt_fields': "asana_created_type_identifier,name,status_options,status_options.color,status_options.completion_state,status_options.enabled,status_options.name"
     };
     customTypesApiInstance.getCustomType(custom_type_gid, opts).then((result) => {
         console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -23,13 +23,14 @@ CustomTypesApi:
     client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
     let customTypesApiInstance = new Asana.CustomTypesApi(client);
-    let project = "1331"; // String | Globally unique identifier for the project, which is used as a filter when retrieving all custom types.
     let opts = { 
+        'project': "1331", 
+        'workspace': "12345", 
         'limit': 50, 
         'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
-        'opt_fields': "name,offset,path,status_options,status_options.color,status_options.completion_state,status_options.enabled,status_options.name,uri"
+        'opt_fields': "asana_created_type_identifier,name,offset,path,status_options,status_options.color,status_options.completion_state,status_options.enabled,status_options.name,uri"
     };
-    customTypesApiInstance.getCustomTypes(project, opts).then((result) => {
+    customTypesApiInstance.getCustomTypes(opts).then((result) => {
         console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
     }, (error) => {
         console.error(error.response.body);

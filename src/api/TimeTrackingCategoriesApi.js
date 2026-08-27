@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * TimeTrackingCategories service.
 * @module api/TimeTrackingCategoriesApi
-* @version 3.1.12
+* @version 3.2.0
 */
 export class TimeTrackingCategoriesApi {
 

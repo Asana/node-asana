@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * Portfolios service.
 * @module api/PortfoliosApi
-* @version 3.1.12
+* @version 3.2.0
 */
 export class PortfoliosApi {
     /**
@@ -199,10 +199,11 @@ export class PortfoliosApi {
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param opts.owner The user who owns the portfolio. Currently, API users can only get a list of portfolios that they themselves own, unless the request is made from a Service Account. In the case of a Service Account, if this parameter is specified, then all portfolios owned by this parameter are returned. Otherwise, all portfolios across the workspace are returned.
+     * @param opts.custom_type Filter results by custom type. Provide a custom type GID to return only objects of that custom type (an unknown GID returns &#x60;400&#x60;). Provide an empty string to return only objects with no custom type assigned. If this parameter is omitted, results are not filtered by custom type.
      * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @returns A Promise, with an object containing data and HTTP response
      */
-    getPortfoliosWithHttpInfo(workspace: string, opts?: { 'limit'?: any; 'offset'?: string; 'owner'?: string; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
+    getPortfoliosWithHttpInfo(workspace: string, opts?: { 'limit'?: any; 'offset'?: string; 'owner'?: string; 'custom_type'?: string; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
 
     /**
      * Get multiple portfolios
@@ -212,10 +213,11 @@ export class PortfoliosApi {
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param opts.owner The user who owns the portfolio. Currently, API users can only get a list of portfolios that they themselves own, unless the request is made from a Service Account. In the case of a Service Account, if this parameter is specified, then all portfolios owned by this parameter are returned. Otherwise, all portfolios across the workspace are returned.
+     * @param opts.custom_type Filter results by custom type. Provide a custom type GID to return only objects of that custom type (an unknown GID returns &#x60;400&#x60;). Provide an empty string to return only objects with no custom type assigned. If this parameter is omitted, results are not filtered by custom type.
      * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @returns A Promise
      */
-    getPortfolios(workspace: string, opts?: { 'limit'?: any; 'offset'?: string; 'owner'?: string; 'opt_fields'?: any;  }): Promise<Collection | any>;
+    getPortfolios(workspace: string, opts?: { 'limit'?: any; 'offset'?: string; 'owner'?: string; 'custom_type'?: string; 'opt_fields'?: any;  }): Promise<Collection | any>;
 
     /**
      * Remove a custom field from a portfolio

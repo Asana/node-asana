@@ -26,7 +26,7 @@ client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 let projectMembershipsApiInstance = new Asana.ProjectMembershipsApi(client);
 let project_membership_gid = "1331"; // String | 
 let opts = { 
-    'opt_fields': "access_level,member,member.name,parent,parent.name,project,project.name,user,user.name,write_access"
+    'opt_fields': "access_level,member,member.name,parent,parent.name,parent.resource_subtype,project,project.name,project.resource_subtype,user,user.name,write_access"
 };
 projectMembershipsApiInstance.getProjectMembership(project_membership_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -74,7 +74,7 @@ let opts = {
     'user': "me", 
     'limit': 50, 
     'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
-    'opt_fields': "access_level,member,member.name,offset,parent,parent.name,path,uri"
+    'opt_fields': "access_level,member,member.name,offset,parent,parent.name,parent.resource_subtype,path,uri"
 };
 projectMembershipsApiInstance.getProjectMembershipsForProject(project_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));

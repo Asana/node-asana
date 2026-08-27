@@ -9,7 +9,7 @@ GoalRelationshipsApi:
     let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The supporting resource to be added to the goal
     let goal_gid = "12345"; // String | Globally unique identifier for the goal.
     let opts = { 
-        'opt_fields': "contribution_weight,resource_subtype,supported_goal,supported_goal.name,supported_goal.owner,supported_goal.owner.name,supporting_resource,supporting_resource.name"
+        'opt_fields': "contribution_weight,resource_subtype,supported_goal,supported_goal.name,supported_goal.owner,supported_goal.owner.name,supporting_resource,supporting_resource.name,supporting_resource.resource_subtype"
     };
     goalRelationshipsApiInstance.addSupportingRelationship(body, goal_gid, opts).then((result) => {
         console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -26,7 +26,7 @@ GoalRelationshipsApi:
     let goalRelationshipsApiInstance = new Asana.GoalRelationshipsApi(client);
     let goal_relationship_gid = "12345"; // String | Globally unique identifier for the goal relationship.
     let opts = { 
-        'opt_fields': "contribution_weight,resource_subtype,supported_goal,supported_goal.name,supported_goal.owner,supported_goal.owner.name,supporting_resource,supporting_resource.name"
+        'opt_fields': "contribution_weight,resource_subtype,supported_goal,supported_goal.name,supported_goal.owner,supported_goal.owner.name,supporting_resource,supporting_resource.name,supporting_resource.resource_subtype"
     };
     goalRelationshipsApiInstance.getGoalRelationship(goal_relationship_gid, opts).then((result) => {
         console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -46,7 +46,7 @@ GoalRelationshipsApi:
         'limit': 50, 
         'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
         'resource_subtype': "subgoal", 
-        'opt_fields': "contribution_weight,offset,path,resource_subtype,supported_goal,supported_goal.name,supported_goal.owner,supported_goal.owner.name,supporting_resource,supporting_resource.name,uri"
+        'opt_fields': "contribution_weight,offset,path,resource_subtype,supported_goal,supported_goal.name,supported_goal.owner,supported_goal.owner.name,supporting_resource,supporting_resource.name,supporting_resource.resource_subtype,uri"
     };
     goalRelationshipsApiInstance.getGoalRelationships(supported_goal, opts).then((result) => {
         console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -80,7 +80,7 @@ GoalRelationshipsApi:
     let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The updated fields for the goal relationship.
     let goal_relationship_gid = "12345"; // String | Globally unique identifier for the goal relationship.
     let opts = { 
-        'opt_fields': "contribution_weight,resource_subtype,supported_goal,supported_goal.name,supported_goal.owner,supported_goal.owner.name,supporting_resource,supporting_resource.name"
+        'opt_fields': "contribution_weight,resource_subtype,supported_goal,supported_goal.name,supported_goal.owner,supported_goal.owner.name,supporting_resource,supporting_resource.name,supporting_resource.resource_subtype"
     };
     goalRelationshipsApiInstance.updateGoalRelationship(body, goal_relationship_gid, opts).then((result) => {
         console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));

@@ -1,0 +1,42 @@
+AIStudioUsageAPIApi:
+  getAiStudioRuns: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let aiStudioUsageApiApiInstance = new Asana.AIStudioUsageAPIApi(client);
+    let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
+    let opts = { 
+        'start_at': "2013-10-20T19:20:30+01:00", 
+        'end_at': "2013-10-20T19:20:30+01:00", 
+        'division_gid': "division_gid_example", 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9"
+    };
+    aiStudioUsageApiApiInstance.getAiStudioRuns(workspace_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getAiStudioSeats: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let aiStudioUsageApiApiInstance = new Asana.AIStudioUsageAPIApi(client);
+    let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
+    let opts = { 
+        'state': "state_example", 
+        'division_gid': "division_gid_example", 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9"
+    };
+    aiStudioUsageApiApiInstance.getAiStudioSeats(workspace_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    

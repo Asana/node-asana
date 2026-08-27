@@ -77,7 +77,7 @@ let sectionsApiInstance = new Asana.SectionsApi(client);
 let project_gid = "1331"; // String | Globally unique identifier for the project.
 let opts = { 
     'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}, 
-    'opt_fields': "created_at,name,project,project.name,projects,projects.name"
+    'opt_fields': "created_at,name,project,project.name,project.resource_subtype,projects,projects.name,projects.resource_subtype"
 };
 sectionsApiInstance.createSectionForProject(project_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -165,7 +165,7 @@ client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 let sectionsApiInstance = new Asana.SectionsApi(client);
 let section_gid = "321654"; // String | The globally unique identifier for the section.
 let opts = { 
-    'opt_fields': "created_at,name,project,project.name,projects,projects.name"
+    'opt_fields': "created_at,name,project,project.name,project.resource_subtype,projects,projects.name,projects.resource_subtype"
 };
 sectionsApiInstance.getSection(section_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -212,7 +212,7 @@ let project_gid = "1331"; // String | Globally unique identifier for the project
 let opts = { 
     'limit': 50, 
     'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
-    'opt_fields': "created_at,name,offset,path,project,project.name,projects,projects.name,uri"
+    'opt_fields': "created_at,name,offset,path,project,project.name,project.resource_subtype,projects,projects.name,projects.resource_subtype,uri"
 };
 sectionsApiInstance.getSectionsForProject(project_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -305,7 +305,7 @@ let sectionsApiInstance = new Asana.SectionsApi(client);
 let section_gid = "321654"; // String | The globally unique identifier for the section.
 let opts = { 
     'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}, 
-    'opt_fields': "created_at,name,project,project.name,projects,projects.name"
+    'opt_fields': "created_at,name,project,project.name,project.resource_subtype,projects,projects.name,projects.resource_subtype"
 };
 sectionsApiInstance.updateSection(section_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));

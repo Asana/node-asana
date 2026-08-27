@@ -8,7 +8,7 @@ RatesApi:
     let ratesApiInstance = new Asana.RatesApi(client);
     let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The rate to create.
     let opts = { 
-        'opt_fields': "created_by,created_by.name,currency_code,parent,parent.name,rate,resource,resource.name"
+        'opt_fields': "created_by,created_by.name,currency_code,parent,parent.name,parent.resource_subtype,rate,resource,resource.name"
     };
     ratesApiInstance.createRate(body, opts).then((result) => {
         console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -40,7 +40,7 @@ RatesApi:
     let ratesApiInstance = new Asana.RatesApi(client);
     let rate_gid = "12345"; // String | Globally unique identifier for the rate.
     let opts = { 
-        'opt_fields': "created_by,created_by.name,currency_code,parent,parent.name,rate,resource,resource.name"
+        'opt_fields': "created_by,created_by.name,currency_code,parent,parent.name,parent.resource_subtype,rate,resource,resource.name"
     };
     ratesApiInstance.getRate(rate_gid, opts).then((result) => {
         console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -78,7 +78,7 @@ RatesApi:
     let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The updated fields for the rate.
     let rate_gid = "12345"; // String | Globally unique identifier for the rate.
     let opts = { 
-        'opt_fields': "created_by,created_by.name,currency_code,parent,parent.name,rate,resource,resource.name"
+        'opt_fields': "created_by,created_by.name,currency_code,parent,parent.name,parent.resource_subtype,rate,resource,resource.name"
     };
     ratesApiInstance.updateRate(body, rate_gid, opts).then((result) => {
         console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));

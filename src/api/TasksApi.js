@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Tasks service.
 * @module api/TasksApi
-* @version 3.1.12
+* @version 3.2.0
 */
 export class TasksApi {
 
@@ -982,6 +982,7 @@ export class TasksApi {
      * @param {String} opts.workspace The workspace to filter tasks on. *Note: If you specify &#x60;workspace&#x60;, you must also specify the &#x60;assignee&#x60; to filter on.*
      * @param {Date} opts.completed_since Only return tasks that are either incomplete or that have been completed since this time.
      * @param {Date} opts.modified_since Only return tasks that have been modified since the given time.  *Note: A task is considered “modified” if any of its properties change, or associations between it and other objects are modified (e.g.  a task being added to a project). A task is not considered modified just because another object it is associated with (e.g. a subtask) is modified. Actions that count as modifying the task include assigning, renaming, completing, and adding stories.*
+     * @param {String} opts.custom_type Filter results by custom type. Provide a custom type GID to return only objects of that custom type (an unknown GID returns &#x60;400&#x60;). Provide an empty string to return only objects with no custom type assigned. If this parameter is omitted, results are not filtered by custom type.
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
@@ -1051,6 +1052,7 @@ export class TasksApi {
      * @param {String} opts.workspace The workspace to filter tasks on. *Note: If you specify &#x60;workspace&#x60;, you must also specify the &#x60;assignee&#x60; to filter on.*
      * @param {Date} opts.completed_since Only return tasks that are either incomplete or that have been completed since this time.
      * @param {Date} opts.modified_since Only return tasks that have been modified since the given time.  *Note: A task is considered “modified” if any of its properties change, or associations between it and other objects are modified (e.g.  a task being added to a project). A task is not considered modified just because another object it is associated with (e.g. a subtask) is modified. Actions that count as modifying the task include assigning, renaming, completing, and adding stories.*
+     * @param {String} opts.custom_type Filter results by custom type. Provide a custom type GID to return only objects of that custom type (an unknown GID returns &#x60;400&#x60;). Provide an empty string to return only objects with no custom type assigned. If this parameter is omitted, results are not filtered by custom type.
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TaskResponseArray}
      */
@@ -1748,7 +1750,7 @@ export class TasksApi {
      * @param {String} opts.assignee.any Comma-separated list of user identifiers. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
      * @param {String} opts.assignee.not Comma-separated list of user identifiers. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
      * @param {String} opts.portfolios.any Comma-separated list of portfolio IDs
-     * @param {String} opts.projects.any Comma-separated list of project IDs
+     * @param {String} opts.projects.any Comma-separated list of project IDs. Returns tasks that are directly in these projects or inherit them from an ancestor task.
      * @param {String} opts.projects.not Comma-separated list of project IDs
      * @param {String} opts.projects.all Comma-separated list of project IDs
      * @param {String} opts.sections.any Comma-separated list of section or column IDs
@@ -1881,7 +1883,7 @@ export class TasksApi {
      * @param {String} opts.assignee.any Comma-separated list of user identifiers. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
      * @param {String} opts.assignee.not Comma-separated list of user identifiers. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
      * @param {String} opts.portfolios.any Comma-separated list of portfolio IDs
-     * @param {String} opts.projects.any Comma-separated list of project IDs
+     * @param {String} opts.projects.any Comma-separated list of project IDs. Returns tasks that are directly in these projects or inherit them from an ancestor task.
      * @param {String} opts.projects.not Comma-separated list of project IDs
      * @param {String} opts.projects.all Comma-separated list of project IDs
      * @param {String} opts.sections.any Comma-separated list of section or column IDs

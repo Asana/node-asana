@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * TimeTrackingEntries service.
 * @module api/TimeTrackingEntriesApi
-* @version 3.1.12
+* @version 3.2.0
 */
 export class TimeTrackingEntriesApi {
     /**
@@ -33,7 +33,7 @@ export class TimeTrackingEntriesApi {
 
     /**
      * Create a time tracking entry
-     * Creates a time tracking entry on a given task.  Returns the record of the newly created time tracking entry.
+     * Creates a time tracking entry on a given task.  Returns the record of the newly created time tracking entry.  #### Access requirements  Access to this endpoint has two levels:  - **Endpoint access** requires time tracking to be available through the domain&#x27;s plan or add-ons. A request from a domain without time tracking access returns a &#x60;402 Payment Required&#x60; error for every request to this endpoint.  - **Field access** for some request fields requires the Timesheets and Budgets add-on. Fields with this requirement are noted in the request schema. Including one of these fields without the add-on returns a &#x60;402 Payment Required&#x60; error, even when the rest of the request is valid.  Because the field-level requirement is separate, the same endpoint may return &#x60;201&#x60; or &#x60;402&#x60; for the same domain depending on which fields are sent: a request that only uses fields available with endpoint access succeeds on any domain that meets the endpoint requirement, while a request that includes a field requiring the add-on also requires the add-on.
      * @param body Information about the time tracking entry.
      * @param task_gid The task to operate on.
      * @param opts Optional parameters
@@ -44,7 +44,7 @@ export class TimeTrackingEntriesApi {
 
     /**
      * Create a time tracking entry
-     * Creates a time tracking entry on a given task.  Returns the record of the newly created time tracking entry.
+     * Creates a time tracking entry on a given task.  Returns the record of the newly created time tracking entry.  #### Access requirements  Access to this endpoint has two levels:  - **Endpoint access** requires time tracking to be available through the domain&#x27;s plan or add-ons. A request from a domain without time tracking access returns a &#x60;402 Payment Required&#x60; error for every request to this endpoint.  - **Field access** for some request fields requires the Timesheets and Budgets add-on. Fields with this requirement are noted in the request schema. Including one of these fields without the add-on returns a &#x60;402 Payment Required&#x60; error, even when the rest of the request is valid.  Because the field-level requirement is separate, the same endpoint may return &#x60;201&#x60; or &#x60;402&#x60; for the same domain depending on which fields are sent: a request that only uses fields available with endpoint access succeeds on any domain that meets the endpoint requirement, while a request that includes a field requiring the add-on also requires the add-on.
      * @param body Information about the time tracking entry.
      * @param task_gid The task to operate on.
      * @param opts Optional parameters
@@ -55,7 +55,7 @@ export class TimeTrackingEntriesApi {
 
     /**
      * Delete a time tracking entry
-     * A specific, existing time tracking entry can be deleted by making a &#x60;DELETE&#x60; request on the URL for that time tracking entry.  Returns an empty data record.
+     * A specific, existing time tracking entry can be deleted by making a &#x60;DELETE&#x60; request on the URL for that time tracking entry.  Returns an empty data record.  #### Access requirements  This endpoint is available only when time tracking is available through the domain&#x27;s plan or add-ons. A request from a domain without time tracking access returns a &#x60;402 Payment Required&#x60; error.
      * @param time_tracking_entry_gid Globally unique identifier for the time tracking entry.
      * @returns A Promise, with an object containing data and HTTP response
      */
@@ -63,7 +63,7 @@ export class TimeTrackingEntriesApi {
 
     /**
      * Delete a time tracking entry
-     * A specific, existing time tracking entry can be deleted by making a &#x60;DELETE&#x60; request on the URL for that time tracking entry.  Returns an empty data record.
+     * A specific, existing time tracking entry can be deleted by making a &#x60;DELETE&#x60; request on the URL for that time tracking entry.  Returns an empty data record.  #### Access requirements  This endpoint is available only when time tracking is available through the domain&#x27;s plan or add-ons. A request from a domain without time tracking access returns a &#x60;402 Payment Required&#x60; error.
      * @param time_tracking_entry_gid Globally unique identifier for the time tracking entry.
      * @returns A Promise
      */
@@ -153,7 +153,7 @@ export class TimeTrackingEntriesApi {
 
     /**
      * Update a time tracking entry
-     * A specific, existing time tracking entry can be updated by making a &#x60;PUT&#x60; request on the URL for that time tracking entry. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the task.  Returns the complete updated time tracking entry record.
+     * A specific, existing time tracking entry can be updated by making a &#x60;PUT&#x60; request on the URL for that time tracking entry. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the task.  Returns the complete updated time tracking entry record.  #### Access requirements  Access to this endpoint has two levels:  - **Endpoint access** requires time tracking to be available through the domain&#x27;s plan or add-ons. A request from a domain without time tracking access returns a &#x60;402 Payment Required&#x60; error for every request to this endpoint.  - **Field access** for some request fields requires the Timesheets and Budgets add-on. Fields with this requirement are noted in the request schema. Including one of these fields without the add-on returns a &#x60;402 Payment Required&#x60; error, even when the rest of the request is valid.  Because the field-level requirement is separate, the same endpoint may return &#x60;200&#x60; or &#x60;402&#x60; for the same domain depending on which fields are sent: a request that only uses fields available with endpoint access succeeds on any domain that meets the endpoint requirement, while a request that includes a field requiring the add-on also requires the add-on.
      * @param body The updated fields for the time tracking entry.
      * @param time_tracking_entry_gid Globally unique identifier for the time tracking entry.
      * @param opts Optional parameters
@@ -164,7 +164,7 @@ export class TimeTrackingEntriesApi {
 
     /**
      * Update a time tracking entry
-     * A specific, existing time tracking entry can be updated by making a &#x60;PUT&#x60; request on the URL for that time tracking entry. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the task.  Returns the complete updated time tracking entry record.
+     * A specific, existing time tracking entry can be updated by making a &#x60;PUT&#x60; request on the URL for that time tracking entry. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged.  When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the task.  Returns the complete updated time tracking entry record.  #### Access requirements  Access to this endpoint has two levels:  - **Endpoint access** requires time tracking to be available through the domain&#x27;s plan or add-ons. A request from a domain without time tracking access returns a &#x60;402 Payment Required&#x60; error for every request to this endpoint.  - **Field access** for some request fields requires the Timesheets and Budgets add-on. Fields with this requirement are noted in the request schema. Including one of these fields without the add-on returns a &#x60;402 Payment Required&#x60; error, even when the rest of the request is valid.  Because the field-level requirement is separate, the same endpoint may return &#x60;200&#x60; or &#x60;402&#x60; for the same domain depending on which fields are sent: a request that only uses fields available with endpoint access succeeds on any domain that meets the endpoint requirement, while a request that includes a field requiring the add-on also requires the add-on.
      * @param body The updated fields for the time tracking entry.
      * @param time_tracking_entry_gid Globally unique identifier for the time tracking entry.
      * @param opts Optional parameters

@@ -29,7 +29,7 @@ client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 let allocationsApiInstance = new Asana.AllocationsApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The allocation to create.
 let opts = { 
-    'opt_fields': "assignee,assignee.name,created_by,created_by.name,effort,effort.type,effort.value,end_date,parent,parent.name,resource_subtype,start_date"
+    'opt_fields': "assignee,assignee.name,created_by,created_by.name,effort,effort.type,effort.value,end_date,parent,parent.name,parent.resource_subtype,resource_subtype,start_date"
 };
 allocationsApiInstance.createAllocation(body, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -116,7 +116,7 @@ client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 let allocationsApiInstance = new Asana.AllocationsApi(client);
 let allocation_gid = "77688"; // String | Globally unique identifier for the allocation.
 let opts = { 
-    'opt_fields': "assignee,assignee.name,created_by,created_by.name,effort,effort.type,effort.value,end_date,parent,parent.name,resource_subtype,start_date"
+    'opt_fields': "assignee,assignee.name,created_by,created_by.name,effort,effort.type,effort.value,end_date,parent,parent.name,parent.resource_subtype,resource_subtype,start_date"
 };
 allocationsApiInstance.getAllocation(allocation_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -165,7 +165,7 @@ let opts = {
     'workspace': "98765", 
     'limit': 50, 
     'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
-    'opt_fields': "assignee,assignee.name,created_by,created_by.name,effort,effort.type,effort.value,end_date,offset,parent,parent.name,path,resource_subtype,start_date,uri"
+    'opt_fields': "assignee,assignee.name,created_by,created_by.name,effort,effort.type,effort.value,end_date,offset,parent,parent.name,parent.resource_subtype,path,resource_subtype,start_date,uri"
 };
 allocationsApiInstance.getAllocations(opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -215,7 +215,7 @@ let allocationsApiInstance = new Asana.AllocationsApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The updated fields for the allocation.
 let allocation_gid = "77688"; // String | Globally unique identifier for the allocation.
 let opts = { 
-    'opt_fields': "assignee,assignee.name,created_by,created_by.name,effort,effort.type,effort.value,end_date,parent,parent.name,resource_subtype,start_date"
+    'opt_fields': "assignee,assignee.name,created_by,created_by.name,effort,effort.type,effort.value,end_date,parent,parent.name,parent.resource_subtype,resource_subtype,start_date"
 };
 allocationsApiInstance.updateAllocation(body, allocation_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));

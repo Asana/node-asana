@@ -27,7 +27,7 @@ client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 let portfolioMembershipsApiInstance = new Asana.PortfolioMembershipsApi(client);
 let portfolio_membership_gid = "1331"; // String | 
 let opts = { 
-    'opt_fields': "access_level,portfolio,portfolio.name,user,user.name"
+    'opt_fields': "access_level,portfolio,portfolio.name,portfolio.resource_subtype,user,user.name"
 };
 portfolioMembershipsApiInstance.getPortfolioMembership(portfolio_membership_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -76,7 +76,7 @@ let opts = {
     'user': "me", 
     'limit': 50, 
     'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
-    'opt_fields': "access_level,offset,path,portfolio,portfolio.name,uri,user,user.name"
+    'opt_fields': "access_level,offset,path,portfolio,portfolio.name,portfolio.resource_subtype,uri,user,user.name"
 };
 portfolioMembershipsApiInstance.getPortfolioMemberships(opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -128,7 +128,7 @@ let opts = {
     'user': "me", 
     'limit': 50, 
     'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
-    'opt_fields': "access_level,offset,path,portfolio,portfolio.name,uri,user,user.name"
+    'opt_fields': "access_level,offset,path,portfolio,portfolio.name,portfolio.resource_subtype,uri,user,user.name"
 };
 portfolioMembershipsApiInstance.getPortfolioMembershipsForPortfolio(portfolio_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));

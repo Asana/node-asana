@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 Get a custom type
 
-Returns the complete custom type record for a single custom type.
+<b>Required scope: </b><code>custom_types:read</code>  Returns the complete custom type record for a single custom type.
 
 ([more information](https://developers.asana.com/reference/getcustomtype))
 
@@ -26,7 +26,7 @@ client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 let customTypesApiInstance = new Asana.CustomTypesApi(client);
 let custom_type_gid = "12345"; // String | Globally unique identifier for the custom type.
 let opts = { 
-    'opt_fields': "name,status_options,status_options.color,status_options.completion_state,status_options.enabled,status_options.name"
+    'opt_fields': "asana_created_type_identifier,name,status_options,status_options.color,status_options.completion_state,status_options.enabled,status_options.name"
 };
 customTypesApiInstance.getCustomType(custom_type_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -57,7 +57,7 @@ object
 
 Get all custom types associated with an object
 
-Returns a list of all of the custom types associated with an object. Currently, only projects are supported. Note that, as in all queries to collections which return compact representation, `opt_fields` can be used to include more data than is returned in the compact representation. See the [documentation for input/output options](https://developers.asana.com/docs/inputoutput-options) for more information.
+<b>Required scope: </b><code>custom_types:read</code>  Returns a list of all of the custom types associated with an object. Exactly one of `project` or `workspace` must be provided as a query parameter. When `workspace` is provided, all custom types in the workspace are listed, including types created by Asana products. Note that, as in all queries to collections which return compact representation, `opt_fields` can be used to include more data than is returned in the compact representation. See the [documentation for input/output options](https://developers.asana.com/docs/inputoutput-options) for more information.
 
 ([more information](https://developers.asana.com/reference/getcustomtypes))
 
@@ -69,13 +69,14 @@ let client = new Asana.ApiClient();
 client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let customTypesApiInstance = new Asana.CustomTypesApi(client);
-let project = "1331"; // String | Globally unique identifier for the project, which is used as a filter when retrieving all custom types.
 let opts = { 
+    'project': "1331", 
+    'workspace': "12345", 
     'limit': 50, 
     'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
-    'opt_fields': "name,offset,path,status_options,status_options.color,status_options.completion_state,status_options.enabled,status_options.name,uri"
+    'opt_fields': "asana_created_type_identifier,name,offset,path,status_options,status_options.color,status_options.completion_state,status_options.enabled,status_options.name,uri"
 };
-customTypesApiInstance.getCustomTypes(project, opts).then((result) => {
+customTypesApiInstance.getCustomTypes(opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
 }, (error) => {
     console.error(error.response.body);
@@ -87,7 +88,8 @@ customTypesApiInstance.getCustomTypes(project, opts).then((result) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project** | **String**| Globally unique identifier for the project, which is used as a filter when retrieving all custom types. | 
+ **project** | **String**| Globally unique identifier for the project, used as a filter when retrieving custom types. | [optional] 
+ **workspace** | **String**| The workspace to filter results on. | [optional] 
  **limit** | **Number**| Results per page. The number of objects to return per page. The value must be between 1 and 100. | [optional] 
  **offset** | **String**| Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.* | [optional] 
  **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 

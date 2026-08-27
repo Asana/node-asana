@@ -81,7 +81,7 @@ TimeTrackingCategoriesApi:
         'end_date': "2025-12-31", 
         'limit': 50, 
         'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
-        'opt_fields': "attributable_to,attributable_to.name,categories,categories.color,categories.name,created_by,created_by.name,duration_minutes,entered_on,offset,path,uri"
+        'opt_fields': "attributable_to,attributable_to.name,attributable_to.resource_subtype,categories,categories.color,categories.name,created_by,created_by.name,duration_minutes,entered_on,offset,path,uri"
     };
     timeTrackingCategoriesApiInstance.getTimeTrackingEntriesForTimeTrackingCategory(time_tracking_category_gid, opts).then((result) => {
         console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));

@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * Projects service.
 * @module api/ProjectsApi
-* @version 3.1.12
+* @version 3.2.0
 */
 export class ProjectsApi {
     /**
@@ -228,10 +228,11 @@ export class ProjectsApi {
      * @param opts.workspace The workspace or organization to filter projects on.
      * @param opts.team **Deprecated.** The team to filter projects on. Please use &#x60;GET /memberships&#x60; with &#x60;{ member: team, resource_subtype: project_membership }&#x60; instead.
      * @param opts.archived Only return projects whose &#x60;archived&#x60; field takes on the value of this parameter.
+     * @param opts.custom_type Filter results by custom type. Provide a custom type GID to return only objects of that custom type (an unknown GID returns &#x60;400&#x60;). Provide an empty string to return only objects with no custom type assigned. If this parameter is omitted, results are not filtered by custom type.
      * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @returns A Promise, with an object containing data and HTTP response
      */
-    getProjectsWithHttpInfo(opts?: { 'limit'?: any; 'offset'?: string; 'workspace'?: string; 'team'?: string; 'archived'?: boolean; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
+    getProjectsWithHttpInfo(opts?: { 'limit'?: any; 'offset'?: string; 'workspace'?: string; 'team'?: string; 'archived'?: boolean; 'custom_type'?: string; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
 
     /**
      * Get multiple projects
@@ -242,10 +243,11 @@ export class ProjectsApi {
      * @param opts.workspace The workspace or organization to filter projects on.
      * @param opts.team **Deprecated.** The team to filter projects on. Please use &#x60;GET /memberships&#x60; with &#x60;{ member: team, resource_subtype: project_membership }&#x60; instead.
      * @param opts.archived Only return projects whose &#x60;archived&#x60; field takes on the value of this parameter.
+     * @param opts.custom_type Filter results by custom type. Provide a custom type GID to return only objects of that custom type (an unknown GID returns &#x60;400&#x60;). Provide an empty string to return only objects with no custom type assigned. If this parameter is omitted, results are not filtered by custom type.
      * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @returns A Promise
      */
-    getProjects(opts?: { 'limit'?: any; 'offset'?: string; 'workspace'?: string; 'team'?: string; 'archived'?: boolean; 'opt_fields'?: any;  }): Promise<Collection | any>;
+    getProjects(opts?: { 'limit'?: any; 'offset'?: string; 'workspace'?: string; 'team'?: string; 'archived'?: boolean; 'custom_type'?: string; 'opt_fields'?: any;  }): Promise<Collection | any>;
 
     /**
      * Get projects a task is in
@@ -254,10 +256,11 @@ export class ProjectsApi {
      * @param opts Optional parameters
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
+     * @param opts.include_inherited_projects Opt-in, read-only. When &#x60;true&#x60;, the response also includes projects the task inherits from its ancestor tasks (in addition to its direct projects). Defaults to &#x60;false&#x60;, in which case only direct projects are returned. (default to false)
      * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @returns A Promise, with an object containing data and HTTP response
      */
-    getProjectsForTaskWithHttpInfo(task_gid: string, opts?: { 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
+    getProjectsForTaskWithHttpInfo(task_gid: string, opts?: { 'limit'?: any; 'offset'?: string; 'include_inherited_projects'?: boolean; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
 
     /**
      * Get projects a task is in
@@ -266,10 +269,11 @@ export class ProjectsApi {
      * @param opts Optional parameters
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
+     * @param opts.include_inherited_projects Opt-in, read-only. When &#x60;true&#x60;, the response also includes projects the task inherits from its ancestor tasks (in addition to its direct projects). Defaults to &#x60;false&#x60;, in which case only direct projects are returned. (default to false)
      * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @returns A Promise
      */
-    getProjectsForTask(task_gid: string, opts?: { 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | any>;
+    getProjectsForTask(task_gid: string, opts?: { 'limit'?: any; 'offset'?: string; 'include_inherited_projects'?: boolean; 'opt_fields'?: any;  }): Promise<Collection | any>;
 
     /**
      * Get a team&#x27;s projects

@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * CustomTypes service.
 * @module api/CustomTypesApi
-* @version 3.1.12
+* @version 3.2.0
 */
 export class CustomTypesApi {
 
@@ -38,7 +38,7 @@ export class CustomTypesApi {
 
     /**
      * Get a custom type
-     * Returns the complete custom type record for a single custom type.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;custom_types:read&lt;/code&gt;  Returns the complete custom type record for a single custom type.
      * @param {String} custom_type_gid Globally unique identifier for the custom type.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -80,7 +80,7 @@ export class CustomTypesApi {
 
     /**
      * Get a custom type
-     * Returns the complete custom type record for a single custom type.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;custom_types:read&lt;/code&gt;  Returns the complete custom type record for a single custom type.
      * @param {<&vendorExtensions.x-jsdoc-type>} custom_type_gid Globally unique identifier for the custom type.
      * @param {Object} opts Optional parameters
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -97,21 +97,18 @@ export class CustomTypesApi {
 
     /**
      * Get all custom types associated with an object
-     * Returns a list of all of the custom types associated with an object. Currently, only projects are supported. Note that, as in all queries to collections which return compact representation, &#x60;opt_fields&#x60; can be used to include more data than is returned in the compact representation. See the [documentation for input/output options](https://developers.asana.com/docs/inputoutput-options) for more information.
-     * @param {String} project Globally unique identifier for the project, which is used as a filter when retrieving all custom types.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;custom_types:read&lt;/code&gt;  Returns a list of all of the custom types associated with an object. Exactly one of &#x60;project&#x60; or &#x60;workspace&#x60; must be provided as a query parameter. When &#x60;workspace&#x60; is provided, all custom types in the workspace are listed, including types created by Asana products. Note that, as in all queries to collections which return compact representation, &#x60;opt_fields&#x60; can be used to include more data than is returned in the compact representation. See the [documentation for input/output options](https://developers.asana.com/docs/inputoutput-options) for more information.
      * @param {Object} opts Optional parameters
+     * @param {String} opts.project Globally unique identifier for the project, used as a filter when retrieving custom types.
+     * @param {String} opts.workspace The workspace to filter results on.
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
-    getCustomTypesWithHttpInfo(project, opts) {
+    getCustomTypesWithHttpInfo(opts) {
         opts = opts || {};
         let postBody = null;
-        // verify the required parameter 'project' is set
-        if (project === undefined || project === null) {
-            throw new Error("Missing the required parameter 'project' when calling getCustomTypes");
-        }
 
         let pathParams = {
             
@@ -119,7 +116,6 @@ export class CustomTypesApi {
         let queryParams = {};
         opts = opts || {};
         queryParams = opts;
-        queryParams['project'] = project;
 
         let headerParams = {
             
@@ -166,21 +162,22 @@ export class CustomTypesApi {
 
     /**
      * Get all custom types associated with an object
-     * Returns a list of all of the custom types associated with an object. Currently, only projects are supported. Note that, as in all queries to collections which return compact representation, &#x60;opt_fields&#x60; can be used to include more data than is returned in the compact representation. See the [documentation for input/output options](https://developers.asana.com/docs/inputoutput-options) for more information.
-     * @param {<&vendorExtensions.x-jsdoc-type>} project Globally unique identifier for the project, which is used as a filter when retrieving all custom types.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;custom_types:read&lt;/code&gt;  Returns a list of all of the custom types associated with an object. Exactly one of &#x60;project&#x60; or &#x60;workspace&#x60; must be provided as a query parameter. When &#x60;workspace&#x60; is provided, all custom types in the workspace are listed, including types created by Asana products. Note that, as in all queries to collections which return compact representation, &#x60;opt_fields&#x60; can be used to include more data than is returned in the compact representation. See the [documentation for input/output options](https://developers.asana.com/docs/inputoutput-options) for more information.
      * @param {Object} opts Optional parameters
+     * @param {String} opts.project Globally unique identifier for the project, used as a filter when retrieving custom types.
+     * @param {String} opts.workspace The workspace to filter results on.
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CustomTypeResponseArray}
      */
-    getCustomTypes(project, opts) {
+    getCustomTypes(opts) {
         // Check if RETURN_COLLECTION is set and return a collection object if it is
         if (this.apiClient.RETURN_COLLECTION) {
-            return this.getCustomTypesWithHttpInfo(project, opts)
+            return this.getCustomTypesWithHttpInfo(opts)
         }
 
-        return this.getCustomTypesWithHttpInfo(project, opts)
+        return this.getCustomTypesWithHttpInfo(opts)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });

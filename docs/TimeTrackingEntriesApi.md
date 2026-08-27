@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 Create a time tracking entry
 
-Creates a time tracking entry on a given task.  Returns the record of the newly created time tracking entry.
+Creates a time tracking entry on a given task.  Returns the record of the newly created time tracking entry.  #### Access requirements  Access to this endpoint has two levels:  - **Endpoint access** requires time tracking to be available through the domain's plan or add-ons. A request from a domain without time tracking access returns a `402 Payment Required` error for every request to this endpoint.  - **Field access** for some request fields requires the Timesheets and Budgets add-on. Fields with this requirement are noted in the request schema. Including one of these fields without the add-on returns a `402 Payment Required` error, even when the rest of the request is valid.  Because the field-level requirement is separate, the same endpoint may return `201` or `402` for the same domain depending on which fields are sent: a request that only uses fields available with endpoint access succeeds on any domain that meets the endpoint requirement, while a request that includes a field requiring the add-on also requires the add-on.
 
 ([more information](https://developers.asana.com/reference/createtimetrackingentry))
 
@@ -31,7 +31,7 @@ let timeTrackingEntriesApiInstance = new Asana.TimeTrackingEntriesApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | Information about the time tracking entry.
 let task_gid = "321654"; // String | The task to operate on.
 let opts = { 
-    'opt_fields': "approval_status,attributable_to,attributable_to.name,billable_status,categories,categories.color,categories.name,created_at,created_by,created_by.name,description,duration_minutes,entered_on,task,task.created_by,task.name,task.resource_subtype"
+    'opt_fields': "approval_status,attributable_to,attributable_to.name,attributable_to.resource_subtype,billable_status,categories,categories.color,categories.name,created_at,created_by,created_by.name,description,duration_minutes,entered_on,task,task.created_by,task.name,task.resource_subtype"
 };
 timeTrackingEntriesApiInstance.createTimeTrackingEntry(body, task_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -63,7 +63,7 @@ object
 
 Delete a time tracking entry
 
-A specific, existing time tracking entry can be deleted by making a `DELETE` request on the URL for that time tracking entry.  Returns an empty data record.
+A specific, existing time tracking entry can be deleted by making a `DELETE` request on the URL for that time tracking entry.  Returns an empty data record.  #### Access requirements  This endpoint is available only when time tracking is available through the domain's plan or add-ons. A request from a domain without time tracking access returns a `402 Payment Required` error.
 
 ([more information](https://developers.asana.com/reference/deletetimetrackingentry))
 
@@ -128,7 +128,7 @@ let opts = {
     'timesheet_approval_status': "12345", 
     'limit': 50, 
     'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
-    'opt_fields': "attributable_to,attributable_to.name,categories,categories.color,categories.name,created_by,created_by.name,duration_minutes,entered_on,offset,path,uri"
+    'opt_fields': "attributable_to,attributable_to.name,attributable_to.resource_subtype,categories,categories.color,categories.name,created_by,created_by.name,duration_minutes,entered_on,offset,path,uri"
 };
 timeTrackingEntriesApiInstance.getTimeTrackingEntries(opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -184,7 +184,7 @@ let task_gid = "321654"; // String | The task to operate on.
 let opts = { 
     'limit': 50, 
     'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
-    'opt_fields': "attributable_to,attributable_to.name,categories,categories.color,categories.name,created_by,created_by.name,duration_minutes,entered_on,offset,path,uri"
+    'opt_fields': "attributable_to,attributable_to.name,attributable_to.resource_subtype,categories,categories.color,categories.name,created_by,created_by.name,duration_minutes,entered_on,offset,path,uri"
 };
 timeTrackingEntriesApiInstance.getTimeTrackingEntriesForTask(task_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -231,7 +231,7 @@ client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 let timeTrackingEntriesApiInstance = new Asana.TimeTrackingEntriesApi(client);
 let time_tracking_entry_gid = "917392"; // String | Globally unique identifier for the time tracking entry.
 let opts = { 
-    'opt_fields': "approval_status,attributable_to,attributable_to.name,billable_status,categories,categories.color,categories.name,created_at,created_by,created_by.name,description,duration_minutes,entered_on,task,task.created_by,task.name,task.resource_subtype"
+    'opt_fields': "approval_status,attributable_to,attributable_to.name,attributable_to.resource_subtype,billable_status,categories,categories.color,categories.name,created_at,created_by,created_by.name,description,duration_minutes,entered_on,task,task.created_by,task.name,task.resource_subtype"
 };
 timeTrackingEntriesApiInstance.getTimeTrackingEntry(time_tracking_entry_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -262,7 +262,7 @@ object
 
 Update a time tracking entry
 
-A specific, existing time tracking entry can be updated by making a `PUT` request on the URL for that time tracking entry. Only the fields provided in the `data` block will be updated; any unspecified fields will remain unchanged.  When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the task.  Returns the complete updated time tracking entry record.
+A specific, existing time tracking entry can be updated by making a `PUT` request on the URL for that time tracking entry. Only the fields provided in the `data` block will be updated; any unspecified fields will remain unchanged.  When using this method, it is best to specify only those fields you wish to change, or else you may overwrite changes made by another user since you last retrieved the task.  Returns the complete updated time tracking entry record.  #### Access requirements  Access to this endpoint has two levels:  - **Endpoint access** requires time tracking to be available through the domain's plan or add-ons. A request from a domain without time tracking access returns a `402 Payment Required` error for every request to this endpoint.  - **Field access** for some request fields requires the Timesheets and Budgets add-on. Fields with this requirement are noted in the request schema. Including one of these fields without the add-on returns a `402 Payment Required` error, even when the rest of the request is valid.  Because the field-level requirement is separate, the same endpoint may return `200` or `402` for the same domain depending on which fields are sent: a request that only uses fields available with endpoint access succeeds on any domain that meets the endpoint requirement, while a request that includes a field requiring the add-on also requires the add-on.
 
 ([more information](https://developers.asana.com/reference/updatetimetrackingentry))
 
@@ -277,7 +277,7 @@ let timeTrackingEntriesApiInstance = new Asana.TimeTrackingEntriesApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The updated fields for the time tracking entry.
 let time_tracking_entry_gid = "917392"; // String | Globally unique identifier for the time tracking entry.
 let opts = { 
-    'opt_fields': "approval_status,attributable_to,attributable_to.name,billable_status,categories,categories.color,categories.name,created_at,created_by,created_by.name,description,duration_minutes,entered_on,task,task.created_by,task.name,task.resource_subtype"
+    'opt_fields': "approval_status,attributable_to,attributable_to.name,attributable_to.resource_subtype,billable_status,categories,categories.color,categories.name,created_at,created_by,created_by.name,description,duration_minutes,entered_on,task,task.created_by,task.name,task.resource_subtype"
 };
 timeTrackingEntriesApiInstance.updateTimeTrackingEntry(body, time_tracking_entry_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));

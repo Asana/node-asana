@@ -1,7 +1,7 @@
 # asana [![GitHub release][release-image]][release-url] [![NPM Version][npm-image]][npm-url]
 
 - API version: 1.0
-- Package version: 3.1.12
+- Package version: 3.2.0
 
 ## Installation
 
@@ -18,7 +18,7 @@ npm install asana --save
 Include the latest release directly from GitHub:
 
 ```html
-<script src="https://github.com/Asana/node-asana/releases/download/v3.1.12/asana-min.js"></script>
+<script src="https://github.com/Asana/node-asana/releases/download/v3.2.0/asana-min.js"></script>
 ```
 
 Example usage (**NOTE**: be careful not to expose your access token):
@@ -189,6 +189,8 @@ All URIs are relative to *https://app.asana.com/api/1.0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*Asana.AIStudioUsageAPIApi* | [**getAiStudioRuns**](docs/AIStudioUsageAPIApi.md#getAiStudioRuns) | **GET** /workspaces/{workspace_gid}/ai_studio/runs | Get AI Studio credit utilization
+*Asana.AIStudioUsageAPIApi* | [**getAiStudioSeats**](docs/AIStudioUsageAPIApi.md#getAiStudioSeats) | **GET** /workspaces/{workspace_gid}/ai_studio/seats | Get AI Studio seats
 *Asana.AccessRequestsApi* | [**approveAccessRequest**](docs/AccessRequestsApi.md#approveAccessRequest) | **POST** /access_requests/{access_request_gid}/approve | Approve an access request
 *Asana.AccessRequestsApi* | [**createAccessRequest**](docs/AccessRequestsApi.md#createAccessRequest) | **POST** /access_requests | Create an access request
 *Asana.AccessRequestsApi* | [**getAccessRequests**](docs/AccessRequestsApi.md#getAccessRequests) | **GET** /access_requests | Get access requests
@@ -1149,6 +1151,6 @@ client.callApi(
 ```
 
 [release-image]: https://img.shields.io/github/release/asana/node-asana.svg
-[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.1.12
+[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.2.0
 [npm-image]: http://img.shields.io/npm/v/asana.svg?style=flat-square
 [npm-url]: https://www.npmjs.org/package/asana

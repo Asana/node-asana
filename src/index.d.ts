@@ -13,6 +13,7 @@
  *
  */
 import { ApiClient } from './ApiClient';
+import { AIStudioUsageAPIApi } from './api/AIStudioUsageAPIApi';
 import { AccessRequestsApi } from './api/AccessRequestsApi';
 import { AgentsApi } from './api/AgentsApi';
 import { AllocationsApi } from './api/AllocationsApi';
@@ -64,6 +65,7 @@ import { WorkspacesApi } from './api/WorkspacesApi';
 
 export {
     ApiClient,
+    AIStudioUsageAPIApi,
     AccessRequestsApi,
     AgentsApi,
     AllocationsApi,

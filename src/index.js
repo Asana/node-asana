@@ -13,6 +13,7 @@
  *
  */
 import {ApiClient} from './ApiClient';
+import {AIStudioUsageAPIApi} from './api/AIStudioUsageAPIApi';
 import {AccessRequestsApi} from './api/AccessRequestsApi';
 import {AgentsApi} from './api/AgentsApi';
 import {AllocationsApi} from './api/AllocationsApi';
@@ -91,7 +92,7 @@ import {WorkspacesApi} from './api/WorkspacesApi';
 * </pre>
 * </p>
 * @module index
-* @version 3.1.12
+* @version 3.2.0
 */
 export {
     /**
@@ -101,6 +102,12 @@ export {
     ApiClient
 
     ,
+
+    /**
+    * The AIStudioUsageAPIApi service constructor.
+    * @property {module:api/AIStudioUsageAPIApi}
+    */
+    AIStudioUsageAPIApi,
 
     /**
     * The AccessRequestsApi service constructor.

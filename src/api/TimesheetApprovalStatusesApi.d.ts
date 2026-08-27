@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * TimesheetApprovalStatuses service.
 * @module api/TimesheetApprovalStatusesApi
-* @version 3.1.12
+* @version 3.2.0
 */
 export class TimesheetApprovalStatusesApi {
     /**
@@ -33,7 +33,7 @@ export class TimesheetApprovalStatusesApi {
 
     /**
      * Create a timesheet approval status
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;timesheet_approval_statuses:write&lt;/code&gt;  Creates a new timesheet approval status for a user&#x27;s timesheet week. The start_date must be a Monday and end_date must be the following Sunday. Returns the created timesheet approval status record.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;timesheet_approval_statuses:write&lt;/code&gt;  Creates a new timesheet approval status for a user&#x27;s timesheet week. The start_date must be a Monday or Sunday, and end_date must be the last day of that week (Sunday for a Monday start, Saturday for a Sunday start). Returns the created timesheet approval status record.
      * @param body The timesheet approval status to create.
      * @param opts Optional parameters
      * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
@@ -43,7 +43,7 @@ export class TimesheetApprovalStatusesApi {
 
     /**
      * Create a timesheet approval status
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;timesheet_approval_statuses:write&lt;/code&gt;  Creates a new timesheet approval status for a user&#x27;s timesheet week. The start_date must be a Monday and end_date must be the following Sunday. Returns the created timesheet approval status record.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;timesheet_approval_statuses:write&lt;/code&gt;  Creates a new timesheet approval status for a user&#x27;s timesheet week. The start_date must be a Monday or Sunday, and end_date must be the last day of that week (Sunday for a Monday start, Saturday for a Sunday start). Returns the created timesheet approval status record.
      * @param body The timesheet approval status to create.
      * @param opts Optional parameters
      * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
