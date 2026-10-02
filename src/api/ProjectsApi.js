@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Projects service.
 * @module api/ProjectsApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class ProjectsApi {
 
@@ -42,7 +42,7 @@ export class ProjectsApi {
      * @param {module:model/Object} body Information about the custom field setting.
      * @param {String} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     addCustomFieldSettingForProjectWithHttpInfo(body, project_gid, opts) {
@@ -89,7 +89,7 @@ export class ProjectsApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body Information about the custom field setting.
      * @param {<&vendorExtensions.x-jsdoc-type>} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CustomFieldSettingResponseData}
      */
     addCustomFieldSettingForProject(body, project_gid, opts) {
@@ -107,7 +107,7 @@ export class ProjectsApi {
      * @param {module:model/Object} body Information about the followers being added.
      * @param {String} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     addFollowersForProjectWithHttpInfo(body, project_gid, opts) {
@@ -154,7 +154,7 @@ export class ProjectsApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body Information about the followers being added.
      * @param {<&vendorExtensions.x-jsdoc-type>} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProjectResponseData}
      */
     addFollowersForProject(body, project_gid, opts) {
@@ -172,7 +172,7 @@ export class ProjectsApi {
      * @param {module:model/Object} body Information about the members being added.
      * @param {String} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     addMembersForProjectWithHttpInfo(body, project_gid, opts) {
@@ -219,7 +219,7 @@ export class ProjectsApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body Information about the members being added.
      * @param {<&vendorExtensions.x-jsdoc-type>} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProjectResponseData}
      */
     addMembersForProject(body, project_gid, opts) {
@@ -236,7 +236,7 @@ export class ProjectsApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  Create a new project in a workspace or team.  Every project is required to be created in a specific workspace or organization, and this cannot be changed once set. Note that you can use the &#x60;workspace&#x60; parameter regardless of whether or not it is an organization.  If the workspace for your project is an organization, you must also supply a &#x60;team&#x60; to share the project with.  Returns the full record of the newly created project.  **Deprecation notice:** The &#x60;team&#x60; parameter and the &#x60;private_to_team&#x60; value for &#x60;privacy_setting&#x60; are deprecated. When either is included in the request, the &#x60;Asana-Change&#x60; response header will indicate an affected deprecation. Clients should switch to using &#x60;POST /memberships&#x60; with &#x60;{ parent: project, member: team }&#x60; to share a project with a team after creation.
      * @param {module:model/Object} body The project to create.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     createProjectWithHttpInfo(body, opts) {
@@ -278,7 +278,7 @@ export class ProjectsApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  Create a new project in a workspace or team.  Every project is required to be created in a specific workspace or organization, and this cannot be changed once set. Note that you can use the &#x60;workspace&#x60; parameter regardless of whether or not it is an organization.  If the workspace for your project is an organization, you must also supply a &#x60;team&#x60; to share the project with.  Returns the full record of the newly created project.  **Deprecation notice:** The &#x60;team&#x60; parameter and the &#x60;private_to_team&#x60; value for &#x60;privacy_setting&#x60; are deprecated. When either is included in the request, the &#x60;Asana-Change&#x60; response header will indicate an affected deprecation. Clients should switch to using &#x60;POST /memberships&#x60; with &#x60;{ parent: project, member: team }&#x60; to share a project with a team after creation.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The project to create.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProjectResponseData}
      */
     createProject(body, opts) {
@@ -296,7 +296,7 @@ export class ProjectsApi {
      * @param {module:model/Object} body The new project to create.
      * @param {String} team_gid Globally unique identifier for the team.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     createProjectForTeamWithHttpInfo(body, team_gid, opts) {
@@ -343,7 +343,7 @@ export class ProjectsApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body The new project to create.
      * @param {<&vendorExtensions.x-jsdoc-type>} team_gid Globally unique identifier for the team.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProjectResponseData}
      */
     createProjectForTeam(body, team_gid, opts) {
@@ -361,7 +361,7 @@ export class ProjectsApi {
      * @param {module:model/Object} body The new project to create.
      * @param {String} workspace_gid Globally unique identifier for the workspace or organization.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     createProjectForWorkspaceWithHttpInfo(body, workspace_gid, opts) {
@@ -408,7 +408,7 @@ export class ProjectsApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body The new project to create.
      * @param {<&vendorExtensions.x-jsdoc-type>} workspace_gid Globally unique identifier for the workspace or organization.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProjectResponseData}
      */
     createProjectForWorkspace(body, workspace_gid, opts) {
@@ -479,7 +479,7 @@ export class ProjectsApi {
      * @param {String} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
      * @param {module:model/Object} opts.body Describes the duplicate&#x27;s name and the elements that will be duplicated.
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     duplicateProjectWithHttpInfo(project_gid, opts) {
@@ -522,7 +522,7 @@ export class ProjectsApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
      * @param {module:model/Object} opts.body Describes the duplicate&#x27;s name and the elements that will be duplicated.
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/JobResponseData}
      */
     duplicateProject(project_gid, opts) {
@@ -539,7 +539,7 @@ export class ProjectsApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the complete project record for a single project.
      * @param {String} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getProjectWithHttpInfo(project_gid, opts) {
@@ -581,7 +581,7 @@ export class ProjectsApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Returns the complete project record for a single project.
      * @param {<&vendorExtensions.x-jsdoc-type>} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProjectResponseData}
      */
     getProject(project_gid, opts) {
@@ -603,7 +603,7 @@ export class ProjectsApi {
      * @param {String} opts.team **Deprecated.** The team to filter projects on. Please use &#x60;GET /memberships&#x60; with &#x60;{ member: team, resource_subtype: project_membership }&#x60; instead.
      * @param {Boolean} opts.archived Only return projects whose &#x60;archived&#x60; field takes on the value of this parameter.
      * @param {String} opts.custom_type Filter results by custom type. Provide a custom type GID to return only objects of that custom type (an unknown GID returns &#x60;400&#x60;). Provide an empty string to return only objects with no custom type assigned. If this parameter is omitted, results are not filtered by custom type.
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getProjectsWithHttpInfo(opts) {
@@ -670,7 +670,7 @@ export class ProjectsApi {
      * @param {String} opts.team **Deprecated.** The team to filter projects on. Please use &#x60;GET /memberships&#x60; with &#x60;{ member: team, resource_subtype: project_membership }&#x60; instead.
      * @param {Boolean} opts.archived Only return projects whose &#x60;archived&#x60; field takes on the value of this parameter.
      * @param {String} opts.custom_type Filter results by custom type. Provide a custom type GID to return only objects of that custom type (an unknown GID returns &#x60;400&#x60;). Provide an empty string to return only objects with no custom type assigned. If this parameter is omitted, results are not filtered by custom type.
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProjectResponseArray}
      */
     getProjects(opts) {
@@ -694,7 +694,7 @@ export class ProjectsApi {
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param {Boolean} opts.include_inherited_projects Opt-in, read-only. When &#x60;true&#x60;, the response also includes projects the task inherits from its ancestor tasks (in addition to its direct projects). Defaults to &#x60;false&#x60;, in which case only direct projects are returned. (default to <.>)
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getProjectsForTaskWithHttpInfo(task_gid, opts) {
@@ -763,7 +763,7 @@ export class ProjectsApi {
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param {Boolean} opts.include_inherited_projects Opt-in, read-only. When &#x60;true&#x60;, the response also includes projects the task inherits from its ancestor tasks (in addition to its direct projects). Defaults to &#x60;false&#x60;, in which case only direct projects are returned. (default to <.>)
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProjectResponseArray}
      */
     getProjectsForTask(task_gid, opts) {
@@ -787,7 +787,7 @@ export class ProjectsApi {
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param {Boolean} opts.archived Only return projects whose &#x60;archived&#x60; field takes on the value of this parameter.
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getProjectsForTeamWithHttpInfo(team_gid, opts) {
@@ -856,7 +856,7 @@ export class ProjectsApi {
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param {Boolean} opts.archived Only return projects whose &#x60;archived&#x60; field takes on the value of this parameter.
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProjectResponseArray}
      */
     getProjectsForTeam(team_gid, opts) {
@@ -880,7 +880,7 @@ export class ProjectsApi {
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param {Boolean} opts.archived Only return projects whose &#x60;archived&#x60; field takes on the value of this parameter.
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getProjectsForWorkspaceWithHttpInfo(workspace_gid, opts) {
@@ -949,7 +949,7 @@ export class ProjectsApi {
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param {Boolean} opts.archived Only return projects whose &#x60;archived&#x60; field takes on the value of this parameter.
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProjectResponseArray}
      */
     getProjectsForWorkspace(workspace_gid, opts) {
@@ -970,7 +970,7 @@ export class ProjectsApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Get an object that holds task count fields. **All fields are excluded by default**. You must [opt in](/docs/inputoutput-options) using &#x60;opt_fields&#x60; to get any information from this endpoint.  This endpoint has an additional [rate limit](/docs/rate-limits) and each field counts especially high against our [cost limits](/docs/rate-limits#cost-limits).  Milestones are just tasks, so they are included in the &#x60;num_tasks&#x60;, &#x60;num_incomplete_tasks&#x60;, and &#x60;num_completed_tasks&#x60; counts.
      * @param {String} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getTaskCountsForProjectWithHttpInfo(project_gid, opts) {
@@ -1012,7 +1012,7 @@ export class ProjectsApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:read&lt;/code&gt;  Get an object that holds task count fields. **All fields are excluded by default**. You must [opt in](/docs/inputoutput-options) using &#x60;opt_fields&#x60; to get any information from this endpoint.  This endpoint has an additional [rate limit](/docs/rate-limits) and each field counts especially high against our [cost limits](/docs/rate-limits#cost-limits).  Milestones are just tasks, so they are included in the &#x60;num_tasks&#x60;, &#x60;num_incomplete_tasks&#x60;, and &#x60;num_completed_tasks&#x60; counts.
      * @param {<&vendorExtensions.x-jsdoc-type>} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TaskCountResponseData}
      */
     getTaskCountsForProject(project_gid, opts) {
@@ -1030,7 +1030,7 @@ export class ProjectsApi {
      * @param {module:model/Object} body Describes the inputs used for creating a project template, such as the resulting project template&#x27;s name, which team it should be created in.
      * @param {String} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     projectSaveAsTemplateWithHttpInfo(body, project_gid, opts) {
@@ -1077,7 +1077,7 @@ export class ProjectsApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body Describes the inputs used for creating a project template, such as the resulting project template&#x27;s name, which team it should be created in.
      * @param {<&vendorExtensions.x-jsdoc-type>} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/JobResponseData}
      */
     projectSaveAsTemplate(body, project_gid, opts) {
@@ -1154,7 +1154,7 @@ export class ProjectsApi {
      * @param {module:model/Object} body Information about the followers being removed.
      * @param {String} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     removeFollowersForProjectWithHttpInfo(body, project_gid, opts) {
@@ -1201,7 +1201,7 @@ export class ProjectsApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body Information about the followers being removed.
      * @param {<&vendorExtensions.x-jsdoc-type>} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProjectResponseData}
      */
     removeFollowersForProject(body, project_gid, opts) {
@@ -1219,7 +1219,7 @@ export class ProjectsApi {
      * @param {module:model/Object} body Information about the members being removed.
      * @param {String} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     removeMembersForProjectWithHttpInfo(body, project_gid, opts) {
@@ -1266,12 +1266,71 @@ export class ProjectsApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body Information about the members being removed.
      * @param {<&vendorExtensions.x-jsdoc-type>} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProjectResponseData}
      */
     removeMembersForProject(body, project_gid, opts) {
 
         return this.removeMembersForProjectWithHttpInfo(body, project_gid, opts)
+            .then(function(response_and_data) {
+                return response_and_data.data;
+            });
+    }
+
+
+    /**
+     * Roll up subtask dates for a project
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  Creates and returns a job that will asynchronously roll up subtask dates for tasks in the project with the given &#x60;project_gid&#x60; whose descendant dates fall outside their current date range. Each parent task&#x27;s start and due dates are reconciled to cover its descendants&#x27; date range.
+     * @param {String} project_gid Globally unique identifier for the project.
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
+     */
+    rollupProjectWithHttpInfo(project_gid, opts) {
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'project_gid' is set
+        if (project_gid === undefined || project_gid === null) {
+            throw new Error("Missing the required parameter 'project_gid' when calling rollupProject");
+        }
+
+        let pathParams = {
+            'project_gid': project_gid
+        };
+        let queryParams = {};
+        opts = opts || {};
+        queryParams = opts;
+
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
+
+        let authNames = ['personalAccessToken'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = 'Blob';
+
+        return this.apiClient.callApi(
+            '/projects/{project_gid}/rollup', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType
+        );
+    }
+
+    /**
+     * Roll up subtask dates for a project
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;projects:write&lt;/code&gt;  Creates and returns a job that will asynchronously roll up subtask dates for tasks in the project with the given &#x60;project_gid&#x60; whose descendant dates fall outside their current date range. Each parent task&#x27;s start and due dates are reconciled to cover its descendants&#x27; date range.
+     * @param {<&vendorExtensions.x-jsdoc-type>} project_gid Globally unique identifier for the project.
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/JobResponseData}
+     */
+    rollupProject(project_gid, opts) {
+
+        return this.rollupProjectWithHttpInfo(project_gid, opts)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });
@@ -1310,7 +1369,7 @@ export class ProjectsApi {
      * @param {Date} opts.start_on ISO 8601 date string or &#x60;null&#x60;.
      * @param {Date} opts.start_on.before ISO 8601 date string.
      * @param {Date} opts.start_on.after ISO 8601 date string.
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     searchProjectsForWorkspaceWithHttpInfo(workspace_gid, opts) {
@@ -1403,7 +1462,7 @@ export class ProjectsApi {
      * @param {Date} opts.start_on ISO 8601 date string or &#x60;null&#x60;.
      * @param {Date} opts.start_on.before ISO 8601 date string.
      * @param {Date} opts.start_on.after ISO 8601 date string.
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProjectResponseArray}
      */
     searchProjectsForWorkspace(workspace_gid, opts) {
@@ -1425,7 +1484,7 @@ export class ProjectsApi {
      * @param {module:model/Object} body The updated fields for the project.
      * @param {String} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     updateProjectWithHttpInfo(body, project_gid, opts) {
@@ -1472,7 +1531,7 @@ export class ProjectsApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body The updated fields for the project.
      * @param {<&vendorExtensions.x-jsdoc-type>} project_gid Globally unique identifier for the project.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProjectResponseData}
      */
     updateProject(body, project_gid, opts) {

@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * Allocations service.
 * @module api/AllocationsApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class AllocationsApi {
     /**
@@ -36,7 +36,7 @@ export class AllocationsApi {
      * Creates a new allocation.  Returns the full record of the newly created allocation.
      * @param body The allocation to create.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     createAllocationWithHttpInfo(body: any, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -46,7 +46,7 @@ export class AllocationsApi {
      * Creates a new allocation.  Returns the full record of the newly created allocation.
      * @param body The allocation to create.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     createAllocation(body: any, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -72,7 +72,7 @@ export class AllocationsApi {
      * Returns the complete allocation record for a single allocation.
      * @param allocation_gid Globally unique identifier for the allocation.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getAllocationWithHttpInfo(allocation_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -82,7 +82,7 @@ export class AllocationsApi {
      * Returns the complete allocation record for a single allocation.
      * @param allocation_gid Globally unique identifier for the allocation.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getAllocation(allocation_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -96,7 +96,7 @@ export class AllocationsApi {
      * @param opts.workspace Globally unique identifier for the workspace.
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getAllocationsWithHttpInfo(opts?: { 'parent'?: string; 'assignee'?: string; 'workspace'?: string; 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
@@ -110,7 +110,7 @@ export class AllocationsApi {
      * @param opts.workspace Globally unique identifier for the workspace.
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getAllocations(opts?: { 'parent'?: string; 'assignee'?: string; 'workspace'?: string; 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | any>;
@@ -121,7 +121,7 @@ export class AllocationsApi {
      * @param body The updated fields for the allocation.
      * @param allocation_gid Globally unique identifier for the allocation.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     updateAllocationWithHttpInfo(body: any, allocation_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -132,7 +132,7 @@ export class AllocationsApi {
      * @param body The updated fields for the allocation.
      * @param allocation_gid Globally unique identifier for the allocation.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     updateAllocation(body: any, allocation_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;

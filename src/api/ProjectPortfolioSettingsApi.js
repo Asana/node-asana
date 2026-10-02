@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * ProjectPortfolioSettings service.
 * @module api/ProjectPortfolioSettingsApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class ProjectPortfolioSettingsApi {
 
@@ -41,7 +41,7 @@ export class ProjectPortfolioSettingsApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;project_portfolio_settings:read&lt;/code&gt;  Returns the complete project portfolio setting record for a single project portfolio setting.
      * @param {String} project_portfolio_setting_gid Globally unique identifier for the project portfolio setting.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getProjectPortfolioSettingWithHttpInfo(project_portfolio_setting_gid, opts) {
@@ -83,7 +83,7 @@ export class ProjectPortfolioSettingsApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;project_portfolio_settings:read&lt;/code&gt;  Returns the complete project portfolio setting record for a single project portfolio setting.
      * @param {<&vendorExtensions.x-jsdoc-type>} project_portfolio_setting_gid Globally unique identifier for the project portfolio setting.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProjectPortfolioSettingResponseData}
      */
     getProjectPortfolioSetting(project_portfolio_setting_gid, opts) {
@@ -102,7 +102,7 @@ export class ProjectPortfolioSettingsApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getProjectPortfolioSettingsForPortfolioWithHttpInfo(portfolio_gid, opts) {
@@ -170,7 +170,7 @@ export class ProjectPortfolioSettingsApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProjectPortfolioSettingResponseArray}
      */
     getProjectPortfolioSettingsForPortfolio(portfolio_gid, opts) {
@@ -193,7 +193,7 @@ export class ProjectPortfolioSettingsApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getProjectPortfolioSettingsForProjectWithHttpInfo(project_gid, opts) {
@@ -261,7 +261,7 @@ export class ProjectPortfolioSettingsApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProjectPortfolioSettingResponseArray}
      */
     getProjectPortfolioSettingsForProject(project_gid, opts) {
@@ -283,7 +283,7 @@ export class ProjectPortfolioSettingsApi {
      * @param {module:model/Object} body The updated fields for the project portfolio setting.
      * @param {String} project_portfolio_setting_gid Globally unique identifier for the project portfolio setting.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     updateProjectPortfolioSettingWithHttpInfo(body, project_portfolio_setting_gid, opts) {
@@ -330,7 +330,7 @@ export class ProjectPortfolioSettingsApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body The updated fields for the project portfolio setting.
      * @param {<&vendorExtensions.x-jsdoc-type>} project_portfolio_setting_gid Globally unique identifier for the project portfolio setting.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProjectPortfolioSettingResponseData}
      */
     updateProjectPortfolioSetting(body, project_portfolio_setting_gid, opts) {

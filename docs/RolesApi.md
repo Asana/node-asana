@@ -44,7 +44,7 @@ rolesApiInstance.createRole(body, opts).then((result) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **Object**| The role to create. | 
- **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields). | [optional] 
 
 ### Return type
 
@@ -131,7 +131,7 @@ rolesApiInstance.getRole(role_gid, opts).then((result) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **role_gid** | **String**| Globally unique identifier for the role. | 
- **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields). | [optional] 
 
 ### Return type
 
@@ -159,14 +159,14 @@ let client = new Asana.ApiClient();
 client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
 
 let rolesApiInstance = new Asana.RolesApi(client);
+let workspace = "1331"; // String | The workspace or organization to filter roles on.
 let opts = { 
     'limit': 50, 
     'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
-    'workspace': "1331", 
     'archived': false, 
     'opt_fields': "base_role_type,creation_time,description,is_standard_role,modified_at,name,offset,path,permissions,permissions.allowed_guest_invites,permissions.assign_roles,permissions.create_and_edit_ai_automations,permissions.create_and_edit_ai_teammates,permissions.create_app_authorization,permissions.create_global_custom_fields,permissions.create_goal,permissions.create_pat_authorization,permissions.create_portfolio,permissions.create_project,permissions.create_read_only_link,permissions.create_team,permissions.download_mobile_attachments,permissions.export_project_data,permissions.import_data,permissions.manage_roles,permissions.proactive_ai,permissions.share_goal_with_domain,permissions.share_portfolios_with_org,permissions.share_teams_with_org,permissions.standard_ai,permissions.task_deletion_policy,permissions.upload_attachments,permissions.view_public_teams,permissions.view_shared_with_org_portfolios,permissions.view_shared_with_org_projects,permissions.view_shared_with_org_tasks,uri,workspace,workspace.name"
 };
-rolesApiInstance.getRoles(opts).then((result) => {
+rolesApiInstance.getRoles(workspace, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
 }, (error) => {
     console.error(error.response.body);
@@ -178,11 +178,11 @@ rolesApiInstance.getRoles(opts).then((result) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **workspace** | **String**| The workspace or organization to filter roles on. | 
  **limit** | **Number**| Results per page. The number of objects to return per page. The value must be between 1 and 100. | [optional] 
  **offset** | **String**| Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.* | [optional] 
- **workspace** | **String**| The workspace or organization to filter roles on. | [optional] 
  **archived** | **Boolean**| Only return projects whose &#x60;archived&#x60; field takes on the value of this parameter. | [optional] 
- **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields). | [optional] 
 
 ### Return type
 
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **Object**| The updated fields for the role. | 
  **role_gid** | **String**| Globally unique identifier for the role. | 
- **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields). | [optional] 
 
 ### Return type
 

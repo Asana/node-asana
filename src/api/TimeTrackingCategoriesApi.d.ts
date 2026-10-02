@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * TimeTrackingCategories service.
 * @module api/TimeTrackingCategoriesApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class TimeTrackingCategoriesApi {
     /**
@@ -36,7 +36,7 @@ export class TimeTrackingCategoriesApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;time_tracking_categories:write&lt;/code&gt;  Creates a new time tracking category in a given workspace.  Returns the record of the newly created time tracking category.
      * @param body Information about the time tracking category.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     createTimeTrackingCategoryWithHttpInfo(body: any, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -46,7 +46,7 @@ export class TimeTrackingCategoriesApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;time_tracking_categories:write&lt;/code&gt;  Creates a new time tracking category in a given workspace.  Returns the record of the newly created time tracking category.
      * @param body Information about the time tracking category.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     createTimeTrackingCategory(body: any, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -75,7 +75,7 @@ export class TimeTrackingCategoriesApi {
      * @param opts.is_archived Filter by archived status. If not provided, defaults to returning non-archived categories.
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getTimeTrackingCategoriesWithHttpInfo(workspace: string, opts?: { 'is_archived'?: boolean; 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
@@ -88,7 +88,7 @@ export class TimeTrackingCategoriesApi {
      * @param opts.is_archived Filter by archived status. If not provided, defaults to returning non-archived categories.
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getTimeTrackingCategories(workspace: string, opts?: { 'is_archived'?: boolean; 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | any>;
@@ -98,7 +98,7 @@ export class TimeTrackingCategoriesApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;time_tracking_categories:read&lt;/code&gt;  Returns the complete time tracking category record for a single time tracking category.
      * @param time_tracking_category_gid Globally unique identifier for the time tracking category.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getTimeTrackingCategoryWithHttpInfo(time_tracking_category_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -108,7 +108,7 @@ export class TimeTrackingCategoriesApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;time_tracking_categories:read&lt;/code&gt;  Returns the complete time tracking category record for a single time tracking category.
      * @param time_tracking_category_gid Globally unique identifier for the time tracking category.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getTimeTrackingCategory(time_tracking_category_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -122,7 +122,7 @@ export class TimeTrackingCategoriesApi {
      * @param opts.end_date The end date for filtering time tracking entries by their entry date.
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getTimeTrackingEntriesForTimeTrackingCategoryWithHttpInfo(time_tracking_category_gid: string, opts?: { 'start_date'?: any; 'end_date'?: any; 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
@@ -136,7 +136,7 @@ export class TimeTrackingCategoriesApi {
      * @param opts.end_date The end date for filtering time tracking entries by their entry date.
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getTimeTrackingEntriesForTimeTrackingCategory(time_tracking_category_gid: string, opts?: { 'start_date'?: any; 'end_date'?: any; 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | any>;
@@ -147,7 +147,7 @@ export class TimeTrackingCategoriesApi {
      * @param body The updated fields for the time tracking category.
      * @param time_tracking_category_gid Globally unique identifier for the time tracking category.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     updateTimeTrackingCategoryWithHttpInfo(body: any, time_tracking_category_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -158,7 +158,7 @@ export class TimeTrackingCategoriesApi {
      * @param body The updated fields for the time tracking category.
      * @param time_tracking_category_gid Globally unique identifier for the time tracking category.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     updateTimeTrackingCategory(body: any, time_tracking_category_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;

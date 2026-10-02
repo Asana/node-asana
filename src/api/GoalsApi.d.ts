@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * Goals service.
 * @module api/GoalsApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class GoalsApi {
     /**
@@ -55,7 +55,7 @@ export class GoalsApi {
      * @param body The followers to be added as collaborators
      * @param goal_gid Globally unique identifier for the goal.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     addFollowersWithHttpInfo(body: any, goal_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -66,7 +66,7 @@ export class GoalsApi {
      * @param body The followers to be added as collaborators
      * @param goal_gid Globally unique identifier for the goal.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     addFollowers(body: any, goal_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -76,7 +76,7 @@ export class GoalsApi {
      * Creates a new goal in a workspace or team.  Returns the full record of the newly created goal.
      * @param body The goal to create.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     createGoalWithHttpInfo(body: any, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -86,7 +86,7 @@ export class GoalsApi {
      * Creates a new goal in a workspace or team.  Returns the full record of the newly created goal.
      * @param body The goal to create.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     createGoal(body: any, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -97,7 +97,7 @@ export class GoalsApi {
      * @param body The goal metric to create.
      * @param goal_gid Globally unique identifier for the goal.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     createGoalMetricWithHttpInfo(body: any, goal_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -108,7 +108,7 @@ export class GoalsApi {
      * @param body The goal metric to create.
      * @param goal_gid Globally unique identifier for the goal.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     createGoalMetric(body: any, goal_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -134,7 +134,7 @@ export class GoalsApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;goals:read&lt;/code&gt;  Returns the complete goal record for a single goal.
      * @param goal_gid Globally unique identifier for the goal.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getGoalWithHttpInfo(goal_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -144,7 +144,7 @@ export class GoalsApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;goals:read&lt;/code&gt;  Returns the complete goal record for a single goal.
      * @param goal_gid Globally unique identifier for the goal.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getGoal(goal_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -162,7 +162,7 @@ export class GoalsApi {
      * @param opts.time_periods Globally unique identifiers for the time periods.
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getGoalsWithHttpInfo(opts?: { 'portfolio'?: string; 'project'?: string; 'task'?: string; 'is_workspace_level'?: boolean; 'team'?: string; 'workspace'?: string; 'time_periods'?: any; 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
@@ -180,7 +180,7 @@ export class GoalsApi {
      * @param opts.time_periods Globally unique identifiers for the time periods.
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getGoals(opts?: { 'portfolio'?: string; 'project'?: string; 'task'?: string; 'is_workspace_level'?: boolean; 'team'?: string; 'workspace'?: string; 'time_periods'?: any; 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | any>;
@@ -190,7 +190,7 @@ export class GoalsApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;goals:read&lt;/code&gt;  Returns a compact representation of all of the parent goals of a goal.
      * @param goal_gid Globally unique identifier for the goal.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getParentGoalsForGoalWithHttpInfo(goal_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
@@ -200,7 +200,7 @@ export class GoalsApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;goals:read&lt;/code&gt;  Returns a compact representation of all of the parent goals of a goal.
      * @param goal_gid Globally unique identifier for the goal.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getParentGoalsForGoal(goal_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<Collection | any>;
@@ -229,7 +229,7 @@ export class GoalsApi {
      * @param body The followers to be removed as collaborators
      * @param goal_gid Globally unique identifier for the goal.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     removeFollowersWithHttpInfo(body: any, goal_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -240,7 +240,7 @@ export class GoalsApi {
      * @param body The followers to be removed as collaborators
      * @param goal_gid Globally unique identifier for the goal.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     removeFollowers(body: any, goal_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -251,7 +251,7 @@ export class GoalsApi {
      * @param body The updated fields for the goal.
      * @param goal_gid Globally unique identifier for the goal.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     updateGoalWithHttpInfo(body: any, goal_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -262,7 +262,7 @@ export class GoalsApi {
      * @param body The updated fields for the goal.
      * @param goal_gid Globally unique identifier for the goal.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     updateGoal(body: any, goal_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -273,7 +273,7 @@ export class GoalsApi {
      * @param body The updated fields for the goal metric.
      * @param goal_gid Globally unique identifier for the goal.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     updateGoalMetricWithHttpInfo(body: any, goal_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -284,7 +284,7 @@ export class GoalsApi {
      * @param body The updated fields for the goal metric.
      * @param goal_gid Globally unique identifier for the goal.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     updateGoalMetric(body: any, goal_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;

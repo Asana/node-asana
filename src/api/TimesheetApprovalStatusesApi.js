@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * TimesheetApprovalStatuses service.
 * @module api/TimesheetApprovalStatusesApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class TimesheetApprovalStatusesApi {
 
@@ -41,7 +41,7 @@ export class TimesheetApprovalStatusesApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;timesheet_approval_statuses:write&lt;/code&gt;  Creates a new timesheet approval status for a user&#x27;s timesheet week. The start_date must be a Monday or Sunday, and end_date must be the last day of that week (Sunday for a Monday start, Saturday for a Sunday start). Returns the created timesheet approval status record.
      * @param {module:model/Object} body The timesheet approval status to create.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     createTimesheetApprovalStatusWithHttpInfo(body, opts) {
@@ -83,7 +83,7 @@ export class TimesheetApprovalStatusesApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;timesheet_approval_statuses:write&lt;/code&gt;  Creates a new timesheet approval status for a user&#x27;s timesheet week. The start_date must be a Monday or Sunday, and end_date must be the last day of that week (Sunday for a Monday start, Saturday for a Sunday start). Returns the created timesheet approval status record.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The timesheet approval status to create.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TimesheetApprovalStatusResponseData}
      */
     createTimesheetApprovalStatus(body, opts) {
@@ -100,7 +100,7 @@ export class TimesheetApprovalStatusesApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;timesheet_approval_statuses:read&lt;/code&gt;  Returns the complete timesheet approval status record for a single timesheet approval status.
      * @param {String} timesheet_approval_status_gid Globally unique identifier for the timesheet approval status.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getTimesheetApprovalStatusWithHttpInfo(timesheet_approval_status_gid, opts) {
@@ -142,7 +142,7 @@ export class TimesheetApprovalStatusesApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;timesheet_approval_statuses:read&lt;/code&gt;  Returns the complete timesheet approval status record for a single timesheet approval status.
      * @param {<&vendorExtensions.x-jsdoc-type>} timesheet_approval_status_gid Globally unique identifier for the timesheet approval status.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TimesheetApprovalStatusResponseData}
      */
     getTimesheetApprovalStatus(timesheet_approval_status_gid, opts) {
@@ -165,7 +165,7 @@ export class TimesheetApprovalStatusesApi {
      * @param {String} opts.approval_statuses Filter by approval status. Can be one or more of draft, submitted, approved, or rejected.
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getTimesheetApprovalStatusesWithHttpInfo(workspace, opts) {
@@ -238,7 +238,7 @@ export class TimesheetApprovalStatusesApi {
      * @param {String} opts.approval_statuses Filter by approval status. Can be one or more of draft, submitted, approved, or rejected.
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TimesheetApprovalStatusResponseArray}
      */
     getTimesheetApprovalStatuses(workspace, opts) {
@@ -260,7 +260,7 @@ export class TimesheetApprovalStatusesApi {
      * @param {module:model/Object} body The fields to update on the timesheet approval status.
      * @param {String} timesheet_approval_status_gid Globally unique identifier for the timesheet approval status.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     updateTimesheetApprovalStatusWithHttpInfo(body, timesheet_approval_status_gid, opts) {
@@ -307,7 +307,7 @@ export class TimesheetApprovalStatusesApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body The fields to update on the timesheet approval status.
      * @param {<&vendorExtensions.x-jsdoc-type>} timesheet_approval_status_gid Globally unique identifier for the timesheet approval status.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TimesheetApprovalStatusResponseData}
      */
     updateTimesheetApprovalStatus(body, timesheet_approval_status_gid, opts) {

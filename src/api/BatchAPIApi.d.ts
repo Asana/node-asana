@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * BatchAPI service.
 * @module api/BatchAPIApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class BatchAPIApi {
     /**
@@ -36,7 +36,7 @@ export class BatchAPIApi {
      * Make multiple requests in parallel to Asana&#x27;s API.
      * @param body The requests to batch together via the Batch API.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     createBatchRequestWithHttpInfo(body: any, opts?: { 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
@@ -46,7 +46,7 @@ export class BatchAPIApi {
      * Make multiple requests in parallel to Asana&#x27;s API.
      * @param body The requests to batch together via the Batch API.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     createBatchRequest(body: any, opts?: { 'opt_fields'?: any;  }): Promise<Collection | any>;

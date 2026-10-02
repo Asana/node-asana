@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * Typeahead service.
 * @module api/TypeaheadApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class TypeaheadApi {
     /**
@@ -40,7 +40,7 @@ export class TypeaheadApi {
      * @param opts.type *Deprecated: new integrations should prefer the resource_type field.* (default to user)
      * @param opts.query The string that will be used to search for relevant objects. If an empty string is passed in, the API will return results.
      * @param opts.count The number of results to return. The default is 20 if this parameter is omitted, with a minimum of 1 and a maximum of 100. If there are fewer results found than requested, all will be returned.
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     typeaheadForWorkspaceWithHttpInfo(workspace_gid: string, resource_type: string, opts?: { 'type'?: string; 'query'?: string; 'count'?: any; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
@@ -54,7 +54,7 @@ export class TypeaheadApi {
      * @param opts.type *Deprecated: new integrations should prefer the resource_type field.* (default to user)
      * @param opts.query The string that will be used to search for relevant objects. If an empty string is passed in, the API will return results.
      * @param opts.count The number of results to return. The default is 20 if this parameter is omitted, with a minimum of 1 and a maximum of 100. If there are fewer results found than requested, all will be returned.
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     typeaheadForWorkspace(workspace_gid: string, resource_type: string, opts?: { 'type'?: string; 'query'?: string; 'count'?: any; 'opt_fields'?: any;  }): Promise<Collection | any>;

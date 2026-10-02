@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * Portfolios service.
 * @module api/PortfoliosApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class PortfoliosApi {
     /**
@@ -73,7 +73,7 @@ export class PortfoliosApi {
      * @param body Information about the members being added.
      * @param portfolio_gid Globally unique identifier for the portfolio.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     addMembersForPortfolioWithHttpInfo(body: any, portfolio_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -84,7 +84,7 @@ export class PortfoliosApi {
      * @param body Information about the members being added.
      * @param portfolio_gid Globally unique identifier for the portfolio.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     addMembersForPortfolio(body: any, portfolio_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -94,7 +94,7 @@ export class PortfoliosApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:write&lt;/code&gt;  Creates a new portfolio in the given workspace with the supplied name.  Note that portfolios created in the Asana UI may have some state (like the “Priority” custom field) which is automatically added to the portfolio when it is created. Portfolios created via our API will *not* be created with the same initial state to allow integrations to create their own starting state on a portfolio.
      * @param body The portfolio to create.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     createPortfolioWithHttpInfo(body: any, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -104,7 +104,7 @@ export class PortfoliosApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:write&lt;/code&gt;  Creates a new portfolio in the given workspace with the supplied name.  Note that portfolios created in the Asana UI may have some state (like the “Priority” custom field) which is automatically added to the portfolio when it is created. Portfolios created via our API will *not* be created with the same initial state to allow integrations to create their own starting state on a portfolio.
      * @param body The portfolio to create.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     createPortfolio(body: any, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -131,7 +131,7 @@ export class PortfoliosApi {
      * @param portfolio_gid Globally unique identifier for the portfolio.
      * @param opts Optional parameters
      * @param opts.body Describes the duplicate&#x27;s name and the elements that will be duplicated.
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     duplicatePortfolioWithHttpInfo(portfolio_gid: string, opts?: { 'body'?: any; 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -142,7 +142,7 @@ export class PortfoliosApi {
      * @param portfolio_gid Globally unique identifier for the portfolio.
      * @param opts Optional parameters
      * @param opts.body Describes the duplicate&#x27;s name and the elements that will be duplicated.
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     duplicatePortfolio(portfolio_gid: string, opts?: { 'body'?: any; 'opt_fields'?: any;  }): Promise<any>;
@@ -154,7 +154,7 @@ export class PortfoliosApi {
      * @param opts Optional parameters
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getItemsForPortfolioWithHttpInfo(portfolio_gid: string, opts?: { 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
@@ -166,7 +166,7 @@ export class PortfoliosApi {
      * @param opts Optional parameters
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getItemsForPortfolio(portfolio_gid: string, opts?: { 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | any>;
@@ -176,7 +176,7 @@ export class PortfoliosApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:read&lt;/code&gt;  Returns the complete portfolio record for a single portfolio.
      * @param portfolio_gid Globally unique identifier for the portfolio.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getPortfolioWithHttpInfo(portfolio_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -186,7 +186,7 @@ export class PortfoliosApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:read&lt;/code&gt;  Returns the complete portfolio record for a single portfolio.
      * @param portfolio_gid Globally unique identifier for the portfolio.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getPortfolio(portfolio_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -200,7 +200,7 @@ export class PortfoliosApi {
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param opts.owner The user who owns the portfolio. Currently, API users can only get a list of portfolios that they themselves own, unless the request is made from a Service Account. In the case of a Service Account, if this parameter is specified, then all portfolios owned by this parameter are returned. Otherwise, all portfolios across the workspace are returned.
      * @param opts.custom_type Filter results by custom type. Provide a custom type GID to return only objects of that custom type (an unknown GID returns &#x60;400&#x60;). Provide an empty string to return only objects with no custom type assigned. If this parameter is omitted, results are not filtered by custom type.
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getPortfoliosWithHttpInfo(workspace: string, opts?: { 'limit'?: any; 'offset'?: string; 'owner'?: string; 'custom_type'?: string; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
@@ -214,7 +214,7 @@ export class PortfoliosApi {
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param opts.owner The user who owns the portfolio. Currently, API users can only get a list of portfolios that they themselves own, unless the request is made from a Service Account. In the case of a Service Account, if this parameter is specified, then all portfolios owned by this parameter are returned. Otherwise, all portfolios across the workspace are returned.
      * @param opts.custom_type Filter results by custom type. Provide a custom type GID to return only objects of that custom type (an unknown GID returns &#x60;400&#x60;). Provide an empty string to return only objects with no custom type assigned. If this parameter is omitted, results are not filtered by custom type.
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getPortfolios(workspace: string, opts?: { 'limit'?: any; 'offset'?: string; 'owner'?: string; 'custom_type'?: string; 'opt_fields'?: any;  }): Promise<Collection | any>;
@@ -261,7 +261,7 @@ export class PortfoliosApi {
      * @param body Information about the members being removed.
      * @param portfolio_gid Globally unique identifier for the portfolio.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     removeMembersForPortfolioWithHttpInfo(body: any, portfolio_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -272,7 +272,7 @@ export class PortfoliosApi {
      * @param body Information about the members being removed.
      * @param portfolio_gid Globally unique identifier for the portfolio.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     removeMembersForPortfolio(body: any, portfolio_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -283,7 +283,7 @@ export class PortfoliosApi {
      * @param body The updated fields for the portfolio.
      * @param portfolio_gid Globally unique identifier for the portfolio.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     updatePortfolioWithHttpInfo(body: any, portfolio_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -294,7 +294,7 @@ export class PortfoliosApi {
      * @param body The updated fields for the portfolio.
      * @param portfolio_gid Globally unique identifier for the portfolio.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     updatePortfolio(body: any, portfolio_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;

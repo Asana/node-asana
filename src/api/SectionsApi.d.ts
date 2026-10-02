@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * Sections service.
 * @module api/SectionsApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class SectionsApi {
     /**
@@ -57,7 +57,7 @@ export class SectionsApi {
      * @param project_gid Globally unique identifier for the project.
      * @param opts Optional parameters
      * @param opts.body The section to create.
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     createSectionForProjectWithHttpInfo(project_gid: string, opts?: { 'body'?: any; 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -68,7 +68,7 @@ export class SectionsApi {
      * @param project_gid Globally unique identifier for the project.
      * @param opts Optional parameters
      * @param opts.body The section to create.
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     createSectionForProject(project_gid: string, opts?: { 'body'?: any; 'opt_fields'?: any;  }): Promise<any>;
@@ -94,7 +94,7 @@ export class SectionsApi {
      * Returns the complete record for a single section.
      * @param section_gid The globally unique identifier for the section.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getSectionWithHttpInfo(section_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -104,7 +104,7 @@ export class SectionsApi {
      * Returns the complete record for a single section.
      * @param section_gid The globally unique identifier for the section.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getSection(section_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -116,7 +116,7 @@ export class SectionsApi {
      * @param opts Optional parameters
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getSectionsForProjectWithHttpInfo(project_gid: string, opts?: { 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
@@ -128,7 +128,7 @@ export class SectionsApi {
      * @param opts Optional parameters
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getSectionsForProject(project_gid: string, opts?: { 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | any>;
@@ -159,7 +159,7 @@ export class SectionsApi {
      * @param section_gid The globally unique identifier for the section.
      * @param opts Optional parameters
      * @param opts.body The section to create.
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     updateSectionWithHttpInfo(section_gid: string, opts?: { 'body'?: any; 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -170,7 +170,7 @@ export class SectionsApi {
      * @param section_gid The globally unique identifier for the section.
      * @param opts Optional parameters
      * @param opts.body The section to create.
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     updateSection(section_gid: string, opts?: { 'body'?: any; 'opt_fields'?: any;  }): Promise<any>;

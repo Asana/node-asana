@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * CustomFields service.
 * @module api/CustomFieldsApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class CustomFieldsApi {
     /**
@@ -36,7 +36,7 @@ export class CustomFieldsApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;custom_fields:write&lt;/code&gt;  Creates a new custom field in a workspace. Every custom field is required to be created in a specific workspace, and this workspace cannot be changed once set.  A custom field’s name must be unique within a workspace and not conflict with names of existing task properties such as &#x60;Due Date&#x60; or &#x60;Assignee&#x60;. A custom field’s type must be one of &#x60;text&#x60;, &#x60;enum&#x60;, &#x60;multi_enum&#x60;, &#x60;number&#x60;, &#x60;date&#x60;, or &#x60;people&#x60;.  Returns the full record of the newly created custom field.
      * @param body The custom field object to create.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     createCustomFieldWithHttpInfo(body: any, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -46,7 +46,7 @@ export class CustomFieldsApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;custom_fields:write&lt;/code&gt;  Creates a new custom field in a workspace. Every custom field is required to be created in a specific workspace, and this workspace cannot be changed once set.  A custom field’s name must be unique within a workspace and not conflict with names of existing task properties such as &#x60;Due Date&#x60; or &#x60;Assignee&#x60;. A custom field’s type must be one of &#x60;text&#x60;, &#x60;enum&#x60;, &#x60;multi_enum&#x60;, &#x60;number&#x60;, &#x60;date&#x60;, or &#x60;people&#x60;.  Returns the full record of the newly created custom field.
      * @param body The custom field object to create.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     createCustomField(body: any, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -57,7 +57,7 @@ export class CustomFieldsApi {
      * @param custom_field_gid Globally unique identifier for the custom field.
      * @param opts Optional parameters
      * @param opts.body The enum option object to create.
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     createEnumOptionForCustomFieldWithHttpInfo(custom_field_gid: string, opts?: { 'body'?: any; 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -68,7 +68,7 @@ export class CustomFieldsApi {
      * @param custom_field_gid Globally unique identifier for the custom field.
      * @param opts Optional parameters
      * @param opts.body The enum option object to create.
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     createEnumOptionForCustomField(custom_field_gid: string, opts?: { 'body'?: any; 'opt_fields'?: any;  }): Promise<any>;
@@ -94,7 +94,7 @@ export class CustomFieldsApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;custom_fields:read&lt;/code&gt;  Get the complete definition of a custom field’s metadata.  Since custom fields can be defined for one of a number of types, and these types have different data and behaviors, there are fields that are relevant to a particular type. For instance, as noted above, enum_options is only relevant for the enum type and defines the set of choices that the enum could represent. The examples below show some of these type-specific custom field definitions.
      * @param custom_field_gid Globally unique identifier for the custom field.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getCustomFieldWithHttpInfo(custom_field_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -104,7 +104,7 @@ export class CustomFieldsApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;custom_fields:read&lt;/code&gt;  Get the complete definition of a custom field’s metadata.  Since custom fields can be defined for one of a number of types, and these types have different data and behaviors, there are fields that are relevant to a particular type. For instance, as noted above, enum_options is only relevant for the enum type and defines the set of choices that the enum could represent. The examples below show some of these type-specific custom field definitions.
      * @param custom_field_gid Globally unique identifier for the custom field.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getCustomField(custom_field_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -116,7 +116,7 @@ export class CustomFieldsApi {
      * @param opts Optional parameters
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getCustomFieldsForWorkspaceWithHttpInfo(workspace_gid: string, opts?: { 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
@@ -128,7 +128,7 @@ export class CustomFieldsApi {
      * @param opts Optional parameters
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getCustomFieldsForWorkspace(workspace_gid: string, opts?: { 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | any>;
@@ -139,7 +139,7 @@ export class CustomFieldsApi {
      * @param custom_field_gid Globally unique identifier for the custom field.
      * @param opts Optional parameters
      * @param opts.body The enum option object to create.
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     insertEnumOptionForCustomFieldWithHttpInfo(custom_field_gid: string, opts?: { 'body'?: any; 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -150,7 +150,7 @@ export class CustomFieldsApi {
      * @param custom_field_gid Globally unique identifier for the custom field.
      * @param opts Optional parameters
      * @param opts.body The enum option object to create.
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     insertEnumOptionForCustomField(custom_field_gid: string, opts?: { 'body'?: any; 'opt_fields'?: any;  }): Promise<any>;
@@ -161,7 +161,7 @@ export class CustomFieldsApi {
      * @param custom_field_gid Globally unique identifier for the custom field.
      * @param opts Optional parameters
      * @param opts.body The custom field object with all updated properties.
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     updateCustomFieldWithHttpInfo(custom_field_gid: string, opts?: { 'body'?: any; 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -172,7 +172,7 @@ export class CustomFieldsApi {
      * @param custom_field_gid Globally unique identifier for the custom field.
      * @param opts Optional parameters
      * @param opts.body The custom field object with all updated properties.
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     updateCustomField(custom_field_gid: string, opts?: { 'body'?: any; 'opt_fields'?: any;  }): Promise<any>;
@@ -183,7 +183,7 @@ export class CustomFieldsApi {
      * @param enum_option_gid Globally unique identifier for the enum option.
      * @param opts Optional parameters
      * @param opts.body The enum option object to update
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     updateEnumOptionWithHttpInfo(enum_option_gid: string, opts?: { 'body'?: any; 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -194,7 +194,7 @@ export class CustomFieldsApi {
      * @param enum_option_gid Globally unique identifier for the enum option.
      * @param opts Optional parameters
      * @param opts.body The enum option object to update
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     updateEnumOption(enum_option_gid: string, opts?: { 'body'?: any; 'opt_fields'?: any;  }): Promise<any>;

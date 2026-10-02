@@ -61,7 +61,7 @@ AttachmentsApi:
     client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
     
     let attachmentsApiInstance = new Asana.AttachmentsApi(client);
-    let parent = "159874"; // String | Globally unique identifier for object to fetch statuses from. Must be a GID for a `project`, `project_brief`, or `task`.
+    let parent = "159874"; // String | Globally unique identifier for the object to fetch attachments from. Must be a GID for a `project`, `project_brief`, or `task`.
     let opts = { 
         'limit': 50, 
         'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 

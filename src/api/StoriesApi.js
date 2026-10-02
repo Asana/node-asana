@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Stories service.
 * @module api/StoriesApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class StoriesApi {
 
@@ -42,7 +42,7 @@ export class StoriesApi {
      * @param {module:model/Object} body The story to create.
      * @param {String} goal_gid Globally unique identifier for the goal.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     createStoryForGoalWithHttpInfo(body, goal_gid, opts) {
@@ -89,7 +89,7 @@ export class StoriesApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body The story to create.
      * @param {<&vendorExtensions.x-jsdoc-type>} goal_gid Globally unique identifier for the goal.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/StoryResponseData}
      */
     createStoryForGoal(body, goal_gid, opts) {
@@ -107,7 +107,7 @@ export class StoriesApi {
      * @param {module:model/Object} body The story to create.
      * @param {String} task_gid The task to operate on.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     createStoryForTaskWithHttpInfo(body, task_gid, opts) {
@@ -154,7 +154,7 @@ export class StoriesApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body The story to create.
      * @param {<&vendorExtensions.x-jsdoc-type>} task_gid The task to operate on.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/StoryResponseData}
      */
     createStoryForTask(body, task_gid, opts) {
@@ -226,7 +226,10 @@ export class StoriesApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Date} opts.created_after Only return stories created after this time. Applies to every story type; pair it with &#x60;resource_subtype&#x3D;comment_added&#x60; to get just the comments added since a given moment. The bound is exclusive but has second granularity: it is truncated to the start of its second before filtering, so any story created within that same second is still returned. A client polling with the &#x60;created_at&#x60; of the last story it saw should expect to see that story again, and others alongside it, and should de-duplicate on &#x60;gid&#x60;. 
+     * @param {module:model/String} opts.resource_subtype Only return stories of this subtype. Only &#x60;comment_added&#x60; is supported, which narrows the response to comments and excludes activity such as assignments, due date changes, and project moves. Omit to return the full activity feed. 
+     * @param {Boolean} opts.sort_ascending Creation-time order: &#x60;true&#x60; (the default) is oldest first, &#x60;false&#x60; is newest first. Pair &#x60;false&#x60; with &#x60;limit&#x60; to read only the most recent stories. Ordering is applied across the parent&#x27;s stories; on a parent with an extremely large activity feed the feed may be truncated before it is ordered, so pair &#x60;false&#x60; with &#x60;created_after&#x60; to bound what is considered.  (default to <.>)
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getStoriesForGoalWithHttpInfo(goal_gid, opts) {
@@ -294,7 +297,10 @@ export class StoriesApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Date} opts.created_after Only return stories created after this time. Applies to every story type; pair it with &#x60;resource_subtype&#x3D;comment_added&#x60; to get just the comments added since a given moment. The bound is exclusive but has second granularity: it is truncated to the start of its second before filtering, so any story created within that same second is still returned. A client polling with the &#x60;created_at&#x60; of the last story it saw should expect to see that story again, and others alongside it, and should de-duplicate on &#x60;gid&#x60;. 
+     * @param {module:model/String} opts.resource_subtype Only return stories of this subtype. Only &#x60;comment_added&#x60; is supported, which narrows the response to comments and excludes activity such as assignments, due date changes, and project moves. Omit to return the full activity feed. 
+     * @param {Boolean} opts.sort_ascending Creation-time order: &#x60;true&#x60; (the default) is oldest first, &#x60;false&#x60; is newest first. Pair &#x60;false&#x60; with &#x60;limit&#x60; to read only the most recent stories. Ordering is applied across the parent&#x27;s stories; on a parent with an extremely large activity feed the feed may be truncated before it is ordered, so pair &#x60;false&#x60; with &#x60;created_after&#x60; to bound what is considered.  (default to <.>)
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/StoryResponseArray}
      */
     getStoriesForGoal(goal_gid, opts) {
@@ -317,7 +323,10 @@ export class StoriesApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Date} opts.created_after Only return stories created after this time. Applies to every story type; pair it with &#x60;resource_subtype&#x3D;comment_added&#x60; to get just the comments added since a given moment. The bound is exclusive but has second granularity: it is truncated to the start of its second before filtering, so any story created within that same second is still returned. A client polling with the &#x60;created_at&#x60; of the last story it saw should expect to see that story again, and others alongside it, and should de-duplicate on &#x60;gid&#x60;. 
+     * @param {module:model/String} opts.resource_subtype Only return stories of this subtype. Only &#x60;comment_added&#x60; is supported, which narrows the response to comments and excludes activity such as assignments, due date changes, and project moves. Omit to return the full activity feed. 
+     * @param {Boolean} opts.sort_ascending Creation-time order: &#x60;true&#x60; (the default) is oldest first, &#x60;false&#x60; is newest first. Pair &#x60;false&#x60; with &#x60;limit&#x60; to read only the most recent stories. Ordering is applied across the parent&#x27;s stories; on a parent with an extremely large activity feed the feed may be truncated before it is ordered, so pair &#x60;false&#x60; with &#x60;created_after&#x60; to bound what is considered.  (default to <.>)
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getStoriesForTaskWithHttpInfo(task_gid, opts) {
@@ -385,7 +394,10 @@ export class StoriesApi {
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Date} opts.created_after Only return stories created after this time. Applies to every story type; pair it with &#x60;resource_subtype&#x3D;comment_added&#x60; to get just the comments added since a given moment. The bound is exclusive but has second granularity: it is truncated to the start of its second before filtering, so any story created within that same second is still returned. A client polling with the &#x60;created_at&#x60; of the last story it saw should expect to see that story again, and others alongside it, and should de-duplicate on &#x60;gid&#x60;. 
+     * @param {module:model/String} opts.resource_subtype Only return stories of this subtype. Only &#x60;comment_added&#x60; is supported, which narrows the response to comments and excludes activity such as assignments, due date changes, and project moves. Omit to return the full activity feed. 
+     * @param {Boolean} opts.sort_ascending Creation-time order: &#x60;true&#x60; (the default) is oldest first, &#x60;false&#x60; is newest first. Pair &#x60;false&#x60; with &#x60;limit&#x60; to read only the most recent stories. Ordering is applied across the parent&#x27;s stories; on a parent with an extremely large activity feed the feed may be truncated before it is ordered, so pair &#x60;false&#x60; with &#x60;created_after&#x60; to bound what is considered.  (default to <.>)
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/StoryResponseArray}
      */
     getStoriesForTask(task_gid, opts) {
@@ -406,7 +418,7 @@ export class StoriesApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:read&lt;/code&gt;  Returns the full record for a single story.
      * @param {String} story_gid Globally unique identifier for the story.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getStoryWithHttpInfo(story_gid, opts) {
@@ -448,7 +460,7 @@ export class StoriesApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:read&lt;/code&gt;  Returns the full record for a single story.
      * @param {<&vendorExtensions.x-jsdoc-type>} story_gid Globally unique identifier for the story.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/StoryResponseData}
      */
     getStory(story_gid, opts) {
@@ -466,7 +478,7 @@ export class StoriesApi {
      * @param {module:model/Object} body The comment story to update.
      * @param {String} story_gid Globally unique identifier for the story.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     updateStoryWithHttpInfo(body, story_gid, opts) {
@@ -513,7 +525,7 @@ export class StoriesApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body The comment story to update.
      * @param {<&vendorExtensions.x-jsdoc-type>} story_gid Globally unique identifier for the story.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/StoryResponseData}
      */
     updateStory(body, story_gid, opts) {

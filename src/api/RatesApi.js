@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Rates service.
 * @module api/RatesApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class RatesApi {
 
@@ -41,7 +41,7 @@ export class RatesApi {
      * Creates a new rate for a &#x60;parent&#x60; + &#x60;resource&#x60; combination.
      * @param {module:model/Object} body The rate to create.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     createRateWithHttpInfo(body, opts) {
@@ -83,7 +83,7 @@ export class RatesApi {
      * Creates a new rate for a &#x60;parent&#x60; + &#x60;resource&#x60; combination.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The rate to create.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/RateResponseData}
      */
     createRate(body, opts) {
@@ -153,7 +153,7 @@ export class RatesApi {
      * Returns the complete rate record for a single rate.
      * @param {String} rate_gid Globally unique identifier for the rate.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getRateWithHttpInfo(rate_gid, opts) {
@@ -195,7 +195,7 @@ export class RatesApi {
      * Returns the complete rate record for a single rate.
      * @param {<&vendorExtensions.x-jsdoc-type>} rate_gid Globally unique identifier for the rate.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/RateResponseData}
      */
     getRate(rate_gid, opts) {
@@ -215,7 +215,7 @@ export class RatesApi {
      * @param {String} opts.resource Globally unique identifier for &#x60;user&#x60; or &#x60;placeholder&#x60;.
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getRatesWithHttpInfo(opts) {
@@ -280,7 +280,7 @@ export class RatesApi {
      * @param {String} opts.resource Globally unique identifier for &#x60;user&#x60; or &#x60;placeholder&#x60;.
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/RateOrPlaceholderCompactArray}
      */
     getRates(opts) {
@@ -302,7 +302,7 @@ export class RatesApi {
      * @param {module:model/Object} body The updated fields for the rate.
      * @param {String} rate_gid Globally unique identifier for the rate.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     updateRateWithHttpInfo(body, rate_gid, opts) {
@@ -349,7 +349,7 @@ export class RatesApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body The updated fields for the rate.
      * @param {<&vendorExtensions.x-jsdoc-type>} rate_gid Globally unique identifier for the rate.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/RateResponseData}
      */
     updateRate(body, rate_gid, opts) {

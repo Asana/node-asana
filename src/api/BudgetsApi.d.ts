@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * Budgets service.
 * @module api/BudgetsApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class BudgetsApi {
     /**
@@ -68,7 +68,7 @@ export class BudgetsApi {
      * Returns the complete budget record for a single budget.
      * @param budget_gid Globally unique identifier for the budget.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getBudgetWithHttpInfo(budget_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -78,7 +78,7 @@ export class BudgetsApi {
      * Returns the complete budget record for a single budget.
      * @param budget_gid Globally unique identifier for the budget.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getBudget(budget_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -105,7 +105,7 @@ export class BudgetsApi {
      * @param body The budget to update.
      * @param budget_gid Globally unique identifier for the budget.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     updateBudgetWithHttpInfo(body: any, budget_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -116,7 +116,7 @@ export class BudgetsApi {
      * @param body The budget to update.
      * @param budget_gid Globally unique identifier for the budget.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     updateBudget(body: any, budget_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;

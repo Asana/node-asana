@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * AccessRequests service.
 * @module api/AccessRequestsApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class AccessRequestsApi {
     /**
@@ -69,7 +69,7 @@ export class AccessRequestsApi {
      * @param target Globally unique identifier for the target object.
      * @param opts Optional parameters
      * @param opts.user A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getAccessRequestsWithHttpInfo(target: string, opts?: { 'user'?: string; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
@@ -80,7 +80,7 @@ export class AccessRequestsApi {
      * @param target Globally unique identifier for the target object.
      * @param opts Optional parameters
      * @param opts.user A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getAccessRequests(target: string, opts?: { 'user'?: string; 'opt_fields'?: any;  }): Promise<Collection | any>;

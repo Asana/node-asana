@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * StatusUpdates service.
 * @module api/StatusUpdatesApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class StatusUpdatesApi {
     /**
@@ -36,29 +36,25 @@ export class StatusUpdatesApi {
      * Creates a new status update on an object. Returns the full record of the newly created status update.
      * @param body The status update to create.
      * @param opts Optional parameters
-     * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
-     * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
-    createStatusForObjectWithHttpInfo(body: any, opts?: { 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
+    createStatusForObjectWithHttpInfo(body: any, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
 
     /**
      * Create a status update
      * Creates a new status update on an object. Returns the full record of the newly created status update.
      * @param body The status update to create.
      * @param opts Optional parameters
-     * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
-     * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
-    createStatusForObject(body: any, opts?: { 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<any>;
+    createStatusForObject(body: any, opts?: { 'opt_fields'?: any;  }): Promise<any>;
 
     /**
      * Delete a status update
      * Deletes a specific, existing status update.  Returns an empty data record.
-     * @param status_update_gid The status update to get.
+     * @param status_update_gid Globally unique identifier for the status update.
      * @returns A Promise, with an object containing data and HTTP response
      */
     deleteStatusWithHttpInfo(status_update_gid: string): Promise<{ response: any; data: any }>;
@@ -66,7 +62,7 @@ export class StatusUpdatesApi {
     /**
      * Delete a status update
      * Deletes a specific, existing status update.  Returns an empty data record.
-     * @param status_update_gid The status update to get.
+     * @param status_update_gid Globally unique identifier for the status update.
      * @returns A Promise
      */
     deleteStatus(status_update_gid: string): Promise<any>;
@@ -74,9 +70,9 @@ export class StatusUpdatesApi {
     /**
      * Get a status update
      * Returns the complete record for a single status update.
-     * @param status_update_gid The status update to get.
+     * @param status_update_gid Globally unique identifier for the status update.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getStatusWithHttpInfo(status_update_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -84,9 +80,9 @@ export class StatusUpdatesApi {
     /**
      * Get a status update
      * Returns the complete record for a single status update.
-     * @param status_update_gid The status update to get.
+     * @param status_update_gid Globally unique identifier for the status update.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getStatus(status_update_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -99,7 +95,7 @@ export class StatusUpdatesApi {
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param opts.created_since Only return statuses that have been created since the given time.
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getStatusesForObjectWithHttpInfo(parent: string, opts?: { 'limit'?: any; 'offset'?: string; 'created_since'?: any; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
@@ -112,7 +108,7 @@ export class StatusUpdatesApi {
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param opts.created_since Only return statuses that have been created since the given time.
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getStatusesForObject(parent: string, opts?: { 'limit'?: any; 'offset'?: string; 'created_since'?: any; 'opt_fields'?: any;  }): Promise<Collection | any>;

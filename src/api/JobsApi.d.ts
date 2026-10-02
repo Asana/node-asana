@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * Jobs service.
 * @module api/JobsApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class JobsApi {
     /**
@@ -36,7 +36,7 @@ export class JobsApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;jobs:read&lt;/code&gt;  Returns the full record for a job.
      * @param job_gid Globally unique identifier for the job.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getJobWithHttpInfo(job_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -46,7 +46,7 @@ export class JobsApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;jobs:read&lt;/code&gt;  Returns the full record for a job.
      * @param job_gid Globally unique identifier for the job.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getJob(job_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;

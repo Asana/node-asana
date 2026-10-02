@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * AccessRequests service.
 * @module api/AccessRequestsApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class AccessRequestsApi {
 
@@ -148,7 +148,7 @@ export class AccessRequestsApi {
      * @param {String} target Globally unique identifier for the target object.
      * @param {Object} opts Optional parameters
      * @param {String} opts.user A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getAccessRequestsWithHttpInfo(target, opts) {
@@ -216,7 +216,7 @@ export class AccessRequestsApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} target Globally unique identifier for the target object.
      * @param {Object} opts Optional parameters
      * @param {String} opts.user A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AccessRequestResponseArray}
      */
     getAccessRequests(target, opts) {

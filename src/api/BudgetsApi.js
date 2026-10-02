@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Budgets service.
 * @module api/BudgetsApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class BudgetsApi {
 
@@ -147,7 +147,7 @@ export class BudgetsApi {
      * Returns the complete budget record for a single budget.
      * @param {String} budget_gid Globally unique identifier for the budget.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getBudgetWithHttpInfo(budget_gid, opts) {
@@ -189,7 +189,7 @@ export class BudgetsApi {
      * Returns the complete budget record for a single budget.
      * @param {<&vendorExtensions.x-jsdoc-type>} budget_gid Globally unique identifier for the budget.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/BudgetResponseData}
      */
     getBudget(budget_gid, opts) {
@@ -289,7 +289,7 @@ export class BudgetsApi {
      * @param {module:model/Object} body The budget to update.
      * @param {String} budget_gid Globally unique identifier for the budget.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     updateBudgetWithHttpInfo(body, budget_gid, opts) {
@@ -336,7 +336,7 @@ export class BudgetsApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body The budget to update.
      * @param {<&vendorExtensions.x-jsdoc-type>} budget_gid Globally unique identifier for the budget.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/BudgetResponseData}
      */
     updateBudget(body, budget_gid, opts) {

@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * TimePeriods service.
 * @module api/TimePeriodsApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class TimePeriodsApi {
     /**
@@ -36,7 +36,7 @@ export class TimePeriodsApi {
      * Returns the full record for a single time period.
      * @param time_period_gid Globally unique identifier for the time period.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getTimePeriodWithHttpInfo(time_period_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -46,7 +46,7 @@ export class TimePeriodsApi {
      * Returns the full record for a single time period.
      * @param time_period_gid Globally unique identifier for the time period.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getTimePeriod(time_period_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -60,7 +60,7 @@ export class TimePeriodsApi {
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param opts.start_on ISO 8601 date string
      * @param opts.end_on ISO 8601 date string
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getTimePeriodsWithHttpInfo(workspace: string, opts?: { 'limit'?: any; 'offset'?: string; 'start_on'?: any; 'end_on'?: any; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
@@ -74,7 +74,7 @@ export class TimePeriodsApi {
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param opts.start_on ISO 8601 date string
      * @param opts.end_on ISO 8601 date string
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getTimePeriods(workspace: string, opts?: { 'limit'?: any; 'offset'?: string; 'start_on'?: any; 'end_on'?: any; 'opt_fields'?: any;  }): Promise<Collection | any>;

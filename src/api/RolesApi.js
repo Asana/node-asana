@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Roles service.
 * @module api/RolesApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class RolesApi {
 
@@ -41,7 +41,7 @@ export class RolesApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;roles:write&lt;/code&gt;  Creates a new RBAC role in the workspace.
      * @param {module:model/Object} body The role to create.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     createRoleWithHttpInfo(body, opts) {
@@ -83,7 +83,7 @@ export class RolesApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;roles:write&lt;/code&gt;  Creates a new RBAC role in the workspace.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The role to create.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/RbacRoleResponseData}
      */
     createRole(body, opts) {
@@ -153,7 +153,7 @@ export class RolesApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;roles:read&lt;/code&gt;  Returns the complete role record for a single role.
      * @param {String} role_gid Globally unique identifier for the role.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getRoleWithHttpInfo(role_gid, opts) {
@@ -195,7 +195,7 @@ export class RolesApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;roles:read&lt;/code&gt;  Returns the complete role record for a single role.
      * @param {<&vendorExtensions.x-jsdoc-type>} role_gid Globally unique identifier for the role.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/RbacRoleResponseData}
      */
     getRole(role_gid, opts) {
@@ -210,17 +210,21 @@ export class RolesApi {
     /**
      * Get multiple roles
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;roles:read&lt;/code&gt;  Returns all RBAC roles for a workspace.
+     * @param {String} workspace The workspace or organization to filter roles on.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param {String} opts.workspace The workspace or organization to filter roles on.
      * @param {Boolean} opts.archived Only return projects whose &#x60;archived&#x60; field takes on the value of this parameter.
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
-    getRolesWithHttpInfo(opts) {
+    getRolesWithHttpInfo(workspace, opts) {
         opts = opts || {};
         let postBody = null;
+        // verify the required parameter 'workspace' is set
+        if (workspace === undefined || workspace === null) {
+            throw new Error("Missing the required parameter 'workspace' when calling getRoles");
+        }
 
         let pathParams = {
             
@@ -228,6 +232,7 @@ export class RolesApi {
         let queryParams = {};
         opts = opts || {};
         queryParams = opts;
+        queryParams['workspace'] = workspace;
 
         let headerParams = {
             
@@ -275,21 +280,21 @@ export class RolesApi {
     /**
      * Get multiple roles
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;roles:read&lt;/code&gt;  Returns all RBAC roles for a workspace.
+     * @param {<&vendorExtensions.x-jsdoc-type>} workspace The workspace or organization to filter roles on.
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param {String} opts.workspace The workspace or organization to filter roles on.
      * @param {Boolean} opts.archived Only return projects whose &#x60;archived&#x60; field takes on the value of this parameter.
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/RbacRoleResponseArray}
      */
-    getRoles(opts) {
+    getRoles(workspace, opts) {
         // Check if RETURN_COLLECTION is set and return a collection object if it is
         if (this.apiClient.RETURN_COLLECTION) {
-            return this.getRolesWithHttpInfo(opts)
+            return this.getRolesWithHttpInfo(workspace, opts)
         }
 
-        return this.getRolesWithHttpInfo(opts)
+        return this.getRolesWithHttpInfo(workspace, opts)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });
@@ -302,7 +307,7 @@ export class RolesApi {
      * @param {module:model/Object} body The updated fields for the role.
      * @param {String} role_gid Globally unique identifier for the role.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     updateRoleWithHttpInfo(body, role_gid, opts) {
@@ -349,7 +354,7 @@ export class RolesApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body The updated fields for the role.
      * @param {<&vendorExtensions.x-jsdoc-type>} role_gid Globally unique identifier for the role.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/RbacRoleResponseData}
      */
     updateRole(body, role_gid, opts) {

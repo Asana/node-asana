@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * UserTaskLists service.
 * @module api/UserTaskListsApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class UserTaskListsApi {
     /**
@@ -36,7 +36,7 @@ export class UserTaskListsApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tasks:read&lt;/code&gt;  Returns the full record for a user task list.
      * @param user_task_list_gid Globally unique identifier for the user task list.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getUserTaskListWithHttpInfo(user_task_list_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -46,7 +46,7 @@ export class UserTaskListsApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tasks:read&lt;/code&gt;  Returns the full record for a user task list.
      * @param user_task_list_gid Globally unique identifier for the user task list.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getUserTaskList(user_task_list_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -57,7 +57,7 @@ export class UserTaskListsApi {
      * @param user_gid A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
      * @param workspace The workspace in which to get the user task list.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getUserTaskListForUserWithHttpInfo(user_gid: string, workspace: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -68,7 +68,7 @@ export class UserTaskListsApi {
      * @param user_gid A string identifying a user. This can either be the string \&quot;me\&quot;, an email, or the gid of a user.
      * @param workspace The workspace in which to get the user task list.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getUserTaskListForUser(user_gid: string, workspace: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;

@@ -22,6 +22,7 @@ Method | HTTP request | Description
 [**removeCustomFieldSettingForProject**](ProjectsApi.md#removeCustomFieldSettingForProject) | **POST** /projects/{project_gid}/removeCustomFieldSetting | Remove a custom field from a project
 [**removeFollowersForProject**](ProjectsApi.md#removeFollowersForProject) | **POST** /projects/{project_gid}/removeFollowers | Remove followers from a project
 [**removeMembersForProject**](ProjectsApi.md#removeMembersForProject) | **POST** /projects/{project_gid}/removeMembers | Remove users from a project
+[**rollupProject**](ProjectsApi.md#rollupProject) | **POST** /projects/{project_gid}/rollup | Roll up subtask dates for a project
 [**searchProjectsForWorkspace**](ProjectsApi.md#searchProjectsForWorkspace) | **GET** /workspaces/{workspace_gid}/projects/search | Search projects in a workspace
 [**updateProject**](ProjectsApi.md#updateProject) | **PUT** /projects/{project_gid} | Update a project
 
@@ -61,7 +62,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **Object**| Information about the custom field setting. | 
  **project_gid** | **String**| Globally unique identifier for the project. | 
- **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields). | [optional] 
 
 ### Return type
 
@@ -108,7 +109,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **Object**| Information about the followers being added. | 
  **project_gid** | **String**| Globally unique identifier for the project. | 
- **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields). | [optional] 
 
 ### Return type
 
@@ -155,7 +156,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **Object**| Information about the members being added. | 
  **project_gid** | **String**| Globally unique identifier for the project. | 
- **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields). | [optional] 
 
 ### Return type
 
@@ -200,7 +201,7 @@ projectsApiInstance.createProject(body, opts).then((result) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **Object**| The project to create. | 
- **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields). | [optional] 
 
 ### Return type
 
@@ -247,7 +248,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **Object**| The new project to create. | 
  **team_gid** | **String**| Globally unique identifier for the team. | 
- **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields). | [optional] 
 
 ### Return type
 
@@ -294,7 +295,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **Object**| The new project to create. | 
  **workspace_gid** | **String**| Globally unique identifier for the workspace or organization. | 
- **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields). | [optional] 
 
 ### Return type
 
@@ -367,7 +368,7 @@ let projectsApiInstance = new Asana.ProjectsApi(client);
 let project_gid = "1331"; // String | Globally unique identifier for the project.
 let opts = { 
     'body': {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}, 
-    'opt_fields': "new_graph_export,new_graph_export.completed_at,new_graph_export.created_at,new_graph_export.download_url,new_portfolio,new_portfolio.name,new_portfolio.resource_subtype,new_project,new_project.name,new_project.resource_subtype,new_project_template,new_project_template.name,new_resource_export,new_resource_export.completed_at,new_resource_export.created_at,new_resource_export.download_url,new_task,new_task.created_by,new_task.name,new_task.resource_subtype,resource_subtype,status"
+    'opt_fields': "dates_rollup_progress,dates_rollup_progress.total_tasks,dates_rollup_progress.updated_tasks,new_graph_export,new_graph_export.completed_at,new_graph_export.created_at,new_graph_export.download_url,new_portfolio,new_portfolio.name,new_portfolio.resource_subtype,new_project,new_project.name,new_project.resource_subtype,new_project_template,new_project_template.name,new_resource_export,new_resource_export.completed_at,new_resource_export.created_at,new_resource_export.download_url,new_task,new_task.created_by,new_task.name,new_task.resource_subtype,resource_subtype,status"
 };
 projectsApiInstance.duplicateProject(project_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -383,7 +384,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_gid** | **String**| Globally unique identifier for the project. | 
  **body** | **Object**| Describes the duplicate&#x27;s name and the elements that will be duplicated. | [optional] 
- **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields). | [optional] 
 
 ### Return type
 
@@ -428,7 +429,7 @@ projectsApiInstance.getProject(project_gid, opts).then((result) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_gid** | **String**| Globally unique identifier for the project. | 
- **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields). | [optional] 
 
 ### Return type
 
@@ -483,7 +484,7 @@ Name | Type | Description  | Notes
  **team** | **String**| **Deprecated.** The team to filter projects on. Please use &#x60;GET /memberships&#x60; with &#x60;{ member: team, resource_subtype: project_membership }&#x60; instead. | [optional] 
  **archived** | **Boolean**| Only return projects whose &#x60;archived&#x60; field takes on the value of this parameter. | [optional] 
  **custom_type** | **String**| Filter results by custom type. Provide a custom type GID to return only objects of that custom type (an unknown GID returns &#x60;400&#x60;). Provide an empty string to return only objects with no custom type assigned. If this parameter is omitted, results are not filtered by custom type. | [optional] 
- **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields). | [optional] 
 
 ### Return type
 
@@ -534,7 +535,7 @@ Name | Type | Description  | Notes
  **limit** | **Number**| Results per page. The number of objects to return per page. The value must be between 1 and 100. | [optional] 
  **offset** | **String**| Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.* | [optional] 
  **include_inherited_projects** | **Boolean**| Opt-in, read-only. When &#x60;true&#x60;, the response also includes projects the task inherits from its ancestor tasks (in addition to its direct projects). Defaults to &#x60;false&#x60;, in which case only direct projects are returned. | [optional] [default to false]
- **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields). | [optional] 
 
 ### Return type
 
@@ -585,7 +586,7 @@ Name | Type | Description  | Notes
  **limit** | **Number**| Results per page. The number of objects to return per page. The value must be between 1 and 100. | [optional] 
  **offset** | **String**| Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.* | [optional] 
  **archived** | **Boolean**| Only return projects whose &#x60;archived&#x60; field takes on the value of this parameter. | [optional] 
- **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields). | [optional] 
 
 ### Return type
 
@@ -636,7 +637,7 @@ Name | Type | Description  | Notes
  **limit** | **Number**| Results per page. The number of objects to return per page. The value must be between 1 and 100. | [optional] 
  **offset** | **String**| Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.* | [optional] 
  **archived** | **Boolean**| Only return projects whose &#x60;archived&#x60; field takes on the value of this parameter. | [optional] 
- **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields). | [optional] 
 
 ### Return type
 
@@ -681,7 +682,7 @@ projectsApiInstance.getTaskCountsForProject(project_gid, opts).then((result) => 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_gid** | **String**| Globally unique identifier for the project. | 
- **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields). | [optional] 
 
 ### Return type
 
@@ -712,7 +713,7 @@ let projectsApiInstance = new Asana.ProjectsApi(client);
 let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | Describes the inputs used for creating a project template, such as the resulting project template's name, which team it should be created in.
 let project_gid = "1331"; // String | Globally unique identifier for the project.
 let opts = { 
-    'opt_fields': "new_graph_export,new_graph_export.completed_at,new_graph_export.created_at,new_graph_export.download_url,new_portfolio,new_portfolio.name,new_portfolio.resource_subtype,new_project,new_project.name,new_project.resource_subtype,new_project_template,new_project_template.name,new_resource_export,new_resource_export.completed_at,new_resource_export.created_at,new_resource_export.download_url,new_task,new_task.created_by,new_task.name,new_task.resource_subtype,resource_subtype,status"
+    'opt_fields': "dates_rollup_progress,dates_rollup_progress.total_tasks,dates_rollup_progress.updated_tasks,new_graph_export,new_graph_export.completed_at,new_graph_export.created_at,new_graph_export.download_url,new_portfolio,new_portfolio.name,new_portfolio.resource_subtype,new_project,new_project.name,new_project.resource_subtype,new_project_template,new_project_template.name,new_resource_export,new_resource_export.completed_at,new_resource_export.created_at,new_resource_export.download_url,new_task,new_task.created_by,new_task.name,new_task.resource_subtype,resource_subtype,status"
 };
 projectsApiInstance.projectSaveAsTemplate(body, project_gid, opts).then((result) => {
     console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
@@ -728,7 +729,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **Object**| Describes the inputs used for creating a project template, such as the resulting project template&#x27;s name, which team it should be created in. | 
  **project_gid** | **String**| Globally unique identifier for the project. | 
- **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields). | [optional] 
 
 ### Return type
 
@@ -819,7 +820,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **Object**| Information about the followers being removed. | 
  **project_gid** | **String**| Globally unique identifier for the project. | 
- **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields). | [optional] 
 
 ### Return type
 
@@ -866,7 +867,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **Object**| Information about the members being removed. | 
  **project_gid** | **String**| Globally unique identifier for the project. | 
- **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields). | [optional] 
 
 ### Return type
 
@@ -875,6 +876,51 @@ object
 ### HTTP request headers
 
  - **Content-Type**: application/json; charset=UTF-8
+ - **Accept**: application/json; charset=UTF-8
+
+<a name="rollupProject"></a>
+# **rollupProject**
+
+Roll up subtask dates for a project
+
+<b>Required scope: </b><code>projects:write</code>  Creates and returns a job that will asynchronously roll up subtask dates for tasks in the project with the given `project_gid` whose descendant dates fall outside their current date range. Each parent task's start and due dates are reconciled to cover its descendants' date range.
+
+([more information](https://developers.asana.com/reference/rollupproject))
+
+### Example
+```javascript
+const Asana = require('asana');
+
+let client = new Asana.ApiClient();
+client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+
+let projectsApiInstance = new Asana.ProjectsApi(client);
+let project_gid = "1331"; // String | Globally unique identifier for the project.
+let opts = { 
+    'opt_fields': "dates_rollup_progress,dates_rollup_progress.total_tasks,dates_rollup_progress.updated_tasks,new_graph_export,new_graph_export.completed_at,new_graph_export.created_at,new_graph_export.download_url,new_portfolio,new_portfolio.name,new_portfolio.resource_subtype,new_project,new_project.name,new_project.resource_subtype,new_project_template,new_project_template.name,new_resource_export,new_resource_export.completed_at,new_resource_export.created_at,new_resource_export.download_url,new_task,new_task.created_by,new_task.name,new_task.resource_subtype,resource_subtype,status"
+};
+projectsApiInstance.rollupProject(project_gid, opts).then((result) => {
+    console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+}, (error) => {
+    console.error(error.response.body);
+});
+
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_gid** | **String**| Globally unique identifier for the project. | 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields). | [optional] 
+
+### Return type
+
+object
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json; charset=UTF-8
 
 <a name="searchProjectsForWorkspace"></a>
@@ -965,7 +1011,7 @@ Name | Type | Description  | Notes
  **start_on** | **Date**| ISO 8601 date string or &#x60;null&#x60;. | [optional] 
  **start_on.before** | **Date**| ISO 8601 date string. | [optional] 
  **start_on.after** | **Date**| ISO 8601 date string. | [optional] 
- **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields). | [optional] 
 
 ### Return type
 
@@ -1012,7 +1058,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | **Object**| The updated fields for the project. | 
  **project_gid** | **String**| Globally unique identifier for the project. | 
- **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. | [optional] 
+ **opt_fields** | **Object**| This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields). | [optional] 
 
 ### Return type
 

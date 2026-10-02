@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * ProjectBriefs service.
 * @module api/ProjectBriefsApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class ProjectBriefsApi {
     /**
@@ -37,7 +37,7 @@ export class ProjectBriefsApi {
      * @param body The project brief to create.
      * @param project_gid Globally unique identifier for the project.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     createProjectBriefWithHttpInfo(body: any, project_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -48,7 +48,7 @@ export class ProjectBriefsApi {
      * @param body The project brief to create.
      * @param project_gid Globally unique identifier for the project.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     createProjectBrief(body: any, project_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -74,7 +74,7 @@ export class ProjectBriefsApi {
      * Get the full record for a project brief.
      * @param project_brief_gid Globally unique identifier for the project brief.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getProjectBriefWithHttpInfo(project_brief_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -84,7 +84,7 @@ export class ProjectBriefsApi {
      * Get the full record for a project brief.
      * @param project_brief_gid Globally unique identifier for the project brief.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getProjectBrief(project_brief_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -95,7 +95,7 @@ export class ProjectBriefsApi {
      * @param body The updated fields for the project brief.
      * @param project_brief_gid Globally unique identifier for the project brief.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     updateProjectBriefWithHttpInfo(body: any, project_brief_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -106,7 +106,7 @@ export class ProjectBriefsApi {
      * @param body The updated fields for the project brief.
      * @param project_brief_gid Globally unique identifier for the project brief.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     updateProjectBrief(body: any, project_brief_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;

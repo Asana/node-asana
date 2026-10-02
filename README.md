@@ -1,7 +1,7 @@
 # asana [![GitHub release][release-image]][release-url] [![NPM Version][npm-image]][npm-url]
 
 - API version: 1.0
-- Package version: 3.2.0
+- Package version: 3.3.0
 
 ## Installation
 
@@ -18,7 +18,7 @@ npm install asana --save
 Include the latest release directly from GitHub:
 
 ```html
-<script src="https://github.com/Asana/node-asana/releases/download/v3.2.0/asana-min.js"></script>
+<script src="https://github.com/Asana/node-asana/releases/download/v3.3.0/asana-min.js"></script>
 ```
 
 Example usage (**NOTE**: be careful not to expose your access token):
@@ -313,6 +313,7 @@ Class | Method | HTTP request | Description
 *Asana.ProjectsApi* | [**removeCustomFieldSettingForProject**](docs/ProjectsApi.md#removeCustomFieldSettingForProject) | **POST** /projects/{project_gid}/removeCustomFieldSetting | Remove a custom field from a project
 *Asana.ProjectsApi* | [**removeFollowersForProject**](docs/ProjectsApi.md#removeFollowersForProject) | **POST** /projects/{project_gid}/removeFollowers | Remove followers from a project
 *Asana.ProjectsApi* | [**removeMembersForProject**](docs/ProjectsApi.md#removeMembersForProject) | **POST** /projects/{project_gid}/removeMembers | Remove users from a project
+*Asana.ProjectsApi* | [**rollupProject**](docs/ProjectsApi.md#rollupProject) | **POST** /projects/{project_gid}/rollup | Roll up subtask dates for a project
 *Asana.ProjectsApi* | [**searchProjectsForWorkspace**](docs/ProjectsApi.md#searchProjectsForWorkspace) | **GET** /workspaces/{workspace_gid}/projects/search | Search projects in a workspace
 *Asana.ProjectsApi* | [**updateProject**](docs/ProjectsApi.md#updateProject) | **PUT** /projects/{project_gid} | Update a project
 *Asana.RatesApi* | [**createRate**](docs/RatesApi.md#createRate) | **POST** /rates | Create a rate
@@ -381,6 +382,7 @@ Class | Method | HTTP request | Description
 *Asana.TasksApi* | [**removeFollowerForTask**](docs/TasksApi.md#removeFollowerForTask) | **POST** /tasks/{task_gid}/removeFollowers | Remove followers from a task
 *Asana.TasksApi* | [**removeProjectForTask**](docs/TasksApi.md#removeProjectForTask) | **POST** /tasks/{task_gid}/removeProject | Remove a project from a task
 *Asana.TasksApi* | [**removeTagForTask**](docs/TasksApi.md#removeTagForTask) | **POST** /tasks/{task_gid}/removeTag | Remove a tag from a task
+*Asana.TasksApi* | [**rollupTask**](docs/TasksApi.md#rollupTask) | **POST** /tasks/{task_gid}/rollup | Roll up subtask dates for a task
 *Asana.TasksApi* | [**searchTasksForWorkspace**](docs/TasksApi.md#searchTasksForWorkspace) | **GET** /workspaces/{workspace_gid}/tasks/search | Search tasks in a workspace
 *Asana.TasksApi* | [**setParentForTask**](docs/TasksApi.md#setParentForTask) | **POST** /tasks/{task_gid}/setParent | Set the parent of a task
 *Asana.TasksApi* | [**updateTask**](docs/TasksApi.md#updateTask) | **PUT** /tasks/{task_gid} | Update a task
@@ -1151,6 +1153,6 @@ client.callApi(
 ```
 
 [release-image]: https://img.shields.io/github/release/asana/node-asana.svg
-[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.2.0
+[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.3.0
 [npm-image]: http://img.shields.io/npm/v/asana.svg?style=flat-square
 [npm-url]: https://www.npmjs.org/package/asana

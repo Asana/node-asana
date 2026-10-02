@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * OooEntries service.
 * @module api/OooEntriesApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class OooEntriesApi {
 
@@ -41,7 +41,7 @@ export class OooEntriesApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;ooo_entries:write&lt;/code&gt;  Creates a new OOO entry.  Returns the full record of the newly created OOO entry.
      * @param {module:model/Object} body The OOO entry to create.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     createOooEntryWithHttpInfo(body, opts) {
@@ -83,7 +83,7 @@ export class OooEntriesApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;ooo_entries:write&lt;/code&gt;  Creates a new OOO entry.  Returns the full record of the newly created OOO entry.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The OOO entry to create.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/OooEntryResponseData}
      */
     createOooEntry(body, opts) {
@@ -158,7 +158,7 @@ export class OooEntriesApi {
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param {Date} opts.start_date An ISO 8601 date string. Filters to OOO entries that overlap with or end after this date.
      * @param {Date} opts.end_date An ISO 8601 date string. Filters to OOO entries that overlap with or start before this date.
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getOooEntriesWithHttpInfo(user, workspace, opts) {
@@ -235,7 +235,7 @@ export class OooEntriesApi {
      * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param {Date} opts.start_date An ISO 8601 date string. Filters to OOO entries that overlap with or end after this date.
      * @param {Date} opts.end_date An ISO 8601 date string. Filters to OOO entries that overlap with or start before this date.
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/OooEntryResponseArray}
      */
     getOooEntries(user, workspace, opts) {
@@ -256,7 +256,7 @@ export class OooEntriesApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;ooo_entries:read&lt;/code&gt;  Returns the complete OOO entry record for a single OOO entry.
      * @param {String} ooo_entry_gid Globally unique identifier for the OOO entry.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     getOooEntryWithHttpInfo(ooo_entry_gid, opts) {
@@ -298,7 +298,7 @@ export class OooEntriesApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;ooo_entries:read&lt;/code&gt;  Returns the complete OOO entry record for a single OOO entry.
      * @param {<&vendorExtensions.x-jsdoc-type>} ooo_entry_gid Globally unique identifier for the OOO entry.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/OooEntryResponseData}
      */
     getOooEntry(ooo_entry_gid, opts) {
@@ -316,7 +316,7 @@ export class OooEntriesApi {
      * @param {module:model/Object} body The updated fields for the OOO entry.
      * @param {String} ooo_entry_gid Globally unique identifier for the OOO entry.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
     updateOooEntryWithHttpInfo(body, ooo_entry_gid, opts) {
@@ -363,7 +363,7 @@ export class OooEntriesApi {
      * @param {<&vendorExtensions.x-jsdoc-type>} body The updated fields for the OOO entry.
      * @param {<&vendorExtensions.x-jsdoc-type>} ooo_entry_gid Globally unique identifier for the OOO entry.
      * @param {Object} opts Optional parameters
-     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/OooEntryResponseData}
      */
     updateOooEntry(body, ooo_entry_gid, opts) {

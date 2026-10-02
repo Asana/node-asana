@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * Attachments service.
 * @module api/AttachmentsApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class AttachmentsApi {
     /**
@@ -41,7 +41,7 @@ export class AttachmentsApi {
      * @param opts.url 
      * @param opts.name 
      * @param opts.connect_to_app 
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     createAttachmentForObjectWithHttpInfo(opts?: { 'resource_subtype'?: string; 'file'?: string; 'parent'?: string; 'url'?: string; 'name'?: string; 'connect_to_app'?: boolean; 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -56,7 +56,7 @@ export class AttachmentsApi {
      * @param opts.url 
      * @param opts.name 
      * @param opts.connect_to_app 
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     createAttachmentForObject(opts?: { 'resource_subtype'?: string; 'file'?: string; 'parent'?: string; 'url'?: string; 'name'?: string; 'connect_to_app'?: boolean; 'opt_fields'?: any;  }): Promise<any>;
@@ -82,7 +82,7 @@ export class AttachmentsApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;attachments:read&lt;/code&gt;  Get the full record for a single attachment.
      * @param attachment_gid Globally unique identifier for the attachment.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getAttachmentWithHttpInfo(attachment_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -92,7 +92,7 @@ export class AttachmentsApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;attachments:read&lt;/code&gt;  Get the full record for a single attachment.
      * @param attachment_gid Globally unique identifier for the attachment.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getAttachment(attachment_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -100,11 +100,11 @@ export class AttachmentsApi {
     /**
      * Get attachments from an object
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;attachments:read&lt;/code&gt;  Returns the compact records for all attachments on the object. There are three possible &#x60;parent&#x60; values for this request: &#x60;project&#x60;, &#x60;project_brief&#x60;, and &#x60;task&#x60;. For a project, an attachment refers to a file uploaded to the \&quot;Key resources\&quot; section in the project Overview. For a project brief, an attachment refers to inline files in the project brief itself. For a task, an attachment refers to a file directly associated to that task.  Note that within the Asana app, inline images in the task description do not appear in the index of image thumbnails nor as stories in the task. However, requests made to &#x60;GET /attachments&#x60; for a task will return all of the images in the task, including inline images.
-     * @param parent Globally unique identifier for object to fetch statuses from. Must be a GID for a &#x60;project&#x60;, &#x60;project_brief&#x60;, or &#x60;task&#x60;.
+     * @param parent Globally unique identifier for the object to fetch attachments from. Must be a GID for a &#x60;project&#x60;, &#x60;project_brief&#x60;, or &#x60;task&#x60;.
      * @param opts Optional parameters
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getAttachmentsForObjectWithHttpInfo(parent: string, opts?: { 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
@@ -112,11 +112,11 @@ export class AttachmentsApi {
     /**
      * Get attachments from an object
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;attachments:read&lt;/code&gt;  Returns the compact records for all attachments on the object. There are three possible &#x60;parent&#x60; values for this request: &#x60;project&#x60;, &#x60;project_brief&#x60;, and &#x60;task&#x60;. For a project, an attachment refers to a file uploaded to the \&quot;Key resources\&quot; section in the project Overview. For a project brief, an attachment refers to inline files in the project brief itself. For a task, an attachment refers to a file directly associated to that task.  Note that within the Asana app, inline images in the task description do not appear in the index of image thumbnails nor as stories in the task. However, requests made to &#x60;GET /attachments&#x60; for a task will return all of the images in the task, including inline images.
-     * @param parent Globally unique identifier for object to fetch statuses from. Must be a GID for a &#x60;project&#x60;, &#x60;project_brief&#x60;, or &#x60;task&#x60;.
+     * @param parent Globally unique identifier for the object to fetch attachments from. Must be a GID for a &#x60;project&#x60;, &#x60;project_brief&#x60;, or &#x60;task&#x60;.
      * @param opts Optional parameters
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getAttachmentsForObject(parent: string, opts?: { 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | any>;

@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * AIStudioUsageAPI service.
 * @module api/AIStudioUsageAPIApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class AIStudioUsageAPIApi {
 

@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * Events service.
 * @module api/EventsApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class EventsApi {
     /**
@@ -37,7 +37,7 @@ export class EventsApi {
      * @param resource A resource ID to subscribe to. The resource can be a task, project, or goal.
      * @param opts Optional parameters
      * @param opts.sync A sync token received from the last request, or none on first sync. Events will be returned from the point in time that the sync token was generated. *Note: On your first request, omit the sync token. The response will be the same as for an expired sync token, and will include a new valid sync token.If the sync token is too old (which may happen from time to time) the API will return a &#x60;412 Precondition Failed&#x60; error, and include a fresh sync token in the response.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getEventsWithHttpInfo(resource: string, opts?: { 'sync'?: string; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
@@ -48,7 +48,7 @@ export class EventsApi {
      * @param resource A resource ID to subscribe to. The resource can be a task, project, or goal.
      * @param opts Optional parameters
      * @param opts.sync A sync token received from the last request, or none on first sync. Events will be returned from the point in time that the sync token was generated. *Note: On your first request, omit the sync token. The response will be the same as for an expired sync token, and will include a new valid sync token.If the sync token is too old (which may happen from time to time) the API will return a &#x60;412 Precondition Failed&#x60; error, and include a fresh sync token in the response.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getEvents(resource: string, opts?: { 'sync'?: string; 'opt_fields'?: any;  }): Promise<Collection | any>;

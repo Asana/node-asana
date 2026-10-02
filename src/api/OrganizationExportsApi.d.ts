@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * OrganizationExports service.
 * @module api/OrganizationExportsApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class OrganizationExportsApi {
     /**
@@ -36,7 +36,7 @@ export class OrganizationExportsApi {
      * This method creates a request to export an Organization. Asana will complete the export at some point after you create the request.
      * @param body The organization to export.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     createOrganizationExportWithHttpInfo(body: any, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -46,7 +46,7 @@ export class OrganizationExportsApi {
      * This method creates a request to export an Organization. Asana will complete the export at some point after you create the request.
      * @param body The organization to export.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     createOrganizationExport(body: any, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -56,7 +56,7 @@ export class OrganizationExportsApi {
      * Returns details of a previously-requested Organization export.
      * @param organization_export_gid Globally unique identifier for the organization export.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getOrganizationExportWithHttpInfo(organization_export_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -66,7 +66,7 @@ export class OrganizationExportsApi {
      * Returns details of a previously-requested Organization export.
      * @param organization_export_gid Globally unique identifier for the organization export.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getOrganizationExport(organization_export_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;

@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Rules service.
 * @module api/RulesApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class RulesApi {
 

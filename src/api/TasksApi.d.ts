@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * Tasks service.
 * @module api/TasksApi
-* @version 3.2.0
+* @version 3.3.0
 */
 export class TasksApi {
     /**
@@ -73,7 +73,7 @@ export class TasksApi {
      * @param body The followers to add to the task.
      * @param task_gid The task to operate on.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     addFollowersForTaskWithHttpInfo(body: any, task_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -84,7 +84,7 @@ export class TasksApi {
      * @param body The followers to add to the task.
      * @param task_gid The task to operate on.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     addFollowersForTask(body: any, task_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -131,7 +131,7 @@ export class TasksApi {
      * @param body The new subtask to create.
      * @param task_gid The task to operate on.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     createSubtaskForTaskWithHttpInfo(body: any, task_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -142,7 +142,7 @@ export class TasksApi {
      * @param body The new subtask to create.
      * @param task_gid The task to operate on.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     createSubtaskForTask(body: any, task_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -152,7 +152,7 @@ export class TasksApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tasks:write&lt;/code&gt;  Creating a new task is as easy as POSTing to the &#x60;/tasks&#x60; endpoint with a data block containing the fields you’d like to set on the task. Any unspecified fields will take on default values.  Every task is required to be created in a specific workspace, and this workspace cannot be changed once set. The workspace need not be set explicitly if you specify &#x60;projects&#x60; or a &#x60;parent&#x60; task instead.
      * @param body The task to create.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     createTaskWithHttpInfo(body: any, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -162,7 +162,7 @@ export class TasksApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tasks:write&lt;/code&gt;  Creating a new task is as easy as POSTing to the &#x60;/tasks&#x60; endpoint with a data block containing the fields you’d like to set on the task. Any unspecified fields will take on default values.  Every task is required to be created in a specific workspace, and this workspace cannot be changed once set. The workspace need not be set explicitly if you specify &#x60;projects&#x60; or a &#x60;parent&#x60; task instead.
      * @param body The task to create.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     createTask(body: any, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -189,7 +189,7 @@ export class TasksApi {
      * @param body Describes the duplicate&#x27;s name and the fields that will be duplicated.
      * @param task_gid The task to operate on.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     duplicateTaskWithHttpInfo(body: any, task_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -200,7 +200,7 @@ export class TasksApi {
      * @param body Describes the duplicate&#x27;s name and the fields that will be duplicated.
      * @param task_gid The task to operate on.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     duplicateTask(body: any, task_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -212,7 +212,7 @@ export class TasksApi {
      * @param opts Optional parameters
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getDependenciesForTaskWithHttpInfo(task_gid: string, opts?: { 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
@@ -224,7 +224,7 @@ export class TasksApi {
      * @param opts Optional parameters
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getDependenciesForTask(task_gid: string, opts?: { 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | any>;
@@ -236,7 +236,7 @@ export class TasksApi {
      * @param opts Optional parameters
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getDependentsForTaskWithHttpInfo(task_gid: string, opts?: { 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
@@ -248,7 +248,7 @@ export class TasksApi {
      * @param opts Optional parameters
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getDependentsForTask(task_gid: string, opts?: { 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | any>;
@@ -260,7 +260,7 @@ export class TasksApi {
      * @param opts Optional parameters
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getSubtasksForTaskWithHttpInfo(task_gid: string, opts?: { 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
@@ -272,7 +272,7 @@ export class TasksApi {
      * @param opts Optional parameters
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getSubtasksForTask(task_gid: string, opts?: { 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | any>;
@@ -282,7 +282,7 @@ export class TasksApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tasks:read&lt;/code&gt;  Returns the complete task record for a single task.
      * @param task_gid The task to operate on.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getTaskWithHttpInfo(task_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -292,7 +292,7 @@ export class TasksApi {
      * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tasks:read&lt;/code&gt;  Returns the complete task record for a single task.
      * @param task_gid The task to operate on.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getTask(task_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -328,7 +328,7 @@ export class TasksApi {
      * @param opts.completed_since Only return tasks that are either incomplete or that have been completed since this time.
      * @param opts.modified_since Only return tasks that have been modified since the given time.  *Note: A task is considered “modified” if any of its properties change, or associations between it and other objects are modified (e.g.  a task being added to a project). A task is not considered modified just because another object it is associated with (e.g. a subtask) is modified. Actions that count as modifying the task include assigning, renaming, completing, and adding stories.*
      * @param opts.custom_type Filter results by custom type. Provide a custom type GID to return only objects of that custom type (an unknown GID returns &#x60;400&#x60;). Provide an empty string to return only objects with no custom type assigned. If this parameter is omitted, results are not filtered by custom type.
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getTasksWithHttpInfo(opts?: { 'limit'?: any; 'offset'?: string; 'assignee'?: string; 'project'?: string; 'section'?: string; 'workspace'?: string; 'completed_since'?: any; 'modified_since'?: any; 'custom_type'?: string; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
@@ -346,7 +346,7 @@ export class TasksApi {
      * @param opts.completed_since Only return tasks that are either incomplete or that have been completed since this time.
      * @param opts.modified_since Only return tasks that have been modified since the given time.  *Note: A task is considered “modified” if any of its properties change, or associations between it and other objects are modified (e.g.  a task being added to a project). A task is not considered modified just because another object it is associated with (e.g. a subtask) is modified. Actions that count as modifying the task include assigning, renaming, completing, and adding stories.*
      * @param opts.custom_type Filter results by custom type. Provide a custom type GID to return only objects of that custom type (an unknown GID returns &#x60;400&#x60;). Provide an empty string to return only objects with no custom type assigned. If this parameter is omitted, results are not filtered by custom type.
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getTasks(opts?: { 'limit'?: any; 'offset'?: string; 'assignee'?: string; 'project'?: string; 'section'?: string; 'workspace'?: string; 'completed_since'?: any; 'modified_since'?: any; 'custom_type'?: string; 'opt_fields'?: any;  }): Promise<Collection | any>;
@@ -359,7 +359,7 @@ export class TasksApi {
      * @param opts.completed_since Only return tasks that are either incomplete or that have been completed since this time. Accepts a date-time string or the keyword *now*. 
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getTasksForProjectWithHttpInfo(project_gid: string, opts?: { 'completed_since'?: string; 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
@@ -372,7 +372,7 @@ export class TasksApi {
      * @param opts.completed_since Only return tasks that are either incomplete or that have been completed since this time. Accepts a date-time string or the keyword *now*. 
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getTasksForProject(project_gid: string, opts?: { 'completed_since'?: string; 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | any>;
@@ -385,7 +385,7 @@ export class TasksApi {
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param opts.completed_since Only return tasks that are either incomplete or that have been completed since this time. Accepts a date-time string or the keyword *now*. 
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getTasksForSectionWithHttpInfo(section_gid: string, opts?: { 'limit'?: any; 'offset'?: string; 'completed_since'?: string; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
@@ -398,7 +398,7 @@ export class TasksApi {
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
      * @param opts.completed_since Only return tasks that are either incomplete or that have been completed since this time. Accepts a date-time string or the keyword *now*. 
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getTasksForSection(section_gid: string, opts?: { 'limit'?: any; 'offset'?: string; 'completed_since'?: string; 'opt_fields'?: any;  }): Promise<Collection | any>;
@@ -410,7 +410,7 @@ export class TasksApi {
      * @param opts Optional parameters
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getTasksForTagWithHttpInfo(tag_gid: string, opts?: { 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
@@ -422,7 +422,7 @@ export class TasksApi {
      * @param opts Optional parameters
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getTasksForTag(tag_gid: string, opts?: { 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | any>;
@@ -435,7 +435,7 @@ export class TasksApi {
      * @param opts.completed_since Only return tasks that are either incomplete or that have been completed since this time. Accepts a date-time string or the keyword *now*. 
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     getTasksForUserTaskListWithHttpInfo(user_task_list_gid: string, opts?: { 'completed_since'?: string; 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
@@ -448,7 +448,7 @@ export class TasksApi {
      * @param opts.completed_since Only return tasks that are either incomplete or that have been completed since this time. Accepts a date-time string or the keyword *now*. 
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     getTasksForUserTaskList(user_task_list_gid: string, opts?: { 'completed_since'?: string; 'limit'?: any; 'offset'?: string; 'opt_fields'?: any;  }): Promise<Collection | any>;
@@ -495,7 +495,7 @@ export class TasksApi {
      * @param body The followers to remove from the task.
      * @param task_gid The task to operate on.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     removeFollowerForTaskWithHttpInfo(body: any, task_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -506,7 +506,7 @@ export class TasksApi {
      * @param body The followers to remove from the task.
      * @param task_gid The task to operate on.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     removeFollowerForTask(body: any, task_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -546,6 +546,26 @@ export class TasksApi {
      * @returns A Promise
      */
     removeTagForTask(body: any, task_gid: string): Promise<any>;
+
+    /**
+     * Roll up subtask dates for a task
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tasks:write&lt;/code&gt;  Creates and returns a job that will asynchronously roll up the subtask dates for the subtask tree rooted at the task with the given &#x60;task_gid&#x60;. Each parent task&#x27;s start and due dates are reconciled to cover its descendants&#x27; date range.
+     * @param task_gid The task to operate on.
+     * @param opts Optional parameters
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
+     * @returns A Promise, with an object containing data and HTTP response
+     */
+    rollupTaskWithHttpInfo(task_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
+
+    /**
+     * Roll up subtask dates for a task
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;tasks:write&lt;/code&gt;  Creates and returns a job that will asynchronously roll up the subtask dates for the subtask tree rooted at the task with the given &#x60;task_gid&#x60;. Each parent task&#x27;s start and due dates are reconciled to cover its descendants&#x27; date range.
+     * @param task_gid The task to operate on.
+     * @param opts Optional parameters
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
+     * @returns A Promise
+     */
+    rollupTask(task_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
 
     /**
      * Search tasks in a workspace
@@ -605,7 +625,7 @@ export class TasksApi {
      * @param opts.is_subtask Filter to subtasks
      * @param opts.sort_by One of &#x60;due_date&#x60;, &#x60;created_at&#x60;, &#x60;completed_at&#x60;, &#x60;likes&#x60;, &#x60;relevance&#x60;, or &#x60;modified_at&#x60;, defaults to &#x60;modified_at&#x60; (default to modified_at)
      * @param opts.sort_ascending Default &#x60;false&#x60; (default to false)
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     searchTasksForWorkspaceWithHttpInfo(workspace_gid: string, opts?: { 'text'?: string; 'resource_subtype'?: string; 'assignee.any'?: string; 'assignee.not'?: string; 'portfolios.any'?: string; 'projects.any'?: string; 'projects.not'?: string; 'projects.all'?: string; 'sections.any'?: string; 'sections.not'?: string; 'sections.all'?: string; 'tags.any'?: string; 'tags.not'?: string; 'tags.all'?: string; 'teams.any'?: string; 'followers.any'?: string; 'followers.not'?: string; 'created_by.any'?: string; 'created_by.not'?: string; 'assigned_by.any'?: string; 'assigned_by.not'?: string; 'liked_by.not'?: string; 'commented_on_by.not'?: string; 'due_on.before'?: any; 'due_on.after'?: any; 'due_on'?: any; 'due_at.before'?: any; 'due_at.after'?: any; 'start_on.before'?: any; 'start_on.after'?: any; 'start_on'?: any; 'created_on.before'?: any; 'created_on.after'?: any; 'created_on'?: any; 'created_at.before'?: any; 'created_at.after'?: any; 'completed_on.before'?: any; 'completed_on.after'?: any; 'completed_on'?: any; 'completed_at.before'?: any; 'completed_at.after'?: any; 'modified_on.before'?: any; 'modified_on.after'?: any; 'modified_on'?: any; 'modified_at.before'?: any; 'modified_at.after'?: any; 'is_blocking'?: boolean; 'is_blocked'?: boolean; 'has_attachment'?: boolean; 'completed'?: boolean; 'is_subtask'?: boolean; 'sort_by'?: string; 'sort_ascending'?: boolean; 'opt_fields'?: any;  }): Promise<Collection | { response: any; data: any }>;
@@ -668,7 +688,7 @@ export class TasksApi {
      * @param opts.is_subtask Filter to subtasks
      * @param opts.sort_by One of &#x60;due_date&#x60;, &#x60;created_at&#x60;, &#x60;completed_at&#x60;, &#x60;likes&#x60;, &#x60;relevance&#x60;, or &#x60;modified_at&#x60;, defaults to &#x60;modified_at&#x60; (default to modified_at)
      * @param opts.sort_ascending Default &#x60;false&#x60; (default to false)
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     searchTasksForWorkspace(workspace_gid: string, opts?: { 'text'?: string; 'resource_subtype'?: string; 'assignee.any'?: string; 'assignee.not'?: string; 'portfolios.any'?: string; 'projects.any'?: string; 'projects.not'?: string; 'projects.all'?: string; 'sections.any'?: string; 'sections.not'?: string; 'sections.all'?: string; 'tags.any'?: string; 'tags.not'?: string; 'tags.all'?: string; 'teams.any'?: string; 'followers.any'?: string; 'followers.not'?: string; 'created_by.any'?: string; 'created_by.not'?: string; 'assigned_by.any'?: string; 'assigned_by.not'?: string; 'liked_by.not'?: string; 'commented_on_by.not'?: string; 'due_on.before'?: any; 'due_on.after'?: any; 'due_on'?: any; 'due_at.before'?: any; 'due_at.after'?: any; 'start_on.before'?: any; 'start_on.after'?: any; 'start_on'?: any; 'created_on.before'?: any; 'created_on.after'?: any; 'created_on'?: any; 'created_at.before'?: any; 'created_at.after'?: any; 'completed_on.before'?: any; 'completed_on.after'?: any; 'completed_on'?: any; 'completed_at.before'?: any; 'completed_at.after'?: any; 'modified_on.before'?: any; 'modified_on.after'?: any; 'modified_on'?: any; 'modified_at.before'?: any; 'modified_at.after'?: any; 'is_blocking'?: boolean; 'is_blocked'?: boolean; 'has_attachment'?: boolean; 'completed'?: boolean; 'is_subtask'?: boolean; 'sort_by'?: string; 'sort_ascending'?: boolean; 'opt_fields'?: any;  }): Promise<Collection | any>;
@@ -679,7 +699,7 @@ export class TasksApi {
      * @param body The new parent of the subtask.
      * @param task_gid The task to operate on.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     setParentForTaskWithHttpInfo(body: any, task_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -690,7 +710,7 @@ export class TasksApi {
      * @param body The new parent of the subtask.
      * @param task_gid The task to operate on.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     setParentForTask(body: any, task_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
@@ -701,7 +721,7 @@ export class TasksApi {
      * @param body The task to update.
      * @param task_gid The task to operate on.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
      */
     updateTaskWithHttpInfo(body: any, task_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<{ response: any; data: any }>;
@@ -712,7 +732,7 @@ export class TasksApi {
      * @param body The task to update.
      * @param task_gid The task to operate on.
      * @param opts Optional parameters
-     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include.
+     * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise
      */
     updateTask(body: any, task_gid: string, opts?: { 'opt_fields'?: any;  }): Promise<any>;
