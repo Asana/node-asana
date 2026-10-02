@@ -54,7 +54,7 @@ jobs:
           popd >/dev/null
       - name: Generate library
         run: >-
-          java -cp "${{ env.JAR_ASANA }}:${{ env.GENERATOR_NAME }}"
+          java -DmaxYamlCodePoints=5000000 -cp "${{ env.JAR_ASANA }}:${{ env.GENERATOR_NAME }}"
           io.swagger.codegen.v3.cli.SwaggerCodegen
           generate
           --input-spec https://raw.githubusercontent.com/Asana/openapi/master/defs/asana_sdk_oas.yaml
@@ -69,6 +69,10 @@ jobs:
           git config user.name asana-publish-client-libraries[bot]
           git config user.email 159857493+asana-publish-client-libraries[bot]@users.noreply.github.com
           git add .
+          if git diff --cached --quiet; then
+            echo "::error::Code generation produced no changes; inspect the Generate library step."
+            exit 1
+          fi
           git commit -m 'Updated JavaScript SDK: v${{ inputs.version }}'
           git push origin master
           git pull
