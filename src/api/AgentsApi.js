@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Agents service.
 * @module api/AgentsApi
-* @version 3.3.0
+* @version 3.4.0
 */
 export class AgentsApi {
 

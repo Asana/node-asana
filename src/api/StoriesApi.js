@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Stories service.
 * @module api/StoriesApi
-* @version 3.3.0
+* @version 3.4.0
 */
 export class StoriesApi {
 
@@ -102,8 +102,73 @@ export class StoriesApi {
 
 
     /**
+     * Create a story on a record
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:write&lt;/code&gt;  Adds a story to a record. This endpoint currently only allows for comment stories to be created. The comment will be authored by the currently authenticated user, and timestamped when the server receives the request.  Returns the full record for the new story added to the record.
+     * @param {module:model/Object} body The story to create.
+     * @param {String} record_gid Globally unique identifier for the record.
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
+     */
+    createStoryForRecordWithHttpInfo(body, record_gid, opts) {
+        opts = opts || {};
+        let postBody = body;
+        // verify the required parameter 'body' is set
+        if (body === undefined || body === null) {
+            throw new Error("Missing the required parameter 'body' when calling createStoryForRecord");
+        }
+        // verify the required parameter 'record_gid' is set
+        if (record_gid === undefined || record_gid === null) {
+            throw new Error("Missing the required parameter 'record_gid' when calling createStoryForRecord");
+        }
+
+        let pathParams = {
+            'record_gid': record_gid
+        };
+        let queryParams = {};
+        opts = opts || {};
+        queryParams = opts;
+
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
+
+        let authNames = ['personalAccessToken'];
+        let contentTypes = ['application/json; charset=UTF-8'];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = 'Blob';
+
+        return this.apiClient.callApi(
+            '/records/{record_gid}/stories', 'POST',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType
+        );
+    }
+
+    /**
+     * Create a story on a record
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:write&lt;/code&gt;  Adds a story to a record. This endpoint currently only allows for comment stories to be created. The comment will be authored by the currently authenticated user, and timestamped when the server receives the request.  Returns the full record for the new story added to the record.
+     * @param {<&vendorExtensions.x-jsdoc-type>} body The story to create.
+     * @param {<&vendorExtensions.x-jsdoc-type>} record_gid Globally unique identifier for the record.
+     * @param {Object} opts Optional parameters
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/StoryResponseData}
+     */
+    createStoryForRecord(body, record_gid, opts) {
+
+        return this.createStoryForRecordWithHttpInfo(body, record_gid, opts)
+            .then(function(response_and_data) {
+                return response_and_data.data;
+            });
+    }
+
+
+    /**
      * Create a story on a task
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:write&lt;/code&gt;  Adds a story to a task. This endpoint currently only allows for comment stories to be created. The comment will be authored by the currently authenticated user, and timestamped when the server receives the request.  Returns the full record for the new story added to the task.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:write&lt;/code&gt;  Adds a story to a task. This endpoint currently only allows for comment stories to be created. The comment will be authored by the currently authenticated user, and timestamped when the server receives the request.  Omit &#x60;parent_comment&#x60; to create a top-level comment. To create a threaded reply, pass the top-level comment&#x27;s &#x60;comment_gid&#x60;, not its story &#x60;gid&#x60;. Retrieve it with &#x60;GET /stories/{story_gid}?opt_fields&#x3D;comment_gid&#x60; or &#x60;GET /tasks/{task_gid}/stories?opt_fields&#x3D;comment_gid,text,anchor_gid&#x60;. The parent must belong to this task and must not itself be a reply. A top-level comment&#x27;s &#x60;anchor_gid&#x60; is the task GID; a reply&#x27;s &#x60;anchor_gid&#x60; is its parent comment&#x27;s envelope GID.  Returns the full record for the new story added to the task.
      * @param {module:model/Object} body The story to create.
      * @param {String} task_gid The task to operate on.
      * @param {Object} opts Optional parameters
@@ -150,7 +215,7 @@ export class StoriesApi {
 
     /**
      * Create a story on a task
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:write&lt;/code&gt;  Adds a story to a task. This endpoint currently only allows for comment stories to be created. The comment will be authored by the currently authenticated user, and timestamped when the server receives the request.  Returns the full record for the new story added to the task.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:write&lt;/code&gt;  Adds a story to a task. This endpoint currently only allows for comment stories to be created. The comment will be authored by the currently authenticated user, and timestamped when the server receives the request.  Omit &#x60;parent_comment&#x60; to create a top-level comment. To create a threaded reply, pass the top-level comment&#x27;s &#x60;comment_gid&#x60;, not its story &#x60;gid&#x60;. Retrieve it with &#x60;GET /stories/{story_gid}?opt_fields&#x3D;comment_gid&#x60; or &#x60;GET /tasks/{task_gid}/stories?opt_fields&#x3D;comment_gid,text,anchor_gid&#x60;. The parent must belong to this task and must not itself be a reply. A top-level comment&#x27;s &#x60;anchor_gid&#x60; is the task GID; a reply&#x27;s &#x60;anchor_gid&#x60; is its parent comment&#x27;s envelope GID.  Returns the full record for the new story added to the task.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The story to create.
      * @param {<&vendorExtensions.x-jsdoc-type>} task_gid The task to operate on.
      * @param {Object} opts Optional parameters
@@ -310,6 +375,103 @@ export class StoriesApi {
         }
 
         return this.getStoriesForGoalWithHttpInfo(goal_gid, opts)
+            .then(function(response_and_data) {
+                return response_and_data.data;
+            });
+    }
+
+
+    /**
+     * Get stories from a record
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:read&lt;/code&gt;  Returns the compact records for all stories on the record.
+     * @param {String} record_gid Globally unique identifier for the record.
+     * @param {Object} opts Optional parameters
+     * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
+     * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
+     * @param {Date} opts.created_after Only return stories created after this time. Applies to every story type; pair it with &#x60;resource_subtype&#x3D;comment_added&#x60; to get just the comments added since a given moment. The bound is exclusive but has second granularity: it is truncated to the start of its second before filtering, so any story created within that same second is still returned. A client polling with the &#x60;created_at&#x60; of the last story it saw should expect to see that story again, and others alongside it, and should de-duplicate on &#x60;gid&#x60;. 
+     * @param {module:model/String} opts.resource_subtype Only return stories of this subtype. Only &#x60;comment_added&#x60; is supported, which narrows the response to comments and excludes activity such as assignments, due date changes, and project moves. Omit to return the full activity feed. 
+     * @param {Boolean} opts.sort_ascending Creation-time order: &#x60;true&#x60; (the default) is oldest first, &#x60;false&#x60; is newest first. Pair &#x60;false&#x60; with &#x60;limit&#x60; to read only the most recent stories. Ordering is applied across the parent&#x27;s stories; on a parent with an extremely large activity feed the feed may be truncated before it is ordered, so pair &#x60;false&#x60; with &#x60;created_after&#x60; to bound what is considered.  (default to <.>)
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
+     */
+    getStoriesForRecordWithHttpInfo(record_gid, opts) {
+        opts = opts || {};
+        let postBody = null;
+        // verify the required parameter 'record_gid' is set
+        if (record_gid === undefined || record_gid === null) {
+            throw new Error("Missing the required parameter 'record_gid' when calling getStoriesForRecord");
+        }
+
+        let pathParams = {
+            'record_gid': record_gid
+        };
+        let queryParams = {};
+        opts = opts || {};
+        queryParams = opts;
+
+        let headerParams = {
+            
+        };
+        let formParams = {
+            
+        };
+
+        let authNames = ['personalAccessToken'];
+        let contentTypes = [];
+        let accepts = ['application/json; charset=UTF-8'];
+        let returnType = 'Blob';
+        // Check if RETURN_COLLECTION is set and return a collection object if it is
+        if (this.apiClient.RETURN_COLLECTION) {
+            return Collection.fromApiClient(
+                this.apiClient.callApi(
+                    '/records/{record_gid}/stories', 'GET',
+                    pathParams, queryParams, headerParams, formParams, postBody,
+                    authNames, contentTypes, accepts, returnType
+                ),
+                this.apiClient,
+                {
+                    'path': '/records/{record_gid}/stories',
+                    'httpMethod': 'GET',
+                    'pathParams': pathParams,
+                    'queryParams': queryParams,
+                    'headerParams': headerParams,
+                    'formParams': formParams,
+                    'bodyParam': postBody,
+                    'authNames': authNames,
+                    'contentTypes': contentTypes,
+                    'accepts': accepts,
+                    'returnType': returnType
+                }
+            )
+        }
+
+        return this.apiClient.callApi(
+            '/records/{record_gid}/stories', 'GET',
+            pathParams, queryParams, headerParams, formParams, postBody,
+            authNames, contentTypes, accepts, returnType
+        );
+    }
+
+    /**
+     * Get stories from a record
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;stories:read&lt;/code&gt;  Returns the compact records for all stories on the record.
+     * @param {<&vendorExtensions.x-jsdoc-type>} record_gid Globally unique identifier for the record.
+     * @param {Object} opts Optional parameters
+     * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
+     * @param {String} opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
+     * @param {Date} opts.created_after Only return stories created after this time. Applies to every story type; pair it with &#x60;resource_subtype&#x3D;comment_added&#x60; to get just the comments added since a given moment. The bound is exclusive but has second granularity: it is truncated to the start of its second before filtering, so any story created within that same second is still returned. A client polling with the &#x60;created_at&#x60; of the last story it saw should expect to see that story again, and others alongside it, and should de-duplicate on &#x60;gid&#x60;. 
+     * @param {module:model/String} opts.resource_subtype Only return stories of this subtype. Only &#x60;comment_added&#x60; is supported, which narrows the response to comments and excludes activity such as assignments, due date changes, and project moves. Omit to return the full activity feed. 
+     * @param {Boolean} opts.sort_ascending Creation-time order: &#x60;true&#x60; (the default) is oldest first, &#x60;false&#x60; is newest first. Pair &#x60;false&#x60; with &#x60;limit&#x60; to read only the most recent stories. Ordering is applied across the parent&#x27;s stories; on a parent with an extremely large activity feed the feed may be truncated before it is ordered, so pair &#x60;false&#x60; with &#x60;created_after&#x60; to bound what is considered.  (default to <.>)
+     * @param {Array.<module:model/String>} opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/StoryResponseArray}
+     */
+    getStoriesForRecord(record_gid, opts) {
+        // Check if RETURN_COLLECTION is set and return a collection object if it is
+        if (this.apiClient.RETURN_COLLECTION) {
+            return this.getStoriesForRecordWithHttpInfo(record_gid, opts)
+        }
+
+        return this.getStoriesForRecordWithHttpInfo(record_gid, opts)
             .then(function(response_and_data) {
                 return response_and_data.data;
             });

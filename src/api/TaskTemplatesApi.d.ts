@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * TaskTemplates service.
 * @module api/TaskTemplatesApi
-* @version 3.3.0
+* @version 3.4.0
 */
 export class TaskTemplatesApi {
     /**

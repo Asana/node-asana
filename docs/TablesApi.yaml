@@ -1,0 +1,159 @@
+TablesApi:
+  addCustomFieldSettingForTable: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let tablesApiInstance = new Asana.TablesApi(client);
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | Information about the custom field setting.
+    let table_gid = "1337"; // String | Globally unique identifier for the table.
+    let opts = { 
+        'opt_fields': "custom_field,custom_field.date_value,custom_field.date_value.date,custom_field.date_value.date_time,custom_field.display_value,custom_field.enabled,custom_field.enum_options,custom_field.enum_options.color,custom_field.enum_options.enabled,custom_field.enum_options.name,custom_field.enum_value,custom_field.enum_value.color,custom_field.enum_value.enabled,custom_field.enum_value.name,custom_field.id_prefix,custom_field.input_restrictions,custom_field.is_formula_field,custom_field.is_lookup_field,custom_field.multi_enum_values,custom_field.multi_enum_values.color,custom_field.multi_enum_values.enabled,custom_field.multi_enum_values.name,custom_field.name,custom_field.number_value,custom_field.representation_type,custom_field.text_value,custom_field.type,is_important"
+    };
+    tablesApiInstance.addCustomFieldSettingForTable(body, table_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  createTable: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let tablesApiInstance = new Asana.TablesApi(client);
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The table to create.
+    let opts = { 
+        'opt_fields': "created_at,custom_field_settings,custom_field_settings.custom_field,custom_field_settings.custom_field.date_value,custom_field_settings.custom_field.date_value.date,custom_field_settings.custom_field.date_value.date_time,custom_field_settings.custom_field.display_value,custom_field_settings.custom_field.enabled,custom_field_settings.custom_field.enum_options,custom_field_settings.custom_field.enum_options.color,custom_field_settings.custom_field.enum_options.enabled,custom_field_settings.custom_field.enum_options.name,custom_field_settings.custom_field.enum_value,custom_field_settings.custom_field.enum_value.color,custom_field_settings.custom_field.enum_value.enabled,custom_field_settings.custom_field.enum_value.name,custom_field_settings.custom_field.id_prefix,custom_field_settings.custom_field.input_restrictions,custom_field_settings.custom_field.is_formula_field,custom_field_settings.custom_field.is_lookup_field,custom_field_settings.custom_field.multi_enum_values,custom_field_settings.custom_field.multi_enum_values.color,custom_field_settings.custom_field.multi_enum_values.enabled,custom_field_settings.custom_field.multi_enum_values.name,custom_field_settings.custom_field.name,custom_field_settings.custom_field.number_value,custom_field_settings.custom_field.representation_type,custom_field_settings.custom_field.text_value,custom_field_settings.custom_field.type,custom_field_settings.is_important,modified_at,name,workspace,workspace.name"
+    };
+    tablesApiInstance.createTable(body, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  deleteTable: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let tablesApiInstance = new Asana.TablesApi(client);
+    let table_gid = "1337"; // String | Globally unique identifier for the table.
+
+    tablesApiInstance.deleteTable(table_gid).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getCustomFieldSettingsForTable: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let tablesApiInstance = new Asana.TablesApi(client);
+    let table_gid = "1337"; // String | Globally unique identifier for the table.
+    let opts = { 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'opt_fields': "custom_field,custom_field.date_value,custom_field.date_value.date,custom_field.date_value.date_time,custom_field.display_value,custom_field.enabled,custom_field.enum_options,custom_field.enum_options.color,custom_field.enum_options.enabled,custom_field.enum_options.name,custom_field.enum_value,custom_field.enum_value.color,custom_field.enum_value.enabled,custom_field.enum_value.name,custom_field.id_prefix,custom_field.input_restrictions,custom_field.is_formula_field,custom_field.is_lookup_field,custom_field.multi_enum_values,custom_field.multi_enum_values.color,custom_field.multi_enum_values.enabled,custom_field.multi_enum_values.name,custom_field.name,custom_field.number_value,custom_field.representation_type,custom_field.text_value,custom_field.type,is_important,offset,path,uri"
+    };
+    tablesApiInstance.getCustomFieldSettingsForTable(table_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getCustomFieldSettingsForTableLegacy: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let tablesApiInstance = new Asana.TablesApi(client);
+    let table_gid = "1337"; // String | Globally unique identifier for the table.
+    let opts = { 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'opt_fields': "custom_field,custom_field.date_value,custom_field.date_value.date,custom_field.date_value.date_time,custom_field.display_value,custom_field.enabled,custom_field.enum_options,custom_field.enum_options.color,custom_field.enum_options.enabled,custom_field.enum_options.name,custom_field.enum_value,custom_field.enum_value.color,custom_field.enum_value.enabled,custom_field.enum_value.name,custom_field.id_prefix,custom_field.input_restrictions,custom_field.is_formula_field,custom_field.is_lookup_field,custom_field.multi_enum_values,custom_field.multi_enum_values.color,custom_field.multi_enum_values.enabled,custom_field.multi_enum_values.name,custom_field.name,custom_field.number_value,custom_field.representation_type,custom_field.text_value,custom_field.type,is_important,offset,path,uri"
+    };
+    tablesApiInstance.getCustomFieldSettingsForTableLegacy(table_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getTable: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let tablesApiInstance = new Asana.TablesApi(client);
+    let table_gid = "1337"; // String | Globally unique identifier for the table.
+    let opts = { 
+        'opt_fields': "created_at,custom_field_settings,custom_field_settings.custom_field,custom_field_settings.custom_field.date_value,custom_field_settings.custom_field.date_value.date,custom_field_settings.custom_field.date_value.date_time,custom_field_settings.custom_field.display_value,custom_field_settings.custom_field.enabled,custom_field_settings.custom_field.enum_options,custom_field_settings.custom_field.enum_options.color,custom_field_settings.custom_field.enum_options.enabled,custom_field_settings.custom_field.enum_options.name,custom_field_settings.custom_field.enum_value,custom_field_settings.custom_field.enum_value.color,custom_field_settings.custom_field.enum_value.enabled,custom_field_settings.custom_field.enum_value.name,custom_field_settings.custom_field.id_prefix,custom_field_settings.custom_field.input_restrictions,custom_field_settings.custom_field.is_formula_field,custom_field_settings.custom_field.is_lookup_field,custom_field_settings.custom_field.multi_enum_values,custom_field_settings.custom_field.multi_enum_values.color,custom_field_settings.custom_field.multi_enum_values.enabled,custom_field_settings.custom_field.multi_enum_values.name,custom_field_settings.custom_field.name,custom_field_settings.custom_field.number_value,custom_field_settings.custom_field.representation_type,custom_field_settings.custom_field.text_value,custom_field_settings.custom_field.type,custom_field_settings.is_important,modified_at,name,workspace,workspace.name"
+    };
+    tablesApiInstance.getTable(table_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  getTablesForWorkspace: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let tablesApiInstance = new Asana.TablesApi(client);
+    let workspace_gid = "12345"; // String | Globally unique identifier for the workspace or organization.
+    let opts = { 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'opt_fields': "created_at,custom_field_settings,custom_field_settings.custom_field,custom_field_settings.custom_field.date_value,custom_field_settings.custom_field.date_value.date,custom_field_settings.custom_field.date_value.date_time,custom_field_settings.custom_field.display_value,custom_field_settings.custom_field.enabled,custom_field_settings.custom_field.enum_options,custom_field_settings.custom_field.enum_options.color,custom_field_settings.custom_field.enum_options.enabled,custom_field_settings.custom_field.enum_options.name,custom_field_settings.custom_field.enum_value,custom_field_settings.custom_field.enum_value.color,custom_field_settings.custom_field.enum_value.enabled,custom_field_settings.custom_field.enum_value.name,custom_field_settings.custom_field.id_prefix,custom_field_settings.custom_field.input_restrictions,custom_field_settings.custom_field.is_formula_field,custom_field_settings.custom_field.is_lookup_field,custom_field_settings.custom_field.multi_enum_values,custom_field_settings.custom_field.multi_enum_values.color,custom_field_settings.custom_field.multi_enum_values.enabled,custom_field_settings.custom_field.multi_enum_values.name,custom_field_settings.custom_field.name,custom_field_settings.custom_field.number_value,custom_field_settings.custom_field.representation_type,custom_field_settings.custom_field.text_value,custom_field_settings.custom_field.type,custom_field_settings.is_important,modified_at,name,offset,path,uri,workspace,workspace.name"
+    };
+    tablesApiInstance.getTablesForWorkspace(workspace_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  removeCustomFieldSettingForTable: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let tablesApiInstance = new Asana.TablesApi(client);
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | Information about the custom field setting being removed.
+    let table_gid = "1337"; // String | Globally unique identifier for the table.
+
+    tablesApiInstance.removeCustomFieldSettingForTable(body, table_gid).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  updateTable: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let tablesApiInstance = new Asana.TablesApi(client);
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | The updated fields for the table.
+    let table_gid = "1337"; // String | Globally unique identifier for the table.
+    let opts = { 
+        'opt_fields': "created_at,custom_field_settings,custom_field_settings.custom_field,custom_field_settings.custom_field.date_value,custom_field_settings.custom_field.date_value.date,custom_field_settings.custom_field.date_value.date_time,custom_field_settings.custom_field.display_value,custom_field_settings.custom_field.enabled,custom_field_settings.custom_field.enum_options,custom_field_settings.custom_field.enum_options.color,custom_field_settings.custom_field.enum_options.enabled,custom_field_settings.custom_field.enum_options.name,custom_field_settings.custom_field.enum_value,custom_field_settings.custom_field.enum_value.color,custom_field_settings.custom_field.enum_value.enabled,custom_field_settings.custom_field.enum_value.name,custom_field_settings.custom_field.id_prefix,custom_field_settings.custom_field.input_restrictions,custom_field_settings.custom_field.is_formula_field,custom_field_settings.custom_field.is_lookup_field,custom_field_settings.custom_field.multi_enum_values,custom_field_settings.custom_field.multi_enum_values.color,custom_field_settings.custom_field.multi_enum_values.enabled,custom_field_settings.custom_field.multi_enum_values.name,custom_field_settings.custom_field.name,custom_field_settings.custom_field.number_value,custom_field_settings.custom_field.representation_type,custom_field_settings.custom_field.text_value,custom_field_settings.custom_field.type,custom_field_settings.is_important,modified_at,name,workspace,workspace.name"
+    };
+    tablesApiInstance.updateTable(body, table_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    

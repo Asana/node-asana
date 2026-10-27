@@ -30,6 +30,7 @@ import {GoalRelationshipsApi} from './api/GoalRelationshipsApi';
 import {GoalsApi} from './api/GoalsApi';
 import {JobsApi} from './api/JobsApi';
 import {MembershipsApi} from './api/MembershipsApi';
+import {NotificationsApi} from './api/NotificationsApi';
 import {OooEntriesApi} from './api/OooEntriesApi';
 import {OrganizationExportsApi} from './api/OrganizationExportsApi';
 import {PortfolioMembershipsApi} from './api/PortfolioMembershipsApi';
@@ -42,11 +43,13 @@ import {ProjectTemplatesApi} from './api/ProjectTemplatesApi';
 import {ProjectsApi} from './api/ProjectsApi';
 import {RatesApi} from './api/RatesApi';
 import {ReactionsApi} from './api/ReactionsApi';
+import {RecordsApi} from './api/RecordsApi';
 import {RolesApi} from './api/RolesApi';
 import {RulesApi} from './api/RulesApi';
 import {SectionsApi} from './api/SectionsApi';
 import {StatusUpdatesApi} from './api/StatusUpdatesApi';
 import {StoriesApi} from './api/StoriesApi';
+import {TablesApi} from './api/TablesApi';
 import {TagsApi} from './api/TagsApi';
 import {TaskTemplatesApi} from './api/TaskTemplatesApi';
 import {TasksApi} from './api/TasksApi';
@@ -92,7 +95,7 @@ import {WorkspacesApi} from './api/WorkspacesApi';
 * </pre>
 * </p>
 * @module index
-* @version 3.3.0
+* @version 3.4.0
 */
 export {
     /**
@@ -206,6 +209,12 @@ export {
     MembershipsApi,
 
     /**
+    * The NotificationsApi service constructor.
+    * @property {module:api/NotificationsApi}
+    */
+    NotificationsApi,
+
+    /**
     * The OooEntriesApi service constructor.
     * @property {module:api/OooEntriesApi}
     */
@@ -278,6 +287,12 @@ export {
     ReactionsApi,
 
     /**
+    * The RecordsApi service constructor.
+    * @property {module:api/RecordsApi}
+    */
+    RecordsApi,
+
+    /**
     * The RolesApi service constructor.
     * @property {module:api/RolesApi}
     */
@@ -306,6 +321,12 @@ export {
     * @property {module:api/StoriesApi}
     */
     StoriesApi,
+
+    /**
+    * The TablesApi service constructor.
+    * @property {module:api/TablesApi}
+    */
+    TablesApi,
 
     /**
     * The TagsApi service constructor.

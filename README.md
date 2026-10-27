@@ -1,7 +1,7 @@
 # asana [![GitHub release][release-image]][release-url] [![NPM Version][npm-image]][npm-url]
 
 - API version: 1.0
-- Package version: 3.3.0
+- Package version: 3.4.0
 
 ## Installation
 
@@ -18,7 +18,7 @@ npm install asana --save
 Include the latest release directly from GitHub:
 
 ```html
-<script src="https://github.com/Asana/node-asana/releases/download/v3.3.0/asana-min.js"></script>
+<script src="https://github.com/Asana/node-asana/releases/download/v3.4.0/asana-min.js"></script>
 ```
 
 Example usage (**NOTE**: be careful not to expose your access token):
@@ -253,6 +253,9 @@ Class | Method | HTTP request | Description
 *Asana.MembershipsApi* | [**getMembership**](docs/MembershipsApi.md#getMembership) | **GET** /memberships/{membership_gid} | Get a membership
 *Asana.MembershipsApi* | [**getMemberships**](docs/MembershipsApi.md#getMemberships) | **GET** /memberships | Get multiple memberships
 *Asana.MembershipsApi* | [**updateMembership**](docs/MembershipsApi.md#updateMembership) | **PUT** /memberships/{membership_gid} | Update a membership
+*Asana.NotificationsApi* | [**getNotificationsForUser**](docs/NotificationsApi.md#getNotificationsForUser) | **GET** /users/{user_gid}/notifications | Get notifications for a user
+*Asana.NotificationsApi* | [**markNotificationsReadForUser**](docs/NotificationsApi.md#markNotificationsReadForUser) | **POST** /users/{user_gid}/notifications/markRead | Mark notifications as read
+*Asana.NotificationsApi* | [**markNotificationsUnreadForUser**](docs/NotificationsApi.md#markNotificationsUnreadForUser) | **POST** /users/{user_gid}/notifications/markUnread | Mark notifications as unread
 *Asana.OooEntriesApi* | [**createOooEntry**](docs/OooEntriesApi.md#createOooEntry) | **POST** /ooo_entries | Create an OOO entry
 *Asana.OooEntriesApi* | [**deleteOooEntry**](docs/OooEntriesApi.md#deleteOooEntry) | **DELETE** /ooo_entries/{ooo_entry_gid} | Delete an OOO entry
 *Asana.OooEntriesApi* | [**getOooEntries**](docs/OooEntriesApi.md#getOooEntries) | **GET** /ooo_entries | Get OOO entries for a user
@@ -322,6 +325,12 @@ Class | Method | HTTP request | Description
 *Asana.RatesApi* | [**getRates**](docs/RatesApi.md#getRates) | **GET** /rates | Get multiple rates
 *Asana.RatesApi* | [**updateRate**](docs/RatesApi.md#updateRate) | **PUT** /rates/{rate_gid} | Update a rate
 *Asana.ReactionsApi* | [**getReactionsOnObject**](docs/ReactionsApi.md#getReactionsOnObject) | **GET** /reactions | Get reactions with an emoji base on an object.
+*Asana.RecordsApi* | [**createRecord**](docs/RecordsApi.md#createRecord) | **POST** /records | Create a record
+*Asana.RecordsApi* | [**deleteRecord**](docs/RecordsApi.md#deleteRecord) | **DELETE** /records/{record_gid} | Delete a record
+*Asana.RecordsApi* | [**getRecord**](docs/RecordsApi.md#getRecord) | **GET** /records/{record_gid} | Get a record
+*Asana.RecordsApi* | [**getRecordsForTable**](docs/RecordsApi.md#getRecordsForTable) | **GET** /tables/{table_gid}/records | Get records in a table
+*Asana.RecordsApi* | [**searchRecordsForWorkspace**](docs/RecordsApi.md#searchRecordsForWorkspace) | **GET** /workspaces/{workspace_gid}/records/search | Search records in a workspace
+*Asana.RecordsApi* | [**updateRecord**](docs/RecordsApi.md#updateRecord) | **PUT** /records/{record_gid} | Update a record
 *Asana.RolesApi* | [**createRole**](docs/RolesApi.md#createRole) | **POST** /roles | Create a role
 *Asana.RolesApi* | [**deleteRole**](docs/RolesApi.md#deleteRole) | **DELETE** /roles/{role_gid} | Delete a role
 *Asana.RolesApi* | [**getRole**](docs/RolesApi.md#getRole) | **GET** /roles/{role_gid} | Get a role
@@ -340,12 +349,23 @@ Class | Method | HTTP request | Description
 *Asana.StatusUpdatesApi* | [**getStatus**](docs/StatusUpdatesApi.md#getStatus) | **GET** /status_updates/{status_update_gid} | Get a status update
 *Asana.StatusUpdatesApi* | [**getStatusesForObject**](docs/StatusUpdatesApi.md#getStatusesForObject) | **GET** /status_updates | Get status updates from an object
 *Asana.StoriesApi* | [**createStoryForGoal**](docs/StoriesApi.md#createStoryForGoal) | **POST** /goals/{goal_gid}/stories | Create a story on a goal
+*Asana.StoriesApi* | [**createStoryForRecord**](docs/StoriesApi.md#createStoryForRecord) | **POST** /records/{record_gid}/stories | Create a story on a record
 *Asana.StoriesApi* | [**createStoryForTask**](docs/StoriesApi.md#createStoryForTask) | **POST** /tasks/{task_gid}/stories | Create a story on a task
 *Asana.StoriesApi* | [**deleteStory**](docs/StoriesApi.md#deleteStory) | **DELETE** /stories/{story_gid} | Delete a story
 *Asana.StoriesApi* | [**getStoriesForGoal**](docs/StoriesApi.md#getStoriesForGoal) | **GET** /goals/{goal_gid}/stories | Get stories from a goal
+*Asana.StoriesApi* | [**getStoriesForRecord**](docs/StoriesApi.md#getStoriesForRecord) | **GET** /records/{record_gid}/stories | Get stories from a record
 *Asana.StoriesApi* | [**getStoriesForTask**](docs/StoriesApi.md#getStoriesForTask) | **GET** /tasks/{task_gid}/stories | Get stories from a task
 *Asana.StoriesApi* | [**getStory**](docs/StoriesApi.md#getStory) | **GET** /stories/{story_gid} | Get a story
 *Asana.StoriesApi* | [**updateStory**](docs/StoriesApi.md#updateStory) | **PUT** /stories/{story_gid} | Update a story
+*Asana.TablesApi* | [**addCustomFieldSettingForTable**](docs/TablesApi.md#addCustomFieldSettingForTable) | **POST** /tables/{table_gid}/addCustomFieldSetting | Add a custom field to a table
+*Asana.TablesApi* | [**createTable**](docs/TablesApi.md#createTable) | **POST** /tables | Create a table
+*Asana.TablesApi* | [**deleteTable**](docs/TablesApi.md#deleteTable) | **DELETE** /tables/{table_gid} | Delete a table
+*Asana.TablesApi* | [**getCustomFieldSettingsForTable**](docs/TablesApi.md#getCustomFieldSettingsForTable) | **GET** /tables/{table_gid}/custom_field_settings | Get a table&#x27;s custom field settings
+*Asana.TablesApi* | [**getCustomFieldSettingsForTableLegacy**](docs/TablesApi.md#getCustomFieldSettingsForTableLegacy) | **GET** /tables/{table_gid}/getCustomFieldSettings | Get a table&#x27;s custom field settings
+*Asana.TablesApi* | [**getTable**](docs/TablesApi.md#getTable) | **GET** /tables/{table_gid} | Get a table
+*Asana.TablesApi* | [**getTablesForWorkspace**](docs/TablesApi.md#getTablesForWorkspace) | **GET** /workspaces/{workspace_gid}/tables | Get tables in a workspace
+*Asana.TablesApi* | [**removeCustomFieldSettingForTable**](docs/TablesApi.md#removeCustomFieldSettingForTable) | **POST** /tables/{table_gid}/removeCustomFieldSetting | Remove a custom field from a table
+*Asana.TablesApi* | [**updateTable**](docs/TablesApi.md#updateTable) | **PUT** /tables/{table_gid} | Update a table
 *Asana.TagsApi* | [**createTag**](docs/TagsApi.md#createTag) | **POST** /tags | Create a tag
 *Asana.TagsApi* | [**createTagForWorkspace**](docs/TagsApi.md#createTagForWorkspace) | **POST** /workspaces/{workspace_gid}/tags | Create a tag in a workspace
 *Asana.TagsApi* | [**deleteTag**](docs/TagsApi.md#deleteTag) | **DELETE** /tags/{tag_gid} | Delete a tag
@@ -1153,6 +1173,6 @@ client.callApi(
 ```
 
 [release-image]: https://img.shields.io/github/release/asana/node-asana.svg
-[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.3.0
+[release-url]: https://github.com/Asana/node-asana/releases/tag/v3.4.0
 [npm-image]: http://img.shields.io/npm/v/asana.svg?style=flat-square
 [npm-url]: https://www.npmjs.org/package/asana

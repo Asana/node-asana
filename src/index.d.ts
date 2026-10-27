@@ -30,6 +30,7 @@ import { GoalRelationshipsApi } from './api/GoalRelationshipsApi';
 import { GoalsApi } from './api/GoalsApi';
 import { JobsApi } from './api/JobsApi';
 import { MembershipsApi } from './api/MembershipsApi';
+import { NotificationsApi } from './api/NotificationsApi';
 import { OooEntriesApi } from './api/OooEntriesApi';
 import { OrganizationExportsApi } from './api/OrganizationExportsApi';
 import { PortfolioMembershipsApi } from './api/PortfolioMembershipsApi';
@@ -42,11 +43,13 @@ import { ProjectTemplatesApi } from './api/ProjectTemplatesApi';
 import { ProjectsApi } from './api/ProjectsApi';
 import { RatesApi } from './api/RatesApi';
 import { ReactionsApi } from './api/ReactionsApi';
+import { RecordsApi } from './api/RecordsApi';
 import { RolesApi } from './api/RolesApi';
 import { RulesApi } from './api/RulesApi';
 import { SectionsApi } from './api/SectionsApi';
 import { StatusUpdatesApi } from './api/StatusUpdatesApi';
 import { StoriesApi } from './api/StoriesApi';
+import { TablesApi } from './api/TablesApi';
 import { TagsApi } from './api/TagsApi';
 import { TaskTemplatesApi } from './api/TaskTemplatesApi';
 import { TasksApi } from './api/TasksApi';
@@ -82,6 +85,7 @@ export {
     GoalsApi,
     JobsApi,
     MembershipsApi,
+    NotificationsApi,
     OooEntriesApi,
     OrganizationExportsApi,
     PortfolioMembershipsApi,
@@ -94,11 +98,13 @@ export {
     ProjectsApi,
     RatesApi,
     ReactionsApi,
+    RecordsApi,
     RolesApi,
     RulesApi,
     SectionsApi,
     StatusUpdatesApi,
     StoriesApi,
+    TablesApi,
     TagsApi,
     TaskTemplatesApi,
     TasksApi,

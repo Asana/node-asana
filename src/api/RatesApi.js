@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Rates service.
 * @module api/RatesApi
-* @version 3.3.0
+* @version 3.4.0
 */
 export class RatesApi {
 

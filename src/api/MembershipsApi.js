@@ -18,7 +18,7 @@ var Collection = require('../utils/collection');
 /**
 * Memberships service.
 * @module api/MembershipsApi
-* @version 3.3.0
+* @version 3.4.0
 */
 export class MembershipsApi {
 
@@ -38,7 +38,7 @@ export class MembershipsApi {
 
     /**
      * Create a membership
-     * Creates a new membership in a &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, &#x60;custom_type&#x60;, or &#x60;custom_field&#x60;, where members can be Teams or Users.  Returns the full record of the newly created membership.
+     * Creates a new membership in a &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, &#x60;custom_type&#x60;, &#x60;custom_field&#x60;, &#x60;table&#x60;, or &#x60;record&#x60;, where members can be Teams or Users.  Returns the full record of the newly created membership.
      * @param {Object} opts Optional parameters
      * @param {module:model/Object} opts.body The updated fields for the membership.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
@@ -75,7 +75,7 @@ export class MembershipsApi {
 
     /**
      * Create a membership
-     * Creates a new membership in a &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, &#x60;custom_type&#x60;, or &#x60;custom_field&#x60;, where members can be Teams or Users.  Returns the full record of the newly created membership.
+     * Creates a new membership in a &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, &#x60;custom_type&#x60;, &#x60;custom_field&#x60;, &#x60;table&#x60;, or &#x60;record&#x60;, where members can be Teams or Users.  Returns the full record of the newly created membership.
      * @param {Object} opts Optional parameters
      * @param {module:model/Object} opts.body The updated fields for the membership.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MembershipResponseData}
@@ -91,7 +91,7 @@ export class MembershipsApi {
 
     /**
      * Delete a membership
-     * A specific, existing membership for a &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, &#x60;custom_type&#x60;, or &#x60;custom_field&#x60; can be deleted by making a &#x60;DELETE&#x60; request on the URL for that membership.  Returns an empty data record.
+     * A specific, existing membership for a &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, &#x60;custom_type&#x60;, &#x60;custom_field&#x60;, &#x60;table&#x60;, or &#x60;record&#x60; can be deleted by making a &#x60;DELETE&#x60; request on the URL for that membership.  Returns an empty data record.
      * @param {String} membership_gid Globally unique identifier for the membership.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
@@ -129,7 +129,7 @@ export class MembershipsApi {
 
     /**
      * Delete a membership
-     * A specific, existing membership for a &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, &#x60;custom_type&#x60;, or &#x60;custom_field&#x60; can be deleted by making a &#x60;DELETE&#x60; request on the URL for that membership.  Returns an empty data record.
+     * A specific, existing membership for a &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, &#x60;custom_type&#x60;, &#x60;custom_field&#x60;, &#x60;table&#x60;, or &#x60;record&#x60; can be deleted by making a &#x60;DELETE&#x60; request on the URL for that membership.  Returns an empty data record.
      * @param {<&vendorExtensions.x-jsdoc-type>} membership_gid Globally unique identifier for the membership.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/EmptyResponseData}
      */
@@ -144,7 +144,7 @@ export class MembershipsApi {
 
     /**
      * Get a membership
-     * Returns a &#x60;project_membership&#x60;, &#x60;goal_membership&#x60;, &#x60;portfolio_membership&#x60;, &#x60;custom_type_membership&#x60;, or &#x60;custom_field_membership&#x60; record for a membership id.
+     * Returns a &#x60;project_membership&#x60;, &#x60;goal_membership&#x60;, &#x60;portfolio_membership&#x60;, &#x60;custom_type_membership&#x60;, &#x60;custom_field_membership&#x60;, &#x60;table_membership&#x60;, or &#x60;record_membership&#x60; record for a membership id.
      * @param {String} membership_gid Globally unique identifier for the membership.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
      */
@@ -182,7 +182,7 @@ export class MembershipsApi {
 
     /**
      * Get a membership
-     * Returns a &#x60;project_membership&#x60;, &#x60;goal_membership&#x60;, &#x60;portfolio_membership&#x60;, &#x60;custom_type_membership&#x60;, or &#x60;custom_field_membership&#x60; record for a membership id.
+     * Returns a &#x60;project_membership&#x60;, &#x60;goal_membership&#x60;, &#x60;portfolio_membership&#x60;, &#x60;custom_type_membership&#x60;, &#x60;custom_field_membership&#x60;, &#x60;table_membership&#x60;, or &#x60;record_membership&#x60; record for a membership id.
      * @param {<&vendorExtensions.x-jsdoc-type>} membership_gid Globally unique identifier for the membership.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MembershipResponseData}
      */
@@ -197,9 +197,9 @@ export class MembershipsApi {
 
     /**
      * Get multiple memberships
-     * Returns compact &#x60;goal_membership&#x60;, &#x60;project_membership&#x60;, &#x60;portfolio_membership&#x60;, &#x60;custom_type_membership&#x60;, or &#x60;custom_field_membership&#x60; records. The possible types for &#x60;parent&#x60; in this request are &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, &#x60;custom_type&#x60;, or &#x60;custom_field&#x60;. An additional member (user GID or team GID) can be passed in to filter to a specific membership.  Alternatively, when &#x60;parent&#x60; is absent, you can use the &#x60;member&#x60; and &#x60;resource_subtype&#x60; parameters together to fetch all memberships of a specific type for a given member. For example, passing &#x60;member&#x60; as a team GID and &#x60;resource_subtype&#x60; as &#x60;project_membership&#x60; will return all project memberships for that team.
+     * Returns compact &#x60;goal_membership&#x60;, &#x60;project_membership&#x60;, &#x60;portfolio_membership&#x60;, &#x60;custom_type_membership&#x60;, &#x60;custom_field_membership&#x60;, &#x60;table_membership&#x60;, or &#x60;record_membership&#x60; records. The possible types for &#x60;parent&#x60; in this request are &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, &#x60;custom_type&#x60;, &#x60;custom_field&#x60;, &#x60;table&#x60;, or &#x60;record&#x60;. An additional member (user GID or team GID) can be passed in to filter to a specific membership.  Alternatively, when &#x60;parent&#x60; is absent, you can use the &#x60;member&#x60; and &#x60;resource_subtype&#x60; parameters together to fetch all memberships of a specific type for a given member. For example, passing &#x60;member&#x60; as a team GID and &#x60;resource_subtype&#x60; as &#x60;project_membership&#x60; will return all project memberships for that team.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.parent Globally unique identifier for &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, &#x60;custom_type&#x60;, or &#x60;custom_field&#x60;. This parameter is optional when &#x60;resource_subtype&#x60; is provided along with &#x60;member&#x60; of type &#x60;team&#x60;.
+     * @param {String} opts.parent Globally unique identifier for &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, &#x60;custom_type&#x60;, &#x60;custom_field&#x60;, &#x60;table&#x60;, or &#x60;record&#x60;. This parameter is optional when &#x60;resource_subtype&#x60; is provided along with &#x60;member&#x60; of type &#x60;team&#x60;.
      * @param {String} opts.member Globally unique identifier for &#x60;team&#x60; or &#x60;user&#x60;. When used with &#x60;resource_subtype&#x60; and without &#x60;parent&#x60;, &#x60;member&#x60; must be of type &#x60;team&#x60;. For user-type memberships &#x60;parent&#x60; parameter is required to disambiguate the workspace from which memberships should be retrieved.
      * @param {module:model/String} opts.resource_subtype The type of membership to return. Required when &#x60;parent&#x60; is absent. Currently supported value is &#x60;project_membership&#x60; (when &#x60;member&#x60; is a team GID, returns all project memberships for that team).
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -263,9 +263,9 @@ export class MembershipsApi {
 
     /**
      * Get multiple memberships
-     * Returns compact &#x60;goal_membership&#x60;, &#x60;project_membership&#x60;, &#x60;portfolio_membership&#x60;, &#x60;custom_type_membership&#x60;, or &#x60;custom_field_membership&#x60; records. The possible types for &#x60;parent&#x60; in this request are &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, &#x60;custom_type&#x60;, or &#x60;custom_field&#x60;. An additional member (user GID or team GID) can be passed in to filter to a specific membership.  Alternatively, when &#x60;parent&#x60; is absent, you can use the &#x60;member&#x60; and &#x60;resource_subtype&#x60; parameters together to fetch all memberships of a specific type for a given member. For example, passing &#x60;member&#x60; as a team GID and &#x60;resource_subtype&#x60; as &#x60;project_membership&#x60; will return all project memberships for that team.
+     * Returns compact &#x60;goal_membership&#x60;, &#x60;project_membership&#x60;, &#x60;portfolio_membership&#x60;, &#x60;custom_type_membership&#x60;, &#x60;custom_field_membership&#x60;, &#x60;table_membership&#x60;, or &#x60;record_membership&#x60; records. The possible types for &#x60;parent&#x60; in this request are &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, &#x60;custom_type&#x60;, &#x60;custom_field&#x60;, &#x60;table&#x60;, or &#x60;record&#x60;. An additional member (user GID or team GID) can be passed in to filter to a specific membership.  Alternatively, when &#x60;parent&#x60; is absent, you can use the &#x60;member&#x60; and &#x60;resource_subtype&#x60; parameters together to fetch all memberships of a specific type for a given member. For example, passing &#x60;member&#x60; as a team GID and &#x60;resource_subtype&#x60; as &#x60;project_membership&#x60; will return all project memberships for that team.
      * @param {Object} opts Optional parameters
-     * @param {String} opts.parent Globally unique identifier for &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, &#x60;custom_type&#x60;, or &#x60;custom_field&#x60;. This parameter is optional when &#x60;resource_subtype&#x60; is provided along with &#x60;member&#x60; of type &#x60;team&#x60;.
+     * @param {String} opts.parent Globally unique identifier for &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, &#x60;custom_type&#x60;, &#x60;custom_field&#x60;, &#x60;table&#x60;, or &#x60;record&#x60;. This parameter is optional when &#x60;resource_subtype&#x60; is provided along with &#x60;member&#x60; of type &#x60;team&#x60;.
      * @param {String} opts.member Globally unique identifier for &#x60;team&#x60; or &#x60;user&#x60;. When used with &#x60;resource_subtype&#x60; and without &#x60;parent&#x60;, &#x60;member&#x60; must be of type &#x60;team&#x60;. For user-type memberships &#x60;parent&#x60; parameter is required to disambiguate the workspace from which memberships should be retrieved.
      * @param {module:model/String} opts.resource_subtype The type of membership to return. Required when &#x60;parent&#x60; is absent. Currently supported value is &#x60;project_membership&#x60; (when &#x60;member&#x60; is a team GID, returns all project memberships for that team).
      * @param {Number} opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
@@ -288,7 +288,7 @@ export class MembershipsApi {
 
     /**
      * Update a membership
-     * An existing membership can be updated by making a &#x60;PUT&#x60; request on the membership. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged. Memberships on &#x60;goals&#x60;, &#x60;projects&#x60;, &#x60;portfolios&#x60;, &#x60;custom_types&#x60;, and &#x60;custom_fields&#x60; can be updated.  Returns the full record of the updated membership.
+     * An existing membership can be updated by making a &#x60;PUT&#x60; request on the membership. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged. Memberships on &#x60;goals&#x60;, &#x60;projects&#x60;, &#x60;portfolios&#x60;, &#x60;custom_types&#x60;, &#x60;custom_fields&#x60;, &#x60;tables&#x60;, and &#x60;records&#x60; can be updated. Returns the full record of the updated membership.
      * @param {module:model/Object} body The membership to update.
      * @param {String} membership_gid Globally unique identifier for the membership.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data and HTTP response
@@ -331,7 +331,7 @@ export class MembershipsApi {
 
     /**
      * Update a membership
-     * An existing membership can be updated by making a &#x60;PUT&#x60; request on the membership. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged. Memberships on &#x60;goals&#x60;, &#x60;projects&#x60;, &#x60;portfolios&#x60;, &#x60;custom_types&#x60;, and &#x60;custom_fields&#x60; can be updated.  Returns the full record of the updated membership.
+     * An existing membership can be updated by making a &#x60;PUT&#x60; request on the membership. Only the fields provided in the &#x60;data&#x60; block will be updated; any unspecified fields will remain unchanged. Memberships on &#x60;goals&#x60;, &#x60;projects&#x60;, &#x60;portfolios&#x60;, &#x60;custom_types&#x60;, &#x60;custom_fields&#x60;, &#x60;tables&#x60;, and &#x60;records&#x60; can be updated. Returns the full record of the updated membership.
      * @param {<&vendorExtensions.x-jsdoc-type>} body The membership to update.
      * @param {<&vendorExtensions.x-jsdoc-type>} membership_gid Globally unique identifier for the membership.
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MembershipResponseData}

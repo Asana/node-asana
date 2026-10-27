@@ -1,0 +1,57 @@
+NotificationsApi:
+  getNotificationsForUser: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let notificationsApiInstance = new Asana.NotificationsApi(client);
+    let user_gid = "me"; // String | A string identifying a user. This can either be the string \"me\", an email, or the gid of a user.
+    let workspace = "31326"; // String | GID of the workspace from which to return notifications.
+    let opts = { 
+        'limit': 50, 
+        'offset': "eyJ0eXAiOJiKV1iQLCJhbGciOiJIUzI1NiJ9", 
+        'opt_fields': "created_at,created_by,created_by.name,is_read,offset,path,priority_classification,story,story_resource_subtype,uri,work_objects,work_objects.name"
+    };
+    notificationsApiInstance.getNotificationsForUser(user_gid, workspace, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  markNotificationsReadForUser: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let notificationsApiInstance = new Asana.NotificationsApi(client);
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | 
+    let user_gid = "me"; // String | A string identifying a user. This can either be the string \"me\", an email, or the gid of a user.
+    let opts = { 
+        'opt_fields': "failed_gids"
+    };
+    notificationsApiInstance.markNotificationsReadForUser(body, user_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    
+  markNotificationsUnreadForUser: |-
+    const Asana = require('asana');
+    
+    let client = new Asana.ApiClient();
+    client.authentications.token.accessToken = '<YOUR_ACCESS_TOKEN>';
+    
+    let notificationsApiInstance = new Asana.NotificationsApi(client);
+    let body = {"data": {"<PARAM_1>": "<VALUE_1>", "<PARAM_2>": "<VALUE_2>",}}; // Object | 
+    let user_gid = "me"; // String | A string identifying a user. This can either be the string \"me\", an email, or the gid of a user.
+    let opts = { 
+        'opt_fields': "failed_gids"
+    };
+    notificationsApiInstance.markNotificationsUnreadForUser(body, user_gid, opts).then((result) => {
+        console.log('API called successfully. Returned data: ' + JSON.stringify(result.data, null, 2));
+    }, (error) => {
+        console.error(error.response.body);
+    });
+    

@@ -18,7 +18,7 @@ import Collection = require("../utils/collection");
 /**
 * Portfolios service.
 * @module api/PortfoliosApi
-* @version 3.3.0
+* @version 3.4.0
 */
 export class PortfoliosApi {
     /**
@@ -193,12 +193,12 @@ export class PortfoliosApi {
 
     /**
      * Get multiple portfolios
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:read&lt;/code&gt;  Returns a list of the portfolios in compact representation. The portfolios are filtered based on the following criteria: - If the request is made from a regular API user (PAT or OAuth), then only portfolios owned by the current API user are returned. - If the request is made from a Service Account without the &#x60;owner&#x60; parameter, then all portfolios across the workspace are returned. - If the request is made from a Service Account with the &#x60;owner&#x60; parameter, then only portfolios owned by the specified user are returned.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:read&lt;/code&gt;  Returns a list of the portfolios in compact representation. The portfolios are filtered based on the following criteria: - If the request is made from a regular API user (PAT or OAuth), only portfolios owned by the current API user are returned. If the &#x60;owner&#x60; parameter is omitted, it defaults to the current API user. If specified, it must identify that user; use &#x60;owner&#x3D;me&#x60; to refer to the current API user. - If the request is made from a Service Account without the &#x60;owner&#x60; parameter, then all portfolios across the workspace are returned. - If the request is made from a Service Account with the &#x60;owner&#x60; parameter, then only portfolios owned by the specified user are returned.
      * @param workspace The workspace or organization to filter portfolios on.
      * @param opts Optional parameters
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.owner The user who owns the portfolio. Currently, API users can only get a list of portfolios that they themselves own, unless the request is made from a Service Account. In the case of a Service Account, if this parameter is specified, then all portfolios owned by this parameter are returned. Otherwise, all portfolios across the workspace are returned.
+     * @param opts.owner The user who owns the portfolios. For regular API users (PAT or OAuth), defaults to the current API user when omitted and must identify that user when specified; use &#x60;me&#x60; to refer to the current API user. For Service Accounts, if this parameter is specified, only portfolios owned by the specified user are returned. If a Service Account omits this parameter, all portfolios across the workspace are returned.
      * @param opts.custom_type Filter results by custom type. Provide a custom type GID to return only objects of that custom type (an unknown GID returns &#x60;400&#x60;). Provide an empty string to return only objects with no custom type assigned. If this parameter is omitted, results are not filtered by custom type.
      * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise, with an object containing data and HTTP response
@@ -207,12 +207,12 @@ export class PortfoliosApi {
 
     /**
      * Get multiple portfolios
-     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:read&lt;/code&gt;  Returns a list of the portfolios in compact representation. The portfolios are filtered based on the following criteria: - If the request is made from a regular API user (PAT or OAuth), then only portfolios owned by the current API user are returned. - If the request is made from a Service Account without the &#x60;owner&#x60; parameter, then all portfolios across the workspace are returned. - If the request is made from a Service Account with the &#x60;owner&#x60; parameter, then only portfolios owned by the specified user are returned.
+     * &lt;b&gt;Required scope: &lt;/b&gt;&lt;code&gt;portfolios:read&lt;/code&gt;  Returns a list of the portfolios in compact representation. The portfolios are filtered based on the following criteria: - If the request is made from a regular API user (PAT or OAuth), only portfolios owned by the current API user are returned. If the &#x60;owner&#x60; parameter is omitted, it defaults to the current API user. If specified, it must identify that user; use &#x60;owner&#x3D;me&#x60; to refer to the current API user. - If the request is made from a Service Account without the &#x60;owner&#x60; parameter, then all portfolios across the workspace are returned. - If the request is made from a Service Account with the &#x60;owner&#x60; parameter, then only portfolios owned by the specified user are returned.
      * @param workspace The workspace or organization to filter portfolios on.
      * @param opts Optional parameters
      * @param opts.limit Results per page. The number of objects to return per page. The value must be between 1 and 100.
      * @param opts.offset Offset token. An offset to the next page returned by the API. A pagination request will return an offset token, which can be used as an input parameter to the next request. If an offset is not passed in, the API will return the first page of results. *Note: You can only pass in an offset that was returned to you via a previously paginated request.*
-     * @param opts.owner The user who owns the portfolio. Currently, API users can only get a list of portfolios that they themselves own, unless the request is made from a Service Account. In the case of a Service Account, if this parameter is specified, then all portfolios owned by this parameter are returned. Otherwise, all portfolios across the workspace are returned.
+     * @param opts.owner The user who owns the portfolios. For regular API users (PAT or OAuth), defaults to the current API user when omitted and must identify that user when specified; use &#x60;me&#x60; to refer to the current API user. For Service Accounts, if this parameter is specified, only portfolios owned by the specified user are returned. If a Service Account omits this parameter, all portfolios across the workspace are returned.
      * @param opts.custom_type Filter results by custom type. Provide a custom type GID to return only objects of that custom type (an unknown GID returns &#x60;400&#x60;). Provide an empty string to return only objects with no custom type assigned. If this parameter is omitted, results are not filtered by custom type.
      * @param opts.opt_fields This endpoint returns a resource which excludes some properties by default. To include those optional properties, set this query parameter to a comma-separated list of the properties you wish to include. Properties can include nested fields. To learn more, see the [input/output options guide](/docs/inputoutput-options#selecting-nested-fields).
      * @returns A Promise

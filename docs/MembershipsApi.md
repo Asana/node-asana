@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 Create a membership
 
-Creates a new membership in a `goal`, `project`, `portfolio`, `custom_type`, or `custom_field`, where members can be Teams or Users.  Returns the full record of the newly created membership.
+Creates a new membership in a `goal`, `project`, `portfolio`, `custom_type`, `custom_field`, `table`, or `record`, where members can be Teams or Users.  Returns the full record of the newly created membership.
 
 ([more information](https://developers.asana.com/reference/createmembership))
 
@@ -58,7 +58,7 @@ object
 
 Delete a membership
 
-A specific, existing membership for a `goal`, `project`, `portfolio`, `custom_type`, or `custom_field` can be deleted by making a `DELETE` request on the URL for that membership.  Returns an empty data record.
+A specific, existing membership for a `goal`, `project`, `portfolio`, `custom_type`, `custom_field`, `table`, or `record` can be deleted by making a `DELETE` request on the URL for that membership.  Returns an empty data record.
 
 ([more information](https://developers.asana.com/reference/deletemembership))
 
@@ -100,7 +100,7 @@ object
 
 Get a membership
 
-Returns a `project_membership`, `goal_membership`, `portfolio_membership`, `custom_type_membership`, or `custom_field_membership` record for a membership id.
+Returns a `project_membership`, `goal_membership`, `portfolio_membership`, `custom_type_membership`, `custom_field_membership`, `table_membership`, or `record_membership` record for a membership id.
 
 ([more information](https://developers.asana.com/reference/getmembership))
 
@@ -142,7 +142,7 @@ object
 
 Get multiple memberships
 
-Returns compact `goal_membership`, `project_membership`, `portfolio_membership`, `custom_type_membership`, or `custom_field_membership` records. The possible types for `parent` in this request are `goal`, `project`, `portfolio`, `custom_type`, or `custom_field`. An additional member (user GID or team GID) can be passed in to filter to a specific membership.  Alternatively, when `parent` is absent, you can use the `member` and `resource_subtype` parameters together to fetch all memberships of a specific type for a given member. For example, passing `member` as a team GID and `resource_subtype` as `project_membership` will return all project memberships for that team.
+Returns compact `goal_membership`, `project_membership`, `portfolio_membership`, `custom_type_membership`, `custom_field_membership`, `table_membership`, or `record_membership` records. The possible types for `parent` in this request are `goal`, `project`, `portfolio`, `custom_type`, `custom_field`, `table`, or `record`. An additional member (user GID or team GID) can be passed in to filter to a specific membership.  Alternatively, when `parent` is absent, you can use the `member` and `resource_subtype` parameters together to fetch all memberships of a specific type for a given member. For example, passing `member` as a team GID and `resource_subtype` as `project_membership` will return all project memberships for that team.
 
 ([more information](https://developers.asana.com/reference/getmemberships))
 
@@ -174,7 +174,7 @@ membershipsApiInstance.getMemberships(opts).then((result) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parent** | **String**| Globally unique identifier for &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, &#x60;custom_type&#x60;, or &#x60;custom_field&#x60;. This parameter is optional when &#x60;resource_subtype&#x60; is provided along with &#x60;member&#x60; of type &#x60;team&#x60;. | [optional] 
+ **parent** | **String**| Globally unique identifier for &#x60;goal&#x60;, &#x60;project&#x60;, &#x60;portfolio&#x60;, &#x60;custom_type&#x60;, &#x60;custom_field&#x60;, &#x60;table&#x60;, or &#x60;record&#x60;. This parameter is optional when &#x60;resource_subtype&#x60; is provided along with &#x60;member&#x60; of type &#x60;team&#x60;. | [optional] 
  **member** | **String**| Globally unique identifier for &#x60;team&#x60; or &#x60;user&#x60;. When used with &#x60;resource_subtype&#x60; and without &#x60;parent&#x60;, &#x60;member&#x60; must be of type &#x60;team&#x60;. For user-type memberships &#x60;parent&#x60; parameter is required to disambiguate the workspace from which memberships should be retrieved. | [optional] 
  **resource_subtype** | **String**| The type of membership to return. Required when &#x60;parent&#x60; is absent. Currently supported value is &#x60;project_membership&#x60; (when &#x60;member&#x60; is a team GID, returns all project memberships for that team). | [optional] 
  **limit** | **Number**| Results per page. The number of objects to return per page. The value must be between 1 and 100. | [optional] 
@@ -195,7 +195,7 @@ object
 
 Update a membership
 
-An existing membership can be updated by making a `PUT` request on the membership. Only the fields provided in the `data` block will be updated; any unspecified fields will remain unchanged. Memberships on `goals`, `projects`, `portfolios`, `custom_types`, and `custom_fields` can be updated.  Returns the full record of the updated membership.
+An existing membership can be updated by making a `PUT` request on the membership. Only the fields provided in the `data` block will be updated; any unspecified fields will remain unchanged. Memberships on `goals`, `projects`, `portfolios`, `custom_types`, `custom_fields`, `tables`, and `records` can be updated. Returns the full record of the updated membership.
 
 ([more information](https://developers.asana.com/reference/updatemembership))
 
